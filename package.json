@@ -1,0 +1,71 @@
+{
+  "name": "interstellar-tools",
+  "version": "0.0.0",
+  "description": "A set of tools",
+  "keywords": [
+    "interstellar"
+  ],
+  "homepage": "https://phun-ky.net/projects/interstellar-tools",
+  "bugs": {
+    "url": "https://github.com/phun-ky/interstellar-tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phun-ky/interstellar-tools.git"
+  },
+  "funding": "https://github.com/phun-ky/interstellar-tools?sponsor=1",
+  "license": "MIT",
+  "author": "Alexander Vassbotn Røyne-Helgesen <alexander@phun-ky.net>",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "tsc -b",
+    "clean": "npm run clean --workspaces --if-present",
+    "commit": "npx git-cz",
+    "docs:gen": "node ./node_modules/.bin/typedoc",
+    "predocs:dev": "npm run docs:gen",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "prerelease": "npm run build && npm run docs:gen && git add .",
+    "release": "npm run release --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:ci": "npm run test:ci --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@release-it/bumper": "^7.0.5",
+    "@release-it/conventional-changelog": "^10.0.1",
+    "cobertura": "^1.0.3",
+    "git-cz": "^4.9.0",
+    "glob": "^11.0.2",
+    "mermaid": "^11.12.0",
+    "release-it": "^19.0.2",
+    "remark-github": "^12.0.0",
+    "remark-toc": "^9.0.0",
+    "tsx": "^4.19.4",
+    "typedoc": "^0.28.2",
+    "typedoc-plugin-frontmatter": "^1.0.0",
+    "typedoc-plugin-markdown": "^4.2.3",
+    "typedoc-plugin-mdn-links": "^5.0.1",
+    "typedoc-plugin-no-inherit": "^1.4.0",
+    "typedoc-plugin-remark": "^2.0.0",
+    "typedoc-plugin-rename-defaults": "^0.7.1",
+    "typedoc-vitepress-theme": "^1.1.2",
+    "unified-prettier": "^2.0.1",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-group-icons": "^1.6.3",
+    "vitepress-plugin-mermaid": "^2.0.17"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.8.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  }
+}

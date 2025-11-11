@@ -1,0 +1,52 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-remark",
+    "typedoc-vitepress-theme",
+    "typedoc-plugin-mdn-links",
+    "typedoc-plugin-rename-defaults"
+  ],
+
+  "entryPointStrategy": "packages",
+  "entryPoints": ["packages/*"],
+  "packageOptions": {
+    "entryPoints": ["src/index.ts"],
+    "readme": "none"
+  },
+  "out": "docs/api",
+  "docsRoot": "./docs",
+  "tsconfig": "./tsconfig.base.json",
+  "githubPages": false,
+  "hideGenerator": true,
+  "gitRevision": "main",
+  "navigationLinks": {
+    "GitHub": "https://github.com/phun-ky/hybrid-compute"
+  },
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": false,
+    "includeFolders": true,
+    "compactFolders": false,
+    "excludeReferences": true
+  },
+  "readme": "none",
+  "indexFormat": "list",
+  "interfacePropertiesFormat": "list",
+  "classPropertiesFormat": "list",
+  "expandParameters": true,
+  "strikeDeprecatedPageTitles": true,
+  "enumMembersFormat": "list",
+  "typeDeclarationFormat": "list",
+  "propertyMembersFormat": "list",
+  "expandObjects": true,
+  "useCodeBlocks": true,
+  "remarkPlugins": [
+    "unified-prettier",
+    [
+      "remark-github",
+      { "repository": "https://github.com/phun-ky/hybrid-compute" }
+    ],
+    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
+  ]
+}
