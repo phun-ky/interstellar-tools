@@ -3,7 +3,8 @@ MeasureInterface
 
 # Interface: MeasureInterface
 
-Defined in: distance.ts:151
+Defined in:
+[distance.ts:151](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/distance.ts#L151)
 
 Represents a measurement with an associated unit.
 
@@ -25,7 +26,8 @@ const planetRadius: MeasureInterface = { value: 6371, unit: 'km' };
 unit: DistanceUnitType;
 ```
 
-Defined in: distance.ts:152
+Defined in:
+[distance.ts:152](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/distance.ts#L152)
 
 The unit of measurement.
 
@@ -37,7 +39,8 @@ The unit of measurement.
 value: number;
 ```
 
-Defined in: numeric.ts:18
+Defined in:
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.
 

@@ -39,7 +39,8 @@ type TemporalUnitAliasType =
   | 'Ga';
 ```
 
-Defined in: temporal.ts:84
+Defined in:
+[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/temporal.ts#L84)
 
 Human-friendly **temporal unit aliases** accepted at input time.
 

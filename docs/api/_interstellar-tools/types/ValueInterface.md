@@ -3,7 +3,8 @@ ValueInterface
 
 # Interface: ValueInterface
 
-Defined in: numeric.ts:17
+Defined in:
+[numeric.ts:17](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/numeric.ts#L17)
 
 Represents a numerical value.
 
@@ -28,6 +29,7 @@ const distance: ValueInterface = { value: 100 };
 value: number;
 ```
 
-Defined in: numeric.ts:18
+Defined in:
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.

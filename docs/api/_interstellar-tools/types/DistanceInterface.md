@@ -3,7 +3,8 @@ DistanceInterface
 
 # Interface: DistanceInterface
 
-Defined in: distance.ts:167
+Defined in:
+[distance.ts:167](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/distance.ts#L167)
 
 Represents a distance measurement with an associated unit.
 
@@ -28,7 +29,8 @@ const distanceToAlphaCentauri: DistanceInterface = {
 unit: DistanceUnitType;
 ```
 
-Defined in: distance.ts:168
+Defined in:
+[distance.ts:168](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/distance.ts#L168)
 
 The unit of distance measurement.
 
@@ -40,7 +42,8 @@ The unit of distance measurement.
 value: number;
 ```
 
-Defined in: numeric.ts:18
+Defined in:
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.
 

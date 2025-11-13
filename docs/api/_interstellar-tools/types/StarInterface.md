@@ -3,7 +3,8 @@ StarInterface
 
 # Interface: StarInterface
 
-Defined in: celestial-bodies/stars.ts:62
+Defined in:
+[celestial-bodies/stars.ts:62](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L62)
 
 Represents a **star** in a planetary or stellar system.
 
@@ -52,7 +53,8 @@ const sun: StarInterface = {
 a: MeasureInterface;
 ```
 
-Defined in: celestial-bodies/stars.ts:76
+Defined in:
+[celestial-bodies/stars.ts:76](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L76)
 
 Semi-major axis of the orbit (AU or light-years).
 
@@ -64,7 +66,8 @@ Semi-major axis of the orbit (AU or light-years).
 angle: number;
 ```
 
-Defined in: celestial-bodies/stars.ts:84
+Defined in:
+[celestial-bodies/stars.ts:84](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L84)
 
 Current orbital position in radians (True Anomaly).
 
@@ -76,7 +79,8 @@ Current orbital position in radians (True Anomaly).
 category: 'star';
 ```
 
-Defined in: celestial-bodies/stars.ts:68
+Defined in:
+[celestial-bodies/stars.ts:68](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L68)
 
 Defines the category as a star.
 
@@ -88,7 +92,8 @@ Defines the category as a star.
 color: string;
 ```
 
-Defined in: celestial-bodies/stars.ts:74
+Defined in:
+[celestial-bodies/stars.ts:74](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L74)
 
 Visual representation color.
 
@@ -100,7 +105,8 @@ Visual representation color.
 e: number;
 ```
 
-Defined in: celestial-bodies/stars.ts:78
+Defined in:
+[celestial-bodies/stars.ts:78](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L78)
 
 Orbital eccentricity (0 = circular, closer to 1 = highly elliptical).
 
@@ -112,7 +118,8 @@ Orbital eccentricity (0 = circular, closer to 1 = highly elliptical).
 optional focus_x: number;
 ```
 
-Defined in: celestial-bodies/stars.ts:82
+Defined in:
+[celestial-bodies/stars.ts:82](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L82)
 
 X-offset for the ellipse focus (accounts for eccentricity).
 
@@ -124,7 +131,8 @@ X-offset for the ellipse focus (accounts for eccentricity).
 optional miA: number;
 ```
 
-Defined in: celestial-bodies/stars.ts:80
+Defined in:
+[celestial-bodies/stars.ts:80](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L80)
 
 Semi-minor axis of the orbit (calculated from `a` and `e`).
 
@@ -136,7 +144,8 @@ Semi-minor axis of the orbit (calculated from `a` and `e`).
 name: string;
 ```
 
-Defined in: celestial-bodies/stars.ts:64
+Defined in:
+[celestial-bodies/stars.ts:64](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L64)
 
 Name of the star.
 
@@ -148,7 +157,8 @@ Name of the star.
 optional orbitPath: CartesianCoordinatesInterface[];
 ```
 
-Defined in: celestial-bodies/stars.ts:94
+Defined in:
+[celestial-bodies/stars.ts:94](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L94)
 
 Precomputed orbital path points for visualization (optional).
 
@@ -160,7 +170,8 @@ Precomputed orbital path points for visualization (optional).
 period: TemporalInterface;
 ```
 
-Defined in: celestial-bodies/stars.ts:92
+Defined in:
+[celestial-bodies/stars.ts:92](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L92)
 
 Orbital period of the star. Negative values indicate counter clockwise
 direction.
@@ -173,7 +184,8 @@ direction.
 radius: DistanceInterface;
 ```
 
-Defined in: celestial-bodies/stars.ts:72
+Defined in:
+[celestial-bodies/stars.ts:72](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L72)
 
 Physical radius of the star.
 
@@ -185,7 +197,8 @@ Physical radius of the star.
 system: StarSystemInterface;
 ```
 
-Defined in: celestial-bodies/stars.ts:70
+Defined in:
+[celestial-bodies/stars.ts:70](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L70)
 
 The system in which the star exists.
 
@@ -197,7 +210,8 @@ The system in which the star exists.
 type: string;
 ```
 
-Defined in: celestial-bodies/stars.ts:66
+Defined in:
+[celestial-bodies/stars.ts:66](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L66)
 
 Classification of the star (e.g., main-sequence, red giant, white dwarf).
 
@@ -209,7 +223,8 @@ Classification of the star (e.g., main-sequence, red giant, white dwarf).
 x: DistanceInterface;
 ```
 
-Defined in: celestial-bodies/stars.ts:86
+Defined in:
+[celestial-bodies/stars.ts:86](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L86)
 
 X-coordinate in a distance-based system.
 
@@ -221,7 +236,8 @@ X-coordinate in a distance-based system.
 y: DistanceInterface;
 ```
 
-Defined in: celestial-bodies/stars.ts:88
+Defined in:
+[celestial-bodies/stars.ts:88](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L88)
 
 Y-coordinate in a distance-based system.
 
@@ -233,6 +249,7 @@ Y-coordinate in a distance-based system.
 z: DistanceInterface;
 ```
 
-Defined in: celestial-bodies/stars.ts:90
+Defined in:
+[celestial-bodies/stars.ts:90](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L90)
 
 Z-coordinate in a distance-based system.

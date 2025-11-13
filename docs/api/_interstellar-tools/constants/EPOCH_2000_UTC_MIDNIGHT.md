@@ -7,7 +7,8 @@
 const EPOCH_2000_UTC_MIDNIGHT: Date;
 ```
 
-Defined in: date.ts:55
+Defined in:
+[date.ts:55](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/constants/src/date.ts#L55)
 
 **UTC midnight at the start of 2000-01-01** (convenient calendar anchor).
 

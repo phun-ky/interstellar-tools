@@ -19,7 +19,8 @@ type AsteroidCategory =
   | 'scattered disk object';
 ```
 
-Defined in: celestial-bodies/asteroids.ts:45
+Defined in:
+[celestial-bodies/asteroids.ts:45](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/asteroids.ts#L45)
 
 More specific **group/category** for dynamical families or special bodies.
 

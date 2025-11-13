@@ -7,7 +7,8 @@
 function eccentricToTrueAnomaly(E: number, e: number): number;
 ```
 
-Defined in: eccentric-to-true-anomaly.ts:43
+Defined in:
+[eccentric-to-true-anomaly.ts:43](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/equations/src/eccentric-to-true-anomaly.ts#L43)
 
 Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.
 

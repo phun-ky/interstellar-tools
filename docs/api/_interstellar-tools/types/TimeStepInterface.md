@@ -3,7 +3,8 @@ TimeStepInterface
 
 # Interface: TimeStepInterface
 
-Defined in: temporal.ts:153
+Defined in:
+[temporal.ts:153](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/temporal.ts#L153)
 
 Represents a **time step measurement** in simulation, restricted to days.
 
@@ -25,7 +26,8 @@ const timeStep: TimeStepInterface = { value: 1, unit: 'day' };
 unit: 'd';
 ```
 
-Defined in: temporal.ts:154
+Defined in:
+[temporal.ts:154](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/temporal.ts#L154)
 
 The unit is always **days**.
 
@@ -37,7 +39,8 @@ The unit is always **days**.
 value: number;
 ```
 
-Defined in: numeric.ts:18
+Defined in:
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.
 

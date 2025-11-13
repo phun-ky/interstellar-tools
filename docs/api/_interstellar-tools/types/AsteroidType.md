@@ -12,7 +12,8 @@ type AsteroidType =
   | 'trans-neptunian object';
 ```
 
-Defined in: celestial-bodies/asteroids.ts:24
+Defined in:
+[celestial-bodies/asteroids.ts:24](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/asteroids.ts#L24)
 
 High-level **orbital class** of an asteroid (by dynamical region).
 

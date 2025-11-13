@@ -7,6 +7,7 @@ StarsType
 type StarsType = StarInterface[];
 ```
 
-Defined in: celestial-bodies/stars.ts:103
+Defined in:
+[celestial-bodies/stars.ts:103](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/stars.ts#L103)
 
 Type alias for a collection of **stars**.

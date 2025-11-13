@@ -10,7 +10,8 @@ function computeMeanAnomaly(
 ): number;
 ```
 
-Defined in: compute-mean-anomaly.ts:69
+Defined in:
+[compute-mean-anomaly.ts:69](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/equations/src/compute-mean-anomaly.ts#L69)
 
 Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
 

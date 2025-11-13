@@ -3,7 +3,8 @@ GalaxyInterface
 
 # Interface: GalaxyInterface
 
-Defined in: celestial-bodies/galaxies.ts:58
+Defined in:
+[celestial-bodies/galaxies.ts:58](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/galaxies.ts#L58)
 
 Represents a **galaxy** in the universe simulation.
 
@@ -37,7 +38,8 @@ const milkyWay: GalaxyInterface = {
 blackHole: BlackHoleInterface;
 ```
 
-Defined in: celestial-bodies/galaxies.ts:68
+Defined in:
+[celestial-bodies/galaxies.ts:68](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/galaxies.ts#L68)
 
 Central black hole of the galaxy.
 
@@ -49,7 +51,8 @@ Central black hole of the galaxy.
 diameter: DistanceInterface;
 ```
 
-Defined in: celestial-bodies/galaxies.ts:64
+Defined in:
+[celestial-bodies/galaxies.ts:64](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/galaxies.ts#L64)
 
 Diameter of the galaxy in light-years.
 
@@ -61,7 +64,8 @@ Diameter of the galaxy in light-years.
 distance: DistanceInterface;
 ```
 
-Defined in: celestial-bodies/galaxies.ts:66
+Defined in:
+[celestial-bodies/galaxies.ts:66](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/galaxies.ts#L66)
 
 Distance from the Milky Way in light-years.
 
@@ -73,7 +77,8 @@ Distance from the Milky Way in light-years.
 name: string;
 ```
 
-Defined in: celestial-bodies/galaxies.ts:60
+Defined in:
+[celestial-bodies/galaxies.ts:60](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/galaxies.ts#L60)
 
 Name of the galaxy.
 
@@ -85,6 +90,7 @@ Name of the galaxy.
 type: string;
 ```
 
-Defined in: celestial-bodies/galaxies.ts:62
+Defined in:
+[celestial-bodies/galaxies.ts:62](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/galaxies.ts#L62)
 
 Morphological classification of the galaxy.

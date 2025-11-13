@@ -12,7 +12,8 @@ type CelestialBodyType =
   | AsteroidInterface;
 ```
 
-Defined in: celestial-bodies/celestial-bodies.ts:51
+Defined in:
+[celestial-bodies/celestial-bodies.ts:51](https://github.com/phun-ky/interstellar-tools/blob/ed1198b9c20c47a67c6b06f4f3e5a2b0e8c00efe/packages/types/src/celestial-bodies/celestial-bodies.ts#L51)
 
 Type alias representing a single celestial body.
 
