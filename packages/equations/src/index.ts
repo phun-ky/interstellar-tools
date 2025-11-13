@@ -22,3 +22,13 @@ export * from './solve-kepler';
 export * from './true-anomaly-to-mean-anomaly';
 
 export * from './wrap-angle';
+
+export * from './gravitational-parameter';
+
+export * from './law-of-gravitation';
+
+export * from './vis-viva-speed';
+
+export * from './kepler-period';
+
+export * from './specific-mechanical-energy';
