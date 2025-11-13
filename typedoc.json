@@ -16,7 +16,6 @@
     "sort": ["kind", "instance-first", "alphabetical-ignoring-documents"],
     "entryPoints": ["src/index.ts"]
   },
-  "router": "structure",
   "out": "docs/api",
   "docsRoot": "./docs",
   "tsconfig": "./tsconfig.base.json",
