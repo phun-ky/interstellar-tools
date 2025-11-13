@@ -44,7 +44,7 @@ const areEqual = (a: number, b: number, epsilon: number = EPSILON): boolean => {
  * @param {TemporalInterface} timeStep - The time step over which to compute the change.
  * @returns {Radians} The computed mean anomaly in radians.
  *
- * @throws {RangeError} If the body's eccentricity is outside the range $0 \leq e < 1$.
+ * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If the body's eccentricity is outside the range $0 \leq e < 1$.
  *
  * @example
  * ```ts

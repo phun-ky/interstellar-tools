@@ -28,7 +28,7 @@ import { Radians } from '@interstellar-tools/types';
  * @param {number} e - Orbital eccentricity ($0 \leq e < 1$).
  * @returns {Radians} True anomaly ($V$) in radians.
  *
- * @throws {RangeError} If **eccentricity** is out of the range $0 \leq e \leq 1$.
+ * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If **eccentricity** is out of the range $0 \leq e \leq 1$.
  *
  * @example
  * ```ts
