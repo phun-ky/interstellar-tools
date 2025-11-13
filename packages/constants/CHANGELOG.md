@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.1.2...@interstellar-tools/constants@0.2.0) (2025-11-13)
+
+### Tasks
+
+* 🤖 @interstellar-tools/equations@0.1.2 ([64b6a2b](https://github.com/phun-ky/interstellar-tools/commit/64b6a2b8fb74470dfda9ad09fb1eed5382ec9f6a))
+* 🤖 @interstellar-tools/temporal@0.1.2 ([5319913](https://github.com/phun-ky/interstellar-tools/commit/531991338e26c78b4865ccfdbc8029ff4b47bfc0))
+* 🤖 @interstellar-tools/types@0.1.2 ([de093dc](https://github.com/phun-ky/interstellar-tools/commit/de093dcb047b9aaae6ea3706fd8ef5ec2dd7b0ae))
+* 🤖 A little todo-list to help development ([885e41f](https://github.com/phun-ky/interstellar-tools/commit/885e41f01bb4de165b258a59db559410648cea89))
+* 🤖 Update deps ([5ff82c7](https://github.com/phun-ky/interstellar-tools/commit/5ff82c7a8b3b4e58b919374462351384862caf4e))
+
+### Documentation
+
+* ✏️ Typo ([1886ca2](https://github.com/phun-ky/interstellar-tools/commit/1886ca28354493bccddcefd4d844e99800b87d3e))
+* ✏️ Update documentation ([8b6cb24](https://github.com/phun-ky/interstellar-tools/commit/8b6cb24238a626e53487d5601c5eecacef466536))
+* ✏️ Use links for global error objects ([81bc140](https://github.com/phun-ky/interstellar-tools/commit/81bc1409caa9cc4ef0b36345fa653b97f75377ce))
+
+### Feature
+
+* 🎸 Add new equation functions for core dynamics ([a7d9bd8](https://github.com/phun-ky/interstellar-tools/commit/a7d9bd8985c546816242efd2b9b8372d288dc5e5))
+
 ## [0.1.2](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.1.1...@interstellar-tools/constants@0.1.2) (2025-11-13)
 
 ### Tasks

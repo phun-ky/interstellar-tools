@@ -8,6 +8,6 @@ const J2000_UTC_TIME_SCALE: 'UTC' = TIME_SCALE_UTC;
 ```
 
 Defined in:
-[date.ts:42](https://github.com/phun-ky/interstellar-tools/blob/de093dcb047b9aaae6ea3706fd8ef5ec2dd7b0ae/packages/constants/src/date.ts#L42)
+[date.ts:42](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/constants/src/date.ts#L42)
 
 Time scale associated with [J2000_UTC](J2000_UTC.md).

@@ -7,7 +7,8 @@ Vector3DTupleType
 type Vector3DTupleType = readonly [number, number, number];
 ```
 
-Defined in: math.ts:23
+Defined in:
+[math.ts:23](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/types/src/math.ts#L23)
 
 A read-only 3D vector tuple `[x, y, z]`.
 

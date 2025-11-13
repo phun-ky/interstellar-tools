@@ -12,7 +12,8 @@ function gravitationalAccelerationOn1By2(
 ): Vector3DTupleType;
 ```
 
-Defined in: law-of-gravitation.ts:201
+Defined in:
+[law-of-gravitation.ts:201](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/law-of-gravitation.ts#L201)
 
 Gravitational **acceleration** of body 1 due to body 2 (vector, m/s²).
 

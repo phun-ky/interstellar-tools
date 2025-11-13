@@ -13,7 +13,8 @@ function gravitationalForceOn1By2(
 ): Vector3DTupleType;
 ```
 
-Defined in: law-of-gravitation.ts:301
+Defined in:
+[law-of-gravitation.ts:301](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/law-of-gravitation.ts#L301)
 
 Gravitational **force vector** on body 1 due to body 2 (newtons, N).
 
