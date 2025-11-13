@@ -29,7 +29,7 @@
  * - Using **τ** often simplifies formulas that involve *full cycles* (e.g., Fourier analysis,
  *   rotations, oscillator phase), eliminating stray factors of 2.
  * - `TWO_PI` is a runtime numeric constant; do not compare floating-point results using `===`
- *   when they involve trigonometric operations—prefer tolerance checks.
+ *   when they involve trigonometric operations-prefer tolerance checks.
  *
  * :::
  *

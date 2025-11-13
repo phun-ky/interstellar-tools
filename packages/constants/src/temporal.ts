@@ -6,7 +6,7 @@
  * - **SI day**: exactly `86 400 s`.
  * - **Julian year** (astronomy): exactly `365.25 d = 31 557 600 s`.
  *
- * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure — second & day)
+ * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year definition)
  *
  * @example
@@ -42,7 +42,7 @@ export const MILLISECONDS_PER_SECOND = 1_000 as const;
  */
 export const MILLISECONDS_PER_DAY = SECONDS_PER_DAY * MILLISECONDS_PER_SECOND;
 
-// Julian year (astronomy) — EXACT 365.25 d
+// Julian year (astronomy) - EXACT 365.25 d
 
 /**
  *  Length of the **Julian year** in SI days (exactly 365.25).

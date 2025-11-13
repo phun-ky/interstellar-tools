@@ -10,7 +10,7 @@ import { JULIAN_YEAR_SECONDS } from './temporal';
  * - **Parsec** is defined by trigonometric parallax: `pc = au / tan(1″)`.
  *
  * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure)
- * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 — astronomical unit)
+ * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 - astronomical unit)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year)
  * @see https://en.wikipedia.org/wiki/Parsec (Parsec definition)
  */

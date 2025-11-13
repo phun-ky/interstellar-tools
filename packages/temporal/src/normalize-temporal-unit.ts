@@ -29,7 +29,7 @@ import type {
  *
  * :::
  *
- * @see https://www.bipm.org/en/publications/si-brochure  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure — second & day)
+ * @see https://www.bipm.org/en/publications/si-brochure  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year for yr/kyr/Myr/Gyr)
  */
 export const NORMALIZE_UNIT = {
@@ -121,7 +121,7 @@ export const NORMALIZE_UNIT = {
  * ```
  *
  * @see {@link NORMALIZE_UNIT} for the complete alias→canonical mapping.
- * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure — second/day)
+ * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure - second/day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year for yr/kyr/Myr/Gyr)
  */
 export const normalizeTemporalUnit = (u: string): TemporalUnitType => {
