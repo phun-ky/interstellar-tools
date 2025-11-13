@@ -23,6 +23,10 @@ on:
       - 'SECURITY.md'
       - '.browserlistrc'
   workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
 jobs:
   publish:
     if: github.event.pull_request.merged == true
@@ -39,7 +43,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: '>=22.0.0'
+          node-version: '>=22.9.0'
       - name: Install dependencies
         run: | # Install and link dependencies
           npm i

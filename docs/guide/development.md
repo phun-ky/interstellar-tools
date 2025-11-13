@@ -3,9 +3,9 @@
 ::: info
 
 Want to contribute? Please read the
-[CONTRIBUTING.md](https://github.com/phun-ky/hybrid-compute/blob/main/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md)
 and
-[CODE_OF_CONDUCT.md](https://github.com/phun-ky/hybrid-compute/blob/main/CODE_OF_CONDUCT.md).
+[CODE_OF_CONDUCT.md](https://github.com/phun-ky/interstellar-tools/blob/main/CODE_OF_CONDUCT.md).
 
 :::
 

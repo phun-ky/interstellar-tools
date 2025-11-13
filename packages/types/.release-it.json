@@ -6,7 +6,7 @@
   },
   "github": {
     "release": true,
-    "releaseName": "@interstellar-tools/worker@${version}",
+    "releaseName": "@interstellar-tools/types@${version}",
     "tokenRef": "GH_TOKEN"
   },
   "npm": {

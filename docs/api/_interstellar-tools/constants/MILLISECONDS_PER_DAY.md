@@ -1,0 +1,19 @@
+[Documentation](../../index.md) /
+[@interstellar-tools/constants](../constants.md) / MILLISECONDS_PER_DAY
+
+# Variable: MILLISECONDS_PER_DAY
+
+```ts
+const MILLISECONDS_PER_DAY: number;
+```
+
+Defined in: temporal.ts:43
+
+Milliseconds in one **SI day**.
+
+::: info
+
+Computed from [SECONDS_PER_DAY](SECONDS_PER_DAY.md) ×
+[MILLISECONDS_PER_SECOND](MILLISECONDS_PER_SECOND.md).
+
+:::

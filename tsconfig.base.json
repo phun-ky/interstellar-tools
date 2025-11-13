@@ -14,10 +14,10 @@
     "composite": true, // required for project references
     "baseUrl": ".", // allows shared paths if needed
     "paths": {
-      "@hybrid-compute/core": ["packages/core/src"],
-      "@hybrid-compute/local": ["packages/local/src"],
-      "@hybrid-compute/remote": ["packages/remote/src"],
-      "@hybrid-compute/worker": ["packages/worker/src"]
+      "@interstellar-tools/equations": ["packages/equations/src"],
+      "@interstellar-tools/types": ["packages/types/src"],
+      "@interstellar-tools/temporal": ["packages/temporal/src"],
+      "@interstellar-tools/constants": ["packages/constants/src"]
     }
   },
   "exclude": ["node_modules", "dist"]
