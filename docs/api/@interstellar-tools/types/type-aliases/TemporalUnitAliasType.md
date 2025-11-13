@@ -40,7 +40,7 @@ type TemporalUnitAliasType =
 ```
 
 Defined in:
-[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/1a287c92090172f88a61ae54fc794fe57d83ca58/packages/types/src/temporal.ts#L84)
+[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/de093dcb047b9aaae6ea3706fd8ef5ec2dd7b0ae/packages/types/src/temporal.ts#L84)
 
 Human-friendly **temporal unit aliases** accepted at input time.
 
@@ -70,7 +70,7 @@ These strings could be parsed and **normalized** to your canonical
 ## See
 
 - https://www.bipm.org/en/publications/si-brochure
-  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure —
+  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure -
   second & day)
 - https://en.wikipedia.org/wiki/Julian\_year\_(astronomy) (Julian year used for
   `yr`/`kyr`/`Myr`/`Gyr`)

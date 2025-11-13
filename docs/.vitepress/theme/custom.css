@@ -209,6 +209,10 @@ html.ph body {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
 }
+& .vp-doc > div > p:has(a):first-of-type {
+  max-width: none;
+}
+
 & .vp-doc p:has(img) {
   max-width: none;
 }

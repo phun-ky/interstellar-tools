@@ -19,7 +19,7 @@ type DistanceUnitType =
 ```
 
 Defined in:
-[distance.ts:43](https://github.com/phun-ky/interstellar-tools/blob/1a287c92090172f88a61ae54fc794fe57d83ca58/packages/types/src/distance.ts#L43)
+[distance.ts:43](https://github.com/phun-ky/interstellar-tools/blob/de093dcb047b9aaae6ea3706fd8ef5ec2dd7b0ae/packages/types/src/distance.ts#L43)
 
 Canonical **distance unit symbols** for astronomy/space visualization.
 
@@ -33,12 +33,12 @@ Canonical **distance unit symbols** for astronomy/space visualization.
 
 ## Conventions
 
-- **`au`** — Astronomical Unit (IAU 2012 B2): **149 597 870 700 m** (lowercase
+- **`au`** - Astronomical Unit (IAU 2012 B2): **149 597 870 700 m** (lowercase
   `au` is the IAU symbol).
-- **`ly` family** — Light-year based on the **Julian year**:
+- **`ly` family** - Light-year based on the **Julian year**:
   `1 ly = c × 365.25 d = 9 460 730 472 580 800 m` (with `kly = 10³ ly`,
   `Mly = 10⁶ ly`, `Gly = 10⁹ ly`).
-- **`pc` family** — Parsec defined from the arcsecond parallax:
+- **`pc` family** - Parsec defined from the arcsecond parallax:
   `1 pc = au × (648000 / π) ≈ 3.085677581×10¹⁶ m` (`kpc/Mpc/Gpc` are
   ×10³/×10⁶/×10⁹).
 
@@ -63,7 +63,7 @@ const d3: Distance = { value: 8, unit: 'kpc' };
 
 ## See
 
-- https://www.iau.org/static/resolutions/IAU2012\_English.pdf (IAU 2012 B2 —
+- https://www.iau.org/static/resolutions/IAU2012\_English.pdf (IAU 2012 B2 -
   definition of the astronomical unit)
 - https://en.wikipedia.org/wiki/Light-year (Light-year based on Julian year)
 - https://en.wikipedia.org/wiki/Parsec (Parsec definition & meter equivalence)

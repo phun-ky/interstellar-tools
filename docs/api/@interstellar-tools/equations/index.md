@@ -30,6 +30,18 @@ orbits, angles, solve for kelper or find true anomalies.
 | [eccentricToTrueAnomaly](functions/eccentricToTrueAnomaly.md)     | Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.         |
 | [trueAnomalyToMeanAnomaly](functions/trueAnomalyToMeanAnomaly.md) | Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation. |
 
+## Dynamics
+
+| Function                                                                        | Description                                                                                                 |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [gravitationalAccelerationOn1By2](functions/gravitationalAccelerationOn1By2.md) | Gravitational **acceleration** of body 1 due to body 2 (vector, m/s²).                                      |
+| [gravitationalForce](functions/gravitationalForce.md)                           | Compute the Newtonian **gravitational force** on body 1 due to body 2.                                      |
+| [gravitationalForceOn1By2](functions/gravitationalForceOn1By2.md)               | Gravitational **force vector** on body 1 due to body 2 (newtons, N).                                        |
+| [gravitationalParameter](functions/gravitationalParameter.md)                   | Two-body **gravitational parameter** ($\mu$).                                                               |
+| [keplerPeriod](functions/keplerPeriod.md)                                       | **Kepler's 3rd law** - orbital period ($T$) from semi-major axis ($a$) and gravitational parameter ($\mu$). |
+| [specificMechanicalEnergy](functions/specificMechanicalEnergy.md)               | **Specific mechanical energy** ($\varepsilon$) of a point mass in a central gravity field.                  |
+| [visVivaSpeed](functions/visVivaSpeed.md)                                       | **Vis-viva (orbital speed)** - compute speed magnitude ($v$) from ($r$), ($a$), and ($\mu$).                |
+
 ## Solve for Kepler
 
 | Function                                                                | Description                                                                                                                                                                                                                                                      |
