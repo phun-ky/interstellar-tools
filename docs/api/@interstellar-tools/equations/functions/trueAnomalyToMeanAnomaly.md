@@ -8,7 +8,7 @@ function trueAnomalyToMeanAnomaly(V: number, e: number): number;
 ```
 
 Defined in:
-[true-anomaly-to-mean-anomaly.ts:75](https://github.com/phun-ky/interstellar-tools/blob/f613425043c94828d8fadf35a707105a661f469f/packages/equations/src/true-anomaly-to-mean-anomaly.ts#L75)
+[true-anomaly-to-mean-anomaly.ts:75](https://github.com/phun-ky/interstellar-tools/blob/1a287c92090172f88a61ae54fc794fe57d83ca58/packages/equations/src/true-anomaly-to-mean-anomaly.ts#L75)
 
 Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's
 equation.

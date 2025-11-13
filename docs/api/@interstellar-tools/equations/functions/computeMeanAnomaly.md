@@ -11,7 +11,7 @@ function computeMeanAnomaly(
 ```
 
 Defined in:
-[compute-mean-anomaly.ts:69](https://github.com/phun-ky/interstellar-tools/blob/f613425043c94828d8fadf35a707105a661f469f/packages/equations/src/compute-mean-anomaly.ts#L69)
+[compute-mean-anomaly.ts:69](https://github.com/phun-ky/interstellar-tools/blob/1a287c92090172f88a61ae54fc794fe57d83ca58/packages/equations/src/compute-mean-anomaly.ts#L69)
 
 Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
 

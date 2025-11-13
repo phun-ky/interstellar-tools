@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.2](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.1.1...@interstellar-tools/constants@0.1.2) (2025-11-13)
+
+### Tasks
+
+* 🤖 @interstellar-tools/equations@0.1.1 ([bb1e83f](https://github.com/phun-ky/interstellar-tools/commit/bb1e83f60a5751196b162edd9f6fab5a8688850d))
+* 🤖 @interstellar-tools/temporal@0.1.1 ([4cf2521](https://github.com/phun-ky/interstellar-tools/commit/4cf2521d3b9f06cd390fcdfb7055d1275817cf8f))
+* 🤖 @interstellar-tools/types@0.1.1 ([fb13612](https://github.com/phun-ky/interstellar-tools/commit/fb136121a299e9ab976b00804010633b6b3ca540))
+* 🤖 publish ([751aa76](https://github.com/phun-ky/interstellar-tools/commit/751aa76c9089c583379f1a8abd816435ed2614a7))
+
+### Documentation
+
+* ✏️ Change route property for typedoc ([3c55d39](https://github.com/phun-ky/interstellar-tools/commit/3c55d39665661bc02c4d18db9f2633669492723a))
+* ✏️ Remove redundant yarn install information ([f613425](https://github.com/phun-ky/interstellar-tools/commit/f613425043c94828d8fadf35a707105a661f469f))
+
 ## 0.1.1 (2025-11-13)
 
 ### Tasks
