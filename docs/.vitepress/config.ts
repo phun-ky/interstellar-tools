@@ -31,79 +31,11 @@ export default withMermaid(
       }
     },
     lang: 'en-GB',
-    head: [
-      ['meta', { property: 'og:url', content: 'https://interstellar-tools.dev' }],
-      ['meta', { property: 'og:type', content: 'website' }],
-      [
-        'meta',
-        {
-          property: 'og:title',
-          content: 'Interstellar Tools'
-        }
-      ],
-      [
-        'meta',
-        {
-          property: 'og:description',
-          content:
-            'A set of tools..'
-        }
-      ],
-      [
-        'meta',
-        {
-          property: 'og:site_name',
-          content: 'Interstellar Tools'
-        }
-      ],
-      ['meta', { property: 'og:locale:locale', content: 'en_GB' }],
-      [
-        'meta',
-        {
-          property: 'og:image',
-          content:
-            'https://opengraph.githubassets.com/67b2a057c3b6fe59450314613d107981641cea26e781e5b1bf14338855180880/phun-ky/interstellar-tools/pull/32'
-        }
-      ],
-      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-      ['meta', { property: 'twitter:domain', content: 'phun-ky.net' }],
-      [
-        'meta',
-        {
-          property: 'twitter:url',
-          content: 'https://interstellar-tools.dev'
-        }
-      ],
-      [
-        'meta',
-        {
-          name: 'twitter:title',
-          content: 'Interstellar Tools'
-        }
-      ],
-      [
-        'meta',
-        {
-          name: 'twitter:description',
-          content:
-            'A set of tools'
-        }
-      ],
-      [
-        'meta',
-        {
-          name: 'twitter:image',
-          content:
-            'https://opengraph.githubassets.com/67b2a057c3b6fe59450314613d107981641cea26e781e5b1bf14338855180880/phun-ky/interstellar-tools/pull/32'
-        }
-      ]
-    ],
 
     lastUpdated: true,
     cleanUrls: true,
     metaChunk: true,
-    description:
-      'A set of tools',
+    description: 'A set of tools',
     title: 'Interstellar Tools',
     themeConfig: {
       search: {
@@ -111,7 +43,8 @@ export default withMermaid(
       },
       editLink: {
         pattern:
-          'https://github.com/phun-ky/interstellar-tools/edit/main/docs/:path'
+          'https://github.com/phun-ky/interstellar-tools/edit/main/docs/:path',
+        text: 'Suggest changes to this page'
       },
       siteTitle: 'Interstellar Tools',
       logo: {
@@ -120,7 +53,7 @@ export default withMermaid(
       },
       nav: [
         { text: 'Guide', link: '/guide/introduction/' },
-        { text: 'Reference', link: '/api/' },
+        { text: 'Reference', link: '/api/', activeMatch: '/api/' },
         { text: 'Sponsor', link: '/sponsor' },
         {
           text: pkg.version,
@@ -137,7 +70,10 @@ export default withMermaid(
         }
       ],
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/phun-ky/interstellar-tools' },
+        {
+          icon: 'github',
+          link: 'https://github.com/phun-ky/interstellar-tools'
+        },
         {
           icon: 'npm',
           link: 'https://www.npmjs.com/package/@phun-ky/interstellar-tools'
@@ -165,23 +101,26 @@ export default withMermaid(
           {
             text: 'Usage',
             collapsed: false,
-            items: [
-              { text: 'Local', link: '/guide/usage/local' },
-              { text: 'Remote', link: '/guide/usage/remote' },
-              { text: 'Worker', link: '/guide/usage/worker' }
-            ]
+            items: [{ text: 'Types', link: '/guide/usage/types' }]
           },
           {
             text: 'Development',
             link: '/guide/development'
+          },
+          {
+            text: 'Reference',
+            items: typedocSidebar.map((s) => ({
+              ...s,
+              collapsed: true
+            }))
           }
         ],
         '/api/': [
           {
-            text: 'API',
+            text: 'Reference',
             items: typedocSidebar.map((s) => ({
               ...s,
-              collapsed: false
+              collapsed: true
             }))
           }
         ]
@@ -201,6 +140,7 @@ export default withMermaid(
       }
     },
     markdown: {
+      math: true,
       config(md) {
         md.use(groupIconMdPlugin);
       },

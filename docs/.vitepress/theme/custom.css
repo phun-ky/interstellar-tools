@@ -8,6 +8,7 @@
 :root.theme--dark {
   --vp-c-bg-alt: #15161d;
   --ph-color-text-brand: #000000;
+  --ph-color-link: #47b8be;
 }
 
 :root {
@@ -23,6 +24,11 @@
   --vp-button-brand-text: var(--ph-color-text-brand);
   --vp-sidebar-width: 352px;
   --vp-layout-max-width: 1920px;
+  --vp-home-hero-image-background-image: radial-gradient(
+    at 50% 50%,
+    rgb(1, 1, 9) 0px,
+    rgba(0, 0, 0, 0) 50%
+  );
 }
 
 :root.theme--light {
@@ -32,7 +38,7 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #754ffb, #31c7e7);
+  --vp-home-hero-name-background: linear-gradient(120deg, #518d8e, #47b8be);
 }
 
 html,
@@ -74,8 +80,13 @@ html.ph body {
     }
   }
 
+  tbody > tr > td:first-of-type {
+    white-space: nowrap;
+  }
+
   a {
-    color: var(--ph-color-text-accent);
+    /* color: var(--ph-color-text-accent); */
+    color: var(--ph-color-link);
     text-decoration: none;
   }
 
@@ -101,7 +112,8 @@ html.ph body {
     }
     & li {
       a {
-        color: var(--ph-color-text-accent);
+        color: var(--ph-color-link);
+        /* color: var(--ph-color-text-accent); */
 
         &:hover {
           color: var(--ph-color-link);
@@ -126,11 +138,10 @@ html.ph body {
 }
 
 .VPHero {
-  background-image: radial-gradient(
-    circle,
-    var(--ph-background-radial-1) 0,
-    var(--ph-background-radial-2) 100%
-  );
+  background-image: url(/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 
   & .heading {
     & .text {
@@ -147,14 +158,6 @@ html.ph body {
     max-height: 300px;
     transform: translate3d(-50%, -50%, 0);
     filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.1));
-
-    &:hover {
-      height: 350px;
-      max-height: 350px;
-      width: 350px;
-      max-width: 350px;
-      filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
-    }
   }
 }
 @media (min-width: 1024px) {
@@ -163,13 +166,6 @@ html.ph body {
     max-width: 400px;
     height: 400px;
     max-height: 400px;
-    &:hover {
-      height: 450px;
-      max-width: 450px;
-      width: 450px;
-      max-height: 450px;
-      filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
-    }
   }
 }
 
@@ -476,5 +472,41 @@ html.ph body {
   .messageLine0,
   .messageLine1 {
     stroke: var(--ph-color-link) !important;
+  }
+}
+
+.DocSearch-Button .DocSearch-Button-Key:first-child::before {
+  content: 'Ctrl';
+  font-size: 12px;
+  letter-spacing: normal;
+  color: var(--docsearch-muted-color);
+  text-transform: lowercase;
+  font-family: var(--ph-font-family-code);
+}
+
+.DocSearch-Button .DocSearch-Button-Key:first-child::after {
+  content: ' + ';
+  font-size: 12px;
+  letter-spacing: normal;
+  color: var(--docsearch-muted-color);
+  text-transform: lowercase;
+  font-family: var(--ph-font-family-code);
+}
+
+.DocSearch-Button .DocSearch-Button-Key {
+  text-transform: lowercase;
+  font-family: var(--ph-font-family-code);
+}
+
+.DocSearch-Button .DocSearch-Button-Key + .DocSearch-Button-Key {
+  padding-left: 0;
+  &::before {
+    content: '';
+    margin-left: 1ch;
+    font-size: 12px;
+    letter-spacing: normal;
+    color: var(--docsearch-muted-color);
+    text-transform: lowercase;
+    font-family: var(--ph-font-family-code);
   }
 }

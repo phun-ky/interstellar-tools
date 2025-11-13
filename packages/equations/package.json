@@ -1,0 +1,58 @@
+{
+  "name": "@interstellar-tools/equations",
+  "version": "0.0.0",
+  "description": "equations",
+  "keywords": [
+    "equations"
+  ],
+  "homepage": "https://phun-ky.net/projects/interstellar-tools",
+  "bugs": {
+    "url": "https://github.com/phun-ky/interstellar-tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phun-ky/interstellar-tools.git"
+  },
+  "funding": "https://github.com/phun-ky/interstellar-tools?sponsor=1",
+  "license": "MIT",
+  "author": "Alexander Vassbotn Røyne-Helgesen <alexander@phun-ky.net>",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "release": "release-it",
+    "test": "tsx --test **/__tests__/**/*.spec.ts",
+    "pretest:ci": "rm -rf coverage && mkdir -p coverage",
+    "test:ci": "glob -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
+  },
+  "dependencies": {
+    "@interstellar-tools/temporal": "^0.0.0",
+    "@interstellar-tools/types": "^0.0.0",
+    "@interstellar-tools/constants": "^0.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "eslint": "^9.27.0",
+    "eslint-config-phun-ky": "^1.0.3",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22.9.0",
+    "npm": ">=11.5.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

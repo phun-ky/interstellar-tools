@@ -1,0 +1,90 @@
+[Documentation](../../index.md) / [@interstellar-tools/types](../types.md) /
+GalaxyInterface
+
+# Interface: GalaxyInterface
+
+Defined in: celestial-bodies/galaxies.ts:58
+
+Represents a **galaxy** in the universe simulation.
+
+**Galaxy Properties:**
+
+- **Name (`name`)**: The galaxy's official designation.
+- **Type (`type`)**: The morphological classification (e.g., Spiral,
+  Elliptical).
+- **Diameter (`diameter`)**: Measured in **light-years**.
+- **Distance (`distance`)**: The distance from the **Milky Way**, also in
+  **light-years**.
+- **Black Hole (`blackHole`)**: The central supermassive black hole.
+
+## Example
+
+```ts
+const milkyWay: GalaxyInterface = {
+  name: 'Milky Way',
+  type: 'Spiral',
+  diameter: { value: 105700, unit: 'lightyears' },
+  distance: { value: 0, unit: 'lightyears' },
+  blackHole: sagittariusA
+};
+```
+
+## Properties
+
+### blackHole
+
+```ts
+blackHole: BlackHoleInterface;
+```
+
+Defined in: celestial-bodies/galaxies.ts:68
+
+Central black hole of the galaxy.
+
+---
+
+### diameter
+
+```ts
+diameter: DistanceInterface;
+```
+
+Defined in: celestial-bodies/galaxies.ts:64
+
+Diameter of the galaxy in light-years.
+
+---
+
+### distance
+
+```ts
+distance: DistanceInterface;
+```
+
+Defined in: celestial-bodies/galaxies.ts:66
+
+Distance from the Milky Way in light-years.
+
+---
+
+### name
+
+```ts
+name: string;
+```
+
+Defined in: celestial-bodies/galaxies.ts:60
+
+Name of the galaxy.
+
+---
+
+### type
+
+```ts
+type: string;
+```
+
+Defined in: celestial-bodies/galaxies.ts:62
+
+Morphological classification of the galaxy.

@@ -3,17 +3,20 @@
   "plugin": [
     "typedoc-plugin-markdown",
     "typedoc-plugin-remark",
-    "typedoc-vitepress-theme",
     "typedoc-plugin-mdn-links",
-    "typedoc-plugin-rename-defaults"
+    "typedoc-plugin-rename-defaults",
+    "typedoc-vitepress-theme"
   ],
 
   "entryPointStrategy": "packages",
   "entryPoints": ["packages/*"],
+
   "packageOptions": {
-    "entryPoints": ["src/index.ts"],
-    "readme": "none"
+    "excludeInternal": true,
+    "sort": ["kind", "instance-first", "alphabetical-ignoring-documents"],
+    "entryPoints": ["src/index.ts"]
   },
+  "router": "structure",
   "out": "docs/api",
   "docsRoot": "./docs",
   "tsconfig": "./tsconfig.base.json",
@@ -21,31 +24,35 @@
   "hideGenerator": true,
   "gitRevision": "main",
   "navigationLinks": {
-    "GitHub": "https://github.com/phun-ky/hybrid-compute"
+    "GitHub": "https://github.com/phun-ky/interstellar-tools"
   },
   "navigation": {
-    "includeCategories": true,
-    "includeGroups": false,
+    "includeCategories": false,
+    "includeGroups": true,
     "includeFolders": true,
     "compactFolders": false,
     "excludeReferences": true
   },
   "readme": "none",
-  "indexFormat": "list",
+  "indexFormat": "table",
+
   "interfacePropertiesFormat": "list",
-  "classPropertiesFormat": "list",
+  "classPropertiesFormat": "table",
   "expandParameters": true,
   "strikeDeprecatedPageTitles": true,
-  "enumMembersFormat": "list",
-  "typeDeclarationFormat": "list",
-  "propertyMembersFormat": "list",
+  "enumMembersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "propertyMembersFormat": "table",
+  "parametersFormat": "table",
   "expandObjects": true,
   "useCodeBlocks": true,
+  "excludeInternal": true,
   "remarkPlugins": [
     "unified-prettier",
+    ["remark-math"],
     [
       "remark-github",
-      { "repository": "https://github.com/phun-ky/hybrid-compute" }
+      { "repository": "https://github.com/phun-ky/interstellar-tools" }
     ],
     ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
   ]
