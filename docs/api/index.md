@@ -2,9 +2,9 @@
 
 ## Packages
 
-| Package                                                           | Description |
-| ----------------------------------------------------------------- | ----------- |
-| [@interstellar-tools/constants](_interstellar-tools/constants.md) | constants   |
-| [@interstellar-tools/equations](_interstellar-tools/equations.md) | equations   |
-| [@interstellar-tools/temporal](_interstellar-tools/temporal.md)   | temporal    |
-| [@interstellar-tools/types](_interstellar-tools/types.md)         | types       |
+| Package                                                                 | Description |
+| ----------------------------------------------------------------------- | ----------- |
+| [@interstellar-tools/constants](@interstellar-tools/constants/index.md) | constants   |
+| [@interstellar-tools/equations](@interstellar-tools/equations/index.md) | equations   |
+| [@interstellar-tools/temporal](@interstellar-tools/temporal/index.md)   | temporal    |
+| [@interstellar-tools/types](@interstellar-tools/types/index.md)         | types       |
