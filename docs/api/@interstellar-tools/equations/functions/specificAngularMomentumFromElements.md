@@ -13,7 +13,7 @@ function specificAngularMomentumFromElements(
 ```
 
 Defined in:
-[orbits/specific-angular-momentum-from-elements.ts:59](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/equations/src/categories/orbits/specific-angular-momentum-from-elements.ts#L59)
+[orbits/specific-angular-momentum-from-elements.ts:59](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/equations/src/categories/orbits/specific-angular-momentum-from-elements.ts#L59)
 
 **Specific angular momentum** ($h$) from **orbital elements**.
 

@@ -11,7 +11,7 @@ function meanToEccentricAnomaly(
 ```
 
 Defined in:
-[anomalies/mean-to-eccentric-anomaly.ts:58](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/equations/src/categories/anomalies/mean-to-eccentric-anomaly.ts#L58)
+[anomalies/mean-to-eccentric-anomaly.ts:60](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/equations/src/categories/anomalies/mean-to-eccentric-anomaly.ts#L60)
 
 Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
 
@@ -52,7 +52,7 @@ If the body's eccentricity is outside the range $0 \leq e < 1$.
 ## Example
 
 ```ts
-import { meanToEccentricAnomaly } from './compute-mean-anomaly';
+import { meanToEccentricAnomaly } from './mean-to-eccentric-anomaly';
 
 const mars: CelestialBodyType = {
   name: 'Mars',

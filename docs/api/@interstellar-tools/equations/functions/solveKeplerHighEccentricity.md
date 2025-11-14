@@ -13,12 +13,10 @@ function solveKeplerHighEccentricity(
 ```
 
 Defined in:
-[kepler/solve-kepler-high-eccentricity.ts:101](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L101)
+[kepler/solve-kepler-high-eccentricity.ts:97](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L97)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly
 eccentric orbits ($e > 0.9$) using an iterative numerical approach.
-
----
 
 **Mathematical Explanation:**
 
@@ -78,14 +76,10 @@ $$
 3. **Angle Wrapping (Elliptical Only):**
    - The result is wrapped using `wrapAngle()` for consistency.
 
----
-
 **Performance Considerations:**
 
 - **Typically converges in fewer than 10 iterations for $e > 0.9$.**
 - **Time complexity:** $O(1)$ for standard convergence.
-
----
 
 ## Parameters
 
@@ -102,8 +96,6 @@ $$
 
 The **eccentric anomaly** ($E$) in **radians** (wrapped to $[-\pi, \pi]$ for
 elliptical orbits).
-
----
 
 ## Examples
 
@@ -122,8 +114,6 @@ const M_hyperbolic = 2.0; // Mean anomaly for hyperbolic orbit
 const e_hyperbolic = 1.2; // Hyperbolic eccentricity
 console.log(solveKeplerHighEccentricity(M_hyperbolic, e_hyperbolic));
 ```
-
----
 
 ## See
 
