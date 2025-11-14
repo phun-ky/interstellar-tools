@@ -45,7 +45,7 @@ import { G_SI } from '@interstellar-tools/constants';
  * // Earth–Moon system (two-body μ)
  * const muEarthMoon = gravitationalParameter(5.97219e24, 7.342e22);
  * ```
- * @category Dynamics
+ * @category Gravity
  */
 export const gravitationalParameter = (
   M: number,

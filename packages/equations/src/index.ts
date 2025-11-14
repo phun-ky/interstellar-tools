@@ -23,12 +23,12 @@ export * from './categories/anomaly/true-anomaly-to-mean-anomaly';
 
 export * from './categories/angle/wrap-angle';
 
-export * from './categories/dynamics/gravitational-parameter';
+export * from './categories/gravity/gravitational-parameter';
 
-export * from './categories/dynamics/law-of-gravitation';
+export * from './categories/gravity/law-of-gravitation';
 
-export * from './categories/dynamics/vis-viva-speed';
+export * from './categories/orbits/vis-viva-speed';
 
-export * from './categories/dynamics/kepler-period';
+export * from './categories/orbits/kepler-period';
 
-export * from './categories/dynamics/specific-mechanical-energy';
+export * from './categories/orbits/specific-mechanical-energy';

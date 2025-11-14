@@ -93,7 +93,7 @@ import type {
  * ```
  *
  * @see https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation
- * @category Dynamics
+ * @category Gravity
  */
 export const gravitationalForce = (
   m1: number,
@@ -196,7 +196,7 @@ export const gravitationalForce = (
  * ```
  *
  * @see https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation
- * @category Dynamics
+ * @category Gravity
  */
 export const gravitationalAccelerationOn1By2 = (
   m2: number,
@@ -296,7 +296,7 @@ export const gravitationalAccelerationOn1By2 = (
  * ```
  *
  * @see https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation
- * @category Dynamics
+ * @category Gravity
  */
 export const gravitationalForceOn1By2 = (
   m1: number,

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { gravitationalAccelerationOn1By2 } from '../categories/dynamics/law-of-gravitation';
+import { gravitationalAccelerationOn1By2 } from '../categories/gravity/law-of-gravitation';
 import { norm, relClose, scale, sub, vecRelClose } from './helpers';
 import { G_SI } from '@interstellar-tools/constants';
 import { Vector3DTupleType } from '@interstellar-tools/types';

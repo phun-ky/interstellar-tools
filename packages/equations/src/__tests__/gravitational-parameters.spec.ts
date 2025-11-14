@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 import { relClose } from './helpers';
-import { gravitationalParameter } from '../categories/dynamics/gravitational-parameter';
+import { gravitationalParameter } from '../categories/gravity/gravitational-parameter';
 
 describe('gravitationalParameter', () => {
   test('computes μ = G(M + m) for simple numbers', () => {
