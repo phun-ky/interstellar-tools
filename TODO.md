@@ -1,34 +1,4 @@
-# Celestial Mechanics / Spaceflight Cheat Sheet
-
-Concise equations you’ll use most. SI units unless noted.
-
-## Core dynamics
-
-- **Kepler’s 3rd law**
-  $$
-  T = 2\pi \sqrt{\frac{a^3}{\mu}}
-  $$
-
-## Circular & escape speeds
-
-- **Circular speed**
-
-  $$
-  v_c=\sqrt{\frac{\mu}{r}}
-  $$
-
-- **Escape speed**
-  $$
-  v_{\text{esc}}=\sqrt{\frac{2\mu}{r}}
-  $$
-
 ## Orbits & geometry
-
-- **Specific angular momentum**
-
-  $$
-  h=\|\mathbf{r}\times\mathbf{v}\|=\sqrt{\mu a(1-e^2)}
-  $$
 
 - **Peri/apoapsis radii**
 
