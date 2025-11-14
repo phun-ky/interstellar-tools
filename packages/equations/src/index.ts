@@ -44,4 +44,8 @@ export * from './categories/orbits/escape-speed';
 
 export * from './categories/orbits/kepler-period';
 
+export * from './categories/orbits/specific-angular-momentum';
+
+export * from './categories/orbits/specific-angular-momentum-from-elements';
+
 export * from './categories/orbits/specific-mechanical-energy';
