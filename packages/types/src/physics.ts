@@ -28,9 +28,9 @@ import { Vector3DTupleType } from './math';
  * $$
  *
  * **Mappings to fields**
- * - `vector`  ↔ \( \mathbf F \)
- * - `magnitude` ↔ \( \|\mathbf F\| \)
- * - `direction` ↔ \( \hat{\mathbf r} \)
+ * - `vector`  ↔ ($  \mathbf F  $)
+ * - `magnitude` ↔ ($  \|\mathbf F\|  $)
+ * - `direction` ↔ ($  \hat{\mathbf r}  $)
  *
  * @property vector     Force vector on body 1 due to body 2 (N).
  * @property magnitude  Scalar magnitude of the force (N).
@@ -55,3 +55,41 @@ export interface ForceResultInterface {
   /** Unit direction from body 1 to body 2 (dimensionless). */
   readonly direction: Vector3DTupleType;
 }
+
+/**
+ * **Peri/apoapsis radii pair**.
+ *
+ * **Definitions**
+ *
+ * $$
+ * r_p = a(1-e),\qquad r_a = a(1+e)
+ * $$
+ *
+ * **Conic validity**
+ * - **Elliptic / circular** (($ a>0,\;0\le e<1 $)): both ($ r_p>0 $) and ($ r_a>0 $).
+ * - **Hyperbolic** (($ a<0,\;e>1 $)): ($ r_p = |a|(e-1) > 0 $) and **no apoapsis** (unbounded), so set `ra = null`.
+ * - **Parabolic** (($ e=1 $)) with finite ($ a $) is not represented; use parabolic relations or state vectors.
+ *
+ * **Units**
+ * - Values are in **meters (m)**.
+ *
+ * @property {number} rp Periapsis radius ($ r_p $) (m).
+ * @property {number|null} ra Apoapsis radius ($ r_a $) (m) for closed orbits; `null` for hyperbolic trajectories.
+ *
+ * @example
+ * ```ts
+ * // Elliptic example
+ * const radii: PeriApoRadiiType = { rp: 6930e3, ra: 7070e3 };
+ * ```
+ *
+ * @example
+ * ```ts
+ * // Hyperbolic example - no apoapsis
+ * const flyby: PeriApoRadiiType = { rp: 10_000e3, ra: null };
+ * ```
+ *
+ * @see periApoapsisRadii - function that computes `{ rp, ra }` from `(a, e)`.
+ * @see https://en.wikipedia.org/wiki/Apsis
+ * @group Orbits
+ */
+export type PeriApoRadiiType = { rp: number; ra: number | null };

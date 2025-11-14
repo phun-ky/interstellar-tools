@@ -1,7 +1,7 @@
 import { ValueInterface } from './numeric';
 
 /**
- * @showCategories
+ *
  * @module
  */
 
@@ -38,7 +38,7 @@ import { ValueInterface } from './numeric';
  * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 - definition of the astronomical unit)
  * @see https://en.wikipedia.org/wiki/Light-year (Light-year based on Julian year)
  * @see https://en.wikipedia.org/wiki/Parsec (Parsec definition & meter equivalence)
- * @category Distance
+ * @group Distance
  */
 export type DistanceUnitType =
   | 'm'
@@ -89,7 +89,7 @@ export type DistanceUnitType =
  * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 - astronomical unit, symbol "au")
  * @see https://en.wikipedia.org/wiki/Light-year (Light-year; Julian-year convention)
  * @see https://en.wikipedia.org/wiki/Parsec (Parsec definition)
- * @category Distance
+ * @group Distance
  */
 export type DistanceUnitAliasType =
   // meters
@@ -146,7 +146,7 @@ export type DistanceUnitAliasType =
  * ```ts
  * const planetRadius: MeasureInterface = { value: 6371, unit: 'km' };
  * ```
- * @category Distance
+ * @group Distance
  */
 export interface MeasureInterface extends ValueInterface {
   unit: DistanceUnitType;
@@ -162,7 +162,7 @@ export interface MeasureInterface extends ValueInterface {
  * ```ts
  * const distanceToAlphaCentauri: DistanceInterface = { value: 4.367, unit: 'lightyears' };
  * ```
- * @category Distance
+ * @group Distance
  */
 export interface DistanceInterface extends ValueInterface {
   unit: DistanceUnitType;

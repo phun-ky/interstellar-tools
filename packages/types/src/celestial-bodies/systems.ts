@@ -1,6 +1,6 @@
 /**
  * Represents a star system within the space visualization.
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface SystemInterface {
   /** Name of the star system. */
@@ -13,6 +13,6 @@ export interface SystemInterface {
 
 /**
  * Type alias for a collection of star systems.
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type SystemsType = SystemInterface[];

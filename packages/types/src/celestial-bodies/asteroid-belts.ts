@@ -9,7 +9,7 @@ import { CartesianCoordinatesInterface } from './planets';
  * - **Color and Opacity**: Used for visualization.
  * - **Orbit Path (Optional)**: Stores a precomputed path for asteroid positioning.
  *
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface AsteroidBeltInterface {
   /** Name of the asteroid belt. */
@@ -43,6 +43,6 @@ export interface AsteroidBeltInterface {
  *   density: 100,
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type AsteroidBeltsType = AsteroidBeltInterface[];

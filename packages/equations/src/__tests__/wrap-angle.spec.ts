@@ -1,7 +1,7 @@
 import assert from 'node:assert';
 import { describe, test } from 'node:test';
 
-import { wrapAngle } from '../wrap-angle';
+import { wrapAngle } from '../categories/angle/wrap-angle';
 
 const EPSILON = 1e-10; // Small tolerance for floating-point comparisons
 const assertApproxEqual = (actual: number, expected: number) => {

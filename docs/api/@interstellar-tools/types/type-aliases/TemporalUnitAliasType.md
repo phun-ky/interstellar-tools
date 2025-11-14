@@ -1,5 +1,5 @@
-[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
-TemporalUnitAliasType
+[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
+/ TemporalUnitAliasType
 
 # Type Alias: TemporalUnitAliasType
 
@@ -40,7 +40,7 @@ type TemporalUnitAliasType =
 ```
 
 Defined in:
-[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/types/src/temporal.ts#L84)
+[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/types/src/temporal.ts#L84)
 
 Human-friendly **temporal unit aliases** accepted at input time.
 

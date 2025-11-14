@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { gravitationalForce } from '../law-of-gravitation';
+
 import { G_SI } from '@interstellar-tools/constants';
 import { norm, relClose, vecRelClose } from './helpers';
+import { gravitationalForce } from '../categories/gravity/gravitational-force';
 
 describe('gravitationalForce', () => {
   test('computes simple 1D case (+x) with custom G', () => {

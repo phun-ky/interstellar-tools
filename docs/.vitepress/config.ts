@@ -9,7 +9,6 @@ import { withMermaid } from 'vitepress-plugin-mermaid';
 // import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import pkg from '../../package.json' with { type: 'json' };
 import typedocSidebar from '../api/typedoc-sidebar.json';
 
 import darkTheme from './shiki/accessible-aa-dark-shiki.json' with { type: 'json' };
@@ -55,18 +54,10 @@ export default withMermaid(
         { text: 'Guide', link: '/guide/introduction/' },
         { text: 'Reference', link: '/api/', activeMatch: '/api/' },
         { text: 'Sponsor', link: '/sponsor' },
+
         {
-          text: pkg.version,
-          items: [
-            {
-              text: 'Changelog',
-              link: 'https://github.com/phun-ky/interstellar-tools/blob/main/CHANGELOG.md'
-            },
-            {
-              text: 'Contributing',
-              link: 'https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md'
-            }
-          ]
+          text: 'Contributing',
+          link: 'https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md'
         }
       ],
       socialLinks: [

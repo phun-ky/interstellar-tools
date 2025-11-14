@@ -1,34 +1,50 @@
 /**
  *
  *  Here you will find a set of function that can assist you when calculating orbits, angles, solve for kelper or find true anomalies.
- * @showCategories
  * @module
  */
 
-export * from './compute-angle';
+// categories/angle
+export * from './categories/angle/compute-angle';
 
-export * from './compute-mean-anomaly';
+export * from './categories/angle/wrap-angle';
 
-export * from './eccentric-to-true-anomaly';
+// categories/anomalies
+export * from './categories/anomalies/mean-to-eccentric-anomaly';
 
-export * from './solve-kepler-bisection';
+export * from './categories/anomalies/eccentric-to-true-anomaly';
 
-export * from './solve-kepler-high-eccentricity';
+export * from './categories/anomalies/true-to-mean-anomaly';
 
-export * from './solve-kepler-newton-raphson';
+// categories/kepler (solvers)
+export * from './categories/kepler/solve-kepler';
 
-export * from './solve-kepler';
+export * from './categories/kepler/solve-kepler-newton-raphson';
 
-export * from './true-anomaly-to-mean-anomaly';
+export * from './categories/kepler/solve-kepler-bisection';
 
-export * from './wrap-angle';
+export * from './categories/kepler/solve-kepler-high-eccentricity';
 
-export * from './gravitational-parameter';
+// categories/gravity
+export * from './categories/gravity/gravitational-parameter';
 
-export * from './law-of-gravitation';
+export * from './categories/gravity/gravitational-force';
 
-export * from './vis-viva-speed';
+export * from './categories/gravity/force-on1-by2';
 
-export * from './kepler-period';
+export * from './categories/gravity/acceleration-on1-by2';
 
-export * from './specific-mechanical-energy';
+// categories/orbits
+export * from './categories/orbits/vis-viva-speed';
+
+export * from './categories/orbits/circular-speed';
+
+export * from './categories/orbits/escape-speed';
+
+export * from './categories/orbits/kepler-period';
+
+export * from './categories/orbits/specific-angular-momentum';
+
+export * from './categories/orbits/specific-angular-momentum-from-elements';
+
+export * from './categories/orbits/specific-mechanical-energy';

@@ -19,13 +19,13 @@
 
 /**
  *  Length of the **SI day** in seconds (exact).
- * @category Temporal
+ * @group Temporal
  */
 export const SECONDS_PER_DAY = 86_400 as const;
 
 /**
  *  Milliseconds in one second (exact).
- * @category Temporal
+ * @group Temporal
  */
 export const MILLISECONDS_PER_SECOND = 1_000 as const;
 
@@ -38,7 +38,7 @@ export const MILLISECONDS_PER_SECOND = 1_000 as const;
  *
  * :::
  *
- * @category Temporal
+ * @group Temporal
  */
 export const MILLISECONDS_PER_DAY = SECONDS_PER_DAY * MILLISECONDS_PER_SECOND;
 
@@ -46,7 +46,7 @@ export const MILLISECONDS_PER_DAY = SECONDS_PER_DAY * MILLISECONDS_PER_SECOND;
 
 /**
  *  Length of the **Julian year** in SI days (exactly 365.25).
- * @category Temporal
+ * @group Temporal
  */
 export const JULIAN_YEAR_DAYS = 365.25 as const;
 
@@ -59,6 +59,6 @@ export const JULIAN_YEAR_DAYS = 365.25 as const;
  *
  * :::
  *
- * @category Temporal
+ * @group Temporal
  */
 export const JULIAN_YEAR_SECONDS = SECONDS_PER_DAY * JULIAN_YEAR_DAYS; // 31_557_600

@@ -12,7 +12,7 @@ import { TemporalInterface } from '../temporal';
  * ```ts
  * const position: CartesianCoordinatesInterface = { x: 100, y: 200 };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface CartesianCoordinatesInterface {
   x: number;
@@ -52,7 +52,7 @@ export interface CartesianCoordinatesInterface {
  *   z: { value: 0, unit: 'au' }
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface PlanetInterface {
   /** Name of the planet (e.g., "Earth", "Mars"). */
@@ -111,6 +111,6 @@ export interface PlanetInterface {
  * Type alias for a collection of **planets**.
  *
  * @typedef {PlanetInterface[]} PlanetsType
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type PlanetsType = PlanetInterface[];

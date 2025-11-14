@@ -1,4 +1,4 @@
-[Documentation](../../../index.md) /
+[Documentation](../../../packages.md) /
 [@interstellar-tools/equations](../index.md) / solveKepler
 
 # Function: solveKepler()
@@ -13,7 +13,7 @@ function solveKepler(
 ```
 
 Defined in:
-[solve-kepler.ts:87](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/solve-kepler.ts#L87)
+[kepler/solve-kepler.ts:88](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/equations/src/categories/kepler/solve-kepler.ts#L88)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an
 adaptive approach:

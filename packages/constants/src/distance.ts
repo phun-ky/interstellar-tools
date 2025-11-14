@@ -19,13 +19,13 @@ import { JULIAN_YEAR_SECONDS } from './temporal';
 
 /**
  * Speed of light in vacuum, **exact** per SI (m·s⁻¹).
- * @category Distance
+ * @group Distance
  */
 export const SPEED_OF_LIGHT_M_PER_S = 299_792_458 as const; // exact (SI)
 
 /**
  *  Astronomical unit in meters, **exact** (IAU 2012 B2).
- * @category Distance
+ * @group Distance
  */
 export const AU_METERS = 149_597_870_700 as const;
 
@@ -38,7 +38,7 @@ export const AU_METERS = 149_597_870_700 as const;
  *
  * :::
  *
- * @category Distance
+ * @group Distance
  */
 export const METERS_PER_LY = SPEED_OF_LIGHT_M_PER_S * JULIAN_YEAR_SECONDS; // 9_460_730_472_580_800
 
@@ -51,7 +51,7 @@ export const METERS_PER_LY = SPEED_OF_LIGHT_M_PER_S * JULIAN_YEAR_SECONDS; // 9_
  *
  * :::
  *
- * @category Distance
+ * @group Distance
  */
 export const RADIANS_PER_ARCSECOND = Math.PI / 648_000;
 
@@ -64,7 +64,7 @@ export const RADIANS_PER_ARCSECOND = Math.PI / 648_000;
  *
  * :::
  *
- * @category Distance
+ * @group Distance
  */
 export const METERS_PER_PC = AU_METERS / Math.tan(RADIANS_PER_ARCSECOND); // ≈ 3.08567758149e16
 
@@ -79,19 +79,19 @@ export const METERS_PER_PC = AU_METERS / Math.tan(RADIANS_PER_ARCSECOND); // ≈
  *
  * :::
  *
- * @category Distance
+ * @group Distance
  */
 export const AU_PER_LY = METERS_PER_LY / AU_METERS; // ≈ 63_241.07708426628
 
 /**
  * Light-years per astronomical unit (reciprocal of {@link AU_PER_LY}).
- * @category Distance
+ * @group Distance
  */
 export const LY_PER_AU = 1 / AU_PER_LY;
 
 /**
  * Kilometers in one astronomical unit.
- * @category Distance
+ * @group Distance
  */
 export const KM_PER_AU = AU_METERS / 1_000;
 
@@ -104,12 +104,12 @@ export const KM_PER_AU = AU_METERS / 1_000;
  *
  * :::
  *
- * @category Distance
+ * @group Distance
  */
 export const LY_PER_PC = METERS_PER_PC / METERS_PER_LY; // ≈ 3.26156…
 
 /**
  * Parsecs per light-year (reciprocal of {@link LY_PER_PC}).
- * @category Distance
+ * @group Distance
  */
 export const PC_PER_LY = 1 / LY_PER_PC;

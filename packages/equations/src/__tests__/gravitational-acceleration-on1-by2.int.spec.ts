@@ -1,18 +1,18 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { gravitationalAccelerationOn1By2 } from '../law-of-gravitation';
+import { accelerationOn1By2 } from '../categories/gravity/acceleration-on1-by2';
 import { norm, relClose, scale, sub, vecRelClose } from './helpers';
 import { G_SI } from '@interstellar-tools/constants';
 import { Vector3DTupleType } from '@interstellar-tools/types';
 
-describe('gravitationalAccelerationOn1By2', () => {
+describe('accelerationOn1By2', () => {
   test('1D sanity (+x): ||a|| = G*m2/r^2 and points +x', () => {
     const G = 1;
     const m2 = 3;
     const r1: Vector3DTupleType = [0, 0, 0];
     const r2: Vector3DTupleType = [10, 0, 0];
 
-    const a = gravitationalAccelerationOn1By2(m2, r1, r2, G);
+    const a = accelerationOn1By2(m2, r1, r2, G);
 
     // Expected magnitude: 1*3/10^2 = 0.03, direction +x
     relClose(norm(a), 0.03, 1e-14);
@@ -25,7 +25,7 @@ describe('gravitationalAccelerationOn1By2', () => {
     const r1: Vector3DTupleType = [0, 0, 0];
     const r2: Vector3DTupleType = [-10, 0, 0];
 
-    const a = gravitationalAccelerationOn1By2(m2, r1, r2, G);
+    const a = accelerationOn1By2(m2, r1, r2, G);
 
     relClose(norm(a), 0.03, 1e-14);
     vecRelClose(a, [-0.03, 0, 0], 1e-14);
@@ -37,7 +37,7 @@ describe('gravitationalAccelerationOn1By2', () => {
     const r1: Vector3DTupleType = [0.2, -3, 5.5];
     const r2: Vector3DTupleType = [4.2, 1, -1];
 
-    const a = gravitationalAccelerationOn1By2(m2, r1, r2, G);
+    const a = accelerationOn1By2(m2, r1, r2, G);
     const dr = sub(r2, r1);
     const r = Math.hypot(...dr);
     const rhat: Vector3DTupleType = [dr[0] / r, dr[1] / r, dr[2] / r];
@@ -54,8 +54,8 @@ describe('gravitationalAccelerationOn1By2', () => {
     const r2a: Vector3DTupleType = [2, 0, 0]; // r = 2
     const r2b: Vector3DTupleType = [4, 0, 0]; // r = 4 (double → quarter a)
 
-    const aA = gravitationalAccelerationOn1By2(m2, r1, r2a, G);
-    const aB = gravitationalAccelerationOn1By2(m2, r1, r2b, G);
+    const aA = accelerationOn1By2(m2, r1, r2a, G);
+    const aB = accelerationOn1By2(m2, r1, r2b, G);
 
     relClose(norm(aB), norm(aA) / 4, 1e-14);
   });
@@ -66,9 +66,9 @@ describe('gravitationalAccelerationOn1By2', () => {
     const r1: Vector3DTupleType = [1, 2, 3];
     const r2: Vector3DTupleType = [4, -1, 0];
 
-    const a = gravitationalAccelerationOn1By2(m2, r1, r2, G);
-    const a_m2x2 = gravitationalAccelerationOn1By2(2 * m2, r1, r2, G);
-    const a_Gx2 = gravitationalAccelerationOn1By2(m2, r1, r2, 2 * G);
+    const a = accelerationOn1By2(m2, r1, r2, G);
+    const a_m2x2 = accelerationOn1By2(2 * m2, r1, r2, G);
+    const a_Gx2 = accelerationOn1By2(m2, r1, r2, 2 * G);
 
     vecRelClose(a_m2x2, scale(a, 2));
     vecRelClose(a_Gx2, scale(a, 2));
@@ -79,7 +79,7 @@ describe('gravitationalAccelerationOn1By2', () => {
     const rEarth: Vector3DTupleType = [0, 0, 0];
     const rSun: Vector3DTupleType = [1.495978707e11, 0, 0]; // m
 
-    const a = gravitationalAccelerationOn1By2(mSun, rEarth, rSun, G_SI);
+    const a = accelerationOn1By2(mSun, rEarth, rSun, G_SI);
 
     // Closed-form expectation GM_sun / r^2
     const dr = sub(rSun, rEarth);
@@ -102,28 +102,16 @@ describe('gravitationalAccelerationOn1By2', () => {
 
     // negative / non-finite m2
     assert.throws(
-      () => gravitationalAccelerationOn1By2(-1, r1, r2, 1),
+      () => accelerationOn1By2(-1, r1, r2, 1),
       /non-negative|finite/
     );
-    assert.throws(
-      () => gravitationalAccelerationOn1By2(Number.NaN, r1, r2, 1),
-      /finite/
-    );
+    assert.throws(() => accelerationOn1By2(Number.NaN, r1, r2, 1), /finite/);
 
     // coincident positions
-    assert.throws(
-      () => gravitationalAccelerationOn1By2(1, r1, r1, 1),
-      /singular \(r = 0\)/
-    );
+    assert.throws(() => accelerationOn1By2(1, r1, r1, 1), /singular \(r = 0\)/);
 
     // invalid G
-    assert.throws(
-      () => gravitationalAccelerationOn1By2(1, r1, r2, 0),
-      /positive/
-    );
-    assert.throws(
-      () => gravitationalAccelerationOn1By2(1, r1, r2, Number.NaN),
-      /finite/
-    );
+    assert.throws(() => accelerationOn1By2(1, r1, r2, 0), /positive/);
+    assert.throws(() => accelerationOn1By2(1, r1, r2, Number.NaN), /finite/);
   });
 });

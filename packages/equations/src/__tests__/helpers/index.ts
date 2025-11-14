@@ -1,7 +1,15 @@
 import { Vector3DTupleType } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 
-export const relClose = (a: number, b: number, eps = 1e-12, msg?: string) => {
+export const relClose = (
+  a: number | null,
+  b: number,
+  eps = 1e-12,
+  msg?: string
+) => {
+  if (a === null) {
+    assert.fail();
+  }
   const scale = Math.max(1, Math.abs(a), Math.abs(b));
   assert.ok(
     Math.abs(a - b) <= eps * scale,
@@ -39,4 +47,8 @@ export const sub = (
 
 export const absClose = (a: number, b: number, eps = 1e-12, msg?: string) => {
   assert.ok(Math.abs(a - b) <= eps, msg ?? `|${a} - ${b}| > ${eps}`);
+};
+
+export const dot = (a: Vector3DTupleType, b: Vector3DTupleType) => {
+  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 };

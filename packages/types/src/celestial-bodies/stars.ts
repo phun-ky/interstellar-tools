@@ -17,7 +17,7 @@ import { CartesianCoordinatesInterface } from './planets';
  *   type: 'planetary system'
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface StarSystemInterface {
   name: string;
@@ -57,7 +57,7 @@ export interface StarSystemInterface {
  *   z: { value: 0, unit: 'au' }
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface StarInterface {
   /** Name of the star. */
@@ -98,6 +98,6 @@ export interface StarInterface {
  * Type alias for a collection of **stars**.
  *
  * @typedef {StarInterface[]} StarsType
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type StarsType = StarInterface[];

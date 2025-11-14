@@ -14,9 +14,11 @@
   "packageOptions": {
     "excludeInternal": true,
     "sort": ["kind", "instance-first", "alphabetical-ignoring-documents"],
-    "entryPoints": ["src/index.ts"]
+    "entryPoints": ["src/index.ts"],
+    "includeVersion": true
   },
   "out": "docs/api",
+
   "docsRoot": "./docs",
   "tsconfig": "./tsconfig.base.json",
   "githubPages": false,
@@ -32,9 +34,8 @@
     "compactFolders": false,
     "excludeReferences": true
   },
-  "readme": "none",
+  "readme": "./docs/public/README.md",
   "indexFormat": "table",
-
   "interfacePropertiesFormat": "list",
   "classPropertiesFormat": "table",
   "expandParameters": true,

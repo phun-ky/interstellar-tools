@@ -1,5 +1,5 @@
-[Documentation](../../../index.md) / [@interstellar-tools/temporal](../index.md)
-/ normalizeTemporalUnit
+[Documentation](../../../packages.md) /
+[@interstellar-tools/temporal](../index.md) / normalizeTemporalUnit
 
 # Function: normalizeTemporalUnit()
 
@@ -8,7 +8,7 @@ function normalizeTemporalUnit(u: string): TemporalUnitType;
 ```
 
 Defined in:
-[normalize-temporal-unit.ts:127](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/temporal/src/normalize-temporal-unit.ts#L127)
+[normalize-temporal-unit.ts:127](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/temporal/src/normalize-temporal-unit.ts#L127)
 
 Normalize a user-provided **temporal unit string** into a canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md).

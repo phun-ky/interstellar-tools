@@ -20,7 +20,7 @@ import { CartesianCoordinatesInterface } from './planets';
  * - **Color (`color`)**: Used for visual representation.
  * - **Size (`size`)**: Scaled size for display (not the actual physical size).
  *
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface CometInterface {
   /** Name of the comet (e.g., "Halley", "Hale-Bopp"). */
@@ -91,6 +91,6 @@ export interface CometInterface {
  *   size: 1.2
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type CometsType = CometInterface[];

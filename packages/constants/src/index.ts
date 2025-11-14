@@ -1,6 +1,6 @@
 /**
  *
- * @showCategories
+ *
  * @packageDocumentation
  */
 
