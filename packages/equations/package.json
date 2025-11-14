@@ -110,7 +110,7 @@
   },
   "dependencies": {
     "@interstellar-tools/temporal": "^0.1.0",
-    "@interstellar-tools/types": "^0.1.2",
+    "@interstellar-tools/types": "^0.2.0",
     "@interstellar-tools/constants": "^0.1.2"
   },
   "devDependencies": {
