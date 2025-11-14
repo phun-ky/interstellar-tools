@@ -48,12 +48,12 @@ import { wrapAngle } from '../angle/wrap-angle';
  *
  * @example
  * ```ts
- * import { trueAnomalyToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
+ * import { trueToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
  *
  * // Example 1: Standard elliptical orbit
  * const V = Math.PI / 3; // 60 degrees in radians
  * const e = 0.1; // Eccentricity
- * console.log(trueAnomalyToMeanAnomaly(V, e)); // Output: Mean anomaly in radians
+ * console.log(trueToMeanAnomaly(V, e)); // Output: Mean anomaly in radians
  * ```
  *
  * @example
@@ -61,7 +61,7 @@ import { wrapAngle } from '../angle/wrap-angle';
  * // Example 2: Retrograde motion handling
  * const V_retrograde = -Math.PI / 2; // -90 degrees
  * const e_retrograde = 0.2;
- * console.log(trueAnomalyToMeanAnomaly(V_retrograde, e_retrograde));
+ * console.log(trueToMeanAnomaly(V_retrograde, e_retrograde));
  * ```
  *
  * ---
@@ -70,9 +70,9 @@ import { wrapAngle } from '../angle/wrap-angle';
  * @see [True Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/True_anomaly)
  * @see [Mean Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly)
  * @see [Orbital Eccentricity (Wikipedia)](https://en.wikipedia.org/wiki/Orbital_eccentricity)
- * @category Anomaly
+ * @category Anomalies
  */
-export const trueAnomalyToMeanAnomaly = (V: number, e: number): number => {
+export const trueToMeanAnomaly = (V: number, e: number): number => {
   if (e < 0 || e >= 1) {
     throw new RangeError(
       'Eccentricity (e) must be in the range 0 ≤ e < 1 for elliptical orbits.'

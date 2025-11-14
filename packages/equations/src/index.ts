@@ -5,29 +5,40 @@
  * @module
  */
 
+// categories/angle
 export * from './categories/angle/compute-angle';
-
-export * from './categories/anomaly/compute-mean-anomaly';
-
-export * from './categories/anomaly/eccentric-to-true-anomaly';
-
-export * from './categories/solve-for-kepler/solve-kepler-bisection';
-
-export * from './categories/solve-for-kepler/solve-kepler-high-eccentricity';
-
-export * from './categories/solve-for-kepler/solve-kepler-newton-raphson';
-
-export * from './categories/solve-for-kepler/solve-kepler';
-
-export * from './categories/anomaly/true-anomaly-to-mean-anomaly';
 
 export * from './categories/angle/wrap-angle';
 
+// categories/anomalies
+export * from './categories/anomalies/mean-to-eccentric-anomaly';
+
+export * from './categories/anomalies/eccentric-to-true-anomaly';
+
+export * from './categories/anomalies/true-to-mean-anomaly';
+
+// categories/kepler (solvers)
+export * from './categories/kepler/solve-kepler';
+
+export * from './categories/kepler/solve-kepler-newton-raphson';
+
+export * from './categories/kepler/solve-kepler-bisection';
+
+export * from './categories/kepler/solve-kepler-high-eccentricity';
+
+// categories/gravity
 export * from './categories/gravity/gravitational-parameter';
 
-export * from './categories/gravity/law-of-gravitation';
+export * from './categories/gravity/gravitational-force';
 
+export * from './categories/gravity/force-on1-by2';
+
+export * from './categories/gravity/acceleration-on1-by2';
+
+// categories/orbits
 export * from './categories/orbits/vis-viva-speed';
+
+export * from './categories/orbits/circular-speed';
 
 export * from './categories/orbits/kepler-period';
 

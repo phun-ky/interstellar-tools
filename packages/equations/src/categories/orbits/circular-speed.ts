@@ -31,12 +31,12 @@
  * // LEO ~400 km altitude around Earth
  * const muEarth = 3.986004418e14; // m^3/s^2
  * const r = 6378e3 + 400e3;       // m
- * const v = circularOrbitSpeed(r, muEarth); // ≈ 7670 m/s
+ * const v = circularSpeed(r, muEarth); // ≈ 7670 m/s
  * ```
  *
  * @category Orbits
  */
-export const circularOrbitSpeed = (r: number, mu: number): number => {
+export const circularSpeed = (r: number, mu: number): number => {
   if (!Number.isFinite(r) || r <= 0) {
     throw new Error('r must be a finite, positive number (m).');
   }

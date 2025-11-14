@@ -1,14 +1,15 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { computeMeanAnomaly } from '../categories/anomaly/compute-mean-anomaly';
-import { trueAnomalyToMeanAnomaly } from '../categories/anomaly/true-anomaly-to-mean-anomaly';
+import { meanToEccentricAnomaly } from '../categories/anomalies/mean-to-eccentric-anomaly';
+
 import { wrapAngle } from '../categories/angle/wrap-angle';
 import {
   CelestialBodyType,
   TemporalInterface
 } from '@interstellar-tools/types';
 import { TWO_PI } from '@interstellar-tools/constants';
+import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly';
 
 const EPSILON = 1e-10; // Increased tolerance for floating-point comparisons
 const assertApproxEqual = (actual: number, expected: number) => {
@@ -18,7 +19,7 @@ const assertApproxEqual = (actual: number, expected: number) => {
   );
 };
 
-describe('computeMeanAnomaly', () => {
+describe('meanToEccentricAnomaly', () => {
   test('Circular Orbit (e=0)', () => {
     const body: CelestialBodyType = {
       e: 0,
@@ -29,7 +30,7 @@ describe('computeMeanAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const expectedM = wrapAngle(Math.PI / 2 + meanMotion * 100);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -44,9 +45,9 @@ describe('computeMeanAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 =
-      body.e === 0 ? body.angle : trueAnomalyToMeanAnomaly(body.angle, body.e);
+      body.e === 0 ? body.angle : trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 50);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -61,9 +62,9 @@ describe('computeMeanAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const maxAllowedTimeStep = 10 * periodInDays;
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * maxAllowedTimeStep);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -76,7 +77,7 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 10, unit: 'd' };
 
     for (const body of invalidBodies) {
-      assert.throws(() => computeMeanAnomaly(body, timeStep), RangeError);
+      assert.throws(() => meanToEccentricAnomaly(body, timeStep), RangeError);
     }
   });
 
@@ -88,8 +89,8 @@ describe('computeMeanAnomaly', () => {
     } as CelestialBodyType;
     const timeStep: TemporalInterface = { value: 0, unit: 'd' };
     const M0 =
-      body.e === 0 ? body.angle : trueAnomalyToMeanAnomaly(body.angle, body.e);
-    const result = computeMeanAnomaly(body, timeStep);
+      body.e === 0 ? body.angle : trueToMeanAnomaly(body.angle, body.e);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, M0);
   });
@@ -103,9 +104,9 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 0.25, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 0.25);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -119,9 +120,9 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 10, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 10);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
     assert(result <= 2 * Math.PI && result >= -2 * Math.PI);
@@ -136,9 +137,9 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 1e-6, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 1e-5); // Minimum time step
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -152,9 +153,9 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 100, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 100);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -168,9 +169,9 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 0.25, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 0.25);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -184,9 +185,9 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 10, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 10);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });
@@ -200,9 +201,9 @@ describe('computeMeanAnomaly', () => {
     const timeStep: TemporalInterface = { value: 5, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const M0 = trueAnomalyToMeanAnomaly(body.angle, body.e);
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
     const expectedM = wrapAngle(M0 + meanMotion * 5);
-    const result = computeMeanAnomaly(body, timeStep);
+    const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
   });

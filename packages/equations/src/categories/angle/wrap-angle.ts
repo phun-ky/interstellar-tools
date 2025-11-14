@@ -81,7 +81,7 @@ const LARGE_EPSILON = 1e-8; // Higher tolerance for large angles
  * // Preserve negative values under 2π
  * wrapAngle(-0.1);             // → -0.1
  * ```
- * @category Angle
+ * @category Angles
  */
 export const wrapAngle = (angle: number) => {
   // Reduce angle while preserving sign

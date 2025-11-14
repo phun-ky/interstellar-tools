@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { eccentricToTrueAnomaly } from '../categories/anomaly/eccentric-to-true-anomaly';
+import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly';
 
 describe('eccentricToTrueAnomaly', () => {
   // Test cases for eccentricToTrueAnomaly

@@ -70,7 +70,7 @@ import { Radians } from '@interstellar-tools/types';
  *
  * @see [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
  * @see [Bisection Method (Wikipedia)](https://en.wikipedia.org/wiki/Bisection_method)
- * @category Solve for Kepler
+ * @category Kepler Solvers
  */
 export const solveKeplerBisection = (
   M: Radians,

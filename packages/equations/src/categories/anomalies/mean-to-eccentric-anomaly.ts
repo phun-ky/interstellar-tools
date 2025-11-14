@@ -8,7 +8,7 @@ import type {
 
 import { wrapAngle } from '../angle/wrap-angle';
 
-import { trueAnomalyToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
+import { trueToMeanAnomaly } from './true-to-mean-anomaly';
 import { areEqual } from './utils/are-equal';
 
 /**
@@ -37,7 +37,7 @@ import { areEqual } from './utils/are-equal';
  *
  * @example
  * ```ts
- * import { computeMeanAnomaly } from './compute-mean-anomaly';
+ * import { meanToEccentricAnomaly } from './compute-mean-anomaly';
  *
  * const mars: CelestialBodyType = {
  *   name: 'Mars',
@@ -47,15 +47,15 @@ import { areEqual } from './utils/are-equal';
  * };
  *
  * const timeStep: TemporalInterface = { value: 1, unit: 'day' }; // 1-day step
- * const meanAnomaly = computeMeanAnomaly(mars, timeStep);
+ * const meanAnomaly = meanToEccentricAnomaly(mars, timeStep);
  * console.log(meanAnomaly); // Output: Computed mean anomaly in radians
  * ```
  *
  * @see [Mean Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly)
  * @see [Orbital Mechanics (NASA)](https://solarsystem.nasa.gov/basics/chapter2-2/)
- * @category Anomaly
+ * @category Anomalies
  */
-export const computeMeanAnomaly = (
+export const meanToEccentricAnomaly = (
   body: CelestialBodyType,
   timeStep: TemporalInterface
 ): Radians => {
@@ -71,7 +71,7 @@ export const computeMeanAnomaly = (
   const periodInDays = convertTemporalUnit(period, 'd').value;
   const meanMotion = TWO_PI / Math.abs(periodInDays);
   // Convert true anomaly (V) to mean anomaly (M0) if necessary
-  const M0 = e === 0 ? angle : trueAnomalyToMeanAnomaly(angle, e);
+  const M0 = e === 0 ? angle : trueToMeanAnomaly(angle, e);
 
   if (timeStep.value === 0) {
     return M0;

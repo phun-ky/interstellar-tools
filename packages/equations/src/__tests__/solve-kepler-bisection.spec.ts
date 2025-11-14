@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKeplerBisection } from '../categories/solve-for-kepler/solve-kepler-bisection';
+import { solveKeplerBisection } from '../categories/kepler/solve-kepler-bisection';
 
 describe('solveKeplerBisection', () => {
   test("Solves Kepler's equation for small eccentricities", () => {

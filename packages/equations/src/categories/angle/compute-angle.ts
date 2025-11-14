@@ -4,9 +4,9 @@ import type {
   TimeStepInterface
 } from '@interstellar-tools/types';
 
-import { computeMeanAnomaly } from '../anomaly/compute-mean-anomaly';
-import { eccentricToTrueAnomaly } from '../anomaly/eccentric-to-true-anomaly';
-import { solveKepler } from '../solve-for-kepler/solve-kepler';
+import { eccentricToTrueAnomaly } from '../anomalies/eccentric-to-true-anomaly';
+import { meanToEccentricAnomaly } from '../anomalies/mean-to-eccentric-anomaly';
+import { solveKepler } from '../kepler/solve-kepler';
 
 /**
  * Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given date and time step.
@@ -72,14 +72,14 @@ import { solveKepler } from '../solve-for-kepler/solve-kepler';
  * @see [True Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/True_anomaly)
  * @see [Mean Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly)
  * @see [Orbital Mechanics (NASA)](https://solarsystem.nasa.gov/basics/chapter2-2/)
- * @category Angle
+ * @category Angles
  */
 export const computeAngle = (
   body: CelestialBodyType,
   timeStep: TimeStepInterface
 ): Radians => {
   // Compute mean anomaly (M) with time step
-  const M: Radians = computeMeanAnomaly(body, timeStep);
+  const M: Radians = meanToEccentricAnomaly(body, timeStep);
   // Solve Kepler's equation for eccentric anomaly (E)
   const E: Radians = solveKepler(M, body.e);
   // Convert eccentric anomaly (E) to true anomaly (ν)
