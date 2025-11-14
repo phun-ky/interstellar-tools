@@ -1,4 +1,4 @@
-[Documentation](../../../index.md) /
+[Documentation](../../../packages.md) /
 [@interstellar-tools/constants](../index.md) / G_SI
 
 # Variable: G_SI
@@ -8,7 +8,7 @@ const G_SI: number = 6.6743e-11;
 ```
 
 Defined in:
-[physics.ts:24](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/constants/src/physics.ts#L24)
+[physics.ts:24](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/constants/src/physics.ts#L24)
 
 Gravitational constant **G** in SI units.
 

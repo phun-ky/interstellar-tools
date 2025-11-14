@@ -1,5 +1,5 @@
-[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
-SystemsType
+[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
+/ SystemsType
 
 # Type Alias: SystemsType
 
@@ -8,6 +8,6 @@ type SystemsType = SystemInterface[];
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:18](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/types/src/celestial-bodies/systems.ts#L18)
+[celestial-bodies/systems.ts:18](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/types/src/celestial-bodies/systems.ts#L18)
 
 Type alias for a collection of star systems.

@@ -1,10 +1,10 @@
-[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
-DistanceInterface
+[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
+/ DistanceInterface
 
 # Interface: DistanceInterface
 
 Defined in:
-[distance.ts:167](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/types/src/distance.ts#L167)
+[distance.ts:167](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/types/src/distance.ts#L167)
 
 Represents a distance measurement with an associated unit.
 
@@ -30,7 +30,7 @@ unit: DistanceUnitType;
 ```
 
 Defined in:
-[distance.ts:168](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/types/src/distance.ts#L168)
+[distance.ts:168](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/types/src/distance.ts#L168)
 
 The unit of distance measurement.
 
@@ -43,7 +43,7 @@ value: number;
 ```
 
 Defined in:
-[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/types/src/numeric.ts#L18)
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.
 

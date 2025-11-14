@@ -1,8 +1,9 @@
 import type { Theme } from 'vitepress';
 import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme-without-fonts';
-import { h, onMounted, watchEffect } from 'vue';
+import { onMounted, watchEffect } from 'vue';
 
+// eslint-disable-next-line import/no-unresolved
 import 'virtual:group-icons.css';
 import './custom.css';
 
