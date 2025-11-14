@@ -41,7 +41,7 @@ import { PeriApoRadiiType } from '@interstellar-tools/types';
  * const { rp, ra } = periApoapsisRadii(a, e); // rp = |a|(e-1) = 10,000 km, ra = null
  * ```
  *
- * @category Orbits
+ * @group Orbits
  */
 export const periApoapsisRadii = (a: number, e: number): PeriApoRadiiType => {
   if (!Number.isFinite(a) || a === 0) {

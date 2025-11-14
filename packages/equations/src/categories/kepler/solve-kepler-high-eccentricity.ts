@@ -96,7 +96,7 @@ import { wrapAngle } from '../angle/wrap-angle';
  *
  * @see [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
  * @see [Hyperbolic Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Hyperbolic_trajectory#Hyperbolic_anomaly)
- * @category Kepler Solvers
+ * @group Kepler Solvers
  */
 export const solveKeplerHighEccentricity = (
   M: Radians,

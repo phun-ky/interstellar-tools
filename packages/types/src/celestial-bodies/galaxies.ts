@@ -18,7 +18,7 @@ import { DistanceInterface } from '../distance';
  *   y: { value: 0, unit: 'au' }
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface BlackHoleInterface {
   /** Name of the central black hole. */
@@ -53,7 +53,7 @@ export interface BlackHoleInterface {
  *   blackHole: sagittariusA
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface GalaxyInterface {
   /** Name of the galaxy. */
@@ -72,7 +72,7 @@ export interface GalaxyInterface {
  * Type alias for a collection of **galaxies**.
  *
  * @typedef {GalaxyInterface[]} GalaxiesType
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type GalaxiesType = GalaxyInterface[];
 
@@ -80,6 +80,6 @@ export type GalaxiesType = GalaxyInterface[];
  * Type alias for a collection of **black holes**.
  *
  * @typedef {BlackHoleInterface[]} BlackHolesType
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type BlackHolesType = BlackHoleInterface[];

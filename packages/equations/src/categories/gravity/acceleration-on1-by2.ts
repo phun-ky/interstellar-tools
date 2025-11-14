@@ -64,7 +64,7 @@ import { gravitationalForce } from './gravitational-force';
  * ```
  *
  * @see https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation
- * @category Gravity
+ * @group Gravity
  */
 export const accelerationOn1By2 = (
   m2: number,

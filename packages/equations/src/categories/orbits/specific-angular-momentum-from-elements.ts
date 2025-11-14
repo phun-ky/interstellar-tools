@@ -54,7 +54,7 @@
  * ```
  *
  * @see {@link specificAngularMomentum} - compute ($ h $) from state vectors ($ (\mathbf r,\mathbf v) $).
- * @category Orbits
+ * @group Orbits
  */
 export const specificAngularMomentumFromElements = (
   a: number,

@@ -38,7 +38,7 @@ import { Radians } from '@interstellar-tools/types';
  * ```
  *
  * @see [True Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/True_anomaly)
- * @category Anomalies
+ * @group Anomalies
  */
 export const eccentricToTrueAnomaly = (E: Radians, e: number): Radians => {
   // Validate eccentricity range

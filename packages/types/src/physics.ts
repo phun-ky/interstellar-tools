@@ -90,6 +90,6 @@ export interface ForceResultInterface {
  *
  * @see periApoapsisRadii - function that computes `{ rp, ra }` from `(a, e)`.
  * @see https://en.wikipedia.org/wiki/Apsis
- * @category Orbits
+ * @group Orbits
  */
 export type PeriApoRadiiType = { rp: number; ra: number | null };

@@ -72,7 +72,7 @@ import { solveKepler } from '../kepler/solve-kepler';
  * @see [True Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/True_anomaly)
  * @see [Mean Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly)
  * @see [Orbital Mechanics (NASA)](https://solarsystem.nasa.gov/basics/chapter2-2/)
- * @category Angles
+ * @group Angles
  */
 export const computeAngle = (
   body: CelestialBodyType,

@@ -39,7 +39,7 @@
  * const T = keplerPeriod(a, muEarth); // ≈ 5550 s (~92.5 min)
  * ```
  *
- * @category Orbits
+ * @group Orbits
  */
 export const keplerPeriod = (a: number, mu: number): number => {
   if (!Number.isFinite(a) || a <= 0) {

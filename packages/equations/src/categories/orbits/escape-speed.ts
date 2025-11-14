@@ -44,7 +44,7 @@
  * const vEsc = escapeSpeed(rLEO, muEarth); // ≈ 10860 m/s
  * ```
  *
- * @category Orbits
+ * @group Orbits
  */
 export const escapeSpeed = (r: number, mu: number): number => {
   if (!Number.isFinite(r) || r <= 0) {

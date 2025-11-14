@@ -8,12 +8,12 @@
  *
  * :::
  *
- * @category Date
+ * @group Date
  */
 export const TIME_SCALE_UTC = 'UTC' as const;
 
 /**
- * @category Date
+ * @group Date
  */
 export const TIME_SCALE_TT = 'TT' as const;
 
@@ -31,13 +31,13 @@ export const TIME_SCALE_TT = 'TT' as const;
  * // If you need the TT-based Julian centuries since J2000:
  * //   T = (JD_TT - J2000_TT) / 36525
  * // Compute JD_TT from a UTC Date using your UTC→TT→JD pipeline, then use J2000_TT.
- * @category Date
+ * @group Date
  */
 export const J2000_UTC = new Date('2000-01-01T11:58:55.816Z');
 
 /**
  * Time scale associated with {@link J2000_UTC}.
- * @category Date
+ * @group Date
  */
 export const J2000_UTC_TIME_SCALE = TIME_SCALE_UTC;
 
@@ -50,13 +50,13 @@ export const J2000_UTC_TIME_SCALE = TIME_SCALE_UTC;
  *
  * :::
  *
- * @category Date
+ * @group Date
  */
 export const EPOCH_2000_UTC_MIDNIGHT = new Date('2000-01-01T00:00:00Z');
 
 /**
  * Time scale associated with {@link EPOCH_2000_UTC_MIDNIGHT}.
- * @category Date
+ * @group Date
  */
 export const EPOCH_2000_UTC_MIDNIGHT_TIME_SCALE = TIME_SCALE_UTC;
 
@@ -68,7 +68,7 @@ export const EPOCH_2000_UTC_MIDNIGHT_TIME_SCALE = TIME_SCALE_UTC;
  * @example
  * // Julian centuries since J2000 in TT:
  * // const T = (jdTT - J2000_TT) / 36525;
- * @category Date
+ * @group Date
  */
 export const J2000_TT = 2451545.0 as const;
 
@@ -79,7 +79,7 @@ export const J2000_TT = 2451545.0 as const;
  * @example
  * // When computing Julian centuries:
  * //   T = (JD_TT - J2000_TT) / 36525
- * @category Date
+ * @group Date
  */
 export const J2000_EPOCH_TIME_SCALE = TIME_SCALE_TT;
 
@@ -95,11 +95,11 @@ export const J2000_EPOCH_TIME_SCALE = TIME_SCALE_TT;
  * specific to the J2000 epoch.
  *
  * :::
- * @category Date
+ * @group Date
  */
 export const TT_MINUS_UTC_AT_J2000_SECONDS = 64.184;
 
 /**
- * @category Date
+ * @group Date
  */
 export const TT_MINUS_UTC_AT_J2000_MS = 64_184;

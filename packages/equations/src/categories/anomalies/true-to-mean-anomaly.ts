@@ -70,7 +70,7 @@ import { wrapAngle } from '../angle/wrap-angle';
  * @see [True Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/True_anomaly)
  * @see [Mean Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly)
  * @see [Orbital Eccentricity (Wikipedia)](https://en.wikipedia.org/wiki/Orbital_eccentricity)
- * @category Anomalies
+ * @group Anomalies
  */
 export const trueToMeanAnomaly = (V: number, e: number): number => {
   if (e < 0 || e >= 1) {

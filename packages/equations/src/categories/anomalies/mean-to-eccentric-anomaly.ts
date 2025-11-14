@@ -53,7 +53,7 @@ import { areEqual } from './utils/are-equal';
  *
  * @see [Mean Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly)
  * @see [Orbital Mechanics (NASA)](https://solarsystem.nasa.gov/basics/chapter2-2/)
- * @category Anomalies
+ * @group Anomalies
  */
 export const meanToEccentricAnomaly = (
   body: CelestialBodyType,

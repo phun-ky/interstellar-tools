@@ -83,7 +83,7 @@ import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson';
  * @see [Newton-Raphson Method (Wikipedia)](https://en.wikipedia.org/wiki/Newton%27s_method)
  * @see [Eccentric Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly#Eccentric_anomaly)
  * @see [RangeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)
- * @category Kepler Solvers
+ * @group Kepler Solvers
  */
 export const solveKepler = (
   M: Radians,

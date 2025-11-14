@@ -22,7 +22,7 @@ import { StarInterface, StarsType } from './stars';
  *   { name: 'Earth', type: 'planet', mass: 5.972e24 }
  * ];
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type CelestialBodiesType =
   | StarsType
@@ -46,7 +46,7 @@ export type CelestialBodiesType =
  * ```ts
  * const earth: CelestialBodyType = { name: 'Earth', type: 'planet', mass: 5.972e24 };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type CelestialBodyType =
   | StarInterface

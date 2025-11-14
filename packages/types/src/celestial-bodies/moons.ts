@@ -32,7 +32,7 @@ import { CartesianCoordinatesInterface } from './planets';
  *   angle: 0,
  * };
  * ```
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface MoonInterface {
   /** Name of the moon (e.g., "Io", "Europa", "Titan"). */
@@ -75,6 +75,6 @@ export interface MoonInterface {
  * Type alias for a collection of **moons**.
  *
  * @typedef {MoonInterface[]} MoonsType
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type MoonsType = MoonInterface[];

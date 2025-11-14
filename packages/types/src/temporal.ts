@@ -1,7 +1,7 @@
 import { ValueInterface } from './numeric';
 
 /**
- * @showCategories
+ *
  * @module
  */
 
@@ -32,7 +32,7 @@ import { ValueInterface } from './numeric';
  *
  * @see https://www.bipm.org/en/publications/si-brochure  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year used for `yr`)
- * @category Temporal
+ * @group Temporal
  */
 export type TemporalUnitType =
   // SI base & submultiples
@@ -79,7 +79,7 @@ export type TemporalUnitType =
  * @see https://www.bipm.org/en/publications/si-brochure ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year used for `yr`/`kyr`/`Myr`/`Gyr`)
  * @see https://en.wikipedia.org/wiki/Year#SI_multiples (Usage of `ka`/`Ma`/`Ga` vs `kyr`/`Myr`/`Gyr`)
- * @category Temporal
+ * @group Temporal
  */
 export type TemporalUnitAliasType =
   | 'second'
@@ -131,7 +131,7 @@ export type TemporalUnitAliasType =
  *
  *
  * @see {@link TemporalUnitType}
- * @category Temporal
+ * @group Temporal
  */
 export interface TemporalInterface extends ValueInterface {
   /** Canonical temporal unit symbol (case-sensitive). */
@@ -148,7 +148,7 @@ export interface TemporalInterface extends ValueInterface {
  * ```ts
  * const timeStep: TimeStepInterface = { value: 1, unit: 'day' };
  * ```
- * @category Temporal
+ * @group Temporal
  */
 export interface TimeStepInterface extends ValueInterface {
   unit: 'd';

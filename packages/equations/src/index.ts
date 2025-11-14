@@ -1,7 +1,6 @@
 /**
  *
  *  Here you will find a set of function that can assist you when calculating orbits, angles, solve for kelper or find true anomalies.
- * @showCategories
  * @module
  */
 

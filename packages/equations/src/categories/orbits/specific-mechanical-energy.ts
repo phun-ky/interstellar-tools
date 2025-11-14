@@ -43,7 +43,7 @@
  * const eps = specificMechanicalEnergy(v, r, muEarth);
  * // eps ≈ -mu/(2r)
  * ```
- * @category Orbits
+ * @group Orbits
  */
 export const specificMechanicalEnergy = (
   v: number,

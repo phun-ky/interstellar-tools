@@ -64,6 +64,6 @@
  * // Angular frequency from frequency (Hz):
  * const omega = (f: number) => TWO_PI * f; // ω = τ f
  * ```
- * @category Math
+ * @group Math
  */
 export const TWO_PI: number = 2 * Math.PI;

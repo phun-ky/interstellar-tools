@@ -36,7 +36,7 @@
  * const v = circularSpeed(r, muEarth); // ≈ 7670 m/s
  * ```
  *
- * @category Orbits
+ * @group Orbits
  */
 export const circularSpeed = (r: number, mu: number): number => {
   if (!Number.isFinite(r) || r <= 0) {

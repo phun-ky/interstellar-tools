@@ -19,7 +19,7 @@ import { CartesianCoordinatesInterface } from './planets';
  *
  * :::
  *
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type AsteroidType =
   | 'main-belt asteroid'
@@ -40,7 +40,7 @@ export type AsteroidType =
  *
  * :::
  *
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type AsteroidCategory =
   | 'dwarf planet'
@@ -69,7 +69,7 @@ export type AsteroidCategory =
  *
  * :::
  *
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type AsteroidSpectralType =
   | 'c-type'
@@ -114,7 +114,7 @@ export type AsteroidSpectralType =
  *
  * :::
  *
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export interface AsteroidInterface {
   /** Name of the asteroid (e.g., `"Ceres"`, `"Vesta"`). */
@@ -239,6 +239,6 @@ export interface AsteroidInterface {
 
 /**
  * Convenience alias for a list of asteroids.
- * @category Celestial Bodies
+ * @group Celestial Bodies
  */
 export type AsteroidsType = AsteroidInterface[];

@@ -93,7 +93,7 @@ import type {
  * ```
  *
  * @see https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation
- * @category Gravity
+ * @group Gravity
  */
 export const gravitationalForce = (
   m1: number,

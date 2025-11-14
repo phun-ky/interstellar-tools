@@ -1,5 +1,5 @@
 /**
- * @showCategories
+ *
  * @module
  */
 
@@ -12,7 +12,7 @@
  * ```ts
  * const distance: ValueInterface = { value: 100 };
  * ```
- * @category Numeric
+ * @group Numeric
  */
 export interface ValueInterface {
   value: number;
@@ -27,6 +27,6 @@ export interface ValueInterface {
  * ```ts
  * const angle: Radians = Math.PI / 2; // 90 degrees in radians
  * ```
- * @category Numeric
+ * @group Numeric
  */
 export type Radians = number;

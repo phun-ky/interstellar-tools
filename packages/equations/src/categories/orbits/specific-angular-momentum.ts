@@ -50,7 +50,7 @@ import { Vector3DTupleType } from '@interstellar-tools/types';
  *
  * @see {@link https://en.wikipedia.org/wiki/Specific_angular_momentum}
  * @see {@link specificAngularMomentumFromElements} (if you compute from ($ a,e,\mu $))
- * @category Orbits
+ * @group Orbits
  */
 export const specificAngularMomentum = (
   r: Vector3DTupleType,

@@ -36,7 +36,7 @@
  * const a = r;                    // circular
  * const v = visVivaSpeed(r, a, muEarth); // ≈ 7670 m/s
  * ```
- * @category Orbits
+ * @group Orbits
  */
 export const visVivaSpeed = (r: number, a: number, mu: number): number => {
   if (!Number.isFinite(r) || r <= 0) {

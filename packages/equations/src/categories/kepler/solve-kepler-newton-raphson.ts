@@ -82,7 +82,7 @@ import { Radians } from '@interstellar-tools/types';
  * @see [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
  * @see [Newton-Raphson Method (Wikipedia)](https://en.wikipedia.org/wiki/Newton%27s_method)
  * @see [Eccentric Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly#Eccentric_anomaly)
- * @category Kepler Solvers
+ * @group Kepler Solvers
  */
 export const solveKeplerNewtonRaphson = (
   M: Radians,
