@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { specificMechanicalEnergy } from '../specific-mechanical-energy';
+import { specificMechanicalEnergy } from '../categories/dynamics/specific-mechanical-energy';
 import { absClose, relClose } from './helpers';
 
 describe('specificMechanicalEnergy', () => {

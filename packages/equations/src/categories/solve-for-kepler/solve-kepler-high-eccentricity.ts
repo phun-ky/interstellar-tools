@@ -1,6 +1,6 @@
 import { Radians } from '@interstellar-tools/types';
 
-import { wrapAngle } from './wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle';
 
 /**
  * Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly eccentric orbits

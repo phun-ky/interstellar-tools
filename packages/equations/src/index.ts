@@ -5,30 +5,30 @@
  * @module
  */
 
-export * from './compute-angle';
+export * from './categories/angle/compute-angle';
 
-export * from './compute-mean-anomaly';
+export * from './categories/anomaly/compute-mean-anomaly';
 
-export * from './eccentric-to-true-anomaly';
+export * from './categories/anomaly/eccentric-to-true-anomaly';
 
-export * from './solve-kepler-bisection';
+export * from './categories/solve-for-kepler/solve-kepler-bisection';
 
-export * from './solve-kepler-high-eccentricity';
+export * from './categories/solve-for-kepler/solve-kepler-high-eccentricity';
 
-export * from './solve-kepler-newton-raphson';
+export * from './categories/solve-for-kepler/solve-kepler-newton-raphson';
 
-export * from './solve-kepler';
+export * from './categories/solve-for-kepler/solve-kepler';
 
-export * from './true-anomaly-to-mean-anomaly';
+export * from './categories/anomaly/true-anomaly-to-mean-anomaly';
 
-export * from './wrap-angle';
+export * from './categories/angle/wrap-angle';
 
-export * from './gravitational-parameter';
+export * from './categories/dynamics/gravitational-parameter';
 
-export * from './law-of-gravitation';
+export * from './categories/dynamics/law-of-gravitation';
 
-export * from './vis-viva-speed';
+export * from './categories/dynamics/vis-viva-speed';
 
-export * from './kepler-period';
+export * from './categories/dynamics/kepler-period';
 
-export * from './specific-mechanical-energy';
+export * from './categories/dynamics/specific-mechanical-energy';

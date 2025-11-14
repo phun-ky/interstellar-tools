@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-
-import { solveKeplerNewtonRaphson } from '../solve-kepler-newton-raphson';
+import { solveKeplerNewtonRaphson } from '../categories/solve-for-kepler/solve-kepler-newton-raphson';
 
 const EPSILON = 1e-9;
 const assertApproxEqual = (actual: number, expected: number) => {

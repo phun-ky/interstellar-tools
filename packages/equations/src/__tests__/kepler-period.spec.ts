@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
 import { relClose } from './helpers';
-import { keplerPeriod } from '../kepler-period';
+import { keplerPeriod } from '../categories/dynamics/kepler-period';
 
 describe('keplerPeriod', () => {
   test('GEO sanity: a ≈ 42,164 km around Earth → T ≈ 86,164 s', () => {

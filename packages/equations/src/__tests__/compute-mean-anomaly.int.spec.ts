@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { computeMeanAnomaly } from '../compute-mean-anomaly';
-import { trueAnomalyToMeanAnomaly } from '../true-anomaly-to-mean-anomaly';
-import { wrapAngle } from '../wrap-angle';
+import { computeMeanAnomaly } from '../categories/anomaly/compute-mean-anomaly';
+import { trueAnomalyToMeanAnomaly } from '../categories/anomaly/true-anomaly-to-mean-anomaly';
+import { wrapAngle } from '../categories/angle/wrap-angle';
 import {
   CelestialBodyType,
   TemporalInterface

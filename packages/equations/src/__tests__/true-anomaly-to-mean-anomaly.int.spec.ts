@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { trueAnomalyToMeanAnomaly } from '../true-anomaly-to-mean-anomaly';
-import { wrapAngle } from '../wrap-angle';
+import { trueAnomalyToMeanAnomaly } from '../categories/anomaly/true-anomaly-to-mean-anomaly';
+import { wrapAngle } from '../categories/angle/wrap-angle';
 
 describe('trueAnomalyToMeanAnomaly', () => {
   const EPSILON = 1e-10; // Floating-point tolerance

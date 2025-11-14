@@ -4,9 +4,9 @@ import type {
   TimeStepInterface
 } from '@interstellar-tools/types';
 
-import { computeMeanAnomaly } from './compute-mean-anomaly';
-import { eccentricToTrueAnomaly } from './eccentric-to-true-anomaly';
-import { solveKepler } from './solve-kepler';
+import { computeMeanAnomaly } from '../anomaly/compute-mean-anomaly';
+import { eccentricToTrueAnomaly } from '../anomaly/eccentric-to-true-anomaly';
+import { solveKepler } from '../solve-for-kepler/solve-kepler';
 
 /**
  * Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given date and time step.

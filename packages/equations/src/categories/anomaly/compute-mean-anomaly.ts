@@ -6,21 +6,10 @@ import type {
   TemporalInterface
 } from '@interstellar-tools/types';
 
-import { trueAnomalyToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
-import { wrapAngle } from './wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle';
 
-const EPSILON = 1e-15; // Increased tolerance for high eccentricity
-/**
- * Compares two floating-point numbers for equality within a tolerance.
- *
- * @param {number} a - First number to compare.
- * @param {number} b - Second number to compare.
- * @param {number} [epsilon=EPSILON] - Tolerance for floating-point precision.
- * @returns {boolean} `true` if values are approximately equal.
- */
-const areEqual = (a: number, b: number, epsilon: number = EPSILON): boolean => {
-  return Math.abs(a - b) < epsilon * Math.max(1, Math.abs(a), Math.abs(b));
-};
+import { trueAnomalyToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
+import { areEqual } from './utils/are-equal';
 
 /**
  * Computes the **mean anomaly** ($M$) of a celestial body for a given time step.

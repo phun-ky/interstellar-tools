@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 import { absClose, relClose } from './helpers';
-import { visVivaSpeed } from '../vis-viva-speed';
+import { visVivaSpeed } from '../categories/dynamics/vis-viva-speed';
 
 describe('visVivaSpeed', () => {
   test('circular orbit: a = r → v = sqrt(μ/r)', () => {

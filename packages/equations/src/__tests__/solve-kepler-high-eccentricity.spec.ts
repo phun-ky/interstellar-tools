@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-
-import { solveKeplerHighEccentricity } from '../solve-kepler-high-eccentricity';
+import { solveKeplerHighEccentricity } from '../categories/solve-for-kepler/solve-kepler-high-eccentricity';
 
 const EPSILON = 1e-9;
 const assertApproxEqual = (actual: number, expected: number) => {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { gravitationalForce } from '../law-of-gravitation';
+import { gravitationalForce } from '../categories/dynamics/law-of-gravitation';
 import { G_SI } from '@interstellar-tools/constants';
 import { norm, relClose, vecRelClose } from './helpers';
 

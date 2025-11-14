@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-
-import { solveKepler } from '../solve-kepler';
+import { solveKepler } from '../categories/solve-for-kepler/solve-kepler';
 
 const EPSILON = 1e-8; // Floating-point tolerance
 const assertApproxEqual = (actual: number, expected: number) => {

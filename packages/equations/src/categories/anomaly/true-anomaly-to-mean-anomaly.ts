@@ -1,4 +1,4 @@
-import { wrapAngle } from './wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle';
 
 /**
  * Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation.
