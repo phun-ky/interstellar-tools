@@ -63,6 +63,12 @@ npm i --save @interstellar-tools/constants
 | [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM.md)         | Limb–inflection minus photospheric offset (~0.333 Mm). / export const SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM = 333; |
 | [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM.md) | 1σ uncertainty for SOHO/MDI Mercury-transit radius.                                                                             |
 
+## Other
+
+| Variable                  | Description                               |
+| ------------------------- | ----------------------------------------- |
+| [G_SI](variables/G_SI.md) | Gravitational constant **G** in SI units. |
+
 ## Temporal
 
 | Variable                                                        | Description                                                |

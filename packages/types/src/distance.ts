@@ -13,10 +13,10 @@ import { ValueInterface } from './numeric';
  * - Uses **meters** as the [SI](https://en.wikipedia.org/wiki/International_System_of_Units) base; larger units have conventional scientific definitions.
  *
  * ## Conventions
- * - **`au`** — Astronomical Unit (IAU 2012 B2): **149 597 870 700 m** (lowercase `au` is the IAU symbol).
- * - **`ly` family** — Light-year based on the **Julian year**:
+ * - **`au`** - Astronomical Unit (IAU 2012 B2): **149 597 870 700 m** (lowercase `au` is the IAU symbol).
+ * - **`ly` family** - Light-year based on the **Julian year**:
  *   `1 ly = c × 365.25 d = 9 460 730 472 580 800 m` (with `kly = 10³ ly`, `Mly = 10⁶ ly`, `Gly = 10⁹ ly`).
- * - **`pc` family** — Parsec defined from the arcsecond parallax:
+ * - **`pc` family** - Parsec defined from the arcsecond parallax:
  *   `1 pc = au × (648000 / π) ≈ 3.085677581×10¹⁶ m` (`kpc/Mpc/Gpc` are ×10³/×10⁶/×10⁹).
  *
  * ## Members
@@ -35,7 +35,7 @@ import { ValueInterface } from './numeric';
  * const d3: Distance = { value: 8, unit: 'kpc' };
  * ```
  *
- * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 — definition of the astronomical unit)
+ * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 - definition of the astronomical unit)
  * @see https://en.wikipedia.org/wiki/Light-year (Light-year based on Julian year)
  * @see https://en.wikipedia.org/wiki/Parsec (Parsec definition & meter equivalence)
  * @category Distance
@@ -86,7 +86,7 @@ export type DistanceUnitType =
  * ```
  *
  * @see DistanceUnitType for the canonical symbol set.
- * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 — astronomical unit, symbol "au")
+ * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 - astronomical unit, symbol "au")
  * @see https://en.wikipedia.org/wiki/Light-year (Light-year; Julian-year convention)
  * @see https://en.wikipedia.org/wiki/Parsec (Parsec definition)
  * @category Distance

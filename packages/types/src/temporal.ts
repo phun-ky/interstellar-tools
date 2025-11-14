@@ -30,7 +30,7 @@ import { ValueInterface } from './numeric';
  *
  * :::
  *
- * @see https://www.bipm.org/en/publications/si-brochure  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure — second & day)
+ * @see https://www.bipm.org/en/publications/si-brochure  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year used for `yr`)
  * @category Temporal
  */
@@ -76,7 +76,7 @@ export type TemporalUnitType =
  * 2) Normalize to `TemporalUnitType`.
  * 3) Use only canonical units for arithmetic, storage, and serialization.
  *
- * @see https://www.bipm.org/en/publications/si-brochure ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure — second & day)
+ * @see https://www.bipm.org/en/publications/si-brochure ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year used for `yr`/`kyr`/`Myr`/`Gyr`)
  * @see https://en.wikipedia.org/wiki/Year#SI_multiples (Usage of `ka`/`Ma`/`Ga` vs `kyr`/`Myr`/`Gyr`)
  * @category Temporal

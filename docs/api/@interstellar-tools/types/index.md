@@ -58,6 +58,13 @@ npm i --save @interstellar-tools/types
 | [ValueInterface](interfaces/ValueInterface.md) | Represents a numerical value.                    |
 | [Radians](type-aliases/Radians.md)             | Type alias representing an angle in **radians**. |
 
+## Other
+
+| Name                                                       | Description                                                                     |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [ForceResultInterface](interfaces/ForceResultInterface.md) | Result of a Newtonian gravitational force computation between two point masses. |
+| [Vector3DTupleType](type-aliases/Vector3DTupleType.md)     | A read-only 3D vector tuple `[x, y, z]`.                                        |
+
 ## Temporal
 
 | Name                                                           | Description                                                                                                                                                                                                |

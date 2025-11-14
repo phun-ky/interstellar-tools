@@ -8,7 +8,7 @@ function eccentricToTrueAnomaly(E: number, e: number): number;
 ```
 
 Defined in:
-[eccentric-to-true-anomaly.ts:43](https://github.com/phun-ky/interstellar-tools/blob/1a287c92090172f88a61ae54fc794fe57d83ca58/packages/equations/src/eccentric-to-true-anomaly.ts#L43)
+[eccentric-to-true-anomaly.ts:43](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/eccentric-to-true-anomaly.ts#L43)
 
 Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.
 
@@ -53,6 +53,7 @@ True anomaly ($V$) in radians.
 
 ## Throws
 
+[RangeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)
 If **eccentricity** is out of the range $0 \leq e \leq 1$.
 
 ## Example

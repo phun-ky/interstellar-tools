@@ -13,19 +13,19 @@ and
 
 To develop **Hybrid Compute**, fork it, and then in the project root:
 
-```shell-session
+```shell
 npm i
 ```
 
 ## Build
 
-```shell-session
+```shell
 npm run build
 ```
 
 ## Test the code
 
-```shell-session
+```shell
 npm test
 ```
 
@@ -35,7 +35,7 @@ To commit, we use
 [semantic git commits with Commitizen](https://github.com/streamich/git-cz). So
 please run this when you are ready to commit your staged files:
 
-```shell-session
+```shell
 npm run commit
 ```
 

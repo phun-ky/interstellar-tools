@@ -46,7 +46,7 @@ type DistanceUnitAliasType =
 ```
 
 Defined in:
-[distance.ts:94](https://github.com/phun-ky/interstellar-tools/blob/1a287c92090172f88a61ae54fc794fe57d83ca58/packages/types/src/distance.ts#L94)
+[distance.ts:94](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/types/src/distance.ts#L94)
 
 Human-friendly **distance unit aliases** accepted at input time.
 
@@ -89,7 +89,7 @@ normalizeDistanceUnit('Mpc'); // 'Mpc' (already canonical)
 ## See
 
 - DistanceUnitType for the canonical symbol set.
-- https://www.iau.org/static/resolutions/IAU2012\_English.pdf (IAU 2012 B2 —
+- https://www.iau.org/static/resolutions/IAU2012\_English.pdf (IAU 2012 B2 -
   astronomical unit, symbol "au")
 - https://en.wikipedia.org/wiki/Light-year (Light-year; Julian-year convention)
 - https://en.wikipedia.org/wiki/Parsec (Parsec definition)
