@@ -40,6 +40,8 @@ export * from './categories/orbits/vis-viva-speed';
 
 export * from './categories/orbits/circular-speed';
 
+export * from './categories/orbits/escape-speed';
+
 export * from './categories/orbits/kepler-period';
 
 export * from './categories/orbits/specific-mechanical-energy';
