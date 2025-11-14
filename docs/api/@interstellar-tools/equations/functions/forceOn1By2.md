@@ -1,10 +1,10 @@
 [Documentation](../../../index.md) /
-[@interstellar-tools/equations](../index.md) / gravitationalForceOn1By2
+[@interstellar-tools/equations](../index.md) / forceOn1By2
 
-# Function: gravitationalForceOn1By2()
+# Function: forceOn1By2()
 
 ```ts
-function gravitationalForceOn1By2(
+function forceOn1By2(
   m1: number,
   m2: number,
   r1: Vector3DTupleType,
@@ -14,7 +14,7 @@ function gravitationalForceOn1By2(
 ```
 
 Defined in:
-[law-of-gravitation.ts:301](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/law-of-gravitation.ts#L301)
+[gravity/force-on1-by2.ts:90](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/equations/src/categories/gravity/force-on1-by2.ts#L90)
 
 Gravitational **force vector** on body 1 due to body 2 (newtons, N).
 
@@ -63,8 +63,8 @@ $$
   \hat{\mathbf r} $)).
 - Internally delegates to `gravitationalForce(m1, m2, r1, r2, G)` and returns
   its direction-scaled magnitude as a 3-tuple.
-- For acceleration instead of force, use `gravitationalAccelerationOn1By2` or
-  compute ($ \mathbf a=\mathbf F/m_1 $).
+- For acceleration instead of force, use `accelerationOn1By2` or compute ($
+  \mathbf a=\mathbf F/m_1 $).
 
 :::
 
@@ -104,7 +104,7 @@ const mSun = 1.9885e30; // kg
 const rEarth: [number, number, number] = [0, 0, 0];
 const rSun: [number, number, number] = [1.495978707e11, 0, 0]; // m
 
-const F = gravitationalForceOn1By2(mEarth, mSun, rEarth, rSun); // N
+const F = forceOn1By2(mEarth, mSun, rEarth, rSun); // N
 const Fmag = Math.hypot(F[0], F[1], F[2]); // ≈ 3.54e22 N
 ```
 

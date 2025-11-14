@@ -1,14 +1,14 @@
 [Documentation](../../../index.md) /
-[@interstellar-tools/equations](../index.md) / trueAnomalyToMeanAnomaly
+[@interstellar-tools/equations](../index.md) / trueToMeanAnomaly
 
-# Function: trueAnomalyToMeanAnomaly()
+# Function: trueToMeanAnomaly()
 
 ```ts
-function trueAnomalyToMeanAnomaly(V: number, e: number): number;
+function trueToMeanAnomaly(V: number, e: number): number;
 ```
 
 Defined in:
-[true-anomaly-to-mean-anomaly.ts:75](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/true-anomaly-to-mean-anomaly.ts#L75)
+[anomalies/true-to-mean-anomaly.ts:75](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L75)
 
 Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's
 equation.
@@ -76,19 +76,19 @@ If the **eccentricity** ($e$) is outside the valid range $0 \leq e < 1$.
 ## Examples
 
 ```ts
-import { trueAnomalyToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
+import { trueToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
 
 // Example 1: Standard elliptical orbit
 const V = Math.PI / 3; // 60 degrees in radians
 const e = 0.1; // Eccentricity
-console.log(trueAnomalyToMeanAnomaly(V, e)); // Output: Mean anomaly in radians
+console.log(trueToMeanAnomaly(V, e)); // Output: Mean anomaly in radians
 ```
 
 ```ts
 // Example 2: Retrograde motion handling
 const V_retrograde = -Math.PI / 2; // -90 degrees
 const e_retrograde = 0.2;
-console.log(trueAnomalyToMeanAnomaly(V_retrograde, e_retrograde));
+console.log(trueToMeanAnomaly(V_retrograde, e_retrograde));
 ```
 
 ---

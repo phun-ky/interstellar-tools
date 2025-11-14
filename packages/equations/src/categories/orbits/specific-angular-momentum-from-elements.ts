@@ -1,5 +1,5 @@
 /**
- * **Specific angular momentum** ($  h  $) from **orbital elements**.
+ * **Specific angular momentum** ($ h $) from **orbital elements**.
  *
  * **Definition**
  *
@@ -21,7 +21,7 @@
  *
  * ::: info
  *
- * - This returns the **magnitude** of ($  \mathbf h = \mathbf r \times \mathbf v  $).
+ * - This returns the **magnitude** of ($ \mathbf h = \mathbf r \times \mathbf v $).
  * - For numerical robustness, tiny negative radicands from FP cancellation are clamped to zero.
  *
  * :::
@@ -53,7 +53,7 @@
  * const h = specificAngularMomentumFromElements(a, e, muEarth);
  * ```
  *
- * @see {@link specificAngularMomentum} — compute ($ h $) from state vectors ($  (\mathbf r,\mathbf v)  $).
+ * @see {@link specificAngularMomentum} - compute ($ h $) from state vectors ($ (\mathbf r,\mathbf v) $).
  * @category Orbits
  */
 export const specificAngularMomentumFromElements = (

@@ -58,6 +58,12 @@ npm i --save @interstellar-tools/types
 | [ValueInterface](interfaces/ValueInterface.md) | Represents a numerical value.                    |
 | [Radians](type-aliases/Radians.md)             | Type alias representing an angle in **radians**. |
 
+## Orbits
+
+| Type Alias                                           | Description                   |
+| ---------------------------------------------------- | ----------------------------- |
+| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md) | **Peri/apoapsis radii pair**. |
+
 ## Other
 
 | Name                                                       | Description                                                                     |

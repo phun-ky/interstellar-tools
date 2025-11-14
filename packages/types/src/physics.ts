@@ -88,7 +88,7 @@ export interface ForceResultInterface {
  * const flyby: PeriApoRadiiType = { rp: 10_000e3, ra: null };
  * ```
  *
- * @see {@link periApoapsisRadii} - function that computes `{ rp, ra }` from `(a, e)`.
+ * @see periApoapsisRadii - function that computes `{ rp, ra }` from `(a, e)`.
  * @see https://en.wikipedia.org/wiki/Apsis
  * @category Orbits
  */

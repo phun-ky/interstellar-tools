@@ -8,7 +8,7 @@ describe('specificAngularMomentumFromElements', () => {
   test('definition (elliptic): h = sqrt(μ a (1-e^2))', () => {
     const mu = 3.986004418e14; // m^3/s^2 (Earth GM)
     const a = 7000e3; // m
-    const e = 0.1; // —
+    const e = 0.1; // -
     const h = specificAngularMomentumFromElements(a, e, mu);
     const expected = Math.sqrt(mu * a * (1 - e * e));
     relClose(h, expected, 1e-15);
@@ -26,7 +26,7 @@ describe('specificAngularMomentumFromElements', () => {
   test('hyperbolic case (a<0, e>1): radicand positive → valid h', () => {
     const mu = 3.986004418e14;
     const a = -50_000e3; // m
-    const e = 1.2; // —
+    const e = 1.2; // -
     const h = specificAngularMomentumFromElements(a, e, mu);
     const expected = Math.sqrt(mu * a * (1 - e * e)); // positive since a<0 and (1-e^2)<0
     relClose(h, expected, 1e-15);

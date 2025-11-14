@@ -1,10 +1,10 @@
 [Documentation](../../../index.md) /
-[@interstellar-tools/equations](../index.md) / gravitationalAccelerationOn1By2
+[@interstellar-tools/equations](../index.md) / accelerationOn1By2
 
-# Function: gravitationalAccelerationOn1By2()
+# Function: accelerationOn1By2()
 
 ```ts
-function gravitationalAccelerationOn1By2(
+function accelerationOn1By2(
   m2: number,
   r1: Vector3DTupleType,
   r2: Vector3DTupleType,
@@ -13,7 +13,7 @@ function gravitationalAccelerationOn1By2(
 ```
 
 Defined in:
-[law-of-gravitation.ts:201](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/law-of-gravitation.ts#L201)
+[gravity/acceleration-on1-by2.ts:69](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/equations/src/categories/gravity/acceleration-on1-by2.ts#L69)
 
 Gravitational **acceleration** of body 1 due to body 2 (vector, m/s²).
 
@@ -75,14 +75,14 @@ const mEarth = 5.972e24; // kg
 const rSat: [number, number, number] = [7.0e6, 0, 0]; // m
 const rEarth: [number, number, number] = [0, 0, 0];
 
-const a = gravitationalAccelerationOn1By2(mSat, mEarth, rSat, rEarth);
+const a = accelerationOn1By2(mSat, mEarth, rSat, rEarth);
 // ≈ [-8.14, 0, 0] m/s² (toward Earth)
 ```
 
 ```ts
 // Derive force from acceleration (F = m1 * a)
 const m1 = 1200; // kg spacecraft
-const a = gravitationalAccelerationOn1By2(m1, mEarth, rSat, rEarth);
+const a = accelerationOn1By2(m1, mEarth, rSat, rEarth);
 const F: [number, number, number] = [a[0] * m1, a[1] * m1, a[2] * m1]; // newtons
 ```
 

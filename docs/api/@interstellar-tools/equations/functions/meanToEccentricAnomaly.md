@@ -1,17 +1,17 @@
 [Documentation](../../../index.md) /
-[@interstellar-tools/equations](../index.md) / computeMeanAnomaly
+[@interstellar-tools/equations](../index.md) / meanToEccentricAnomaly
 
-# Function: computeMeanAnomaly()
+# Function: meanToEccentricAnomaly()
 
 ```ts
-function computeMeanAnomaly(
+function meanToEccentricAnomaly(
   body: CelestialBodyType,
   timeStep: TemporalInterface
 ): number;
 ```
 
 Defined in:
-[compute-mean-anomaly.ts:69](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/equations/src/compute-mean-anomaly.ts#L69)
+[anomalies/mean-to-eccentric-anomaly.ts:58](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/equations/src/categories/anomalies/mean-to-eccentric-anomaly.ts#L58)
 
 Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
 
@@ -52,7 +52,7 @@ If the body's eccentricity is outside the range $0 \leq e < 1$.
 ## Example
 
 ```ts
-import { computeMeanAnomaly } from './compute-mean-anomaly';
+import { meanToEccentricAnomaly } from './compute-mean-anomaly';
 
 const mars: CelestialBodyType = {
   name: 'Mars',
@@ -62,7 +62,7 @@ const mars: CelestialBodyType = {
 };
 
 const timeStep: TemporalInterface = { value: 1, unit: 'day' }; // 1-day step
-const meanAnomaly = computeMeanAnomaly(mars, timeStep);
+const meanAnomaly = meanToEccentricAnomaly(mars, timeStep);
 console.log(meanAnomaly); // Output: Computed mean anomaly in radians
 ```
 

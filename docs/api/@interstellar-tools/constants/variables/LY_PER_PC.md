@@ -8,7 +8,7 @@ const LY_PER_PC: number;
 ```
 
 Defined in:
-[distance.ts:109](https://github.com/phun-ky/interstellar-tools/blob/2cdf06cf02aaf939d94f5ce03954115548b3bf5b/packages/constants/src/distance.ts#L109)
+[distance.ts:109](https://github.com/phun-ky/interstellar-tools/blob/7f69ef1cdcae94524fd5860b2f8dc549143e8207/packages/constants/src/distance.ts#L109)
 
 Light-years per parsec.
 
