@@ -26,6 +26,8 @@
  * @returns {number} Circular speed ($ v_c $) (m/s).
  * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error | Error} If inputs are non-finite or out of domain.
  *
+ * @see {@link visVivaSpeed}
+ *
  * @example
  * ```ts
  * // LEO ~400 km altitude around Earth
