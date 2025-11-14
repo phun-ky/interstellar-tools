@@ -2,11 +2,10 @@ import { Radians } from '@interstellar-tools/types';
 
 import { wrapAngle } from '../angle/wrap-angle';
 
+/* node:coverage disable */
 /**
  * Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly eccentric orbits
  * ($e > 0.9$) using an iterative numerical approach.
- *
- * ---
  *
  * **Mathematical Explanation:**
  *
@@ -58,13 +57,11 @@ import { wrapAngle } from '../angle/wrap-angle';
  * 3. **Angle Wrapping (Elliptical Only):**
  *    - The result is wrapped using `wrapAngle()` for consistency.
  *
- * ---
  *
  * **Performance Considerations:**
  * - **Typically converges in fewer than 10 iterations for $e > 0.9$.**
  * - **Time complexity:** $O(1)$ for standard convergence.
  *
- * ---
  *
  * @param {Radians} M - Mean anomaly ($M$) in **radians**.
  * @param {number} e - Orbital eccentricity ($e > 0.9$ for high-eccentricity orbits).
@@ -72,7 +69,6 @@ import { wrapAngle } from '../angle/wrap-angle';
  * @param {number} [tolerance=1e-9] - Convergence criterion for stopping the iteration.
  * @returns {Radians} The **eccentric anomaly** ($E$) in **radians** (wrapped to $[-\pi, \pi]$ for elliptical orbits).
  *
- * ---
  *
  * @example
  * ```ts
@@ -92,12 +88,12 @@ import { wrapAngle } from '../angle/wrap-angle';
  * console.log(solveKeplerHighEccentricity(M_hyperbolic, e_hyperbolic));
  * ```
  *
- * ---
- *
  * @see [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
  * @see [Hyperbolic Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Hyperbolic_trajectory#Hyperbolic_anomaly)
  * @group Kepler Solvers
+ *
  */
+/* node:coverage enable */
 export const solveKeplerHighEccentricity = (
   M: Radians,
   e: number,

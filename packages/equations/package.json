@@ -106,11 +106,11 @@
     "release": "release-it",
     "test": "tsx --test **/__tests__/**/*.spec.ts",
     "pretest:ci": "rm -rf coverage && mkdir -p coverage",
-    "test:ci": "glob -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
+    "test:ci": "glob -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-coverage-exclude='**/__tests__/helpers/**' --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
     "@interstellar-tools/temporal": "^0.1.0",
-    "@interstellar-tools/types": "^0.2.0",
+    "@interstellar-tools/types": "^0.1.2",
     "@interstellar-tools/constants": "^0.1.2"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import { PeriApoRadiiType } from '@interstellar-tools/types';
 
+/* node:coverage disable */
 /**
  * **Peri/apoapsis radii** from semi-major axis ($ a $) and eccentricity ($ e $).
  *
@@ -43,6 +44,7 @@ import { PeriApoRadiiType } from '@interstellar-tools/types';
  *
  * @group Orbits
  */
+/* node:coverage enable */
 export const periApoapsisRadii = (a: number, e: number): PeriApoRadiiType => {
   if (!Number.isFinite(a) || a === 0) {
     throw new Error('a must be finite and non-zero (meters).');

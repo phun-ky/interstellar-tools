@@ -12,12 +12,15 @@ import { TWO_PI } from '@interstellar-tools/constants';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly';
 
 const EPSILON = 1e-10; // Increased tolerance for floating-point comparisons
+
+/* node:coverage disable */
 const assertApproxEqual = (actual: number, expected: number) => {
   assert.ok(
     Math.abs(actual - expected) < EPSILON,
     `Expected ~${expected}, got ${actual}`
   );
 };
+/* node:coverage enable */
 
 describe('meanToEccentricAnomaly', () => {
   test('Circular Orbit (e=0)', () => {
@@ -29,7 +32,9 @@ describe('meanToEccentricAnomaly', () => {
     const timeStep: TemporalInterface = { value: 100, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
+    /* node:coverage disable */
     const expectedM = wrapAngle(Math.PI / 2 + meanMotion * 100);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -46,7 +51,9 @@ describe('meanToEccentricAnomaly', () => {
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 =
       body.e === 0 ? body.angle : trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 50);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -63,7 +70,9 @@ describe('meanToEccentricAnomaly', () => {
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const maxAllowedTimeStep = 10 * periodInDays;
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * maxAllowedTimeStep);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -105,7 +114,9 @@ describe('meanToEccentricAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 0.25);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -121,7 +132,9 @@ describe('meanToEccentricAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 10);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -138,7 +151,9 @@ describe('meanToEccentricAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 1e-5); // Minimum time step
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -154,7 +169,9 @@ describe('meanToEccentricAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 100);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -170,7 +187,9 @@ describe('meanToEccentricAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 0.25);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -186,7 +205,9 @@ describe('meanToEccentricAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 10);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
@@ -202,7 +223,9 @@ describe('meanToEccentricAnomaly', () => {
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
+    /* node:coverage disable */
     const expectedM = wrapAngle(M0 + meanMotion * 5);
+    /* node:coverage enable */
     const result = meanToEccentricAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);

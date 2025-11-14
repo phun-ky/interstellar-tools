@@ -3,6 +3,7 @@ import type {
   TemporalUnitType
 } from '@interstellar-tools/types';
 
+/* node:coverage disable */
 /**
  * Lookup table that **normalizes user-facing time unit aliases** (and the canonical
  * symbols themselves) to a single, canonical {@link TemporalUnitType}.
@@ -32,6 +33,7 @@ import type {
  * @see https://www.bipm.org/en/publications/si-brochure  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year for yr/kyr/Myr/Gyr)
  */
+/* node:coverage enable */
 export const NORMALIZE_UNIT = {
   // canonical already map to themselves:
   s: 's',
@@ -86,6 +88,7 @@ export const NORMALIZE_UNIT = {
   TemporalUnitType
 >;
 
+/* node:coverage disable */
 /**
  * Normalize a user-provided **temporal unit string** into a canonical {@link TemporalUnitType}.
  *
@@ -124,6 +127,7 @@ export const NORMALIZE_UNIT = {
  * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure - second/day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year for yr/kyr/Myr/Gyr)
  */
+/* node:coverage enable */
 export const normalizeTemporalUnit = (u: string): TemporalUnitType => {
   const k = u.trim();
   const v = NORMALIZE_UNIT[k as keyof typeof NORMALIZE_UNIT];

@@ -11,6 +11,7 @@ import { wrapAngle } from '../angle/wrap-angle';
 import { trueToMeanAnomaly } from './true-to-mean-anomaly';
 import { areEqual } from './utils/are-equal';
 
+/* node:coverage disable */
 /**
  * Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
  *
@@ -55,6 +56,7 @@ import { areEqual } from './utils/are-equal';
  * @see [Orbital Mechanics (NASA)](https://solarsystem.nasa.gov/basics/chapter2-2/)
  * @group Anomalies
  */
+/* node:coverage enable */
 export const meanToEccentricAnomaly = (
   body: CelestialBodyType,
   timeStep: TemporalInterface

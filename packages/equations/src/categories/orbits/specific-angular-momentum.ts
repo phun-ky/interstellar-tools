@@ -1,5 +1,6 @@
 import { Vector3DTupleType } from '@interstellar-tools/types';
 
+/* node:coverage disable */
 /**
  * **Specific angular momentum** ($ h $) (scalar magnitude).
  *
@@ -52,6 +53,7 @@ import { Vector3DTupleType } from '@interstellar-tools/types';
  * @see {@link specificAngularMomentumFromElements} (if you compute from ($ a,e,\mu $))
  * @group Orbits
  */
+/* node:coverage enable */
 export const specificAngularMomentum = (
   r: Vector3DTupleType,
   v: Vector3DTupleType
