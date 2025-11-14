@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.3.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.2.0...@interstellar-tools/temporal@0.3.0) (2025-11-14)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.3.0 ([743eb04](https://github.com/phun-ky/interstellar-tools/commit/743eb0490e921bbce2bea1cec22984c180f19b44))
+* 🤖 @interstellar-tools/equations@0.3.0 ([7e924d7](https://github.com/phun-ky/interstellar-tools/commit/7e924d71d80badf11003598de78c8e72d430942e))
+* 🤖 @interstellar-tools/types@0.2.0 ([7799a15](https://github.com/phun-ky/interstellar-tools/commit/7799a1536ce12f180c4f965038c09422114d57e2))
+* 🤖 Delete files that is now in `.gitignore` ([cbb43f7](https://github.com/phun-ky/interstellar-tools/commit/cbb43f7de01ac00540c06aef4517b20aa9258280))
+* 🤖 reinstall ([42dcb41](https://github.com/phun-ky/interstellar-tools/commit/42dcb41aa11952e7ae11e5dfab33d12aed80310d))
+* 🤖 Update dependencies ([7f69ef1](https://github.com/phun-ky/interstellar-tools/commit/7f69ef1cdcae94524fd5860b2f8dc549143e8207))
+* 🤖 Update todo ([5089b31](https://github.com/phun-ky/interstellar-tools/commit/5089b3130a0ee1ffa8dc20db5c1543ac645aa77b))
+
+### Documentation
+
+* ✏️ Add link to visVivaSpeed in circularSpeed ([f55d03c](https://github.com/phun-ky/interstellar-tools/commit/f55d03c861ebe7d658e4929a7e80e2ab39137acb))
+* ✏️ Update and refactor/regroup documentation ([107c209](https://github.com/phun-ky/interstellar-tools/commit/107c209c16b4c15029eb686f4ffaf5387abe70ca))
+* ✏️ Update documentation ([b6b46ae](https://github.com/phun-ky/interstellar-tools/commit/b6b46ae674ac82d6d04d8f8b695eda2d05bbfb0a))
+* ✏️ Update link in example ([688a1e1](https://github.com/phun-ky/interstellar-tools/commit/688a1e188ddfe8b8f6478a12c534eb7fde80a55a))
+* ✏️ Use group instead of categories ([37c1f0c](https://github.com/phun-ky/interstellar-tools/commit/37c1f0c5cb56904a97ffcb9c7a1a891e226d923a))
+
+### Feature
+
+* 🎸 Add function for specificAngularMomentum equation ([e0ff3c2](https://github.com/phun-ky/interstellar-tools/commit/e0ff3c263a77605d7fd0ba3b01a73c6b7b851777))
+* 🎸 Add function for the periApoapsisRadii equation ([6f23892](https://github.com/phun-ky/interstellar-tools/commit/6f238923e7cd3811eb231103468f717080a78b27))
+* 🎸 Add new equation for escape speed ([b2fa558](https://github.com/phun-ky/interstellar-tools/commit/b2fa558011d845407b14fe9ca9a4a4435ef00b52))
+
+### Refactoring
+
+* 💡 Move equations in categorized folders ([1d7c8e3](https://github.com/phun-ky/interstellar-tools/commit/1d7c8e336328d001e8362f0e65354a600f806e0a))
+* 💡 Recategorize the equations ([b02ea21](https://github.com/phun-ky/interstellar-tools/commit/b02ea2173dfc5458d23ba8e154f315c6eecf3261))
+* 💡 Rename categories ([d5c1919](https://github.com/phun-ky/interstellar-tools/commit/d5c19194675a2e74ef04d5905c0d6763b157a7a4))
+* 💡 Rename test files ([39d50d3](https://github.com/phun-ky/interstellar-tools/commit/39d50d364df57cdc50a72d036a7e6f36f9c94df6))
+
 ## [0.2.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.1.2...@interstellar-tools/temporal@0.2.0) (2025-11-13)
 
 ### Tasks
