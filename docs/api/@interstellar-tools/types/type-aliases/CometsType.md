@@ -1,5 +1,5 @@
-[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
-/ CometsType
+[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
+CometsType
 
 # Type Alias: CometsType
 
@@ -8,7 +8,7 @@ type CometsType = CometInterface[];
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/celestial-bodies/comets.ts#L96)
+[celestial-bodies/comets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/celestial-bodies/comets.ts#L96)
 
 Type alias for an array of **comets**.
 

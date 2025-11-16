@@ -1,7 +1,7 @@
 {
   "name": "interstellar-tools",
   "version": "0.1.0",
-  "description": "A set of tools",
+  "description": "TypeScript monorepo for open, reliable building blocks in orbital mechanics and space software. Equations, constants, time utilities, and strong types for simulation, visualization, mission tooling, and teaching.",
   "keywords": [
     "interstellar",
     "tools",

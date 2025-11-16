@@ -138,9 +138,15 @@ html.ph body {
 }
 
 .VPHero {
-  background-image: url(/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg);
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(38, 42, 59, 0.9) 0,
+      rgba(24, 26, 34, 0.76) 100%
+    ),
+    url(/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto, cover;
   background-position: top center;
 
   & .heading {
@@ -512,5 +518,35 @@ html.ph body {
     color: var(--docsearch-muted-color);
     text-transform: lowercase;
     font-family: var(--ph-font-family-code);
+  }
+}
+
+.vp-doc blockquote::before {
+  content: '“';
+  font-size: 10rem;
+  line-height: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .vp-doc blockquote {
+    padding: 5rem 1.1428571em 0.8571429em 4rem;
+  }
+}
+.vp-doc blockquote {
+  font-weight: 500;
+  margin: 0;
+  border: 0;
+  font-size: 1.125rem;
+  font-style: italic;
+  line-height: 1.75rem;
+  position: relative;
+  border-radius: 0.375rem;
+  padding: 3rem 1.1428571em 0.8571429em 2rem;
+
+  & p {
+    margin: 1.25em 0;
   }
 }
