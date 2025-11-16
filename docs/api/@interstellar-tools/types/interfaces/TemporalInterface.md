@@ -4,7 +4,7 @@ TemporalInterface
 # Interface: TemporalInterface
 
 Defined in:
-[temporal.ts:136](https://github.com/phun-ky/interstellar-tools/blob/c2a8425242ca61bd8c42f52b2d0a00fec4fef730/packages/types/src/temporal.ts#L136)
+[temporal.ts:136](https://github.com/phun-ky/interstellar-tools/blob/b2010f0ceb9a258a911b7fc52647ffbd9e1b5bbc/packages/types/src/temporal.ts#L136)
 
 Typed container for a scalar **duration**, combining a numeric `value` (from
 [ValueInterface](ValueInterface.md)) with a canonical
@@ -40,7 +40,7 @@ unit: TemporalUnitType;
 ```
 
 Defined in:
-[temporal.ts:138](https://github.com/phun-ky/interstellar-tools/blob/c2a8425242ca61bd8c42f52b2d0a00fec4fef730/packages/types/src/temporal.ts#L138)
+[temporal.ts:138](https://github.com/phun-ky/interstellar-tools/blob/b2010f0ceb9a258a911b7fc52647ffbd9e1b5bbc/packages/types/src/temporal.ts#L138)
 
 Canonical temporal unit symbol (case-sensitive).
 
@@ -53,7 +53,7 @@ value: number;
 ```
 
 Defined in:
-[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/c2a8425242ca61bd8c42f52b2d0a00fec4fef730/packages/types/src/numeric.ts#L18)
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/b2010f0ceb9a258a911b7fc52647ffbd9e1b5bbc/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.
 
