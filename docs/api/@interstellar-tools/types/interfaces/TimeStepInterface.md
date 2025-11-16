@@ -1,10 +1,10 @@
-[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
-/ TimeStepInterface
+[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
+TimeStepInterface
 
 # Interface: TimeStepInterface
 
 Defined in:
-[temporal.ts:153](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/temporal.ts#L153)
+[temporal.ts:153](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/temporal.ts#L153)
 
 Represents a **time step measurement** in simulation, restricted to days.
 
@@ -27,7 +27,7 @@ unit: 'd';
 ```
 
 Defined in:
-[temporal.ts:154](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/temporal.ts#L154)
+[temporal.ts:154](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/temporal.ts#L154)
 
 The unit is always **days**.
 
@@ -40,7 +40,7 @@ value: number;
 ```
 
 Defined in:
-[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/numeric.ts#L18)
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.
 

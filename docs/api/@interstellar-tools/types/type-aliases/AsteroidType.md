@@ -1,5 +1,5 @@
-[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
-/ AsteroidType
+[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
+AsteroidType
 
 # Type Alias: AsteroidType
 
@@ -13,7 +13,7 @@ type AsteroidType =
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:24](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/celestial-bodies/asteroids.ts#L24)
+[celestial-bodies/asteroids.ts:24](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/celestial-bodies/asteroids.ts#L24)
 
 High-level **orbital class** of an asteroid (by dynamical region).
 

@@ -1,5 +1,5 @@
-[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
-/ Vector3DTupleType
+[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
+Vector3DTupleType
 
 # Type Alias: Vector3DTupleType
 
@@ -8,7 +8,7 @@ type Vector3DTupleType = readonly [number, number, number];
 ```
 
 Defined in:
-[math.ts:23](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/math.ts#L23)
+[math.ts:23](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/math.ts#L23)
 
 A read-only 3D vector tuple `[x, y, z]`.
 

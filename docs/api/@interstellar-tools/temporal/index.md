@@ -1,4 +1,4 @@
-[Documentation](../../packages.md) /
+[Documentation](../../index.md) /
 [**@interstellar-tools/temporal**](https://github.com/interstellar-tools/temporal)
 
 # [**@interstellar-tools/temporal**](https://github.com/interstellar-tools/temporal)

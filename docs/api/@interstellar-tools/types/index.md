@@ -1,4 +1,4 @@
-[Documentation](../../packages.md) /
+[Documentation](../../index.md) /
 [**@interstellar-tools/types**](https://github.com/interstellar-tools/types)
 
 # [**@interstellar-tools/types**](https://github.com/interstellar-tools/types)

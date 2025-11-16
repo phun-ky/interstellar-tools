@@ -34,7 +34,7 @@
     "compactFolders": false,
     "excludeReferences": true
   },
-  "readme": "./docs/public/README.md",
+  "readme": "none",
   "indexFormat": "table",
   "interfacePropertiesFormat": "list",
   "classPropertiesFormat": "table",

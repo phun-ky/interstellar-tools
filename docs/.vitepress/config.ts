@@ -90,11 +90,6 @@ export default withMermaid(
             ]
           },
           {
-            text: 'Usage',
-            collapsed: false,
-            items: [{ text: 'Types', link: '/guide/usage/types' }]
-          },
-          {
             text: 'Development',
             link: '/guide/development'
           },

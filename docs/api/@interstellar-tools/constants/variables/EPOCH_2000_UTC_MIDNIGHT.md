@@ -1,4 +1,4 @@
-[Documentation](../../../packages.md) /
+[Documentation](../../../index.md) /
 [@interstellar-tools/constants](../index.md) / EPOCH_2000_UTC_MIDNIGHT
 
 # Variable: EPOCH_2000_UTC_MIDNIGHT
@@ -8,7 +8,7 @@ const EPOCH_2000_UTC_MIDNIGHT: Date;
 ```
 
 Defined in:
-[date.ts:55](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/constants/src/date.ts#L55)
+[date.ts:55](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/constants/src/date.ts#L55)
 
 **UTC midnight at the start of 2000-01-01** (convenient calendar anchor).
 

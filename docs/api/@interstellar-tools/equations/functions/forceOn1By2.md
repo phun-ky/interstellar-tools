@@ -1,4 +1,4 @@
-[Documentation](../../../packages.md) /
+[Documentation](../../../index.md) /
 [@interstellar-tools/equations](../index.md) / forceOn1By2
 
 # Function: forceOn1By2()
@@ -14,7 +14,7 @@ function forceOn1By2(
 ```
 
 Defined in:
-[gravity/force-on1-by2.ts:90](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/equations/src/categories/gravity/force-on1-by2.ts#L90)
+[gravity/force-on1-by2.ts:90](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/equations/src/categories/gravity/force-on1-by2.ts#L90)
 
 Gravitational **force vector** on body 1 due to body 2 (newtons, N).
 

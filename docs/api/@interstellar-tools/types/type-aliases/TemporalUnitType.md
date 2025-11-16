@@ -1,5 +1,5 @@
-[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
-/ TemporalUnitType
+[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
+TemporalUnitType
 
 # Type Alias: TemporalUnitType
 
@@ -24,7 +24,7 @@ type TemporalUnitType =
 ```
 
 Defined in:
-[temporal.ts:37](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/temporal.ts#L37)
+[temporal.ts:37](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/temporal.ts#L37)
 
 Canonical **temporal unit symbols** for spacetime/physics **durations**.
 

@@ -1,4 +1,4 @@
-[Documentation](../../../packages.md) /
+[Documentation](../../../index.md) /
 [@interstellar-tools/equations](../index.md) / circularSpeed
 
 # Function: circularSpeed()
@@ -8,7 +8,7 @@ function circularSpeed(r: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/circular-speed.ts:41](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/equations/src/categories/orbits/circular-speed.ts#L41)
+[orbits/circular-speed.ts:41](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/equations/src/categories/orbits/circular-speed.ts#L41)
 
 **Circular speed** ($v_c$) for a body in a circular orbit at radius ($r$).
 

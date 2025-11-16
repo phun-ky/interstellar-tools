@@ -1,4 +1,4 @@
-[Documentation](../../packages.md) /
+[Documentation](../../index.md) /
 [**@interstellar-tools/constants**](https://github.com/interstellar-tools/constants)
 
 # [**@interstellar-tools/constants**](https://github.com/interstellar-tools/constants)

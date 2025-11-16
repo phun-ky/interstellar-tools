@@ -1,4 +1,4 @@
-[Documentation](../../../packages.md) /
+[Documentation](../../../index.md) /
 [@interstellar-tools/equations](../index.md) / trueToMeanAnomaly
 
 # Function: trueToMeanAnomaly()
@@ -8,7 +8,7 @@ function trueToMeanAnomaly(V: number, e: number): number;
 ```
 
 Defined in:
-[anomalies/true-to-mean-anomaly.ts:75](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L75)
+[anomalies/true-to-mean-anomaly.ts:75](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L75)
 
 Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's
 equation.

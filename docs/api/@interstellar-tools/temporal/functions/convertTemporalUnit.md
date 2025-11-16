@@ -1,5 +1,5 @@
-[Documentation](../../../packages.md) /
-[@interstellar-tools/temporal](../index.md) / convertTemporalUnit
+[Documentation](../../../index.md) / [@interstellar-tools/temporal](../index.md)
+/ convertTemporalUnit
 
 # Function: convertTemporalUnit()
 
@@ -11,7 +11,7 @@ function convertTemporalUnit(
 ```
 
 Defined in:
-[convert-temporal-unit.ts:96](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/temporal/src/convert-temporal-unit.ts#L96)
+[convert-temporal-unit.ts:96](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/temporal/src/convert-temporal-unit.ts#L96)
 
 Convert a temporal **duration** between any two canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md) units.

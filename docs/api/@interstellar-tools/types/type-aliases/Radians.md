@@ -1,5 +1,5 @@
-[Documentation](../../../packages.md) / [@interstellar-tools/types](../index.md)
-/ Radians
+[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
+Radians
 
 # Type Alias: Radians
 
@@ -8,7 +8,7 @@ type Radians = number;
 ```
 
 Defined in:
-[numeric.ts:32](https://github.com/phun-ky/interstellar-tools/blob/36922afbc3986f3d77a5bdac558edb19842b8584/packages/types/src/numeric.ts#L32)
+[numeric.ts:32](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/numeric.ts#L32)
 
 Type alias representing an angle in **radians**.
 

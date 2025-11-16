@@ -1,4 +1,4 @@
-[Documentation](../../packages.md) /
+[Documentation](../../index.md) /
 [**@interstellar-tools/equations**](https://github.com/interstellar-tools/equations)
 
 # [**@interstellar-tools/equations**](https://github.com/interstellar-tools/equations)

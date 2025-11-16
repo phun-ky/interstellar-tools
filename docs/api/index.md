@@ -1,14 +1,10 @@
-# [**@interstellar-tools**](https://github.com/interstellar-tools)
-
-This is the readme for the api documentation
-
 # Documentation
 
 ## Packages
 
-| Package                                            | Version | Description |
-| -------------------------------------------------- | ------- | ----------- |
-| [@interstellar-tools/constants](_media/index.md)   | 0.2.0   | constants   |
-| [@interstellar-tools/equations](_media/index-1.md) | 0.2.0   | equations   |
-| [@interstellar-tools/temporal](_media/index-2.md)  | 0.2.0   | temporal    |
-| [@interstellar-tools/types](_media/index-3.md)     | 0.2.0   | types       |
+| Package                                                                 | Version | Description                                                                                                                                                                                                  |
+| ----------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [@interstellar-tools/constants](@interstellar-tools/constants/index.md) | 0.3.0   | Authoritative physical and astronomical constants in SI units for consistent calculations.                                                                                                                   |
+| [@interstellar-tools/equations](@interstellar-tools/equations/index.md) | 0.3.0   | Curated, well-tested orbital mechanics and dynamics formulas (e.g., Newtonian gravity, vis-viva, Kepler's 3rd law, escape/circular speeds, specific energy, specific angular momentum, peri/apoapsis radii). |
+| [@interstellar-tools/temporal](@interstellar-tools/temporal/index.md)   | 0.3.0   | Time and epoch utilities for space applications (e.g., building blocks toward Julian dates, conversions, and ephemeris-friendly time handling).                                                              |
+| [@interstellar-tools/types](@interstellar-tools/types/index.md)         | 0.3.0   | Shared TypeScript types (e.g., 3D tuples, equation result interfaces) used across the monorepo to keep APIs predictable and safe.                                                                            |
