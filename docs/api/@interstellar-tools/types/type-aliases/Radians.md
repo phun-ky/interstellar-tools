@@ -8,7 +8,7 @@ type Radians = number;
 ```
 
 Defined in:
-[numeric.ts:32](https://github.com/phun-ky/interstellar-tools/blob/d29bdadfcfcf03c02ad5f61f28e4e281438ba3ee/packages/types/src/numeric.ts#L32)
+[numeric.ts:32](https://github.com/phun-ky/interstellar-tools/blob/c2a8425242ca61bd8c42f52b2d0a00fec4fef730/packages/types/src/numeric.ts#L32)
 
 Type alias representing an angle in **radians**.
 
