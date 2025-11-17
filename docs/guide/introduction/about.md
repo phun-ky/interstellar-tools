@@ -25,6 +25,13 @@ orbital and mission software easier to build and easier to verify.
   escape/circular speeds, specific energy, specific angular momentum,
   peri/apoapsis radii).
 
+::: warning
+
+These equations has not **_YET_** been battle-tested or tested to real world
+mechanics, YMMV!
+
+:::
+
 - **@interstellar-tools/temporal** Time and epoch utilities for space
   applications (e.g., building blocks toward Julian dates, conversions, and
   ephemeris-friendly time handling).
