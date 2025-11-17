@@ -34,6 +34,13 @@ orbital and mission software easier to build and easier to verify.
 - **@interstellar-tools/constants** Authoritative physical and astronomical
   constants in SI units for consistent calculations.
 
+::: warning
+
+These equations have not **_YET_** been battle-tested or tested to real world
+mechanics, YMMV!
+
+:::
+
 - **@interstellar-tools/equations** Curated, well-tested orbital mechanics and
   dynamics formulas (e.g., Newtonian gravity, vis-viva, Kepler's 3rd law,
   escape/circular speeds, specific energy, specific angular momentum,

@@ -34,14 +34,14 @@ export interface AsteroidBeltInterface {
  * @typedef {AsteroidBeltInterface[]} AsteroidBeltsType
  * @example
  * ```ts
- * const asteroidBelt: AsteroidBeltInterface = {
+ * const asteroidBelt: AsteroidBeltInterface = [{
  *   name: 'Main Belt',
  *   innerRadius: 2.1,
  *   outerRadius: 3.3,
  *   color: '#888888',
  *   opacity: 0.5,
  *   density: 100,
- * };
+ * }];
  * ```
  * @group Celestial Bodies
  */

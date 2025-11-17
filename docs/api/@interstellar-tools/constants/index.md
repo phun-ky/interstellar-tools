@@ -18,6 +18,19 @@ npm i --save @interstellar-tools/constants
 | ------------------------- | ----------------------------------------- |
 | [G_SI](variables/G_SI.md) | Gravitational constant **G** in SI units. |
 
+## Datasets
+
+| Variable                                      | Description                                                                         |
+| --------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [ASTEROID_BELTS](variables/ASTEROID_BELTS.md) | Predefined asteroid belts in the solar system visualization.                        |
+| [ASTEROIDS](variables/ASTEROIDS.md)           | Represents a collection of well-known asteroids within the solar system simulation. |
+| [COMETS](variables/COMETS.md)                 | Represents a collection of well-known comets within the solar system simulation.    |
+| [GALAXIES](variables/GALAXIES.md)             | Represents a collection of galaxies within the space visualization.                 |
+| [MOONS](variables/MOONS.md)                   | Represents a dataset of natural satellites (moons) in the solar system.             |
+| [PLANETS](variables/PLANETS.md)               | Represents a dataset of planets and planetoids in the solar system.                 |
+| [STARS](variables/STARS.md)                   | Represents a dataset of well-known stars within the Milky Way.                      |
+| [SYSTEMS](variables/SYSTEMS.md)               | Predefined star systems in the galaxy.                                              |
+
 ## Date
 
 | Variable                                                                              | Description                                                                                                      |
