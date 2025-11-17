@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.7.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.6.0...@interstellar-tools/temporal@0.7.0) (2025-11-17)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.7.0 ([f036954](https://github.com/phun-ky/interstellar-tools/commit/f03695451dcf443f4bba8bdfcf8421fcb39f2288))
+* 🤖 @interstellar-tools/equations@0.7.0 ([83644cb](https://github.com/phun-ky/interstellar-tools/commit/83644cba56856918b68e7c22243a923ca25b9cf2))
+* 🤖 @interstellar-tools/types@0.6.0 ([1d94921](https://github.com/phun-ky/interstellar-tools/commit/1d94921ca8ba590fe5cb7f1f00da780f689f64aa))
+* 🤖 Update TODO ([5777b24](https://github.com/phun-ky/interstellar-tools/commit/5777b24a804cf4359280008d250ef791de49015c))
+
+### Documentation
+
+* ✏️ Regenerate the documentation ([153a4f1](https://github.com/phun-ky/interstellar-tools/commit/153a4f163f98873b26bc1ee51c9e28bac00873fe))
+
+### Feature
+
+* 🎸 Add flightPathAngleFromTrueAnomaly (γ from ν,e) ([c68df74](https://github.com/phun-ky/interstellar-tools/commit/c68df7479273204439f6de8025488b1bed3f54c1))
+
+### Bug
+
+* 🐛 Add missing export ([e71c473](https://github.com/phun-ky/interstellar-tools/commit/e71c4737f2940e8dc1d4b7896dd25a9b6afe17df))
+
+### Refactoring
+
+* 💡 Refine the type for Radians ([0bd6eda](https://github.com/phun-ky/interstellar-tools/commit/0bd6edadbc73b90598cd08a1edb08b71b989d534))
+* 💡 Robust solveKeplerBisection + tests ([40b5596](https://github.com/phun-ky/interstellar-tools/commit/40b559633c3f7a525120a836a57a9115d4822708))
+
 ## [0.6.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.5.0...@interstellar-tools/temporal@0.6.0) (2025-11-17)
 
 ### Tasks
