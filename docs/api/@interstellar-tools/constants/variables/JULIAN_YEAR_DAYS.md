@@ -8,6 +8,6 @@ const JULIAN_YEAR_DAYS: 365.25;
 ```
 
 Defined in:
-[temporal.ts:51](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/constants/src/temporal.ts#L51)
+[temporal.ts:51](https://github.com/phun-ky/interstellar-tools/blob/ff0caf6b6530d3c273826ec4e8273e6792a27186/packages/constants/src/temporal.ts#L51)
 
 Length of the **Julian year** in SI days (exactly 365.25).

@@ -4,11 +4,11 @@
 # Function: trueToMeanAnomaly()
 
 ```ts
-function trueToMeanAnomaly(V: number, e: number): number;
+function trueToMeanAnomaly(V: Radians, e: number): Radians;
 ```
 
 Defined in:
-[anomalies/true-to-mean-anomaly.ts:75](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L75)
+[anomalies/true-to-mean-anomaly.ts:77](https://github.com/phun-ky/interstellar-tools/blob/ff0caf6b6530d3c273826ec4e8273e6792a27186/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L77)
 
 Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's
 equation.
@@ -55,14 +55,14 @@ this range**.
 
 ## Parameters
 
-| Parameter | Type     | Description                                     |
-| --------- | -------- | ----------------------------------------------- |
-| `V`       | `number` | **True anomaly** ($\nu$) in radians.            |
-| `e`       | `number` | **Eccentricity** of the orbit ($0 \leq e < 1$). |
+| Parameter | Type                                             | Description                                     |
+| --------- | ------------------------------------------------ | ----------------------------------------------- |
+| `V`       | [`Radians`](../../types/type-aliases/Radians.md) | **True anomaly** ($\nu$) in radians.            |
+| `e`       | `number`                                         | **Eccentricity** of the orbit ($0 \leq e < 1$). |
 
 ## Returns
 
-`number`
+[`Radians`](../../types/type-aliases/Radians.md)
 
 The **mean anomaly** ($M$) in radians, wrapped to the range $[0, 2\pi]$.
 
