@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.6.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.5.0...@interstellar-tools/constants@0.6.0) (2025-11-17)
+
+### Tasks
+
+* 🤖 @interstellar-tools/equations@0.5.0 ([3d23750](https://github.com/phun-ky/interstellar-tools/commit/3d23750c59616cef3aaa15e8ec8cef75e1bc047d))
+* 🤖 @interstellar-tools/temporal@0.5.0 ([89c0887](https://github.com/phun-ky/interstellar-tools/commit/89c088772797424ffc288823664a8da9cf44f500))
+* 🤖 @interstellar-tools/types@0.5.0 ([e291e82](https://github.com/phun-ky/interstellar-tools/commit/e291e82be38a2b411c3a10b6c6822d53bb0abf34))
+* 🤖 Add scripts to generate documentation partials ([40f7978](https://github.com/phun-ky/interstellar-tools/commit/40f79785204080aa51e6ac5cd00a7402ef563cb5))
+* 🤖 Make sure we can reference types in constants ([5116664](https://github.com/phun-ky/interstellar-tools/commit/511666434e4933c34fdaa0091d081121ef509832))
+* 🤖 Update dependencies ([cf34854](https://github.com/phun-ky/interstellar-tools/commit/cf34854021583320af02acb14e96d29ec3c9afeb))
+
+### Documentation
+
+* ✏️ Add warning to equatinos to let users know YMMV ([070dde2](https://github.com/phun-ky/interstellar-tools/commit/070dde2b032b7a1ba261af1781141ac24afe2a8c))
+* ✏️ Regenerate docs ([608dc7b](https://github.com/phun-ky/interstellar-tools/commit/608dc7b8f05ebb7ebbfbc4c62613e1ccdf458f9d))
+* ✏️ Some adjustments to jsdoc ([8afccb4](https://github.com/phun-ky/interstellar-tools/commit/8afccb4c7410fc7575141b671563dde10d6a6609))
+* ✏️ Use correct tense ([c5151ee](https://github.com/phun-ky/interstellar-tools/commit/c5151eeb3ced5644825bc7219f6cc964acd40938))
+
+### Feature
+
+* 🎸 Add datasets for celestial bodies to constants ([ea0a869](https://github.com/phun-ky/interstellar-tools/commit/ea0a86937873dd87778d2639a79625d7c05309a7))
+
+### Bug
+
+* 🐛 Add missing export ([6e99843](https://github.com/phun-ky/interstellar-tools/commit/6e9984380d54de3ea30862ebc94b39dc0cd8312c))
+
+### Refactoring
+
+* 💡 Adjust table styling ([1edba1d](https://github.com/phun-ky/interstellar-tools/commit/1edba1d941da39a9f8403706e55af638e235f85c))
+
 ## [0.5.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.4.0...@interstellar-tools/constants@0.5.0) (2025-11-16)
 
 ### Tasks
