@@ -1,4 +1,4 @@
-import { PlanetsType } from '@interstellar-tools/types';
+import { PlanetsType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a dataset of planets and planetoids in the solar system.
@@ -40,7 +40,7 @@ export const PLANETS: PlanetsType = [
     /** Visual representation color */
     color: '#8B8B8B',
     /** Initial angle in orbit at J2000 */
-    angle: 0.843,
+    angle: 0.843 as Radians,
     /** Orbital period in days */
     period: { value: -87.969, unit: 'd' },
     /** Initial position coordinates in AU */
@@ -58,7 +58,7 @@ export const PLANETS: PlanetsType = [
     e: 0.0068,
     radius: { value: 6052, unit: 'km' },
     color: '#E49B0F',
-    angle: 1.338,
+    angle: 1.338 as Radians,
     period: { value: -224.701, unit: 'd' },
     x: { value: 0.723, unit: 'au' },
     y: { value: 0.012, unit: 'au' },
@@ -73,7 +73,7 @@ export const PLANETS: PlanetsType = [
     e: 0.0167,
     radius: { value: 6371, unit: 'km' },
     color: '#1E90FF',
-    angle: 1.796,
+    angle: 1.796 as Radians,
     period: { value: -365.256, unit: 'd' },
     x: { value: 1.0, unit: 'au' },
     y: { value: 0.017, unit: 'au' },
@@ -88,7 +88,7 @@ export const PLANETS: PlanetsType = [
     e: 0.0934,
     radius: { value: 3389, unit: 'km' },
     color: '#D14A28',
-    angle: 2.182,
+    angle: 2.182 as Radians,
     period: { value: -686.98, unit: 'd' },
     x: { value: 1.524, unit: 'au' },
     y: { value: 0.024, unit: 'au' },
@@ -101,7 +101,7 @@ export const PLANETS: PlanetsType = [
     system: 'Sun',
     a: { value: 2.766, unit: 'au' },
     e: 0.079,
-    angle: 1.97920337,
+    angle: 1.97920337 as Radians,
     period: { value: -1680.5, unit: 'd' },
     radius: { value: 469.7, unit: 'km' },
     color: '#C0C0C0',
@@ -118,7 +118,7 @@ export const PLANETS: PlanetsType = [
     e: 0.0489,
     radius: { value: 69911, unit: 'km' },
     color: '#C08850',
-    angle: 0.634,
+    angle: 0.634 as Radians,
     period: { value: -4332.59, unit: 'd' },
     x: { value: 5.203, unit: 'au' },
     y: { value: 0.017, unit: 'au' },
@@ -133,7 +133,7 @@ export const PLANETS: PlanetsType = [
     e: 0.0565,
     radius: { value: 58232, unit: 'km' },
     color: '#D2B48C',
-    angle: 1.101,
+    angle: 1.101 as Radians,
     period: { value: -10759.22, unit: 'd' },
     x: { value: 9.537, unit: 'au' },
     y: { value: 0.019, unit: 'au' },
@@ -148,7 +148,7 @@ export const PLANETS: PlanetsType = [
     e: 0.0463,
     radius: { value: 25362, unit: 'km' },
     color: '#78D6FF',
-    angle: 2.983,
+    angle: 2.983 as Radians,
     period: { value: -30687.15, unit: 'd' },
     x: { value: 19.191, unit: 'au' },
     y: { value: -0.021, unit: 'au' },
@@ -163,7 +163,7 @@ export const PLANETS: PlanetsType = [
     e: 0.0086,
     radius: { value: 24622, unit: 'km' },
     color: '#0053D6',
-    angle: 0.526,
+    angle: 0.526 as Radians,
     period: { value: -60190.03, unit: 'd' },
     x: { value: 30.069, unit: 'au' },
     y: { value: 0.03, unit: 'au' },
@@ -178,7 +178,7 @@ export const PLANETS: PlanetsType = [
     e: 0.2488,
     radius: { value: 1188, unit: 'km' },
     color: '#B0A99F',
-    angle: 4.585,
+    angle: 4.585 as Radians,
     period: { value: -90560.0, unit: 'd' },
     x: { value: 39.482, unit: 'au' },
     y: { value: -0.033, unit: 'au' },

@@ -1,4 +1,4 @@
-import { CometsType } from '@interstellar-tools/types';
+import { CometsType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a collection of well-known comets within the solar system simulation.
@@ -42,7 +42,7 @@ export const COMETS: CometsType = [
     /** Longitude of the ascending node in degrees */
     om: 58.42,
     /** Mean anomaly in radians at J2000 epoch */
-    angle: 0.669857,
+    angle: 0.669857 as Radians,
     /** Orbital period in days */
     period: { value: 27576, unit: 'd' }, // ~76 years
     /** Perihelion distance in AU */
@@ -64,7 +64,7 @@ export const COMETS: CometsType = [
     i: 89.4,
     w: 130.6,
     om: 282.5,
-    angle: 3.141593,
+    angle: 3.141593 as Radians,
     period: { value: -253533, unit: 'd' }, // ~695 years
     q: 0.914,
     color: '#00A6FF', // Electric blue (ionized tail appearance)
@@ -81,7 +81,7 @@ export const COMETS: CometsType = [
     i: 7.04, // Inclination in degrees
     w: 12.78, // Argument of perihelion in degrees
     om: 50.14, // Longitude of ascending node in degrees
-    angle: 0.0, // Initial angle (could be updated based on epoch)
+    angle: 0.0 as Radians, // Initial angle (could be updated based on epoch)
     period: { value: -2484, unit: 'd' }, // ~6.45 years
     q: 1.243, // Perihelion distance in AU
     color: '#AAAAAA', // Greyish surface color
@@ -99,7 +99,7 @@ export const COMETS: CometsType = [
     i: 11.8,
     w: 186.5,
     om: 334.6,
-    angle: 2.792527,
+    angle: 2.792527 as Radians,
     period: { value: -1204, unit: 'd' }, // ~3.3 years
     q: 0.34,
     color: '#FFD700', // Golden yellow (dusty tail, lower albedo)

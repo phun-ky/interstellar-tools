@@ -1,3 +1,5 @@
+import { Radians } from '@interstellar-tools/types';
+
 import { wrapAngle } from '../angle/wrap-angle';
 
 /**
@@ -37,10 +39,10 @@ import { wrapAngle } from '../angle/wrap-angle';
  *
  * ---
  *
- * @param {number} V - **True anomaly** ($\nu$) in radians.
+ * @param {Radians} V - **True anomaly** ($\nu$) in radians.
  * @param {number} e - **Eccentricity** of the orbit ($0 \leq e < 1$).
  *
- * @returns {number} The **mean anomaly** ($M$) in radians, wrapped to the range $[0, 2\pi]$.
+ * @returns {Radians} The **mean anomaly** ($M$) in radians, wrapped to the range $[0, 2\pi]$.
  *
  * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If the **eccentricity** ($e$) is outside the valid range $0 \leq e < 1$.
  *
@@ -72,7 +74,7 @@ import { wrapAngle } from '../angle/wrap-angle';
  * @see [Orbital Eccentricity (Wikipedia)](https://en.wikipedia.org/wiki/Orbital_eccentricity)
  * @group Anomalies
  */
-export const trueToMeanAnomaly = (V: number, e: number): number => {
+export const trueToMeanAnomaly = (V: Radians, e: number): Radians => {
   if (e < 0 || e >= 1) {
     throw new RangeError(
       'Eccentricity (e) must be in the range 0 ≤ e < 1 for elliptical orbits.'
@@ -94,5 +96,5 @@ export const trueToMeanAnomaly = (V: number, e: number): number => {
   const M = E - e * Math.sin(E);
 
   // Ensure M is always in the range [0, 2π]
-  return wrapAngle(M);
+  return wrapAngle(M) as Radians;
 };

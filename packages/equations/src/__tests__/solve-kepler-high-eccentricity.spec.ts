@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 import { solveKeplerHighEccentricity } from '../categories/kepler/solve-kepler-high-eccentricity';
+import { Radians } from '@interstellar-tools/types';
 
 const EPSILON = 1e-9;
 const assertApproxEqual = (actual: number, expected: number) => {
@@ -40,7 +41,7 @@ const testCases = [
 describe('solveKeplerHighEccentricity (Real Data Tests)', () => {
   for (const { name, M, e, expected } of testCases) {
     test(name, () => {
-      const result = solveKeplerHighEccentricity(M, e);
+      const result = solveKeplerHighEccentricity(M as Radians, e);
 
       assertApproxEqual(result, expected);
     });
@@ -51,7 +52,7 @@ describe('solveKeplerHighEccentricity (General Behavior Tests)', () => {
   test('converges for typical values', () => {
     const M = Math.PI / 4; // 45 degrees in radians
     const e = 0.95; // High eccentricity
-    const result = solveKeplerHighEccentricity(M, e);
+    const result = solveKeplerHighEccentricity(M as Radians, e);
 
     assertApproxEqual(result, 1.7242367109653982);
   });
@@ -59,7 +60,7 @@ describe('solveKeplerHighEccentricity (General Behavior Tests)', () => {
   test('works for small M values', () => {
     const M = 0.01;
     const e = 0.99;
-    const result = solveKeplerHighEccentricity(M, e);
+    const result = solveKeplerHighEccentricity(M as Radians, e);
 
     assertApproxEqual(result, 0.3422703164917758);
   });
@@ -67,7 +68,7 @@ describe('solveKeplerHighEccentricity (General Behavior Tests)', () => {
   test('handles M = 0 case correctly', () => {
     const M = 0;
     const e = 0.98;
-    const result = solveKeplerHighEccentricity(M, e);
+    const result = solveKeplerHighEccentricity(M as Radians, e);
 
     assertApproxEqual(result, 0); // Eccentric anomaly should also be zero
   });
@@ -75,7 +76,7 @@ describe('solveKeplerHighEccentricity (General Behavior Tests)', () => {
   test('handles large M values', () => {
     const M = 5; // Large mean anomaly
     const e = 0.95;
-    const result = solveKeplerHighEccentricity(M, e);
+    const result = solveKeplerHighEccentricity(M as Radians, e);
 
     assertApproxEqual(result, 4.181000769932799);
   });
@@ -84,7 +85,7 @@ describe('solveKeplerHighEccentricity (General Behavior Tests)', () => {
     const M = 10 * Math.PI; // Large anomaly
     const e = 0.97;
     const result = solveKeplerHighEccentricity(
-      M,
+      M as Radians,
       e,
       Math.max(50, Math.floor(M))
     );
@@ -96,7 +97,7 @@ describe('solveKeplerHighEccentricity (General Behavior Tests)', () => {
     const M = 3;
     const e = 0.999; // Extremely high eccentricity
     const result = solveKeplerHighEccentricity(
-      M,
+      M as Radians,
       e,
       Math.max(50, Math.floor(M)),
       1e-9

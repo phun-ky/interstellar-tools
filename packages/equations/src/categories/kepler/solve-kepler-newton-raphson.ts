@@ -89,7 +89,7 @@ export const solveKeplerNewtonRaphson = (
   e: number,
   maxIter: number,
   tolerance: number
-): Radians => {
+): Radians | number => {
   if (e < 0 || e >= 1) {
     throw new RangeError(`Invalid eccentricity: ${e}. Must be in range [0,1].`);
   }
@@ -122,7 +122,7 @@ export const solveKeplerNewtonRaphson = (
     E += correction;
 
     if (Math.abs(correction) < tolerance) {
-      return E; // Converged
+      return E as Radians; // Converged
     }
 
     iter++;

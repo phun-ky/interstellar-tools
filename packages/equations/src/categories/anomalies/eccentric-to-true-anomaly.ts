@@ -55,22 +55,20 @@ export const eccentricToTrueAnomaly = (E: Radians, e: number): Radians => {
 
   // Handle parabolic orbit (e = 1)
   if (e === 1) {
-    return 2 * Math.atan(E / 2); // Special formula for parabolic orbits
+    return (2 * Math.atan(E / 2)) as Radians; // Special formula for parabolic orbits
   }
 
   // Handle numerical instability near E = π
   const epsilon = 1e-10; // Small threshold for numerical stability
 
   if (Math.abs(Math.cos(E / 2)) < epsilon) {
-    return Math.PI; // True anomaly is π when E = π
+    return Math.PI as Radians; // True anomaly is π when E = π
   }
 
   // Convert eccentric anomaly (E) to true anomaly (V) for elliptical orbits
-  return (
-    2 *
+  return (2 *
     Math.atan2(
       Math.sqrt(1 + e) * Math.sin(E / 2),
       Math.sqrt(1 - e) * Math.cos(E / 2)
-    )
-  );
+    )) as Radians;
 };

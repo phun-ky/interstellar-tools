@@ -162,5 +162,5 @@ export const solveKeplerHighEccentricity = (
     lastValidE = wrapAngle(lastValidE);
   }
 
-  return lastValidE;
+  return lastValidE as Radians;
 };

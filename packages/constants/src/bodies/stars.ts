@@ -1,4 +1,4 @@
-import { StarsType } from '@interstellar-tools/types';
+import { Radians, StarsType } from '@interstellar-tools/types';
 
 /**
  * Represents a dataset of well-known stars within the Milky Way.
@@ -44,7 +44,7 @@ export const STARS: StarsType = [
     /** Orbital eccentricity */
     e: 0.07,
     /** Initial angle in orbit */
-    angle: 1.5707963267948966,
+    angle: 1.5707963267948966 as Radians,
     /** Orbital period in million years (Myr) */
     period: { value: -230, unit: 'Myr' }
   },
@@ -61,7 +61,7 @@ export const STARS: StarsType = [
     z: { value: 0, unit: 'ly' },
     e: 0.005,
     a: { value: 27230.011753394454, unit: 'ly' },
-    angle: 1.569867205171707,
+    angle: 1.569867205171707 as Radians,
     period: { value: -480, unit: 'Myr' }
   },
   {
@@ -76,7 +76,7 @@ export const STARS: StarsType = [
     z: { value: 0, unit: 'ly' },
     e: 0.004,
     a: { value: 27050.005155082687, unit: 'ly' },
-    angle: 1.5701789517599378,
+    angle: 1.5701789517599378 as Radians,
     period: { value: -410, unit: 'Myr' }
   },
   {
@@ -91,7 +91,7 @@ export const STARS: StarsType = [
     z: { value: 0, unit: 'ly' },
     e: 0.009,
     a: { value: 27375.280016832705, unit: 'ly' },
-    angle: 1.475524958596149,
+    angle: 1.475524958596149 as Radians,
     period: { value: -720, unit: 'Myr' }
   },
   {
@@ -106,7 +106,7 @@ export const STARS: StarsType = [
     z: { value: 0, unit: 'ly' },
     e: 0.006,
     a: { value: 27201.148872795795, unit: 'ly' },
-    angle: 1.5616057972952029,
+    angle: 1.5616057972952029 as Radians,
     period: { value: -550, unit: 'Myr' }
   }
 ] as const satisfies StarsType;

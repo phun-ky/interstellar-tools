@@ -76,7 +76,7 @@ export const meanToEccentricAnomaly = (
   const M0 = e === 0 ? angle : trueToMeanAnomaly(angle, e);
 
   if (timeStep.value === 0) {
-    return M0;
+    return M0 as Radians;
   }
 
   // Clamping small time steps to prevent unnecessary updates
@@ -95,5 +95,5 @@ export const meanToEccentricAnomaly = (
     newM = prevM;
   }
 
-  return newM;
+  return newM as Radians;
 };
