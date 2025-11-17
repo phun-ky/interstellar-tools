@@ -8,14 +8,14 @@ type CometsType = CometInterface[];
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/b2010f0ceb9a258a911b7fc52647ffbd9e1b5bbc/packages/types/src/celestial-bodies/comets.ts#L96)
+[celestial-bodies/comets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/ea0a86937873dd87778d2639a79625d7c05309a7/packages/types/src/celestial-bodies/comets.ts#L96)
 
 Type alias for an array of **comets**.
 
 ## Example
 
 ```ts
-const halley: CometInterface = {
+const halley: CometInterface = [{
   name: 'Halley',
   type: 'periodic comet',
   category: 'halley-type comet',
@@ -31,5 +31,5 @@ const halley: CometInterface = {
   radius: { value: 11, unit: 'km' },
   color: '#ffffff',
   size: 1.2
-};
+}];
 ```

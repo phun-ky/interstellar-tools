@@ -12,6 +12,13 @@
 npm i --save @interstellar-tools/equations
 ```
 
+::: warning
+
+These equations has not **_YET_** been battle-tested or tested to real world
+mechanics, YMMV!
+
+:::
+
 Here you will find a set of function that can assist you when calculating
 orbits, angles, solve for kelper or find true anomalies.
 
@@ -41,12 +48,12 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Kepler Solvers
 
-| Function                                                                | Description                                                                                                                                                                                                                                                      |
-| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [solveKepler](functions/solveKepler.md)                                 | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an adaptive approach: - **Newton-Raphson method** for fast convergence. - **Bisection fallback** if Newton’s method fails. - **High-eccentricity solver** for extreme orbits ($e > 0.9$). |
-| [solveKeplerBisection](functions/solveKeplerBisection.md)               | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the **bisection method** when Newton-Raphson or other iterative solvers fail to converge.                                                                                                 |
-| [solveKeplerHighEccentricity](functions/solveKeplerHighEccentricity.md) | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly eccentric orbits ($e > 0.9$) using an iterative numerical approach.                                                                                                                   |
-| [solveKeplerNewtonRaphson](functions/solveKeplerNewtonRaphson.md)       | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the **Newton-Raphson method** with Householder acceleration for fast convergence.                                                                                                         |
+| Function                                                                | Description                                                                                                                                                      |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [solveKepler](functions/solveKepler.md)                                 | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an adaptive approach:                                                                     |
+| [solveKeplerBisection](functions/solveKeplerBisection.md)               | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the **bisection method** when Newton-Raphson or other iterative solvers fail to converge. |
+| [solveKeplerHighEccentricity](functions/solveKeplerHighEccentricity.md) | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly eccentric orbits ($e > 0.9$) using an iterative numerical approach.                   |
+| [solveKeplerNewtonRaphson](functions/solveKeplerNewtonRaphson.md)       | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the **Newton-Raphson method** with Householder acceleration for fast convergence.         |
 
 ## Orbits
 
