@@ -18,10 +18,10 @@
     "includeVersion": true
   },
   "out": "docs/api",
-
   "docsRoot": "./docs",
   "tsconfig": "./tsconfig.base.json",
   "githubPages": false,
+
   "hideGenerator": true,
   "gitRevision": "main",
   "navigationLinks": {
