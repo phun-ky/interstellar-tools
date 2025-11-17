@@ -8,7 +8,7 @@ const COMETS: CometsType;
 ```
 
 Defined in:
-[bodies/comets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/constants/src/bodies/comets.ts#L27)
+[bodies/comets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/constants/src/bodies/comets.ts#L27)
 
 Represents a collection of well-known comets within the solar system simulation.
 
@@ -50,7 +50,7 @@ time.
   i: 11.8,
   w: 186.5,
   om: 334.6,
-  angle: 2.792527,
+  angle: 2.792527 as Radians,
   period: { value: -1204, unit: 'd' }, // ~3.3 years
   q: 0.34,
   color: '#FFD700', // Golden yellow (dusty tail, lower albedo)

@@ -5,15 +5,15 @@
 
 ```ts
 function solveKeplerHighEccentricity(
-  M: number,
+  M: Radians,
   e: number,
   maxIter?: number,
   tolerance?: number
-): number;
+): Radians;
 ```
 
 Defined in:
-[kepler/solve-kepler-high-eccentricity.ts:97](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L97)
+[kepler/solve-kepler-high-eccentricity.ts:97](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L97)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly
 eccentric orbits ($e > 0.9$) using an iterative numerical approach.
@@ -83,16 +83,16 @@ $$
 
 ## Parameters
 
-| Parameter    | Type     | Default value | Description                                                    |
-| ------------ | -------- | ------------- | -------------------------------------------------------------- |
-| `M`          | `number` | `undefined`   | Mean anomaly ($M$) in **radians**.                             |
-| `e`          | `number` | `undefined`   | Orbital eccentricity ($e > 0.9$ for high-eccentricity orbits). |
-| `maxIter?`   | `number` | `...`         | Maximum number of **iterations** before failure.               |
-| `tolerance?` | `number` | `1e-9`        | Convergence criterion for stopping the iteration.              |
+| Parameter    | Type                                             | Default value | Description                                                    |
+| ------------ | ------------------------------------------------ | ------------- | -------------------------------------------------------------- |
+| `M`          | [`Radians`](../../types/type-aliases/Radians.md) | `undefined`   | Mean anomaly ($M$) in **radians**.                             |
+| `e`          | `number`                                         | `undefined`   | Orbital eccentricity ($e > 0.9$ for high-eccentricity orbits). |
+| `maxIter?`   | `number`                                         | `...`         | Maximum number of **iterations** before failure.               |
+| `tolerance?` | `number`                                         | `1e-9`        | Convergence criterion for stopping the iteration.              |
 
 ## Returns
 
-`number`
+[`Radians`](../../types/type-aliases/Radians.md)
 
 The **eccentric anomaly** ($E$) in **radians** (wrapped to $[-\pi, \pi]$ for
 elliptical orbits).

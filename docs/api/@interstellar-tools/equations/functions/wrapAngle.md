@@ -8,7 +8,7 @@ function wrapAngle(angle: number): number;
 ```
 
 Defined in:
-[angle/wrap-angle.ts:86](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/equations/src/categories/angle/wrap-angle.ts#L86)
+[angle/wrap-angle.ts:86](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/angle/wrap-angle.ts#L86)
 
 Wrap an angle (in **radians**) to a **single-turn range** and snap values
 extremely close to **±τ** (±`2π`) back to **0** to curb floating-point drift.

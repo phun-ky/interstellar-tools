@@ -8,7 +8,7 @@ const ASTEROIDS: AsteroidsType;
 ```
 
 Defined in:
-[bodies/asteroids.ts:26](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/constants/src/bodies/asteroids.ts#L26)
+[bodies/asteroids.ts:26](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/constants/src/bodies/asteroids.ts#L26)
 
 Represents a collection of well-known asteroids within the solar system
 simulation.
@@ -58,7 +58,7 @@ time.
   i: 7.1,
   w: 151.2,
   om: 103.8,
-  angle: 5.527458,
+  angle: 5.527458 as Radians,
   period: { value: -1325.2, unit: 'd' },
   q: 2.151,
   radius: { value: 262.7, unit: 'km' },

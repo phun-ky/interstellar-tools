@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:27](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/constants/src/bodies/stars.ts#L27)
+[bodies/stars.ts:27](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/constants/src/bodies/stars.ts#L27)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -61,7 +61,7 @@ time.
   /** Orbital eccentricity */
   e: 0.07,
   /** Initial angle in orbit */
-  angle: 1.5707963267948966,
+  angle: 1.5707963267948966 as Radians,
   /** Orbital period in million years (Myr) */
   period: { value: -230, unit: 'Myr' }
 },

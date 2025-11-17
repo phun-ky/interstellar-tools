@@ -8,7 +8,7 @@ const PLANETS: PlanetsType;
 ```
 
 Defined in:
-[bodies/planets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/constants/src/bodies/planets.ts#L27)
+[bodies/planets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/constants/src/bodies/planets.ts#L27)
 
 Represents a dataset of planets and planetoids in the solar system.
 
@@ -60,7 +60,7 @@ time.
   /** Visual representation color */
   color: '#8B8B8B',
   /** Initial angle in orbit at J2000 */
-  angle: 0.843,
+  angle: 0.843 as Radians,
   /** Orbital period in days */
   period: { value: -87.969, unit: 'd' },
   /** Initial position coordinates in AU */

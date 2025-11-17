@@ -4,16 +4,55 @@ Radians
 # Type Alias: Radians
 
 ```ts
-type Radians = number;
+type Radians = number & {
+  __unit: 'radians';
+};
 ```
 
 Defined in:
-[numeric.ts:32](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/types/src/numeric.ts#L32)
+[numeric.ts:59](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/types/src/numeric.ts#L59)
 
-Type alias representing an angle in **radians**.
+**Angle in radians** (branded nominal type).
 
-## Example
+**Relations**
+
+$$
+\pi\ \mathrm{rad}=180^\circ,\qquad
+1\ \mathrm{rad}=\frac{\text{arc length}}{\text{radius}}
+$$
+
+**Why branded?** This type brands a `number` to prevent accidentally mixing
+**degrees** and **radians** at compile time. You must construct it explicitly
+(e.g., via a small factory or cast).
+
+**Units**
+
+- Stored as a JavaScript `number` whose unit is **radians** (dimensionless).
+
+## Type Declaration
+
+| Name     | Type        | Defined in                                                                                                                                     |
+| -------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__unit` | `"radians"` | [numeric.ts:59](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/types/src/numeric.ts#L59) |
+
+## Examples
 
 ```ts
-const angle: Radians = Math.PI / 2; // 90 degrees in radians
+// Construct with an explicit cast or small factory
+const halfTurn: Radians = Math.PI as Radians;
+
+// Function expecting radians
+function usesRadians(nu: Radians) { …}
+usesRadians(halfTurn);
+// usesRadians(180 as number);   // avoid passing degrees as a plain number
 ```
+
+```ts
+// Optional helper factory (recommended pattern)
+const rad = (x: number): Radians => x as Radians;
+const quarter: Radians = rad(Math.PI / 2);
+```
+
+## See
+
+flightPathAngleFromTrueAnomaly - accepts `nu: Radians`

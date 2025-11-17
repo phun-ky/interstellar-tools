@@ -5,15 +5,15 @@
 
 ```ts
 function solveKeplerNewtonRaphson(
-  M: number,
+  M: Radians,
   e: number,
   maxIter: number,
   tolerance: number
-): number;
+): number | Radians;
 ```
 
 Defined in:
-[kepler/solve-kepler-newton-raphson.ts:87](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L87)
+[kepler/solve-kepler-newton-raphson.ts:87](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L87)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the
 **Newton-Raphson method** with Householder acceleration for fast convergence.
@@ -87,16 +87,16 @@ methods are required.
 
 ## Parameters
 
-| Parameter   | Type     | Description                                       |
-| ----------- | -------- | ------------------------------------------------- |
-| `M`         | `number` | Mean anomaly ($M$) in **radians**.                |
-| `e`         | `number` | Orbital eccentricity ($0 \leq e < 1$).            |
-| `maxIter`   | `number` | Maximum number of **iterations** before failure.  |
-| `tolerance` | `number` | Convergence criterion for stopping the iteration. |
+| Parameter   | Type                                             | Description                                       |
+| ----------- | ------------------------------------------------ | ------------------------------------------------- |
+| `M`         | [`Radians`](../../types/type-aliases/Radians.md) | Mean anomaly ($M$) in **radians**.                |
+| `e`         | `number`                                         | Orbital eccentricity ($0 \leq e < 1$).            |
+| `maxIter`   | `number`                                         | Maximum number of **iterations** before failure.  |
+| `tolerance` | `number`                                         | Convergence criterion for stopping the iteration. |
 
 ## Returns
 
-`number`
+`number` | [`Radians`](../../types/type-aliases/Radians.md)
 
 The **eccentric anomaly** ($E$) in **radians** (or `NaN` if the method fails).
 

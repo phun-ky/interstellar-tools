@@ -5,103 +5,60 @@
 
 ```ts
 function solveKeplerBisection(
-  M: number,
+  M: Radians,
   e: number,
   maxIter: number,
   tolerance: number
-): number;
+): Radians;
 ```
 
 Defined in:
-[kepler/solve-kepler-bisection.ts:75](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/equations/src/categories/kepler/solve-kepler-bisection.ts#L75)
+[kepler/solve-kepler-bisection.ts:35](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/kepler/solve-kepler-bisection.ts#L35)
 
-Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the
-**bisection method** when Newton-Raphson or other iterative solvers fail to
-converge.
+Solve **Kepler's equation** for the **eccentric anomaly** ($E$) via
+**bisection** (elliptic case: ($0 \le e < 1$)).
 
----
-
-**Mathematical Explanation:**
-
-Kepler's equation for eccentric anomaly ($E$) is:
+**Equation**
 
 $$
-M = E - e \sin(E)
+M = E - e\sin E,\qquad F(E)=E-e\sin E - M
 $$
 
-This equation cannot be solved analytically, and numerical methods must be used.
-When standard iterative solvers like **Newton-Raphson** fail due to poor
-convergence, the **bisection method** provides a robust alternative by
-performing a bracketed search.
+**Bracketing & normalization**
 
----
+- Normalize ($M$) to ($[0,2\pi)$).
+- Use the bracket ($[0,2\pi]$). Then ($F(0)=-M\le 0$) and
+  ($F(2\pi)=2\pi-M\ge 0$).
+- For ($0\le e<1$), ($F'(E)=1-e\cos E \ge 1-e > 0$) ⇒ **strictly increasing** ⇒
+  unique root.
 
-**Solving Strategy:**
+**Stopping criteria (either)**
 
-1. **Initialize Bounds:**
-   - The valid range for $E$ is **$[0, \pi]$** (as $E$ is symmetric around 0).
-   - The midpoint $E_0$ is chosen as:
-     $$
-     E = \frac{E_{low} + E_{high}}{2}
-     $$
-
-2. **Bisection Iteration:**
-   - Compute the function residual:
-     $$
-     F(E) = E - e \sin(E) - M
-     $$
-   - If $F(E)$ is sufficiently small (within tolerance), $E$ is returned as the
-     solution.
-   - Otherwise, the interval is **halved** by updating either:
-     - The lower bound ($E_{low}$) if $F(E) < 0$
-     - The upper bound ($E_{high}$) if $F(E) > 0$
-
-3. **Convergence Check:**
-   - The iteration stops when:
-     $$
-     |E_{n+1} - E_n| < \text{tolerance}
-     $$
-     (default tolerance is **1e-9**).
-
----
-
-**Performance Considerations:**
-
-- **Always converges**, unlike Newton-Raphson, which can fail for some initial
-  guesses.
-- **Time complexity:** $O(\log N)$ due to the **logarithmic convergence** of
-  bisection.
-
----
+- **Residual**: ($|F(E)| < \text{tolerance}$)
+- **Bracket width**:
+  ($\tfrac{1}{2}(E_{\text{high}}-E_{\text{low}}) < \text{tolerance}$)
 
 ## Parameters
 
-| Parameter   | Type     | Description                                       |
-| ----------- | -------- | ------------------------------------------------- |
-| `M`         | `number` | Mean anomaly ($M$) in **radians**.                |
-| `e`         | `number` | Orbital eccentricity ($0 \leq e < 1$).            |
-| `maxIter`   | `number` | Maximum number of **iterations** before failure.  |
-| `tolerance` | `number` | Convergence criterion for stopping the iteration. |
+| Parameter   | Type                                             | Description                                                                       |
+| ----------- | ------------------------------------------------ | --------------------------------------------------------------------------------- |
+| `M`         | [`Radians`](../../types/type-aliases/Radians.md) | Mean anomaly (radians). Can be any real; will be normalized to ($[0,2\pi)$).      |
+| `e`         | `number`                                         | Eccentricity, must satisfy ($0 \le e < 1$) (elliptic).                            |
+| `maxIter`   | `number`                                         | Maximum iterations (must be > 0).                                                 |
+| `tolerance` | `number`                                         | Convergence tolerance for both residual and half-interval (must be > 0, radians). |
 
 ## Returns
 
-`number`
+[`Radians`](../../types/type-aliases/Radians.md)
 
-The **eccentric anomaly** ($E$) in **radians** (best approximation).
+Eccentric anomaly ($E$) in **radians**, normalized to ($[0,2\pi)$).
 
----
+## Throws
+
+If inputs are non-finite or out of domain.
 
 ## Example
 
 ```ts
-const M = Math.PI / 3; // 60 degrees in radians
-const e = 0.5; // Orbital eccentricity
-console.log(solveKeplerBisection(M, e, 50, 1e-9)); // Output: Eccentric anomaly in radians
+const E = solveKeplerBisection((Math.PI / 3) as Radians, 0.5, 100, 1e-12);
 ```
-
----
-
-## See
-
-- [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
-- [Bisection Method (Wikipedia)](https://en.wikipedia.org/wiki/Bisection_method)
