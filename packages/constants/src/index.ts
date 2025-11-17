@@ -15,3 +15,5 @@ export * from './objects';
 export * from './temporal';
 
 export * from './physics';
+
+export * from './bodies';
