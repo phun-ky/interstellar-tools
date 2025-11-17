@@ -80,10 +80,6 @@ html.ph body {
     }
   }
 
-  tbody > tr > td:first-of-type {
-    white-space: nowrap;
-  }
-
   a {
     /* color: var(--ph-color-text-accent); */
     color: var(--ph-color-link);
@@ -91,10 +87,6 @@ html.ph body {
   }
 
   .vp-doc {
-    & table {
-      width: 100%;
-      display: table;
-    }
     & p,
     & li,
     & td {
@@ -549,4 +541,70 @@ html.ph body {
   & p {
     margin: 1.25em 0;
   }
+}
+
+.ph.table-overflow {
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 20px 0;
+  border-radius: 0.375rem;
+
+  & > table {
+    width: max-content;
+    margin: 0;
+
+    & td {
+      vertical-align: top;
+
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        list-style-position: inside;
+      }
+    }
+  }
+}
+
+table {
+  display: block;
+  width: max-content;
+  border-spacing: 0;
+  table-layout: fixed;
+  background-color: var(--ph-color-well-background);
+  border-radius: 0.375rem;
+  color: var(--ph-color-text);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  border-collapse: collapse;
+}
+@media screen and (min-width: 1024px) {
+  table {
+    border-collapse: normal;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+  }
+}
+table th {
+  text-align: left;
+}
+table th,
+table td {
+  word-break: initial;
+  padding: 0 0.5rem;
+}
+@media screen and (min-width: 1024px) {
+  table th,
+  table td {
+    padding: 0 1rem;
+  }
+}
+table > tbody > tr:nth-child(2n) {
+  background-color: var(--ph-color-well-background);
 }
