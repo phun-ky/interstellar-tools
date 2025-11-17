@@ -8,6 +8,7 @@ import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson';
 
 /**
  * Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an adaptive approach:
+ *
  * - **Newton-Raphson method** for fast convergence.
  * - **Bisection fallback** if Newton’s method fails.
  * - **High-eccentricity solver** for extreme orbits ($e > 0.9$).

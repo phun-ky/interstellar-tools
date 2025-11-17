@@ -73,7 +73,7 @@ export interface CometInterface {
  * @typedef {CometInterface[]} CometsType
  * @example
  * ```ts
- * const halley: CometInterface = {
+ * const halley: CometInterface = [{
  *   name: 'Halley',
  *   type: 'periodic comet',
  *   category: 'halley-type comet',
@@ -89,7 +89,7 @@ export interface CometInterface {
  *   radius: { value: 11, unit: 'km' },
  *   color: '#ffffff',
  *   size: 1.2
- * };
+ * }];
  * ```
  * @group Celestial Bodies
  */
