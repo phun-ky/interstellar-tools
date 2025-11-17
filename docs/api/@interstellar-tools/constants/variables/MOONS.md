@@ -8,7 +8,7 @@ const MOONS: MoonsType;
 ```
 
 Defined in:
-[bodies/moons.ts:28](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/constants/src/bodies/moons.ts#L28)
+[bodies/moons.ts:28](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/constants/src/bodies/moons.ts#L28)
 
 Represents a dataset of natural satellites (moons) in the solar system.
 
@@ -82,7 +82,7 @@ time.
   /** Visual representation color */
   color: '#BFBFBF', // Light gray (realistic lunar appearance)
   /** Initial angle in orbit at J2000 */
-  angle: 2.41
+  angle: 2.41 as Radians
 },
 ```
 

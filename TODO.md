@@ -1,17 +1,5 @@
 ## Orbits & geometry
 
-- **Peri/apoapsis radii**
-
-  $$
-  r_p=a(1-e),\quad r_a=a(1+e)
-  $$
-
-- **Flight-path angle (true anomaly \nu)**
-
-  $$
-  \tan\gamma=\frac{e\sin\nu}{1+e\cos\nu}
-  $$
-
 - **Kepler’s equation (elliptic)**
   $$
   M=E-e\sin E

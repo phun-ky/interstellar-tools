@@ -8,7 +8,7 @@ const SYSTEMS: SystemsType;
 ```
 
 Defined in:
-[bodies/systems.ts:27](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/constants/src/bodies/systems.ts#L27)
+[bodies/systems.ts:27](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/constants/src/bodies/systems.ts#L27)
 
 Predefined star systems in the galaxy.
 

@@ -108,5 +108,5 @@ export const solveKepler = (
     E = solveKeplerBisection(M, e, maxIter, tolerance);
   }
 
-  return wrapAngle(E);
+  return wrapAngle(E) as Radians;
 };

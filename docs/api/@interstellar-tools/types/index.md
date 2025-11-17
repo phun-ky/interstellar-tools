@@ -65,10 +65,11 @@ npm i --save @interstellar-tools/types
 
 ## Numeric
 
-| Name                                           | Description                                      |
-| ---------------------------------------------- | ------------------------------------------------ |
-| [ValueInterface](interfaces/ValueInterface.md) | Represents a numerical value.                    |
-| [Radians](type-aliases/Radians.md)             | Type alias representing an angle in **radians**. |
+| Name                                           | Description                                  |
+| ---------------------------------------------- | -------------------------------------------- |
+| [ValueInterface](interfaces/ValueInterface.md) | Represents a numerical value.                |
+| [DegreesType](type-aliases/DegreesType.md)     | **Angle in degrees** (branded nominal type). |
+| [Radians](type-aliases/Radians.md)             | **Angle in radians** (branded nominal type). |
 
 ## Orbits
 

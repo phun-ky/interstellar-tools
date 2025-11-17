@@ -7,11 +7,11 @@
 function computeAngle(
   body: CelestialBodyType,
   timeStep: TimeStepInterface
-): number;
+): Radians;
 ```
 
 Defined in:
-[angle/compute-angle.ts:77](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/equations/src/categories/angle/compute-angle.ts#L77)
+[angle/compute-angle.ts:77](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/angle/compute-angle.ts#L77)
 
 Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given
 date and time step.
@@ -66,7 +66,7 @@ $ν = 2 \tan^{-1} \left( \sqrt{\frac{1+e}{1-e}} \tan\left(\frac{E}{2}\right) \ri
 
 ## Returns
 
-`number`
+[`Radians`](../../types/type-aliases/Radians.md)
 
 The computed true anomaly in radians.
 

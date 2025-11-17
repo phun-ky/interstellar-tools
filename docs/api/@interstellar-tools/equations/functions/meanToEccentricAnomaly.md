@@ -7,11 +7,11 @@
 function meanToEccentricAnomaly(
   body: CelestialBodyType,
   timeStep: TemporalInterface
-): number;
+): Radians;
 ```
 
 Defined in:
-[anomalies/mean-to-eccentric-anomaly.ts:60](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/equations/src/categories/anomalies/mean-to-eccentric-anomaly.ts#L60)
+[anomalies/mean-to-eccentric-anomaly.ts:60](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/anomalies/mean-to-eccentric-anomaly.ts#L60)
 
 Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
 
@@ -40,7 +40,7 @@ where:
 
 ## Returns
 
-`number`
+[`Radians`](../../types/type-aliases/Radians.md)
 
 The computed mean anomaly in radians.
 

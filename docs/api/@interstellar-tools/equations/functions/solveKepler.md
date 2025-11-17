@@ -5,15 +5,15 @@
 
 ```ts
 function solveKepler(
-  M: number,
+  M: Radians,
   e: number,
   maxIter?: number,
   tolerance?: number
-): number;
+): Radians;
 ```
 
 Defined in:
-[kepler/solve-kepler.ts:89](https://github.com/phun-ky/interstellar-tools/blob/832c313b094c927abcdab3b706dc5f72fdc7bae0/packages/equations/src/categories/kepler/solve-kepler.ts#L89)
+[kepler/solve-kepler.ts:89](https://github.com/phun-ky/interstellar-tools/blob/1d94921ca8ba590fe5cb7f1f00da780f689f64aa/packages/equations/src/categories/kepler/solve-kepler.ts#L89)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an
 adaptive approach:
@@ -68,16 +68,16 @@ required.
 
 ## Parameters
 
-| Parameter    | Type     | Default value | Description                                       |
-| ------------ | -------- | ------------- | ------------------------------------------------- |
-| `M`          | `number` | `undefined`   | Mean anomaly ($M$) in **radians**.                |
-| `e`          | `number` | `undefined`   | Orbital eccentricity ($0 \leq e < 1$).            |
-| `maxIter?`   | `number` | `50`          | Maximum number of **iterations** before fallback. |
-| `tolerance?` | `number` | `1e-9`        | Convergence criterion for stopping the iteration. |
+| Parameter    | Type                                             | Default value | Description                                       |
+| ------------ | ------------------------------------------------ | ------------- | ------------------------------------------------- |
+| `M`          | [`Radians`](../../types/type-aliases/Radians.md) | `undefined`   | Mean anomaly ($M$) in **radians**.                |
+| `e`          | `number`                                         | `undefined`   | Orbital eccentricity ($0 \leq e < 1$).            |
+| `maxIter?`   | `number`                                         | `50`          | Maximum number of **iterations** before fallback. |
+| `tolerance?` | `number`                                         | `1e-9`        | Convergence criterion for stopping the iteration. |
 
 ## Returns
 
-`number`
+[`Radians`](../../types/type-aliases/Radians.md)
 
 The **eccentric anomaly** ($E$) in **radians** (wrapped to $[0, 2\pi]$).
 

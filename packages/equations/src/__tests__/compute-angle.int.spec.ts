@@ -15,34 +15,34 @@ describe('computeAngle', () => {
       celestialBody: {
         e: 0.0167,
         angle: 0,
-        period: { value: 365.25, unit: 'day' }
+        period: { value: 365.25, unit: 'd' }
       },
-      timeStep: { value: 1, unit: 'day' }
+      timeStep: { value: 1, unit: 'd' }
     },
     {
       celestialBody: {
         e: 0.1,
         angle: Math.PI / 3,
-        period: { value: 687, unit: 'day' }
+        period: { value: 687, unit: 'd' }
       },
-      timeStep: { value: 1, unit: 'day' }
+      timeStep: { value: 1, unit: 'd' }
     },
     // Retrograde motion test cases
     {
       celestialBody: {
         e: 0.05,
         angle: Math.PI / 2,
-        period: { value: -365.25, unit: 'day' } // Retrograde motion
+        period: { value: -365.25, unit: 'd' } // Retrograde motion
       },
-      timeStep: { value: 1, unit: 'day' }
+      timeStep: { value: 1, unit: 'd' }
     },
     {
       celestialBody: {
         e: 0.2,
         angle: -Math.PI / 4,
-        period: { value: -4332.59, unit: 'day' } // Retrograde motion
+        period: { value: -4332.59, unit: 'd' } // Retrograde motion
       },
-      timeStep: { value: 10, unit: 'day' }
+      timeStep: { value: 10, unit: 'd' }
     }
   ];
 
@@ -73,9 +73,9 @@ describe('computeAngle', () => {
       e: 0.8,
       q: 1.2,
       angle: Math.PI / 4,
-      period: { value: 2000, unit: 'day' }
+      period: { value: 2000, unit: 'd' }
     }; // Adding 'q' property to classify as comet
-    const timeStep = { value: 5, unit: 'day' };
+    const timeStep = { value: 5, unit: 'd' };
     const expected = wrapAngle(
       computeAngle(comet as CelestialBodyType, timeStep as TimeStepInterface)
     );

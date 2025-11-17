@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly';
+import { Radians } from '@interstellar-tools/types';
 
 describe('eccentricToTrueAnomaly', () => {
   // Test cases for eccentricToTrueAnomaly
@@ -15,7 +16,7 @@ describe('eccentricToTrueAnomaly', () => {
 
   test('computes correct true anomaly', () => {
     testCases.forEach(({ E, e, expected }) => {
-      const result = eccentricToTrueAnomaly(E, e);
+      const result = eccentricToTrueAnomaly(E as Radians, e);
 
       assert.ok(
         Math.abs(result - expected) < 1e-4,
@@ -25,18 +26,30 @@ describe('eccentricToTrueAnomaly', () => {
   });
 
   test('handles special cases', () => {
-    assert.strictEqual(eccentricToTrueAnomaly(0, 0), 0); // Circular orbit (e = 0) should return E
-    assert.strictEqual(eccentricToTrueAnomaly(Math.PI, 0), Math.PI); // Circular case with E = π
-    assert.strictEqual(eccentricToTrueAnomaly(0, 1), 0); // Parabolic orbit case
+    assert.strictEqual(eccentricToTrueAnomaly(0 as Radians, 0), 0); // Circular orbit (e = 0) should return E
+    assert.strictEqual(eccentricToTrueAnomaly(Math.PI as Radians, 0), Math.PI); // Circular case with E = π
+    assert.strictEqual(eccentricToTrueAnomaly(0 as Radians, 1), 0); // Parabolic orbit case
   });
 
   test('throws on invalid eccentricity', () => {
-    assert.throws(() => eccentricToTrueAnomaly(Math.PI / 3, -0.1), RangeError);
-    assert.throws(() => eccentricToTrueAnomaly(Math.PI / 3, 1.2), RangeError);
+    assert.throws(
+      () => eccentricToTrueAnomaly((Math.PI / 3) as Radians, -0.1),
+      RangeError
+    );
+    assert.throws(
+      () => eccentricToTrueAnomaly((Math.PI / 3) as Radians, 1.2),
+      RangeError
+    );
   });
 
   test('ensures numerical stability near E = π', () => {
-    assert.strictEqual(eccentricToTrueAnomaly(Math.PI + 1e-11, 0.5), Math.PI);
-    assert.strictEqual(eccentricToTrueAnomaly(Math.PI - 1e-11, 0.5), Math.PI);
+    assert.strictEqual(
+      eccentricToTrueAnomaly((Math.PI + 1e-11) as Radians, 0.5),
+      Math.PI
+    );
+    assert.strictEqual(
+      eccentricToTrueAnomaly((Math.PI - 1e-11) as Radians, 0.5),
+      Math.PI
+    );
   });
 });
