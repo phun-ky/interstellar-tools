@@ -1,3 +1,4 @@
+import { TWO_PI } from '@interstellar-tools/constants';
 import { Vector3DTupleType } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 
@@ -51,4 +52,19 @@ export const absClose = (a: number, b: number, eps = 1e-12, msg?: string) => {
 
 export const dot = (a: Vector3DTupleType, b: Vector3DTupleType) => {
   return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+};
+
+export const norm2pi = (x: number): number => {
+  return ((x % TWO_PI) + TWO_PI) % TWO_PI;
+};
+
+export const angleClose = (a: number, b: number, eps = 1e-12) => {
+  const da = Math.abs(norm2pi(a) - norm2pi(b));
+  const d = Math.min(da, TWO_PI - da);
+  assert.ok(d <= eps, `angles not close: |Δ|=${d} > ${eps}`);
+};
+
+export const residual = (E: number, e: number, M: number) => {
+  const Mm = norm2pi(M);
+  return E - e * Math.sin(E) - Mm;
 };
