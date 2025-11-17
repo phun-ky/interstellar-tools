@@ -14,7 +14,7 @@ npm i --save @interstellar-tools/equations
 
 ::: warning
 
-These equations has not **_YET_** been battle-tested or tested to real world
+These equations have not **_YET_** been battle-tested or tested to real world
 mechanics, YMMV!
 
 :::
