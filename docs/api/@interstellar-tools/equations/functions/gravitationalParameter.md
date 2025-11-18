@@ -8,7 +8,7 @@ function gravitationalParameter(M: number, m: number, G?: number): number;
 ```
 
 Defined in:
-[gravity/gravitational-parameter.ts:50](https://github.com/phun-ky/interstellar-tools/blob/40019b531e6770232cbea0121ab22939e620782e/packages/equations/src/categories/gravity/gravitational-parameter.ts#L50)
+[gravity/gravitational-parameter.ts:50](https://github.com/phun-ky/interstellar-tools/blob/be1b8ef8587533bce30fa71e6c16201f0119225c/packages/equations/src/categories/gravity/gravitational-parameter.ts#L50)
 
 Two-body **gravitational parameter** ($\mu$).
 
