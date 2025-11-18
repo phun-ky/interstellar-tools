@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.8.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.7.0...@interstellar-tools/types@0.8.0) (2025-11-18)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.8.0 ([1ee9745](https://github.com/phun-ky/interstellar-tools/commit/1ee9745dff2ec9611ee897fa4d91f1b6c04debef))
+* 🤖 @interstellar-tools/equations@0.8.0 ([4972be7](https://github.com/phun-ky/interstellar-tools/commit/4972be7d715875d4b7ed6f340ad610ddf6e25a1b))
+* 🤖 @interstellar-tools/temporal@0.8.0 ([a02d6e8](https://github.com/phun-ky/interstellar-tools/commit/a02d6e8c81103f2850eef311a9656b612a4d9664))
+* 🤖 bump glob from 11.0.3 to 11.1.0 ([a46ab7b](https://github.com/phun-ky/interstellar-tools/commit/a46ab7baf5200c5988be17bd5c3c300b154837a2))
+
 ## [0.7.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.6.0...@interstellar-tools/types@0.7.0) (2025-11-17)
 
 ### Tasks
