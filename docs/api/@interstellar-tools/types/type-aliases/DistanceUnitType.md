@@ -19,7 +19,7 @@ type DistanceUnitType =
 ```
 
 Defined in:
-[distance.ts:43](https://github.com/phun-ky/interstellar-tools/blob/40019b531e6770232cbea0121ab22939e620782e/packages/types/src/distance.ts#L43)
+[distance.ts:43](https://github.com/phun-ky/interstellar-tools/blob/be1b8ef8587533bce30fa71e6c16201f0119225c/packages/types/src/distance.ts#L43)
 
 Canonical **distance unit symbols** for astronomy/space visualization.
 

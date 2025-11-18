@@ -10,7 +10,7 @@ type Radians = number & {
 ```
 
 Defined in:
-[numeric.ts:59](https://github.com/phun-ky/interstellar-tools/blob/40019b531e6770232cbea0121ab22939e620782e/packages/types/src/numeric.ts#L59)
+[numeric.ts:59](https://github.com/phun-ky/interstellar-tools/blob/be1b8ef8587533bce30fa71e6c16201f0119225c/packages/types/src/numeric.ts#L59)
 
 **Angle in radians** (branded nominal type).
 
@@ -33,7 +33,7 @@ $$
 
 | Name     | Type        | Defined in                                                                                                                                     |
 | -------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__unit` | `"radians"` | [numeric.ts:59](https://github.com/phun-ky/interstellar-tools/blob/40019b531e6770232cbea0121ab22939e620782e/packages/types/src/numeric.ts#L59) |
+| `__unit` | `"radians"` | [numeric.ts:59](https://github.com/phun-ky/interstellar-tools/blob/be1b8ef8587533bce30fa71e6c16201f0119225c/packages/types/src/numeric.ts#L59) |
 
 ## Examples
 
