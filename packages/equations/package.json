@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/equations",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Curated, well-tested orbital mechanics and dynamics formulas (e.g., Newtonian gravity, vis-viva, Kepler's 3rd law, escape/circular speeds, specific energy, specific angular momentum, peri/apoapsis radii).",
   "keywords": [
     "interstellar",
