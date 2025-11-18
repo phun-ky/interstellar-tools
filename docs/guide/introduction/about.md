@@ -6,16 +6,39 @@
 and space software.** Equations, constants, time utilities, and strong types for
 simulation, visualization, mission tooling, and teaching.
 
+[[toc]]
+
+![Image of stars](/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg)
+
+## Status
+
+> **Project status:** Early alpha
+
+- API surface: changing between minor versions.
+- Validation: unit tests in place; not yet cross-validated against flight-grade
+  references.
+- Runtime targets: Node 20+, modern browsers with ESM bundlers (Vite, Webpack,
+  etc.).
+
 ## Why this exists
 
-We're entering a new era where space is a mainstream software domain-conference
-programs increasingly feature space + IT topics, and teams across science,
-education, and industry need trustworthy, well-typed primitives.
+We're entering a new era where space is becoming a mainstream software domain:
+conference programs increasingly feature space + IT topics, and teams across
+science, education, and industry need trustworthy, well-typed primitives.
 **@interstellar-tools** is an open-source, TypeScript-first toolkit created to
 accelerate that shift: precise functions, clear docs, and strong types that make
 orbital and mission software easier to build and easier to verify.
 
-## What's inside (packages)
+## Packages
+
+| Package                         | Description                                       | Status |
+| ------------------------------- | ------------------------------------------------- | ------ |
+| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Alpha  |
+| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Alpha  |
+| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | WIP    |
+| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Alpha  |
+
+### Details
 
 - **@interstellar-tools/constants** Authoritative physical and astronomical
   constants in SI units for consistent calculations.
@@ -25,10 +48,12 @@ orbital and mission software easier to build and easier to verify.
   escape/circular speeds, specific energy, specific angular momentum,
   peri/apoapsis radii).
 
-::: warning
+::: warning **Validation status**
 
-These equations have not **_YET_** been battle-tested or tested to real world
-mechanics, YMMV!
+Equations are unit-tested against internal reference values, but have not yet
+been systematically cross-validated against operational flight software or
+high-fidelity ephemerides. Treat this as a learning and prototyping toolkit, not
+as mission-critical software (yet).
 
 :::
 
@@ -39,6 +64,19 @@ mechanics, YMMV!
 - **@interstellar-tools/types** Shared TypeScript types (e.g., 3D tuples,
   equation result interfaces) used across the monorepo to keep APIs predictable
   and safe.
+
+## Who is this for?
+
+- Engineers building **space-related web or Node tools** (simulators,
+  visualizers, mission dashboards).
+- Educators who want **typed, reusable examples** of orbital mechanics in
+  TypeScript.
+- Hackers and students exploring **orbital mechanics through code**.
+
+Not a good fit (for now) if you need:
+
+- Flight-certified or safety-critical software.
+- High-fidelity N-body or perturbation modeling.
 
 ## Design principles
 

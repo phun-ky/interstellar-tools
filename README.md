@@ -1,16 +1,17 @@
-# @interstellar-tools
+# @interstellar-tools <!-- omit in toc -->
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](http://makeapullrequest.com)
 [![SemVer 2.0](https://img.shields.io/badge/SemVer-2.0-green.svg)](http://semver.org/spec/v2.0.0.html)
 ![issues](https://img.shields.io/github/issues/phun-ky/interstellar-tools)
 ![GitHub Repo stars](https://img.shields.io/github/stars/phun-ky/interstellar-tools)
-[![codecov](https://codecov.io/gh/phun-ky/interstellar-tools/graph/badge.svg?token=VA91DL7ZLZ)](https://codecov.io/gh/phun-ky/interstellar-tools)
 [![build](https://github.com/phun-ky/interstellar-tools/actions/workflows/check.yml/badge.svg)](https://github.com/phun-ky/interstellar-tools/actions/workflows/check.yml)
 
 ---
 
 > Engineering the next spacefaring stack
+
+![logo](./docs/public/logo/icon-180x180.png)
 
 **TypeScript monorepo for open, reliable building blocks in orbital mechanics
 and space software.** Equations, constants, time utilities, and strong types for
@@ -18,33 +19,110 @@ simulation, visualization, mission tooling, and teaching.
 
 ---
 
+- [Install](#install)
+- [Quickstart](#quickstart)
+- [Status](#status)
+- [Why this exists](#why-this-exists)
+- [Packages](#packages)
+  - [Details](#details)
+- [Who is this for?](#who-is-this-for)
+- [Design principles](#design-principles)
+- [Vision \& scope](#vision--scope)
+- [Governance \& values](#governance--values)
+- [Local development](#local-development)
+- [Contributing](#contributing)
+- [License](#license)
+- [Sponsor me](#sponsor-me)
+
+![Image of stars](./docs/public/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg)
+
+---
+
+## Install
+
+```shell
+npm install @interstellar-tools/equations @interstellar-tools/constants
+# or
+pnpm add @interstellar-tools/equations @interstellar-tools/constants
+# or
+yarn add @interstellar-tools/equations @interstellar-tools/constants
+```
+
+## Quickstart
+
+```typescript
+import { G } from '@interstellar-tools/constants';
+import { visViva } from '@interstellar-tools/equations';
+
+const muEarth = G * 5.972e24; // [m^3 / s^2]
+const semiMajorAxis = 7000e3; // [m]
+const radius = 7000e3; // circular [m]
+const velocity = visViva({
+  mu: muEarth,
+  r: radius,
+  a: semiMajorAxis
+});
+
+console.log(`Orbital speed: ${velocity} m/s`);
+```
+
+## Status
+
+> **Project status:** Early alpha
+
+- API surface: changing between minor versions.
+- Validation: unit tests in place; not yet cross-validated against flight-grade
+  references.
+- Runtime targets: Node 20+, modern browsers with ESM bundlers (Vite, Webpack,
+  etc.).
+
 ## Why this exists
 
-We're entering a new era where space is a mainstream software domain-conference
-programs increasingly feature space + IT topics, and teams across science,
-education, and industry need trustworthy, well-typed primitives.
+We're entering a new era where space is becoming a mainstream software domain:
+conference programs increasingly feature space + IT topics, and teams across
+science, education, and industry need trustworthy, well-typed primitives.
 **@interstellar-tools** is an open-source, TypeScript-first toolkit created to
 accelerate that shift: precise functions, clear docs, and strong types that make
 orbital and mission software easier to build and easier to verify.
 
+> I built @interstellar-tools to help catalyse the space+software wave I'm
+> seeing in our industry-by doing the thing I do best: shipping precise,
+> well-documented building blocks. If that resonates with you, I'd love your
+> feedback and contributions.
+>
+> <footer class="ph">
+>
+> _&mdash; Alexander Vassbotn Røyne-Helgesen_
+>
+> </footer>
+
 ---
 
-## What's inside (packages)
+## Packages
+
+| Package                         | Description                                       | Status |
+| ------------------------------- | ------------------------------------------------- | ------ |
+| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Alpha  |
+| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Alpha  |
+| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | WIP    |
+| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Alpha  |
+
+### Details
 
 - **@interstellar-tools/constants** Authoritative physical and astronomical
   constants in SI units for consistent calculations.
-
-::: warning
-
-These equations have not **_YET_** been battle-tested or tested to real world
-mechanics, YMMV!
-
-:::
 
 - **@interstellar-tools/equations** Curated, well-tested orbital mechanics and
   dynamics formulas (e.g., Newtonian gravity, vis-viva, Kepler's 3rd law,
   escape/circular speeds, specific energy, specific angular momentum,
   peri/apoapsis radii).
+
+> [!WARNING] Validation status
+>
+> Equations are unit-tested against internal reference values, but have not yet
+> been systematically cross-validated against operational flight software or
+> high-fidelity ephemerides. Treat this as a learning and prototyping toolkit,
+> not as mission-critical software (yet).
 
 - **@interstellar-tools/temporal** Time and epoch utilities for space
   applications (e.g., building blocks toward Julian dates, conversions, and
@@ -53,6 +131,21 @@ mechanics, YMMV!
 - **@interstellar-tools/types** Shared TypeScript types (e.g., 3D tuples,
   equation result interfaces) used across the monorepo to keep APIs predictable
   and safe.
+
+---
+
+## Who is this for?
+
+- Engineers building **space-related web or Node tools** (simulators,
+  visualizers, mission dashboards).
+- Educators who want **typed, reusable examples** of orbital mechanics in
+  TypeScript.
+- Hackers and students exploring **orbital mechanics through code**.
+
+Not a good fit (for now) if you need:
+
+- Flight-certified or safety-critical software.
+- High-fidelity N-body or perturbation modeling.
 
 ---
 
@@ -98,18 +191,18 @@ This project aims to be:
 
 ---
 
-## A note from the author
+## Local development
 
-> I built @interstellar-tools to help catalyse the space+software wave I'm
-> seeing in our industry-by doing the thing I do best: shipping precise,
-> well-documented building blocks. If that resonates with you, I'd love your
-> feedback and contributions.
->
-> <footer class="ph">
->
-> _&mdash; Alexander Vassbotn Røyne-Helgesen_
->
-> </footer>
+This is a TypeScript monorepo managed with npm workspaces.
+
+```shell
+git clone https://github.com/phun-ky/interstellar-tools.git
+cd interstellar-tools
+
+npm install
+npm test
+npm lint
+```
 
 ## Contributing
 
