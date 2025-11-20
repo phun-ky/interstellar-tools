@@ -50,3 +50,7 @@ export * from './categories/orbits/specific-angular-momentum-from-elements';
 export * from './categories/orbits/specific-mechanical-energy';
 
 export * from './categories/orbits/flight-path-angle-from-true-anomaly';
+
+// categories/manoeuvres
+
+export * from './categories/manoeuvres/hohmann-transfer';

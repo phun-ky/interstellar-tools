@@ -566,9 +566,9 @@ html.ph body {
   }
 }
 
+.vp-doc table,
 table {
-  display: block;
-  width: max-content;
+  display: table;
   border-spacing: 0;
   table-layout: fixed;
   background-color: var(--ph-color-well-background);
@@ -607,4 +607,11 @@ table td {
 }
 table > tbody > tr:nth-child(2n) {
   background-color: var(--ph-color-well-background);
+}
+
+.vp-doc th {
+  white-space: nowrap;
+}
+.vp-doc tr > td:first-of-type {
+  white-space: nowrap;
 }

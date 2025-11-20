@@ -22,6 +22,12 @@ mechanics, YMMV!
 Here you will find a set of function that can assist you when calculating
 orbits, angles, solve for kelper or find true anomalies.
 
+## Type Aliases
+
+| Type Alias                                                             | Description |
+| ---------------------------------------------------------------------- | ----------- |
+| [HohmannTransferReturnType](type-aliases/HohmannTransferReturnType.md) | -           |
+
 ## Angles
 
 | Function                                  | Description                                                                                                                                             |
@@ -54,6 +60,14 @@ orbits, angles, solve for kelper or find true anomalies.
 | [solveKeplerBisection](functions/solveKeplerBisection.md)               | Solve **Kepler's equation** for the **eccentric anomaly** ($E$) via **bisection** (elliptic case: ($0 \le e < 1$)).                                      |
 | [solveKeplerHighEccentricity](functions/solveKeplerHighEccentricity.md) | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly eccentric orbits ($e > 0.9$) using an iterative numerical approach.           |
 | [solveKeplerNewtonRaphson](functions/solveKeplerNewtonRaphson.md)       | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the **Newton-Raphson method** with Householder acceleration for fast convergence. |
+
+## Manoeuvres
+
+| Function                                                  | Description                                                                            |
+| --------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [hohmannSemiMajorAxis](functions/hohmannSemiMajorAxis.md) | Convenience: compute only the **semi-major axis** ($a_t$) (m) of the Hohmann transfer. |
+| [hohmannTransfer](functions/hohmannTransfer.md)           | **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).                             |
+| [hohmannTransferTime](functions/hohmannTransferTime.md)   | Convenience: compute only the **transfer time** ($t_t$) (s).                           |
 
 ## Orbits
 
