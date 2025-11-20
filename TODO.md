@@ -1,30 +1,4 @@
-## Orbits & geometry
-
-- **Kepler’s equation (elliptic)**
-  $$
-  M=E-e\sin E
-  $$
-
 ## Transfers & \(\Delta v\)
-
-- **Hohmann transfer (coplanar circular \(r_1 \to r_2\))**
-
-  $$
-  a_t=\frac{r_1+r_2}{2}
-  $$
-
-  $$
-  \Delta v_1=\sqrt{\frac{\mu}{r_1}}\!\left(\sqrt{\frac{2r_2}{r_1+r_2}}-1\right)
-  $$
-
-  $$
-  \Delta v_2=\sqrt{\frac{\mu}{r_2}}\!\left(1-\sqrt{\frac{2r_1}{r_1+r_2}}\right)
-  $$
-
-  $$
-  \Delta v_{\text{total}}=\Delta v_1+\Delta v_2,\qquad
-  t_t=\pi \sqrt{\frac{a_t^3}{\mu}}
-  $$
 
 - **Inclination (plane) change at speed \(v\)**
 
