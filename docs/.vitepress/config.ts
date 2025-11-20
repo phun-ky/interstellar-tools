@@ -90,6 +90,22 @@ export default withMermaid(
             ]
           },
           {
+            text: 'Usage',
+            collapsed: false,
+            items: [
+              {
+                text: 'Equations',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Manoeuvres',
+                    link: '/guide/usage/equations/manoeuvres'
+                  }
+                ]
+              }
+            ]
+          },
+          {
             text: 'Development',
             link: '/guide/development'
           },
