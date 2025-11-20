@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.10.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.9.0...@interstellar-tools/constants@0.10.0) (2025-11-20)
+
+### Tasks
+
+* 🤖 @interstellar-tools/equations@0.9.0 ([0c97ab8](https://github.com/phun-ky/interstellar-tools/commit/0c97ab8d359c976d6a8a6aed1b09d86d90a35a8c))
+* 🤖 @interstellar-tools/temporal@0.9.0 ([f95b4e6](https://github.com/phun-ky/interstellar-tools/commit/f95b4e67356e916cda85c1febf87ef199e571f85))
+* 🤖 @interstellar-tools/types@0.9.0 ([34f11da](https://github.com/phun-ky/interstellar-tools/commit/34f11da13f26c735896e76d6ed881b557fe5a8fa))
+* 🤖 Update todo ([d734219](https://github.com/phun-ky/interstellar-tools/commit/d734219d923d9bbfc60b60791b93dce14d0e8a6b))
+
+### Documentation
+
+* ✏️ Regenerate documentation ([ae9beb0](https://github.com/phun-ky/interstellar-tools/commit/ae9beb0294d08cf944c54ddef688e7c1eac7516a))
+
+### Feature
+
+* 🎸 add Hohmann transfer + tests ([8e4fe75](https://github.com/phun-ky/interstellar-tools/commit/8e4fe75a07b42cadc88954820349dccaa19bbbc8))
+
+### Refactoring
+
+* 💡 Add navigation for usage ([bf0cb4d](https://github.com/phun-ky/interstellar-tools/commit/bf0cb4df9fbee6ac7f27715b48361b0a21b914d7))
+
 ## [0.9.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.8.0...@interstellar-tools/constants@0.9.0) (2025-11-18)
 
 ### Tasks
