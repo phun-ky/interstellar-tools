@@ -65,6 +65,7 @@ orbits, angles, solve for kelper or find true anomalies.
 
 | Function                                                  | Description                                                                            |
 | --------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [combineBurnsDeltaV](functions/combineBurnsDeltaV.md)     | **Combine non-collinear burns** (vector law / law of cosines for velocities).          |
 | [hohmannSemiMajorAxis](functions/hohmannSemiMajorAxis.md) | Convenience: compute only the **semi-major axis** ($a_t$) (m) of the Hohmann transfer. |
 | [hohmannTransfer](functions/hohmannTransfer.md)           | **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).                             |
 | [hohmannTransferTime](functions/hohmannTransferTime.md)   | Convenience: compute only the **transfer time** ($t_t$) (s).                           |

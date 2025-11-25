@@ -7,7 +7,8 @@
 function planeChangeDeltaV(v: number, deltaI: Radians): number;
 ```
 
-Defined in: manoeuvres/plane-change-delta-v.ts:57
+Defined in:
+[manoeuvres/plane-change-delta-v.ts:57](https://github.com/phun-ky/interstellar-tools/blob/5462dfd597336dd4aa57edc1e894b564d387586b/packages/equations/src/categories/manoeuvres/plane-change-delta-v.ts#L57)
 
 **Inclination (plane) change** Δv at speed ($v$).
 
