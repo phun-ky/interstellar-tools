@@ -44,11 +44,6 @@ export type HohmannTransferReturnType = {
  * @throws {TypeError}  If an input is not a number.
  * @throws {RangeError} If ($ r_1\le 0 $), ($ r_2\le 0 $), or ($ \mu\le 0 $), or a value is non-finite.
  *
- * @example
- * ```ts
- * // No code example here by request; see package docs for usage.
- * ```
- *
  * @group Manoeuvres
  */
 export const hohmannTransfer = (

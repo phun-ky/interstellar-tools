@@ -1,5 +1,5 @@
 import { TWO_PI } from '@interstellar-tools/constants';
-import { Vector3DTupleType } from '@interstellar-tools/types';
+import { Radians, Vector3DTupleType } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 
 export const relClose = (
@@ -68,3 +68,5 @@ export const residual = (E: number, e: number, M: number) => {
   const Mm = norm2pi(M);
   return E - e * Math.sin(E) - Mm;
 };
+
+export const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;

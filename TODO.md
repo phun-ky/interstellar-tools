@@ -1,22 +1,3 @@
-## Transfers & \(\Delta v\)
-
-- **Inclination (plane) change at speed \(v\)**
-
-  $$
-  \Delta v=2v\sin\!\left(\frac{\Delta i}{2}\right)
-  $$
-
-- **Combine non-collinear burns (vector law)**
-
-  $$
-  \Delta v=\sqrt{v_1^2+v_2^2-2v_1 v_2\cos\Delta\theta}
-  $$
-
-- **Oberth effect (energy gain near periapsis)**
-  $$
-  \Delta \varepsilon \approx v\,\Delta v
-  $$
-
 ## Interplanetary basics
 
 - **Characteristic energy**

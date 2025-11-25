@@ -4,7 +4,7 @@ AsteroidInterface
 # Interface: AsteroidInterface
 
 Defined in:
-[celestial-bodies/asteroids.ts:119](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L119)
+[celestial-bodies/asteroids.ts:119](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L119)
 
 Canonical shape for an **asteroid record**: identity, dynamics, and optional
 visualization aides.
@@ -44,7 +44,7 @@ a: MeasureInterface;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:143](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L143)
+[celestial-bodies/asteroids.ts:143](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L143)
 
 **Semi-major axis** (typically in **au**).
 
@@ -63,7 +63,7 @@ angle: Radians;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:165](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L165)
+[celestial-bodies/asteroids.ts:165](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L165)
 
 **True anomaly** ( \nu ) (current orbital position) in **radians**.
 
@@ -76,7 +76,7 @@ category: AsteroidCategory;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:127](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L127)
+[celestial-bodies/asteroids.ts:127](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L127)
 
 Specific family/group classification (e.g., Apollo group, Plutino).
 
@@ -89,7 +89,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:234](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L234)
+[celestial-bodies/asteroids.ts:234](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L234)
 
 Display color (hex string, e.g., `#AABBCC`).
 
@@ -102,7 +102,7 @@ e: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:153](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L153)
+[celestial-bodies/asteroids.ts:153](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L153)
 
 **Eccentricity** of the orbit. ::: info
 
@@ -119,7 +119,7 @@ optional focus_x: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:218](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L218)
+[celestial-bodies/asteroids.ts:218](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L218)
 
 Optional **focus offset** along X for ellipse rendering (pixels).
 
@@ -138,7 +138,7 @@ i: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:156](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L156)
+[celestial-bodies/asteroids.ts:156](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L156)
 
 **Inclination** (i) in **degrees**.
 
@@ -151,7 +151,7 @@ optional miA: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:207](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L207)
+[celestial-bodies/asteroids.ts:207](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L207)
 
 Optional **semi-minor axis** in **pixels** (for 2D ellipse rendering).
 
@@ -170,7 +170,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:121](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L121)
+[celestial-bodies/asteroids.ts:121](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L121)
 
 Name of the asteroid (e.g., `"Ceres"`, `"Vesta"`).
 
@@ -183,7 +183,7 @@ om: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:162](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L162)
+[celestial-bodies/asteroids.ts:162](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L162)
 
 **Longitude of ascending node** ( \Omega ) in **degrees**.
 
@@ -196,7 +196,7 @@ optional orbitPath: CartesianCoordinatesInterface[];
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:231](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L231)
+[celestial-bodies/asteroids.ts:231](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L231)
 
 Optional precomputed **orbit path** for plotting. ::: info
 
@@ -213,7 +213,7 @@ period: TemporalInterface;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:175](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L175)
+[celestial-bodies/asteroids.ts:175](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L175)
 
 **Orbital period** as a duration (e.g., in **days**). ::: info
 
@@ -231,7 +231,7 @@ q: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:182](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L182)
+[celestial-bodies/asteroids.ts:182](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L182)
 
 **Perihelion distance** ( q = a(1-e) ) (typically in **au**).
 
@@ -249,7 +249,7 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:221](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L221)
+[celestial-bodies/asteroids.ts:221](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L221)
 
 Mean/characteristic **radius** (e.g., in **km**) as a distance value.
 
@@ -262,7 +262,7 @@ size: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:237](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L237)
+[celestial-bodies/asteroids.ts:237](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L237)
 
 Visual **scale factor** (UI only; not physical size).
 
@@ -275,7 +275,7 @@ spectralType: AsteroidSpectralType;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:130](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L130)
+[celestial-bodies/asteroids.ts:130](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L130)
 
 Spectral/taxonomic class (composition & albedo proxy).
 
@@ -288,7 +288,7 @@ system: string;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:133](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L133)
+[celestial-bodies/asteroids.ts:133](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L133)
 
 Star system identifier (e.g., `"Solar System"`).
 
@@ -301,7 +301,7 @@ type: AsteroidType;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:124](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L124)
+[celestial-bodies/asteroids.ts:124](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L124)
 
 General dynamical region (e.g., main-belt, NEO, Trojan).
 
@@ -314,7 +314,7 @@ w: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:159](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L159)
+[celestial-bodies/asteroids.ts:159](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L159)
 
 **Argument of perihelion** ( \omega ) in **degrees**.
 
@@ -327,7 +327,7 @@ optional x: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:192](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L192)
+[celestial-bodies/asteroids.ts:192](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L192)
 
 Optional **Cartesian coordinates** (distance values) in a specified frame. :::
 info
@@ -345,7 +345,7 @@ optional y: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:194](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L194)
+[celestial-bodies/asteroids.ts:194](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L194)
 
 See [x](#x).
 
@@ -358,6 +358,6 @@ optional z: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:196](https://github.com/phun-ky/interstellar-tools/blob/c901577e81132c0c53936a1caf881c7dc55a9832/packages/types/src/celestial-bodies/asteroids.ts#L196)
+[celestial-bodies/asteroids.ts:196](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/asteroids.ts#L196)
 
 See [x](#x).

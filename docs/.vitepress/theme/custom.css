@@ -615,3 +615,7 @@ table > tbody > tr:nth-child(2n) {
 .vp-doc tr > td:first-of-type {
   white-space: nowrap;
 }
+
+.vp-doc .MathJax svg {
+  color: var(--ph-color-text-accent);
+}
