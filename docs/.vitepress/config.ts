@@ -143,6 +143,9 @@ export default withMermaid(
     },
     markdown: {
       math: true,
+      toc: {
+        level: [2, 3, 4]
+      },
       config(md) {
         md.use(groupIconMdPlugin);
       },
