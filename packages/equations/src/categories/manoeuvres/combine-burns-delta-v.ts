@@ -1,5 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
+/* node:coverage disable */
 /**
  * **Combine non-collinear burns** (vector law / law of cosines for velocities).
  *
@@ -66,6 +67,7 @@ import type { Radians } from '@interstellar-tools/types';
  * console.log("Δθ = 25°  → Δv =", dv_25.toFixed(3), "m/s");
  * ```
  */
+/* node:coverage enable */
 export const combineBurnsDeltaV = (
   v1: number,
   v2: number,
