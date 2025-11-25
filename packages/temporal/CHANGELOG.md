@@ -1,5 +1,36 @@
 # Changelog
 
+## [0.11.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.10.0...@interstellar-tools/temporal@0.11.0) (2025-11-25)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.11.0 ([0e731df](https://github.com/phun-ky/interstellar-tools/commit/0e731df8698fc988387c13c2dded07e477e0a538))
+* 🤖 @interstellar-tools/equations@0.11.0 ([86841ce](https://github.com/phun-ky/interstellar-tools/commit/86841ce9df874a187022334b8b3c8f18949985d5))
+* 🤖 @interstellar-tools/types@0.10.0 ([d51575b](https://github.com/phun-ky/interstellar-tools/commit/d51575bf782f1fe29e78baf447858d342d7dd8d8))
+* 🤖 Add more headings to table of contents ([a3d3f44](https://github.com/phun-ky/interstellar-tools/commit/a3d3f4417e654c75bcb74001a4c739e7824c79f6))
+* 🤖 Ignore documentation from coverage ([e2bd882](https://github.com/phun-ky/interstellar-tools/commit/e2bd88241ec1516938fe02603a58bfab94bb6b89))
+* 🤖 trying to fix labels ([c39c0fc](https://github.com/phun-ky/interstellar-tools/commit/c39c0fc9945f00e6ec6f0aa6eaf6f35f587a2fe9))
+* 🤖 update deps ([f8b0744](https://github.com/phun-ky/interstellar-tools/commit/f8b0744055f31244871723e5b6babab6dd514507))
+* 🤖 Update todo ([0c627f2](https://github.com/phun-ky/interstellar-tools/commit/0c627f25b1bde133d3b97931c6363645d097a039))
+
+### Documentation
+
+* ✏️ Add more usage documentation ([4bd8b4b](https://github.com/phun-ky/interstellar-tools/commit/4bd8b4b2bfc5b90caa21ea49d3b5cb1d5cb8b9e8))
+* ✏️ Add usage documentation for `oberthEnergyGain` ([7bdf6e2](https://github.com/phun-ky/interstellar-tools/commit/7bdf6e25d8b2bb29887911f3ddd233bf23eac036))
+* ✏️ Regenerate docs ([7bce033](https://github.com/phun-ky/interstellar-tools/commit/7bce0338e04da33607fc8a944177e457134e40b5))
+* ✏️ Regenerate documentation ([88935b7](https://github.com/phun-ky/interstellar-tools/commit/88935b751261461ce59c30273e565d058aae50f1))
+* ✏️ Regenerate documentation ([5462dfd](https://github.com/phun-ky/interstellar-tools/commit/5462dfd597336dd4aa57edc1e894b564d387586b))
+
+### Feature
+
+* 🎸 Add `combineBurnsDeltaV` ([0503b23](https://github.com/phun-ky/interstellar-tools/commit/0503b236b3a22f091d0904f42ae562f138ec08a3))
+* 🎸 Add `oberthEnergyGain` ([a7e1e30](https://github.com/phun-ky/interstellar-tools/commit/a7e1e3029f477bdcd93a68f118266bdac9074755))
+* 🎸 Add planeChangeDeltaV function ([fcddcd6](https://github.com/phun-ky/interstellar-tools/commit/fcddcd6cf8894a6965ae04c7c30d1373c63b03a0))
+
+### Refactoring
+
+* 💡 Use a better color for katex ([f7ec493](https://github.com/phun-ky/interstellar-tools/commit/f7ec49393ac3c1d0725bd8f7eba63e899b1c0007))
+
 ## [0.10.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.9.0...@interstellar-tools/temporal@0.10.0) (2025-11-20)
 
 ### Tasks
