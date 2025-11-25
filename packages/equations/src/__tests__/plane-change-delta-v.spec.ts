@@ -2,10 +2,9 @@ import { Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 import { planeChangeDeltaV } from '../categories/manoeuvres/plane-change-delta-v';
-import { absClose, relClose } from './helpers';
+import { absClose, relClose, toRad } from './helpers';
 
 const PI = Math.PI;
-const toRad = (deg: number) => ((deg * PI) / 180) as Radians;
 
 describe('planeChangeDeltaV', () => {
   test('Δi = 0 → Δv = 0', () => {
