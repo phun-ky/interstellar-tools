@@ -1,6 +1,6 @@
-name: "Pull Request Labeler"
+name: 'Pull Request Labeler'
 on:
-- pull_request_target
+  - pull_request_target
 
 jobs:
   labeler:
@@ -10,7 +10,12 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
-    - id: label-the-PR
-      uses: actions/labeler@v5
-      with:
-        sync-labels: true
+      - uses: actions/checkout@v4 # Uploads repository content to the runner
+        with:
+          repository: 'phun-ky/interstellar-tools' # The one of the available inputs, visit https://github.com/actions/checkout#readme to find more
+          token: ${{ secrets.GH_TOKEN }}
+      - id: label-the-PR
+        uses: actions/labeler@v5
+        with:
+          sync-labels: true
+          configuration-path: '.github/labeler.yml'
