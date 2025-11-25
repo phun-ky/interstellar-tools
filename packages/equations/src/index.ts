@@ -61,4 +61,6 @@ export * from './categories/manoeuvres/combine-burns-delta-v';
 
 export * from './categories/manoeuvres/hohmann-transfer';
 
+export * from './categories/manoeuvres/oberth-energy-gain';
+
 export * from './categories/manoeuvres/plane-change-delta-v';
