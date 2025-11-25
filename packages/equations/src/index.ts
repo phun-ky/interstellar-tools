@@ -54,3 +54,5 @@ export * from './categories/orbits/flight-path-angle-from-true-anomaly';
 // categories/manoeuvres
 
 export * from './categories/manoeuvres/hohmann-transfer';
+
+export * from './categories/manoeuvres/plane-change-delta-v';
