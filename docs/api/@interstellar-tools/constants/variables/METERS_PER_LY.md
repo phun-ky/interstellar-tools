@@ -8,7 +8,7 @@ const METERS_PER_LY: number;
 ```
 
 Defined in:
-[distance.ts:43](https://github.com/phun-ky/interstellar-tools/blob/9c13350dafd209031a6cfebe54b6883c404a0515/packages/constants/src/distance.ts#L43)
+[distance.ts:43](https://github.com/phun-ky/interstellar-tools/blob/e0d1c79e960d3afdb9582e7e5268537167cd33ae/packages/constants/src/distance.ts#L43)
 
 Meters in one **light-year**, defined as `c × (Julian year)`.
 
