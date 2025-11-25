@@ -8,7 +8,7 @@ type CometsType = CometInterface[];
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/comets.ts#L96)
+[celestial-bodies/comets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/9c13350dafd209031a6cfebe54b6883c404a0515/packages/types/src/celestial-bodies/comets.ts#L96)
 
 Type alias for an array of **comets**.
 

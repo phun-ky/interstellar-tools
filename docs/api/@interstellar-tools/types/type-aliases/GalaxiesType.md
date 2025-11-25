@@ -8,6 +8,6 @@ type GalaxiesType = GalaxyInterface[];
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:77](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/types/src/celestial-bodies/galaxies.ts#L77)
+[celestial-bodies/galaxies.ts:77](https://github.com/phun-ky/interstellar-tools/blob/9c13350dafd209031a6cfebe54b6883c404a0515/packages/types/src/celestial-bodies/galaxies.ts#L77)
 
 Type alias for a collection of **galaxies**.
