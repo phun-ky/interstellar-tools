@@ -117,8 +117,10 @@ orbital and mission software easier to build and easier to verify.
   escape/circular speeds, specific energy, specific angular momentum,
   peri/apoapsis radii).
 
-> [!WARNING] Validation status
+> [!WARNING] 
 >
+> **Validation status**
+> 
 > Equations are unit-tested against internal reference values, but have not yet
 > been systematically cross-validated against operational flight software or
 > high-fidelity ephemerides. Treat this as a learning and prototyping toolkit,
