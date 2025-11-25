@@ -1,10 +1,8 @@
-# Equations
+# Manoeuvres
 
 [[toc]]
 
-## Manoeuvres
-
-### combineBurnsDeltaV
+## Combine non-collinear burns (vector law / law of cosines for velocities)
 
 Example usage of `combineBurnsDeltaV`.
 
@@ -38,7 +36,7 @@ const dv_25 = combineBurnsDeltaV(1200, 800, toRadians(25));
 console.log('Δθ = 25°  → Δv =', dv_25.toFixed(3), 'm/s');
 ```
 
-#### Use cases
+### Use cases
 
 - **Combine tangential + normal at a node** When a manoeuvres requires changing
   **speed** (tangential) and doing a small **plane change** (normal) in the same
@@ -93,12 +91,12 @@ console.log('Δθ = 25°  → Δv =', dv_25.toFixed(3), 'm/s');
 
 :::
 
-### Hohmann
+## Hohmann
 
 Example usage of: `hohmannTransfer`, `hohmannSemiMajorAxis`,
 `hohmannTransferTime`.
 
-#### Essentials
+### Essentials
 
 ```typescript
 import {
@@ -111,7 +109,7 @@ import {
 const muEarth = 3.986004418e14;
 ```
 
-#### LEO → GEO Hohmann transfer (raise)
+### LEO → GEO Hohmann transfer (raise)
 
 ```typescript
 const rLEO = 6378e3 + 400e3; // Earth radius + 400 km (m)
@@ -133,7 +131,7 @@ console.log('at (from helper)       :', at.toFixed(0));
 console.log('tTransfer (from helper):', (tTransfer / 3600).toFixed(2));
 ```
 
-#### Higher → Lower circular orbit (retrograde burns)
+### Higher → Lower circular orbit (retrograde burns)
 
 ```typescript
 const rHigh = 12000e3; // m
@@ -146,7 +144,7 @@ console.log('Δv2 (m/s) :', lower.dv2.toFixed(2), lower.dir2); // retrograde
 console.log('ΔvTotal   :', lower.dvTotal.toFixed(2));
 ```
 
-#### Degenerate case (no change): r1 == r2
+### Degenerate case (no change): r1 == r2
 
 ```typescript
 const rSame = rLEO;
@@ -162,7 +160,7 @@ console.log(
 );
 ```
 
-#### Use cases
+### Use cases
 
 - **Raise LEO → GEO (classic design case)** Compute the budget for a coplanar
   circular raise from ($r_1$) (e.g., LEO) to ($r_2$) (GEO):
@@ -222,5 +220,104 @@ console.log(
 - Works for both **raise** ($(r_2>r_1)$) and **lower** ($(r_2<r_1)$).
 - Use returned `dir1`/`dir2` to map to **prograde/retrograde/none** for burn
   scripting.
+
+:::
+
+## Oberth effect (specific energy gain near periapsis)
+
+Example usage of `oberthEnergyGain`.
+
+```ts
+import { oberthEnergyGain, circularSpeed } from '@interstellar-tools/equations';
+
+// Earth’s GM (μ) in m^3/s^2
+const muEarth = 3.986004418e14;
+// Example: small prograde burn at LEO periapsis (~400 km altitude)
+const rLEO = 6378e3 + 400e3; // m
+const vLEO = circularSpeed(rLEO, muEarth); // m/s ≈ 7670
+// Suppose guidance commands a small impulsive burn Δv = 50 m/s at periapsis
+const dv = 50; // m/s
+// Oberth approximation: Δε ≈ v · Δv  (specific energy gain, J/kg ≡ m^2/s^2)
+const deltaEps = oberthEnergyGain(vLEO, dv);
+// For intuition, translate Δε to an approximate change in semi-major axis (elliptic case):
+// ε = -μ/(2a)  ⇒  Δa ≈ (a^2 / μ) · Δε (valid for small changes around circular LEO)
+const aLEO = rLEO; // circular → a = r
+const deltaA = ((aLEO * aLEO) / muEarth) * deltaEps; // meters
+
+console.log(`LEO speed v ≈ ${vLEO.toFixed(1)} m/s`);
+console.log(`Prograde Δv  = ${dv.toFixed(1)} m/s`);
+console.log(`Specific energy gain Δε ≈ ${deltaEps.toFixed(0)} J/kg`);
+console.log(`Approx. semi-major axis change Δa ≈ ${deltaA.toFixed(0)} m`);
+
+// Tip: If the burn is not perfectly prograde by angle φ (in radians),
+// scale by cos φ: Δε ≈ v · Δv · cos φ  (small-angle approximation).
+```
+
+### Use cases
+
+- **Maximize energy gain at periapsis (departure burn)** When planning an escape
+  or high-energy transfer, compute the specific energy increment from a
+  **periapsis** burn where orbital speed ($v$) is highest:
+  ($\Delta \varepsilon
+  \approx v\_{\text{peri}}\,\Delta v
+ $). Use this to show
+  why concentrating ($\Delta
+  v$) near periapsis is more effective than the same
+  ($\Delta v$) elsewhere.
+
+- **Compare burn placement: periapsis vs. apoapsis** For the same impulsive
+  ($\Delta v$), evaluate the energy benefit at different true anomalies:
+  ($
+  \Delta \varepsilon*{\text{peri}} \approx v*{\text{peri}} \Delta v$) vs.
+  ($
+  \Delta \varepsilon*{\text{apo}} \approx v*{\text{apo}} \Delta v$) with
+  ($
+  v*{\text{peri}} \gg v*{\text{apo}}$). Use this to justify performing plane
+  changes or trims at **apoapsis** (cheap angle change) but **energy-raising
+  burns** at **periapsis**.
+
+- **Interplanetary departure staging (parking → hyperbolic)** Budget the
+  **hyperbolic excess** energy by applying the Oberth estimate at LEO/LEO-like
+  periapsis: ($\Delta \varepsilon \approx v\_{\text{LEO}}\,\Delta v$). Helps
+  compare "all at LEO" vs. "split between LEO and deep-space" strategies.
+
+- **Powered gravity assist (periapsis burn during flyby)** During a close
+  planetary flyby, add a small **prograde** burn near pericenter to leverage the
+  high ($v$) for a large energy increase:
+  ($\Delta \varepsilon \approx
+  v\_{\text{p}} \Delta v$). Useful to illustrate
+  the payoff of **perijove/periapsis burns** in Jovian assists.
+
+- **Mission design trade: deep-space manoeuvre vs. low-periapsis burn** For a
+  fixed ($\Delta v$) capability, compare:
+  ($\Delta \varepsilon*{\text{DSM}}
+  \approx v*{\text{DSM}} \Delta v$) vs.
+  ($\Delta \varepsilon*{\text{peri}}
+  \approx v*{\text{peri}} \Delta v
+ $). Shows
+  why moving thrust "down the gravity well" can reduce total ($\Delta
+  v$) to
+  reach a target energy.
+
+- **Angle-off-velocity corrections (non-prograde burn)** If the burn is not
+  perfectly aligned with velocity by angle ($\phi$), use the small-angle form to
+  estimate the effective energy gain:
+  ($\Delta \varepsilon \approx v\,\Delta v
+  \cos \phi$). Demonstrates pointing
+  sensitivity and why guidance strives for **prograde alignment** during
+  energy-critical burns.
+
+- **Back-of-the-envelope fuel/energy checks** Quickly convert available
+  ($\Delta v$) into expected **specific energy** change at a known speed ($v$):
+  ($\Delta \varepsilon \approx v\,\Delta v$). Handy for sanity checks in **ops
+  consoles**, **design docs**, and **CI tests** without invoking full orbit
+  propagation.
+
+::: info Notes
+
+- Valid for **small**, **impulsive**, **prograde** burns; higher-order term
+  ($
+  \tfrac{1}{2}(\Delta v)^2$) is neglected.
+- Use with care when ($\Delta v$) is large or burn duration is non-negligible.
 
 :::
