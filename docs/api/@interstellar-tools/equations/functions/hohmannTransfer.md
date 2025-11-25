@@ -12,7 +12,7 @@ function hohmannTransfer(
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:54](https://github.com/phun-ky/interstellar-tools/blob/5462dfd597336dd4aa57edc1e894b564d387586b/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L54)
+[manoeuvres/hohmann-transfer.ts:49](https://github.com/phun-ky/interstellar-tools/blob/0c627f25b1bde133d3b97931c6363645d097a039/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L49)
 
 **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).
 
@@ -67,9 +67,3 @@ If an input is not a number.
 ## Throws
 
 If ($r_1\le 0$), ($r_2\le 0$), or ($\mu\le 0$), or a value is non-finite.
-
-## Example
-
-```ts
-// No code example here by request; see package docs for usage.
-```
