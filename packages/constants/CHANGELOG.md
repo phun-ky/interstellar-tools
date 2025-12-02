@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.13.0](///compare/@interstellar-tools/constants@0.12.0...@interstellar-tools/constants@0.13.0) (2025-12-02)
+
 ## [0.12.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.11.0...@interstellar-tools/constants@0.12.0) (2025-11-25)
 
 ### Tasks

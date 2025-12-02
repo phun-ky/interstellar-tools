@@ -8,6 +8,6 @@ const SOLAR_RADIUS_NOMINAL_KM: 695700;
 ```
 
 Defined in:
-[objects.ts:19](https://github.com/phun-ky/interstellar-tools/blob/e0d1c79e960d3afdb9582e7e5268537167cd33ae/packages/constants/src/objects.ts#L19)
+[objects.ts:19](https://github.com/phun-ky/interstellar-tools/blob/21bceef0c922124a61ed096f583736c3eac6150a/packages/constants/src/objects.ts#L19)
 
 Nominal solar radius (IAU 2015 B3), exact.

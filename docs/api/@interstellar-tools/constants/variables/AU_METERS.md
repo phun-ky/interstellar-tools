@@ -8,6 +8,6 @@ const AU_METERS: 149597870700;
 ```
 
 Defined in:
-[distance.ts:30](https://github.com/phun-ky/interstellar-tools/blob/e0d1c79e960d3afdb9582e7e5268537167cd33ae/packages/constants/src/distance.ts#L30)
+[distance.ts:30](https://github.com/phun-ky/interstellar-tools/blob/21bceef0c922124a61ed096f583736c3eac6150a/packages/constants/src/distance.ts#L30)
 
 Astronomical unit in meters, **exact** (IAU 2012 B2).
