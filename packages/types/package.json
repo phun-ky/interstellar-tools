@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/types",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Shared TypeScript types (e.g., 3D tuples, equation result interfaces) used across the monorepo to keep APIs predictable and safe.",
   "keywords": [
     "types",
