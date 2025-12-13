@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.15.0](///compare/@interstellar-tools/types@0.14.0...@interstellar-tools/types@0.15.0) (2025-12-13)
+
 ## [0.14.0](///compare/@interstellar-tools/types@0.13.0...@interstellar-tools/types@0.14.0) (2025-12-02)
 
 ## [0.13.0](///compare/@interstellar-tools/types@0.12.0...@interstellar-tools/types@0.13.0) (2025-12-02)
