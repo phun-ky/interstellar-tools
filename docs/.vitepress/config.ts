@@ -19,6 +19,7 @@ import lightTheme from './shiki/accessible-aa-light-shiki.json' with { type: 'js
 
 export default withMermaid(
   defineConfig({
+    base: '/interstellar-tools/',
     mermaidPlugin: {
       class: 'mermaid'
     },
