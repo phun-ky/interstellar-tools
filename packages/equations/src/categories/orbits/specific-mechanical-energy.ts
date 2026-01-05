@@ -37,7 +37,7 @@
  * @example
  * ```ts
  * // LEO example around Earth (~400 km altitude)
- * const muEarth = 3.986004418e14; // m^3/s^2
+ * const muEarth = 3.986004418e14; // m³/s²
  * const r = 6378e3 + 400e3;       // Earth radius + 400 km
  * const v = Math.sqrt(muEarth / r); // near-circular speed
  * const eps = specificMechanicalEnergy(v, r, muEarth);
@@ -57,7 +57,7 @@ export const specificMechanicalEnergy = (
     throw new Error('r must be a finite, positive number (m).');
 
   if (!Number.isFinite(mu) || mu < 0)
-    throw new Error('mu must be a finite, non-negative number (m^3/s^2).');
+    throw new Error('mu must be a finite, non-negative number (m³/s²).');
 
   return 0.5 * v * v - mu / r;
 };

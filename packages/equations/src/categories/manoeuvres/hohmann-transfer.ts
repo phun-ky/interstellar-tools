@@ -65,9 +65,7 @@ export const hohmannTransfer = (
   }
 
   if (r1 <= 0 || r2 <= 0 || mu <= 0) {
-    throw new RangeError(
-      'r1 and r2 must be > 0 (m), mu must be > 0 (m^3/s^2).'
-    );
+    throw new RangeError('r1 and r2 must be > 0 (m), mu must be > 0 (m³/s²).');
   }
 
   const at = 0.5 * (r1 + r2);
@@ -147,7 +145,7 @@ export const hohmannTransferTime = (
   if (typeof mu !== 'number') throw new TypeError('mu must be a number.');
 
   if (!Number.isFinite(mu) || mu <= 0)
-    throw new RangeError('mu must be finite and > 0 (m^3/s^2).');
+    throw new RangeError('mu must be finite and > 0 (m³/s²).');
 
   return Math.PI * Math.sqrt((at * at * at) / mu);
 };

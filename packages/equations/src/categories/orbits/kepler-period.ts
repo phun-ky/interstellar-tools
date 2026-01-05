@@ -27,7 +27,7 @@
  * ```ts
  * // GEO: a ≈ 42,164 km → T ≈ 86,164 s (one sidereal day)
  * const a = 42164e3;                 // m
- * const muEarth = 3.986004418e14;    // m^3/s^2
+ * const muEarth = 3.986004418e14;    // m³/s²
  * const T = keplerPeriod(a, muEarth); // ≈ 86164 s
  * ```
  *
@@ -35,7 +35,7 @@
  * ```ts
  * // LEO-ish circular: a ≈ Earth radius + 400 km
  * const a = 6378e3 + 400e3;          // m
- * const muEarth = 3.986004418e14;    // m^3/s^2
+ * const muEarth = 3.986004418e14;    // m³/s²
  * const T = keplerPeriod(a, muEarth); // ≈ 5550 s (~92.5 min)
  * ```
  *
@@ -47,7 +47,7 @@ export const keplerPeriod = (a: number, mu: number): number => {
   }
 
   if (!Number.isFinite(mu) || mu <= 0) {
-    throw new Error('mu must be a finite, positive number (m^3/s^2).');
+    throw new Error('mu must be a finite, positive number (m³/s²).');
   }
 
   const a3 = a * a * a; // a^3

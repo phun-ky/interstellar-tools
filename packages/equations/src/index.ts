@@ -39,13 +39,21 @@ export * from './categories/gravity/gravitational-parameter';
 
 // categories/orbits
 
+export * from './categories/orbits/characteristic-energy-c3';
+
 export * from './categories/orbits/circular-speed';
+
+export * from './categories/orbits/cw-hill-derivatives';
 
 export * from './categories/orbits/escape-speed';
 
 export * from './categories/orbits/flight-path-angle-from-true-anomaly';
 
+export * from './categories/orbits/hyperbolic-periapsis-speed';
+
 export * from './categories/orbits/kepler-period';
+
+export * from './categories/orbits/mean-motion';
 
 export * from './categories/orbits/specific-angular-momentum-from-elements';
 
@@ -53,11 +61,15 @@ export * from './categories/orbits/specific-angular-momentum';
 
 export * from './categories/orbits/specific-mechanical-energy';
 
+export * from './categories/orbits/sphere-of-influence-radius';
+
 export * from './categories/orbits/vis-viva-speed';
 
 // categories/manoeuvres
 
 export * from './categories/manoeuvres/combine-burns-delta-v';
+
+export * from './categories/manoeuvres/gravity-assist-turning-angle';
 
 export * from './categories/manoeuvres/hohmann-transfer';
 

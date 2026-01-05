@@ -31,7 +31,7 @@
  * @example
  * ```ts
  * // Near Earth's surface (approx.)
- * const muEarth = 3.986004418e14;     // m^3/s^2
+ * const muEarth = 3.986004418e14;     // m³/s²
  * const rSurface = 6378e3;            // m
  * const vEsc = escapeSpeed(rSurface, muEarth); // ≈ 11186 m/s
  * ```
@@ -52,7 +52,7 @@ export const escapeSpeed = (r: number, mu: number): number => {
   }
 
   if (!Number.isFinite(mu) || mu < 0) {
-    throw new Error('mu must be a finite, non-negative number (m^3/s^2).');
+    throw new Error('mu must be a finite, non-negative number (m³/s²).');
   }
 
   return Math.sqrt((2 * mu) / r);

@@ -18,7 +18,7 @@ describe('hohmannTransfer', () => {
   });
 
   test('transfer time: t = π sqrt(at^3 / μ)', () => {
-    const mu = 3.986004418e14; // Earth μ (m^3/s^2)
+    const mu = 3.986004418e14; // Earth μ (m³/s²)
     const r1 = 7000e3;
     const r2 = 42164e3;
     const at = 0.5 * (r1 + r2);

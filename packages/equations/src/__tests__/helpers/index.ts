@@ -70,3 +70,14 @@ export const residual = (E: number, e: number, M: number) => {
 };
 
 export const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
+
+export const rad = (x: number): Radians => x as Radians;
+
+export const relCloseTuple = (
+  a: readonly number[],
+  b: readonly number[],
+  eps = 1e-12
+) => {
+  assert.equal(a.length, b.length);
+  for (let i = 0; i < a.length; i++) relClose(a[i], b[i], eps);
+};

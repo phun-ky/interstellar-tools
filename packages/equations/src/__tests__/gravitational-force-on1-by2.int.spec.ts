@@ -7,7 +7,7 @@ import { Vector3DTupleType } from '@interstellar-tools/types';
 import { forceOn1By2 } from '../categories/gravity/force-on1-by2';
 
 describe('forceOn1By2', () => {
-  test('1D sanity (+x): |F| = G*m1*m2/r^2 and points +x', () => {
+  test('1D sanity (+x): |F| = G*m1*m2/r² and points +x', () => {
     const G = 1;
     const m1 = 2;
     const m2 = 3;

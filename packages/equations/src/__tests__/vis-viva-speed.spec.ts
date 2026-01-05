@@ -5,7 +5,7 @@ import { visVivaSpeed } from '../categories/orbits/vis-viva-speed';
 
 describe('visVivaSpeed', () => {
   test('circular orbit: a = r → v = sqrt(μ/r)', () => {
-    const mu = 3.986004418e14; // m^3/s^2 (Earth GM)
+    const mu = 3.986004418e14; // m³/s² (Earth GM)
     const r = 6778e3; // m (LEO-ish)
     const a = r;
 
