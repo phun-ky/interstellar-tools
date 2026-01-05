@@ -8,7 +8,7 @@ const MILLISECONDS_PER_DAY: number;
 ```
 
 Defined in:
-[temporal.ts:43](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/constants/src/temporal.ts#L43)
+[temporal.ts:43](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/constants/src/temporal.ts#L43)
 
 Milliseconds in one **SI day**.
 

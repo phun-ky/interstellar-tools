@@ -63,24 +63,30 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Manoeuvres
 
-| Function                                                  | Description                                                                            |
-| --------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [combineBurnsDeltaV](functions/combineBurnsDeltaV.md)     | **Combine non-collinear burns** (vector law / law of cosines for velocities).          |
-| [hohmannSemiMajorAxis](functions/hohmannSemiMajorAxis.md) | Convenience: compute only the **semi-major axis** ($a_t$) (m) of the Hohmann transfer. |
-| [hohmannTransfer](functions/hohmannTransfer.md)           | **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).                             |
-| [hohmannTransferTime](functions/hohmannTransferTime.md)   | Convenience: compute only the **transfer time** ($t_t$) (s).                           |
-| [oberthEnergyGain](functions/oberthEnergyGain.md)         | **Oberth effect (specific energy gain near periapsis)**.                               |
-| [planeChangeDeltaV](functions/planeChangeDeltaV.md)       | **Inclination (plane) change** Δv at speed ($v$).                                      |
+| Function                                                            | Description                                                                             |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [combineBurnsDeltaV](functions/combineBurnsDeltaV.md)               | **Combine non-collinear burns** (vector law / law of cosines for velocities).           |
+| [gravityAssistTurningAngle](functions/gravityAssistTurningAngle.md) | Compute **gravity-assist turning angle** (flyby deflection) for a hyperbolic encounter. |
+| [hohmannSemiMajorAxis](functions/hohmannSemiMajorAxis.md)           | Convenience: compute only the **semi-major axis** ($a_t$) (m) of the Hohmann transfer.  |
+| [hohmannTransfer](functions/hohmannTransfer.md)                     | **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).                              |
+| [hohmannTransferTime](functions/hohmannTransferTime.md)             | Convenience: compute only the **transfer time** ($t_t$) (s).                            |
+| [oberthEnergyGain](functions/oberthEnergyGain.md)                   | **Oberth effect (specific energy gain near periapsis)**.                                |
+| [planeChangeDeltaV](functions/planeChangeDeltaV.md)                 | **Inclination (plane) change** Δv at speed ($v$).                                       |
 
 ## Orbits
 
 | Function                                                                                | Description                                                                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [characteristicEnergyC3](functions/characteristicEnergyC3.md)                           | Compute **characteristic energy** (C3) from hyperbolic excess speed.                                                                    |
 | [circularSpeed](functions/circularSpeed.md)                                             | **Circular speed** ($v_c$) for a body in a circular orbit at radius ($r$).                                                              |
+| [cwHillDerivatives](functions/cwHillDerivatives.md)                                     | Compute the **time-derivative** of a Clohessy–Wiltshire / Hill relative-motion state (right-hand side for ODE integration).             |
 | [escapeSpeed](functions/escapeSpeed.md)                                                 | **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's gravity from radius ($r$) (ignoring drag/perturbations). |
 | [flightPathAngleFromTrueAnomaly](functions/flightPathAngleFromTrueAnomaly.md)           | **Flight-path angle** ($\gamma$) from **true anomaly** ($\nu$) and eccentricity ($e$).                                                  |
+| [hyperbolicPeriapsisSpeed](functions/hyperbolicPeriapsisSpeed.md)                       | Compute **hyperbolic periapsis speed** for a flyby/escape hyperbola.                                                                    |
 | [keplerPeriod](functions/keplerPeriod.md)                                               | **Kepler's 3rd law** - orbital period ($T$) from semi-major axis ($a$) and gravitational parameter ($\mu$).                             |
+| [meanMotion](functions/meanMotion.md)                                                   | Compute **mean motion** for a (near-)circular reference orbit.                                                                          |
 | [specificAngularMomentum](functions/specificAngularMomentum.md)                         | **Specific angular momentum** ($h$) (scalar magnitude).                                                                                 |
 | [specificAngularMomentumFromElements](functions/specificAngularMomentumFromElements.md) | **Specific angular momentum** ($h$) from **orbital elements**.                                                                          |
 | [specificMechanicalEnergy](functions/specificMechanicalEnergy.md)                       | **Specific mechanical energy** ($\varepsilon$) of a point mass in a central gravity field.                                              |
+| [sphereOfInfluenceRadius](functions/sphereOfInfluenceRadius.md)                         | Compute **sphere of influence** radius (patched conics approximation).                                                                  |
 | [visVivaSpeed](functions/visVivaSpeed.md)                                               | **Vis-viva (orbital speed)** - compute speed magnitude ($v$) from ($r$), ($a$), and ($\mu$).                                            |

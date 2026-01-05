@@ -13,7 +13,7 @@ function solveKepler(
 ```
 
 Defined in:
-[kepler/solve-kepler.ts:89](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/kepler/solve-kepler.ts#L89)
+[kepler/solve-kepler.ts:89](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/kepler/solve-kepler.ts#L89)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an
 adaptive approach:

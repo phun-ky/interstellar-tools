@@ -8,7 +8,7 @@ function specificMechanicalEnergy(v: number, r: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/specific-mechanical-energy.ts:48](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/orbits/specific-mechanical-energy.ts#L48)
+[orbits/specific-mechanical-energy.ts:48](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/orbits/specific-mechanical-energy.ts#L48)
 
 **Specific mechanical energy** ($ \varepsilon $) of a point mass in a central
 gravity field.
@@ -73,7 +73,7 @@ If `mu` is not finite or negative.
 
 ```ts
 // LEO example around Earth (~400 km altitude)
-const muEarth = 3.986004418e14; // m^3/s^2
+const muEarth = 3.986004418e14; // m³/s²
 const r = 6378e3 + 400e3; // Earth radius + 400 km
 const v = Math.sqrt(muEarth / r); // near-circular speed
 const eps = specificMechanicalEnergy(v, r, muEarth);

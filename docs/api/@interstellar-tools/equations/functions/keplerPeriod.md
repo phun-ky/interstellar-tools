@@ -8,7 +8,7 @@ function keplerPeriod(a: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/kepler-period.ts:44](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/orbits/kepler-period.ts#L44)
+[orbits/kepler-period.ts:44](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/orbits/kepler-period.ts#L44)
 
 **Kepler's 3rd law** - orbital period ($T$) from semi-major axis ($a$) and
 gravitational parameter ($\mu$).
@@ -56,13 +56,13 @@ If inputs are non-finite or out of domain.
 ```ts
 // GEO: a ≈ 42,164 km → T ≈ 86,164 s (one sidereal day)
 const a = 42164e3; // m
-const muEarth = 3.986004418e14; // m^3/s^2
+const muEarth = 3.986004418e14; // m³/s²
 const T = keplerPeriod(a, muEarth); // ≈ 86164 s
 ```
 
 ```ts
 // LEO-ish circular: a ≈ Earth radius + 400 km
 const a = 6378e3 + 400e3; // m
-const muEarth = 3.986004418e14; // m^3/s^2
+const muEarth = 3.986004418e14; // m³/s²
 const T = keplerPeriod(a, muEarth); // ≈ 5550 s (~92.5 min)
 ```

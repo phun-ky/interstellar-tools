@@ -8,7 +8,7 @@ function escapeSpeed(r: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/escape-speed.ts:49](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/orbits/escape-speed.ts#L49)
+[orbits/escape-speed.ts:49](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/orbits/escape-speed.ts#L49)
 
 **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's
 gravity from radius ($r$) (ignoring drag/perturbations).
@@ -57,7 +57,7 @@ If inputs are non-finite or out of domain.
 
 ```ts
 // Near Earth's surface (approx.)
-const muEarth = 3.986004418e14; // m^3/s^2
+const muEarth = 3.986004418e14; // m³/s²
 const rSurface = 6378e3; // m
 const vEsc = escapeSpeed(rSurface, muEarth); // ≈ 11186 m/s
 ```

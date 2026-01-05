@@ -13,7 +13,7 @@ function specificAngularMomentumFromElements(
 ```
 
 Defined in:
-[orbits/specific-angular-momentum-from-elements.ts:59](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/orbits/specific-angular-momentum-from-elements.ts#L59)
+[orbits/specific-angular-momentum-from-elements.ts:59](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/orbits/specific-angular-momentum-from-elements.ts#L59)
 
 **Specific angular momentum** ($h$) from **orbital elements**.
 
@@ -65,14 +65,14 @@ Specific angular momentum ($h$) (m²/s).
 
 [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
 If ($a$) is non-finite or zero; if ($e$) is non-finite or negative; if ($\mu$)
-is non-finite or negative; or if ($\mu\,a\,(1-e^2) < 0$) beyond a tiny FP
+is non-finite or negative; or if ($\mu\,a\,(1-e²) < 0$) beyond a tiny FP
 tolerance (invalid element set for this formula).
 
 ## Examples
 
 ```ts
 // Near-circular LEO-like elements
-const muEarth = 3.986004418e14; // m^3/s^2
+const muEarth = 3.986004418e14; // m³/s²
 const a = 6778e3; // m
 const e = 0.001;
 const h = specificAngularMomentumFromElements(a, e, muEarth); // ≈ sqrt(μ a)
@@ -80,7 +80,7 @@ const h = specificAngularMomentumFromElements(a, e, muEarth); // ≈ sqrt(μ a)
 
 ```ts
 // Hyperbolic flyby example
-const muEarth = 3.986004418e14; // m^3/s^2
+const muEarth = 3.986004418e14; // m³/s²
 const a = -50000e3; // m (negative for hyperbola)
 const e = 1.2;
 const h = specificAngularMomentumFromElements(a, e, muEarth);

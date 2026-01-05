@@ -8,7 +8,7 @@ const G_SI: number = 6.6743e-11;
 ```
 
 Defined in:
-[physics.ts:24](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/constants/src/physics.ts#L24)
+[physics.ts:24](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/constants/src/physics.ts#L24)
 
 Gravitational constant **G** in SI units.
 
@@ -35,5 +35,5 @@ $$
 ```ts
 // Standard gravitational parameter (mu) for Earth:
 const M_earth = 5.97219e24; // kg
-const mu_earth = G_SI * M_earth; // ≈ 3.986004e14 m^3/s^2
+const mu_earth = G_SI * M_earth; // ≈ 3.986004e14 m³/s²
 ```
