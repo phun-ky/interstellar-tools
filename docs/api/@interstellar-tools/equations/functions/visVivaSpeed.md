@@ -8,7 +8,7 @@ function visVivaSpeed(r: number, a: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/vis-viva-speed.ts:41](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/orbits/vis-viva-speed.ts#L41)
+[orbits/vis-viva-speed.ts:41](https://github.com/phun-ky/interstellar-tools/blob/eba42da13df2a93d9bf5de153f401b02d475cf3b/packages/equations/src/categories/orbits/vis-viva-speed.ts#L41)
 
 **Vis-viva (orbital speed)** - compute speed magnitude ($v$) from ($r$), ($a$),
 and ($\mu$).

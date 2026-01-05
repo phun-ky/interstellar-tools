@@ -8,6 +8,6 @@ const MILLISECONDS_PER_SECOND: 1000;
 ```
 
 Defined in:
-[temporal.ts:30](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/constants/src/temporal.ts#L30)
+[temporal.ts:30](https://github.com/phun-ky/interstellar-tools/blob/eba42da13df2a93d9bf5de153f401b02d475cf3b/packages/constants/src/temporal.ts#L30)
 
 Milliseconds in one second (exact).
