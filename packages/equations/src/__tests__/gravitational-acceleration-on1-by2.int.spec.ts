@@ -6,7 +6,7 @@ import { G_SI } from '@interstellar-tools/constants';
 import { Vector3DTupleType } from '@interstellar-tools/types';
 
 describe('accelerationOn1By2', () => {
-  test('1D sanity (+x): ||a|| = G*m2/r^2 and points +x', () => {
+  test('1D sanity (+x): ||a|| = G*m2/r² and points +x', () => {
     const G = 1;
     const m2 = 3;
     const r1: Vector3DTupleType = [0, 0, 0];
@@ -14,7 +14,7 @@ describe('accelerationOn1By2', () => {
 
     const a = accelerationOn1By2(m2, r1, r2, G);
 
-    // Expected magnitude: 1*3/10^2 = 0.03, direction +x
+    // Expected magnitude: 1*3/10² = 0.03, direction +x
     relClose(norm(a), 0.03, 1e-14);
     vecRelClose(a, [0.03, 0, 0], 1e-14);
   });
@@ -74,14 +74,14 @@ describe('accelerationOn1By2', () => {
     vecRelClose(a_Gx2, scale(a, 2));
   });
 
-  test('real-world sanity: Earth due to Sun at 1 AU (~5.93e-3 m/s^2)', () => {
+  test('real-world sanity: Earth due to Sun at 1 AU (~5.93e-3 m/s²)', () => {
     const mSun = 1.9885e30; // kg
     const rEarth: Vector3DTupleType = [0, 0, 0];
     const rSun: Vector3DTupleType = [1.495978707e11, 0, 0]; // m
 
     const a = accelerationOn1By2(mSun, rEarth, rSun, G_SI);
 
-    // Closed-form expectation GM_sun / r^2
+    // Closed-form expectation GM_sun / r²
     const dr = sub(rSun, rEarth);
     const r = Math.hypot(...dr);
     const expected = (G_SI * mSun) / (r * r);

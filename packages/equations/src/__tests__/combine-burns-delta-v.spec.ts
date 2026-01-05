@@ -32,7 +32,7 @@ describe('combineBurnsDeltaV', () => {
     absClose(dv, v1 + v2);
   });
 
-  test('quadrature (Δθ=90°): Δv = sqrt(v1^2 + v2^2)', () => {
+  test('quadrature (Δθ=90°): Δv = sqrt(v1² + v2²)', () => {
     const v1 = 2100;
     const v2 = 1400;
     const dv = combineBurnsDeltaV(v1, v2, toRad(90));

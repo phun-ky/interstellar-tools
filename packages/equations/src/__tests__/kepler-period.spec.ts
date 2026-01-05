@@ -7,7 +7,7 @@ import { keplerPeriod } from '../categories/orbits/kepler-period';
 describe('keplerPeriod', () => {
   test('GEO sanity: a ≈ 42,164 km around Earth → T ≈ 86,164 s', () => {
     const a = 42164e3; // m
-    const muEarth = 3.986004418e14; // m^3/s^2
+    const muEarth = 3.986004418e14; // m³/s²
     const T = keplerPeriod(a, muEarth);
 
     const ref = 86164.0905; // sidereal day (s)
@@ -17,7 +17,7 @@ describe('keplerPeriod', () => {
 
   test('LEO circular (~400 km): a = Re + 400 km → T ~ 5550 s', () => {
     const a = 6378e3 + 400e3; // m
-    const muEarth = 3.986004418e14; // m^3/s^2
+    const muEarth = 3.986004418e14; // m³/s²
     const T = keplerPeriod(a, muEarth);
 
     const ref = 5550; // ~92.5 min
@@ -49,7 +49,7 @@ describe('keplerPeriod', () => {
 
   test('Heliocentric: a = 1 AU around Sun → T ≈ 365.256 days', () => {
     const AU = 149_597_870_700; // m (IAU 2012)
-    const muSun = 1.32712440018e20; // m^3/s^2
+    const muSun = 1.32712440018e20; // m³/s²
     const T = keplerPeriod(AU, muSun);
 
     const siderealYear = 365.256363004 * 86400; // s
@@ -73,7 +73,7 @@ describe('keplerPeriod', () => {
 
   test('Numerical stability: very large a still yields finite result', () => {
     const a = 1e9; // 1,000,000 km
-    const muEarth = 3.986004418e14; // m^3/s^2
+    const muEarth = 3.986004418e14; // m³/s²
     const T = keplerPeriod(a, muEarth);
 
     assert.ok(Number.isFinite(T) && T > 0);
@@ -82,7 +82,7 @@ describe('keplerPeriod', () => {
   // Optional tight identity test against the formula directly
   test('Definition check: T = 2π * sqrt(a^3/μ)', () => {
     const a = 12_345_678; // m
-    const mu = 7.654321e13; // m^3/s^2
+    const mu = 7.654321e13; // m³/s²
 
     const T = keplerPeriod(a, mu);
     const expected = 2 * Math.PI * Math.sqrt((a * a * a) / mu);

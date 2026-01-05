@@ -18,7 +18,7 @@
  * ```ts
  * // Standard gravitational parameter (mu) for Earth:
  * const M_earth = 5.97219e24; // kg
- * const mu_earth = G_SI * M_earth; // ≈ 3.986004e14 m^3/s^2
+ * const mu_earth = G_SI * M_earth; // ≈ 3.986004e14 m³/s²
  * ```
  */
 export const G_SI: number = 6.6743e-11;

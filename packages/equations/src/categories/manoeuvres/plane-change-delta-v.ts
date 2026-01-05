@@ -35,7 +35,7 @@ import type { Radians } from '@interstellar-tools/types';
  * // Helper: degrees → radians (branded)
  * const toRadians = (deg: number): Radians => ((deg * Math.PI) / 180) as Radians;
  *
- * // Earth’s GM (μ) in m^3/s^2
+ * // Earth’s GM (μ) in m³/s²
  * const muEarth = 3.986004418e14;
  *
  * // Example: instantaneous plane change at LEO (~400 km altitude)

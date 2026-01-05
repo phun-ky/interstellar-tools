@@ -54,7 +54,7 @@ import { gravitationalForce } from './gravitational-force';
  * :::
  *
  * **Invariants (within FP tolerance)**
- * - `||F|| = G*m1*m2/r^2`
+ * - `||F|| = G*m1*m2/r²`
  * - `F = ||F|| * r̂`
  *
  * @param {number} m1 Mass of body 1 (kg).
@@ -81,7 +81,7 @@ import { gravitationalForce } from './gravitational-force';
  * @example
  * ```ts
  * // Derive acceleration from the returned force: a = F / m1
- * const a: [number, number, number] = [F[0]/mEarth, F[1]/mEarth, F[2]/mEarth]; // m/s^2
+ * const a: [number, number, number] = [F[0]/mEarth, F[1]/mEarth, F[2]/mEarth]; // m/s²
  * ```
  *
  * @see https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation

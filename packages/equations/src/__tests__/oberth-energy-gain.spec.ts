@@ -27,7 +27,7 @@ describe('oberthEnergyGain', () => {
     absClose(oberthEnergyGain(0, 25), 0);
   });
 
-  test('scaling: scale v and dv by k ⇒ Δε scales by k^2', () => {
+  test('scaling: scale v and dv by k ⇒ Δε scales by k²', () => {
     const v = 5000,
       dv = 20;
     const k = 3.5;
@@ -61,7 +61,7 @@ describe('oberthEnergyGain', () => {
     const dv = 10; // small impulse
     const approx = oberthEnergyGain(v, dv);
     const exact = v * dv + 0.5 * dv * dv; // neglecting gravity/curvature during the burn
-    // The approximation should be lower than exact by ~0.5*dv^2
+    // The approximation should be lower than exact by ~0.5*dv²
     absClose(exact - approx, 0.5 * dv * dv);
   });
 

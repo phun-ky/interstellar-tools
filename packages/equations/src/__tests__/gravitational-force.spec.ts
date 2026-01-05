@@ -15,7 +15,7 @@ describe('gravitationalForce', () => {
 
     const res = gravitationalForce(m1, m2, r1, r2, G);
 
-    // Expected: |F| = G m1 m2 / r^2 = 6 / 100 = 0.06; direction = +x
+    // Expected: |F| = G m1 m2 / r² = 6 / 100 = 0.06; direction = +x
     relClose(res.magnitude, 0.06);
     vecRelClose(res.vector, [0.06, 0, 0]);
     // invariants
@@ -120,7 +120,7 @@ describe('gravitationalForce', () => {
     assert.throws(() => gravitationalForce(1, 1, r1, r2, -1), /positive/);
   });
 
-  test('scales with 1/r^2', () => {
+  test('scales with 1/r²', () => {
     const G = 10;
     const m1 = 2;
     const m2 = 5;

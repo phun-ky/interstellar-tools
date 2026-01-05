@@ -8,7 +8,7 @@ function planeChangeDeltaV(v: number, deltaI: Radians): number;
 ```
 
 Defined in:
-[manoeuvres/plane-change-delta-v.ts:57](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/manoeuvres/plane-change-delta-v.ts#L57)
+[manoeuvres/plane-change-delta-v.ts:57](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/manoeuvres/plane-change-delta-v.ts#L57)
 
 **Inclination (plane) change** Δv at speed ($v$).
 
@@ -66,7 +66,7 @@ import type { Radians } from '@interstellar-tools/types';
 // Helper: degrees → radians (branded)
 const toRadians = (deg: number): Radians => ((deg * Math.PI) / 180) as Radians;
 
-// Earth’s GM (μ) in m^3/s^2
+// Earth’s GM (μ) in m³/s²
 const muEarth = 3.986004418e14;
 
 // Example: instantaneous plane change at LEO (~400 km altitude)

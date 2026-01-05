@@ -11,7 +11,7 @@ function specificAngularMomentum(
 ```
 
 Defined in:
-[orbits/specific-angular-momentum.ts:57](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/orbits/specific-angular-momentum.ts#L57)
+[orbits/specific-angular-momentum.ts:57](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/orbits/specific-angular-momentum.ts#L57)
 
 **Specific angular momentum** ($h$) (scalar magnitude).
 
@@ -77,7 +77,7 @@ invalid (NaN).
 // LEO-like state: r ⟂ v
 const r: [number, number, number] = [6778e3, 0, 0]; // m
 const v: [number, number, number] = [0, 7.67e3, 0]; // m/s
-const h = specificAngularMomentum(r, v); // ≈ 5.20e10 m^2/s
+const h = specificAngularMomentum(r, v); // ≈ 5.20e10 m²/s
 ```
 
 ## See

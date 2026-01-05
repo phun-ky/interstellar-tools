@@ -8,7 +8,7 @@ function gravitationalParameter(M: number, m: number, G?: number): number;
 ```
 
 Defined in:
-[gravity/gravitational-parameter.ts:50](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/gravity/gravitational-parameter.ts#L50)
+[gravity/gravitational-parameter.ts:50](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/gravity/gravitational-parameter.ts#L50)
 
 Two-body **gravitational parameter** ($\mu$).
 
@@ -69,7 +69,7 @@ If `G` is non-finite or negative.
 
 ```ts
 // Standard gravitational parameter for Earth (approximate: m ~ 0)
-const muEarth = gravitationalParameter(5.97219e24); // ≈ 3.986004e14 m^3/s^2
+const muEarth = gravitationalParameter(5.97219e24); // ≈ 3.986004e14 m³/s²
 
 // Earth + 1000 kg satellite: practically identical to GM
 const muExact = gravitationalParameter(5.97219e24, 1000);

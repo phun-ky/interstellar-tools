@@ -44,7 +44,7 @@ npm i --save @interstellar-tools/constants
 | [TIME_SCALE_TT](variables/TIME_SCALE_TT.md)                                           | -                                                                                                                |
 | [TIME_SCALE_UTC](variables/TIME_SCALE_UTC.md)                                         | Time-scale tags used in this package.                                                                            |
 | [TT_MINUS_UTC_AT_J2000_MS](variables/TT_MINUS_UTC_AT_J2000_MS.md)                     | -                                                                                                                |
-| [TT_MINUS_UTC_AT_J2000_SECONDS](variables/TT_MINUS_UTC_AT_J2000_SECONDS.md)           | Useful offset at the J2000 epoch (for UTC↔TT conversions near that instant).                                     |
+| [TT_MINUS_UTC_AT_J2000_SECONDS](variables/TT_MINUS_UTC_AT_J2000_SECONDS.md)           | Useful offset at the J2000 epoch (for UTC↔TT conversions near that instant).                                    |
 
 ## Distance
 

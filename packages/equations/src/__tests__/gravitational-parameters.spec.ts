@@ -13,7 +13,7 @@ describe('gravitationalParameter', () => {
   });
 
   test('matches canonical GM_Earth when M = GM/G', () => {
-    const GM_canonical = 3.986004418e14; // m^3/s^2
+    const GM_canonical = 3.986004418e14; // m³/s²
     const M_from_GM = GM_canonical / 6.6743e-11;
     const mu = gravitationalParameter(M_from_GM); // m=0, G=G_SI
     relClose(mu, GM_canonical, 1e-12);

@@ -5,7 +5,7 @@ import { absClose, relClose } from './helpers';
 
 describe('specificMechanicalEnergy', () => {
   test('circular orbit: ε = -μ/(2r) when v = sqrt(μ/r)', () => {
-    const mu = 3.986004418e14; // m^3/s^2 (Earth GM)
+    const mu = 3.986004418e14; // m³/s² (Earth GM)
     const r = 6378e3 + 400e3; // m (LEO-ish)
     const v = Math.sqrt(mu / r); // m/s
 
@@ -16,7 +16,7 @@ describe('specificMechanicalEnergy', () => {
   });
 
   test('parabolic case: v = sqrt(2μ/r) → ε ≈ 0', () => {
-    const mu = 3.986004418e14; // m^3/s^2
+    const mu = 3.986004418e14; // m³/s²
     const r = 7000e3; // m
     const v = Math.sqrt((2 * mu) / r);
 

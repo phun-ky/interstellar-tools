@@ -31,7 +31,7 @@
  * @example
  * ```ts
  * // LEO (~400 km): a ≈ r for near-circular
- * const muEarth = 3.986004418e14; // m^3/s^2
+ * const muEarth = 3.986004418e14; // m³/s²
  * const r = 6378e3 + 400e3;       // m
  * const a = r;                    // circular
  * const v = visVivaSpeed(r, a, muEarth); // ≈ 7670 m/s
@@ -44,7 +44,7 @@ export const visVivaSpeed = (r: number, a: number, mu: number): number => {
   }
 
   if (!Number.isFinite(mu) || mu < 0) {
-    throw new Error('mu must be a finite, non-negative number (m^3/s^2).');
+    throw new Error('mu must be a finite, non-negative number (m³/s²).');
   }
 
   if (!Number.isFinite(a)) {

@@ -9,7 +9,7 @@ const EPOCH_2000_UTC_MIDNIGHT_TIME_SCALE: 'UTC' = TIME_SCALE_UTC;
 ```
 
 Defined in:
-[date.ts:61](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/constants/src/date.ts#L61)
+[date.ts:61](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/constants/src/date.ts#L61)
 
 Time scale associated with
 [EPOCH_2000_UTC_MIDNIGHT](EPOCH_2000_UTC_MIDNIGHT.md).

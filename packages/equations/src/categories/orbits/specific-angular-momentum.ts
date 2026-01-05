@@ -46,7 +46,7 @@ import { Vector3DTupleType } from '@interstellar-tools/types';
  * // LEO-like state: r ⟂ v
  * const r: [number, number, number] = [6778e3, 0, 0]; // m
  * const v: [number, number, number] = [0, 7.67e3, 0]; // m/s
- * const h = specificAngularMomentum(r, v);            // ≈ 5.20e10 m^2/s
+ * const h = specificAngularMomentum(r, v);            // ≈ 5.20e10 m²/s
  * ```
  *
  * @see {@link https://en.wikipedia.org/wiki/Specific_angular_momentum}
@@ -75,7 +75,7 @@ export const specificAngularMomentum = (
   const hx = r[1] * v[2] - r[2] * v[1];
   const hy = r[2] * v[0] - r[0] * v[2];
   const hz = r[0] * v[1] - r[1] * v[0];
-  const h = Math.hypot(hx, hy, hz); // m^2/s
+  const h = Math.hypot(hx, hy, hz); // m²/s
 
   return h;
 };

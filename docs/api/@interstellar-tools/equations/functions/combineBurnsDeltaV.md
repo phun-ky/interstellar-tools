@@ -12,7 +12,7 @@ function combineBurnsDeltaV(
 ```
 
 Defined in:
-[manoeuvres/combine-burns-delta-v.ts:71](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/manoeuvres/combine-burns-delta-v.ts#L71)
+[manoeuvres/combine-burns-delta-v.ts:71](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/manoeuvres/combine-burns-delta-v.ts#L71)
 
 **Combine non-collinear burns** (vector law / law of cosines for velocities).
 

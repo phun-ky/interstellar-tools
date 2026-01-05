@@ -73,9 +73,11 @@ npm i --save @interstellar-tools/types
 
 ## Orbits
 
-| Type Alias                                           | Description                   |
-| ---------------------------------------------------- | ----------------------------- |
-| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md) | **Peri/apoapsis radii pair**. |
+| Type Alias                                             | Description                                                                   |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| [CwState](type-aliases/CwState.md)                     | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame. |
+| [CwStateDerivative](type-aliases/CwStateDerivative.md) | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.   |
+| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)   | **Peri/apoapsis radii pair**.                                                 |
 
 ## Temporal
 

@@ -37,7 +37,7 @@ import { G_SI } from '@interstellar-tools/constants';
  * @example
  * ```ts
  * // Standard gravitational parameter for Earth (approximate: m ~ 0)
- * const muEarth = gravitationalParameter(5.97219e24); // ≈ 3.986004e14 m^3/s^2
+ * const muEarth = gravitationalParameter(5.97219e24); // ≈ 3.986004e14 m³/s²
  *
  * // Earth + 1000 kg satellite: practically identical to GM
  * const muExact = gravitationalParameter(5.97219e24, 1000);

@@ -34,7 +34,7 @@ import { gravitationalForce } from './gravitational-force';
  * :::
  *
  * **Invariants (within FP tolerance)**
- * - `||a|| = G*m2/r^2`
+ * - `||a|| = G*m2/r²`
  * - `a = ||a|| * r̂`
  *
  * @param {number} m2 Mass of body 2 (kg).

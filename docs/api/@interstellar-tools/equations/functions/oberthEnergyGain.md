@@ -8,7 +8,7 @@ function oberthEnergyGain(v: number, dv: number): number;
 ```
 
 Defined in:
-[manoeuvres/oberth-energy-gain.ts:65](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/manoeuvres/oberth-energy-gain.ts#L65)
+[manoeuvres/oberth-energy-gain.ts:65](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/manoeuvres/oberth-energy-gain.ts#L65)
 
 **Oberth effect (specific energy gain near periapsis)**.
 
@@ -66,7 +66,7 @@ If inputs are non-finite or negative.
 ```ts
 import { oberthEnergyGain, circularSpeed } from '@interstellar-tools/equations';
 
-// Earth's GM (μ) in m^3/s^2
+// Earth's GM (μ) in m³/s²
 const muEarth = 3.986004418e14;
 
 // Example: small prograde burn at LEO periapsis (~400 km altitude)
@@ -76,11 +76,11 @@ const vLEO = circularSpeed(rLEO, muEarth); // m/s ≈ 7670
 // Suppose guidance commands a small impulsive burn Δv = 50 m/s at periapsis
 const dv = 50; // m/s
 
-// Oberth approximation: Δε ≈ v · Δv  (specific energy gain, J/kg ≡ m^2/s^2)
+// Oberth approximation: Δε ≈ v · Δv  (specific energy gain, J/kg ≡ m²/s²)
 const deltaEps = oberthEnergyGain(vLEO, dv);
 
 // For intuition, translate Δε to an approximate change in semi-major axis (elliptic case):
-// ε = -μ/(2a)  ⇒  Δa ≈ (a^2 / μ) · Δε (valid for small changes around circular LEO)
+// ε = -μ/(2a)  ⇒  Δa ≈ (a² / μ) · Δε (valid for small changes around circular LEO)
 const aLEO = rLEO; // circular → a = r
 const deltaA = ((aLEO * aLEO) / muEarth) * deltaEps; // meters
 

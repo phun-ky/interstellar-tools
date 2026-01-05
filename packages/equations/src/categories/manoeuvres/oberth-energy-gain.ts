@@ -35,7 +35,7 @@
  * ```ts
  * import { oberthEnergyGain, circularSpeed } from "@interstellar-tools/equations";
  *
- * // Earth's GM (μ) in m^3/s^2
+ * // Earth's GM (μ) in m³/s²
  * const muEarth = 3.986004418e14;
  *
  * // Example: small prograde burn at LEO periapsis (~400 km altitude)
@@ -45,11 +45,11 @@
  * // Suppose guidance commands a small impulsive burn Δv = 50 m/s at periapsis
  * const dv = 50; // m/s
  *
- * // Oberth approximation: Δε ≈ v · Δv  (specific energy gain, J/kg ≡ m^2/s^2)
+ * // Oberth approximation: Δε ≈ v · Δv  (specific energy gain, J/kg ≡ m²/s²)
  * const deltaEps = oberthEnergyGain(vLEO, dv);
  *
  * // For intuition, translate Δε to an approximate change in semi-major axis (elliptic case):
- * // ε = -μ/(2a)  ⇒  Δa ≈ (a^2 / μ) · Δε (valid for small changes around circular LEO)
+ * // ε = -μ/(2a)  ⇒  Δa ≈ (a² / μ) · Δε (valid for small changes around circular LEO)
  * const aLEO = rLEO; // circular → a = r
  * const deltaA = (aLEO * aLEO / muEarth) * deltaEps; // meters
  *

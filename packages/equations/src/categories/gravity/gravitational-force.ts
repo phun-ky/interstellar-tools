@@ -123,7 +123,7 @@ export const gravitationalForce = (
 
   const invR = 1 / Math.sqrt(r2mag);
   const dir: Vector3DTupleType = [rx * invR, ry * invR, rz * invR];
-  // |F| = G m1 m2 / r^2
+  // |F| = G m1 m2 / r²
   const magnitude = (G * m1 * m2) / r2mag;
   // Vector points from body 1 toward body 2.
   const Fx = dir[0] * magnitude;

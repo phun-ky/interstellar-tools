@@ -5,7 +5,7 @@ import { absClose, relClose } from './helpers';
 
 describe('escapeSpeed', () => {
   test('definition check: v_esc = sqrt(2μ/r)', () => {
-    const mu = 3.986004418e14; // m^3/s^2 (Earth GM)
+    const mu = 3.986004418e14; // m³/s² (Earth GM)
     const r = 7000e3; // m
     const v = escapeSpeed(r, mu);
     const expected = Math.sqrt((2 * mu) / r);
@@ -53,7 +53,7 @@ describe('escapeSpeed', () => {
     relClose(v2 / v1, 0.5, 1e-15);
   });
 
-  test('dimensionless identity: (v^2 * r) / (2μ) ≈ 1', () => {
+  test('dimensionless identity: (v² * r) / (2μ) ≈ 1', () => {
     const mu = 1.2345e12;
     const r = 3.21e7;
     const v = escapeSpeed(r, mu);

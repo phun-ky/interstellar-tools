@@ -8,7 +8,7 @@ function visVivaSpeed(r: number, a: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/vis-viva-speed.ts:41](https://github.com/phun-ky/interstellar-tools/blob/5913e0f9278db38f2861e82332044588e9643757/packages/equations/src/categories/orbits/vis-viva-speed.ts#L41)
+[orbits/vis-viva-speed.ts:41](https://github.com/phun-ky/interstellar-tools/blob/f5919dff1ac08fced0e2c02a05f531fbdceb8724/packages/equations/src/categories/orbits/vis-viva-speed.ts#L41)
 
 **Vis-viva (orbital speed)** - compute speed magnitude ($v$) from ($r$), ($a$),
 and ($\mu$).
@@ -60,7 +60,7 @@ If inputs are non-finite / out of domain, or the radicand becomes negative.
 
 ```ts
 // LEO (~400 km): a ≈ r for near-circular
-const muEarth = 3.986004418e14; // m^3/s^2
+const muEarth = 3.986004418e14; // m³/s²
 const r = 6378e3 + 400e3; // m
 const a = r; // circular
 const v = visVivaSpeed(r, a, muEarth); // ≈ 7670 m/s

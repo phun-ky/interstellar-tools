@@ -5,8 +5,8 @@ import { absClose, relClose } from './helpers';
 import { specificAngularMomentumFromElements } from '../categories/orbits/specific-angular-momentum-from-elements';
 
 describe('specificAngularMomentumFromElements', () => {
-  test('definition (elliptic): h = sqrt(μ a (1-e^2))', () => {
-    const mu = 3.986004418e14; // m^3/s^2 (Earth GM)
+  test('definition (elliptic): h = sqrt(μ a (1-e²))', () => {
+    const mu = 3.986004418e14; // m³/s² (Earth GM)
     const a = 7000e3; // m
     const e = 0.1; // -
     const h = specificAngularMomentumFromElements(a, e, mu);
@@ -28,7 +28,7 @@ describe('specificAngularMomentumFromElements', () => {
     const a = -50_000e3; // m
     const e = 1.2; // -
     const h = specificAngularMomentumFromElements(a, e, mu);
-    const expected = Math.sqrt(mu * a * (1 - e * e)); // positive since a<0 and (1-e^2)<0
+    const expected = Math.sqrt(mu * a * (1 - e * e)); // positive since a<0 and (1-e²)<0
     relClose(h, expected, 1e-15);
   });
 
@@ -37,7 +37,7 @@ describe('specificAngularMomentumFromElements', () => {
     const a = 7000e3; // m (positive)
     // Function tolerance: tol = |1e-14 * mu * |a||
     const tol = Math.abs(1e-14 * mu * Math.abs(a));
-    // Target radicand = -tol/2: μ*a*(1-e^2) = -tol/2  =>  1-e^2 = -(tol/2)/(μ*a)
+    // Target radicand = -tol/2: μ*a*(1-e²) = -tol/2  =>  1-e² = -(tol/2)/(μ*a)
     const oneMinusE2 = -(tol / 2) / (mu * a);
     const e = Math.sqrt(1 - oneMinusE2); // slightly > 1 (physically inconsistent with a>0), used only to hit tolerance path
 
@@ -48,7 +48,7 @@ describe('specificAngularMomentumFromElements', () => {
   test('invalid: clearly negative radicand throws (a>0, e>1 far from 1)', () => {
     const mu = 3.986004418e14;
     const a = 7000e3; // m
-    const e = 1.1; // makes 1 - e^2 < 0 with a>0 → negative radicand
+    const e = 1.1; // makes 1 - e² < 0 with a>0 → negative radicand
     assert.throws(
       () => specificAngularMomentumFromElements(a, e, mu),
       /Invalid \(a,e\).*μ·a·\(1-e²\) < 0/

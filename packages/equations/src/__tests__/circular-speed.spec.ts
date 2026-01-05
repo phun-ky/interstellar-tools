@@ -5,7 +5,7 @@ import { circularSpeed } from '../categories/orbits/circular-speed';
 
 describe('circularSpeed', () => {
   test('LEO (~400 km) around Earth: v ≈ 7.67 km/s', () => {
-    const mu = 3.986004418e14; // m^3/s^2
+    const mu = 3.986004418e14; // m³/s²
     const r = 6378e3 + 400e3; // m
     const v = circularSpeed(r, mu);
     const expected = Math.sqrt(mu / r);
@@ -25,7 +25,7 @@ describe('circularSpeed', () => {
   });
 
   test('Heliocentric at 1 AU: v ≈ 29.78 km/s', () => {
-    const muSun = 1.32712440018e20; // m^3/s^2
+    const muSun = 1.32712440018e20; // m³/s²
     const AU = 149_597_870_700; // m
     const v = circularSpeed(AU, muSun);
     const ref = 29_780; // m/s
