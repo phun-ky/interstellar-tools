@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.17.0](///compare/@interstellar-tools/equations@0.16.0...@interstellar-tools/equations@0.17.0) (2026-01-05)
+
 ## [0.16.0](///compare/@interstellar-tools/equations@0.15.0...@interstellar-tools/equations@0.16.0) (2026-01-05)
 
 ### Features
