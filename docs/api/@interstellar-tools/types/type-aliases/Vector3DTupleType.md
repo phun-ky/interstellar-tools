@@ -8,7 +8,7 @@ type Vector3DTupleType = readonly [number, number, number];
 ```
 
 Defined in:
-[math.ts:23](https://github.com/phun-ky/interstellar-tools/blob/eba42da13df2a93d9bf5de153f401b02d475cf3b/packages/types/src/math.ts#L23)
+[math.ts:23](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/math.ts#L23)
 
 A read-only 3D vector tuple `[x, y, z]`.
 

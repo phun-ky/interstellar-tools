@@ -8,7 +8,7 @@ const J2000_EPOCH_TIME_SCALE: 'TT' = TIME_SCALE_TT;
 ```
 
 Defined in:
-[date.ts:84](https://github.com/phun-ky/interstellar-tools/blob/eba42da13df2a93d9bf5de153f401b02d475cf3b/packages/constants/src/date.ts#L84)
+[date.ts:84](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/constants/src/date.ts#L84)
 
 The **defining** time scale for the J2000 epoch. J2000 is conventionally
 specified in **Terrestrial Time** (TT).
