@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.16.0](///compare/@interstellar-tools/types@0.15.0...@interstellar-tools/types@0.16.0) (2026-01-05)
+
+### Features
+
+* 🎸 Add more equations 045816e
+
 ## [0.15.0](///compare/@interstellar-tools/types@0.14.0...@interstellar-tools/types@0.15.0) (2025-12-13)
 
 ## [0.14.0](///compare/@interstellar-tools/types@0.13.0...@interstellar-tools/types@0.14.0) (2025-12-02)
