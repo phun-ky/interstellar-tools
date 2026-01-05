@@ -1,3 +1,4 @@
+/* node:coverage disable */
 /**
  * Compute **hyperbolic periapsis speed** for a flyby/escape hyperbola.
  *
@@ -30,6 +31,7 @@
  * const vp = hyperbolicPeriapsisSpeed(3.2, 398600.4418, 6678);
  * ```
  */
+/* node:coverage enable */
 export const hyperbolicPeriapsisSpeed = (
   vInfinity: number,
   mu: number,
