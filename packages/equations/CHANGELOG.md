@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.18.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.17.0...@interstellar-tools/equations@0.18.0) (2026-01-06)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.18.0 ([cd682e3](https://github.com/phun-ky/interstellar-tools/commit/cd682e37825b6ef0f3057f275d663cc8a87152bd))
+* 🤖 @interstellar-tools/temporal@0.17.0 ([4c8c4bf](https://github.com/phun-ky/interstellar-tools/commit/4c8c4bf185c75848b0cc951288693508e91df773))
+* 🤖 @interstellar-tools/types@0.17.0 ([5a0ebe3](https://github.com/phun-ky/interstellar-tools/commit/5a0ebe3ee840ccf8df23535a38073f01a030d8dc))
+* 🤖 bump the major-updates group across 1 directory with 3 updates ([8720153](https://github.com/phun-ky/interstellar-tools/commit/8720153d4e590f6b4ddc7bee7b269187a2cddc9b))
+* 🤖 Replace `glob` with `glob-bin` ([dce3219](https://github.com/phun-ky/interstellar-tools/commit/dce32194f5ddd8f18b28382658e6428ec028849d))
+
 ## [0.17.0](///compare/@interstellar-tools/equations@0.16.0...@interstellar-tools/equations@0.17.0) (2026-01-05)
 
 ## [0.16.0](///compare/@interstellar-tools/equations@0.15.0...@interstellar-tools/equations@0.16.0) (2026-01-05)
