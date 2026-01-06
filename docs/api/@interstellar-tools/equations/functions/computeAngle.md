@@ -11,7 +11,7 @@ function computeAngle(
 ```
 
 Defined in:
-[angle/compute-angle.ts:77](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/equations/src/categories/angle/compute-angle.ts#L77)
+[angle/compute-angle.ts:77](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/equations/src/categories/angle/compute-angle.ts#L77)
 
 Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given
 date and time step.

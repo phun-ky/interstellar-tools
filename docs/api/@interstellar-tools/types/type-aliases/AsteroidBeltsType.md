@@ -8,7 +8,7 @@ type AsteroidBeltsType = AsteroidBeltInterface[];
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:48](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L48)
+[celestial-bodies/asteroid-belts.ts:48](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L48)
 
 Type alias for a collection of asteroid belts.
 

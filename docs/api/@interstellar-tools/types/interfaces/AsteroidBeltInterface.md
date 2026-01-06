@@ -4,7 +4,7 @@ AsteroidBeltInterface
 # Interface: AsteroidBeltInterface
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:14](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L14)
+[celestial-bodies/asteroid-belts.ts:14](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L14)
 
 Represents an asteroid belt within the solar system simulation.
 
@@ -25,7 +25,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:22](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L22)
+[celestial-bodies/asteroid-belts.ts:22](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L22)
 
 Belt color for visualization.
 
@@ -38,7 +38,7 @@ density: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:26](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L26)
+[celestial-bodies/asteroid-belts.ts:26](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L26)
 
 Density factor affecting how many asteroids are simulated.
 
@@ -51,7 +51,7 @@ innerRadius: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:18](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L18)
+[celestial-bodies/asteroid-belts.ts:18](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L18)
 
 Inner radius of the belt in Astronomical Units (AU).
 
@@ -64,7 +64,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:16](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L16)
+[celestial-bodies/asteroid-belts.ts:16](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L16)
 
 Name of the asteroid belt.
 
@@ -77,7 +77,7 @@ opacity: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:24](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L24)
+[celestial-bodies/asteroid-belts.ts:24](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L24)
 
 Transparency level (0 = fully transparent, 1 = solid).
 
@@ -90,7 +90,7 @@ optional orbitPath: CartesianCoordinatesInterface[];
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:28](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L28)
+[celestial-bodies/asteroid-belts.ts:28](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L28)
 
 Optional: Orbit path for finer asteroid positioning.
 
@@ -103,6 +103,6 @@ outerRadius: number;
 ```
 
 Defined in:
-[celestial-bodies/asteroid-belts.ts:20](https://github.com/phun-ky/interstellar-tools/blob/727a28ebb073d05733d10ea9b9407bf55d0650aa/packages/types/src/celestial-bodies/asteroid-belts.ts#L20)
+[celestial-bodies/asteroid-belts.ts:20](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/asteroid-belts.ts#L20)
 
 Outer radius of the belt in Astronomical Units (AU).
