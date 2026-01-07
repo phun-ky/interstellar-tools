@@ -93,7 +93,7 @@ export const solveKepler = (
   tolerance = 1e-9
 ): Radians => {
   if (e < 0 || e >= 1) {
-    throw new RangeError(`Invalid eccentricity: ${e}. Must be in range [0,1].`);
+    throw new RangeError(`Invalid eccentricity: ${e}. Must be in range [0,1).`);
   }
 
   // **Use different solvers for high-eccentricity cases**

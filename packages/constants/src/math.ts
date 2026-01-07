@@ -10,7 +10,7 @@
  * 1\ \text{turn} = \tau\ \text{radians} = 360^\circ
  * $$
  * $$
- * \theta_{\text{rad}} = t\,\tau \quad (\text{turn fraction } t \in [0,1])
+ * \theta_{\text{rad}} = t\,\tau \quad (\text{turn fraction } t \in [0,1))
  * $$
  * $$
  * \theta_{\deg} = \frac{180^\circ}{\pi}\,\theta_{\text{rad}} = 360^\circ\,t

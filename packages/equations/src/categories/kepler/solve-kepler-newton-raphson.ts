@@ -91,7 +91,7 @@ export const solveKeplerNewtonRaphson = (
   tolerance: number
 ): Radians | number => {
   if (e < 0 || e >= 1) {
-    throw new RangeError(`Invalid eccentricity: ${e}. Must be in range [0,1].`);
+    throw new RangeError(`Invalid eccentricity: ${e}. Must be in range [0,1).`);
   }
 
   let E: number;
