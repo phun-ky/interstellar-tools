@@ -1,4 +1,4 @@
-import { Radians } from '@interstellar-tools/types';
+import type { Radians } from '@interstellar-tools/types';
 
 /**
  * Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.

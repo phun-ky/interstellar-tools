@@ -1,4 +1,4 @@
-import { Radians } from '@interstellar-tools/types';
+import type { Radians } from '@interstellar-tools/types';
 
 /**
  * Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the **Newton-Raphson method**

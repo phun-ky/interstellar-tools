@@ -1,4 +1,4 @@
-import { Radians } from '@interstellar-tools/types';
+import type { Radians } from '@interstellar-tools/types';
 
 /**
  * **Flight-path angle** ($ \gamma $) from **true anomaly** ($ \nu $) and eccentricity ($ e $).

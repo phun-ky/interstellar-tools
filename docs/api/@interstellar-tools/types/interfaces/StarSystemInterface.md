@@ -4,7 +4,7 @@ StarSystemInterface
 # Interface: StarSystemInterface
 
 Defined in:
-[celestial-bodies/stars.ts:22](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/stars.ts#L22)
+[celestial-bodies/stars.ts:22](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/types/src/celestial-bodies/stars.ts#L22)
 
 Represents a **star system**, which can be a planetary system or a stellar
 system.
@@ -27,7 +27,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:23](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/stars.ts#L23)
+[celestial-bodies/stars.ts:23](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/types/src/celestial-bodies/stars.ts#L23)
 
 Name of the star system.
 
@@ -40,6 +40,6 @@ type: 'planetary system' | 'stellar system';
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:24](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/types/src/celestial-bodies/stars.ts#L24)
+[celestial-bodies/stars.ts:24](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/types/src/celestial-bodies/stars.ts#L24)
 
 Specifies if it is a **planetary system** or a **stellar system**.

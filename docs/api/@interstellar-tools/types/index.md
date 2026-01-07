@@ -22,6 +22,7 @@ npm i --save @interstellar-tools/types
 
 | Type Alias                                             | Description                              |
 | ------------------------------------------------------ | ---------------------------------------- |
+| [Matrix3x3Type](type-aliases/Matrix3x3Type.md)         | Immutable 3×3 matrix of numbers.         |
 | [Vector3DTupleType](type-aliases/Vector3DTupleType.md) | A read-only 3D vector tuple `[x, y, z]`. |
 
 ## Celestial Bodies
