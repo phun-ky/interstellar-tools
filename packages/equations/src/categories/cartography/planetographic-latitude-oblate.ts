@@ -1,5 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
+/* node:coverage disable */
 /**
  * Compute planetographic latitude (oblate spheroid) from body-fixed Cartesian coordinates.
  *
@@ -16,6 +17,7 @@ import type { Radians } from '@interstellar-tools/types';
  * @param c Polar radius (finite, > 0)
  * @returns Planetographic latitude φg in radians (range: [-π/2, π/2])
  */
+/* node:coverage enable */
 export const planetographicLatitudeOblate = (
   x: number,
   y: number,

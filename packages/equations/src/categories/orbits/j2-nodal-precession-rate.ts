@@ -1,5 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
+/* node:coverage disable */
 /**
  * Compute **J2 nodal precession** (RAAN drift) for an orbit about an oblate body.
  *
@@ -49,6 +50,7 @@ import type { Radians } from '@interstellar-tools/types';
  * @see https://articles.adsabs.harvard.edu/pdf/1959AJ.....64..367K Kozai (1959) - The Motion of a Close Earth Satellite (classic primary source on secular J2 effects)
  * @see https://help.agi.com/stk/Content/stk/vehSat_orbitProp_2bodyJ2J4.htm AGI/STK Help - Two-Body with J2/J4 perturbations (practical propagation context)
  */
+/* node:coverage enable */
 export const j2NodalPrecessionRate = (
   J2: number,
   n: number,
