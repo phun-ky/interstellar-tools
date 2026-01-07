@@ -8,7 +8,7 @@ function hohmannTransferTime(r1: number, r2: number, mu: number): number;
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:138](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L138)
+[manoeuvres/hohmann-transfer.ts:138](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L138)
 
 Convenience: compute only the **transfer time** ($t_t$) (s).
 

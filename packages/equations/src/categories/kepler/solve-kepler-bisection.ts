@@ -1,4 +1,4 @@
-import { Radians } from '@interstellar-tools/types';
+import type { Radians } from '@interstellar-tools/types';
 
 /**
  * Solve **Kepler's equation** for the **eccentric anomaly** ($ E $) via **bisection** (elliptic case: ($ 0 \le e < 1 $)).

@@ -1,6 +1,10 @@
 import { TWO_PI } from '@interstellar-tools/constants';
-import { Radians, Vector3DTupleType } from '@interstellar-tools/types';
+import type {
+  Matrix3x3Type,
+  Vector3DTupleType
+} from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
+import { norm2pi } from '../../categories/helpers/misc';
 
 export const relClose = (
   a: number | null,
@@ -31,31 +35,8 @@ export const vecRelClose = (
   }
 };
 
-export const norm = (v: Vector3DTupleType) => {
-  return Math.hypot(v[0], v[1], v[2]);
-};
-
-export const scale = (v: Vector3DTupleType, s: number): Vector3DTupleType => {
-  return [v[0] * s, v[1] * s, v[2] * s];
-};
-
-export const sub = (
-  a: Vector3DTupleType,
-  b: Vector3DTupleType
-): Vector3DTupleType => {
-  return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-};
-
 export const absClose = (a: number, b: number, eps = 1e-12, msg?: string) => {
   assert.ok(Math.abs(a - b) <= eps, msg ?? `|${a} - ${b}| > ${eps}`);
-};
-
-export const dot = (a: Vector3DTupleType, b: Vector3DTupleType) => {
-  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-};
-
-export const norm2pi = (x: number): number => {
-  return ((x % TWO_PI) + TWO_PI) % TWO_PI;
 };
 
 export const angleClose = (a: number, b: number, eps = 1e-12) => {
@@ -64,15 +45,6 @@ export const angleClose = (a: number, b: number, eps = 1e-12) => {
   assert.ok(d <= eps, `angles not close: |Δ|=${d} > ${eps}`);
 };
 
-export const residual = (E: number, e: number, M: number) => {
-  const Mm = norm2pi(M);
-  return E - e * Math.sin(E) - Mm;
-};
-
-export const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
-
-export const rad = (x: number): Radians => x as Radians;
-
 export const relCloseTuple = (
   a: readonly number[],
   b: readonly number[],
@@ -80,4 +52,28 @@ export const relCloseTuple = (
 ) => {
   assert.equal(a.length, b.length);
   for (let i = 0; i < a.length; i++) relClose(a[i], b[i], eps);
+};
+
+export const matAbsClose = (
+  A: Matrix3x3Type,
+  B: Matrix3x3Type,
+  eps = 1e-12
+) => {
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      absClose(A[r][c], B[r][c], eps, `mismatch at [${r}][${c}]`);
+    }
+  }
+};
+
+export const matRelClose = (
+  A: Matrix3x3Type,
+  B: Matrix3x3Type,
+  eps = 1e-12
+) => {
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      relClose(A[r][c], B[r][c], eps, `mismatch at [${r}][${c}]`);
+    }
+  }
 };

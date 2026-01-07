@@ -1,4 +1,4 @@
-import { Radians } from '@interstellar-tools/types';
+import type { Radians } from '@interstellar-tools/types';
 
 import { wrapAngle } from '../angle/wrap-angle';
 

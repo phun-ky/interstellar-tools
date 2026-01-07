@@ -9,6 +9,6 @@ const SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM: 65 = 65;
 ```
 
 Defined in:
-[objects.ts:46](https://github.com/phun-ky/interstellar-tools/blob/c92c21e64c6c17a1e137f86d826c046c9ea440ca/packages/constants/src/objects.ts#L46)
+[objects.ts:46](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/constants/src/objects.ts#L46)
 
 1σ uncertainty for SOHO/MDI Mercury-transit radius.

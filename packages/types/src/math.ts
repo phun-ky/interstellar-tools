@@ -21,3 +21,28 @@
  * @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions
  */
 export type Vector3DTupleType = readonly [x: number, y: number, z: number];
+
+/**
+ * Immutable 3×3 matrix of numbers.
+ *
+ * This type is typically used for **direction cosine matrices (DCMs)** / rotation matrices
+ * and other small linear transforms in 3D Cartesian space.
+ *
+ * Layout:
+ * - Row-major: `M[row][col]`
+ * - Each row is a 3-tuple `[x, y, z]` (i.e., column 0..2).
+ *
+ * @example
+ * ```ts
+ * const I: Matrix3 = [
+ *   [1, 0, 0],
+ *   [0, 1, 0],
+ *   [0, 0, 1]
+ * ];
+ * ```
+ */
+export type Matrix3x3Type = readonly [
+  readonly [x: number, y: number, z: number],
+  readonly [x: number, y: number, z: number],
+  readonly [x: number, y: number, z: number]
+];

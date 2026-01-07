@@ -1,5 +1,5 @@
 import { DistanceInterface, MeasureInterface } from '../distance';
-import { Radians } from '../numeric';
+import type { Radians } from '../numeric';
 import { TemporalInterface } from '../temporal';
 
 import { CartesianCoordinatesInterface } from './planets';
