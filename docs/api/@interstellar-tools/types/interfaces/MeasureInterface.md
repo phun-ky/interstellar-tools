@@ -4,7 +4,7 @@ MeasureInterface
 # Interface: MeasureInterface
 
 Defined in:
-[distance.ts:151](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/types/src/distance.ts#L151)
+[distance.ts:151](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/types/src/distance.ts#L151)
 
 Represents a measurement with an associated unit.
 
@@ -27,7 +27,7 @@ unit: DistanceUnitType;
 ```
 
 Defined in:
-[distance.ts:152](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/types/src/distance.ts#L152)
+[distance.ts:152](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/types/src/distance.ts#L152)
 
 The unit of measurement.
 
@@ -40,7 +40,7 @@ value: number;
 ```
 
 Defined in:
-[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/types/src/numeric.ts#L18)
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.
 

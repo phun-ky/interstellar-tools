@@ -11,7 +11,7 @@ function meanToEccentricAnomaly(
 ```
 
 Defined in:
-[anomalies/mean-to-eccentric-anomaly.ts:60](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/equations/src/categories/anomalies/mean-to-eccentric-anomaly.ts#L60)
+[anomalies/mean-to-eccentric-anomaly.ts:60](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/equations/src/categories/anomalies/mean-to-eccentric-anomaly.ts#L60)
 
 Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
 

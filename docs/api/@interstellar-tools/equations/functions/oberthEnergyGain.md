@@ -8,7 +8,7 @@ function oberthEnergyGain(v: number, dv: number): number;
 ```
 
 Defined in:
-[manoeuvres/oberth-energy-gain.ts:65](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/equations/src/categories/manoeuvres/oberth-energy-gain.ts#L65)
+[manoeuvres/oberth-energy-gain.ts:65](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/equations/src/categories/manoeuvres/oberth-energy-gain.ts#L65)
 
 **Oberth effect (specific energy gain near periapsis)**.
 

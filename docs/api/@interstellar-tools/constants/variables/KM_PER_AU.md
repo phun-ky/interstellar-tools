@@ -8,6 +8,6 @@ const KM_PER_AU: number;
 ```
 
 Defined in:
-[distance.ts:96](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/constants/src/distance.ts#L96)
+[distance.ts:96](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/constants/src/distance.ts#L96)
 
 Kilometers in one astronomical unit.

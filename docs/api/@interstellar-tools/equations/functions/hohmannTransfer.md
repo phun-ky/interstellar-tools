@@ -12,7 +12,7 @@ function hohmannTransfer(
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:49](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L49)
+[manoeuvres/hohmann-transfer.ts:49](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L49)
 
 **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).
 

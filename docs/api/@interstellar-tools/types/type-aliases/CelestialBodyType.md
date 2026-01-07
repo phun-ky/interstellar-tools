@@ -13,7 +13,7 @@ type CelestialBodyType =
 ```
 
 Defined in:
-[celestial-bodies/celestial-bodies.ts:51](https://github.com/phun-ky/interstellar-tools/blob/079e297432574505029c4778a38f2852dffc7694/packages/types/src/celestial-bodies/celestial-bodies.ts#L51)
+[celestial-bodies/celestial-bodies.ts:51](https://github.com/phun-ky/interstellar-tools/blob/ac735f13de4b34569cab4db70a97bd640eb40a70/packages/types/src/celestial-bodies/celestial-bodies.ts#L51)
 
 Type alias representing a single celestial body.
 

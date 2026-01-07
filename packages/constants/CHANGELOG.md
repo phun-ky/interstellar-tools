@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.19.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.18.0...@interstellar-tools/constants@0.19.0) (2026-01-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/equations@0.18.0 ([1ec1297](https://github.com/phun-ky/interstellar-tools/commit/1ec12972218c75d9a87bf3cd75d5ab093ec6d61b))
+* 🤖 @interstellar-tools/temporal@0.18.0 ([56484ac](https://github.com/phun-ky/interstellar-tools/commit/56484aca48842ed5731d85ca41109e8409289196))
+* 🤖 @interstellar-tools/types@0.18.0 ([079e297](https://github.com/phun-ky/interstellar-tools/commit/079e297432574505029c4778a38f2852dffc7694))
+* 🤖 Do not include comments in coverage ([e599687](https://github.com/phun-ky/interstellar-tools/commit/e5996878f25f6a62192e1435487d8378a3190736))
+* 🤖 Update todo ([8ff6c35](https://github.com/phun-ky/interstellar-tools/commit/8ff6c3506afb90bb244b991702846dcfff79904e))
+
+### Feature
+
+* 🎸 Add more equations and documentation ([75ffd0a](https://github.com/phun-ky/interstellar-tools/commit/75ffd0a3d8eb0e1d3d2e2cb42c80a6c8cf3c004a))
+
+### Refactoring
+
+* 💡 Inclusive interval ([2a8e956](https://github.com/phun-ky/interstellar-tools/commit/2a8e956be49ecf6d2e1ee5c8c791ab3ca025242e))
+
 ## [0.18.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.17.0...@interstellar-tools/constants@0.18.0) (2026-01-06)
 
 ### Tasks
