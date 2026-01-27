@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/constants",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Authoritative physical and astronomical constants in SI units for consistent calculations.",
   "keywords": [
     "interstellar",
