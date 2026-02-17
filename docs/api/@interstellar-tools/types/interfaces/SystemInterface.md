@@ -4,7 +4,7 @@ SystemInterface
 # Interface: SystemInterface
 
 Defined in:
-[celestial-bodies/systems.ts:5](https://github.com/phun-ky/interstellar-tools/blob/eff06b9f9625e7af500504740b2185442c1f3c08/packages/types/src/celestial-bodies/systems.ts#L5)
+[celestial-bodies/systems.ts:5](https://github.com/phun-ky/interstellar-tools/blob/0d7df195ae500c345b1c6ecb00826679455e45ef/packages/types/src/celestial-bodies/systems.ts#L5)
 
 Represents a star system within the space visualization.
 
@@ -17,7 +17,7 @@ distance: number;
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:11](https://github.com/phun-ky/interstellar-tools/blob/eff06b9f9625e7af500504740b2185442c1f3c08/packages/types/src/celestial-bodies/systems.ts#L11)
+[celestial-bodies/systems.ts:11](https://github.com/phun-ky/interstellar-tools/blob/0d7df195ae500c345b1c6ecb00826679455e45ef/packages/types/src/celestial-bodies/systems.ts#L11)
 
 Distance from the Sun in light-years.
 
@@ -30,7 +30,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:7](https://github.com/phun-ky/interstellar-tools/blob/eff06b9f9625e7af500504740b2185442c1f3c08/packages/types/src/celestial-bodies/systems.ts#L7)
+[celestial-bodies/systems.ts:7](https://github.com/phun-ky/interstellar-tools/blob/0d7df195ae500c345b1c6ecb00826679455e45ef/packages/types/src/celestial-bodies/systems.ts#L7)
 
 Name of the star system.
 
@@ -43,6 +43,6 @@ stars: string[];
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:9](https://github.com/phun-ky/interstellar-tools/blob/eff06b9f9625e7af500504740b2185442c1f3c08/packages/types/src/celestial-bodies/systems.ts#L9)
+[celestial-bodies/systems.ts:9](https://github.com/phun-ky/interstellar-tools/blob/0d7df195ae500c345b1c6ecb00826679455e45ef/packages/types/src/celestial-bodies/systems.ts#L9)
 
 List of star names in the system.
