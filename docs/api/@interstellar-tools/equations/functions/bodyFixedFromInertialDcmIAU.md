@@ -12,7 +12,7 @@ function bodyFixedFromInertialDcmIAU(
 ```
 
 Defined in:
-[cartography/body-fixed-from-inertial-dcm-iau.ts:54](https://github.com/phun-ky/interstellar-tools/blob/0d7df195ae500c345b1c6ecb00826679455e45ef/packages/equations/src/categories/cartography/body-fixed-from-inertial-dcm-iau.ts#L54)
+[cartography/body-fixed-from-inertial-dcm-iau.ts:54](https://github.com/phun-ky/interstellar-tools/blob/e1895055f20123aef79902d13c565b030e6e65e7/packages/equations/src/categories/cartography/body-fixed-from-inertial-dcm-iau.ts#L54)
 
 Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).
 
