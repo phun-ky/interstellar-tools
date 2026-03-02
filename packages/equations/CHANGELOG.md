@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.27.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.26.0...@interstellar-tools/equations@0.27.0) (2026-03-02)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.27.0 ([359a4d1](https://github.com/phun-ky/interstellar-tools/commit/359a4d11bd2a01bdb3bd479454a9602a4e94c350))
+* 🤖 @interstellar-tools/temporal@0.26.0 ([faf3448](https://github.com/phun-ky/interstellar-tools/commit/faf3448f77e5be390f34adad28aacec8fe097980))
+* 🤖 @interstellar-tools/types@0.26.0 ([85617ee](https://github.com/phun-ky/interstellar-tools/commit/85617ee227a5ece534ae04b51c79e6f1c3e838f0))
+* 🤖 bump minimatch from 3.1.2 to 3.1.5 ([3a83d80](https://github.com/phun-ky/interstellar-tools/commit/3a83d8001bbcefa7c14643d9dbf0fd9745b2605c))
+
 ## [0.26.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.25.0...@interstellar-tools/equations@0.26.0) (2026-03-02)
 
 ### Tasks
