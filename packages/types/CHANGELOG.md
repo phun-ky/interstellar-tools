@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.26.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.25.0...@interstellar-tools/types@0.26.0) (2026-03-02)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.26.0 ([8a7c03d](https://github.com/phun-ky/interstellar-tools/commit/8a7c03dbc114072831624a077166ca628fb6427b))
+* 🤖 @interstellar-tools/equations@0.26.0 ([c301ab2](https://github.com/phun-ky/interstellar-tools/commit/c301ab267b902643686301e07e1cda21194e5f60))
+* 🤖 @interstellar-tools/temporal@0.26.0 ([faf3448](https://github.com/phun-ky/interstellar-tools/commit/faf3448f77e5be390f34adad28aacec8fe097980))
+* 🤖 bump basic-ftp from 5.1.0 to 5.2.0 ([f4d6e3b](https://github.com/phun-ky/interstellar-tools/commit/f4d6e3bd1fb38ca1219927d41a724c781fef3a8b))
+
+## [0.25.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.24.0...@interstellar-tools/types@0.25.0) (2026-03-02)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.25.0 ([097b86c](https://github.com/phun-ky/interstellar-tools/commit/097b86c3fa190ba636acdbccb614a9309bbade71))
+* 🤖 @interstellar-tools/equations@0.25.0 ([82e7bf1](https://github.com/phun-ky/interstellar-tools/commit/82e7bf131351b770750d8ffabe160d8a572ac0e9))
+* 🤖 @interstellar-tools/temporal@0.25.0 ([c9c5c70](https://github.com/phun-ky/interstellar-tools/commit/c9c5c70d9c3013c4cd3388880e55fd8d76b85259))
+* 🤖 bump rollup from 4.55.1 to 4.59.0 ([7e95026](https://github.com/phun-ky/interstellar-tools/commit/7e950269918a7c64c19d1892e6dc361a10286524))
+
 ## [0.24.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.23.0...@interstellar-tools/types@0.24.0) (2026-02-24)
 
 ### Tasks
