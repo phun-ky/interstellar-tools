@@ -8,7 +8,7 @@ function dot(a: Vector3DTupleType, b: Vector3DTupleType): number;
 ```
 
 Defined in:
-[helpers/misc.ts:85](https://github.com/phun-ky/interstellar-tools/blob/b776100acac0be898f41ef7c40abff24d6e32a13/packages/equations/src/categories/helpers/misc.ts#L85)
+[helpers/misc.ts:85](https://github.com/phun-ky/interstellar-tools/blob/629651921fe4421e613048f6c89a0251b7b6a97d/packages/equations/src/categories/helpers/misc.ts#L85)
 
 Compute the **dot product** of two 3D vectors.
 
