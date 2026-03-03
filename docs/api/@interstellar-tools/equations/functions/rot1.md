@@ -8,7 +8,7 @@ function rot1(theta: Radians): Matrix3x3Type;
 ```
 
 Defined in:
-[helpers/rot-1.ts:38](https://github.com/phun-ky/interstellar-tools/blob/18310488ea33e34b7910fc4ff063704786334539/packages/equations/src/categories/helpers/rot-1.ts#L38)
+[helpers/rot-1.ts:38](https://github.com/phun-ky/interstellar-tools/blob/79741aac4d6996d0523c16c72cb45f666155c4e7/packages/equations/src/categories/helpers/rot-1.ts#L38)
 
 Construct a **right-handed rotation matrix about the x-axis** (often written
 **R₁**).

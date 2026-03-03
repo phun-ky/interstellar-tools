@@ -9,6 +9,6 @@ const SOLAR_RADIUS_PICARD_SODISM_607_1_NM_UNC_KM: 145 = 145;
 ```
 
 Defined in:
-[objects.ts:71](https://github.com/phun-ky/interstellar-tools/blob/18310488ea33e34b7910fc4ff063704786334539/packages/constants/src/objects.ts#L71)
+[objects.ts:71](https://github.com/phun-ky/interstellar-tools/blob/79741aac4d6996d0523c16c72cb45f666155c4e7/packages/constants/src/objects.ts#L71)
 
 1σ uncertainty at 607.1 nm.
