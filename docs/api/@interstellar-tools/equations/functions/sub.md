@@ -8,7 +8,7 @@ function sub(a: Vector3DTupleType, b: Vector3DTupleType): Vector3DTupleType;
 ```
 
 Defined in:
-[helpers/misc.ts:61](https://github.com/phun-ky/interstellar-tools/blob/79741aac4d6996d0523c16c72cb45f666155c4e7/packages/equations/src/categories/helpers/misc.ts#L61)
+[helpers/misc.ts:61](https://github.com/phun-ky/interstellar-tools/blob/be17ff22c6290f56a50244b1ae9e915d3e4e5be0/packages/equations/src/categories/helpers/misc.ts#L61)
 
 Subtract two 3D vectors (`a - b`).
 
