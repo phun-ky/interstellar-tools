@@ -8,7 +8,7 @@ function characteristicEnergyC3(vInfinity: number): number;
 ```
 
 Defined in:
-[orbits/characteristic-energy-c3.ts:31](https://github.com/phun-ky/interstellar-tools/blob/be17ff22c6290f56a50244b1ae9e915d3e4e5be0/packages/equations/src/categories/orbits/characteristic-energy-c3.ts#L31)
+[orbits/characteristic-energy-c3.ts:31](https://github.com/phun-ky/interstellar-tools/blob/bc82c0b064eb62a197cb347f04d9cd13adf6e2cf/packages/equations/src/categories/orbits/characteristic-energy-c3.ts#L31)
 
 Compute **characteristic energy** (C3) from hyperbolic excess speed.
 

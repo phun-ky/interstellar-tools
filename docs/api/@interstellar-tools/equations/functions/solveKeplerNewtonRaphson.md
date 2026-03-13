@@ -13,7 +13,7 @@ function solveKeplerNewtonRaphson(
 ```
 
 Defined in:
-[kepler/solve-kepler-newton-raphson.ts:87](https://github.com/phun-ky/interstellar-tools/blob/be17ff22c6290f56a50244b1ae9e915d3e4e5be0/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L87)
+[kepler/solve-kepler-newton-raphson.ts:87](https://github.com/phun-ky/interstellar-tools/blob/bc82c0b064eb62a197cb347f04d9cd13adf6e2cf/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L87)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the
 **Newton-Raphson method** with Householder acceleration for fast convergence.
