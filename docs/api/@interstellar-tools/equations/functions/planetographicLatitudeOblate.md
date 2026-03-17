@@ -14,7 +14,7 @@ function planetographicLatitudeOblate(
 ```
 
 Defined in:
-[cartography/planetographic-latitude-oblate.ts:21](https://github.com/phun-ky/interstellar-tools/blob/bc82c0b064eb62a197cb347f04d9cd13adf6e2cf/packages/equations/src/categories/cartography/planetographic-latitude-oblate.ts#L21)
+[cartography/planetographic-latitude-oblate.ts:21](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/cartography/planetographic-latitude-oblate.ts#L21)
 
 Compute planetographic latitude (oblate spheroid) from body-fixed Cartesian
 coordinates.
