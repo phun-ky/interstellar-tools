@@ -8,7 +8,7 @@ function flatteningOblateSpheroid(a: number, c: number): number;
 ```
 
 Defined in:
-[cartography/flattening-oblate-spheroid.ts:39](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/cartography/flattening-oblate-spheroid.ts#L39)
+[cartography/flattening-oblate-spheroid.ts:39](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/cartography/flattening-oblate-spheroid.ts#L39)
 
 Compute **flattening** ($f$) of an oblate spheroid.
 

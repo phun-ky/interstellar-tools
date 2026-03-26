@@ -8,7 +8,7 @@ function rot3(theta: Radians): Matrix3x3Type;
 ```
 
 Defined in:
-[helpers/rot-3.ts:38](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/helpers/rot-3.ts#L38)
+[helpers/rot-3.ts:38](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/helpers/rot-3.ts#L38)
 
 Construct a **right-handed rotation matrix about the z-axis** (often written
 **R₃**).

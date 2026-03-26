@@ -8,7 +8,7 @@ function rad(x: number): Radians;
 ```
 
 Defined in:
-[helpers/radians.ts:42](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/helpers/radians.ts#L42)
+[helpers/radians.ts:42](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/helpers/radians.ts#L42)
 
 Brand a numeric value as [Radians](../../types/type-aliases/Radians.md).
 

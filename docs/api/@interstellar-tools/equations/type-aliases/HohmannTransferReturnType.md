@@ -16,7 +16,7 @@ type HohmannTransferReturnType = {
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:1](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L1)
+[manoeuvres/hohmann-transfer.ts:1](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L1)
 
 ## Properties
 
@@ -27,7 +27,7 @@ at: number;
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:2](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L2)
+[manoeuvres/hohmann-transfer.ts:2](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L2)
 
 ---
 
@@ -38,7 +38,7 @@ dir1: 'prograde' | 'retrograde' | 'none';
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:7](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L7)
+[manoeuvres/hohmann-transfer.ts:7](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L7)
 
 ---
 
@@ -49,7 +49,7 @@ dir2: 'prograde' | 'retrograde' | 'none';
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:8](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L8)
+[manoeuvres/hohmann-transfer.ts:8](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L8)
 
 ---
 
@@ -60,7 +60,7 @@ dv1: number;
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:3](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L3)
+[manoeuvres/hohmann-transfer.ts:3](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L3)
 
 ---
 
@@ -71,7 +71,7 @@ dv2: number;
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:4](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L4)
+[manoeuvres/hohmann-transfer.ts:4](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L4)
 
 ---
 
@@ -82,7 +82,7 @@ dvTotal: number;
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:5](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L5)
+[manoeuvres/hohmann-transfer.ts:5](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L5)
 
 ---
 
@@ -93,4 +93,4 @@ tTransfer: number;
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:6](https://github.com/phun-ky/interstellar-tools/blob/82a80b93f35939951c130fc5b0820e001c21a195/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L6)
+[manoeuvres/hohmann-transfer.ts:6](https://github.com/phun-ky/interstellar-tools/blob/f873924a96c2b60a79c580af36bb21dbc3ec00ce/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L6)
