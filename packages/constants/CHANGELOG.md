@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.34.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.33.0...@interstellar-tools/constants@0.34.0) (2026-03-27)
+
+### Tasks
+
+* 🤖 @interstellar-tools/equations@0.33.0 ([ac1017d](https://github.com/phun-ky/interstellar-tools/commit/ac1017ddde4849d664a5a0c2391ca8fcd59fd30e))
+* 🤖 @interstellar-tools/temporal@0.33.0 ([b65b97c](https://github.com/phun-ky/interstellar-tools/commit/b65b97c594dcd9625a20ad943a735c4599d3aedd))
+* 🤖 @interstellar-tools/types@0.33.0 ([fa6ca23](https://github.com/phun-ky/interstellar-tools/commit/fa6ca2334631eba7593a745aed4dc7c546c92daa))
+* 🤖 bump handlebars from 4.7.8 to 4.7.9 ([54ca5f4](https://github.com/phun-ky/interstellar-tools/commit/54ca5f454ef030147261ff7c71833d7915346264))
+
 ## [0.33.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.32.0...@interstellar-tools/constants@0.33.0) (2026-03-27)
 
 ### Tasks

@@ -8,7 +8,7 @@ function planetocentricLatitude(x: number, y: number, z: number): number;
 ```
 
 Defined in:
-[cartography/planetocentric-latitude.ts:37](https://github.com/phun-ky/interstellar-tools/blob/4df06f41f974964574459832a18104762dc45fbd/packages/equations/src/categories/cartography/planetocentric-latitude.ts#L37)
+[cartography/planetocentric-latitude.ts:37](https://github.com/phun-ky/interstellar-tools/blob/0535a99356a7ef12beb7f320d137501fc360154a/packages/equations/src/categories/cartography/planetocentric-latitude.ts#L37)
 
 Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian
 coordinates.
