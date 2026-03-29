@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.35.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.34.0...@interstellar-tools/temporal@0.35.0) (2026-03-29)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.35.0 ([8b6a67a](https://github.com/phun-ky/interstellar-tools/commit/8b6a67af819a3b3e33d4c270d681b527de7ee98b))
+* 🤖 @interstellar-tools/equations@0.35.0 ([ad91662](https://github.com/phun-ky/interstellar-tools/commit/ad91662e7851220975cd7836b1b8a7379681c639))
+* 🤖 @interstellar-tools/types@0.34.0 ([e5fdc2a](https://github.com/phun-ky/interstellar-tools/commit/e5fdc2ab7a776e375c8f6b68d398625796ba7da6))
+* 🤖 bump typescript from 5.9.3 to 6.0.2 in the major-updates group ([5567580](https://github.com/phun-ky/interstellar-tools/commit/5567580f6de43bb2021e544cde1d31d736880bea))
+
 ## [0.34.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.33.0...@interstellar-tools/temporal@0.34.0) (2026-03-27)
 
 ### Tasks
