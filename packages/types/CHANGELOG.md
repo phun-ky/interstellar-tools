@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.36.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.35.0...@interstellar-tools/types@0.36.0) (2026-04-01)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.36.0 ([04fc911](https://github.com/phun-ky/interstellar-tools/commit/04fc911e32aa7dc1a81a7942170b1e8f2e858840))
+* 🤖 @interstellar-tools/equations@0.36.0 ([ca148d1](https://github.com/phun-ky/interstellar-tools/commit/ca148d1301c7f76977dde14f4c30c06e9eeac30f))
+* 🤖 @interstellar-tools/temporal@0.36.0 ([f6fd587](https://github.com/phun-ky/interstellar-tools/commit/f6fd58705f1043d235d8d6c1c0ab9c9516ebba3c))
+* 🤖 bump vitepress-plugin-group-icons in the minor-and-patch group ([6e8eb09](https://github.com/phun-ky/interstellar-tools/commit/6e8eb0983a3288ba43046fb05527cac13c639875))
+
 ## [0.35.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.34.0...@interstellar-tools/types@0.35.0) (2026-03-29)
 
 ### Tasks
