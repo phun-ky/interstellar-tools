@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.37.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.36.0...@interstellar-tools/types@0.37.0) (2026-04-14)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.37.0 ([2b6ab7c](https://github.com/phun-ky/interstellar-tools/commit/2b6ab7c45fd1702aefd8efced2ec829b43a8c305))
+* 🤖 @interstellar-tools/equations@0.37.0 ([42a3b93](https://github.com/phun-ky/interstellar-tools/commit/42a3b9357ae726cca0159901621cf9fd5a50c2f1))
+* 🤖 @interstellar-tools/temporal@0.37.0 ([06d1999](https://github.com/phun-ky/interstellar-tools/commit/06d19991527e6be07979047588af45d4e81081a5))
+* 🤖 bump the minor-and-patch group across 1 directory with 4 updates ([ecde2a3](https://github.com/phun-ky/interstellar-tools/commit/ecde2a35755607e2eec6a7972e894392560c422d))
+
 ## [0.36.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.35.0...@interstellar-tools/types@0.36.0) (2026-04-01)
 
 ### Tasks
