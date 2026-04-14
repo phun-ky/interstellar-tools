@@ -8,6 +8,6 @@ const SPEED_OF_LIGHT_M_PER_S: 299792458;
 ```
 
 Defined in:
-[distance.ts:24](https://github.com/phun-ky/interstellar-tools/blob/f0a6e0ee96b44e433c7fed0071fb6b1240ddf668/packages/constants/src/distance.ts#L24)
+[distance.ts:24](https://github.com/phun-ky/interstellar-tools/blob/d173d368ea13b39cce21a462911e04fc120b65f5/packages/constants/src/distance.ts#L24)
 
 Speed of light in vacuum, **exact** per SI (m·s⁻¹).
