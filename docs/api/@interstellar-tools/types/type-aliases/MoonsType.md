@@ -8,6 +8,6 @@ type MoonsType = MoonInterface[];
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:80](https://github.com/phun-ky/interstellar-tools/blob/d173d368ea13b39cce21a462911e04fc120b65f5/packages/types/src/celestial-bodies/moons.ts#L80)
+[celestial-bodies/moons.ts:80](https://github.com/phun-ky/interstellar-tools/blob/9d44f03d97fe9fe38a6d35ccdfcf2f180e017fa8/packages/types/src/celestial-bodies/moons.ts#L80)
 
 Type alias for a collection of **moons**.
