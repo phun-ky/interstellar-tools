@@ -8,7 +8,7 @@ const METERS_PER_PC: number;
 ```
 
 Defined in:
-[distance.ts:69](https://github.com/phun-ky/interstellar-tools/blob/35f800ffc1b22e0603f50ab5a1f6c25642ba9a3e/packages/constants/src/distance.ts#L69)
+[distance.ts:69](https://github.com/phun-ky/interstellar-tools/blob/8f07546969ab9b00ee2dbea4a4d2e76adc844620/packages/constants/src/distance.ts#L69)
 
 Meters in one **parsec**, using the exact trigonometric definition:
 `pc = au / tan(1″)`.
