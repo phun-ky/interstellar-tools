@@ -8,7 +8,7 @@ function keplerPeriod(a: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/kepler-period.ts:44](https://github.com/phun-ky/interstellar-tools/blob/8f07546969ab9b00ee2dbea4a4d2e76adc844620/packages/equations/src/categories/orbits/kepler-period.ts#L44)
+[orbits/kepler-period.ts:44](https://github.com/phun-ky/interstellar-tools/blob/9a590e359f41c61543553d20e0721a387d85095b/packages/equations/src/categories/orbits/kepler-period.ts#L44)
 
 **Kepler's 3rd law** - orbital period ($T$) from semi-major axis ($a$) and
 gravitational parameter ($\mu$).

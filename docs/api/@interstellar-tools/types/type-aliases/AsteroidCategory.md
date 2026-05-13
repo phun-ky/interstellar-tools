@@ -20,7 +20,7 @@ type AsteroidCategory =
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:45](https://github.com/phun-ky/interstellar-tools/blob/8f07546969ab9b00ee2dbea4a4d2e76adc844620/packages/types/src/celestial-bodies/asteroids.ts#L45)
+[celestial-bodies/asteroids.ts:45](https://github.com/phun-ky/interstellar-tools/blob/9a590e359f41c61543553d20e0721a387d85095b/packages/types/src/celestial-bodies/asteroids.ts#L45)
 
 More specific **group/category** for dynamical families or special bodies.
 

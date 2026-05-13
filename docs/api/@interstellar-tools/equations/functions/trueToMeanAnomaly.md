@@ -8,7 +8,7 @@ function trueToMeanAnomaly(V: Radians, e: number): Radians;
 ```
 
 Defined in:
-[anomalies/true-to-mean-anomaly.ts:77](https://github.com/phun-ky/interstellar-tools/blob/8f07546969ab9b00ee2dbea4a4d2e76adc844620/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L77)
+[anomalies/true-to-mean-anomaly.ts:77](https://github.com/phun-ky/interstellar-tools/blob/9a590e359f41c61543553d20e0721a387d85095b/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L77)
 
 Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's
 equation.

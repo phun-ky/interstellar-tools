@@ -8,7 +8,7 @@ const readonly TWO_PI: number;
 ```
 
 Defined in:
-[math.ts:69](https://github.com/phun-ky/interstellar-tools/blob/8f07546969ab9b00ee2dbea4a4d2e76adc844620/packages/constants/src/math.ts#L69)
+[math.ts:69](https://github.com/phun-ky/interstellar-tools/blob/9a590e359f41c61543553d20e0721a387d85095b/packages/constants/src/math.ts#L69)
 
 The circle constant **τ** (tau), equal to **2π** `(≈ 6.283185307179586)`. Useful
 for full rotations, radians-per-turn calculations, angular velocity, and other

@@ -13,7 +13,7 @@ function rocketDeltaVFromIsp(
 ```
 
 Defined in:
-[manoeuvres/rocket-delta-v-from-isp.ts:45](https://github.com/phun-ky/interstellar-tools/blob/8f07546969ab9b00ee2dbea4a4d2e76adc844620/packages/equations/src/categories/manoeuvres/rocket-delta-v-from-isp.ts#L45)
+[manoeuvres/rocket-delta-v-from-isp.ts:45](https://github.com/phun-ky/interstellar-tools/blob/9a590e359f41c61543553d20e0721a387d85095b/packages/equations/src/categories/manoeuvres/rocket-delta-v-from-isp.ts#L45)
 
 Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using
 specific impulse.
