@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/types",
-  "version": "0.46.0",
+  "version": "0.47.0",
   "description": "Shared TypeScript types (e.g., 3D tuples, equation result interfaces) used across the monorepo to keep APIs predictable and safe.",
   "keywords": [
     "types",
@@ -110,7 +110,7 @@
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "devDependencies": {
-    "@types/node": "^25.7.0",
+    "@types/node": "^25.9.0",
     "eslint": "^10.0.0",
     "eslint-config-phun-ky": "^2.0.1",
     "prettier": "^3.8.3",
