@@ -8,7 +8,7 @@ const JULIAN_YEAR_SECONDS: number;
 ```
 
 Defined in:
-[temporal.ts:64](https://github.com/phun-ky/interstellar-tools/blob/92bb145b85159c19b454ba4ecbf1752cf15ad1d5/packages/constants/src/temporal.ts#L64)
+[temporal.ts:64](https://github.com/phun-ky/interstellar-tools/blob/2679ef60b438e99ebd29e532c6aa0a03c6deb0d1/packages/constants/src/temporal.ts#L64)
 
 Length of the **Julian year** in seconds.
 

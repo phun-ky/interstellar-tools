@@ -8,4 +8,4 @@ const TT_MINUS_UTC_AT_J2000_MS: 64184 = 64_184;
 ```
 
 Defined in:
-[date.ts:105](https://github.com/phun-ky/interstellar-tools/blob/92bb145b85159c19b454ba4ecbf1752cf15ad1d5/packages/constants/src/date.ts#L105)
+[date.ts:105](https://github.com/phun-ky/interstellar-tools/blob/2679ef60b438e99ebd29e532c6aa0a03c6deb0d1/packages/constants/src/date.ts#L105)
