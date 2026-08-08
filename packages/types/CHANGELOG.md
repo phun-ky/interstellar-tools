@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.48.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.47.0...@interstellar-tools/types@0.48.0) (2026-08-08)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.48.0 ([6f5eb12](https://github.com/phun-ky/interstellar-tools/commit/6f5eb12531b9532cce64ac42c5f1bf1b69089305))
+* 🤖 @interstellar-tools/equations@0.48.0 ([2a9e24a](https://github.com/phun-ky/interstellar-tools/commit/2a9e24a514bef8b7a552ba0eb2f46659c4297ff4))
+* 🤖 @interstellar-tools/temporal@0.48.0 ([043953a](https://github.com/phun-ky/interstellar-tools/commit/043953a9d3375232fa95d243bc48327569815b45))
+* 🤖 bump mermaid from 11.15.0 to 11.16.1 ([db72bab](https://github.com/phun-ky/interstellar-tools/commit/db72bab359cd161a2c8b98d1e1b2c9b419651c46))
+
 ## [0.47.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.46.0...@interstellar-tools/types@0.47.0) (2026-05-19)
 
 ### Tasks
