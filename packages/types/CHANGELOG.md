@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.49.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.48.0...@interstellar-tools/types@0.49.0) (2026-08-08)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.49.0 ([f581afb](https://github.com/phun-ky/interstellar-tools/commit/f581afbe908fe0de2262f0304a439072e7f142e1))
+* 🤖 @interstellar-tools/equations@0.49.0 ([77b7771](https://github.com/phun-ky/interstellar-tools/commit/77b77718f7acdc67734aebc41e8d550042678e68))
+* 🤖 @interstellar-tools/temporal@0.49.0 ([674fd7e](https://github.com/phun-ky/interstellar-tools/commit/674fd7e69cdd33ca5ac6a6497db8b7e39d3154f5))
+* 🤖 bump postcss from 8.5.14 to 8.5.26 ([d02d115](https://github.com/phun-ky/interstellar-tools/commit/d02d11518fc798c1fb43751414c39dea249c2871))
+
 ## [0.48.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.47.0...@interstellar-tools/types@0.48.0) (2026-08-08)
 
 ### Tasks
