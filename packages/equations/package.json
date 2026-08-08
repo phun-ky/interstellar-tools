@@ -114,11 +114,11 @@
     "@interstellar-tools/types": "^0.5.0"
   },
   "devDependencies": {
-    "@types/node": "^25.9.0",
+    "@types/node": "^26.1.2",
     "eslint": "^9.27.0",
-    "eslint-config-phun-ky": "^1.0.3",
+    "eslint-config-phun-ky": "^2.0.6",
     "prettier": "^3.8.3",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "engines": {
     "node": ">=22.9.0",
