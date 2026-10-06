@@ -14,6 +14,7 @@
     "skipChecks": true
   },
   "hooks": {
+    "after:bump": "node ../../scripts/sync-sibling-ranges.mjs ${name} ${version}",
     "after:release": "echo Successfully released ${name} v${version}."
   },
   "plugins": {
