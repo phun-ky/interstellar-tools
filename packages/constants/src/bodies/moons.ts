@@ -299,7 +299,7 @@ export const MOONS: MoonsType = [
   // **Neptune (Major Moons)**
   {
     name: 'Triton',
-    category: 'natural satellite',
+    category: 'retrograde satellite',
     system: 'Neptune',
     a: { value: 0.002375, unit: 'au' },
     e: 0.000016,
@@ -336,7 +336,7 @@ export const MOONS: MoonsType = [
     system: 'Neptune',
     a: { value: 0.0985, unit: 'au' },
     e: 0.5711,
-    period: { value: -1879, unit: 'd' },
+    period: { value: 1879, unit: 'd' }, // Positive: retrograde orbit (i ≈ 134°)
     radius: { value: 62, unit: 'km' },
     color: '#A9A9A9',
     angle: 0 as Radians

@@ -65,7 +65,7 @@ export const COMETS: CometsType = [
     w: 130.6,
     om: 282.5,
     angle: 3.141593 as Radians,
-    period: { value: -253533, unit: 'd' }, // ~695 years
+    period: { value: -926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au)
     q: 0.914,
     color: '#00A6FF', // Electric blue (ionized tail appearance)
     size: 4,
@@ -82,7 +82,7 @@ export const COMETS: CometsType = [
     w: 12.78, // Argument of perihelion in degrees
     om: 50.14, // Longitude of ascending node in degrees
     angle: 0.0 as Radians, // Initial angle (could be updated based on epoch)
-    period: { value: -2484, unit: 'd' }, // ~6.45 years
+    period: { value: -2355, unit: 'd' }, // ~6.45 years
     q: 1.243, // Perihelion distance in AU
     color: '#AAAAAA', // Greyish surface color
     size: 4, // Visualization size
