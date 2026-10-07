@@ -55,6 +55,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Check sibling ranges # All packages are released, so ranges must match now
+        run: npm run check:sibling-ranges
   notify:
     name: Notify failed build
     needs: publish
