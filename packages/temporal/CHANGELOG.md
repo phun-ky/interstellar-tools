@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.59.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.58.0...@interstellar-tools/temporal@0.59.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.59.0 ([b6b1e5e](https://github.com/phun-ky/interstellar-tools/commit/b6b1e5ee167b05f36685037082ea127dcdbb5bba))
+* 🤖 @interstellar-tools/equations@0.58.0 ([71d82b2](https://github.com/phun-ky/interstellar-tools/commit/71d82b21f43a97cf5ac190ae3ba6108cf3318f57))
+* 🤖 @interstellar-tools/types@0.59.0 ([ced19a0](https://github.com/phun-ky/interstellar-tools/commit/ced19a06bf9a7fa5c8d1829fa7f8f19308595875))
+* 🤖 bump katex from 0.18.2 to 0.18.10 ([e010086](https://github.com/phun-ky/interstellar-tools/commit/e0100860aadc277b02e6a48ad9c1184af69a731a))
+
 ## [0.58.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.57.0...@interstellar-tools/temporal@0.58.0) (2026-10-07)
 
 ### Tasks
