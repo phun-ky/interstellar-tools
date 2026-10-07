@@ -87,6 +87,23 @@ const ownLevel = (name, cwd) => {
 
   return { level, reasons, tag, ignored: commits.length - reasons.length };
 };
+
+// Without full history and tags, every package would look like it has never
+// been released and get a minor release, so refuse to guess
+let isShallow;
+
+try {
+  isShallow = git(['rev-parse', '--is-shallow-repository'], ROOT) === 'true';
+} catch {
+  throw new Error('release.mjs must run inside the git repository.');
+}
+
+if (isShallow) {
+  throw new Error(
+    'The repository is a shallow clone. Release needs full history and tags (actions/checkout with fetch-depth: 0).'
+  );
+}
+
 const packages = PACKAGES.map((name) => {
   const cwd = new URL(`packages/${name}/`, ROOT);
   const pkg = JSON.parse(readFileSync(new URL('package.json', cwd), 'utf8'));
