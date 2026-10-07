@@ -122,10 +122,14 @@
     "test:ci": "npm run test:ci --workspaces --if-present"
   },
   "devDependencies": {
+    "@eslint/markdown": "^8.0.3",
     "@release-it/conventional-changelog": "^12.0.2",
     "cobertura": "^1.0.3",
+    "eslint": "^10.12.0",
+    "eslint-config-phun-ky": "^2.0.9",
     "git-cz": "^4.9.0",
     "glob-bin": "^1.0.0",
+    "globals": "^17.13.0",
     "markdown-it-mathjax3": "^4.3.2",
     "mermaid": "^11.12.0",
     "release-it": "^21.1.0",
@@ -142,6 +146,7 @@
     "typedoc-plugin-remark": "^2.0.0",
     "typedoc-plugin-rename-defaults": "^0.7.1",
     "typedoc-vitepress-theme": "^1.1.2",
+    "typescript-eslint": "^8.71.1",
     "unified-prettier": "^2.0.1",
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.6.3",

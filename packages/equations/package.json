@@ -116,8 +116,6 @@
   },
   "devDependencies": {
     "@types/node": "^24.19.1",
-    "eslint": "^9.27.0",
-    "eslint-config-phun-ky": "^1.0.3",
     "prettier": "^3.8.3",
     "typescript": "^6.0.3"
   },

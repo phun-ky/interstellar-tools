@@ -162,9 +162,8 @@ export const solveKeplerHighEccentricity = (
       lastValidE = E;
     }
 
-    // **Clamp extreme values to prevent divergence**
+    // **Stop on divergence**; the last finite estimate is returned
     if (Math.abs(E) > 100) {
-      E = 100 * Math.sign(E);
       break;
     }
   }
