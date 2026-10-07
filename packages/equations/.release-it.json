@@ -64,7 +64,16 @@
           }
         ]
       },
-      "infile": "CHANGELOG.md"
+      "infile": "CHANGELOG.md",
+      "tagOpts": {
+        "prefix": "@interstellar-tools/equations@"
+      },
+      "commitsOpts": {
+        "path": "."
+      },
+      "gitRawCommitsOpts": {
+        "path": "."
+      }
     }
   }
 }
