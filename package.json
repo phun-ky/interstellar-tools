@@ -147,8 +147,8 @@
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "engines": {
-    "node": ">=22.9.0",
-    "npm": ">=11.5.1"
+    "node": "^24.0.0",
+    "npm": "^11.5.1"
   },
   "config": {
     "commitizen": {

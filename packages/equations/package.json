@@ -121,8 +121,7 @@
     "typescript": "^6.0.3"
   },
   "engines": {
-    "node": ">=22.9.0",
-    "npm": ">=11.5.1"
+    "node": ">=22.9.0"
   },
   "publishConfig": {
     "access": "public"
