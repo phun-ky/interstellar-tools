@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.56.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.55.0...@interstellar-tools/equations@0.56.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.56.0 ([4722637](https://github.com/phun-ky/interstellar-tools/commit/47226373bf3d242ceedb642a7838071c5e61057b))
+* 🤖 @interstellar-tools/temporal@0.56.0 ([c5ab3cd](https://github.com/phun-ky/interstellar-tools/commit/c5ab3cd07ebaff408d5fd4bb4b6a51934ff3d91b))
+* 🤖 @interstellar-tools/types@0.56.0 ([9288e83](https://github.com/phun-ky/interstellar-tools/commit/9288e8395dd68c20cdf578d8809e2edfd23a2358))
+
+### Bug
+
+* 🐛 Make solveKepler correct for any finite M and return [0, 2π) ([eef9816](https://github.com/phun-ky/interstellar-tools/commit/eef9816fdc2f48581cbfaf6ce6498b662b918519))
+* 🐛 Make the Newton-Raphson and high-eccentricity Kepler solvers robust ([0c31029](https://github.com/phun-ky/interstellar-tools/commit/0c310298770cb5beab9f95ac704007d6e2da16b3))
+
 ## [0.55.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.54.0...@interstellar-tools/equations@0.55.0) (2026-10-07)
 
 ### Tasks
