@@ -1,10 +1,10 @@
 import type { Radians } from '@interstellar-tools/types';
 
-import { wrapAngle } from '../angle/wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle.js';
 
-import { solveKeplerBisection } from './solve-kepler-bisection';
-import { solveKeplerHighEccentricity } from './solve-kepler-high-eccentricity';
-import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson';
+import { solveKeplerBisection } from './solve-kepler-bisection.js';
+import { solveKeplerHighEccentricity } from './solve-kepler-high-eccentricity.js';
+import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson.js';
 
 /**
  * Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an adaptive approach:

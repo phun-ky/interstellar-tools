@@ -1,7 +1,7 @@
 import { G_SI } from '@interstellar-tools/constants';
 import type { Vector3DTupleType } from '@interstellar-tools/types';
 
-import { gravitationalForce } from './gravitational-force';
+import { gravitationalForce } from './gravitational-force.js';
 
 /**
  * Gravitational **acceleration** of body 1 due to body 2 (vector, m/s²).

@@ -4,16 +4,16 @@
  * @packageDocumentation
  */
 
-export * from './date';
+export * from './date.js';
 
-export * from './distance';
+export * from './distance.js';
 
-export * from './math';
+export * from './math.js';
 
-export * from './objects';
+export * from './objects.js';
 
-export * from './temporal';
+export * from './temporal.js';
 
-export * from './physics';
+export * from './physics.js';
 
-export * from './bodies';
+export * from './bodies/index.js';

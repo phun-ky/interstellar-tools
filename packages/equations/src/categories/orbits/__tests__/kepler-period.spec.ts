@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { relClose } from 'packages/equations/src/__tests__/helpers';
-import { keplerPeriod } from '../kepler-period';
+import { relClose } from '../../../__tests__/helpers/index.js';
+import { keplerPeriod } from '../kepler-period.js';
 
 describe('keplerPeriod', () => {
   test('GEO sanity: a ≈ 42,164 km around Earth → T ≈ 86,164 s', () => {

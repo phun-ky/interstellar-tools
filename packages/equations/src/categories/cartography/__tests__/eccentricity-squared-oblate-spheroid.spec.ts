@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { eccentricitySquaredOblateSpheroid } from '../eccentricity-squared-oblate-spheroid';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { eccentricitySquaredOblateSpheroid } from '../eccentricity-squared-oblate-spheroid.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('eccentricitySquaredOblateSpheroid', () => {
   test('computes e² = 1 - (c²/a²) for typical Earth-like radii (WGS84-ish)', () => {

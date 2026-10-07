@@ -6,10 +6,10 @@ import type {
   TemporalInterface
 } from '@interstellar-tools/types';
 
-import { wrapAngle } from '../angle/wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle.js';
 
-import { trueToMeanAnomaly } from './true-to-mean-anomaly';
-import { areEqual } from './utils/are-equal';
+import { trueToMeanAnomaly } from './true-to-mean-anomaly.js';
+import { areEqual } from './utils/are-equal.js';
 
 /* node:coverage disable */
 /**

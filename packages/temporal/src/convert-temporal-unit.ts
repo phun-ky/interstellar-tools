@@ -4,7 +4,7 @@ import {
 } from '@interstellar-tools/constants';
 import { TemporalInterface, TemporalUnitType } from '@interstellar-tools/types';
 
-import { normalizeTemporalUnit } from './normalize-temporal-unit';
+import { normalizeTemporalUnit } from './normalize-temporal-unit.js';
 
 /**
  * Seconds-per-unit lookup for all canonical {@link TemporalUnitType} symbols.

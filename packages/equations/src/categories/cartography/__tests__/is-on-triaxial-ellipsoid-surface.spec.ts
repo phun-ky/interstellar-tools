@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { isOnTriaxialEllipsoidSurface } from '../is-on-triaxial-ellipsoid-surface';
+import { isOnTriaxialEllipsoidSurface } from '../is-on-triaxial-ellipsoid-surface.js';
 
 describe('isOnTriaxialEllipsoidSurface', () => {
   test('returns true for axis points on the surface: (a,0,0), (0,b,0), (0,0,c)', () => {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKepler } from '../solve-kepler';
+import { solveKepler } from '../solve-kepler.js';
 import type { Radians } from '@interstellar-tools/types';
 
 const EPSILON = 1e-8; // Floating-point tolerance

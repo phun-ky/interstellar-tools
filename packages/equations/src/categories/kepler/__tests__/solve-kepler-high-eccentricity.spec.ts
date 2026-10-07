@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKeplerHighEccentricity } from '../solve-kepler-high-eccentricity';
+import { solveKeplerHighEccentricity } from '../solve-kepler-high-eccentricity.js';
 import type { Radians } from '@interstellar-tools/types';
 
 const EPSILON = 1e-9;

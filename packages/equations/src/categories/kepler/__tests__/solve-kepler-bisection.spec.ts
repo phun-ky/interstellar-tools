@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKeplerBisection } from '../solve-kepler-bisection';
+import { solveKeplerBisection } from '../solve-kepler-bisection.js';
 import type { Radians } from '@interstellar-tools/types';
-import { angleClose } from 'packages/equations/src/__tests__/helpers';
+import { angleClose } from '../../../__tests__/helpers/index.js';
 import { TWO_PI } from '@interstellar-tools/constants';
-import { norm2pi, residual } from '../../helpers/misc';
+import { norm2pi, residual } from '../../helpers/misc.js';
 
 describe('solveKeplerBisection', () => {
   test('basic correctness: residual close to 0 (e=0.5, M=1.234)', () => {

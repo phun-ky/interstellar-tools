@@ -1,4 +1,4 @@
-import { JULIAN_YEAR_SECONDS } from './temporal';
+import { JULIAN_YEAR_SECONDS } from './temporal.js';
 
 /**
  * Core **astronomical distance constants** and **conversion ratios**.

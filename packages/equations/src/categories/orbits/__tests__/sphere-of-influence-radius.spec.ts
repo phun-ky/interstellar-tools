@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { sphereOfInfluenceRadius } from '../sphere-of-influence-radius';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { sphereOfInfluenceRadius } from '../sphere-of-influence-radius.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('sphereOfInfluenceRadius', () => {
   test('computes rSOI = a * (m/M)^(2/5) for typical inputs (Earth around Sun, km-based)', () => {

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { computeAngle } from '../compute-angle';
-import { wrapAngle } from '../wrap-angle';
+import { computeAngle } from '../compute-angle.js';
+import { wrapAngle } from '../wrap-angle.js';
 import {
   CelestialBodyType,
   TimeStepInterface

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { normalizeTemporalUnit } from '../normalize-temporal-unit';
+import { normalizeTemporalUnit } from '../normalize-temporal-unit.js';
 
 const canonical = [
   's',

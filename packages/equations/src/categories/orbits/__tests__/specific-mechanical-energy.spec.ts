@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { specificMechanicalEnergy } from '../specific-mechanical-energy';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
+import { specificMechanicalEnergy } from '../specific-mechanical-energy.js';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
 describe('specificMechanicalEnergy', () => {
   test('circular orbit: ε = -μ/(2r) when v = sqrt(μ/r)', () => {

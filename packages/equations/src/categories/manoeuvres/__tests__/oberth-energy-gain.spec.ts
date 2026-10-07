@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { oberthEnergyGain } from '../oberth-energy-gain';
-import { absClose } from 'packages/equations/src/__tests__/helpers';
+import { oberthEnergyGain } from '../oberth-energy-gain.js';
+import { absClose } from '../../../__tests__/helpers/index.js';
 
 const relClose = (
   a: number,

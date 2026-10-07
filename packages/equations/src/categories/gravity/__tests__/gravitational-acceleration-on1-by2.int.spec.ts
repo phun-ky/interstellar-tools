@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { accelerationOn1By2 } from '../acceleration-on1-by2';
+import { accelerationOn1By2 } from '../acceleration-on1-by2.js';
 import {
   relClose,
   vecRelClose
-} from 'packages/equations/src/__tests__/helpers';
+} from '../../../__tests__/helpers/index.js';
 import { G_SI } from '@interstellar-tools/constants';
 import { Vector3DTupleType } from '@interstellar-tools/types';
-import { norm, scale, sub } from '../../helpers/misc';
+import { norm, scale, sub } from '../../helpers/misc.js';
 
 describe('accelerationOn1By2', () => {
   test('1D sanity (+x): ||a|| = G*m2/r² and points +x', () => {

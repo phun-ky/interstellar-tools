@@ -5,9 +5,9 @@ import { G_SI } from '@interstellar-tools/constants';
 import {
   relClose,
   vecRelClose
-} from 'packages/equations/src/__tests__/helpers';
-import { gravitationalForce } from '../gravitational-force';
-import { norm } from '../../helpers/misc';
+} from '../../../__tests__/helpers/index.js';
+import { gravitationalForce } from '../gravitational-force.js';
+import { norm } from '../../helpers/misc.js';
 
 describe('gravitationalForce', () => {
   test('computes simple 1D case (+x) with custom G', () => {

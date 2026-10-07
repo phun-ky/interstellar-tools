@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { trueToMeanAnomaly } from '../true-to-mean-anomaly';
+import { trueToMeanAnomaly } from '../true-to-mean-anomaly.js';
 
 import type { Radians } from '@interstellar-tools/types';
-import { wrapAngle } from '../../angle/wrap-angle';
+import { wrapAngle } from '../../angle/wrap-angle.js';
 
 describe('trueToMeanAnomaly', () => {
   const EPSILON = 1e-10; // Floating-point tolerance

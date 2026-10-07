@@ -1,4 +1,4 @@
-import { CartesianCoordinatesInterface } from './planets';
+import { CartesianCoordinatesInterface } from './planets.js';
 
 /**
  * Represents an asteroid belt within the solar system simulation.

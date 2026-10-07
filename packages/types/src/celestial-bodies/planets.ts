@@ -1,6 +1,6 @@
-import { DistanceInterface, MeasureInterface } from '../distance';
-import type { Radians } from '../numeric';
-import { TemporalInterface } from '../temporal';
+import { DistanceInterface, MeasureInterface } from '../distance.js';
+import type { Radians } from '../numeric.js';
+import { TemporalInterface } from '../temporal.js';
 
 /**
  * Represents **2D coordinates** for planetary positioning.

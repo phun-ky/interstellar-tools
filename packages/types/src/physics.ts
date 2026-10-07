@@ -1,4 +1,4 @@
-import { Vector3DTupleType } from './math';
+import { Vector3DTupleType } from './math.js';
 
 /**
  * Result of a Newtonian gravitational force computation between two point masses.

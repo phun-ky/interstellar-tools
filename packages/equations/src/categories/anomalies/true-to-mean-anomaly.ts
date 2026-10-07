@@ -1,6 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
-import { wrapAngle } from '../angle/wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle.js';
 
 /**
  * Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation.
