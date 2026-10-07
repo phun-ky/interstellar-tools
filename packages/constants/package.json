@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/constants",
-  "version": "0.55.0",
+  "version": "0.56.0",
   "description": "Authoritative physical and astronomical constants in SI units for consistent calculations.",
   "keywords": [
     "interstellar",
@@ -109,7 +109,7 @@
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
-    "@interstellar-tools/types": "^0.55.0"
+    "@interstellar-tools/types": "^0.56.0"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
