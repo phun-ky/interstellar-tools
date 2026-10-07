@@ -25,11 +25,7 @@ import { StarInterface, StarsType } from './stars.js';
  * @group Celestial Bodies
  */
 export type CelestialBodiesType =
-  | StarsType
-  | PlanetsType
-  | MoonsType
-  | CometsType
-  | AsteroidsType;
+  StarsType | PlanetsType | MoonsType | CometsType | AsteroidsType;
 
 /**
  * Type alias representing a single celestial body.

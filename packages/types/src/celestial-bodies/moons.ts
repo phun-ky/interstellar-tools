@@ -40,9 +40,7 @@ export interface MoonInterface {
   type?: undefined;
   /** Classification of the moon. */
   category:
-    | 'natural satellite'
-    | 'irregular satellite'
-    | 'retrograde satellite';
+    'natural satellite' | 'irregular satellite' | 'retrograde satellite';
   /** The planetary system where the moon is located (e.g., "Jupiter"). */
   system: string;
   /** Semi-major axis of the orbit in AU. */

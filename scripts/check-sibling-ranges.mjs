@@ -1,6 +1,6 @@
-import { readFileSync, readdirSync } from 'node:fs';
-
 import semver from 'semver';
+
+import { readFileSync, readdirSync } from 'node:fs';
 
 const PACKAGES_DIR = new URL('../packages/', import.meta.url);
 const DEPENDENCY_FIELDS = [
@@ -9,7 +9,6 @@ const DEPENDENCY_FIELDS = [
   'peerDependencies',
   'optionalDependencies'
 ];
-
 const packages = readdirSync(PACKAGES_DIR, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
   .map((entry) => {
@@ -17,7 +16,6 @@ const packages = readdirSync(PACKAGES_DIR, { withFileTypes: true })
 
     return { dir: entry.name, pkg: JSON.parse(readFileSync(file, 'utf8')) };
   });
-
 const versions = new Map(packages.map(({ pkg }) => [pkg.name, pkg.version]));
 const problems = [];
 

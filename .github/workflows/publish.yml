@@ -21,7 +21,7 @@ on:
       - 'CONTRIBUTING.md'
       - 'CODE_OF_CONDUCT.md'
       - 'SECURITY.md'
-      - '.browserlistrc'
+      - '.browserslistrc'
   workflow_dispatch:
 
 permissions:
@@ -46,7 +46,7 @@ jobs:
           node-version: 24 # Ships npm 11, which supports trusted publishing (needs >= 11.5.1)
       - name: Install dependencies
         run: | # Install and link dependencies
-          npm i
+          npm ci
       - name: 'Release' # Interesting step
         run: |
           git config user.name "${{ github.actor }}"
