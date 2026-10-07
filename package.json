@@ -106,6 +106,7 @@
     "prebuild": "npm run clean",
     "build": "tsc -b",
     "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
     "check:sibling-ranges": "node scripts/check-sibling-ranges.mjs",
     "clean": "npm run clean --workspaces --if-present",
     "commit": "npx git-cz",

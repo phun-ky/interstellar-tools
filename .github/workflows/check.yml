@@ -78,6 +78,8 @@ jobs:
         run: npm run build
       - name: Lint # After build: scripts/partials import from packages/*/dist
         run: npm run lint
+      - name: Type-check tests # After build: imports between packages resolve to packages/*/dist
+        run: npm run typecheck
       - name: Test
         run: npm run test:ci
       - name: Upload coverage reports to Codecov

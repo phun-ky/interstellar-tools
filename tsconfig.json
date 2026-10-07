@@ -1,10 +1,18 @@
 {
   "files": [],
   "references": [
-    { "path": "packages/equations" },
-    { "path": "packages/types" },
-    { "path": "packages/temporal" },
-    { "path": "packages/constants" }
+    {
+      "path": "packages/equations/tsconfig.build.json"
+    },
+    {
+      "path": "packages/types/tsconfig.build.json"
+    },
+    {
+      "path": "packages/temporal/tsconfig.build.json"
+    },
+    {
+      "path": "packages/constants/tsconfig.build.json"
+    }
   ],
   "extends": "./tsconfig.base.json"
 }
