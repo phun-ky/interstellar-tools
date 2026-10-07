@@ -8,7 +8,7 @@ function rocketDeltaVFromVe(ve: number, m0: number, mf: number): number;
 ```
 
 Defined in:
-[manoeuvres/rocket-delta-v-from-ve.ts:43](https://github.com/phun-ky/interstellar-tools/blob/f2eb38baee6fdf6d94e5779c3ba5cbaf8ab60d9a/packages/equations/src/categories/manoeuvres/rocket-delta-v-from-ve.ts#L43)
+[manoeuvres/rocket-delta-v-from-ve.ts:43](https://github.com/phun-ky/interstellar-tools/blob/3607c42aab35c28efbf96b5b3085ee20e1d129c8/packages/equations/src/categories/manoeuvres/rocket-delta-v-from-ve.ts#L43)
 
 Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using
 effective exhaust velocity.

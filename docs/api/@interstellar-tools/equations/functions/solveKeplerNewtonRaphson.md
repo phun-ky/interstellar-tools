@@ -13,7 +13,7 @@ function solveKeplerNewtonRaphson(
 ```
 
 Defined in:
-[kepler/solve-kepler-newton-raphson.ts:87](https://github.com/phun-ky/interstellar-tools/blob/f2eb38baee6fdf6d94e5779c3ba5cbaf8ab60d9a/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L87)
+[kepler/solve-kepler-newton-raphson.ts:85](https://github.com/phun-ky/interstellar-tools/blob/3607c42aab35c28efbf96b5b3085ee20e1d129c8/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L85)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the
 **Newton-Raphson method** with Householder acceleration for fast convergence.
@@ -37,32 +37,26 @@ methods are required.
 **Solving Strategy:**
 
 1. **Handle Special Cases:**
-   - If the orbit is **circular** ($e = 0$), then $E = M$ directly.
-   - If the orbit is **nearly parabolic** ($e \geq 0.97$), a special
-     approximation is used.
    - If **eccentricity is out of range** ($e < 0$ or $e \geq 1$), a `RangeError`
      is thrown.
+   - Kepler's equation is $2\pi$-periodic ($M + 2\pi k \mapsto E + 2\pi k$), so
+     the equation is solved for $M \bmod 2\pi$ and the whole turns are added
+     back. Any finite $M$ works, including negative values and many revolutions.
 
-2. **Initial Approximation:**
-   - **For small eccentricities ($e < 0.8$):** $E_0 = M$.
-   - **For moderate eccentricities ($0.8 \leq e < 0.97$):** $E_0 = M + e \sin(M)
-     (1 + e \cos(M))$.
-   - **For nearly parabolic orbits ($e \geq 0.97$):** $E_0 = \frac{6M}{e}$.
+2. **Initial Approximation** (Danby 1987, good for all $0 \leq e < 1$):
+
+   $$
+   E_0 = M + 0.85\, e \,\operatorname{sign}(\sin M)
+   $$
 
 3. **Newton-Raphson Iteration with Householder Acceleration:**
-   - The **Newton-Raphson method** iterates using:
-
+   - With $f(E) = E - e \sin(E) - M$, $f'(E) = 1 - e \cos(E)$, $f''(E) = e
+     \sin(E)$ and $f'''(E) = e \cos(E)$, each step refines the Newton correction
+     to third order:
      $$
-     E_{n+1} = E_n - \frac{f(E_n)}{f'(E_n)}
-     $$
-
-     where:
-     - $f(E) = E - e \sin(E) - M$
-     - $f'(E) = 1 - e \cos(E)$
-
-   - **Householder acceleration** refines the correction:
-     $$
-     \Delta E = \frac{f(E)}{f'(E)} \left( 1 - \frac{1}{2} \frac{f''(E)}{f'(E)} \Delta E \right)^{-1}
+     \delta_1 = -\frac{f}{f'}, \quad
+     \delta_2 = -\frac{f}{f' + \tfrac{1}{2} \delta_1 f''}, \quad
+     \Delta E = -\frac{f}{f' + \tfrac{1}{2} \delta_2 f'' + \tfrac{1}{6} \delta_2^2 f'''}
      $$
 
 4. **Convergence Check:**
@@ -80,7 +74,7 @@ methods are required.
 
 **Performance Considerations:**
 
-- **Typically converges in 4-5 iterations for most eccentricities.**
+- **Typically converges in 3-4 iterations, including $e \to 1$.**
 - **Time complexity:** $O(1)$ for Newton-Raphson.
 
 ---
@@ -122,3 +116,5 @@ console.log(solveKeplerNewtonRaphson(M, e, 50, 1e-9)); // Output: Eccentric anom
 - [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
 - [Newton-Raphson Method (Wikipedia)](https://en.wikipedia.org/wiki/Newton%27s_method)
 - [Eccentric Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly#Eccentric_anomaly)
+- Danby, J. M. A. (1987). The solution of Kepler's equation, III. _Celestial
+  Mechanics_, 40, 303–312.

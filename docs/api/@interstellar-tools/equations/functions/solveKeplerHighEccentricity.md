@@ -13,7 +13,7 @@ function solveKeplerHighEccentricity(
 ```
 
 Defined in:
-[kepler/solve-kepler-high-eccentricity.ts:97](https://github.com/phun-ky/interstellar-tools/blob/f2eb38baee6fdf6d94e5779c3ba5cbaf8ab60d9a/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L97)
+[kepler/solve-kepler-high-eccentricity.ts:104](https://github.com/phun-ky/interstellar-tools/blob/3607c42aab35c28efbf96b5b3085ee20e1d129c8/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L104)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly
 eccentric orbits ($e > 0.9$) using an iterative numerical approach.
@@ -44,7 +44,15 @@ these cases.
 **Solving Strategy:**
 
 1. **Initial Guess:**
-   - The solver starts with $E_0 = M$ and refines using:
+   - **Elliptical** ($e < 1$): the equation is $2\pi$-periodic, so $M$ is first
+     reduced to one turn with its sign kept ($M \bmod 2\pi$), then Danby's
+     starting value is used:
+
+$$
+E_0 = M + 0.85\, e \,\operatorname{sign}(\sin M)
+$$
+
+- **Hyperbolic** ($e > 1$):
 
 $$
 E_0 = M \pm \frac{e \sin(M)}{1 - e \cos(M)}
@@ -74,7 +82,9 @@ $$
 (default tolerance is **1e-9**).
 
 3. **Angle Wrapping (Elliptical Only):**
-   - The result is wrapped using `wrapAngle()` for consistency.
+   - The result is wrapped using `wrapAngle()`, which keeps the sign: $E \in
+     (-2\pi, 2\pi)$ with the sign of $M$. Use `solveKepler()` for a result
+     normalized to $[0, 2\pi)$.
 
 **Performance Considerations:**
 
@@ -94,8 +104,8 @@ $$
 
 [`Radians`](../../types/type-aliases/Radians.md)
 
-The **eccentric anomaly** ($E$) in **radians** (wrapped to $[-\pi, \pi]$ for
-elliptical orbits).
+The **eccentric anomaly** ($E$) in **radians** (for elliptical orbits in
+$(-2\pi, 2\pi)$, with the sign of $M$).
 
 ## Examples
 

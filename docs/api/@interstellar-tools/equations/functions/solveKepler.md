@@ -13,14 +13,14 @@ function solveKepler(
 ```
 
 Defined in:
-[kepler/solve-kepler.ts:89](https://github.com/phun-ky/interstellar-tools/blob/f2eb38baee6fdf6d94e5779c3ba5cbaf8ab60d9a/packages/equations/src/categories/kepler/solve-kepler.ts#L89)
+[kepler/solve-kepler.ts:95](https://github.com/phun-ky/interstellar-tools/blob/3607c42aab35c28efbf96b5b3085ee20e1d129c8/packages/equations/src/categories/kepler/solve-kepler.ts#L95)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an
 adaptive approach:
 
 - **Newton-Raphson method** for fast convergence.
-- **Bisection fallback** if Newton’s method fails.
 - **High-eccentricity solver** for extreme orbits ($e > 0.9$).
+- **Bisection fallback** if the selected solver doesn't return a root.
 
 ---
 
@@ -51,10 +51,17 @@ required.
      `solveKeplerHighEccentricity()`.
    - **For moderate eccentricities ($e \leq 0.9$)** → Uses
      `solveKeplerNewtonRaphson()`.
-   - **If Newton-Raphson fails**, falls back to `solveKeplerBisection()`.
+   - **The result is verified** against Kepler's equation ($|E - e\sin E - M|
+     \leq$ `tolerance`, modulo $2\pi$). If the solver didn't converge (`NaN`),
+     stopped at `maxIter`, or settled away from the root, it falls back to
+     `solveKeplerBisection()`, which always brackets the root.
 
-3. **Final Wrapping:**
-   - Ensures the solution is correctly wrapped using `wrapAngle()`.
+3. **Normalization:**
+   - Kepler's equation is $2\pi$-periodic ($M + 2\pi k \mapsto E + 2\pi k$), so
+     $M$ is first reduced to $[0, 2\pi)$ with `norm2pi()`. This keeps the
+     solvers in their stable range for any finite $M$, including negative values
+     and many revolutions.
+   - The solution is normalized to $[0, 2\pi)$ with `norm2pi()`.
 
 ---
 
@@ -79,7 +86,7 @@ required.
 
 [`Radians`](../../types/type-aliases/Radians.md)
 
-The **eccentric anomaly** ($E$) in **radians** (wrapped to $[0, 2\pi]$).
+The **eccentric anomaly** ($E$) in **radians** (normalized to $[0, 2\pi)$).
 
 ## Throws
 
