@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { planetocentricLatitude } from '../planetocentric-latitude';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
+import { planetocentricLatitude } from '../planetocentric-latitude.js';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
 describe('planetocentricLatitude', () => {
   test('returns 0 on the equatorial plane (z=0, x/y not both 0)', () => {

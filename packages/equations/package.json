@@ -109,9 +109,9 @@
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-coverage-exclude='**/__tests__/helpers/**' --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
-    "@interstellar-tools/constants": "^0.5.0",
-    "@interstellar-tools/temporal": "^0.5.0",
-    "@interstellar-tools/types": "^0.5.0"
+    "@interstellar-tools/constants": "^0.49.0",
+    "@interstellar-tools/temporal": "^0.49.0",
+    "@interstellar-tools/types": "^0.49.0"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",

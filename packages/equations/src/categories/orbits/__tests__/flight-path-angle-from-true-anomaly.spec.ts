@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { flightPathAngleFromTrueAnomaly } from '../flight-path-angle-from-true-anomaly';
+import { flightPathAngleFromTrueAnomaly } from '../flight-path-angle-from-true-anomaly.js';
 import type { Radians } from '@interstellar-tools/types';
-import { absClose } from 'packages/equations/src/__tests__/helpers';
+import { absClose } from '../../../__tests__/helpers/index.js';
 
 const EPS = 1e-12;
 const PI = Math.PI;

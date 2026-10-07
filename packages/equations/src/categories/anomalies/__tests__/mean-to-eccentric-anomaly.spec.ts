@@ -1,15 +1,15 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { meanToEccentricAnomaly } from '../mean-to-eccentric-anomaly';
+import { meanToEccentricAnomaly } from '../mean-to-eccentric-anomaly.js';
 
 import {
   CelestialBodyType,
   TemporalInterface
 } from '@interstellar-tools/types';
 import { TWO_PI } from '@interstellar-tools/constants';
-import { trueToMeanAnomaly } from '../true-to-mean-anomaly';
-import { wrapAngle } from '../../angle/wrap-angle';
+import { trueToMeanAnomaly } from '../true-to-mean-anomaly.js';
+import { wrapAngle } from '../../angle/wrap-angle.js';
 
 const EPSILON = 1e-10; // Increased tolerance for floating-point comparisons
 

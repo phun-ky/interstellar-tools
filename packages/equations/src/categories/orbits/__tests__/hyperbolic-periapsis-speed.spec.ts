@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { hyperbolicPeriapsisSpeed } from '../hyperbolic-periapsis-speed';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { hyperbolicPeriapsisSpeed } from '../hyperbolic-periapsis-speed.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('hyperbolicPeriapsisSpeed', () => {
   test('returns sqrt(vInf² + 2mu/rp) for typical inputs (Earth, km-based example)', () => {

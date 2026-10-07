@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
-import { dot, norm, norm2pi, residual, scale, sub } from '../misc';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { dot, norm, norm2pi, residual, scale, sub } from '../misc.js';
 import { TWO_PI } from '@interstellar-tools/constants';
 import type { Vector3DTupleType } from '@interstellar-tools/types';
 

@@ -1,17 +1,17 @@
-export * from './celestial-bodies';
+export * from './celestial-bodies.js';
 
-export * from './asteroids';
+export * from './asteroids.js';
 
-export * from './comets';
+export * from './comets.js';
 
-export * from './galaxies';
+export * from './galaxies.js';
 
-export * from './moons';
+export * from './moons.js';
 
-export * from './planets';
+export * from './planets.js';
 
-export * from './stars';
+export * from './stars.js';
 
-export * from './systems';
+export * from './systems.js';
 
-export * from './asteroid-belts';
+export * from './asteroid-belts.js';

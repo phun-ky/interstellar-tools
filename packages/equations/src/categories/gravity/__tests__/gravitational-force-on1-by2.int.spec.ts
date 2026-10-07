@@ -4,11 +4,11 @@ import test, { describe } from 'node:test';
 import {
   relClose,
   vecRelClose
-} from 'packages/equations/src/__tests__/helpers';
+} from '../../../__tests__/helpers/index.js';
 import { G_SI } from '@interstellar-tools/constants';
 import { Vector3DTupleType } from '@interstellar-tools/types';
-import { forceOn1By2 } from '../force-on1-by2';
-import { norm, scale, sub } from '../../helpers/misc';
+import { forceOn1By2 } from '../force-on1-by2.js';
+import { norm, scale, sub } from '../../helpers/misc.js';
 
 describe('forceOn1By2', () => {
   test('1D sanity (+x): |F| = G*m1*m2/r² and points +x', () => {

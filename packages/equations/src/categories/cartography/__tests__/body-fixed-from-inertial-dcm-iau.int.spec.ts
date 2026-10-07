@@ -4,11 +4,11 @@ import test, { describe } from 'node:test';
 import {
   absClose,
   matAbsClose
-} from 'packages/equations/src/__tests__/helpers';
-import { bodyFixedFromInertialDcmIAU } from '../body-fixed-from-inertial-dcm-iau';
-import { transpose3 } from '../../helpers/transpose-3';
-import { matMul3 } from '../../helpers/mat-mul3';
-import { det3 } from '../../helpers/det-3';
+} from '../../../__tests__/helpers/index.js';
+import { bodyFixedFromInertialDcmIAU } from '../body-fixed-from-inertial-dcm-iau.js';
+import { transpose3 } from '../../helpers/transpose-3.js';
+import { matMul3 } from '../../helpers/mat-mul3.js';
+import { det3 } from '../../helpers/det-3.js';
 
 const I3: Matrix3x3Type = [
   [1, 0, 0],

@@ -1,6 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
-import { wrapAngle } from '../angle/wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle.js';
 
 /* node:coverage disable */
 /**
@@ -72,7 +72,7 @@ import { wrapAngle } from '../angle/wrap-angle';
  *
  * @example
  * ```ts
- * import { solveKeplerHighEccentricity } from './solve-kepler';
+ * import { solveKeplerHighEccentricity } from '@interstellar-tools/equations';
  *
  * const M = Math.PI / 4; // 45 degrees in radians
  * const e = 0.95; // High orbital eccentricity

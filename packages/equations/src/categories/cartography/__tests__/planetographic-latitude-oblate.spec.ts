@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { planetographicLatitudeOblate } from '../planetographic-latitude-oblate';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
+import { planetographicLatitudeOblate } from '../planetographic-latitude-oblate.js';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 import type { Radians } from '@interstellar-tools/types';
 
 describe('planetographicLatitudeOblate', () => {

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { meanMotion } from '../mean-motion';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { meanMotion } from '../mean-motion.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('meanMotion', () => {
   test('computes n = sqrt(mu / a^3) for a typical Earth orbit (km-based)', () => {

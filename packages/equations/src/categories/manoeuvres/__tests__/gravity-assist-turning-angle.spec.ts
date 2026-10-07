@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
-import { gravityAssistTurningAngle } from '../gravity-assist-turning-angle';
+import { relClose } from '../../../__tests__/helpers/index.js';
+import { gravityAssistTurningAngle } from '../gravity-assist-turning-angle.js';
 import type { Radians } from '@interstellar-tools/types';
 
 describe('gravityAssistTurningAngle', () => {

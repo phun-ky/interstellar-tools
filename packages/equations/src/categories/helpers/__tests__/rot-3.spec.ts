@@ -5,16 +5,16 @@ import type {
 } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { rot3 } from '../rot-3';
+import { rot3 } from '../rot-3.js';
 import {
   absClose,
   matRelClose,
   relClose
-} from 'packages/equations/src/__tests__/helpers';
-import { applyMatrix3 } from '../apply-matrix-3';
-import { matMul3 } from '../mat-mul3';
-import { det3 } from '../det-3';
-import { transpose3 } from '../transpose-3';
+} from '../../../__tests__/helpers/index.js';
+import { applyMatrix3 } from '../apply-matrix-3.js';
+import { matMul3 } from '../mat-mul3.js';
+import { det3 } from '../det-3.js';
+import { transpose3 } from '../transpose-3.js';
 
 const I3: Matrix3x3Type = [
   [1, 0, 0],

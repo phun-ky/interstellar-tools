@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
-import { specificAngularMomentumFromElements } from '../specific-angular-momentum-from-elements';
+import { specificAngularMomentumFromElements } from '../specific-angular-momentum-from-elements.js';
 
 describe('specificAngularMomentumFromElements', () => {
   test('definition (elliptic): h = sqrt(μ a (1-e²))', () => {

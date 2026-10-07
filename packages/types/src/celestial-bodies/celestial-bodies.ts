@@ -1,8 +1,8 @@
-import { AsteroidInterface, AsteroidsType } from './asteroids';
-import { CometInterface, CometsType } from './comets';
-import { MoonInterface, MoonsType } from './moons';
-import { PlanetInterface, PlanetsType } from './planets';
-import { StarInterface, StarsType } from './stars';
+import { AsteroidInterface, AsteroidsType } from './asteroids.js';
+import { CometInterface, CometsType } from './comets.js';
+import { MoonInterface, MoonsType } from './moons.js';
+import { PlanetInterface, PlanetsType } from './planets.js';
+import { StarInterface, StarsType } from './stars.js';
 
 /**
  * Type alias representing a collection of celestial bodies.

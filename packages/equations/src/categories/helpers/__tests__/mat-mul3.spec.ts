@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { matRelClose } from 'packages/equations/src/__tests__/helpers';
-import { matMul3 } from '../mat-mul3';
+import { matRelClose } from '../../../__tests__/helpers/index.js';
+import { matMul3 } from '../mat-mul3.js';
 import { Matrix3x3Type } from '@interstellar-tools/types';
 
 const I3: Matrix3x3Type = [

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { rocketDeltaVFromIsp } from '../rocket-delta-v-from-isp';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { rocketDeltaVFromIsp } from '../rocket-delta-v-from-isp.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('rocketDeltaVFromIsp', () => {
   test('computes Δv = g0 * Isp * ln(m0/mf) for typical inputs (default g0)', () => {

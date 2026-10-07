@@ -4,7 +4,7 @@ import type {
   Vector3DTupleType
 } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
-import { norm2pi } from '../../categories/helpers/misc';
+import { norm2pi } from '../../categories/helpers/misc.js';
 
 export const relClose = (
   a: number | null,

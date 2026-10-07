@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKeplerNewtonRaphson } from '../solve-kepler-newton-raphson';
+import { solveKeplerNewtonRaphson } from '../solve-kepler-newton-raphson.js';
 import type { Radians } from '@interstellar-tools/types';
 
 const EPSILON = 1e-9;

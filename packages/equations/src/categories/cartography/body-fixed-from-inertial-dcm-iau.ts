@@ -1,8 +1,8 @@
 import { Matrix3x3Type, Radians } from '@interstellar-tools/types';
 
-import { matMul3 } from '../helpers/mat-mul3';
-import { rot1 } from '../helpers/rot-1';
-import { rot3 } from '../helpers/rot-3';
+import { matMul3 } from '../helpers/mat-mul3.js';
+import { rot1 } from '../helpers/rot-1.js';
+import { rot3 } from '../helpers/rot-3.js';
 
 /**
  * Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).

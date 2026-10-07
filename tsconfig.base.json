@@ -2,9 +2,9 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "lib": ["ES2020", "DOM"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["ES2020"],
     "declaration": true,
     "sourceMap": true,
     "strict": true,
@@ -12,12 +12,11 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "composite": true, // required for project references
-    "baseUrl": ".", // allows shared paths if needed
     "paths": {
-      "@interstellar-tools/equations": ["packages/equations/src"],
-      "@interstellar-tools/types": ["packages/types/src"],
-      "@interstellar-tools/temporal": ["packages/temporal/src"],
-      "@interstellar-tools/constants": ["packages/constants/src"]
+      "@interstellar-tools/equations": ["./packages/equations/src"],
+      "@interstellar-tools/types": ["./packages/types/src"],
+      "@interstellar-tools/temporal": ["./packages/temporal/src"],
+      "@interstellar-tools/constants": ["./packages/constants/src"]
     }
   },
   "exclude": ["node_modules", "dist"]

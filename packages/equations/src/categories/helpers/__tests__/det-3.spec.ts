@@ -1,8 +1,8 @@
 import type { Matrix3x3Type } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
-import { det3 } from '../det-3';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { det3 } from '../det-3.js';
 
 describe('det3', () => {
   test('returns 1 for the identity matrix', () => {

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { eccentricToTrueAnomaly } from '../eccentric-to-true-anomaly';
+import { eccentricToTrueAnomaly } from '../eccentric-to-true-anomaly.js';
 import type { Radians } from '@interstellar-tools/types';
 
 describe('eccentricToTrueAnomaly', () => {

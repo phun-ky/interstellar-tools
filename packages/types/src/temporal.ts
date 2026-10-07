@@ -1,4 +1,4 @@
-import { ValueInterface } from './numeric';
+import { ValueInterface } from './numeric.js';
 
 /**
  *
