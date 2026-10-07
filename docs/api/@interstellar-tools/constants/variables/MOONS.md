@@ -8,7 +8,7 @@ const MOONS: MoonsType;
 ```
 
 Defined in:
-[bodies/moons.ts:28](https://github.com/phun-ky/interstellar-tools/blob/05432f84a58384b749ef39dc14890d28e3385ce0/packages/constants/src/bodies/moons.ts#L28)
+[bodies/moons.ts:28](https://github.com/phun-ky/interstellar-tools/blob/f2eb38baee6fdf6d94e5779c3ba5cbaf8ab60d9a/packages/constants/src/bodies/moons.ts#L28)
 
 Represents a dataset of natural satellites (moons) in the solar system.
 
@@ -53,10 +53,10 @@ time.
 | Miranda   | natural satellite    | Uranus  | 0.00129 au  | 0.0013   | -1.41 d   | 235 km    | #CCCCCC                                                                | 0     |
 | Ariel     | natural satellite    | Uranus  | 0.00191 au  | 0.0012   | -2.52 d   | 578 km    | #A9A9A9                                                                | 0     |
 | Umbriel   | natural satellite    | Uranus  | 0.00266 au  | 0.0039   | -4.14 d   | 584 km    | #5F9EA0                                                                | 0     |
-| Triton    | natural satellite    | Neptune | 0.002375 au | 0.000016 | 5.87685 d | 1353.4 km | #C2A17C                                                                | 0     |
+| Triton    | retrograde satellite | Neptune | 0.002375 au | 0.000016 | 5.87685 d | 1353.4 km | #C2A17C                                                                | 0     |
 | Nereid    | natural satellite    | Neptune | 0.0369 au   | 0.75     | -360.14 d | 170 km    | #87CEFA                                                                | 0     |
 | Proteus   | natural satellite    | Neptune | 0.00082 au  | 0.0005   | -1.12 d   | 210 km    | [#708090](https://github.com/phun-ky/interstellar-tools/issues/708090) | 0     |
-| Halimede  | irregular satellite  | Neptune | 0.0985 au   | 0.5711   | -1879 d   | 62 km     | #A9A9A9                                                                | 0     |
+| Halimede  | irregular satellite  | Neptune | 0.0985 au   | 0.5711   | 1879 d    | 62 km     | #A9A9A9                                                                | 0     |
 
 </div>
 

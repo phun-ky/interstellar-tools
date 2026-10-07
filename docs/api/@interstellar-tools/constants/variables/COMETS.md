@@ -8,7 +8,7 @@ const COMETS: CometsType;
 ```
 
 Defined in:
-[bodies/comets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/05432f84a58384b749ef39dc14890d28e3385ce0/packages/constants/src/bodies/comets.ts#L27)
+[bodies/comets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/f2eb38baee6fdf6d94e5779c3ba5cbaf8ab60d9a/packages/constants/src/bodies/comets.ts#L27)
 
 Represents a collection of well-known comets within the solar system simulation.
 
@@ -31,8 +31,8 @@ time.
 | name                            | type               | category             | system | a         | e       | i      | w      | om    | angle    | period    | q     | color   | size | radius |
 | ------------------------------- | ------------------ | -------------------- | ------ | --------- | ------- | ------ | ------ | ----- | -------- | --------- | ----- | ------- | ---- | ------ |
 | Halley's Comet                  | periodic comet     | halley-type comet    | Sun    | 17.834 au | 0.96714 | 162.26 | 111.33 | 58.42 | 0.669857 | 27576 d   | 0.586 | #FFFFFF | 5    | 5.5 km |
-| Comet Hale-Bopp                 | oort cloud comet   | long-period comet    | Sun    | 186 au    | 0.9951  | 89.4   | 130.6  | 282.5 | 3.141593 | -253533 d | 0.914 | #00A6FF | 4    | 30 km  |
-| Comet 67P/Churyumov–Gerasimenko | short-period comet | jupiter-family comet | Sun    | 3.464 au  | 0.641   | 7.04   | 12.78  | 50.14 | 0        | -2484 d   | 1.243 | #AAAAAA | 4    | 2 km   |
+| Comet Hale-Bopp                 | oort cloud comet   | long-period comet    | Sun    | 186 au    | 0.9951  | 89.4   | 130.6  | 282.5 | 3.141593 | -926530 d | 0.914 | #00A6FF | 4    | 30 km  |
+| Comet 67P/Churyumov–Gerasimenko | short-period comet | jupiter-family comet | Sun    | 3.464 au  | 0.641   | 7.04   | 12.78  | 50.14 | 0        | -2355 d   | 1.243 | #AAAAAA | 4    | 2 km   |
 | Comet Encke                     | short-period comet | jupiter-family comet | Sun    | 2.22 au   | 0.85    | 11.8   | 186.5  | 334.6 | 2.792527 | -1204 d   | 0.34  | #FFD700 | 3    | 4.8 km |
 
 </div>

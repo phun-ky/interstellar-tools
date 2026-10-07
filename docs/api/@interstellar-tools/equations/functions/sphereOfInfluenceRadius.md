@@ -8,7 +8,7 @@ function sphereOfInfluenceRadius(a: number, m: number, M: number): number;
 ```
 
 Defined in:
-[orbits/sphere-of-influence-radius.ts:35](https://github.com/phun-ky/interstellar-tools/blob/05432f84a58384b749ef39dc14890d28e3385ce0/packages/equations/src/categories/orbits/sphere-of-influence-radius.ts#L35)
+[orbits/sphere-of-influence-radius.ts:35](https://github.com/phun-ky/interstellar-tools/blob/f2eb38baee6fdf6d94e5779c3ba5cbaf8ab60d9a/packages/equations/src/categories/orbits/sphere-of-influence-radius.ts#L35)
 
 Compute **sphere of influence** radius (patched conics approximation).
 
