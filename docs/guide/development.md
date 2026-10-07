@@ -29,6 +29,23 @@ npm run build
 npm test
 ```
 
+## Lint and type-check
+
+Both need a build first, since packages import each other through their `dist`
+output.
+
+```shell
+npm run lint
+npm run typecheck # type-checks sources and tests (the build excludes tests)
+```
+
+Each package has two TypeScript configs:
+
+- `tsconfig.build.json` compiles the published `dist` (tests excluded), used by
+  `npm run build`.
+- `tsconfig.json` covers sources and tests with Node types and emits nothing.
+  Editors pick it up, and `npm run typecheck` uses it.
+
 ## Commit
 
 To commit, we use

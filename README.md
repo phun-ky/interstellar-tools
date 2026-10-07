@@ -202,8 +202,10 @@ git clone https://github.com/phun-ky/interstellar-tools.git
 cd interstellar-tools
 
 npm install
+npm run build # lint and typecheck resolve packages through their build output
 npm test
-npm lint
+npm run lint
+npm run typecheck
 ```
 
 ## Contributing
