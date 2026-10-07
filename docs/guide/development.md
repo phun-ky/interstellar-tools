@@ -82,9 +82,11 @@ npm run release:dry-run
 ```
 
 The decision logic lives in `scripts/release.mjs`; `release-it` does the version
-bump, changelog, tag, npm publish and GitHub release for each package.
-`release-it` handles one package at a time, so it can't skip a package with
-nothing to release or bump dependents on its own. The script fills that gap.
+bump, changelog, tag, npm publish and GitHub release for each package. After
+each bump, `scripts/sync-lockfile.mjs` updates `package-lock.json`, so every
+release commit includes a matching lockfile. `release-it` handles one package at
+a time, so it can't skip a package with nothing to release or bump dependents on
+its own. The script fills that gap.
 
 ## Clean code
 

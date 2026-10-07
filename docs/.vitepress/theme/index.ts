@@ -3,7 +3,7 @@ import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme-without-fonts';
 import { onMounted, watchEffect } from 'vue';
 
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import-x/no-unresolved
 import 'virtual:group-icons.css';
 import './custom.css';
 

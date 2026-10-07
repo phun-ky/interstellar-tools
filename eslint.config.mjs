@@ -14,7 +14,7 @@ export default defineConfig([
   {
     extends: [customConfig],
     rules: {
-      'import/no-unused-modules': 'off'
+      'import-x/no-unused-modules': 'off'
     }
   },
   {
@@ -47,7 +47,7 @@ export default defineConfig([
       }
     },
     rules: {
-      'import/no-unresolved': 'off',
+      'import-x/no-unresolved': 'off',
       '@stylistic/indent': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
