@@ -61,7 +61,7 @@ import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson.js';
  *
  * @example
  * ```ts
- * import { solveKepler } from './solve-kepler';
+ * import { solveKepler } from '@interstellar-tools/equations';
  *
  * // Example 1: Moderate eccentricity
  * const M = Math.PI / 4; // 45 degrees in radians

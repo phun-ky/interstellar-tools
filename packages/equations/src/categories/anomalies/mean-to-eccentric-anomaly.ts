@@ -38,7 +38,7 @@ import { areEqual } from './utils/are-equal.js';
  *
  * @example
  * ```ts
- * import { meanToEccentricAnomaly } from './mean-to-eccentric-anomaly';
+ * import { meanToEccentricAnomaly } from '@interstellar-tools/equations';
  *
  * const mars: CelestialBodyType = {
  *   name: 'Mars',

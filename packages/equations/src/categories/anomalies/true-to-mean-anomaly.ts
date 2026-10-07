@@ -50,7 +50,7 @@ import { wrapAngle } from '../angle/wrap-angle.js';
  *
  * @example
  * ```ts
- * import { trueToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
+ * import { trueToMeanAnomaly } from '@interstellar-tools/equations';
  *
  * // Example 1: Standard elliptical orbit
  * const V = Math.PI / 3; // 60 degrees in radians

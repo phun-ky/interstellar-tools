@@ -55,7 +55,7 @@ import { solveKepler } from '../kepler/solve-kepler.js';
  *
  * @example
  * ```ts
- * import { computeAngle } from './compute-angle';
+ * import { computeAngle } from '@interstellar-tools/equations';
  *
  * const earth: CelestialBodyType = {
  *   name: 'Earth',

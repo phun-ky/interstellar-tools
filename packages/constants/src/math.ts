@@ -38,7 +38,7 @@
  *
  * @example
  * ```ts
- * import { TWO_PI } from "./constants";
+ * import { TWO_PI } from '@interstellar-tools/constants';
  *
  * // A quarter turn (π/2 radians)
  * const quarterTurn = 0.25 * TWO_PI; // ≈ 1.5707963267948966
