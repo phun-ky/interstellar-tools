@@ -106,3 +106,32 @@ describe('solveKeplerHighEccentricity (General Behavior Tests)', () => {
     assert.ok(result !== null); // Ensure it still produces a valid number
   });
 });
+
+describe('solveKeplerHighEccentricity: elliptical robustness', () => {
+  const TWO_PI = 2 * Math.PI;
+  // Result is wrapped to (-2π, 2π), so compare E - e·sin(E) with M modulo 2π
+  const assertSolves = (M: number, e: number, maxIter?: number) => {
+    const E = solveKeplerHighEccentricity(M as Radians, e, maxIter);
+    const r = (((E - e * Math.sin(E) - M) % TWO_PI) + TWO_PI) % TWO_PI;
+
+    assert.ok(
+      Math.min(r, TWO_PI - r) < 1e-8,
+      `M=${M}, e=${e}: E=${E} does not solve Kepler's equation`
+    );
+    assert.ok(E > -TWO_PI && E < TWO_PI, `M=${M}, e=${e}: E=${E} out of range`);
+    assert.ok(E === 0 || Math.sign(E) === Math.sign(M), `M=${M}: sign of E`);
+  };
+
+  test('solves for large |M| (previously wrong for |M| > 100)', () => {
+    for (const e of [0.91, 0.99, 0.9999]) {
+      for (const M of [-1000.5, -150, 150, 1000.5, 123_456.789]) {
+        assertSolves(M, e);
+      }
+    }
+  });
+
+  test('converges within 50 iterations for small M near e = 1', () => {
+    // The previous starting value put E far from the root (E ≈ 60 for M ≈ 0.025)
+    for (const M of [0.001, 0.025, 0.1, -0.025]) assertSolves(M, 0.9999, 50);
+  });
+});
