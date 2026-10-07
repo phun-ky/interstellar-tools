@@ -1,3 +1,4 @@
+import { TWO_PI } from '@interstellar-tools/constants';
 import type { Radians } from '@interstellar-tools/types';
 
 /**
@@ -19,27 +20,23 @@ import type { Radians } from '@interstellar-tools/types';
  *
  * **Solving Strategy:**
  * 1. **Handle Special Cases:**
- *    - If the orbit is **circular** ($e = 0$), then $E = M$ directly.
- *    - If the orbit is **nearly parabolic** ($e \geq 0.97$), a special approximation is used.
  *    - If **eccentricity is out of range** ($e < 0$ or $e \geq 1$), a `RangeError` is thrown.
+ *    - Kepler's equation is $2\pi$-periodic ($M + 2\pi k \mapsto E + 2\pi k$), so the equation is
+ *      solved for $M \bmod 2\pi$ and the whole turns are added back. Any finite $M$ works,
+ *      including negative values and many revolutions.
  *
- * 2. **Initial Approximation:**
- *    - **For small eccentricities ($e < 0.8$):** $E_0 = M$.
- *    - **For moderate eccentricities ($0.8 \leq e < 0.97$):** $E_0 = M + e \sin(M) (1 + e \cos(M))$.
- *    - **For nearly parabolic orbits ($e \geq 0.97$):** $E_0 = \frac{6M}{e}$.
+ * 2. **Initial Approximation** (Danby 1987, good for all $0 \leq e < 1$):
+ *    $$
+ *    E_0 = M + 0.85\, e \,\operatorname{sign}(\sin M)
+ *    $$
  *
  * 3. **Newton-Raphson Iteration with Householder Acceleration:**
- *    - The **Newton-Raphson method** iterates using:
+ *    - With $f(E) = E - e \sin(E) - M$, $f'(E) = 1 - e \cos(E)$, $f''(E) = e \sin(E)$ and
+ *      $f'''(E) = e \cos(E)$, each step refines the Newton correction to third order:
  *      $$
- *      E_{n+1} = E_n - \frac{f(E_n)}{f'(E_n)}
- *      $$
- *      where:
- *      - $f(E) = E - e \sin(E) - M$
- *      - $f'(E) = 1 - e \cos(E)$
- *
- *    - **Householder acceleration** refines the correction:
- *      $$
- *      \Delta E = \frac{f(E)}{f'(E)} \left( 1 - \frac{1}{2} \frac{f''(E)}{f'(E)} \Delta E \right)^{-1}
+ *      \delta_1 = -\frac{f}{f'}, \quad
+ *      \delta_2 = -\frac{f}{f' + \tfrac{1}{2} \delta_1 f''}, \quad
+ *      \Delta E = -\frac{f}{f' + \tfrac{1}{2} \delta_2 f'' + \tfrac{1}{6} \delta_2^2 f'''}
  *      $$
  *
  * 4. **Convergence Check:**
@@ -55,7 +52,7 @@ import type { Radians } from '@interstellar-tools/types';
  * ---
  *
  * **Performance Considerations:**
- * - **Typically converges in 4-5 iterations for most eccentricities.**
+ * - **Typically converges in 3-4 iterations, including $e \to 1$.**
  * - **Time complexity:** $O(1)$ for Newton-Raphson.
  *
  * ---
@@ -82,6 +79,7 @@ import type { Radians } from '@interstellar-tools/types';
  * @see [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
  * @see [Newton-Raphson Method (Wikipedia)](https://en.wikipedia.org/wiki/Newton%27s_method)
  * @see [Eccentric Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly#Eccentric_anomaly)
+ * @see Danby, J. M. A. (1987). The solution of Kepler's equation, III. *Celestial Mechanics*, 40, 303–312.
  * @group Kepler Solvers
  */
 export const solveKeplerNewtonRaphson = (
@@ -94,35 +92,29 @@ export const solveKeplerNewtonRaphson = (
     throw new RangeError(`Invalid eccentricity: ${e}. Must be in range [0,1).`);
   }
 
-  let E: number;
+  // Kepler's equation is 2π-periodic: solve within one turn, add the turns back
+  const Mr = M % TWO_PI;
+  const turns = M - Mr;
 
-  // Smart initial guess
-  if (e < 0.8) {
-    E = M;
-  } else if (e < 0.97) {
-    E = M + e * Math.sin(M) * (1 + e * Math.cos(M));
-  } else {
-    E = (6 * M) / e; // Nearly parabolic case
-  }
-
+  // Danby's starting value, good for all 0 ≤ e < 1
+  let E = Mr + 0.85 * e * Math.sign(Math.sin(Mr));
   let iter = 0;
 
   while (iter < maxIter) {
-    const F = E - e * Math.sin(E) - M;
+    const F = E - e * Math.sin(E) - Mr;
     const dF = 1 - e * Math.cos(E);
     const d2F = e * Math.sin(E);
     const d3F = e * Math.cos(E);
-    const deltaE = -F / dF; // Newton’s step
-
-    // Apply Householder's method for faster convergence
-    let correction = deltaE / (1 - (0.5 * deltaE * d2F) / dF);
-
-    correction /= 1 - ((1 / 6) * correction * correction * d3F) / dF;
+    // Newton's step, refined to third order (Householder / Danby)
+    const delta1 = -F / dF;
+    const delta2 = -F / (dF + 0.5 * delta1 * d2F);
+    const correction =
+      -F / (dF + 0.5 * delta2 * d2F + (1 / 6) * delta2 * delta2 * d3F);
 
     E += correction;
 
     if (Math.abs(correction) < tolerance) {
-      return E as Radians; // Converged
+      return (E + turns) as Radians; // Converged
     }
 
     iter++;

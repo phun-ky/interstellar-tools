@@ -1,3 +1,4 @@
+import { TWO_PI } from '@interstellar-tools/constants';
 import type { Radians } from '@interstellar-tools/types';
 
 import { wrapAngle } from '../angle/wrap-angle.js';
@@ -31,7 +32,12 @@ import { wrapAngle } from '../angle/wrap-angle.js';
  *
  * **Solving Strategy:**
  * 1. **Initial Guess:**
- *    - The solver starts with $E_0 = M$ and refines using:
+ *    - **Elliptical** ($e < 1$): the equation is $2\pi$-periodic, so $M$ is first reduced to one
+ *      turn with its sign kept ($M \bmod 2\pi$), then Danby's starting value is used:
+ * $$
+ * E_0 = M + 0.85\, e \,\operatorname{sign}(\sin M)
+ * $$
+ *    - **Hyperbolic** ($e > 1$):
  * $$
  * E_0 = M \pm \frac{e \sin(M)}{1 - e \cos(M)}
  * $$
@@ -55,7 +61,8 @@ import { wrapAngle } from '../angle/wrap-angle.js';
  * (default tolerance is **1e-9**).
  *
  * 3. **Angle Wrapping (Elliptical Only):**
- *    - The result is wrapped using `wrapAngle()` for consistency.
+ *    - The result is wrapped using `wrapAngle()`, which keeps the sign: $E \in (-2\pi, 2\pi)$ with
+ *      the sign of $M$. Use `solveKepler()` for a result normalized to $[0, 2\pi)$.
  *
  *
  * **Performance Considerations:**
@@ -67,7 +74,7 @@ import { wrapAngle } from '../angle/wrap-angle.js';
  * @param {number} e - Orbital eccentricity ($e > 0.9$ for high-eccentricity orbits).
  * @param {number} [maxIter=Math.max(300, Math.floor(5 + 3 * Math.log(1 + Math.abs(M))))] - Maximum number of **iterations** before failure.
  * @param {number} [tolerance=1e-9] - Convergence criterion for stopping the iteration.
- * @returns {Radians} The **eccentric anomaly** ($E$) in **radians** (wrapped to $[-\pi, \pi]$ for elliptical orbits).
+ * @returns {Radians} The **eccentric anomaly** ($E$) in **radians** (for elliptical orbits in $(-2\pi, 2\pi)$, with the sign of $M$).
  *
  *
  * @example
@@ -106,8 +113,13 @@ export const solveKeplerHighEccentricity = (
 
   let E: number;
 
-  // Use a more accurate initial guess for highly eccentric orbits
-  if (M < 0) {
+  if (e < 1) {
+    // The elliptical equation is 2π-periodic: solve within one turn (sign kept),
+    // so large |M| doesn't run into the |E| > 100 divergence guard below
+    M = (M % TWO_PI) as Radians;
+    // Danby's starting value, good for all 0 ≤ e < 1
+    E = M + 0.85 * e * Math.sign(Math.sin(M));
+  } else if (M < 0) {
     E = M - (e * Math.sin(M)) / (1 - e * Math.cos(M));
   } else {
     E = M + (e * Math.sin(M)) / (1 - e * Math.cos(M));
@@ -157,7 +169,7 @@ export const solveKeplerHighEccentricity = (
     }
   }
 
-  // **Wrap angles to the range [-π, π] for elliptical orbits**
+  // **Wrap angles to (-2π, 2π), keeping the sign, for elliptical orbits**
   if (e < 1) {
     lastValidE = wrapAngle(lastValidE);
   }
