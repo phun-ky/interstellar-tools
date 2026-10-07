@@ -8,7 +8,7 @@ function normalizeTemporalUnit(u: string): TemporalUnitType;
 ```
 
 Defined in:
-[normalize-temporal-unit.ts:131](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/temporal/src/normalize-temporal-unit.ts#L131)
+[normalize-temporal-unit.ts:131](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/temporal/src/normalize-temporal-unit.ts#L131)
 
 Normalize a user-provided **temporal unit string** into a canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md).
@@ -73,5 +73,5 @@ normalizeTemporalUnit('Ga'); // → 'Gyr'
 - [NORMALIZE_UNIT](../variables/NORMALIZE_UNIT.md) for the complete
   alias→canonical mapping.
 - https://www.bipm.org/en/publications/si-brochure (SI Brochure - second/day)
-- https://en.wikipedia.org/wiki/Julian\_year\_(astronomy) (Julian year for
+- https://en.wikipedia.org/wiki/Julian_year\_(astronomy) (Julian year for
   yr/kyr/Myr/Gyr)

@@ -8,7 +8,7 @@ function oberthEnergyGain(v: number, dv: number): number;
 ```
 
 Defined in:
-[manoeuvres/oberth-energy-gain.ts:65](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/manoeuvres/oberth-energy-gain.ts#L65)
+[manoeuvres/oberth-energy-gain.ts:65](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/equations/src/categories/manoeuvres/oberth-energy-gain.ts#L65)
 
 **Oberth effect (specific energy gain near periapsis)**.
 
@@ -34,9 +34,9 @@ where:
 
 - This approximation assumes a **small**, **prograde** impulse (aligned with
   velocity) and neglects higher-order terms ($\tfrac{1}{2}(\Delta v)^2$).
-- A more general small-angle form is
-  ($\Delta \varepsilon \approx v\,\Delta v\cos\phi$), where ($\phi$) is the
-  angle between the velocity vector and the burn direction.
+- A more general small-angle form is ($\Delta \varepsilon \approx v\,\Delta
+  v\cos\phi$), where ($\phi$) is the angle between the velocity vector and the
+  burn direction.
 
 :::
 

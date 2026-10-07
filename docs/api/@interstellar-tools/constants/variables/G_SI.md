@@ -8,7 +8,7 @@ const G_SI: number = 6.6743e-11;
 ```
 
 Defined in:
-[physics.ts:24](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/constants/src/physics.ts#L24)
+[physics.ts:24](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/constants/src/physics.ts#L24)
 
 Gravitational constant **G** in SI units.
 
@@ -28,7 +28,7 @@ $$
 ## See
 
 - https://physics.nist.gov/cgi-bin/cuu/Value?bg
-- https://en.wikipedia.org/wiki/Gravitational\_constant
+- https://en.wikipedia.org/wiki/Gravitational_constant
 
 ## Example
 

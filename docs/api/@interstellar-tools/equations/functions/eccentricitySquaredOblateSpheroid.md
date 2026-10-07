@@ -8,7 +8,7 @@ function eccentricitySquaredOblateSpheroid(a: number, c: number): number;
 ```
 
 Defined in:
-[cartography/eccentricity-squared-oblate-spheroid.ts:39](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/cartography/eccentricity-squared-oblate-spheroid.ts#L39)
+[cartography/eccentricity-squared-oblate-spheroid.ts:39](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/equations/src/categories/cartography/eccentricity-squared-oblate-spheroid.ts#L39)
 
 Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.
 
@@ -23,8 +23,8 @@ $$
 ::: info Notes:
 
 - ($e^2$) is **dimensionless**.
-- For a physically valid oblate spheroid with ($a \ge c > 0$),
-  ($0 \le e^2 < 1$).
+- For a physically valid oblate spheroid with ($a \ge c > 0$), ($0 \le e^2 <
+  1$).
 - This quantity is widely used in geodesy and mapping formulas (e.g.,
   planetographic latitude, geodetic coordinates, map projections).
 
@@ -62,9 +62,9 @@ const e2 = eccentricitySquaredOblateSpheroid(a, c);
 
 ## See
 
-- https://en.wikipedia.org/wiki/Eccentricity\_(mathematics)#Ellipses\_and\_ellipsoids
+- https://en.wikipedia.org/wiki/Eccentricity\_(mathematics)#Ellipses_and_ellipsoids
   Eccentricity for ellipses/ellipsoids (includes first eccentricity)
-- https://en.wikipedia.org/wiki/Reference\_ellipsoid Reference ellipsoid
-  (geodesy context; uses a, b and eccentricity)
+- https://en.wikipedia.org/wiki/Reference_ellipsoid Reference ellipsoid (geodesy
+  context; uses a, b and eccentricity)
 - https://epsg.org/guidance-notes.html EPSG Guidance Notes (geodesy reference;
   ellipsoid parameters and derived quantities)

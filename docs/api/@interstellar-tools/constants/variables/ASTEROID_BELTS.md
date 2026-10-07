@@ -8,7 +8,7 @@ const ASTEROID_BELTS: AsteroidBeltsType;
 ```
 
 Defined in:
-[bodies/asteroid-belts.ts:29](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/constants/src/bodies/asteroid-belts.ts#L29)
+[bodies/asteroid-belts.ts:29](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/constants/src/bodies/asteroid-belts.ts#L29)
 
 Predefined asteroid belts in the solar system visualization.
 
@@ -56,5 +56,5 @@ console.log(ASTEROID_BELTS[0].name); // "Main Asteroid Belt"
 ## See
 
 - [AsteroidBeltsType](../../types/type-aliases/AsteroidBeltsType.md).
-- https://en.wikipedia.org/wiki/Asteroid\_belt
-- https://en.wikipedia.org/wiki/Kuiper\_belt
+- https://en.wikipedia.org/wiki/Asteroid_belt
+- https://en.wikipedia.org/wiki/Kuiper_belt

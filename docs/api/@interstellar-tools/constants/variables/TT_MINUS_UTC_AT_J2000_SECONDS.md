@@ -8,7 +8,7 @@ const TT_MINUS_UTC_AT_J2000_SECONDS: 64.184 = 64.184;
 ```
 
 Defined in:
-[date.ts:100](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/constants/src/date.ts#L100)
+[date.ts:100](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/constants/src/date.ts#L100)
 
 Useful offset at the J2000 epoch (for UTC↔TT conversions near that instant).
 

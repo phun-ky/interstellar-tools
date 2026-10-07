@@ -12,7 +12,7 @@ function bodyFixedFromInertialDcmIAU(
 ```
 
 Defined in:
-[cartography/body-fixed-from-inertial-dcm-iau.ts:54](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/cartography/body-fixed-from-inertial-dcm-iau.ts#L54)
+[cartography/body-fixed-from-inertial-dcm-iau.ts:54](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/equations/src/categories/cartography/body-fixed-from-inertial-dcm-iau.ts#L54)
 
 Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).
 
@@ -71,11 +71,11 @@ const vBF = applyMatrix3(R, vICRF);
 ## See
 
 - [applyMatrix3](applyMatrix3.md)
-- https://naif.jpl.nasa.gov/pub/naif/toolkit\_docs/FORTRAN/req/pck.html NAIF
+- https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/FORTRAN/req/pck.html NAIF
   SPICE PCK Required Reading (RA, DEC, W orientation model)
-- https://naif.jpl.nasa.gov/pub/naif/toolkit\_docs/C/req/frames.html NAIF SPICE
+- https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/frames.html NAIF SPICE
   Frames Required Reading (reference frames and transformations)
-- https://naif.jpl.nasa.gov/pub/naif/toolkit\_docs/C/cspice/tipbod\_c.html SPICE
+- https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/tipbod_c.html SPICE
   `tipbod_c` (inertial → body-equator-and-prime-meridian rotation)
 - https://www.iau.org/WG100/WG100/Home.aspx IAU WGCCRE / WG100 (cartographic
   coordinates & rotational elements reports)

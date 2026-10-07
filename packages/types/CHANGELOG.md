@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.50.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.49.0...@interstellar-tools/types@0.50.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 reinstall ([57bd975](https://github.com/phun-ky/interstellar-tools/commit/57bd9753408ed602863de35bf51bcdae892f1d78))
+
+### Documentation
+
+* ✏️ Update paths for examples ([de17beb](https://github.com/phun-ky/interstellar-tools/commit/de17beb7b01a35a29a6e0d0b415ce5651f6e39e7))
+
+### Bug
+
+* 🐛 Keep sibling dep ranges in sync with local versions ([1c75de5](https://github.com/phun-ky/interstellar-tools/commit/1c75de5bf1a4c7767cecb0d43bdc7ac4be47902e))
+* 🐛 Make packages load in Node with NodeNext resolution ([dfa24a2](https://github.com/phun-ky/interstellar-tools/commit/dfa24a2abe87ac6808bc3bd2211fb1dcea30e9cc))
+
 ## [0.49.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/types@0.48.0...@interstellar-tools/types@0.49.0) (2026-08-08)
 
 ### Tasks

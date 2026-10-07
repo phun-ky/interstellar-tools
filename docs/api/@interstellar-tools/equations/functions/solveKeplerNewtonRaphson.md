@@ -13,7 +13,7 @@ function solveKeplerNewtonRaphson(
 ```
 
 Defined in:
-[kepler/solve-kepler-newton-raphson.ts:87](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L87)
+[kepler/solve-kepler-newton-raphson.ts:87](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/equations/src/categories/kepler/solve-kepler-newton-raphson.ts#L87)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the
 **Newton-Raphson method** with Householder acceleration for fast convergence.
@@ -45,8 +45,8 @@ methods are required.
 
 2. **Initial Approximation:**
    - **For small eccentricities ($e < 0.8$):** $E_0 = M$.
-   - **For moderate eccentricities ($0.8 \leq e < 0.97$):**
-     $E_0 = M + e \sin(M) (1 + e \cos(M))$.
+   - **For moderate eccentricities ($0.8 \leq e < 0.97$):** $E_0 = M + e \sin(M)
+     (1 + e \cos(M))$.
    - **For nearly parabolic orbits ($e \geq 0.97$):** $E_0 = \frac{6M}{e}$.
 
 3. **Newton-Raphson Iteration with Householder Acceleration:**

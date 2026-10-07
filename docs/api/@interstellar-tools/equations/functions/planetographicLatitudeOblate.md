@@ -14,16 +14,16 @@ function planetographicLatitudeOblate(
 ```
 
 Defined in:
-[cartography/planetographic-latitude-oblate.ts:21](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/cartography/planetographic-latitude-oblate.ts#L21)
+[cartography/planetographic-latitude-oblate.ts:21](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/equations/src/categories/cartography/planetographic-latitude-oblate.ts#L21)
 
 Compute planetographic latitude (oblate spheroid) from body-fixed Cartesian
 coordinates.
 
-Given:
-$\tan\varphi_g = \frac{z}{\sqrt{x^2+y^2}}(1-e^2)^{-1}, \qquad e^2=1-\frac{c^2}{a^2}$
+Given: $\tan\varphi_g = \frac{z}{\sqrt{x^2+y^2}}(1-e^2)^{-1}, \qquad
+e^2=1-\frac{c^2}{a^2}$
 
-This returns:
-$\varphi_g = \arctan\!\left(\frac{z}{\sqrt{x^2+y^2}}\frac{1}{1-e^2}\right)$
+This returns: $\varphi_g =
+\arctan\!\left(\frac{z}{\sqrt{x^2+y^2}}\frac{1}{1-e^2}\right)$
 
 ## Parameters
 

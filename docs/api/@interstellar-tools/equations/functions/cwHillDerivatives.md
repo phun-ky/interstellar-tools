@@ -8,7 +8,7 @@ function cwHillDerivatives(state: CwState, n: number): CwStateDerivative;
 ```
 
 Defined in:
-[orbits/cw-hill-derivatives.ts:67](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/orbits/cw-hill-derivatives.ts#L67)
+[orbits/cw-hill-derivatives.ts:67](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/equations/src/categories/orbits/cw-hill-derivatives.ts#L67)
 
 Compute the **time-derivative** of a Clohessy–Wiltshire / Hill relative-motion
 state (right-hand side for ODE integration).

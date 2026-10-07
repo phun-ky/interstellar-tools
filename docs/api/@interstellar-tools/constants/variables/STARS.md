@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:27](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/constants/src/bodies/stars.ts#L27)
+[bodies/stars.ts:27](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/constants/src/bodies/stars.ts#L27)
 
 Represents a dataset of well-known stars within the Milky Way.
 

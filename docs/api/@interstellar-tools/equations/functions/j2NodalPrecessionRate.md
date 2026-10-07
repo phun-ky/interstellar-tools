@@ -15,7 +15,7 @@ function j2NodalPrecessionRate(
 ```
 
 Defined in:
-[orbits/j2-nodal-precession-rate.ts:54](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/orbits/j2-nodal-precession-rate.ts#L54)
+[orbits/j2-nodal-precession-rate.ts:54](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/equations/src/categories/orbits/j2-nodal-precession-rate.ts#L54)
 
 Compute **J2 nodal precession** (RAAN drift) for an orbit about an oblate body.
 
@@ -80,15 +80,15 @@ const raanDot = j2NodalPrecessionRate(J2, n, Re, a, i, e);
 
 ## See
 
-- https://science.nasa.gov/wp-content/uploads/2023/05/GDC\_OrbitPrimer.pdf?emrc=5e452c
+- https://science.nasa.gov/wp-content/uploads/2023/05/GDC_OrbitPrimer.pdf?emrc=5e452c
   NASA GSFC - GDC Orbit Primer (includes nodal precession / regression formulas)
-- https://en.wikipedia.org/wiki/Nodal\_precession Wikipedia - Nodal precession
+- https://en.wikipedia.org/wiki/Nodal_precession Wikipedia - Nodal precession
   (gives common J2 RAAN drift approximation)
-- https://ai-solutions.com/\_freeflyeruniversityguide/j2\_perturbation.htm
+- https://ai-solutions.com/\_freeflyeruniversityguide/j2_perturbation.htm
   FreeFlyer University Guide - J2 perturbation (mission-design oriented
   explanation + formulas)
 - https://articles.adsabs.harvard.edu/pdf/1959AJ.....64..367K Kozai (1959) - The
   Motion of a Close Earth Satellite (classic primary source on secular J2
   effects)
-- https://help.agi.com/stk/Content/stk/vehSat\_orbitProp\_2bodyJ2J4.htm AGI/STK
+- https://help.agi.com/stk/Content/stk/vehSat_orbitProp_2bodyJ2J4.htm AGI/STK
   Help - Two-Body with J2/J4 perturbations (practical propagation context)

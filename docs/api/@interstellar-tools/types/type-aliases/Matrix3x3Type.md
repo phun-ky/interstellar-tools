@@ -12,7 +12,7 @@ type Matrix3x3Type = readonly [
 ```
 
 Defined in:
-[math.ts:44](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/types/src/math.ts#L44)
+[math.ts:44](https://github.com/phun-ky/interstellar-tools/blob/724f204d680c97984704b1a5a1a3e0f7bc0fa898/packages/types/src/math.ts#L44)
 
 Immutable 3×3 matrix of numbers.
 
