@@ -4,7 +4,7 @@ ForceResultInterface
 # Interface: ForceResultInterface
 
 Defined in:
-[physics.ts:50](https://github.com/phun-ky/interstellar-tools/blob/e65544aea271229b4c0d436323be6ad724504019/packages/types/src/physics.ts#L50)
+[physics.ts:50](https://github.com/phun-ky/interstellar-tools/blob/6f153606e393f86026bd7b4bcc07f04359028422/packages/types/src/physics.ts#L50)
 
 Result of a Newtonian gravitational force computation between two point masses.
 
@@ -62,7 +62,7 @@ readonly direction: Vector3DTupleType;
 ```
 
 Defined in:
-[physics.ts:56](https://github.com/phun-ky/interstellar-tools/blob/e65544aea271229b4c0d436323be6ad724504019/packages/types/src/physics.ts#L56)
+[physics.ts:56](https://github.com/phun-ky/interstellar-tools/blob/6f153606e393f86026bd7b4bcc07f04359028422/packages/types/src/physics.ts#L56)
 
 Unit direction from body 1 to body 2 (dimensionless).
 
@@ -75,7 +75,7 @@ readonly magnitude: number;
 ```
 
 Defined in:
-[physics.ts:54](https://github.com/phun-ky/interstellar-tools/blob/e65544aea271229b4c0d436323be6ad724504019/packages/types/src/physics.ts#L54)
+[physics.ts:54](https://github.com/phun-ky/interstellar-tools/blob/6f153606e393f86026bd7b4bcc07f04359028422/packages/types/src/physics.ts#L54)
 
 Scalar magnitude of the force (N).
 
@@ -88,6 +88,6 @@ readonly vector: Vector3DTupleType;
 ```
 
 Defined in:
-[physics.ts:52](https://github.com/phun-ky/interstellar-tools/blob/e65544aea271229b4c0d436323be6ad724504019/packages/types/src/physics.ts#L52)
+[physics.ts:52](https://github.com/phun-ky/interstellar-tools/blob/6f153606e393f86026bd7b4bcc07f04359028422/packages/types/src/physics.ts#L52)
 
 Force vector on body 1 due to body 2 (N).
