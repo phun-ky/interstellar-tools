@@ -156,5 +156,12 @@
     "commitizen": {
       "path": "./node_modules/git-cz"
     }
+  },
+  "overrides": {
+    "@xmldom/xmldom": "^0.9.12",
+    "release-it": {
+      "undici": "^6.29.0"
+    },
+    "katex": "^0.18.2"
   }
 }
