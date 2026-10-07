@@ -64,7 +64,16 @@
           }
         ]
       },
-      "infile": "CHANGELOG.md"
+      "infile": "CHANGELOG.md",
+      "tagOpts": {
+        "prefix": "@interstellar-tools/temporal@"
+      },
+      "commitsOpts": {
+        "path": "."
+      },
+      "gitRawCommitsOpts": {
+        "path": "."
+      }
     }
   }
 }
