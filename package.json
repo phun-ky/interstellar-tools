@@ -105,6 +105,7 @@
     "docs:partials:gen": "npm run docs:partials:table:asteroid-belts && npm run docs:partials:table:asteroids && npm run docs:partials:table:comets && npm run docs:partials:table:galaxies && npm run docs:partials:table:moons && npm run docs:partials:table:planets && npm run docs:partials:table:stars && npm run docs:partials:table:systems",
     "prebuild": "npm run clean",
     "build": "tsc -b",
+    "lint": "eslint .",
     "check:sibling-ranges": "node scripts/check-sibling-ranges.mjs",
     "clean": "npm run clean --workspaces --if-present",
     "commit": "npx git-cz",
