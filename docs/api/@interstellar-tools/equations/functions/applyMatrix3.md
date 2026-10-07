@@ -11,7 +11,7 @@ function applyMatrix3(
 ```
 
 Defined in:
-[helpers/apply-matrix-3.ts:38](https://github.com/phun-ky/interstellar-tools/blob/3607c42aab35c28efbf96b5b3085ee20e1d129c8/packages/equations/src/categories/helpers/apply-matrix-3.ts#L38)
+[helpers/apply-matrix-3.ts:38](https://github.com/phun-ky/interstellar-tools/blob/872dfe8d0f65b144fea4ef4c2742791eeb710c94/packages/equations/src/categories/helpers/apply-matrix-3.ts#L38)
 
 Apply a **3×3 matrix** to a **3D vector** (matrix–vector multiplication).
 
