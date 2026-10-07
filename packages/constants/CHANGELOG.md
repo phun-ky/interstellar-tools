@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.60.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.59.0...@interstellar-tools/constants@0.60.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/equations@0.59.0 ([7827019](https://github.com/phun-ky/interstellar-tools/commit/7827019b615137cb171c728e19941ee3425d2b68))
+* 🤖 @interstellar-tools/temporal@0.59.0 ([71dab4c](https://github.com/phun-ky/interstellar-tools/commit/71dab4c56aba4144c2dbb92635c3ae2b93a7f692))
+* 🤖 @interstellar-tools/types@0.60.0 ([ff0ff79](https://github.com/phun-ky/interstellar-tools/commit/ff0ff79e79b5bc7e4ec511acff1ee19f8fe1a73e))
+* 🤖 Pin @types/node to Node 24 and stop grouping major updates ([b7a2b4c](https://github.com/phun-ky/interstellar-tools/commit/b7a2b4c4a318b2d4e919dac407d22aaa746006a6)), closes [#97](https://github.com/phun-ky/interstellar-tools/issues/97)
+
 ## [0.59.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.58.0...@interstellar-tools/constants@0.59.0) (2026-10-07)
 
 ### Tasks
