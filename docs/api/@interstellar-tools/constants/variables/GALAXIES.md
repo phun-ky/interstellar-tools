@@ -8,7 +8,7 @@ const GALAXIES: GalaxiesType;
 ```
 
 Defined in:
-[bodies/galaxies.ts:27](https://github.com/phun-ky/interstellar-tools/blob/ca19b3ee4d96f8365482f3870f73960191b1923c/packages/constants/src/bodies/galaxies.ts#L27)
+[bodies/galaxies.ts:27](https://github.com/phun-ky/interstellar-tools/blob/05432f84a58384b749ef39dc14890d28e3385ce0/packages/constants/src/bodies/galaxies.ts#L27)
 
 Represents a collection of galaxies within the space visualization.
 

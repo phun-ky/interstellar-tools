@@ -9,7 +9,7 @@ const SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM: 696342 = 696_342;
 ```
 
 Defined in:
-[objects.ts:40](https://github.com/phun-ky/interstellar-tools/blob/ca19b3ee4d96f8365482f3870f73960191b1923c/packages/constants/src/objects.ts#L40)
+[objects.ts:40](https://github.com/phun-ky/interstellar-tools/blob/05432f84a58384b749ef39dc14890d28e3385ce0/packages/constants/src/objects.ts#L40)
 
 Limb–inflection minus photospheric offset (~0.333 Mm). / export const
 SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM = 333;

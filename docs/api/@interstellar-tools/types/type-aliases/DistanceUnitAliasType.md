@@ -46,7 +46,7 @@ type DistanceUnitAliasType =
 ```
 
 Defined in:
-[distance.ts:94](https://github.com/phun-ky/interstellar-tools/blob/ca19b3ee4d96f8365482f3870f73960191b1923c/packages/types/src/distance.ts#L94)
+[distance.ts:94](https://github.com/phun-ky/interstellar-tools/blob/05432f84a58384b749ef39dc14890d28e3385ce0/packages/types/src/distance.ts#L94)
 
 Human-friendly **distance unit aliases** accepted at input time.
 

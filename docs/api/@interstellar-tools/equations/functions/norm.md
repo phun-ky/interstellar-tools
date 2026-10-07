@@ -8,7 +8,7 @@ function norm(v: Vector3DTupleType): number;
 ```
 
 Defined in:
-[helpers/misc.ts:22](https://github.com/phun-ky/interstellar-tools/blob/ca19b3ee4d96f8365482f3870f73960191b1923c/packages/equations/src/categories/helpers/misc.ts#L22)
+[helpers/misc.ts:22](https://github.com/phun-ky/interstellar-tools/blob/05432f84a58384b749ef39dc14890d28e3385ce0/packages/equations/src/categories/helpers/misc.ts#L22)
 
 Compute the **Euclidean norm** (length / magnitude) of a 3D vector.
 
