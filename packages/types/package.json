@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/types",
-  "version": "0.49.0",
+  "version": "0.58.0",
   "description": "Shared TypeScript types (e.g., 3D tuples, equation result interfaces) used across the monorepo to keep APIs predictable and safe.",
   "keywords": [
     "types",
@@ -103,7 +103,8 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "typecheck": "tsc -p tsconfig.json",
     "release": "release-it",
     "test": "tsx --test **/__tests__/**/*.spec.ts",
     "pretest:ci": "rm -rf coverage && mkdir -p coverage",
@@ -117,8 +118,7 @@
     "typescript": "^6.0.3"
   },
   "engines": {
-    "node": ">=22.9.0",
-    "npm": ">=11.5.1"
+    "node": ">=22.9.0"
   },
   "publishConfig": {
     "access": "public"

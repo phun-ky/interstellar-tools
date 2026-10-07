@@ -21,7 +21,7 @@ on:
       - 'CONTRIBUTING.md'
       - 'CODE_OF_CONDUCT.md'
       - 'SECURITY.md'
-      - '.browserlistrc'
+      - '.browserslistrc'
   workflow_dispatch:
 
 permissions:
@@ -30,38 +30,39 @@ permissions:
 jobs:
   publish:
     if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0 # Checkout all branches and tags
           token: ${{ secrets.GH_TOKEN }}
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: '>=22.9.0'
+          node-version: 24 # Ships npm 11, which supports trusted publishing (needs >= 11.5.1)
       - name: Install dependencies
         run: | # Install and link dependencies
-          npm i
+          npm ci
       - name: 'Release' # Interesting step
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
           npm run release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        env: # npm authenticates via trusted publishing (id-token: write), no token needed
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Check sibling ranges # All packages are released, so ranges must match now
+        run: npm run check:sibling-ranges
   notify:
     name: Notify failed build
     needs: publish
     if: failure()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: jayqi/failed-build-issue-action@v1.2
+      - uses: drivendataorg/failed-build-issue-action@v1
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           label-name: 'problems: build failed'

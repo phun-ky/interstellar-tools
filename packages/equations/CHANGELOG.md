@@ -1,5 +1,102 @@
 # Changelog
 
+## [0.58.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.57.0...@interstellar-tools/equations@0.58.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.58.0 ([ce968d3](https://github.com/phun-ky/interstellar-tools/commit/ce968d3eb2196dee72580729d75bfff8c2893aaf))
+* 🤖 @interstellar-tools/temporal@0.58.0 ([d81ce14](https://github.com/phun-ky/interstellar-tools/commit/d81ce140abbeddf226ade5cf0fb05256793b20e0))
+* 🤖 @interstellar-tools/types@0.58.0 ([683deed](https://github.com/phun-ky/interstellar-tools/commit/683deed811798731a65495bdc33270d50d29b73d))
+
+### Bug
+
+* 🐛 Patch vulnerable dev dependencies via overrides ([d1a100a](https://github.com/phun-ky/interstellar-tools/commit/d1a100a416f28c42dd8cf9a81326bd1ec5f62a21))
+
+## [0.57.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.56.0...@interstellar-tools/equations@0.57.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.57.0 ([6f8f5dc](https://github.com/phun-ky/interstellar-tools/commit/6f8f5dc23c7cfaca37d0ade765273d89959f6128))
+* 🤖 @interstellar-tools/temporal@0.57.0 ([032ce04](https://github.com/phun-ky/interstellar-tools/commit/032ce04e32172dcfac23d31370162af0d6acb26d))
+* 🤖 @interstellar-tools/types@0.57.0 ([0878868](https://github.com/phun-ky/interstellar-tools/commit/08788683a50ddb4cf7cc9f7933f260ba666d5804))
+
+## [0.56.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.55.0...@interstellar-tools/equations@0.56.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.56.0 ([4722637](https://github.com/phun-ky/interstellar-tools/commit/47226373bf3d242ceedb642a7838071c5e61057b))
+* 🤖 @interstellar-tools/temporal@0.56.0 ([c5ab3cd](https://github.com/phun-ky/interstellar-tools/commit/c5ab3cd07ebaff408d5fd4bb4b6a51934ff3d91b))
+* 🤖 @interstellar-tools/types@0.56.0 ([9288e83](https://github.com/phun-ky/interstellar-tools/commit/9288e8395dd68c20cdf578d8809e2edfd23a2358))
+
+### Bug
+
+* 🐛 Make solveKepler correct for any finite M and return [0, 2π) ([eef9816](https://github.com/phun-ky/interstellar-tools/commit/eef9816fdc2f48581cbfaf6ce6498b662b918519))
+* 🐛 Make the Newton-Raphson and high-eccentricity Kepler solvers robust ([0c31029](https://github.com/phun-ky/interstellar-tools/commit/0c310298770cb5beab9f95ac704007d6e2da16b3))
+
+## [0.55.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.54.0...@interstellar-tools/equations@0.55.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.55.0 ([3e29292](https://github.com/phun-ky/interstellar-tools/commit/3e292929c7bbba7ec7386ff6aafa5ac10affc6db))
+* 🤖 @interstellar-tools/temporal@0.55.0 ([c29cdb9](https://github.com/phun-ky/interstellar-tools/commit/c29cdb9f9378af882cc54297e7f15a29eae1961f))
+* 🤖 @interstellar-tools/types@0.55.0 ([2233ee5](https://github.com/phun-ky/interstellar-tools/commit/2233ee59bc7a6eb0e45ba27974cea9c1773af486))
+
+### Bug
+
+* 🐛 Correct constants data errors and add sanity tests ([f6eca61](https://github.com/phun-ky/interstellar-tools/commit/f6eca61db95452c00bf725e3b1fb1bed761f0729))
+
+## [0.54.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.53.0...@interstellar-tools/equations@0.54.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.54.0 ([a9c2691](https://github.com/phun-ky/interstellar-tools/commit/a9c269143bbc65da6b18e9629a25da23f8c3f560))
+* 🤖 @interstellar-tools/temporal@0.54.0 ([4f017c8](https://github.com/phun-ky/interstellar-tools/commit/4f017c8d9963093a4fe9b6eab460f79d71f1d28f))
+* 🤖 @interstellar-tools/types@0.54.0 ([73aa223](https://github.com/phun-ky/interstellar-tools/commit/73aa223bcc6216c4b07b4a174d849968cc9d8a11))
+
+## [0.53.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.52.0...@interstellar-tools/equations@0.53.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.53.0 ([422d566](https://github.com/phun-ky/interstellar-tools/commit/422d5660cd4395518d2c15e4a4f39255657cf12f))
+* 🤖 @interstellar-tools/temporal@0.53.0 ([69ff0a6](https://github.com/phun-ky/interstellar-tools/commit/69ff0a628a432bd7b95ba3e0a0a00950458b7f80))
+* 🤖 @interstellar-tools/types@0.53.0 ([cf3a8ac](https://github.com/phun-ky/interstellar-tools/commit/cf3a8ac9625d1f9931094874624c9d9dec4b1329))
+
+## [0.52.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.51.0...@interstellar-tools/equations@0.52.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.52.0 ([029744e](https://github.com/phun-ky/interstellar-tools/commit/029744ea33ef814d567bdc973b813d679e92cbf4))
+* 🤖 @interstellar-tools/temporal@0.52.0 ([81aac90](https://github.com/phun-ky/interstellar-tools/commit/81aac9086a072b524d1954216eccecf645eb9b1c))
+* 🤖 @interstellar-tools/types@0.52.0 ([ef731a9](https://github.com/phun-ky/interstellar-tools/commit/ef731a94a1009f81e274cacc21bb9d8722ef52f5))
+
+## [0.51.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.50.0...@interstellar-tools/equations@0.51.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.51.0 ([ea27a8f](https://github.com/phun-ky/interstellar-tools/commit/ea27a8fe56586d0a5b0af8e72b1079058df16c97))
+* 🤖 @interstellar-tools/temporal@0.51.0 ([e60cdf9](https://github.com/phun-ky/interstellar-tools/commit/e60cdf919cafdd179e13bae1c06ccc43dee90aed))
+* 🤖 @interstellar-tools/types@0.51.0 ([31f82ce](https://github.com/phun-ky/interstellar-tools/commit/31f82ce281fcc1261f5af704be0dd52a005c6841))
+
+## [0.50.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.49.0...@interstellar-tools/equations@0.50.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.50.0 ([05a2819](https://github.com/phun-ky/interstellar-tools/commit/05a2819d9793996d0beb0d742d89ac18e08d5c24))
+* 🤖 @interstellar-tools/temporal@0.49.0 ([674fd7e](https://github.com/phun-ky/interstellar-tools/commit/674fd7e69cdd33ca5ac6a6497db8b7e39d3154f5))
+* 🤖 @interstellar-tools/temporal@0.50.0 ([2c41eb4](https://github.com/phun-ky/interstellar-tools/commit/2c41eb424a72b0db4a6c62071970f9ac1a50ebc0))
+* 🤖 @interstellar-tools/types@0.49.0 ([7e41f27](https://github.com/phun-ky/interstellar-tools/commit/7e41f27a759cec85034f9902ac02b4f9d9e9caa2))
+* 🤖 @interstellar-tools/types@0.50.0 ([e43429b](https://github.com/phun-ky/interstellar-tools/commit/e43429b3cc5fb3c0cb633a3781be63209761e92c))
+* 🤖 reinstall ([57bd975](https://github.com/phun-ky/interstellar-tools/commit/57bd9753408ed602863de35bf51bcdae892f1d78))
+
+### Documentation
+
+* ✏️ Update paths for examples ([de17beb](https://github.com/phun-ky/interstellar-tools/commit/de17beb7b01a35a29a6e0d0b415ce5651f6e39e7))
+
+### Bug
+
+* 🐛 Keep sibling dep ranges in sync with local versions ([1c75de5](https://github.com/phun-ky/interstellar-tools/commit/1c75de5bf1a4c7767cecb0d43bdc7ac4be47902e))
+* 🐛 Make packages load in Node with NodeNext resolution ([dfa24a2](https://github.com/phun-ky/interstellar-tools/commit/dfa24a2abe87ac6808bc3bd2211fb1dcea30e9cc))
+
 ## [0.49.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/equations@0.48.0...@interstellar-tools/equations@0.49.0) (2026-08-08)
 
 ### Tasks

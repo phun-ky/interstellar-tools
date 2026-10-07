@@ -1,8 +1,8 @@
-import { DistanceInterface, MeasureInterface } from '../distance';
-import type { Radians } from '../numeric';
-import { TemporalInterface } from '../temporal';
+import { DistanceInterface, MeasureInterface } from '../distance.js';
+import type { Radians } from '../numeric.js';
+import { TemporalInterface } from '../temporal.js';
 
-import { CartesianCoordinatesInterface } from './planets';
+import { CartesianCoordinatesInterface } from './planets.js';
 
 /**
  * Represents a **moon** (natural satellite) orbiting a planet.
@@ -40,9 +40,7 @@ export interface MoonInterface {
   type?: undefined;
   /** Classification of the moon. */
   category:
-    | 'natural satellite'
-    | 'irregular satellite'
-    | 'retrograde satellite';
+    'natural satellite' | 'irregular satellite' | 'retrograde satellite';
   /** The planetary system where the moon is located (e.g., "Jupiter"). */
   system: string;
   /** Semi-major axis of the orbit in AU. */

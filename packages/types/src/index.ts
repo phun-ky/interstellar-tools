@@ -1,13 +1,13 @@
-export * from './distance';
+export * from './distance.js';
 
-export * from './temporal';
+export * from './temporal.js';
 
-export * from './numeric';
+export * from './numeric.js';
 
-export * from './math';
+export * from './math.js';
 
-export * from './physics';
+export * from './physics.js';
 
-export * from './orbits';
+export * from './orbits.js';
 
-export * from './celestial-bodies';
+export * from './celestial-bodies/index.js';

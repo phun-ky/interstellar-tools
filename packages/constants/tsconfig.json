@@ -1,12 +1,17 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true
+    "composite": false,
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "types": ["node"]
   },
   "include": ["src"],
-  "references": [{ "path": "../types" }]
+  "exclude": [],
+  "references": [
+    {
+      "path": "../types/tsconfig.build.json"
+    }
+  ]
 }

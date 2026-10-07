@@ -8,7 +8,7 @@ function planetocentricLatitude(x: number, y: number, z: number): number;
 ```
 
 Defined in:
-[cartography/planetocentric-latitude.ts:37](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/cartography/planetocentric-latitude.ts#L37)
+[cartography/planetocentric-latitude.ts:37](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/cartography/planetocentric-latitude.ts#L37)
 
 Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian
 coordinates.
@@ -58,13 +58,13 @@ const northPole = planetocentricLatitude(0, 0, 1);
 
 ## See
 
-- https://en.wikipedia.org/wiki/Planetary\_coordinate\_system Planetary
-  coordinate system (definitions of planetocentric vs. planetographic latitude)
+- https://en.wikipedia.org/wiki/Planetary_coordinate_system Planetary coordinate
+  system (definitions of planetocentric vs. planetographic latitude)
 - https://planetarynames.wr.usgs.gov/Page/Website USGS Planetary Names
   (planetocentric latitude definition)
 - https://pds.nasa.gov/datastandards/pds3/standards/sr/Chapter02.pdf NASA PDS
   Standards Reference (planetocentric latitude defined as angle to the
   center-of-mass vector)
-- https://naif.jpl.nasa.gov/pub/naif/toolkit\_docs/Tutorials/pdf/individual\_docs/17\_frames\_and\_coordinate\_systems.pdf
+- https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/Tutorials/pdf/individual_docs/17_frames_and_coordinate_systems.pdf
   NAIF SPICE tutorial: Frames and Coordinate Systems (planetocentric/body-fixed
   frame conventions)

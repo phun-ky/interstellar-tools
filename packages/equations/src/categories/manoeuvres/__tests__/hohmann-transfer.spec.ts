@@ -4,8 +4,8 @@ import {
   hohmannSemiMajorAxis,
   hohmannTransfer,
   hohmannTransferTime
-} from '../hohmann-transfer';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
+} from '../hohmann-transfer.js';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
 type Dir = 'prograde' | 'retrograde' | 'none';
 

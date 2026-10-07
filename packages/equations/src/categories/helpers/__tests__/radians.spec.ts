@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
-import { rad, toRad } from '../radians';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { rad, toRad } from '../radians.js';
 import type { Radians } from '@interstellar-tools/types';
 
 describe('radians', () => {

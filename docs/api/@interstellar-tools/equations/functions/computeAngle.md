@@ -11,7 +11,7 @@ function computeAngle(
 ```
 
 Defined in:
-[angle/compute-angle.ts:77](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/angle/compute-angle.ts#L77)
+[angle/compute-angle.ts:77](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/angle/compute-angle.ts#L77)
 
 Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given
 date and time step.
@@ -24,8 +24,8 @@ calculation follows these steps:
 
 **Step 1: Compute Time Elapsed Since J2000**
 
-The number of days since **J2000** is computed as:
-$\Delta T = \frac{t - t_{J2000}}{\text{MILLISECONDS\_PER\_DAY}}$ where:
+The number of days since **J2000** is computed as: $\Delta T = \frac{t -
+t_{J2000}}{\text{MILLISECONDS\_PER\_DAY}}$ where:
 
 - $t$ is the current date in milliseconds.
 - $t_{J2000}$ is **J2000** (2000-01-01T00:00:00Z).
@@ -33,8 +33,8 @@ $\Delta T = \frac{t - t_{J2000}}{\text{MILLISECONDS\_PER\_DAY}}$ where:
 
 **Step 2: Compute the Mean Anomaly ($M$)**
 
-The **mean anomaly** is calculated as:
-$M = M_0 + n \cdot (\Delta T + \text{timeStep})$ where:
+The **mean anomaly** is calculated as: $M = M_0 + n \cdot (\Delta T +
+\text{timeStep})$ where:
 
 - $M_0$ is the initial mean anomaly at **J2000**.
 - $n$ is the mean motion (orbital angular velocity).
@@ -47,8 +47,8 @@ Kepler’s equation: $M = E - e \sin(E)$ is solved numerically to obtain the
 
 **Step 4: Convert Eccentric Anomaly ($E$) to True Anomaly ($ν$)**
 
-Using the relation:
-$ν = 2 \tan^{-1} \left( \sqrt{\frac{1+e}{1-e}} \tan\left(\frac{E}{2}\right) \right)$
+Using the relation: $ν = 2 \tan^{-1} \left( \sqrt{\frac{1+e}{1-e}}
+\tan\left(\frac{E}{2}\right) \right)$
 
 **Step 5: Adjust the True Anomaly for Certain Bodies**
 
@@ -73,7 +73,7 @@ The computed true anomaly in radians.
 ## Example
 
 ```ts
-import { computeAngle } from './compute-angle';
+import { computeAngle } from '@interstellar-tools/equations';
 
 const earth: CelestialBodyType = {
   name: 'Earth',

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { flatteningOblateSpheroid } from '../flattening-oblate-spheroid';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { flatteningOblateSpheroid } from '../flattening-oblate-spheroid.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('flatteningOblateSpheroid', () => {
   test('computes f = (a - c) / a for typical Earth-like radii (WGS84-ish)', () => {

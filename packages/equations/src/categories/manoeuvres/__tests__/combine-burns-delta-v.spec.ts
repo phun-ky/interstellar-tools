@@ -1,9 +1,9 @@
 import type { Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { combineBurnsDeltaV } from '../combine-burns-delta-v';
-import { absClose } from 'packages/equations/src/__tests__/helpers';
-import { toRad } from '../../helpers/radians';
+import { combineBurnsDeltaV } from '../combine-burns-delta-v.js';
+import { absClose } from '../../../__tests__/helpers/index.js';
+import { toRad } from '../../helpers/radians.js';
 
 const PI = Math.PI;
 

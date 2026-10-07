@@ -24,7 +24,7 @@ type TemporalUnitType =
 ```
 
 Defined in:
-[temporal.ts:37](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/types/src/temporal.ts#L37)
+[temporal.ts:37](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/types/src/temporal.ts#L37)
 
 Canonical **temporal unit symbols** for spacetime/physics **durations**.
 
@@ -63,5 +63,5 @@ this type.
 - https://www.bipm.org/en/publications/si-brochure
   ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure -
   second & day)
-- https://en.wikipedia.org/wiki/Julian\_year\_(astronomy) (Julian year used for
+- https://en.wikipedia.org/wiki/Julian_year\_(astronomy) (Julian year used for
   `yr`)

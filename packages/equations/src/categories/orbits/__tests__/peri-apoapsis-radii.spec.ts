@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { periApoapsisRadii } from '../peri-apoapsis-radii';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { periApoapsisRadii } from '../peri-apoapsis-radii.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('periApoapsisRadii', () => {
   test('ellipse: matches rp = a(1-e), ra = a(1+e)', () => {

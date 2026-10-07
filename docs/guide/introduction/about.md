@@ -17,7 +17,7 @@ simulation, visualization, mission tooling, and teaching.
 - API surface: changing between minor versions.
 - Validation: unit tests in place; not yet cross-validated against flight-grade
   references.
-- Runtime targets: Node 20+, modern browsers with ESM bundlers (Vite, Webpack,
+- Runtime targets: Node 22.9+, modern browsers with ESM bundlers (Vite, Webpack,
   etc.).
 
 ## Why this exists

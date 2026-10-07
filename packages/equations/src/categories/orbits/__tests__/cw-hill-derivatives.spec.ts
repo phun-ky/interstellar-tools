@@ -1,11 +1,11 @@
 import { CwState, CwStateDerivative } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { cwHillDerivatives } from '../cw-hill-derivatives';
+import { cwHillDerivatives } from '../cw-hill-derivatives.js';
 import {
   relClose,
   relCloseTuple
-} from 'packages/equations/src/__tests__/helpers';
+} from '../../../__tests__/helpers/index.js';
 
 describe('cwHillDerivatives', () => {
   test('returns [xDot,yDot,zDot,xDDot,yDDot,zDDot] matching CW/Hill accelerations', () => {

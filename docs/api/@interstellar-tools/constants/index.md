@@ -6,7 +6,6 @@
 ## Installation
 
 - [Node.js](https://nodejs.org/) version 22.9.0 or higher
-- npm version 11.5.1 or higher
 
 ```shell [npm]
 npm i --save @interstellar-tools/constants
@@ -48,18 +47,18 @@ npm i --save @interstellar-tools/constants
 
 ## Distance
 
-| Variable                                                      | Description                                                                              |
-| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [AU_METERS](variables/AU_METERS.md)                           | Astronomical unit in meters, **exact** (IAU 2012 B2).                                    |
-| [AU_PER_LY](variables/AU_PER_LY.md)                           | Astronomical units per light-year.                                                       |
-| [KM_PER_AU](variables/KM_PER_AU.md)                           | Kilometers in one astronomical unit.                                                     |
-| [LY_PER_AU](variables/LY_PER_AU.md)                           | Light-years per astronomical unit (reciprocal of [AU_PER_LY](variables/AU_PER_LY.md)).   |
-| [LY_PER_PC](variables/LY_PER_PC.md)                           | Light-years per parsec.                                                                  |
-| [METERS_PER_LY](variables/METERS_PER_LY.md)                   | Meters in one **light-year**, defined as `c × (Julian year)`.                            |
-| [METERS_PER_PC](variables/METERS_PER_PC.md)                   | Meters in one **parsec**, using the exact trigonometric definition: `pc = au / tan(1″)`. |
-| [PC_PER_LY](variables/PC_PER_LY.md)                           | Parsecs per light-year (reciprocal of [LY_PER_PC](variables/LY_PER_PC.md)).              |
-| [RADIANS_PER_ARCSECOND](variables/RADIANS_PER_ARCSECOND.md)   | Radians in one arcsecond: `π / 648 000`.                                                 |
-| [SPEED_OF_LIGHT_M_PER_S](variables/SPEED_OF_LIGHT_M_PER_S.md) | Speed of light in vacuum, **exact** per SI (m·s⁻¹).                                      |
+| Variable                                                      | Description                                                                                          |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [AU_METERS](variables/AU_METERS.md)                           | Astronomical unit in meters, **exact** (IAU 2012 B2).                                                |
+| [AU_PER_LY](variables/AU_PER_LY.md)                           | Astronomical units per light-year.                                                                   |
+| [KM_PER_AU](variables/KM_PER_AU.md)                           | Kilometers in one astronomical unit.                                                                 |
+| [LY_PER_AU](variables/LY_PER_AU.md)                           | Light-years per astronomical unit (reciprocal of [AU_PER_LY](variables/AU_PER_LY.md)).               |
+| [LY_PER_PC](variables/LY_PER_PC.md)                           | Light-years per parsec.                                                                              |
+| [METERS_PER_LY](variables/METERS_PER_LY.md)                   | Meters in one **light-year**, defined as `c × (Julian year)`.                                        |
+| [METERS_PER_PC](variables/METERS_PER_PC.md)                   | Meters in one **parsec**, using the exact IAU 2015 Resolution B2 definition: `pc = (648000 / π) au`. |
+| [PC_PER_LY](variables/PC_PER_LY.md)                           | Parsecs per light-year (reciprocal of [LY_PER_PC](variables/LY_PER_PC.md)).                          |
+| [RADIANS_PER_ARCSECOND](variables/RADIANS_PER_ARCSECOND.md)   | Radians in one arcsecond: `π / 648 000`.                                                             |
+| [SPEED_OF_LIGHT_M_PER_S](variables/SPEED_OF_LIGHT_M_PER_S.md) | Speed of light in vacuum, **exact** per SI (m·s⁻¹).                                                  |
 
 ## Math
 

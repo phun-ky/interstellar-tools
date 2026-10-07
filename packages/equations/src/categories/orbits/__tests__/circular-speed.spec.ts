@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
-import { circularSpeed } from '../circular-speed';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { circularSpeed } from '../circular-speed.js';
 
 describe('circularSpeed', () => {
   test('LEO (~400 km) around Earth: v ≈ 7.67 km/s', () => {

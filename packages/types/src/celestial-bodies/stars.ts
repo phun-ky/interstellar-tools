@@ -1,8 +1,8 @@
-import { DistanceInterface, MeasureInterface } from '../distance';
-import type { Radians } from '../numeric';
-import { TemporalInterface } from '../temporal';
+import { DistanceInterface, MeasureInterface } from '../distance.js';
+import type { Radians } from '../numeric.js';
+import { TemporalInterface } from '../temporal.js';
 
-import { CartesianCoordinatesInterface } from './planets';
+import { CartesianCoordinatesInterface } from './planets.js';
 
 /**
  * Represents a **star system**, which can be a planetary system or a stellar system.

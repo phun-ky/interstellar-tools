@@ -1,4 +1,4 @@
-import { JULIAN_YEAR_SECONDS } from './temporal';
+import { JULIAN_YEAR_SECONDS } from './temporal.js';
 
 /**
  * Core **astronomical distance constants** and **conversion ratios**.
@@ -56,17 +56,19 @@ export const METERS_PER_LY = SPEED_OF_LIGHT_M_PER_S * JULIAN_YEAR_SECONDS; // 9_
 export const RADIANS_PER_ARCSECOND = Math.PI / 648_000;
 
 /**
- * Meters in one **parsec**, using the exact trigonometric definition: `pc = au / tan(1″)`.
+ * Meters in one **parsec**, using the exact IAU 2015 Resolution B2 definition: `pc = (648000 / π) au`.
  *
  * ::: info
  *
- * Computed as {@link AU_METERS} / tan({@link RADIANS_PER_ARCSECOND}).
+ * Computed as {@link AU_METERS} × 648000 / π. The older trigonometric form `au / tan(1″)`
+ * differs by about 8 parts in 10¹².
  *
  * :::
  *
  * @group Distance
+ * @see https://www.iau.org/static/resolutions/IAU2015_English.pdf
  */
-export const METERS_PER_PC = AU_METERS / Math.tan(RADIANS_PER_ARCSECOND); // ≈ 3.08567758149e16
+export const METERS_PER_PC = (AU_METERS * 648_000) / Math.PI; // ≈ 3.0856775814913673e16
 
 // Helpful ratios (derive from the above to avoid drift)
 

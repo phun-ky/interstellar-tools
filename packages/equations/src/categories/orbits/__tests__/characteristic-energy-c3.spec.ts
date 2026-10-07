@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { characteristicEnergyC3 } from '../characteristic-energy-c3';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { characteristicEnergyC3 } from '../characteristic-energy-c3.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('characteristicEnergyC3', () => {
   test('returns vInfinity² for a positive number', () => {

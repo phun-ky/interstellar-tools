@@ -16,7 +16,7 @@ function isOnTriaxialEllipsoidSurface(
 ```
 
 Defined in:
-[cartography/is-on-triaxial-ellipsoid-surface.ts:53](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/cartography/is-on-triaxial-ellipsoid-surface.ts#L53)
+[cartography/is-on-triaxial-ellipsoid-surface.ts:53](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/cartography/is-on-triaxial-ellipsoid-surface.ts#L53)
 
 Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within
 a tolerance).
@@ -88,5 +88,5 @@ const onSurface = isOnTriaxialEllipsoidSurface(3.0000001, 0, 0, 3, 2, 1, 1e-6);
   implicit equation)
 - https://mathworld.wolfram.com/Ellipsoid.html Wolfram MathWorld — Ellipsoid
   (properties and equations)
-- https://en.wikipedia.org/wiki/Triaxial\_ellipsoid Triaxial ellipsoid (special
+- https://en.wikipedia.org/wiki/Triaxial_ellipsoid Triaxial ellipsoid (special
   case discussion)

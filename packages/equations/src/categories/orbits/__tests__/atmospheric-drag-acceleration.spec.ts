@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { atmosphericDragAcceleration } from '../atmospheric-drag-acceleration';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
+import { atmosphericDragAcceleration } from '../atmospheric-drag-acceleration.js';
+import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('atmosphericDragAcceleration', () => {
   test('computes aD = 0.5 * (Cd*A/m) * rho * v² for typical inputs', () => {

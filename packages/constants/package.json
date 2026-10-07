@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/constants",
-  "version": "0.49.0",
+  "version": "0.58.0",
   "description": "Authoritative physical and astronomical constants in SI units for consistent calculations.",
   "keywords": [
     "interstellar",
@@ -102,14 +102,15 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "typecheck": "tsc -p tsconfig.json",
     "release": "release-it",
     "test": "tsx --test **/__tests__/**/*.spec.ts",
     "pretest:ci": "rm -rf coverage && mkdir -p coverage",
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
-    "@interstellar-tools/types": "^0.5.0"
+    "@interstellar-tools/types": "^0.58.0"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
@@ -119,8 +120,7 @@
     "typescript": "^6.0.3"
   },
   "engines": {
-    "node": ">=22.9.0",
-    "npm": ">=11.5.1"
+    "node": ">=22.9.0"
   },
   "publishConfig": {
     "access": "public"

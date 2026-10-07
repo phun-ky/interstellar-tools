@@ -8,7 +8,7 @@ function trueToMeanAnomaly(V: Radians, e: number): Radians;
 ```
 
 Defined in:
-[anomalies/true-to-mean-anomaly.ts:77](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L77)
+[anomalies/true-to-mean-anomaly.ts:77](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/anomalies/true-to-mean-anomaly.ts#L77)
 
 Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's
 equation.
@@ -76,7 +76,7 @@ If the **eccentricity** ($e$) is outside the valid range $0 \leq e < 1$.
 ## Examples
 
 ```ts
-import { trueToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
+import { trueToMeanAnomaly } from '@interstellar-tools/equations';
 
 // Example 1: Standard elliptical orbit
 const V = Math.PI / 3; // 60 degrees in radians

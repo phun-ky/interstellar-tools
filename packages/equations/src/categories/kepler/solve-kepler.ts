@@ -1,17 +1,18 @@
+import { TWO_PI } from '@interstellar-tools/constants';
 import type { Radians } from '@interstellar-tools/types';
 
-import { wrapAngle } from '../angle/wrap-angle';
+import { norm2pi } from '../helpers/misc.js';
 
-import { solveKeplerBisection } from './solve-kepler-bisection';
-import { solveKeplerHighEccentricity } from './solve-kepler-high-eccentricity';
-import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson';
+import { solveKeplerBisection } from './solve-kepler-bisection.js';
+import { solveKeplerHighEccentricity } from './solve-kepler-high-eccentricity.js';
+import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson.js';
 
 /**
  * Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an adaptive approach:
  *
  * - **Newton-Raphson method** for fast convergence.
- * - **Bisection fallback** if Newton’s method fails.
  * - **High-eccentricity solver** for extreme orbits ($e > 0.9$).
+ * - **Bisection fallback** if the selected solver doesn't return a root.
  *
  * ---
  *
@@ -35,10 +36,15 @@ import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson';
  * 2. **Select the Best Solver:**
  *    - **For high eccentricities ($e > 0.9$)** → Uses `solveKeplerHighEccentricity()`.
  *    - **For moderate eccentricities ($e \leq 0.9$)** → Uses `solveKeplerNewtonRaphson()`.
- *    - **If Newton-Raphson fails**, falls back to `solveKeplerBisection()`.
+ *    - **The result is verified** against Kepler's equation ($|E - e\sin E - M| \leq$ `tolerance`,
+ *      modulo $2\pi$). If the solver didn't converge (`NaN`), stopped at `maxIter`, or settled
+ *      away from the root, it falls back to `solveKeplerBisection()`, which always brackets the root.
  *
- * 3. **Final Wrapping:**
- *    - Ensures the solution is correctly wrapped using `wrapAngle()`.
+ * 3. **Normalization:**
+ *    - Kepler's equation is $2\pi$-periodic ($M + 2\pi k \mapsto E + 2\pi k$), so $M$ is first
+ *      reduced to $[0, 2\pi)$ with `norm2pi()`. This keeps the solvers in their stable range
+ *      for any finite $M$, including negative values and many revolutions.
+ *    - The solution is normalized to $[0, 2\pi)$ with `norm2pi()`.
  *
  * ---
  *
@@ -53,7 +59,7 @@ import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson';
  * @param {number} e - Orbital eccentricity ($0 \leq e < 1$).
  * @param {number} [maxIter=50] - Maximum number of **iterations** before fallback.
  * @param {number} [tolerance=1e-9] - Convergence criterion for stopping the iteration.
- * @returns {Radians} The **eccentric anomaly** ($E$) in **radians** (wrapped to $[0, 2\pi]$).
+ * @returns {Radians} The **eccentric anomaly** ($E$) in **radians** (normalized to $[0, 2\pi)$).
  *
  * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If the **eccentricity ($e$) is invalid** ($e < 0$ or $e \geq 1$).
  *
@@ -61,7 +67,7 @@ import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson';
  *
  * @example
  * ```ts
- * import { solveKepler } from './solve-kepler';
+ * import { solveKepler } from '@interstellar-tools/equations';
  *
  * // Example 1: Moderate eccentricity
  * const M = Math.PI / 4; // 45 degrees in radians
@@ -96,17 +102,22 @@ export const solveKepler = (
     throw new RangeError(`Invalid eccentricity: ${e}. Must be in range [0,1).`);
   }
 
+  // Kepler's equation is 2π-periodic, so solve for M in [0, 2π)
+  const Mn = norm2pi(M) as Radians;
+
   // **Use different solvers for high-eccentricity cases**
-  if (e > 0.9) {
-    return solveKeplerHighEccentricity(M, e, maxIter, tolerance);
+  let E =
+    e > 0.9
+      ? solveKeplerHighEccentricity(Mn, e, maxIter, tolerance)
+      : solveKeplerNewtonRaphson(Mn, e, maxIter, tolerance);
+
+  // The iterative solvers can stop at maxIter or on a vanishing step away from
+  // the root, so verify the result and fall back to bisection if needed
+  const residual = norm2pi(E - e * Math.sin(E) - Mn);
+
+  if (!(Math.min(residual, TWO_PI - residual) <= tolerance)) {
+    E = solveKeplerBisection(Mn, e, maxIter, tolerance);
   }
 
-  // Use Newton-Raphson first; if it fails, fallback to bisection
-  let E = solveKeplerNewtonRaphson(M, e, maxIter, tolerance);
-
-  if (isNaN(E)) {
-    E = solveKeplerBisection(M, e, maxIter, tolerance);
-  }
-
-  return wrapAngle(E) as Radians;
+  return norm2pi(E) as Radians;
 };

@@ -85,7 +85,7 @@ export const STARS: StarsType = [
     category: 'star',
     system: { name: 'Cygnus', type: 'stellar system' },
     radius: { value: 108000000, unit: 'km' },
-    color: 'blue-white',
+    color: '#cad7ff', // A-type (blue-white)
     x: { value: 2616, unit: 'ly' },
     y: { value: 27375.280016832705, unit: 'ly' },
     z: { value: 0, unit: 'ly' },
@@ -108,5 +108,52 @@ export const STARS: StarsType = [
     a: { value: 27201.148872795795, unit: 'ly' },
     angle: 1.5616057972952029 as Radians,
     period: { value: -550, unit: 'Myr' }
+  },
+  // Alpha Centauri: ~4.4 ly away, so its galactic orbit (a, e, period) is approximated by the Sun's.
+  // Radii from Kervella et al. 2017 (A, B) and Ribas et al. 2017 (Proxima), with R☉ = 695 700 km.
+  {
+    name: 'Alpha Centauri A',
+    type: 'G2V', // Yellow Dwarf, Main Sequence
+    category: 'star',
+    system: { name: 'Alpha Centauri', type: 'stellar system' },
+    radius: { value: 851119, unit: 'km' }, // 1.2234 R☉
+    color: '#fff4ea', // G-type
+    x: { value: 4.37, unit: 'ly' },
+    y: { value: 27000.000353646294, unit: 'ly' },
+    z: { value: 0, unit: 'ly' },
+    e: 0.07,
+    a: { value: 27000.000353646294, unit: 'ly' },
+    angle: 1.570634474946578 as Radians,
+    period: { value: -230, unit: 'Myr' }
+  },
+  {
+    name: 'Alpha Centauri B',
+    type: 'K1V', // Orange Dwarf, Main Sequence
+    category: 'star',
+    system: { name: 'Alpha Centauri', type: 'stellar system' },
+    radius: { value: 600528, unit: 'km' }, // 0.8632 R☉
+    color: '#ffd2a1', // K-type
+    x: { value: 4.37, unit: 'ly' },
+    y: { value: 27000.000353646294, unit: 'ly' },
+    z: { value: 0, unit: 'ly' },
+    e: 0.07,
+    a: { value: 27000.000353646294, unit: 'ly' },
+    angle: 1.570634474946578 as Radians,
+    period: { value: -230, unit: 'Myr' }
+  },
+  {
+    name: 'Proxima Centauri',
+    type: 'M5.5Ve', // Red Dwarf, flare star
+    category: 'star',
+    system: { name: 'Alpha Centauri', type: 'stellar system' },
+    radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
+    color: '#ffcc6f', // M-type
+    x: { value: 4.2465, unit: 'ly' },
+    y: { value: 27000.00033394004, unit: 'ly' },
+    z: { value: 0, unit: 'ly' },
+    e: 0.07,
+    a: { value: 27000.00033394004, unit: 'ly' },
+    angle: 1.570639049020361 as Radians,
+    period: { value: -230, unit: 'Myr' }
   }
 ] as const satisfies StarsType;

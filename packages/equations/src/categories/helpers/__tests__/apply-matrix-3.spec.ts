@@ -5,8 +5,8 @@ import type {
   Matrix3x3Type,
   Vector3DTupleType
 } from '@interstellar-tools/types';
-import { applyMatrix3 } from '../apply-matrix-3';
-import { vecRelClose } from 'packages/equations/src/__tests__/helpers';
+import { applyMatrix3 } from '../apply-matrix-3.js';
+import { vecRelClose } from '../../../__tests__/helpers/index.js';
 
 describe('applyMatrix3', () => {
   test('applies identity matrix (returns same vector)', () => {

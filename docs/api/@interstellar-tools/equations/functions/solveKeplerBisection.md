@@ -13,7 +13,7 @@ function solveKeplerBisection(
 ```
 
 Defined in:
-[kepler/solve-kepler-bisection.ts:35](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/kepler/solve-kepler-bisection.ts#L35)
+[kepler/solve-kepler-bisection.ts:35](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/kepler/solve-kepler-bisection.ts#L35)
 
 Solve **Kepler's equation** for the **eccentric anomaly** ($E$) via
 **bisection** (elliptic case: ($0 \le e < 1$)).
@@ -27,16 +27,16 @@ $$
 **Bracketing & normalization**
 
 - Normalize ($M$) to ($[0,2\pi)$).
-- Use the bracket ($[0,2\pi]$). Then ($F(0)=-M\le 0$) and
-  ($F(2\pi)=2\pi-M\ge 0$).
+- Use the bracket ($[0,2\pi]$). Then ($F(0)=-M\le 0$) and ($F(2\pi)=2\pi-M\ge
+  0$).
 - For ($0\le e<1$), ($F'(E)=1-e\cos E \ge 1-e > 0$) ⇒ **strictly increasing** ⇒
   unique root.
 
 **Stopping criteria (either)**
 
 - **Residual**: ($|F(E)| < \text{tolerance}$)
-- **Bracket width**:
-  ($\tfrac{1}{2}(E_{\text{high}}-E_{\text{low}}) < \text{tolerance}$)
+- **Bracket width**: ($\tfrac{1}{2}(E_{\text{high}}-E_{\text{low}}) <
+  \text{tolerance}$)
 
 ## Parameters
 

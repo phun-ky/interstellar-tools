@@ -1,6 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
-import { wrapAngle } from '../angle/wrap-angle';
+import { wrapAngle } from '../angle/wrap-angle.js';
 
 /**
  * Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation.
@@ -50,7 +50,7 @@ import { wrapAngle } from '../angle/wrap-angle';
  *
  * @example
  * ```ts
- * import { trueToMeanAnomaly } from './true-anomaly-to-mean-anomaly';
+ * import { trueToMeanAnomaly } from '@interstellar-tools/equations';
  *
  * // Example 1: Standard elliptical orbit
  * const V = Math.PI / 3; // 60 degrees in radians

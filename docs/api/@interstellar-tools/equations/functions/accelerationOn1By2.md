@@ -13,7 +13,7 @@ function accelerationOn1By2(
 ```
 
 Defined in:
-[gravity/acceleration-on1-by2.ts:69](https://github.com/phun-ky/interstellar-tools/blob/457ca3eb7e47ce89677927c83e86ca04e8b222c9/packages/equations/src/categories/gravity/acceleration-on1-by2.ts#L69)
+[gravity/acceleration-on1-by2.ts:69](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/gravity/acceleration-on1-by2.ts#L69)
 
 Gravitational **acceleration** of body 1 due to body 2 (vector, m/s²).
 
@@ -88,4 +88,4 @@ const F: [number, number, number] = [a[0] * m1, a[1] * m1, a[2] * m1]; // newton
 
 ## See
 
-https://en.wikipedia.org/wiki/Newton%27s\_law\_of\_universal\_gravitation
+https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation

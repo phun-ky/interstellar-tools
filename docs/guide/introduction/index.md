@@ -9,7 +9,6 @@ calculations safely.
 
 - **Node.js**: version 22.9.0 or higher recommended
 - **TypeScript**: version 5+ recommended
-- **Package manager**: version 11.5.1 or higher
 
 ## Install
 

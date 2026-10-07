@@ -1,4 +1,4 @@
-import { DistanceInterface } from '../distance';
+import { DistanceInterface } from '../distance.js';
 
 /**
  * Represents a **black hole** at the center of a galaxy.

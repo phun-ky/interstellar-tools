@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
-import { specificAngularMomentum } from '../specific-angular-momentum';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { specificAngularMomentum } from '../specific-angular-momentum.js';
 import { Vector3DTupleType } from '@interstellar-tools/types';
-import { dot, norm } from '../../helpers/misc';
+import { dot, norm } from '../../helpers/misc.js';
 
 describe('specificAngularMomentum', () => {
   test('orthogonal state: r ⟂ v → h = r * v', () => {

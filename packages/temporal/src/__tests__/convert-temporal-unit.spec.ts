@@ -1,7 +1,7 @@
 import { TemporalInterface, TemporalUnitType } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { convertTemporalUnit } from '../convert-temporal-unit';
+import { convertTemporalUnit } from '../convert-temporal-unit.js';
 import {
   JULIAN_YEAR_SECONDS,
   SECONDS_PER_DAY

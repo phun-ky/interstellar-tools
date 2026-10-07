@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { escapeSpeed } from '../escape-speed';
-import { absClose, relClose } from 'packages/equations/src/__tests__/helpers';
+import { escapeSpeed } from '../escape-speed.js';
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
 describe('escapeSpeed', () => {
   test('definition check: v_esc = sqrt(2μ/r)', () => {

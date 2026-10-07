@@ -8,14 +8,14 @@ jobs:
       contents: read
       pull-requests: write
       issues: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4 # Uploads repository content to the runner
+      - uses: actions/checkout@v7 # Uploads repository content to the runner
         with:
           repository: 'phun-ky/interstellar-tools' # The one of the available inputs, visit https://github.com/actions/checkout#readme to find more
           token: ${{ secrets.GH_TOKEN }}
       - id: label-the-PR
-        uses: actions/labeler@v5
+        uses: actions/labeler@v7
         with:
           sync-labels: true
           configuration-path: '.github/labeler.yml'

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKepler } from '../solve-kepler';
+import { solveKepler } from '../solve-kepler.js';
 import type { Radians } from '@interstellar-tools/types';
 
 const EPSILON = 1e-8; // Floating-point tolerance
@@ -102,5 +102,63 @@ describe('solveKepler', () => {
   test('Invalid Eccentricity (e >= 1) Throws Error', () => {
     assert.throws(() => solveKepler((Math.PI / 4) as Radians, 1), RangeError);
     assert.throws(() => solveKepler((Math.PI / 4) as Radians, 1.1), RangeError);
+  });
+});
+
+describe('solveKepler: any finite M', () => {
+  const TWO_PI = 2 * Math.PI;
+  // Distance of E - e·sin(E) from M, modulo 2π
+  const keplerResidual = (E: number, e: number, M: number) => {
+    const r = (((E - e * Math.sin(E) - M) % TWO_PI) + TWO_PI) % TWO_PI;
+
+    return Math.min(r, TWO_PI - r);
+  };
+  const assertSolves = (M: number, e: number) => {
+    const E = solveKepler(M as Radians, e);
+
+    assert.ok(E >= 0 && E < TWO_PI, `M=${M}, e=${e}: E=${E} not in [0, 2π)`);
+    assert.ok(
+      keplerResidual(E, e, M) < EPSILON,
+      `M=${M}, e=${e}: E=${E} does not solve Kepler's equation`
+    );
+  };
+
+  test('negative M returns E in [0, 2π)', () => {
+    // Previously returned -1.4987 (E for M = -1, not normalized)
+    assertApproxEqual(solveKepler(-1 as Radians, 0.5), TWO_PI - 1.498701133517);
+
+    for (const e of [0, 0.5, 0.9, 0.95, 0.99]) {
+      for (const M of [-1e-12, -1, -Math.PI, -10, -1000]) assertSolves(M, e);
+    }
+  });
+
+  test('is 2π-periodic: E(M + 2πk) = E(M)', () => {
+    for (const e of [0.1, 0.7, 0.95]) {
+      const base = solveKepler(1.234 as Radians, e);
+
+      for (const k of [-3, -1, 1, 7, 100]) {
+        assertApproxEqual(solveKepler((1.234 + TWO_PI * k) as Radians, e), base);
+      }
+    }
+  });
+
+  test('high eccentricity with many revolutions (e > 0.9, large M)', () => {
+    // Previously returned E with residuals up to 1.3 rad for M = 150 and 1000
+    for (const e of [0.95, 0.99, 0.999]) {
+      for (const M of [150, 1000, 123_456.789]) assertSolves(M, e);
+    }
+  });
+
+  test('falls back to bisection when a solver settles away from the root', () => {
+    // e = 0.9 (Newton-Raphson path): the Householder step vanishes at E ≈ 0.266, not a root
+    assertSolves(-1997.877, 0.9);
+    // e = 0.9999 (high-eccentricity path): needs more than the default maxIter
+    assertSolves(-2726.877, 0.9999);
+  });
+
+  test('sweep: E in [0, 2π) and solves Kepler for all e and M', () => {
+    for (const e of [0, 0.3, 0.7, 0.9, 0.95, 0.99, 0.999, 0.9999]) {
+      for (let M = -1000; M <= 1000; M += 7.31) assertSolves(M, e);
+    }
   });
 });

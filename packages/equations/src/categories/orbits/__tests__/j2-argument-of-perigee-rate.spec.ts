@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { relClose } from 'packages/equations/src/__tests__/helpers';
-import { j2ArgumentOfPerigeeRate } from '../j2-argument-of-perigee-rate';
-import { rad } from '../../helpers/radians';
+import { relClose } from '../../../__tests__/helpers/index.js';
+import { j2ArgumentOfPerigeeRate } from '../j2-argument-of-perigee-rate.js';
+import { rad } from '../../helpers/radians.js';
 
 describe('j2ArgumentOfPerigeeRate', () => {
   test('computes ωdot from the reference formula (typical Earth-ish LEO inputs)', () => {
