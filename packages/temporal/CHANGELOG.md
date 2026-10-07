@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.53.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.52.0...@interstellar-tools/temporal@0.53.0) (2026-10-07)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.53.0 ([422d566](https://github.com/phun-ky/interstellar-tools/commit/422d5660cd4395518d2c15e4a4f39255657cf12f))
+* 🤖 @interstellar-tools/equations@0.52.0 ([88fb247](https://github.com/phun-ky/interstellar-tools/commit/88fb24780f80cc2e6ad2c6aa89344337b251b83f))
+* 🤖 @interstellar-tools/types@0.53.0 ([cf3a8ac](https://github.com/phun-ky/interstellar-tools/commit/cf3a8ac9625d1f9931094874624c9d9dec4b1329))
+
 ## [0.52.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/temporal@0.51.0...@interstellar-tools/temporal@0.52.0) (2026-10-07)
 
 ### Tasks

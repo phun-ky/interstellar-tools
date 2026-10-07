@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/temporal",
-  "version": "0.52.0",
+  "version": "0.53.0",
   "description": "Time and epoch utilities for space applications (e.g., building blocks toward Julian dates, conversions, and ephemeris-friendly time handling).",
   "keywords": [
     "temporal",
@@ -111,8 +111,8 @@
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
-    "@interstellar-tools/constants": "^0.52.0",
-    "@interstellar-tools/types": "^0.52.0"
+    "@interstellar-tools/constants": "^0.53.0",
+    "@interstellar-tools/types": "^0.53.0"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
