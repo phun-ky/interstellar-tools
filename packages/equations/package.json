@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/equations",
-  "version": "0.58.0",
+  "version": "0.59.0",
   "description": "Curated, well-tested orbital mechanics and dynamics formulas (e.g., Newtonian gravity, vis-viva, Kepler's 3rd law, escape/circular speeds, specific energy, specific angular momentum, peri/apoapsis radii).",
   "keywords": [
     "interstellar",
@@ -110,9 +110,9 @@
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-coverage-exclude='**/__tests__/helpers/**' --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
-    "@interstellar-tools/constants": "^0.58.0",
-    "@interstellar-tools/temporal": "^0.58.0",
-    "@interstellar-tools/types": "^0.58.0"
+    "@interstellar-tools/constants": "^0.59.0",
+    "@interstellar-tools/temporal": "^0.59.0",
+    "@interstellar-tools/types": "^0.59.0"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
