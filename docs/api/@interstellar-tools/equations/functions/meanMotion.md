@@ -8,7 +8,7 @@ function meanMotion(mu: number, a: number): number;
 ```
 
 Defined in:
-[orbits/mean-motion.ts:36](https://github.com/phun-ky/interstellar-tools/blob/872dfe8d0f65b144fea4ef4c2742791eeb710c94/packages/equations/src/categories/orbits/mean-motion.ts#L36)
+[orbits/mean-motion.ts:36](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/orbits/mean-motion.ts#L36)
 
 Compute **mean motion** for a (near-)circular reference orbit.
 

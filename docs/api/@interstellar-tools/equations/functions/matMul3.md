@@ -8,7 +8,7 @@ function matMul3(A: Matrix3x3Type, B: Matrix3x3Type): Matrix3x3Type;
 ```
 
 Defined in:
-[helpers/mat-mul3.ts:46](https://github.com/phun-ky/interstellar-tools/blob/872dfe8d0f65b144fea4ef4c2742791eeb710c94/packages/equations/src/categories/helpers/mat-mul3.ts#L46)
+[helpers/mat-mul3.ts:46](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/helpers/mat-mul3.ts#L46)
 
 Multiply two **3×3 matrices** (row-major).
 

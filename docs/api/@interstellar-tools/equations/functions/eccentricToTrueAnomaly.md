@@ -8,7 +8,7 @@ function eccentricToTrueAnomaly(E: Radians, e: number): Radians;
 ```
 
 Defined in:
-[anomalies/eccentric-to-true-anomaly.ts:43](https://github.com/phun-ky/interstellar-tools/blob/872dfe8d0f65b144fea4ef4c2742791eeb710c94/packages/equations/src/categories/anomalies/eccentric-to-true-anomaly.ts#L43)
+[anomalies/eccentric-to-true-anomaly.ts:43](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/anomalies/eccentric-to-true-anomaly.ts#L43)
 
 Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.
 

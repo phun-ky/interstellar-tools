@@ -13,7 +13,7 @@ function solveKeplerBisection(
 ```
 
 Defined in:
-[kepler/solve-kepler-bisection.ts:35](https://github.com/phun-ky/interstellar-tools/blob/872dfe8d0f65b144fea4ef4c2742791eeb710c94/packages/equations/src/categories/kepler/solve-kepler-bisection.ts#L35)
+[kepler/solve-kepler-bisection.ts:35](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/kepler/solve-kepler-bisection.ts#L35)
 
 Solve **Kepler's equation** for the **eccentric anomaly** ($E$) via
 **bisection** (elliptic case: ($0 \le e < 1$)).

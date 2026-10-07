@@ -8,7 +8,7 @@ function escapeSpeed(r: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/escape-speed.ts:49](https://github.com/phun-ky/interstellar-tools/blob/872dfe8d0f65b144fea4ef4c2742791eeb710c94/packages/equations/src/categories/orbits/escape-speed.ts#L49)
+[orbits/escape-speed.ts:49](https://github.com/phun-ky/interstellar-tools/blob/4751b7fe9a5d1e0aa9e12d36d2f5d061dcebe3c2/packages/equations/src/categories/orbits/escape-speed.ts#L49)
 
 **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's
 gravity from radius ($r$) (ignoring drag/perturbations).
