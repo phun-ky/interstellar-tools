@@ -10,6 +10,7 @@ import { GalaxiesType } from '@interstellar-tools/types';
  * - Black hole `mass` is in solar masses ($ M_\odot $).
  * - Values are mainly for visualization; not all are observationally exact.
  *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
  * {@include ../../../../docs/partials/galaxies.md}

@@ -9,6 +9,7 @@ import { PlanetsType, Radians } from '@interstellar-tools/types';
  * - Units: `a` (au), `period` (days), `radius` (km); coordinates `x`,`y`,`z` in au.
  * - Some entries may encode integration direction via a negative `period`; the table reflects the raw value.
  *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
  *

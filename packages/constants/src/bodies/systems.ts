@@ -8,6 +8,7 @@ import { SystemsType } from '@interstellar-tools/types';
  * - `distance` is in light-years (ly).
  * - `stars` lists the primary named stars in the system (referenced by name).
  *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
  * {@include ../../../../docs/partials/systems.md}

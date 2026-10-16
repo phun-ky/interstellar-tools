@@ -9,6 +9,7 @@ import { AsteroidBeltsType } from '@interstellar-tools/types';
  * - `opacity` is a visual alpha in the range [0..1].
  * - `density` is a relative visual density for rendering, not physical.
  *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
  * {@include ../../../../docs/partials/asteroid-belts.md}

@@ -9,6 +9,7 @@ import { AsteroidsType, Radians } from '@interstellar-tools/types';
  * - Orbital angles `i`, `w`, and `om` are in degrees.
  * - `color` and `size` are visual rendering hints only.
  *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
  * {@include ../../../../docs/partials/asteroids.md}
