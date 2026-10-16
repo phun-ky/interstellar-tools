@@ -8,7 +8,7 @@ function hohmannSemiMajorAxis(r1: number, r2: number): number;
 ```
 
 Defined in:
-[manoeuvres/hohmann-transfer.ts:114](https://github.com/phun-ky/interstellar-tools/blob/e281a6e583ee6da6973d3556f5004f2598cacd49/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L114)
+[manoeuvres/hohmann-transfer.ts:114](https://github.com/phun-ky/interstellar-tools/blob/b0aaadc24c0246f5c4bb94a85788219caf1c8025/packages/equations/src/categories/manoeuvres/hohmann-transfer.ts#L114)
 
 Convenience: compute only the **semi-major axis** ($a_t$) (m) of the Hohmann
 transfer.

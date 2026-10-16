@@ -8,7 +8,7 @@ function eccentricitySquaredOblateSpheroid(a: number, c: number): number;
 ```
 
 Defined in:
-[cartography/eccentricity-squared-oblate-spheroid.ts:39](https://github.com/phun-ky/interstellar-tools/blob/e281a6e583ee6da6973d3556f5004f2598cacd49/packages/equations/src/categories/cartography/eccentricity-squared-oblate-spheroid.ts#L39)
+[cartography/eccentricity-squared-oblate-spheroid.ts:39](https://github.com/phun-ky/interstellar-tools/blob/b0aaadc24c0246f5c4bb94a85788219caf1c8025/packages/equations/src/categories/cartography/eccentricity-squared-oblate-spheroid.ts#L39)
 
 Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.
 

@@ -8,7 +8,7 @@ function transpose3(A: Matrix3x3Type): Matrix3x3Type;
 ```
 
 Defined in:
-[helpers/transpose-3.ts:51](https://github.com/phun-ky/interstellar-tools/blob/e281a6e583ee6da6973d3556f5004f2598cacd49/packages/equations/src/categories/helpers/transpose-3.ts#L51)
+[helpers/transpose-3.ts:51](https://github.com/phun-ky/interstellar-tools/blob/b0aaadc24c0246f5c4bb94a85788219caf1c8025/packages/equations/src/categories/helpers/transpose-3.ts#L51)
 
 Transpose a **3×3 matrix** (row-major).
 

@@ -8,7 +8,7 @@ const ASTEROID_BELTS: AsteroidBeltsType;
 ```
 
 Defined in:
-[bodies/asteroid-belts.ts:29](https://github.com/phun-ky/interstellar-tools/blob/e281a6e583ee6da6973d3556f5004f2598cacd49/packages/constants/src/bodies/asteroid-belts.ts#L29)
+[bodies/asteroid-belts.ts:29](https://github.com/phun-ky/interstellar-tools/blob/b0aaadc24c0246f5c4bb94a85788219caf1c8025/packages/constants/src/bodies/asteroid-belts.ts#L29)
 
 Predefined asteroid belts in the solar system visualization.
 

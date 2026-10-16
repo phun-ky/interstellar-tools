@@ -8,7 +8,7 @@ const PLANETS: PlanetsType;
 ```
 
 Defined in:
-[bodies/planets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/e281a6e583ee6da6973d3556f5004f2598cacd49/packages/constants/src/bodies/planets.ts#L27)
+[bodies/planets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/b0aaadc24c0246f5c4bb94a85788219caf1c8025/packages/constants/src/bodies/planets.ts#L27)
 
 Represents a dataset of planets and planetoids in the solar system.
 
