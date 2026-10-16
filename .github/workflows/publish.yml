@@ -24,24 +24,27 @@ on:
       - '.browserslistrc'
   workflow_dispatch:
 
+# Read-only by default; only the publish job gets an OIDC token for npm
 permissions:
-  id-token: write
   contents: read
 jobs:
   publish:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing (OIDC)
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0 # Checkout all branches and tags
           token: ${{ secrets.GH_TOKEN }}
       - name: Setup Node.js environment
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24 # Ships npm 11, which supports trusted publishing (needs >= 11.5.1)
       - name: Install dependencies
@@ -62,7 +65,7 @@ jobs:
     if: failure()
     runs-on: ubuntu-24.04
     steps:
-      - uses: drivendataorg/failed-build-issue-action@v1
+      - uses: drivendataorg/failed-build-issue-action@940568ce50eeef3f31a920614cefcc6102d2f930 # v1.3.0
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           label-name: 'problems: build failed'

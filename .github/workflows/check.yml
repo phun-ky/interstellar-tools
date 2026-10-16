@@ -49,12 +49,18 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Read-only by default; jobs ask for what they need
+permissions:
+  contents: read
+
 jobs:
   # This workflow contains a single job called "check"
   check:
     # Skip release commits pushed one by one by `npm run release`; sibling ranges are
     # only consistent after the last one, which publish.yml checks instead
-    if: "${{ !startsWith(github.event.head_commit.message, 'chore: 🤖 @interstellar-tools/') }}"
+    if:
+      "${{ !startsWith(github.event.head_commit.message, 'chore: 🤖
+      @interstellar-tools/') }}"
     # The type of runner that the job will run on
     runs-on: ubuntu-24.04
 
@@ -62,11 +68,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0 # Checkout all branches and tags
       - name: Setup Node.js environment
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
       - name: Install dependencies
@@ -83,7 +89,7 @@ jobs:
       - name: Test
         run: npm run test:ci
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: phun-ky/interstellar-tools
@@ -96,7 +102,7 @@ jobs:
     if: failure()
     runs-on: ubuntu-24.04
     steps:
-      - uses: drivendataorg/failed-build-issue-action@v1
+      - uses: drivendataorg/failed-build-issue-action@940568ce50eeef3f31a920614cefcc6102d2f930 # v1.3.0
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           label-name: 'problems: build failed'
