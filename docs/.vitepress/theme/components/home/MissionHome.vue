@@ -491,6 +491,7 @@ pre {
   background: var(--mc-bg-2);
   font-size: 16px;
   color: var(--mc-text);
+  white-space: nowrap;
 }
 
 .stations a:hover {
