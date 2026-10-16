@@ -34,7 +34,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "interstellar-tools-mcp": "./dist/bin.js"
+    "interstellar-tools-mcp": "dist/bin.js"
   },
   "exports": {
     ".": {
@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@interstellar-tools/constants": "^0.60.0",
-    "@interstellar-tools/equations": "^0.60.0",
+    "@interstellar-tools/equations": "^0.60.1",
     "@interstellar-tools/temporal": "^0.60.0",
     "@interstellar-tools/types": "^0.60.0",
     "@modelcontextprotocol/sdk": "1.31.0",
