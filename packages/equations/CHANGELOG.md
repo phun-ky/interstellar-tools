@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.60.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.60.1...%40interstellar-tools%2Fequations%400.60.2) (2026-10-16)
+
+### Bug
+
+* 🐛 Point package homepages at the documentation site ([501217b](https://github.com/phun-ky/interstellar-tools/commit/501217b57b2d87d3d6462de8d3b50c06af97edce))
+
 ## [0.60.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.60.0...%40interstellar-tools%2Fequations%400.60.1) (2026-10-16)
 
 ### Tasks
