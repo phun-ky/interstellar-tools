@@ -1,13 +1,16 @@
-<script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-
-import equations from '../../../../packages/equations/package.json';
+<script lang="ts">
+import { ref } from 'vue';
 
 /**
- * Live status of the latest "Checks" workflow run on main (build, lint,
- * typecheck and tests), read from GitHub's public API in the browser.
+ * Status of the latest "Checks" workflow run on main (build, lint, typecheck
+ * and tests), read from GitHub's public API.
+ *
+ * Nothing is requested until the visitor asks for it: the browser only
+ * contacts GitHub after a click on "Request status". The answer is kept in
+ * memory for this visit and never written to storage.
  */
-type StateType = 'acquiring' | 'nominal' | 'anomaly' | 'running' | 'offline';
+type StateType =
+  'idle' | 'acquiring' | 'nominal' | 'anomaly' | 'running' | 'offline';
 
 interface RunInterface {
   status: string;
@@ -17,13 +20,21 @@ interface RunInterface {
   updated_at: string;
 }
 
+// Module scope, shared by every instance: the answer survives navigating
+// between pages and is gone on a full reload
+const latest = ref<RunInterface | null>(null);
+const state = ref<StateType>('idle');
+</script>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+
+import equations from '../../../../packages/equations/package.json';
+
 const REPO = 'phun-ky/interstellar-tools';
-const ACTIONS_URL = `https://github.com/${REPO}/actions/workflows/check.yml?query=branch%3Amain`;
 const API_URL = `https://api.github.com/repos/${REPO}/actions/workflows/check.yml/runs?branch=main&per_page=10`;
-const CACHE_KEY = 'it-checks-status';
-const VISIBLE_FROM = '1600px'; // keep in sync with the media query below
-const CACHE_MS = 10 * 60 * 1000; // stay well inside the 60 requests/hour limit
 const LABELS: Record<StateType, string> = {
+  idle: 'Request status',
   acquiring: 'Acquiring signal',
   nominal: 'Systems nominal',
   anomaly: 'Anomaly detected',
@@ -31,111 +42,62 @@ const LABELS: Record<StateType, string> = {
   offline: 'Telemetry offline'
 };
 const DESCRIPTIONS: Record<StateType, string> = {
+  idle: 'not requested',
   acquiring: 'loading',
   nominal: 'passing',
   anomaly: 'failing',
   running: 'in progress',
-  offline: 'unavailable'
+  offline: 'unavailable, select to retry'
 };
 const version = equations.version.split('.').slice(0, 2).join('.');
-const state = ref<StateType>('acquiring');
-const run = ref<RunInterface | null>(null);
-const href = computed(() => run.value?.html_url ?? ACTIONS_URL);
-const title = computed(() =>
-  run.value
-    ? `Checks on main: ${DESCRIPTIONS[state.value]} · ${run.value.head_sha.slice(0, 7)} · ${new Date(run.value.updated_at).toLocaleString('en-GB')}`
-    : 'Checks on main: status unavailable'
-);
+const title = computed(() => {
+  if (state.value === 'idle') {
+    return 'Request the latest test results for main from GitHub';
+  }
+
+  if (!latest.value) return `Checks on main: ${DESCRIPTIONS[state.value]}`;
+
+  return `Checks on main: ${DESCRIPTIONS[state.value]} · ${latest.value.head_sha.slice(0, 7)} · ${new Date(latest.value.updated_at).toLocaleString('en-GB')}`;
+});
 const toState = ({ status, conclusion }: RunInterface): StateType => {
   if (status !== 'completed') return 'running';
 
   return conclusion === 'success' ? 'nominal' : 'anomaly';
 };
-const readCache = (): RunInterface | null => {
-  try {
-    const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) ?? 'null');
+const request = async () => {
+  state.value = 'acquiring';
 
-    // A run in progress changes soon, so recheck it after a minute
-    const ttl = cached?.run.status === 'completed' ? CACHE_MS : 60 * 1000;
-
-    return cached && Date.now() - cached.at < ttl ? cached.run : null;
-  } catch {
-    return null;
-  }
-};
-const writeCache = (value: RunInterface) => {
   try {
-    sessionStorage.setItem(
-      CACHE_KEY,
-      JSON.stringify({ at: Date.now(), run: value })
+    const response = await fetch(API_URL, {
+      headers: { accept: 'application/vnd.github+json' }
+    });
+
+    if (!response.ok) throw new Error(String(response.status));
+
+    const { workflow_runs: runs } = (await response.json()) as {
+      workflow_runs: RunInterface[];
+    };
+    // Release commits skip the checks on purpose, so look past them
+    const run = runs.find(
+      ({ conclusion }) => conclusion !== 'skipped' && conclusion !== 'cancelled'
     );
+
+    if (!run) throw new Error('no runs');
+
+    latest.value = run;
+    state.value = toState(run);
   } catch {
-    // storage unavailable (private mode, blocked): just skip caching
+    state.value = 'offline'; // offline, blocked or rate-limited
   }
 };
-
-const load = async () => {
-  let latest = readCache();
-
-  if (!latest) {
-    try {
-      const response = await fetch(API_URL, {
-        headers: { accept: 'application/vnd.github+json' }
-      });
-
-      if (!response.ok) {
-        state.value = 'offline';
-
-        return;
-      }
-
-      const { workflow_runs: runs } = (await response.json()) as {
-        workflow_runs: RunInterface[];
-      };
-
-      // Release commits skip the checks on purpose, so look past them
-      latest =
-        runs.find(
-          ({ conclusion }) =>
-            conclusion !== 'skipped' && conclusion !== 'cancelled'
-        ) ?? null;
-
-      if (latest) writeCache(latest);
-    } catch {
-      state.value = 'offline'; // offline or blocked
-
-      return;
-    }
-  }
-
-  if (latest) {
-    run.value = latest;
-    state.value = toState(latest);
-  } else {
-    state.value = 'offline';
-  }
-};
-
-// Only ask GitHub when the status is on screen (see VISIBLE_FROM), so narrow
-// screens never contact GitHub at all
-onMounted(() => {
-  const wide = window.matchMedia(`(min-width: ${VISIBLE_FROM})`);
-
-  if (wide.matches) {
-    void load();
-
-    return;
-  }
-
-  wide.addEventListener('change', () => void load(), { once: true });
-});
 </script>
 
 <template>
   <div class="nav-status">
     <a
+      v-if="latest"
       :class="['checks', state]"
-      :href="href"
+      :href="latest.html_url"
       :title="title"
       :aria-label="title"
       target="_blank"
@@ -143,6 +105,18 @@ onMounted(() => {
     >
       <i class="led" aria-hidden="true"></i>{{ LABELS[state] }}
     </a>
+    <button
+      v-else
+      type="button"
+      :class="['checks', state]"
+      :title="title"
+      :aria-label="title"
+      :aria-busy="state === 'acquiring'"
+      :disabled="state === 'acquiring'"
+      @click="request"
+    >
+      <i class="led" aria-hidden="true"></i>{{ LABELS[state] }}
+    </button>
     <span aria-hidden="true">v{{ version }}</span>
   </div>
 </template>
@@ -165,12 +139,32 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
   color: var(--state);
+  cursor: pointer;
   transition: opacity 0.2s;
 }
 
 .checks:hover {
   opacity: 0.75;
+}
+
+.checks:disabled {
+  cursor: progress;
+}
+
+.checks:focus-visible {
+  outline: 2px solid var(--mc-teal);
+  outline-offset: 4px;
+}
+
+.idle {
+  --state: var(--mc-muted);
 }
 
 .nominal {
@@ -200,13 +194,19 @@ onMounted(() => {
   box-shadow: 0 0 8px var(--state);
 }
 
-.running .led,
-.acquiring .led {
-  animation: blink 1.2s steps(2) infinite;
+/* Not requested yet: an empty ring rather than a lit light */
+.idle .led {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--state);
 }
 
 .offline .led {
   box-shadow: none;
+}
+
+.running .led,
+.acquiring .led {
+  animation: blink 1.2s steps(2) infinite;
 }
 
 @keyframes blink {
