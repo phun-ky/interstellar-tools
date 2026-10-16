@@ -10,9 +10,7 @@
 
 ---
 
-> Engineering the next spacefaring stack
-
-![logo](./docs/public/logo/icon-180x180.png)
+![BANNER](./docs/public/images/interstellar-tools-brand-og@2x.png)
 
 **TypeScript monorepo for open, reliable building blocks in orbital mechanics
 and space software.** Equations, constants, time utilities, and strong types for
@@ -40,7 +38,7 @@ simulation, visualization, mission tooling, and teaching.
 - [License](#license)
 - [Sponsor me](#sponsor-me)
 
-![Image of stars](./docs/public/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg)
+![MCP BANNER](./docs/public/images/interstellar-tools-mcp-og@2x.png)
 
 ---
 

@@ -8,7 +8,7 @@ const ASTEROIDS: AsteroidsType;
 ```
 
 Defined in:
-[bodies/asteroids.ts:26](https://github.com/phun-ky/interstellar-tools/blob/3def98a4bff9f31a20df012d1fde9828c566a9f9/packages/constants/src/bodies/asteroids.ts#L26)
+[bodies/asteroids.ts:27](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/constants/src/bodies/asteroids.ts#L27)
 
 Represents a collection of well-known asteroids within the solar system
 simulation.
@@ -16,10 +16,15 @@ simulation.
 ::: info
 
 - Units: `a` in astronomical units (au); `period` in days (d); `radius` in km.
+
 - Orbital angles `i`, `w`, and `om` are in degrees.
+
 - `color` and `size` are visual rendering hints only.
 
-:::
+- Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
+  Wikipedia. See
+  [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+  :::
 
 ## Full list of asteroids in the dataset
 

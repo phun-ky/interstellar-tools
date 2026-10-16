@@ -21,7 +21,7 @@ simulation, visualization, mission tooling, and teaching.
 
 [[toc]]
 
-![Image of stars](/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg)
+![BANNER](/images/interstellar-tools-brand@2x.png)
 
 ## Status
 

@@ -8,7 +8,7 @@ const GALAXIES: GalaxiesType;
 ```
 
 Defined in:
-[bodies/galaxies.ts:27](https://github.com/phun-ky/interstellar-tools/blob/3def98a4bff9f31a20df012d1fde9828c566a9f9/packages/constants/src/bodies/galaxies.ts#L27)
+[bodies/galaxies.ts:28](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/constants/src/bodies/galaxies.ts#L28)
 
 Represents a collection of galaxies within the space visualization.
 
@@ -16,10 +16,15 @@ Represents a collection of galaxies within the space visualization.
 
 - Units: `diameter` and `distance` in light-years (ly); black hole `radius`,
   `x`, `y` in astronomical units (au).
+
 - Black hole `mass` is in solar masses ($M_\odot$).
+
 - Values are mainly for visualization; not all are observationally exact.
 
-:::
+- Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
+  Wikipedia. See
+  [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+  :::
 
 ## Full list of galaxies in the dataset
 
