@@ -13,7 +13,7 @@ function accelerationOn1By2(
 ```
 
 Defined in:
-[gravity/acceleration-on1-by2.ts:69](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/equations/src/categories/gravity/acceleration-on1-by2.ts#L69)
+[gravity/acceleration-on1-by2.ts:69](https://github.com/phun-ky/interstellar-tools/blob/e281a6e583ee6da6973d3556f5004f2598cacd49/packages/equations/src/categories/gravity/acceleration-on1-by2.ts#L69)
 
 Gravitational **acceleration** of body 1 due to body 2 (vector, m/s²).
 
