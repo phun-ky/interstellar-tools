@@ -8,6 +8,6 @@ const SERVER_VERSION: string;
 ```
 
 Defined in:
-[server.ts:14](https://github.com/phun-ky/interstellar-tools/blob/b0aaadc24c0246f5c4bb94a85788219caf1c8025/packages/mcp/src/server.ts#L14)
+[server.ts:14](https://github.com/phun-ky/interstellar-tools/blob/3def98a4bff9f31a20df012d1fde9828c566a9f9/packages/mcp/src/server.ts#L14)
 
 The published package version, read from `package.json` so it never drifts.
