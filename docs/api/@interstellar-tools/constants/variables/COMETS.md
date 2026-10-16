@@ -8,7 +8,7 @@ const COMETS: CometsType;
 ```
 
 Defined in:
-[bodies/comets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/3def98a4bff9f31a20df012d1fde9828c566a9f9/packages/constants/src/bodies/comets.ts#L27)
+[bodies/comets.ts:28](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/constants/src/bodies/comets.ts#L28)
 
 Represents a collection of well-known comets within the solar system simulation.
 
@@ -16,10 +16,14 @@ Represents a collection of well-known comets within the solar system simulation.
 
 - Units: `a` (au), `period` (days), `radius` (km); angles `i`, `w`, `om` in
   degrees.
+
 - Some entries may encode integration direction via a negative `period`; the
   table reflects the raw value.
 
-:::
+- Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
+  Wikipedia. See
+  [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+  :::
 
 ## Full list of comets in the dataset
 

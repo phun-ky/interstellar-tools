@@ -8,7 +8,7 @@ function scale(v: Vector3DTupleType, s: number): Vector3DTupleType;
 ```
 
 Defined in:
-[helpers/misc.ts:44](https://github.com/phun-ky/interstellar-tools/blob/3def98a4bff9f31a20df012d1fde9828c566a9f9/packages/equations/src/categories/helpers/misc.ts#L44)
+[helpers/misc.ts:44](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/equations/src/categories/helpers/misc.ts#L44)
 
 Scale a 3D vector by a scalar.
 

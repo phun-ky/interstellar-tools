@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:27](https://github.com/phun-ky/interstellar-tools/blob/3def98a4bff9f31a20df012d1fde9828c566a9f9/packages/constants/src/bodies/stars.ts#L27)
+[bodies/stars.ts:28](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/constants/src/bodies/stars.ts#L28)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -17,11 +17,16 @@ Represents a dataset of well-known stars within the Milky Way.
 - Units: `radius` (km); galactocentric coordinates `x`,`y`,`z` (ly); orbital
   semi-major axis `a` (ly); `period` in million years (Myr); orbital angles are
   unitless here (radians) if provided.
+
 - `color` is for visualization only.
+
 - Negative `period` may encode integration direction; the table shows raw
   values.
 
-:::
+- Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
+  Wikipedia. See
+  [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+  :::
 
 ## Full list of stars in the dataset
 
