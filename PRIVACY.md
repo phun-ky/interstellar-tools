@@ -27,30 +27,32 @@ policy, which governs your conversations with it.
 [phun-ky.net/interstellar-tools](https://phun-ky.net/interstellar-tools/) uses
 no cookies, analytics or tracking. Fonts are served from the site itself.
 
-Two things involve other servers, and they are listed here so you know about
-them:
+The site contacts no other service on its own. The only exception happens when
+you ask for it:
 
-- **Build status in the navigation bar.** On screens 1600 px and wider, where
-  the status is shown, your browser asks GitHub's public API for the latest test
-  results of this project, which shares your IP address with GitHub. Narrower
-  screens don't contact GitHub. The answer is kept in your browser for 10
-  minutes and never sent anywhere else. See
+- **Build status in the navigation bar.** On screens 1600 px and wider, the
+  navigation bar has a **Request status** button. Only when you select it does
+  your browser ask GitHub's public API for this project's latest test results,
+  which shares your IP address with GitHub. The answer is kept in memory until
+  you reload the page, and isn't stored or sent anywhere else. See
   [GitHub's privacy statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
-- **Shared stylesheet.** The site loads a stylesheet from `phun-ky.net`, the
-  author's own domain.
+
+The site also loads a shared stylesheet from `phun-ky.net`, the author's own
+domain, which is the same server that hosts the site.
 
 The site is hosted on `phun-ky.net`, whose web server may keep standard access
 logs.
 
-The theme toggle stores your light/dark choice in your browser's local storage.
-It never leaves your device.
+The site keeps one setting in your browser's local storage: whether to show the
+light or dark theme (`vitepress-theme-appearance`). It's written when you first
+visit, so pages open in the right theme, and it never leaves your device.
 
 ## Applicable laws
 
 The project is built to comply with the EU General Data Protection Regulation
-(GDPR). Because it processes no personal data itself, most GDPR obligations
-don't arise. The statement above describes the few places where a third party
-may see your IP address.
+(GDPR) and the ePrivacy Directive. It processes no personal data itself, sets no
+cookies, and stores nothing in your browser except the theme setting. Your IP
+address only reaches a third party, GitHub, when you select **Request status**.
 
 ## Contact
 
