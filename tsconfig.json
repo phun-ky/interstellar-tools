@@ -12,6 +12,9 @@
     },
     {
       "path": "packages/constants/tsconfig.build.json"
+    },
+    {
+      "path": "packages/mcp/tsconfig.build.json"
     }
   ],
   "extends": "./tsconfig.base.json"
