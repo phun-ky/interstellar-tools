@@ -16,7 +16,7 @@ function isOnTriaxialEllipsoidSurface(
 ```
 
 Defined in:
-[cartography/is-on-triaxial-ellipsoid-surface.ts:53](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/equations/src/categories/cartography/is-on-triaxial-ellipsoid-surface.ts#L53)
+[cartography/is-on-triaxial-ellipsoid-surface.ts:53](https://github.com/phun-ky/interstellar-tools/blob/e281a6e583ee6da6973d3556f5004f2598cacd49/packages/equations/src/categories/cartography/is-on-triaxial-ellipsoid-surface.ts#L53)
 
 Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within
 a tolerance).

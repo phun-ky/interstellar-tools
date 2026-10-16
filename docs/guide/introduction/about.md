@@ -1,6 +1,19 @@
 # About Interstellar Tools
 
-> Engineering the next spacefaring stack
+<PullQuote
+  kicker="Mission statement, 1962"
+  excerpt="We choose to go to the Moon … not because they are *easy*, but because they are *hard*."
+  cite="John F. Kennedy · Address at Rice University, Houston · 12.09.1962">
+
+We choose to go to the Moon... We choose to go to the Moon in this decade and do
+the other things, not because they are easy, but because they are hard; because
+that goal will serve to organize and measure the best of our energies and
+skills, because that challenge is one that we are willing to accept, one we are
+unwilling to postpone, and one we intend to win, and the others, too.
+
+</PullQuote>
+
+**Engineering the next spacefaring stack**
 
 **TypeScript monorepo for open, reliable building blocks in orbital mechanics
 and space software.** Equations, constants, time utilities, and strong types for
