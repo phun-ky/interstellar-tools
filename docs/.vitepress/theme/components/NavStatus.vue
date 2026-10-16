@@ -21,6 +21,7 @@ const REPO = 'phun-ky/interstellar-tools';
 const ACTIONS_URL = `https://github.com/${REPO}/actions/workflows/check.yml?query=branch%3Amain`;
 const API_URL = `https://api.github.com/repos/${REPO}/actions/workflows/check.yml/runs?branch=main&per_page=10`;
 const CACHE_KEY = 'it-checks-status';
+const VISIBLE_FROM = '1600px'; // keep in sync with the media query below
 const CACHE_MS = 10 * 60 * 1000; // stay well inside the 60 requests/hour limit
 const LABELS: Record<StateType, string> = {
   acquiring: 'Acquiring signal',
@@ -73,7 +74,7 @@ const writeCache = (value: RunInterface) => {
   }
 };
 
-onMounted(async () => {
+const load = async () => {
   let latest = readCache();
 
   if (!latest) {
@@ -113,6 +114,20 @@ onMounted(async () => {
   } else {
     state.value = 'offline';
   }
+};
+
+// Only ask GitHub when the status is on screen (see VISIBLE_FROM), so narrow
+// screens never contact GitHub at all
+onMounted(() => {
+  const wide = window.matchMedia(`(min-width: ${VISIBLE_FROM})`);
+
+  if (wide.matches) {
+    void load();
+
+    return;
+  }
+
+  wide.addEventListener('change', () => void load(), { once: true });
 });
 </script>
 
