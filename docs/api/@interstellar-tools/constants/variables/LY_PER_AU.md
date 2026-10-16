@@ -8,6 +8,6 @@ const LY_PER_AU: number;
 ```
 
 Defined in:
-[distance.ts:92](https://github.com/phun-ky/interstellar-tools/blob/3ab2964f0fd5817da538571573efe162119cdfe1/packages/constants/src/distance.ts#L92)
+[distance.ts:92](https://github.com/phun-ky/interstellar-tools/blob/c21341f00384c8b187db92798727ddf5a9178d70/packages/constants/src/distance.ts#L92)
 
 Light-years per astronomical unit (reciprocal of [AU_PER_LY](AU_PER_LY.md)).
