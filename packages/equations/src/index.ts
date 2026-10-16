@@ -85,11 +85,15 @@ export * from './categories/orbits/flight-path-angle-from-true-anomaly.js';
 
 export * from './categories/orbits/hyperbolic-periapsis-speed.js';
 
+export * from './categories/orbits/j2-argument-of-perigee-rate.js';
+
 export * from './categories/orbits/j2-nodal-precession-rate.js';
 
 export * from './categories/orbits/kepler-period.js';
 
 export * from './categories/orbits/mean-motion.js';
+
+export * from './categories/orbits/peri-apoapsis-radii.js';
 
 export * from './categories/orbits/specific-angular-momentum-from-elements.js';
 
