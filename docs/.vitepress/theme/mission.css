@@ -1,0 +1,535 @@
+/*
+ * Mission Control theme: a HUD-style layer over the VitePress default theme.
+ * Dark is the default; light is a "blueprint paper" variant of the same
+ * system. Everything here is driven by the --mc-* tokens.
+ */
+
+/* Tokens: light (blueprint paper) */
+html:root {
+  --mc-bg: #f3f6f7;
+  --mc-bg-2: #ffffff;
+  --mc-bg-3: #e8eef0;
+  --mc-grid: rgba(20, 90, 110, 0.07);
+  --mc-grid-strong: rgba(20, 90, 110, 0.16);
+  --mc-line: rgba(20, 90, 110, 0.24);
+  --mc-text: #0d1b24;
+  --mc-muted: #4a5d67;
+  --mc-faint: #6d7f88;
+  --mc-teal: #1c7a81;
+  --mc-teal-soft: rgba(28, 122, 129, 0.1);
+  --mc-amber: #9a5800;
+  --mc-amber-fill: #ffb547;
+  --mc-amber-soft: rgba(255, 181, 71, 0.16);
+  --mc-green: #127a45;
+  --mc-red: #b3261e;
+  --mc-body: #cfe7ea;
+}
+
+/* Tokens: dark (default) */
+html.dark {
+  --mc-bg: #0b1016;
+  --mc-bg-2: #0f1720;
+  --mc-bg-3: #142231;
+  --mc-grid: rgba(71, 184, 190, 0.07);
+  --mc-grid-strong: rgba(71, 184, 190, 0.14);
+  --mc-line: rgba(71, 184, 190, 0.22);
+  --mc-text: #dfe9ee;
+  --mc-muted: #8ea2ad;
+  --mc-faint: #5f7781;
+  --mc-teal: #47b8be;
+  --mc-teal-soft: rgba(71, 184, 190, 0.1);
+  --mc-amber: #ffb547;
+  --mc-amber-fill: #ffb547;
+  --mc-amber-soft: rgba(255, 181, 71, 0.08);
+  --mc-green: #6be3a1;
+  --mc-red: #ff7a6e;
+  --mc-body: #1d4c66;
+}
+
+/* Map the tokens onto VitePress. The theme--* selectors outrank the shared
+   phun-ky.net stylesheet, which sets its own light/dark link colours */
+html:root,
+html:root.theme--light,
+html:root.theme--dark {
+  --vp-font-family-base: 'IBM Plex Sans Condensed', system-ui, sans-serif;
+  --vp-font-family-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --vp-c-bg: var(--mc-bg);
+  --vp-c-bg-alt: var(--mc-bg-2);
+  --vp-c-bg-elv: var(--mc-bg-2);
+  --vp-c-bg-soft: var(--mc-bg-3);
+  --vp-c-text-1: var(--mc-text);
+  --vp-c-text-2: var(--mc-muted);
+  --vp-c-text-3: var(--mc-faint);
+  --vp-c-divider: var(--mc-line);
+  --vp-c-border: var(--mc-line);
+  --vp-c-gutter: var(--mc-line);
+  --vp-c-brand-1: var(--mc-teal);
+  --vp-c-brand-2: var(--mc-teal);
+  --vp-c-brand-3: var(--mc-teal);
+  --vp-c-brand-soft: var(--mc-teal-soft);
+  --vp-code-block-bg: var(--mc-bg-2);
+  --vp-code-bg: var(--mc-teal-soft);
+  --vp-code-color: var(--mc-teal);
+  --vp-nav-bg-color: var(--mc-bg);
+  --vp-sidebar-bg-color: var(--mc-bg);
+  --vp-local-nav-bg-color: var(--mc-bg);
+
+  /* the shared phun-ky.net stylesheet reads these */
+  --ph-color-background: var(--mc-bg);
+  --ph-color-well-background: var(--mc-bg-2);
+  --ph-color-text: var(--mc-muted);
+  --ph-color-text-accent: var(--mc-text);
+  --ph-color-link: var(--mc-teal);
+  --ph-font-family: var(--vp-font-family-base);
+  --ph-font-family-code: var(--vp-font-family-mono);
+}
+
+/* The blueprint grid behind every page */
+html.ph body {
+  background-color: var(--mc-bg);
+  background-image:
+    linear-gradient(var(--mc-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mc-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--mc-muted);
+}
+
+/* ---------- Shared HUD parts (home page and docs) ---------- */
+
+.mc-panel {
+  position: relative;
+  padding: 22px;
+  border: 1px solid var(--mc-line);
+  background: var(--mc-bg-2);
+}
+
+.mc-panel::before,
+.mc-panel::after,
+.vp-doc div[class*='language-']::before,
+.vp-doc div[class*='language-']::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--mc-teal);
+  pointer-events: none;
+}
+
+.mc-panel::before,
+.vp-doc div[class*='language-']::before {
+  top: -2px;
+  left: -2px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.mc-panel::after,
+.vp-doc div[class*='language-']::after {
+  right: -2px;
+  bottom: -2px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.mc-ptitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-muted);
+}
+
+.mc-ptitle b {
+  font-weight: 500;
+  color: var(--mc-amber);
+}
+
+.ph a.mc-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid var(--mc-line);
+  font-family: var(--vp-font-family-mono);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mc-text);
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.ph a.mc-btn:hover {
+  border-color: var(--mc-amber);
+  color: var(--mc-amber);
+}
+
+.ph a.mc-btn.go {
+  border-color: var(--mc-amber-fill);
+  background: var(--mc-amber-fill);
+  color: #1a1205;
+  font-weight: 600;
+}
+
+.ph a.mc-btn.go:hover {
+  background: #ffc773;
+  color: #1a1205;
+}
+
+.ph a.mc-link {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mc-caution,
+.vp-doc .custom-block.warning,
+.vp-doc .custom-block.caution {
+  border: 1px solid color-mix(in srgb, var(--mc-amber-fill) 55%, transparent);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--mc-amber-soft) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+.mc-caution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 28px;
+  padding: 18px 20px;
+  font-size: 15.5px;
+  color: var(--mc-text);
+}
+
+.mc-caution b {
+  font-family: var(--vp-font-family-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mc-amber);
+}
+
+/* ---------- Navigation ---------- */
+
+.VPNavBar .VPNavBarMenuLink,
+.VPNavBar .VPNavBarMenuGroup .text {
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.VPNavBar,
+.VPNavBar.home.top .content-body,
+.VPNavBar .content-body {
+  border-bottom: 1px solid var(--mc-line);
+}
+
+.ph .VPNavBar .divider-line {
+  background-color: transparent;
+}
+
+/* ---------- Sidebar ---------- */
+
+.VPSidebar {
+  border-right: 1px solid var(--mc-line);
+}
+
+.VPSidebarItem.level-0 > .item .text {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-muted);
+}
+
+.VPSidebarItem.is-active > .item .link > .text {
+  color: var(--mc-amber);
+}
+
+/* ---------- Doc pages ---------- */
+
+.vp-doc h1 {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--mc-text);
+}
+
+.vp-doc h2 {
+  padding-top: 28px;
+  border-top: 1px solid var(--mc-line);
+  font-size: 28px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.vp-doc h3 {
+  font-size: 21px;
+  letter-spacing: 0.02em;
+}
+
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  color: var(--mc-text);
+}
+
+.ph .vp-doc p,
+.ph .vp-doc li {
+  color: var(--mc-muted);
+}
+
+.ph .vp-doc strong {
+  color: var(--mc-text);
+}
+
+/* code blocks become bracketed panels; VitePress scrolls them with
+   overflow-x, so the brackets sit inside the edge instead of over it */
+.vp-doc div[class*='language-']::before {
+  top: 0;
+  left: 0;
+}
+
+.vp-doc div[class*='language-']::after {
+  right: 0;
+  bottom: 0;
+}
+
+.ph .vp-doc div[class*='language-'] {
+  border: 1px solid var(--mc-line);
+  border-radius: 0;
+  background: var(--mc-bg-2);
+}
+
+.vp-doc div[class*='language-'] > span.lang {
+  font-family: var(--vp-font-family-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mc-amber);
+}
+
+.vp-code-group .tabs {
+  border: 1px solid var(--mc-line);
+  border-bottom: 0;
+  border-radius: 0;
+  background: var(--mc-bg-3);
+}
+
+.vp-code-group .tabs label {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* custom blocks: info/tip are panels, warning is the caution stripe */
+.ph .vp-doc .custom-block {
+  border: 1px solid var(--mc-line);
+  border-radius: 0;
+  background-color: var(--mc-bg-2);
+  color: var(--mc-muted);
+}
+
+.ph .vp-doc .custom-block * {
+  color: var(--mc-muted);
+}
+
+.ph .vp-doc .custom-block .custom-block-title {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-teal);
+}
+
+.ph .vp-doc .custom-block.tip {
+  border-left: 3px solid var(--mc-teal);
+  background-color: var(--mc-teal-soft);
+}
+
+.ph .vp-doc .custom-block.info {
+  border-left: 3px solid var(--mc-muted);
+}
+
+.ph .vp-doc .custom-block.warning,
+.ph .vp-doc .custom-block.caution {
+  background-color: transparent;
+}
+
+.ph .vp-doc .custom-block.warning .custom-block-title,
+.ph .vp-doc .custom-block.caution .custom-block-title {
+  color: var(--mc-amber);
+}
+
+.ph .vp-doc .custom-block.danger {
+  border-left: 3px solid var(--mc-red);
+}
+
+.ph .vp-doc .custom-block.danger .custom-block-title {
+  color: var(--mc-red);
+}
+
+.ph .vp-doc .custom-block a,
+.ph .vp-doc .custom-block code {
+  color: var(--mc-teal);
+}
+
+/* tables read like a telemetry sheet */
+.ph .vp-doc table {
+  border: 1px solid var(--mc-line);
+  border-radius: 0;
+  background-color: var(--mc-bg-2);
+}
+
+.ph .vp-doc th {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-muted);
+}
+
+.ph .vp-doc tr {
+  border-top: 1px solid var(--mc-line);
+}
+
+.ph .vp-doc table > tbody > tr:nth-child(2n) {
+  background-color: var(--mc-bg-3);
+}
+
+/* badges: square status tags */
+.VPBadge {
+  border-radius: 0;
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.VPBadge.tip {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: var(--mc-amber);
+}
+
+/* on-this-page outline */
+.VPDocAsideOutline .outline-title {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-amber);
+}
+
+.VPDocAsideOutline .outline-link.active {
+  color: var(--mc-amber);
+}
+
+/* blockquotes: the plain form of <PullQuote>, ruled above and below */
+.ph .vp-doc blockquote {
+  margin: 48px 0;
+  padding: 20px 0;
+  border: 0;
+  border-top: 1px solid var(--mc-line);
+  border-bottom: 1px solid var(--mc-line);
+  border-radius: 0;
+  background: none;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--mc-text);
+}
+
+.ph .vp-doc blockquote > p {
+  margin: 0;
+  max-width: none;
+  color: var(--mc-text);
+}
+
+.ph .vp-doc blockquote > p + p {
+  margin-top: 12px;
+}
+
+.ph .vp-doc blockquote footer {
+  margin-top: 16px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mc-muted);
+}
+
+.ph .vp-doc blockquote footer em {
+  font-style: normal;
+}
+
+/* local search button */
+.DocSearch-Button {
+  border: 1px solid var(--mc-line);
+  border-radius: 0;
+  font-family: var(--vp-font-family-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/*
+ * VitePress centres a --vp-layout-max-width wide layout from 1440px up. With
+ * our 1920px max width its gutter goes negative between 1440px and 1920px,
+ * which squeezed the sidebar to ~110px. Clamp the gutter at zero.
+ */
+@media (min-width: 1440px) {
+  html.ph {
+    --mc-gutter: max(0px, calc((100vw - var(--vp-layout-max-width)) / 2));
+  }
+
+  html.ph .VPSidebar {
+    padding-left: calc(var(--mc-gutter) + 32px);
+    width: calc(var(--mc-gutter) + var(--vp-sidebar-width));
+  }
+
+  html.ph .VPContent.has-sidebar {
+    padding-right: var(--mc-gutter);
+    padding-left: calc(var(--mc-gutter) + var(--vp-sidebar-width));
+  }
+
+  html.ph .VPLocalNav.has-sidebar,
+  html.ph .VPNavBar.has-sidebar .divider {
+    padding-left: calc(var(--mc-gutter) + var(--vp-sidebar-width));
+  }
+
+  html.ph .VPNavBar.has-sidebar .title {
+    padding-left: calc(var(--mc-gutter) + 32px);
+    width: calc(var(--mc-gutter) + var(--vp-sidebar-width));
+  }
+
+  html.ph .VPNavBar.has-sidebar .content {
+    padding-right: calc(var(--mc-gutter) + 32px);
+    padding-left: calc(var(--mc-gutter) + var(--vp-sidebar-width));
+  }
+}

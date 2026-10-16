@@ -24,21 +24,11 @@
   --vp-button-brand-text: var(--ph-color-text-brand);
   --vp-sidebar-width: 352px;
   --vp-layout-max-width: 1920px;
-  --vp-home-hero-image-background-image: radial-gradient(
-    at 50% 50%,
-    rgb(1, 1, 9) 0px,
-    rgba(0, 0, 0, 0) 50%
-  );
 }
 
 :root.theme--light {
   --ph-color-text-brand: #f5f6f7;
   --vp-c-bg-alt: #f5f6f7;
-}
-
-:root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #518d8e, #47b8be);
 }
 
 html,
@@ -129,95 +119,6 @@ html.ph body {
   border-radius: 50%;
 }
 
-.VPHero {
-  background-image:
-    radial-gradient(
-      circle,
-      rgba(38, 42, 59, 0.9) 0,
-      rgba(24, 26, 34, 0.76) 100%
-    ),
-    url(/images/jonny-gios-bxDJ12Kv9Rk-unsplash.jpg);
-  background-repeat: no-repeat;
-  background-size: auto, cover;
-  background-position: top center;
-
-  /* The hero background is always dark, so keep its text light in both
-     themes. `.ph` lifts specificity over VitePress's scoped rules */
-  .ph & .heading .text {
-    color: #f5f6fa;
-  }
-
-  .ph & .tagline {
-    color: rgba(235, 235, 245, 0.78);
-  }
-}
-
-/* The home nav bar floats over the dark hero until the page scrolls */
-.ph .VPNavBar.home.top {
-  & .VPNavBarTitle .title,
-  & .VPNavBarMenuLink,
-  & .VPNavBarMenuGroup .text,
-  & .VPSocialLink,
-  & .VPNavBarExtra .icon {
-    color: #f5f6fa;
-  }
-
-  @media (max-width: 767px) {
-    & .DocSearch-Search-Icon {
-      color: #f5f6fa;
-    }
-  }
-
-  & .VPNavBarHamburger :is(.top, .middle, .bottom) {
-    background-color: #f5f6fa;
-  }
-}
-
-@media (min-width: 960px) {
-  .VPHero .VPImage.image-src {
-    width: 300px;
-    max-width: 300px;
-    height: 300px;
-    max-height: 300px;
-    transform: translate3d(-50%, -50%, 0);
-    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.1));
-  }
-}
-@media (min-width: 1024px) {
-  .VPHero .VPImage.image-src {
-    width: 400px;
-    max-width: 400px;
-    height: 400px;
-    max-height: 400px;
-  }
-}
-
-.vp-doc div[class*='language-'] {
-  border-radius: 12px;
-}
-
-.VPFeatures {
-  margin-top: 2.5rem;
-
-  & .VPFeature {
-    border-color: transparent;
-
-    & .box .title {
-      color: var(--ph-color-text-accent);
-    }
-
-    & .VPImage {
-      border-radius: 6px;
-      background-color: var(--vp-code-block-bg);
-      padding: 6px;
-    }
-  }
-}
-
-.VPFeatures .items .item {
-  padding: 1rem;
-}
-
 & .vp-doc img {
   border-radius: 12px;
   width: 100%;
@@ -295,132 +196,6 @@ html.ph body {
   }
 }
 
-.ph.banner {
-  background-image: radial-gradient(circle, #262a3b 0, #181a22 100%);
-  color: var(--ph-color-text-accent);
-
-  & .ph.container {
-    max-width: 48rem;
-    width: 100%;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-    margin-left: auto;
-    margin-right: auto;
-
-    & svg {
-      display: block;
-      margin: 0 auto;
-      max-width: 80%;
-      width: 100%;
-    }
-
-    & .ph.slogan {
-      color: #ffc72c;
-      font-size: 1.3rem;
-      display: block;
-      font-weight: 600;
-      margin: 0 auto;
-      max-width: 80%;
-      text-align: center;
-      text-transform: uppercase;
-      width: 100%;
-    }
-  }
-}
-
-.ph .ph.hero .ph.content {
-  background-color: #ffc72c;
-  color: #000;
-  flex-direction: column;
-}
-.ph .ph.hero .ph.content .ph.slogan {
-  position: relative;
-}
-.ph .ph.hero .ph.content svg {
-  max-width: 50%;
-}
-.ph .ph.hero .ph.content .ph.slogan {
-  display: none;
-  text-align: center;
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  width: 70%;
-}
-@media screen and (min-width: 1024px) {
-  .ph .ph.hero .ph.content .ph.slogan {
-    display: block;
-  }
-}
-
-.ph .ph.hero {
-  height: 300px;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  width: calc(100% - 224px);
-}
-@media screen and (min-width: 1024px) {
-  .ph .ph.hero {
-    display: grid;
-    grid-template-areas: 'content logo' 'content reel';
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-}
-.ph .ph.hero .ph.content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-area: content;
-  height: 280px;
-  padding: 1.5rem;
-}
-@media screen and (min-width: 1024px) {
-  .ph .ph.hero .ph.content {
-    height: 100%;
-  }
-}
-.ph .ph.hero .ph.logo {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  grid-area: logo;
-  color: var(--ph-color-text-accent);
-  background-image: radial-gradient(
-    circle,
-    var(--ph-background-radial-1) 0%,
-    var(--ph-background-radial-2) 100%
-  );
-}
-@media screen and (min-width: 1024px) {
-  .ph .ph.hero .ph.logo {
-    display: flex;
-  }
-}
-.ph .ph.hero .ph.logo svg {
-  max-width: 50%;
-  width: 100%;
-}
-.ph .ph.hero .ph.reel {
-  height: 200px;
-  filter: grayscale(0.9);
-}
-@media screen and (min-width: 1024px) {
-  .ph .ph.hero .ph.reel {
-    height: auto;
-    grid-area: reel;
-  }
-}
-.ph .ph.reel {
-  background-image: url('https://phun-ky.net/img/speccer/speccer-showcase.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 @media (min-width: 768px) {
   .ph .DocSearch.DocSearch-Button {
     padding: 0 10px 0 12px;
@@ -458,50 +233,6 @@ html.ph body {
   max-width: 960px;
 }
 
-/* mermaid */
-.ph .mermaid {
-  user-select: none;
-  pointer-events: none;
-  .arrowMarkerPath,
-  #arrowhead path {
-    fill: var(--ph-color-link);
-    stroke: var(--ph-color-link);
-  }
-
-  .flowchart-link {
-    stroke: var(--ph-color-link) !important;
-  }
-
-  .cluster > rect {
-    fill: var(--ph-color-well-background) !important;
-    rx: 12px;
-    ry: 12px;
-    stroke: transparent !important;
-  }
-
-  .labelBkg,
-  .edgeLabel p {
-    background: transparent !important;
-    color: var(--ph-color-text-accent);
-    line-height: 140%;
-  }
-
-  .node path,
-  .actor,
-  .node polygon,
-  .node.default > rect.basic.label-container {
-    /* fill: var(--vp-c-bg-alt) !important; */
-    /* fill: var(--ph-color-well-background) !important; */
-    fill: var(--ph-color-background-notice-note) !important;
-    stroke: var(--ph-color-background-notice-note) !important;
-  }
-
-  .messageLine0,
-  .messageLine1 {
-    stroke: var(--ph-color-link) !important;
-  }
-}
-
 .DocSearch-Button .DocSearch-Button-Key:first-child::before {
   content: 'Ctrl';
   font-size: 12px;
@@ -535,36 +266,6 @@ html.ph body {
     color: var(--docsearch-muted-color);
     text-transform: lowercase;
     font-family: var(--ph-font-family-code);
-  }
-}
-
-.vp-doc blockquote::before {
-  content: '“';
-  font-size: 10rem;
-  line-height: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-@media screen and (min-width: 1024px) {
-  .vp-doc blockquote {
-    padding: 5rem 1.1428571em 0.8571429em 4rem;
-  }
-}
-.vp-doc blockquote {
-  font-weight: 500;
-  margin: 0;
-  border: 0;
-  font-size: 1.125rem;
-  font-style: italic;
-  line-height: 1.75rem;
-  position: relative;
-  border-radius: 0.375rem;
-  padding: 3rem 1.1428571em 0.8571429em 2rem;
-
-  & p {
-    margin: 1.25em 0;
   }
 }
 

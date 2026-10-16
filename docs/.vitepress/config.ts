@@ -23,8 +23,16 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   metaChunk: true,
-  description: 'A set of tools',
+  description:
+    'Open, tested building blocks for orbital mechanics and space software in TypeScript: equations, constants, datasets, time utilities and an MCP server for AI assistants.',
   title: 'Interstellar Tools',
+  // Mission Control is designed dark-first; the toggle switches to light
+  appearance: 'dark',
+  head: [
+    ['meta', { name: 'theme-color', content: '#0b1016' }],
+    // Add the theme's scope class before first paint, not after hydration
+    ['script', {}, 'document.documentElement.classList.add("ph");']
+  ],
   themeConfig: {
     search: {
       provider: 'local'
@@ -47,7 +55,7 @@ export default defineConfig({
         activeMatch: '/guide/mcp/'
       },
       { text: 'Reference', link: '/api/', activeMatch: '/api/' },
-      { text: 'Sponsor', link: '/sponsor' },
+      { text: 'Sponsor', link: 'https://github.com/sponsors/phun-ky' },
 
       {
         text: 'Contributing',
@@ -61,7 +69,7 @@ export default defineConfig({
       },
       {
         icon: 'npm',
-        link: 'https://www.npmjs.com/package/@phun-ky/interstellar-tools'
+        link: 'https://www.npmjs.com/org/interstellar-tools'
       }
     ],
     footer: {
@@ -131,6 +139,14 @@ export default defineConfig({
     plugins: [groupIconVitePlugin()],
     resolve: {
       alias: [
+        // Import the packages from source, so the docs always run the
+        // current code and the deploy doesn't need a package build first
+        ...['constants', 'equations', 'temporal', 'types'].map((name) => ({
+          find: `@interstellar-tools/${name}`,
+          replacement: fileURLToPath(
+            new URL(`../../packages/${name}/src/index.ts`, import.meta.url)
+          )
+        })),
         {
           find: /^.*\/VPSwitchAppearance\.vue$/,
           replacement: fileURLToPath(
