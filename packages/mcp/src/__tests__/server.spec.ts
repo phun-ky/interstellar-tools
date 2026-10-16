@@ -1,6 +1,7 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { after, before, describe, test } from 'node:test';
 
 import { createServer } from '../index.js';
@@ -38,6 +39,17 @@ before(async () => {
 
 after(async () => {
   await client.close();
+});
+
+describe('server info', () => {
+  test('reports the package version', () => {
+    const { version } = JSON.parse(
+      readFileSync(new URL('../../package.json', import.meta.url), 'utf8')
+    );
+
+    assert.equal(client.getServerVersion()?.version, version);
+    assert.equal(client.getServerVersion()?.name, 'interstellar-tools');
+  });
 });
 
 describe('tool listing', () => {
