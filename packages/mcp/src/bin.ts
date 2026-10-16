@@ -1,6 +1,42 @@
 #!/usr/bin/env node
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 
-import { createServer } from './index.js';
+import type { AddressInfo } from 'node:net';
+import process from 'node:process';
+import { parseArgs } from 'node:util';
 
-await createServer().connect(new StdioServerTransport());
+import { startHttpServer } from './http.js';
+import { createServer } from './server.js';
+
+const { values } = parseArgs({
+  options: {
+    http: { type: 'boolean', default: false },
+    port: { type: 'string', default: process.env.PORT ?? '3000' },
+    host: { type: 'string', default: '127.0.0.1' },
+    help: { type: 'boolean', short: 'h', default: false }
+  }
+});
+
+if (values.help) {
+  process.stdout
+    .write(`Usage: interstellar-tools-mcp [--http] [--port <n>] [--host <addr>]
+
+  (default)       Serve over stdio, for clients that launch the server themselves
+  --http          Serve Streamable HTTP at http://<host>:<port>/mcp
+  --port <n>      HTTP port (default: $PORT or 3000)
+  --host <addr>   HTTP bind address (default: 127.0.0.1)
+`);
+} else if (values.http) {
+  const http = await startHttpServer({
+    port: Number(values.port),
+    host: values.host
+  });
+  const { address, port } = http.address() as AddressInfo;
+
+  // stdout stays clean for stdio clients; logs go to stderr
+  process.stderr.write(
+    `interstellar-tools MCP server listening on http://${address}:${port}/mcp\n`
+  );
+} else {
+  await createServer().connect(new StdioServerTransport());
+}

@@ -5,6 +5,18 @@ gives AI assistants deterministic, unit-explicit orbital mechanics calculations
 and celestial body datasets, backed by `@interstellar-tools/equations`,
 `@interstellar-tools/constants` and `@interstellar-tools/temporal`.
 
+## Documentation
+
+The full documentation lives at
+**[phun-ky.net/interstellar-tools](https://phun-ky.net/interstellar-tools/)**:
+
+- [Using the MCP server](https://phun-ky.net/interstellar-tools/guide/mcp/):
+  step-by-step setup for Claude, ChatGPT, Mistral Le Chat, Gemini, GitHub
+  Copilot, Cursor, JetBrains and more
+- [API reference for `@interstellar-tools/mcp`](https://phun-ky.net/interstellar-tools/api/@interstellar-tools/mcp/)
+- [API reference for the equations](https://phun-ky.net/interstellar-tools/api/@interstellar-tools/equations/)
+  that every tool wraps
+
 ## Installation
 
 - [Node.js](https://nodejs.org/) version 22.9.0 or higher
@@ -27,6 +39,21 @@ Or with Claude Code:
 ```shell
 claude mcp add interstellar-tools -- npx -y @interstellar-tools/mcp
 ```
+
+### Remote (HTTP)
+
+Web assistants such as claude.ai, ChatGPT and Mistral Le Chat connect to remote
+servers only. Serve Streamable HTTP and put it behind HTTPS (a tunnel such as
+`cloudflared tunnel --url http://localhost:3000` is enough for testing):
+
+```shell
+npx -y @interstellar-tools/mcp --http --port 3000
+# → http://127.0.0.1:3000/mcp
+```
+
+The server is stateless and binds to `127.0.0.1` unless you pass
+`--host 0.0.0.0`. Step-by-step setup for each assistant is in the
+[MCP guide](https://phun-ky.net/interstellar-tools/guide/mcp/).
 
 ## Units
 
@@ -72,7 +99,11 @@ at `interstellar://datasets/{name}`, where `name` is one of `planets`, `moons`,
 ```ts
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 
-import { createServer } from '@interstellar-tools/mcp';
+import { createServer, startHttpServer } from '@interstellar-tools/mcp';
 
+// stdio
 await createServer().connect(new StdioServerTransport());
+
+// or Streamable HTTP on http://127.0.0.1:3000/mcp
+await startHttpServer({ port: 3000 });
 ```
