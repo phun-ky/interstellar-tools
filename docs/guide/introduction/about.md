@@ -42,12 +42,40 @@ science, education, and industry need trustworthy, well-typed primitives.
 accelerate that shift: precise functions, clear docs, and strong types that make
 orbital and mission software easier to build and easier to verify.
 
+## Sustainable Development Goals
+
+Space is part of how the world works towards the United Nations'
+[Sustainable Development Goals](https://sdgs.un.org/goals), from satellite data
+for food security and water management to connectivity for remote communities.
+The UN Office for Outer Space Affairs tracks this work in
+[Space for the SDGs](https://www.unoosa.org/oosa/en/ourwork/space4sdgs/index.html).
+
+Interstellar Tools doesn't advance the goals on its own, but it supports three
+of them directly:
+
+- **[Goal 4: Quality education](https://sdgs.un.org/goals/goal4)**, target 4.4:
+  increase the number of youth and adults with relevant technical skills for
+  employment. Interstellar Tools offers free, typed and tested orbital mechanics
+  with the formula written out next to every function, for teaching and
+  self-study. The MCP server lets learners explore it with an AI assistant.
+- **[Goal 9: Industry, innovation and infrastructure](https://sdgs.un.org/goals/goal9)**,
+  targets 9.5 and 9.b: enhance scientific research and technological
+  capabilities, and support technology development in developing countries.
+  Open, reusable building blocks lower the cost of starting in space software,
+  for teams and countries without an established space industry.
+- **[Goal 17: Partnerships for the goals](https://sdgs.un.org/goals/goal17)**,
+  target 17.6: enhance international cooperation on, and access to, science and
+  technology, and knowledge sharing. The project is MIT-licensed, developed in
+  the open, open to contributions from anyone, and usable from any AI assistant
+  through an open protocol.
+
 ## Packages
 
 | Package                         | Description                                       | Status |
 | ------------------------------- | ------------------------------------------------- | ------ |
 | `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Alpha  |
 | `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Alpha  |
+| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | WIP    |
 | `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | WIP    |
 | `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Alpha  |
 
@@ -126,6 +154,17 @@ This project aims to be:
 - **Open**: free to use, adapt, and extend under MIT.
 - **Inclusive**: welcoming to newcomers and experts alike.
 - **Practical**: focused on real-world reliability and clarity over spectacle.
+- **Private**: no personal data is collected by the packages, the MCP server or
+  this site. See the
+  [privacy statement](https://github.com/phun-ky/interstellar-tools/blob/main/PRIVACY.md).
+- **Safe**: contributors are protected by the
+  [Code of Conduct](https://github.com/phun-ky/interstellar-tools/blob/main/CODE_OF_CONDUCT.md),
+  and vulnerabilities are handled through the
+  [security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md).
+
+Interstellar Tools is created and maintained by Alexander Vassbotn
+Røyne-Helgesen, who holds the copyright to it under the
+[MIT License](https://github.com/phun-ky/interstellar-tools/blob/main/LICENSE).
 
 ## A note from the author
 
