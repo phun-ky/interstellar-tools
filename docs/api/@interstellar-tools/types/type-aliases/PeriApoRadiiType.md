@@ -11,7 +11,7 @@ type PeriApoRadiiType = {
 ```
 
 Defined in:
-[physics.ts:95](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/types/src/physics.ts#L95)
+[physics.ts:95](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/types/src/physics.ts#L95)
 
 **Peri/apoapsis radii pair**.
 
@@ -59,7 +59,7 @@ ra: number | null;
 ```
 
 Defined in:
-[physics.ts:95](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/types/src/physics.ts#L95)
+[physics.ts:95](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/types/src/physics.ts#L95)
 
 Apoapsis radius ($r_a$) (m) for closed orbits; `null` for hyperbolic
 trajectories.
@@ -73,6 +73,6 @@ rp: number;
 ```
 
 Defined in:
-[physics.ts:95](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/types/src/physics.ts#L95)
+[physics.ts:95](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/types/src/physics.ts#L95)
 
 Periapsis radius ($r_p$) (m).

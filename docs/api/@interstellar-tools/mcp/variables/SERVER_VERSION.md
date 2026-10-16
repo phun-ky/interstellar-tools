@@ -4,8 +4,10 @@ SERVER_VERSION
 # Variable: SERVER_VERSION
 
 ```ts
-const SERVER_VERSION: '0.0.0' = '0.0.0';
+const SERVER_VERSION: string;
 ```
 
 Defined in:
-[server.ts:11](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/mcp/src/server.ts#L11)
+[server.ts:14](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/mcp/src/server.ts#L14)
+
+The published package version, read from `package.json` so it never drifts.

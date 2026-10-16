@@ -121,10 +121,10 @@ MCP server exposing interstellar-tools equations and datasets.
 
 ## Variables
 
-| Variable                                      | Description |
-| --------------------------------------------- | ----------- |
-| [SERVER_NAME](variables/SERVER_NAME.md)       | -           |
-| [SERVER_VERSION](variables/SERVER_VERSION.md) | -           |
+| Variable                                      | Description                                                                 |
+| --------------------------------------------- | --------------------------------------------------------------------------- |
+| [SERVER_NAME](variables/SERVER_NAME.md)       | -                                                                           |
+| [SERVER_VERSION](variables/SERVER_VERSION.md) | The published package version, read from `package.json` so it never drifts. |
 
 ## Functions
 

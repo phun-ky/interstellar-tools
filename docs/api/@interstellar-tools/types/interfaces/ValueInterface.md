@@ -4,7 +4,7 @@ ValueInterface
 # Interface: ValueInterface
 
 Defined in:
-[numeric.ts:17](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/types/src/numeric.ts#L17)
+[numeric.ts:17](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/types/src/numeric.ts#L17)
 
 Represents a numerical value.
 
@@ -30,6 +30,6 @@ value: number;
 ```
 
 Defined in:
-[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/types/src/numeric.ts#L18)
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/types/src/numeric.ts#L18)
 
 The numeric value of the measurement.

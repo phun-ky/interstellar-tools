@@ -8,7 +8,7 @@ function flightPathAngleFromTrueAnomaly(nu: Radians, e: number): Radians;
 ```
 
 Defined in:
-[orbits/flight-path-angle-from-true-anomaly.ts:30](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/equations/src/categories/orbits/flight-path-angle-from-true-anomaly.ts#L30)
+[orbits/flight-path-angle-from-true-anomaly.ts:30](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/equations/src/categories/orbits/flight-path-angle-from-true-anomaly.ts#L30)
 
 **Flight-path angle** ($\gamma$) from **true anomaly** ($\nu$) and eccentricity
 ($e$).

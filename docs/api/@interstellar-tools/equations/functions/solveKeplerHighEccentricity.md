@@ -13,7 +13,7 @@ function solveKeplerHighEccentricity(
 ```
 
 Defined in:
-[kepler/solve-kepler-high-eccentricity.ts:104](https://github.com/phun-ky/interstellar-tools/blob/051eb604bb16e6e4955d2c99cfe1ff78b8234ee3/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L104)
+[kepler/solve-kepler-high-eccentricity.ts:104](https://github.com/phun-ky/interstellar-tools/blob/7b81b3dd6459eb4b9df2214d5bebe23ea28c32dc/packages/equations/src/categories/kepler/solve-kepler-high-eccentricity.ts#L104)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly
 eccentric orbits ($e > 0.9$) using an iterative numerical approach.
