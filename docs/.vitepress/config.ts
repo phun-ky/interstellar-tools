@@ -53,6 +53,11 @@ export default withMermaid(
       },
       nav: [
         { text: 'Guide', link: '/guide/introduction/' },
+        {
+          text: 'AI assistants',
+          link: '/guide/mcp/',
+          activeMatch: '/guide/mcp/'
+        },
         { text: 'Reference', link: '/api/', activeMatch: '/api/' },
         { text: 'Sponsor', link: '/sponsor' },
 
@@ -105,6 +110,11 @@ export default withMermaid(
                 ]
               }
             ]
+          },
+          {
+            text: 'AI assistants',
+            collapsed: false,
+            items: [{ text: 'Using the MCP server', link: '/guide/mcp/' }]
           },
           {
             text: 'Development',

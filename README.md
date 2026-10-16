@@ -17,10 +17,15 @@
 and space software.** Equations, constants, time utilities, and strong types for
 simulation, visualization, mission tooling, and teaching.
 
+📖 **Documentation:
+[phun-ky.net/interstellar-tools](https://phun-ky.net/interstellar-tools/)**
+
 ---
 
+- [Documentation](#documentation)
 - [Install](#install)
 - [Quickstart](#quickstart)
+- [Use with AI assistants](#use-with-ai-assistants)
 - [Status](#status)
 - [Why this exists](#why-this-exists)
 - [Packages](#packages)
@@ -38,6 +43,22 @@ simulation, visualization, mission tooling, and teaching.
 
 ---
 
+## Documentation
+
+Guides, conventions and a full API reference with the formulas behind every
+function are published at
+**[phun-ky.net/interstellar-tools](https://phun-ky.net/interstellar-tools/)**:
+
+- [Getting started](https://phun-ky.net/interstellar-tools/guide/introduction/):
+  install, unit conventions and recommended practices
+- [Usage guides](https://phun-ky.net/interstellar-tools/guide/usage/equations/manoeuvres):
+  worked examples, such as manoeuvre planning
+- [Using the MCP server](https://phun-ky.net/interstellar-tools/guide/mcp/):
+  connect the toolkit to Claude, ChatGPT, Mistral Le Chat, Gemini, GitHub
+  Copilot and more
+- [API reference](https://phun-ky.net/interstellar-tools/api/): every package,
+  every export
+
 ## Install
 
 ```shell
@@ -51,20 +72,33 @@ yarn add @interstellar-tools/equations @interstellar-tools/constants
 ## Quickstart
 
 ```typescript
-import { G } from '@interstellar-tools/constants';
-import { visViva } from '@interstellar-tools/equations';
+import {
+  gravitationalParameter,
+  visVivaSpeed
+} from '@interstellar-tools/equations';
 
-const muEarth = G * 5.972e24; // [m^3 / s^2]
+const muEarth = gravitationalParameter(5.972e24); // [m^3 / s^2]
 const semiMajorAxis = 7000e3; // [m]
 const radius = 7000e3; // circular [m]
-const velocity = visViva({
-  mu: muEarth,
-  r: radius,
-  a: semiMajorAxis
-});
+const velocity = visVivaSpeed(radius, semiMajorAxis, muEarth); // [m/s]
 
-console.log(`Orbital speed: ${velocity} m/s`);
+console.log(`Orbital speed: ${velocity} m/s`); // ≈ 7545.9 m/s
 ```
+
+## Use with AI assistants
+
+`@interstellar-tools/mcp` is a
+[Model Context Protocol](https://modelcontextprotocol.io) server that gives AI
+assistants these equations as tools, so they compute orbital mechanics instead
+of guessing at it:
+
+```shell
+claude mcp add interstellar-tools -- npx -y @interstellar-tools/mcp
+```
+
+See [Using the MCP server](https://phun-ky.net/interstellar-tools/guide/mcp/)
+for setup in Claude, ChatGPT, Mistral Le Chat, Gemini, GitHub Copilot, Cursor,
+JetBrains and others.
 
 ## Status
 
@@ -118,10 +152,10 @@ orbital and mission software easier to build and easier to verify.
   escape/circular speeds, specific energy, specific angular momentum,
   peri/apoapsis radii).
 
-> [!WARNING] 
+> [!WARNING]
 >
 > **Validation status**
-> 
+>
 > Equations are unit-tested against internal reference values, but have not yet
 > been systematically cross-validated against operational flight software or
 > high-fidelity ephemerides. Treat this as a learning and prototyping toolkit,

@@ -45,6 +45,10 @@ npm i @interstellar-tools/constants @interstellar-tools/equations @interstellar-
 - **@interstellar-tools/types** Shared, zero-dependency TypeScript types (e.g.,
   3-tuples for vectors, result interfaces).
 
+- **@interstellar-tools/mcp** A Model Context Protocol server that lets AI
+  assistants such as Claude, ChatGPT and Mistral Le Chat call these equations as
+  tools. No install needed: see [Using the MCP server](../mcp/).
+
 ## Conventions (read me first)
 
 - **Units**: All functions expect **SI** inputs and return **SI** outputs.
