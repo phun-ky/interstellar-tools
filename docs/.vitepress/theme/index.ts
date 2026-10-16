@@ -13,7 +13,10 @@ const THEME_LIGHT = 'theme--light';
 
 export default {
   ...DefaultTheme,
-  enhanceApp() {
+  enhanceApp(ctx) {
+    // Keep the default theme's global components (e.g. <Badge>)
+    DefaultTheme.enhanceApp?.(ctx);
+
     if (typeof window !== 'undefined') {
       document.documentElement.classList.add(GLOBAL_CLASS);
     }

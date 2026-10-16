@@ -20,10 +20,22 @@ npm i @interstellar-tools/constants
 npm i @interstellar-tools/equations
 npm i @interstellar-tools/types
 npm i @interstellar-tools/temporal
+npm i @interstellar-tools/mcp
 
-# or add multiple at once
+# or add the core packages at once
 npm i @interstellar-tools/constants @interstellar-tools/equations @interstellar-tools/types @interstellar-tools/temporal
 ```
+
+To use the toolkit from an AI assistant, you don't need to install anything: run
+the MCP server with `npx` and point your assistant at it. Install
+`@interstellar-tools/mcp` only to embed the server in your own application.
+
+```bash
+npx -y @interstellar-tools/mcp          # stdio, for local assistants
+npx -y @interstellar-tools/mcp --http   # Streamable HTTP, for web assistants
+```
+
+See [Using the MCP server](../mcp/) for step-by-step setup.
 
 ## What you get
 
@@ -44,6 +56,10 @@ npm i @interstellar-tools/constants @interstellar-tools/equations @interstellar-
 
 - **@interstellar-tools/types** Shared, zero-dependency TypeScript types (e.g.,
   3-tuples for vectors, result interfaces).
+
+- **@interstellar-tools/mcp** A Model Context Protocol server that lets AI
+  assistants such as Claude, ChatGPT and Mistral Le Chat call these equations as
+  tools. No install needed: see [Using the MCP server](../mcp/).
 
 ## Conventions (read me first)
 

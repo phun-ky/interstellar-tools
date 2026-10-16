@@ -3,6 +3,21 @@
 
 # [**@interstellar-tools/equations**](https://github.com/interstellar-tools/equations)
 
+Curated, tested orbital mechanics and dynamics formulas: Newtonian gravity,
+vis-viva, Kepler’s third law, Kepler’s equation solvers, anomaly conversions,
+Hohmann transfers, rocket equation, J2 perturbations and more. SI units in, SI
+units out, with clear errors for invalid input.
+
+## Documentation
+
+The full documentation lives at
+**[phun-ky.net/interstellar-tools](https://phun-ky.net/interstellar-tools/)**:
+
+- [Getting started](https://phun-ky.net/interstellar-tools/guide/introduction/):
+  installation, unit conventions and recommended practices
+- [API reference for `@interstellar-tools/equations`](https://phun-ky.net/interstellar-tools/api/@interstellar-tools/equations/):
+  every export, with formulas, parameters and examples
+
 ## Installation
 
 - [Node.js](https://nodejs.org/) version 22.9.0 or higher
@@ -125,9 +140,11 @@ orbits, angles, solve for kelper or find true anomalies.
 | [escapeSpeed](functions/escapeSpeed.md)                                                 | **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's gravity from radius ($r$) (ignoring drag/perturbations). |
 | [flightPathAngleFromTrueAnomaly](functions/flightPathAngleFromTrueAnomaly.md)           | **Flight-path angle** ($\gamma$) from **true anomaly** ($\nu$) and eccentricity ($e$).                                                  |
 | [hyperbolicPeriapsisSpeed](functions/hyperbolicPeriapsisSpeed.md)                       | Compute **hyperbolic periapsis speed** for a flyby/escape hyperbola.                                                                    |
+| [j2ArgumentOfPerigeeRate](functions/j2ArgumentOfPerigeeRate.md)                         | Compute **argument of perigee rotation** (J2 secular drift of ω) for an orbit about an oblate body.                                     |
 | [j2NodalPrecessionRate](functions/j2NodalPrecessionRate.md)                             | Compute **J2 nodal precession** (RAAN drift) for an orbit about an oblate body.                                                         |
 | [keplerPeriod](functions/keplerPeriod.md)                                               | **Kepler's 3rd law** - orbital period ($T$) from semi-major axis ($a$) and gravitational parameter ($\mu$).                             |
 | [meanMotion](functions/meanMotion.md)                                                   | Compute **mean motion** for a (near-)circular reference orbit.                                                                          |
+| [periApoapsisRadii](functions/periApoapsisRadii.md)                                     | **Peri/apoapsis radii** from semi-major axis ($a$) and eccentricity ($e$).                                                              |
 | [specificAngularMomentum](functions/specificAngularMomentum.md)                         | **Specific angular momentum** ($h$) (scalar magnitude).                                                                                 |
 | [specificAngularMomentumFromElements](functions/specificAngularMomentumFromElements.md) | **Specific angular momentum** ($h$) from **orbital elements**.                                                                          |
 | [specificMechanicalEnergy](functions/specificMechanicalEnergy.md)                       | **Specific mechanical energy** ($\varepsilon$) of a point mass in a central gravity field.                                              |

@@ -14,7 +14,7 @@ import semver from 'semver';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
-const PACKAGES = ['types', 'constants', 'temporal', 'equations']; // dependency order
+const PACKAGES = ['types', 'constants', 'temporal', 'equations', 'mcp']; // dependency order
 const SCOPE = '@interstellar-tools';
 const PUBLISHED_PATHS = [
   'src',

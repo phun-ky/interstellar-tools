@@ -8,7 +8,7 @@ const METERS_PER_PC: number;
 ```
 
 Defined in:
-[distance.ts:71](https://github.com/phun-ky/interstellar-tools/blob/3ab2964f0fd5817da538571573efe162119cdfe1/packages/constants/src/distance.ts#L71)
+[distance.ts:71](https://github.com/phun-ky/interstellar-tools/blob/c21341f00384c8b187db92798727ddf5a9178d70/packages/constants/src/distance.ts#L71)
 
 Meters in one **parsec**, using the exact IAU 2015 Resolution B2 definition:
 `pc = (648000 / π) au`.

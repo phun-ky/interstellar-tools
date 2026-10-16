@@ -15,7 +15,7 @@ type CwStateDerivative = readonly [
 ```
 
 Defined in:
-[orbits.ts:75](https://github.com/phun-ky/interstellar-tools/blob/3ab2964f0fd5817da538571573efe162119cdfe1/packages/types/src/orbits.ts#L75)
+[orbits.ts:75](https://github.com/phun-ky/interstellar-tools/blob/c21341f00384c8b187db92798727ddf5a9178d70/packages/types/src/orbits.ts#L75)
 
 Time derivative of [CwState](CwState.md) for CW/Hill dynamics.
 

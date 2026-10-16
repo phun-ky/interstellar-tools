@@ -141,10 +141,35 @@ html.ph body {
   background-size: auto, cover;
   background-position: top center;
 
-  & .heading {
-    & .text {
-      color: var(--ph-color-text-accent);
+  /* The hero background is always dark, so keep its text light in both
+     themes. `.ph` lifts specificity over VitePress's scoped rules */
+  .ph & .heading .text {
+    color: #f5f6fa;
+  }
+
+  .ph & .tagline {
+    color: rgba(235, 235, 245, 0.78);
+  }
+}
+
+/* The home nav bar floats over the dark hero until the page scrolls */
+.ph .VPNavBar.home.top {
+  & .VPNavBarTitle .title,
+  & .VPNavBarMenuLink,
+  & .VPNavBarMenuGroup .text,
+  & .VPSocialLink,
+  & .VPNavBarExtra .icon {
+    color: #f5f6fa;
+  }
+
+  @media (max-width: 767px) {
+    & .DocSearch-Search-Icon {
+      color: #f5f6fa;
     }
+  }
+
+  & .VPNavBarHamburger :is(.top, .middle, .bottom) {
+    background-color: #f5f6fa;
   }
 }
 
