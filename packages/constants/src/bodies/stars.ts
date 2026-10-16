@@ -10,6 +10,7 @@ import { Radians, StarsType } from '@interstellar-tools/types';
  * - `color` is for visualization only.
  * - Negative `period` may encode integration direction; the table shows raw values.
  *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
  * {@include ../../../../docs/partials/stars.md}

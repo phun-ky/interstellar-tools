@@ -10,6 +10,7 @@ import { MoonsType, Radians } from '@interstellar-tools/types';
  * - Colors are hex strings used only for visual representation.
  * - The table below is **NOT CURRENTLY** generated from the dataset at build time.
  *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
  * {@include ../../../../docs/partials/moons.md}
