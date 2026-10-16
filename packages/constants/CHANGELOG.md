@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.60.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%400.60.0...%40interstellar-tools%2Fconstants%400.60.1) (2026-10-16)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group with 3 updates ([9a417a3](https://github.com/phun-ky/interstellar-tools/commit/9a417a39c5016a9fab042871ff46556cc28bb6f0))
+* 🤖 Sync the lockfile on release and upgrade to ESLint 10 ([72282d5](https://github.com/phun-ky/interstellar-tools/commit/72282d50dcfd9bf47550dfc9a85979e19babd26f))
+
+### Documentation
+
+* ✏️ Add an MCP guide for AI assistants, refresh the front page and link the docs site ([c21341f](https://github.com/phun-ky/interstellar-tools/commit/c21341f00384c8b187db92798727ddf5a9178d70))
+
+### Bug
+
+* 🐛 Point package homepages at the documentation site ([501217b](https://github.com/phun-ky/interstellar-tools/commit/501217b57b2d87d3d6462de8d3b50c06af97edce))
+
 ## [0.60.0](https://github.com/phun-ky/interstellar-tools/compare/@interstellar-tools/constants@0.59.0...@interstellar-tools/constants@0.60.0) (2026-10-07)
 
 ### Tasks
