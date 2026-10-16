@@ -1,5 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
+import { createRequire } from 'node:module';
+
 import { registerBodies } from './bodies.js';
 import { registerAnomalyTools } from './tools/anomalies.js';
 import { registerManoeuvreTools } from './tools/manoeuvres.js';
@@ -8,7 +10,10 @@ import { registerTimeTools } from './tools/time.js';
 
 export const SERVER_NAME = 'interstellar-tools';
 
-export const SERVER_VERSION = '0.0.0';
+/** The published package version, read from `package.json` so it never drifts. */
+export const SERVER_VERSION: string = createRequire(import.meta.url)(
+  '../package.json'
+).version;
 
 /**
  * Create an MCP server with every interstellar-tools tool and resource
