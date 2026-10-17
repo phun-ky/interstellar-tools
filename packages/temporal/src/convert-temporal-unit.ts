@@ -28,7 +28,6 @@ import { normalizeTemporalUnit } from './normalize-temporal-unit.js';
  * // seconds in a Julian year:
  * SECONDS_PER.yr; // 31_557_600
  * ```
- * @hidden
  */
 export const SECONDS_PER: Record<TemporalUnitType, number> = {
   // SI base & submultiples
