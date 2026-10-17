@@ -108,6 +108,8 @@
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "check:sibling-ranges": "node scripts/check-sibling-ranges.mjs",
+    "check:bestpractices": "node scripts/check-bestpractices.mjs",
+    "bestpractices:url": "node scripts/bestpractices-url.mjs",
     "clean": "npm run clean --workspaces --if-present",
     "commit": "npx git-cz",
     "predocs:gen": "npm run docs:partials:gen",

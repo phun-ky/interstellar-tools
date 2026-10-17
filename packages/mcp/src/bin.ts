@@ -13,23 +13,30 @@ const { values } = parseArgs({
     http: { type: 'boolean', default: false },
     port: { type: 'string', default: process.env.PORT ?? '3000' },
     host: { type: 'string', default: '127.0.0.1' },
+    'allowed-hosts': { type: 'string' },
     help: { type: 'boolean', short: 'h', default: false }
   }
 });
 
 if (values.help) {
   process.stdout
-    .write(`Usage: interstellar-tools-mcp [--http] [--port <n>] [--host <addr>]
+    .write(`Usage: interstellar-tools-mcp [--http] [--port <n>] [--host <addr>] [--allowed-hosts <names>]
 
-  (default)       Serve over stdio, for clients that launch the server themselves
-  --http          Serve Streamable HTTP at http://<host>:<port>/mcp
-  --port <n>      HTTP port (default: $PORT or 3000)
-  --host <addr>   HTTP bind address (default: 127.0.0.1)
+  (default)                Serve over stdio, for clients that launch the server themselves
+  --http                   Serve Streamable HTTP at http://<host>:<port>/mcp
+  --port <n>               HTTP port (default: $PORT or 3000)
+  --host <addr>            HTTP bind address (default: 127.0.0.1)
+  --allowed-hosts <names>  Comma-separated host names requests may use
+                           (default: localhost, 127.0.0.1 and [::1] on loopback)
 `);
 } else if (values.http) {
   const http = await startHttpServer({
     port: Number(values.port),
-    host: values.host
+    host: values.host,
+    allowedHosts: values['allowed-hosts']
+      ?.split(',')
+      .map((name) => name.trim())
+      .filter(Boolean)
   });
   const { address, port } = http.address() as AddressInfo;
 

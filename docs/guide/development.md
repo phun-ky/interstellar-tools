@@ -47,6 +47,14 @@ Each package has two TypeScript configs:
 - `tsconfig.json` covers sources and tests with Node types and emits nothing.
   Editors pick it up, and `npm run typecheck` uses it.
 
+### Links from the security metadata
+
+`.bestpractices.json` (answers for the
+[OpenSSF Best Practices badge](https://www.bestpractices.dev/projects/15627))
+and `security-insights.yml` link to files, docs pages and headings in this
+repository. `npm run check:bestpractices` checks that they all exist, and runs
+in CI. If you move or rename one of them, update the link in those files.
+
 ## Commit
 
 To commit, we use
@@ -91,5 +99,10 @@ its own. The script fills that gap.
 
 ## Clean code
 
-[ESLint](https://eslint.org/), [Prettier](https://prettier.io/) and
-[Putout](https://github.com/coderaiser/putout) is used
+Code follows the project's [ESLint](https://eslint.org/) configuration
+(`eslint-config-phun-ky`, which includes [Prettier](https://prettier.io/)
+formatting) and TypeScript in strict mode. Contributions must pass
+`npm run lint` and `npm run typecheck`; both run in CI on every pull request.
+See
+[Contributing code](https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md#contributing-code)
+for the tests policy.

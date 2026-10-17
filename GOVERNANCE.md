@@ -1,0 +1,53 @@
+# Governance
+
+Interstellar Tools is a small open source project with a single maintainer. This
+document describes how decisions are made, who does what, and what happens if
+the maintainer can't continue.
+
+## Model
+
+The project follows a **maintainer-led** model: the maintainer makes the final
+decision on what goes into the project, guided by the [roadmap](ROADMAP.md), the
+[design principles](https://phun-ky.net/interstellar-tools/guide/introduction/about#design-principles)
+and the discussion with contributors.
+
+Decisions are made in public:
+
+- **Proposals** are made as
+  [GitHub issues](https://github.com/phun-ky/interstellar-tools/issues). Larger
+  changes, such as new packages or breaking changes, are discussed in an issue
+  before work starts.
+- **Changes** are made as pull requests, reviewed by the maintainer, and merged
+  only when the Checks workflow passes.
+- **Disagreements** are resolved by discussion in the issue or pull request. If
+  that doesn't settle it, the maintainer decides and explains why.
+- **Conduct** is governed by the [Code of Conduct](CODE_OF_CONDUCT.md), which
+  the maintainer enforces.
+
+## Roles
+
+| Role            | Who                                                                        | Responsibilities                                                                                                                                                                                               |
+| --------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Maintainer**  | Alexander Vassbotn Røyne-Helgesen ([@phun-ky](https://github.com/phun-ky)) | Sets the direction and roadmap; triages issues; reviews and merges pull requests; makes releases; handles security reports; enforces the Code of Conduct; manages the repository, npm organisation and website |
+| **Contributor** | Anyone who opens an issue or a pull request                                | Follows the [contributing guide](CONTRIBUTING.md) and the Code of Conduct; includes tests with code changes                                                                                                    |
+
+### Becoming a maintainer
+
+Contributors who have made sustained, high-quality contributions may be invited
+to become maintainers. A new maintainer gets write access to the repository and
+is added to this document, and from then on the project needs a review from a
+maintainer other than the author before merging.
+
+## Continuity
+
+Today, one person holds everything needed to run the project: admin access to
+the [GitHub repository](https://github.com/phun-ky/interstellar-tools),
+ownership of the
+[`@interstellar-tools` npm organisation](https://www.npmjs.com/org/interstellar-tools),
+and the `phun-ky.net` domain that hosts the documentation.
+
+- **Releases** are published from GitHub Actions with npm trusted publishing, so
+  publishing needs no personal npm token, only access to the repository and the
+  npm organisation.
+- **The code** is MIT-licensed. Anyone can fork it and continue the work under a
+  new name if the project stops.

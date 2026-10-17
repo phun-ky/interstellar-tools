@@ -1,3 +1,12 @@
+# Equation backlog
+
+Formulas that could be added to `@interstellar-tools/equations`, kept here as a
+reference. When work on one starts, it gets a
+[GitHub issue](https://github.com/phun-ky/interstellar-tools/issues) that links
+back to it. Other planned work (datasets, propagation, the road to 1.0) is
+tracked in the issues and the
+[1.0 milestone](https://github.com/phun-ky/interstellar-tools/milestone/1); see
+the [roadmap](ROADMAP.md).
 
 ---
 
@@ -221,31 +230,5 @@
 - **Orbit ops:** Vis-viva, Kepler’s eq., CW/Hill
 - **Interplanetary:** \(C*3/v*\infty\), gravity-assist \(\delta\), SOI
 - **LEO lifetime/groundtrack:** Drag \(a_D\), J2 precession
-
----
-
-## Datasets
-
-- **Orientation of pairs:** members of a pair (such as Alpha Centauri A and B)
-  share `orbit.angle`, but their periapses point in opposite directions. Without
-  an argument of periapsis (`orbit.w`) in a defined reference frame, a renderer
-  has to rotate one member's ellipse by 180° itself. Add `w` (and the frame it is
-  measured in) for star systems.
-- **Comet angles:** `COMETS` stores the mean anomaly at J2000 in `orbit.angle`,
-  while every other dataset stores the true anomaly. Convert the comets to the
-  true anomaly, so `orbit.angle` means the same everywhere.
-- **Moon angles:** 26 of the 27 moons in `MOONS` have `orbit.angle` set to 0, a
-  placeholder rather than their true anomaly at J2000 (only the Moon has a
-  value). Compute real J2000 angles from published elements, as `PLANETS` does,
-  and add a test like the planets' conic-equation check.
-
-## Propagation
-
-- **Animation frames vs. a position at a date:** `advanceMeanAnomaly` caps the
-  time step at 10 orbital periods (1 when $e \geq 0.9$), which suits animation
-  frames but silently returns the starting angle for long spans, such as J2000
-  to today. Keep it for frames, and add a second function for a position at a
-  given time or after any span, without the cap (for example
-  `meanAnomalyAt(orbit, elapsed)`).
 
 ---

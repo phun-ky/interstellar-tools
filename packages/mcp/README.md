@@ -44,7 +44,8 @@ claude mcp add interstellar-tools -- npx -y @interstellar-tools/mcp
 
 Web assistants such as claude.ai, ChatGPT and Mistral Le Chat connect to remote
 servers only. Serve Streamable HTTP and put it behind HTTPS (a tunnel such as
-`cloudflared tunnel --url http://localhost:3000` is enough for testing):
+`cloudflared tunnel --url http://localhost:3000 --http-host-header localhost:3000`
+is enough for testing):
 
 ```shell
 npx -y @interstellar-tools/mcp --http --port 3000
@@ -52,7 +53,10 @@ npx -y @interstellar-tools/mcp --http --port 3000
 ```
 
 The server is stateless and binds to `127.0.0.1` unless you pass
-`--host 0.0.0.0`. Step-by-step setup for each assistant is in the
+`--host 0.0.0.0`. On loopback it only answers requests addressed to `localhost`,
+`127.0.0.1` or `[::1]`, which protects it from DNS rebinding; pass
+`--allowed-hosts` with your public host name when you serve it elsewhere.
+Step-by-step setup for each assistant is in the
 [MCP guide](https://phun-ky.net/interstellar-tools/guide/mcp/).
 
 ## Units

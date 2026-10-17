@@ -7,6 +7,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/phun-ky/interstellar-tools)
 [![build](https://github.com/phun-ky/interstellar-tools/actions/workflows/check.yml/badge.svg)](https://github.com/phun-ky/interstellar-tools/actions/workflows/check.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/phun-ky/interstellar-tools/badge)](https://scorecard.dev/viewer/?uri=github.com/phun-ky/interstellar-tools)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15627/badge)](https://www.bestpractices.dev/projects/15627)
 
 ---
 
@@ -228,6 +229,11 @@ This project aims to be:
 - **Open**: free to use, adapt, and extend under MIT.
 - **Inclusive**: welcoming to newcomers and experts alike.
 - **Practical**: focused on real-world reliability and clarity over spectacle.
+
+How the project is run, who does what and where it's heading are described in
+[GOVERNANCE.md](GOVERNANCE.md) and [ROADMAP.md](ROADMAP.md). Security
+expectations and the assurance case are in [SECURITY.md](SECURITY.md) and
+[ASSURANCE.md](ASSURANCE.md).
 
 ---
 

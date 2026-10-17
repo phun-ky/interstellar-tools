@@ -247,11 +247,15 @@ npx -y @interstellar-tools/mcp --http --port 3000
 # interstellar-tools MCP server listening on http://127.0.0.1:3000/mcp
 ```
 
-| Option          | Default           | Description                                                  |
-| --------------- | ----------------- | ------------------------------------------------------------ |
-| `--http`        | off (stdio)       | Serve Streamable HTTP at `/mcp`                              |
-| `--port <n>`    | `$PORT` or `3000` | Port to listen on                                            |
-| `--host <addr>` | `127.0.0.1`       | Interface to bind; use `0.0.0.0` in a container or on a host |
+| Option                    | Default                                      | Description                                                  |
+| ------------------------- | -------------------------------------------- | ------------------------------------------------------------ |
+| `--http`                  | off (stdio)                                  | Serve Streamable HTTP at `/mcp`                              |
+| `--port <n>`              | `$PORT` or `3000`                            | Port to listen on                                            |
+| `--host <addr>`           | `127.0.0.1`                                  | Interface to bind; use `0.0.0.0` in a container or on a host |
+| `--allowed-hosts <names>` | `localhost`, `127.0.0.1`, `[::1]` (loopback) | Comma-separated host names that requests may be addressed to |
+
+On loopback, the server rejects requests addressed to any other host name with
+`403`. That stops a web page from reaching it through DNS rebinding.
 
 ### 2. Give it a public HTTPS address
 
@@ -260,25 +264,30 @@ For trying things out, a tunnel is the quickest route. Either of these works:
 ::: code-group
 
 ```shell [Cloudflare (no account)]
-cloudflared tunnel --url http://localhost:3000
+cloudflared tunnel --url http://localhost:3000 --http-host-header localhost:3000
 # → https://<random-words>.trycloudflare.com
 ```
 
 ```shell [ngrok]
 ngrok config add-authtoken <your-token>
-ngrok http 3000
+ngrok http 3000 --host-header=rewrite
 # → https://<name>.ngrok-free.dev
 ```
 
 :::
+
+The host header option makes the tunnel address the server as `localhost`, so it
+passes the server's host check.
 
 Your server URL is the tunnel address **plus `/mcp`**, for example
 `https://example-words.trycloudflare.com/mcp`. Cloudflare quick-tunnel URLs
 change every time you start them.
 
 For something permanent, run the same command on any Node.js host (a VPS, a
-container platform, Fly.io, Render, …) with `--host 0.0.0.0` behind HTTPS. The
-server is stateless, so it scales horizontally without any session storage.
+container platform, Fly.io, Render, …) with `--host 0.0.0.0` behind HTTPS, and
+`--allowed-hosts` set to your public host name, for example
+`--allowed-hosts mcp.example.com`. The server is stateless, so it scales
+horizontally without any session storage.
 
 ::: tip No secrets, no authentication
 

@@ -11,7 +11,7 @@ function advanceMeanAnomaly(
 ```
 
 Defined in:
-[anomalies/advance-mean-anomaly.ts:63](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/equations/src/categories/anomalies/advance-mean-anomaly.ts#L63)
+[anomalies/advance-mean-anomaly.ts:63](https://github.com/phun-ky/interstellar-tools/blob/e34e70d11d6992afbf0893b789b57877dbc6210d/packages/equations/src/categories/anomalies/advance-mean-anomaly.ts#L63)
 
 Advances an orbit by a time step and returns its new **mean anomaly** ($M$).
 
