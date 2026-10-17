@@ -235,4 +235,13 @@
   while every other dataset stores the true anomaly. Convert the comets to the
   true anomaly, so `orbit.angle` means the same everywhere.
 
+## Propagation
+
+- **Animation frames vs. a position at a date:** `advanceMeanAnomaly` caps the
+  time step at 10 orbital periods (1 when $e \geq 0.9$), which suits animation
+  frames but silently returns the starting angle for long spans, such as J2000
+  to today. Keep it for frames, and add a second function for a position at a
+  given time or after any span, without the cap (for example
+  `meanAnomalyAt(orbit, elapsed)`).
+
 ---
