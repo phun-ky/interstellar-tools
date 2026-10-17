@@ -21,6 +21,11 @@ on:
       - 'CONTRIBUTING.md'
       - 'CODE_OF_CONDUCT.md'
       - 'SECURITY.md'
+      - 'GOVERNANCE.md'
+      - 'ROADMAP.md'
+      - 'ASSURANCE.md'
+      - '.bestpractices.json'
+      - 'security-insights.yml'
       - '.browserslistrc'
       - 'eslint.config.mjs'
       - 'typedoc.json'
@@ -42,6 +47,11 @@ on:
       - 'CONTRIBUTING.md'
       - 'CODE_OF_CONDUCT.md'
       - 'SECURITY.md'
+      - 'GOVERNANCE.md'
+      - 'ROADMAP.md'
+      - 'ASSURANCE.md'
+      - '.bestpractices.json'
+      - 'security-insights.yml'
       - '.browserslistrc'
       - 'eslint.config.mjs'
       - 'typedoc.json'
@@ -82,6 +92,8 @@ jobs:
           npm ci
       - name: Check sibling ranges
         run: npm run check:sibling-ranges
+      - name: Check best practices answers # Every linked file, page and heading must exist
+        run: npm run check:bestpractices
       - name: Build # Build all packages
         run: npm run build
       - name: Lint # After build: scripts/partials import from packages/*/dist

@@ -1,0 +1,126 @@
+header:
+  schema-version: 2.2.0
+  last-updated: '2026-10-17'
+  last-reviewed: '2026-10-17'
+  url: https://raw.githubusercontent.com/phun-ky/interstellar-tools/main/security-insights.yml
+  comment: |
+    Security information for Interstellar Tools, in the OpenSSF Security
+    Insights format. Keep it in step with SECURITY.md and GOVERNANCE.md.
+
+project:
+  name: Interstellar Tools
+  homepage: https://phun-ky.net/interstellar-tools/
+  roadmap: https://github.com/phun-ky/interstellar-tools/blob/main/ROADMAP.md
+  funding: https://github.com/sponsors/phun-ky
+  administrators:
+    - name: Alexander Vassbotn Røyne-Helgesen
+      social: https://github.com/phun-ky
+      primary: true
+  documentation:
+    quickstart-guide: https://phun-ky.net/interstellar-tools/guide/introduction/
+    detailed-guide: https://phun-ky.net/interstellar-tools/
+    design: https://phun-ky.net/interstellar-tools/guide/architecture
+    code-of-conduct: https://github.com/phun-ky/interstellar-tools/blob/main/CODE_OF_CONDUCT.md
+    release-process: https://phun-ky.net/interstellar-tools/guide/development#releases
+    support-policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#supported-versions
+    signature-verification: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#verifying-releases
+  repositories:
+    - name: interstellar-tools
+      url: https://github.com/phun-ky/interstellar-tools
+      comment: |
+        The monorepo for all five packages: types, constants, temporal,
+        equations and mcp.
+  vulnerability-reporting:
+    reports-accepted: true
+    bug-bounty-available: false
+    policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md
+    contact:
+      name: Interstellar Tools security contact
+      email: security@phun-ky.net
+      primary: true
+
+repository:
+  url: https://github.com/phun-ky/interstellar-tools
+  status: active
+  accepts-change-request: true
+  accepts-automated-change-request: true
+  no-third-party-packages: false
+  core-team:
+    - name: Alexander Vassbotn Røyne-Helgesen
+      social: https://github.com/phun-ky
+      primary: true
+  documentation:
+    contributing-guide: https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md
+    review-policy: https://github.com/phun-ky/interstellar-tools/blob/main/GOVERNANCE.md#model
+    security-policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md
+    governance: https://github.com/phun-ky/interstellar-tools/blob/main/GOVERNANCE.md
+    dependency-management-policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#security-policy
+  license:
+    url: https://github.com/phun-ky/interstellar-tools/blob/main/LICENSE
+    expression: MIT
+  release:
+    automated-pipeline: true
+    changelog: https://github.com/phun-ky/interstellar-tools/releases
+    distribution-points:
+      - uri: pkg:npm/%40interstellar-tools/types
+        comment: npm package
+      - uri: pkg:npm/%40interstellar-tools/constants
+        comment: npm package
+      - uri: pkg:npm/%40interstellar-tools/temporal
+        comment: npm package
+      - uri: pkg:npm/%40interstellar-tools/equations
+        comment: npm package
+      - uri: pkg:npm/%40interstellar-tools/mcp
+        comment: npm package
+    attestations:
+      - name: npm provenance
+        predicate-uri: https://slsa.dev/provenance/v1
+        location: https://registry.npmjs.org/-/npm/v1/attestations/@interstellar-tools%2f{package}@{version}
+        comment: |
+          Every package is published from GitHub Actions with npm trusted
+          publishing and a Sigstore-signed provenance attestation. Replace
+          {package} and {version}, or run npm audit signatures.
+  security:
+    assessments:
+      self:
+        evidence: https://github.com/phun-ky/interstellar-tools/blob/main/ASSURANCE.md
+        date: '2026-10-17'
+        comment: |
+          The assurance case covers the threat model, trust boundaries, the
+          secure design principles applied and the common weaknesses countered.
+    tools:
+      - name: CodeQL
+        type: SAST
+        rulesets:
+          - default
+        integration:
+          adhoc: false
+          ci: true
+          release: false
+        results: {}
+        comment: |
+          GitHub default setup, scanning JavaScript/TypeScript and the GitHub
+          Actions workflows on every push to main and every pull request.
+      - name: Dependabot
+        type: SCA
+        rulesets:
+          - default
+        integration:
+          adhoc: true
+          ci: false
+          release: false
+        results: {}
+        comment: |
+          Weekly checks of the npm dependencies, with update pull requests.
+      - name: OpenSSF Scorecard
+        type: other
+        rulesets:
+          - default
+        integration:
+          adhoc: false
+          ci: true
+          release: false
+        results: {}
+        comment: |
+          Runs on every push to main; results at
+          https://scorecard.dev/viewer/?uri=github.com/phun-ky/interstellar-tools
