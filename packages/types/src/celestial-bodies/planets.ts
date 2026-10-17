@@ -1,6 +1,5 @@
-import { DistanceInterface, MeasureInterface } from '../distance.js';
-import type { Radians } from '../numeric.js';
-import { TemporalInterface } from '../temporal.js';
+import { DistanceInterface } from '../distance.js';
+import type { OrbitInterface } from '../orbits.js';
 
 /**
  * Represents **2D coordinates** for planetary positioning.
@@ -20,13 +19,11 @@ export interface CartesianCoordinatesInterface {
 }
 
 /**
- * Represents a **planet** in the solar system simulation.
+ * Represents a **planet** or **planetoid**.
  *
- * **Orbital Properties:**
- * - **Semi-major axis (`a`)**: Defines the planet’s orbit size in **Astronomical Units (AU)**.
- * - **Orbital eccentricity (`e`)**: Determines how elliptical the orbit is ($0 =$ circular, closer to $1 =$ highly elliptical).
- * - **Orbital period (`period`)**: Time taken for one full orbit in **Earth days**.
- * - **True anomaly (`angle`)**: The planet’s current position in its orbit (in **radians**).
+ * A planet is bound to one `parent`: usually a star, a binary system for a
+ * circumbinary planet, or the galaxy for a rogue planet. Its `orbit` describes
+ * the motion around that parent; see {@link OrbitInterface}.
  *
  * **Classification & Visualization:**
  * - **Type (`type`)**: Scientific classification of the planet (e.g., **terrestrial, gas giant, ice planet**).
@@ -37,16 +34,19 @@ export interface CartesianCoordinatesInterface {
  * @example
  * ```ts
  * const earth: PlanetInterface = {
+ *   id: 'earth',
  *   name: 'Earth',
  *   type: 'terrestrial planet',
  *   category: 'planet',
  *   color: '#4287f5',
- *   system: 'Sun',
+ *   parent: 'sun',
+ *   orbit: {
+ *     a: { value: 1.0, unit: 'au' },
+ *     e: 0.0167,
+ *     period: { value: -365.256, unit: 'd' },
+ *     angle: 1.753 as Radians
+ *   },
  *   radius: { value: 6371, unit: 'km' },
- *   a: { value: 1.0, unit: 'au' },
- *   e: 0.0167,
- *   period: { value: 365.25, unit: 'd' },
- *   angle: 0,
  *   x: { value: 0, unit: 'au' },
  *   y: { value: 1, unit: 'au' },
  *   z: { value: 0, unit: 'au' }
@@ -55,6 +55,8 @@ export interface CartesianCoordinatesInterface {
  * @group Celestial Bodies
  */
 export interface PlanetInterface {
+  /** Stable identifier, used by `parent` references. Never translated. */
+  id: string;
   /** Name of the planet (e.g., "Earth", "Mars"). */
   name: string;
   /** Type classification of the planet. */
@@ -81,28 +83,22 @@ export interface PlanetInterface {
   category: 'planet' | 'planetoid';
   /** Visual representation color. */
   color: string;
-  /** The planetary system in which the planet exists. */
-  system: string;
+  /** Id of the star, system or galaxy the planet is bound to. */
+  parent?: string;
+  /** Orbit around the parent. */
+  orbit?: OrbitInterface;
   /** Physical radius of the planet in kilometres. */
   radius: DistanceInterface;
-  /** Semi-major axis of the orbit in AU. */
-  a: MeasureInterface;
-  /** Orbital eccentricity (0 = circular, closer to 1 = highly elliptical). */
-  e: number;
   /** Semi-minor axis of the orbit (calculated from `a` and `e`). */
   miA?: number;
   /** X-offset for the ellipse focus (accounts for eccentricity). */
   focus_x?: number;
-  /** Current orbital position in radians (True Anomaly). */
-  angle: Radians;
-  /** X-coordinate in a distance-based system. */
+  /** X-coordinate in the parent's frame. */
   x: DistanceInterface;
-  /** Y-coordinate in a distance-based system. */
+  /** Y-coordinate in the parent's frame. */
   y: DistanceInterface;
-  /** Z-coordinate in a distance-based system. */
+  /** Z-coordinate in the parent's frame. */
   z: DistanceInterface;
-  /** Orbital period in Earth days. Negative values indicate counter clockwise orbit */
-  period: TemporalInterface;
   /** Precomputed orbital path points for visualization (optional). */
   orbitPath?: CartesianCoordinatesInterface[];
 }

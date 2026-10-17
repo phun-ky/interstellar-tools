@@ -1,7 +1,7 @@
 import { TWO_PI } from '@interstellar-tools/constants';
 import { convertTemporalUnit } from '@interstellar-tools/temporal';
 import type {
-  CelestialBodyType,
+  OrbitInterface,
   Radians,
   TemporalInterface
 } from '@interstellar-tools/types';
@@ -30,25 +30,24 @@ import { areEqual } from './utils/are-equal.js';
  *   where $P$ is the orbital period in days.
  * - $\Delta T$ is the time step.
  *
- * @param {CelestialBodyType} body - The celestial body for which to compute the mean anomaly.
+ * @param {Pick<OrbitInterface, 'e' | 'angle' | 'period'>} orbit - The body's orbit, for example `body.orbit` from a dataset.
  * @param {TemporalInterface} timeStep - The time step over which to compute the change.
  * @returns {Radians} The computed mean anomaly in radians.
  *
- * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If the body's eccentricity is outside the range $0 \leq e < 1$.
+ * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If the orbit's eccentricity is outside the range $0 \leq e < 1$.
  *
  * @example
  * ```ts
  * import { meanToEccentricAnomaly } from '@interstellar-tools/equations';
  *
- * const mars: CelestialBodyType = {
- *   name: 'Mars',
+ * const marsOrbit = {
  *   e: 0.0934, // Eccentricity of Mars' orbit
- *   angle: 1.047, // Initial true anomaly (in radians)
- *   period: { value: 687, unit: 'day' }, // Orbital period in days
+ *   angle: 1.047 as Radians, // Initial true anomaly (in radians)
+ *   period: { value: 687, unit: 'd' } // Orbital period in days
  * };
  *
- * const timeStep: TemporalInterface = { value: 1, unit: 'day' }; // 1-day step
- * const meanAnomaly = meanToEccentricAnomaly(mars, timeStep);
+ * const timeStep: TemporalInterface = { value: 1, unit: 'd' }; // 1-day step
+ * const meanAnomaly = meanToEccentricAnomaly(marsOrbit, timeStep);
  * console.log(meanAnomaly); // Output: Computed mean anomaly in radians
  * ```
  *
@@ -58,10 +57,10 @@ import { areEqual } from './utils/are-equal.js';
  */
 /* node:coverage enable */
 export const meanToEccentricAnomaly = (
-  body: CelestialBodyType,
+  orbit: Pick<OrbitInterface, 'e' | 'angle' | 'period'>,
   timeStep: TemporalInterface
 ): Radians => {
-  const { e, angle, period } = body;
+  const { e, angle, period } = orbit;
 
   if (e < 0 || e >= 1) {
     throw new RangeError(

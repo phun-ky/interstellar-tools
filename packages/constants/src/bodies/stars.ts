@@ -5,8 +5,9 @@ import { Radians, StarsType } from '@interstellar-tools/types';
  *
  * ::: info
  *
- * - Units: `radius` (km); galactocentric coordinates `x`,`y`,`z` (ly); orbital semi-major axis `a` (ly);
- *   `period` in million years (Myr); orbital angles are unitless here (radians) if provided.
+ * - Each star names its `parent` (a galaxy or a system barycenter) and its `orbit` around it.
+ * - Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly, `period` in Myr.
+ *   Orbits within a system: `a` in au, `period` in yr or kyr. `angle` in radians. `mass` in M☉.
  * - `color` is for visualization only.
  * - Negative `period` may encode integration direction; the table shows raw values.
  *
@@ -26,135 +27,157 @@ import { Radians, StarsType } from '@interstellar-tools/types';
  * ```
  */
 export const STARS: StarsType = [
-  // #region datasetStars
   {
+    id: 'sun',
     name: 'Sun',
     type: 'G2V', // Yellow Dwarf, Main Sequence
     category: 'star',
-    system: { name: 'Solar System', type: 'planetary system' },
+    /** Bound to the Solar System barycenter, which carries the galactic orbit */
+    parent: 'solar-system',
+    // No orbit: the Sun's wobble around the barycenter is the sum of the planets' pulls, not a Kepler orbit
+    /** Mass in solar masses */
+    mass: 1,
     /** Radius in km */
     radius: { value: 696340, unit: 'km' },
     /** Visual representation color */
-    color: '#fff5f1',
-    /** Galactic position in light-years (relative to Milky Way center) */
-    x: { value: 0, unit: 'ly' },
-    y: { value: 27000, unit: 'ly' },
-    z: { value: 20, unit: 'ly' },
-    /** Semi-major axis in light-years */
-    a: { value: 27000, unit: 'ly' },
-    /** Orbital eccentricity */
-    e: 0.07,
-    /** Initial angle in orbit */
-    angle: 1.5707963267948966 as Radians,
-    /** Orbital period in million years (Myr) */
-    period: { value: -230, unit: 'Myr' }
+    color: '#fff5f1'
   },
-  // #endregion datasetStars
+  // #region datasetStars
   {
+    id: 'vega',
     name: 'Vega',
     type: 'A0V', // White-Blue Main Sequence
     category: 'star',
-    system: { name: 'Lyra', type: 'stellar system' },
+    /** A single star orbits the galaxy directly */
+    parent: 'milky-way',
+    orbit: {
+      /** Semi-major axis in light-years */
+      a: { value: 27230.011753394454, unit: 'ly' },
+      /** Orbital eccentricity */
+      e: 0.005,
+      /** Orbital period in million years (Myr) */
+      period: { value: -480, unit: 'Myr' },
+      /** Initial angle in orbit */
+      angle: 1.569867205171707 as Radians
+    },
+    /** Radius in km */
     radius: { value: 2600000, unit: 'km' },
+    /** Visual representation color */
     color: 'blue',
+    /** Galactic position in light-years (relative to Milky Way center) */
     x: { value: 25.3, unit: 'ly' },
     y: { value: 27230.011753394454, unit: 'ly' },
-    z: { value: 0, unit: 'ly' },
-    e: 0.005,
-    a: { value: 27230.011753394454, unit: 'ly' },
-    angle: 1.569867205171707 as Radians,
-    period: { value: -480, unit: 'Myr' }
+    z: { value: 0, unit: 'ly' }
   },
+  // #endregion datasetStars
   {
+    id: 'altair',
     name: 'Altair',
     type: 'A7V', // White Main Sequence
     category: 'star',
-    system: { name: 'Aquila', type: 'stellar system' },
+    parent: 'milky-way',
+    orbit: {
+      a: { value: 27050.005155082687, unit: 'ly' },
+      e: 0.004,
+      period: { value: -410, unit: 'Myr' },
+      angle: 1.5701789517599378 as Radians
+    },
     radius: { value: 1700000, unit: 'km' },
     color: 'white',
     x: { value: 16.7, unit: 'ly' },
     y: { value: 27050.005155082687, unit: 'ly' },
-    z: { value: 0, unit: 'ly' },
-    e: 0.004,
-    a: { value: 27050.005155082687, unit: 'ly' },
-    angle: 1.5701789517599378 as Radians,
-    period: { value: -410, unit: 'Myr' }
+    z: { value: 0, unit: 'ly' }
   },
   {
+    id: 'deneb',
     name: 'Deneb',
     type: 'A2Ia', // White-Blue Supergiant
     category: 'star',
-    system: { name: 'Cygnus', type: 'stellar system' },
+    parent: 'milky-way',
+    orbit: {
+      a: { value: 27375.280016832705, unit: 'ly' },
+      e: 0.009,
+      period: { value: -720, unit: 'Myr' },
+      angle: 1.475524958596149 as Radians
+    },
     radius: { value: 108000000, unit: 'km' },
     color: '#cad7ff', // A-type (blue-white)
     x: { value: 2616, unit: 'ly' },
     y: { value: 27375.280016832705, unit: 'ly' },
-    z: { value: 0, unit: 'ly' },
-    e: 0.009,
-    a: { value: 27375.280016832705, unit: 'ly' },
-    angle: 1.475524958596149 as Radians,
-    period: { value: -720, unit: 'Myr' }
+    z: { value: 0, unit: 'ly' }
   },
   {
+    // Spica is a close binary; modelled as a single star until the binary is added
+    id: 'spica',
     name: 'Spica',
     type: 'B1III-IV', // Blue Giant/Subgiant
     category: 'star',
-    system: { name: 'Virgo', type: 'stellar system' },
+    parent: 'milky-way',
+    orbit: {
+      a: { value: 27201.148872795795, unit: 'ly' },
+      e: 0.006,
+      period: { value: -550, unit: 'Myr' },
+      angle: 1.5616057972952029 as Radians
+    },
     radius: { value: 73500000, unit: 'km' },
     color: 'blue',
     x: { value: 250, unit: 'ly' },
     y: { value: 27201.148872795795, unit: 'ly' },
-    z: { value: 0, unit: 'ly' },
-    e: 0.006,
-    a: { value: 27201.148872795795, unit: 'ly' },
-    angle: 1.5616057972952029 as Radians,
-    period: { value: -550, unit: 'Myr' }
+    z: { value: 0, unit: 'ly' }
   },
-  // Alpha Centauri: ~4.4 ly away, so its galactic orbit (a, e, period) is approximated by the Sun's.
-  // Radii from Kervella et al. 2017 (A, B) and Ribas et al. 2017 (Proxima), with R☉ = 695 700 km.
+  // Alpha Centauri: A and B orbit the AB barycenter; the AB pair and Proxima orbit the
+  // system barycenter (see SYSTEMS). Each pair shares e, period and angle, and splits its
+  // separation by mass ratio, a₁ = a·m₂/(m₁ + m₂).
+  // A-B orbit, masses and radii: Akeson et al. 2021, Table 8 (P, e, periastron 1955.564, and a
+  // separation of 17.4930 arcsec at a parallax of 750.81 mas = 23.30 au).
+  // Proxima's orbit and mass: Kervella et al. 2017, Tables 1 and 3 (a 8.7 kau, e 0.50, P 547 kyr,
+  // next periastron in 283 kyr). Proxima's radius from Ribas et al. 2017. R☉ = 695 700 km.
   {
+    id: 'alpha-centauri-a',
     name: 'Alpha Centauri A',
     type: 'G2V', // Yellow Dwarf, Main Sequence
     category: 'star',
-    system: { name: 'Alpha Centauri', type: 'stellar system' },
-    radius: { value: 851119, unit: 'km' }, // 1.2234 R☉
-    color: '#fff4ea', // G-type
-    x: { value: 4.37, unit: 'ly' },
-    y: { value: 27000.000353646294, unit: 'ly' },
-    z: { value: 0, unit: 'ly' },
-    e: 0.07,
-    a: { value: 27000.000353646294, unit: 'ly' },
-    angle: 1.570634474946578 as Radians,
-    period: { value: -230, unit: 'Myr' }
+    parent: 'alpha-centauri-ab',
+    orbit: {
+      a: { value: 10.66, unit: 'au' }, // 23.30 au × m_B / (m_A + m_B)
+      e: 0.51947,
+      period: { value: -79.762, unit: 'yr' },
+      angle: 3.275243601437025 as Radians // true anomaly at J2000
+    },
+    mass: 1.0788,
+    radius: { value: 847015, unit: 'km' }, // 1.2175 R☉
+    color: '#fff4ea' // G-type
   },
   {
+    id: 'alpha-centauri-b',
     name: 'Alpha Centauri B',
     type: 'K1V', // Orange Dwarf, Main Sequence
     category: 'star',
-    system: { name: 'Alpha Centauri', type: 'stellar system' },
-    radius: { value: 600528, unit: 'km' }, // 0.8632 R☉
-    color: '#ffd2a1', // K-type
-    x: { value: 4.37, unit: 'ly' },
-    y: { value: 27000.000353646294, unit: 'ly' },
-    z: { value: 0, unit: 'ly' },
-    e: 0.07,
-    a: { value: 27000.000353646294, unit: 'ly' },
-    angle: 1.570634474946578 as Radians,
-    period: { value: -230, unit: 'Myr' }
+    parent: 'alpha-centauri-ab',
+    orbit: {
+      a: { value: 12.64, unit: 'au' }, // 23.30 au × m_A / (m_A + m_B)
+      e: 0.51947,
+      period: { value: -79.762, unit: 'yr' },
+      angle: 3.275243601437025 as Radians
+    },
+    mass: 0.9092,
+    radius: { value: 597676, unit: 'km' }, // 0.8591 R☉
+    color: '#ffd2a1' // K-type
   },
   {
+    id: 'proxima-centauri',
     name: 'Proxima Centauri',
     type: 'M5.5Ve', // Red Dwarf, flare star
     category: 'star',
-    system: { name: 'Alpha Centauri', type: 'stellar system' },
+    parent: 'alpha-centauri',
+    orbit: {
+      a: { value: 8197, unit: 'au' }, // 8700 au × m_AB / (m_AB + m_P)
+      e: 0.5,
+      period: { value: -547, unit: 'kyr' },
+      angle: 3.099566485428788 as Radians // near apastron, 13.0 kau from AB
+    },
+    mass: 0.1221,
     radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
-    color: '#ffcc6f', // M-type
-    x: { value: 4.2465, unit: 'ly' },
-    y: { value: 27000.00033394004, unit: 'ly' },
-    z: { value: 0, unit: 'ly' },
-    e: 0.07,
-    a: { value: 27000.00033394004, unit: 'ly' },
-    angle: 1.570639049020361 as Radians,
-    period: { value: -230, unit: 'Myr' }
+    color: '#ffcc6f' // M-type
   }
 ] as const satisfies StarsType;

@@ -30,7 +30,9 @@ import { AsteroidBeltsType } from '@interstellar-tools/types';
 export const ASTEROID_BELTS: AsteroidBeltsType = [
   // #region datasetAsteroidBelts
   {
+    id: 'main-asteroid-belt',
     name: 'Main Asteroid Belt',
+    parent: 'sun',
     innerRadius: 2.1,
     outerRadius: 3.3,
     color: '#C4C4C4', // Light gray (rocky bodies)
@@ -39,7 +41,9 @@ export const ASTEROID_BELTS: AsteroidBeltsType = [
   },
   // #endregion datasetAsteroidBelts
   {
+    id: 'kuiper-belt',
     name: 'Kuiper Belt',
+    parent: 'sun',
     innerRadius: 30,
     outerRadius: 50,
     color: '#88CCEE', // Light blue (icy bodies)

@@ -3,10 +3,7 @@ import test, { describe } from 'node:test';
 
 import { computeAngle } from '../compute-angle.js';
 import { wrapAngle } from '../wrap-angle.js';
-import {
-  CelestialBodyType,
-  TimeStepInterface
-} from '@interstellar-tools/types';
+import { OrbitInterface, TimeStepInterface } from '@interstellar-tools/types';
 
 describe('computeAngle', () => {
   // Test cases
@@ -50,13 +47,13 @@ describe('computeAngle', () => {
     testCases.forEach(({ celestialBody, timeStep }) => {
       const expected = wrapAngle(
         computeAngle(
-          celestialBody as CelestialBodyType,
+          celestialBody as OrbitInterface,
           timeStep as TimeStepInterface
         )
       );
       const result = wrapAngle(
         computeAngle(
-          celestialBody as CelestialBodyType,
+          celestialBody as OrbitInterface,
           timeStep as TimeStepInterface
         )
       );
@@ -77,10 +74,10 @@ describe('computeAngle', () => {
     }; // Adding 'q' property to classify as comet
     const timeStep = { value: 5, unit: 'd' };
     const expected = wrapAngle(
-      computeAngle(comet as CelestialBodyType, timeStep as TimeStepInterface)
+      computeAngle(comet as OrbitInterface, timeStep as TimeStepInterface)
     );
     const result = wrapAngle(
-      computeAngle(comet as CelestialBodyType, timeStep as TimeStepInterface)
+      computeAngle(comet as OrbitInterface, timeStep as TimeStepInterface)
     );
 
     assert.ok(

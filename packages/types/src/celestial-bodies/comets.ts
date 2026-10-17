@@ -1,19 +1,19 @@
-import { DistanceInterface, MeasureInterface } from '../distance.js';
-import type { Radians } from '../numeric.js';
-import { TemporalInterface } from '../temporal.js';
+import { DistanceInterface } from '../distance.js';
+import type { OrbitInterface } from '../orbits.js';
 
 import { CartesianCoordinatesInterface } from './planets.js';
 
 /**
  * Represents a **comet** in the solar system simulation.
  *
- * **Cometary Orbital Parameters:**
+ * **Cometary Orbital Parameters**, all in `orbit`:
  * - **Semi-major axis (`a`)**: Defines the **size** of the comet’s orbit in **Astronomical Units (AU)**.
  * - **Orbital eccentricity (`e`)**: Determines how **elliptical** the orbit is ($0 = $ circular, closer to $1$ = highly elliptical).
  * - **Inclination (`i`)**: The tilt of the orbit relative to the **ecliptic plane**, measured in **degrees**.
  * - **Argument of perihelion (`w`)**: The angle from the **ascending node** to the **perihelion**.
  * - **Longitude of the ascending node (`om`)**: Defines where the orbit crosses the ecliptic.
  * - **Perihelion distance (`q`)**: The closest approach to the Sun in **AU**.
+ * - **Angle (`angle`)**: For comets this is the **mean anomaly** at J2000, as in the source data.
  *
  * **Visualization Parameters:**
  * - **Orbit Path (`orbitPath`)**: Precomputed trajectory for rendering.
@@ -23,30 +23,18 @@ import { CartesianCoordinatesInterface } from './planets.js';
  * @group Celestial Bodies
  */
 export interface CometInterface {
+  /** Stable identifier, used by `parent` references. Never translated. */
+  id: string;
   /** Name of the comet (e.g., "Halley", "Hale-Bopp"). */
   name: string;
   /** Type of comet based on its orbital characteristics. */
   type: 'periodic comet' | 'oort cloud comet' | 'short-period comet';
   /** Category classification of the comet. */
   category: 'halley-type comet' | 'long-period comet' | 'jupiter-family comet';
-  /** The star system where the comet is located. */
-  system: string;
-  /** Semi-major axis of the orbit in AU. */
-  a: MeasureInterface;
-  /** Orbital eccentricity (0 = circular, closer to 1 = highly elliptical). */
-  e: number;
-  /** Orbital inclination in degrees. */
-  i: number;
-  /** Argument of perihelion in degrees. */
-  w: number;
-  /** Longitude of the ascending node in degrees. */
-  om: number;
-  /** Mean anomaly at epoch in radians. */
-  angle: Radians;
-  /** Orbital period in Earth days. Negative values indicate counter clockwise orbit */
-  period: TemporalInterface;
-  /** Perihelion distance in AU. */
-  q: number;
+  /** Id of the star the comet orbits (e.g., `'sun'`). */
+  parent: string;
+  /** Orbit around the parent, with all elements including `i`, `w`, `om` and `q`. */
+  orbit: Required<OrbitInterface>;
   /** X-coordinate in a distance-based system (optional). */
   x?: DistanceInterface;
   /** Y-coordinate in a distance-based system (optional). */
@@ -73,19 +61,22 @@ export interface CometInterface {
  * @typedef {CometInterface[]} CometsType
  * @example
  * ```ts
- * const halley: CometInterface = [{
+ * const halley: CometsType = [{
+ *   id: '1p-halley',
  *   name: 'Halley',
  *   type: 'periodic comet',
  *   category: 'halley-type comet',
- *   system: 'Sun,
- *   a: { value: 17.8, unit: 'au' },
- *   e: 0.967,
- *   i: 162.26,
- *   w: 111.33,
- *   om: 58.42,
- *   angle: 0,
- *   period: { value: 76, unit: 'years' },
- *   q: 0.586,
+ *   parent: 'sun',
+ *   orbit: {
+ *     a: { value: 17.834, unit: 'au' },
+ *     e: 0.96714,
+ *     i: 162.26,
+ *     w: 111.33,
+ *     om: 58.42,
+ *     angle: 0.669857 as Radians,
+ *     period: { value: 27576, unit: 'd' },
+ *     q: 0.586
+ *   },
  *   radius: { value: 11, unit: 'km' },
  *   color: '#ffffff',
  *   size: 1.2

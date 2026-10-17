@@ -16,34 +16,22 @@ import { z } from 'zod';
 
 import { PURE_TOOL, result } from './tools/shared.js';
 
-/**
- * The Alpha Centauri entries in `STARS` currently carry the Sun's galactic
- * orbit instead of the binary + Proxima system, so they are held back until
- * that model lands.
- */
-const isTrusted = (body: { system?: unknown }) =>
-  !(
-    typeof body.system === 'object' &&
-    body.system !== null &&
-    'name' in body.system &&
-    body.system.name === 'Alpha Centauri'
-  );
-
 export const DATASETS = {
   planets: {
     description: 'Planets and dwarf planets of the Solar System.',
     data: PLANETS
   },
   moons: { description: 'Natural satellites.', data: MOONS },
-  stars: {
-    description: 'Stars (Alpha Centauri entries omitted pending a fix).',
-    data: STARS.filter(isTrusted)
-  },
+  stars: { description: 'Stars.', data: STARS },
   comets: { description: 'Comets.', data: COMETS },
   asteroids: { description: 'Asteroids.', data: ASTEROIDS },
   'asteroid-belts': { description: 'Asteroid belts.', data: ASTEROID_BELTS },
   galaxies: { description: 'Galaxies.', data: GALAXIES },
-  systems: { description: 'Planetary and stellar systems.', data: SYSTEMS }
+  systems: {
+    description:
+      'Systems: the barycenters that stars and planets orbit, nested for multiple stars.',
+    data: SYSTEMS
+  }
 } as const;
 
 export type DatasetNameType = keyof typeof DATASETS;
@@ -54,7 +42,7 @@ const DATASET_NAMES = Object.keys(DATASETS) as [
 ];
 const uriFor = (name: DatasetNameType) => `interstellar://datasets/${name}`;
 const UNITS_NOTE =
-  'Values carry their own units ({ value, unit }); `a` is usually in au, `period` in days (negative = integration direction), `radius` in km, `angle` in radians at J2000.';
+  'Each body has a stable `id` and names the body, system or galaxy it is bound to in `parent`; `orbit` holds its elements around that parent. Values carry their own units ({ value, unit }); `orbit.a` is usually in au, `orbit.period` in days (negative = counter-clockwise), `radius` in km, `orbit.angle` in radians at J2000.';
 
 export const registerBodies = (server: McpServer) => {
   server.registerResource(
@@ -98,12 +86,14 @@ export const registerBodies = (server: McpServer) => {
     'find_body',
     {
       title: 'Find celestial body',
-      description: `Look up celestial bodies by name (case-insensitive substring) across the bundled datasets. ${UNITS_NOTE} Bodies do not carry masses; use known μ values with the orbit tools.`,
+      description: `Look up celestial bodies by name or id (case-insensitive substring) across the bundled datasets. ${UNITS_NOTE} Only some stars carry a mass (in solar masses); use known μ values with the orbit tools.`,
       inputSchema: {
         query: z
           .string()
           .min(1)
-          .describe('Name or part of a name, e.g. "mars".'),
+          .describe(
+            'Name, id or part of one, e.g. "mars" or "alpha-centauri".'
+          ),
         dataset: z
           .enum(DATASET_NAMES)
           .optional()
@@ -115,8 +105,12 @@ export const registerBodies = (server: McpServer) => {
       const needle = query.trim().toLowerCase();
       const names = dataset ? [dataset] : DATASET_NAMES;
       const matches = names.flatMap((name) =>
-        (DATASETS[name].data as readonly { name: string }[])
-          .filter((body) => body.name.toLowerCase().includes(needle))
+        (DATASETS[name].data as readonly { id: string; name: string }[])
+          .filter(
+            (body) =>
+              body.name.toLowerCase().includes(needle) ||
+              body.id.includes(needle)
+          )
           .map((body) => ({ dataset: name, body }))
       );
 

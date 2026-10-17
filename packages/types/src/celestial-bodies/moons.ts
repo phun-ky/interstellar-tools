@@ -1,17 +1,13 @@
-import { DistanceInterface, MeasureInterface } from '../distance.js';
-import type { Radians } from '../numeric.js';
-import { TemporalInterface } from '../temporal.js';
+import { DistanceInterface } from '../distance.js';
+import type { OrbitInterface } from '../orbits.js';
 
 import { CartesianCoordinatesInterface } from './planets.js';
 
 /**
  * Represents a **moon** (natural satellite) orbiting a planet.
  *
- * **Orbital Properties:**
- * - **Semi-major axis (`a`)**: Defines the moon’s orbit size in **Astronomical Units (AU)**.
- * - **Orbital eccentricity (`e`)**: Determines how elliptical the orbit is ($0 =$ circular, closer to $1 =$ highly elliptical).
- * - **Orbital period (`period`)**: Time taken for one full orbit in **Earth days**. Negative values indicate counter clockwise direction.
- * - **True anomaly (`angle`)**: The moon’s current position in its orbit (in **radians**).
+ * A moon always has a `parent` (its planet) and an `orbit` around it; see
+ * {@link OrbitInterface}.
  *
  * **Visualization Properties:**
  * - **Orbit Path (`orbitPath`)**: Precomputed trajectory for rendering.
@@ -21,44 +17,43 @@ import { CartesianCoordinatesInterface } from './planets.js';
  * @example
  * ```ts
  * const europa: MoonInterface = {
+ *   id: 'europa',
  *   name: 'Europa',
  *   category: 'natural satellite',
- *   system: 'Jupiter',
- *   a: { value: 0.00448, unit: 'au' },
- *   e: 0.009,
- *   period: { value: 3.55, unit: 'd' },
+ *   parent: 'jupiter',
+ *   orbit: {
+ *     a: { value: 0.00448, unit: 'au' },
+ *     e: 0.009,
+ *     period: { value: -3.551, unit: 'd' },
+ *     angle: 0 as Radians
+ *   },
  *   radius: { value: 1560.8, unit: 'km' },
- *   color: '#a6a6a6',
- *   angle: 0,
+ *   color: '#a6a6a6'
  * };
  * ```
  * @group Celestial Bodies
  */
 export interface MoonInterface {
+  /** Stable identifier, used by `parent` references. Never translated. */
+  id: string;
   /** Name of the moon (e.g., "Io", "Europa", "Titan"). */
   name: string;
   type?: undefined;
   /** Classification of the moon. */
   category:
     'natural satellite' | 'irregular satellite' | 'retrograde satellite';
-  /** The planetary system where the moon is located (e.g., "Jupiter"). */
-  system: string;
-  /** Semi-major axis of the orbit in AU. */
-  a: MeasureInterface;
-  /** Orbital eccentricity (0 = circular, closer to 1 = highly elliptical). */
-  e: number;
+  /** Id of the planet the moon orbits (e.g., `'jupiter'`). */
+  parent: string;
+  /** Orbit around the parent planet. */
+  orbit: OrbitInterface;
   /** Semi-minor axis converted to pixels (calculated from `a` and `e`). */
   miA?: number;
   /** X-offset for the ellipse focus (accounts for eccentricity). */
   focus_x?: number;
-  /** Orbital period in Earth days. Negative values indicate counter clockwise orbit */
-  period: TemporalInterface;
   /** Physical radius of the moon in kilometres. */
   radius: DistanceInterface;
   /** Visual representation color. */
   color: string;
-  /** Current orbital position in radians (True Anomaly). */
-  angle: Radians;
   /** X-coordinate in a distance-based system (optional). */
   x?: DistanceInterface;
   /** Y-coordinate in a distance-based system (optional). */

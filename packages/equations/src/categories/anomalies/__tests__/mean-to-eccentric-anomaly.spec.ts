@@ -3,10 +3,7 @@ import test, { describe } from 'node:test';
 
 import { meanToEccentricAnomaly } from '../mean-to-eccentric-anomaly.js';
 
-import {
-  CelestialBodyType,
-  TemporalInterface
-} from '@interstellar-tools/types';
+import { OrbitInterface, TemporalInterface } from '@interstellar-tools/types';
 import { TWO_PI } from '@interstellar-tools/constants';
 import { trueToMeanAnomaly } from '../true-to-mean-anomaly.js';
 import { wrapAngle } from '../../angle/wrap-angle.js';
@@ -24,11 +21,11 @@ const assertApproxEqual = (actual: number, expected: number) => {
 
 describe('meanToEccentricAnomaly', () => {
   test('Circular Orbit (e=0)', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0,
       angle: Math.PI / 2,
       period: { value: 365, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 100, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -41,11 +38,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Elliptical Orbit (e > 0)', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.5,
       angle: Math.PI / 2,
       period: { value: 200, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 50, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -60,11 +57,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Large Time Step Clamping (Max 10 Orbits)', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.1,
       angle: 1.0,
       period: { value: 100, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 2000, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -79,10 +76,10 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Eccentricity Out of Bounds Throws Error', () => {
-    const invalidBodies: CelestialBodyType[] = [
+    const invalidBodies: OrbitInterface[] = [
       { e: -0.1, angle: 0, period: { value: 365, unit: 'd' } },
       { e: 1.1, angle: 0, period: { value: 365, unit: 'd' } }
-    ] as CelestialBodyType[];
+    ] as OrbitInterface[];
     const timeStep: TemporalInterface = { value: 10, unit: 'd' };
 
     for (const body of invalidBodies) {
@@ -91,11 +88,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Zero Time Step Returns Initial Mean Anomaly', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.3,
       angle: 2.0,
       period: { value: 400, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 0, unit: 'd' };
     const M0 =
       body.e === 0 ? body.angle : trueToMeanAnomaly(body.angle, body.e);
@@ -105,11 +102,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('High Eccentricity Orbit (e ~ 1)', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.9951,
       angle: -2.1196,
       period: { value: 365.25, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 0.25, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -123,11 +120,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Angle Wrapping within [-2π, 2π]', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.5,
       angle: 3 * Math.PI,
       period: { value: 365, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 10, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -142,11 +139,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Minimum Time Step Clamping', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.5,
       angle: Math.PI / 2,
       period: { value: 365, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 1e-6, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -160,11 +157,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test("Halley's Comet", () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.96714,
       angle: (38.38 * Math.PI) / 180, // Convert degrees to radians
       period: { value: 27576, unit: 'd' }
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 100, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -178,11 +175,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Comet Hale-Bopp', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.9951,
       angle: (180 * Math.PI) / 180, // Convert degrees to radians
       period: { value: -253533, unit: 'd' } // Positive period for testing
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 0.25, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -196,11 +193,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Comet 67P/Churyumov–Gerasimenko', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.641,
       angle: 0, // Initial angle in radians
       period: { value: -2484, unit: 'd' } // Positive period for testing
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 10, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);
@@ -214,11 +211,11 @@ describe('meanToEccentricAnomaly', () => {
   });
 
   test('Comet Encke', () => {
-    const body: CelestialBodyType = {
+    const body: OrbitInterface = {
       e: 0.85,
       angle: (160 * Math.PI) / 180, // Convert degrees to radians
       period: { value: -1204, unit: 'd' } // Positive period for testing
-    } as CelestialBodyType;
+    } as OrbitInterface;
     const timeStep: TemporalInterface = { value: 5, unit: 'd' };
     const periodInDays = body.period.value;
     const meanMotion = TWO_PI / Math.abs(periodInDays);

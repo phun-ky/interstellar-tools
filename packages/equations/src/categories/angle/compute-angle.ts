@@ -1,5 +1,5 @@
 import type {
-  CelestialBodyType,
+  OrbitInterface,
   Radians,
   TimeStepInterface
 } from '@interstellar-tools/types';
@@ -49,22 +49,18 @@ import { solveKepler } from '../kepler/solve-kepler.js';
  * - For **comets**, the final **true anomaly** is adjusted by subtracting the **eccentricity** ($e$).
  * - For **stars and other celestial objects**, the computed **true anomaly** is used directly.
  *
- * @param {CelestialBodyType} body - The celestial body for which to compute the true anomaly.
+ * @param {Pick<OrbitInterface, 'e' | 'angle' | 'period'>} orbit - The body's orbit, for example `body.orbit` from a dataset.
  * @param {TimeStepInterface} timeStep - The time step in days since the last frame.
  * @returns {Radians} The computed true anomaly in radians.
  *
  * @example
  * ```ts
+ * import { PLANETS } from '@interstellar-tools/constants';
  * import { computeAngle } from '@interstellar-tools/equations';
  *
- * const earth: CelestialBodyType = {
- *   name: 'Earth',
- *   e: 0.0167, // Orbital eccentricity
- *   angle: 0,  // Initial angle
- * };
- *
- * const timeStep: TimeStepInterface = { days: 1 }; // Time step of 1 day
- * const angle: Radians = computeAngle(earth, timeStep);
+ * const earth = PLANETS.find((planet) => planet.id === 'earth');
+ * const timeStep: TimeStepInterface = { value: 1, unit: 'd' }; // Time step of 1 day
+ * const angle: Radians = computeAngle(earth.orbit, timeStep);
  * console.log(angle); // Output: Computed true anomaly in radians
  * ```
  *
@@ -75,15 +71,15 @@ import { solveKepler } from '../kepler/solve-kepler.js';
  * @group Angles
  */
 export const computeAngle = (
-  body: CelestialBodyType,
+  orbit: Pick<OrbitInterface, 'e' | 'angle' | 'period'>,
   timeStep: TimeStepInterface
 ): Radians => {
   // Compute mean anomaly (M) with time step
-  const M: Radians = meanToEccentricAnomaly(body, timeStep);
+  const M: Radians = meanToEccentricAnomaly(orbit, timeStep);
   // Solve Kepler's equation for eccentric anomaly (E)
-  const E: Radians = solveKepler(M, body.e);
+  const E: Radians = solveKepler(M, orbit.e);
   // Convert eccentric anomaly (E) to true anomaly (ν)
-  const V: Radians = eccentricToTrueAnomaly(E, body.e);
+  const V: Radians = eccentricToTrueAnomaly(E, orbit.e);
 
   return V;
 };
