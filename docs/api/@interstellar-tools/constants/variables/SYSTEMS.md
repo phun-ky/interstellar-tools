@@ -8,16 +8,20 @@ const SYSTEMS: SystemsType;
 ```
 
 Defined in:
-[bodies/systems.ts:27](https://github.com/phun-ky/interstellar-tools/blob/3def98a4bff9f31a20df012d1fde9828c566a9f9/packages/constants/src/bodies/systems.ts#L27)
+[bodies/systems.ts:28](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/constants/src/bodies/systems.ts#L28)
 
 Predefined star systems in the galaxy.
 
 ::: info
 
 - `distance` is in light-years (ly).
+
 - `stars` lists the primary named stars in the system (referenced by name).
 
-:::
+- Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
+  Wikipedia. See
+  [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+  :::
 
 ## Full list of systems in the dataset
 
