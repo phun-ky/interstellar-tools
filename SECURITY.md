@@ -24,8 +24,10 @@ latest published version of each package only.
 
 ## Reporting a Vulnerability
 
-Report vulnerabilities privately to <security@phun-ky.net>. Please don't open a
-public issue for a security problem.
+Report vulnerabilities privately, either with GitHub's
+[private vulnerability reporting](https://github.com/phun-ky/interstellar-tools/security/advisories/new)
+or by email to <security@phun-ky.net>. Please don't open a public issue for a
+security problem.
 
 ## How Reports Are Handled
 

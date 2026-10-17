@@ -40,9 +40,10 @@ There are no secrets, accounts or personal data in the software itself.
 ```
 
 1. **Contributor to repository.** Every change arrives as a pull request and is
-   reviewed by the maintainer. Branch protection on `main` requires the Checks
-   workflow (build, lint, type-check, docs check and tests) to pass before a
-   merge, and CodeQL scans every pull request.
+   reviewed by the maintainer. The ruleset on `main` requires the Checks
+   workflow (build, lint, type-check, docs check and tests) to pass, and CodeQL
+   results with no errors and no high or critical security alerts, before a
+   merge.
 2. **Repository to npm.** Releases are built and published by GitHub Actions
    with npm trusted publishing (OIDC). There is no long-lived npm token to
    steal, and every package gets a signed provenance attestation.
@@ -98,7 +99,6 @@ request.
   security policy says.
 - **One maintainer reviews changes.** There is no second reviewer yet, so review
   relies on the maintainer and the automated checks, and the maintainer can
-  override branch protection as an administrator. See the
-  [governance](GOVERNANCE.md).
+  bypass the ruleset as an administrator. See the [governance](GOVERNANCE.md).
 - **Release tags are not signed.** The npm provenance attestations are the
   verifiable link between a release and its source.

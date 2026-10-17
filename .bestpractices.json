@@ -40,11 +40,11 @@
   "vulnerability_report_credit_status": "N/A",
   "vulnerability_report_credit_justification": "No vulnerabilities have been reported to the project in the last 12 months; the repository has no security advisories. Fixes in that period patched published advisories in upstream development dependencies.",
   "vulnerability_response_process_status": "Met",
-  "vulnerability_response_process_justification": "Acknowledgement within 7 days, assessment, a fix in a private GitHub security advisory, coordinated disclosure and credit: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#how-reports-are-handled",
+  "vulnerability_response_process_justification": "Reports are made privately through GitHub private vulnerability reporting or by email. Acknowledgement within 7 days, assessment, a fix in a private GitHub security advisory, coordinated disclosure and credit: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#how-reports-are-handled",
   "coding_standards_status": "Met",
   "coding_standards_justification": "Code follows the project ESLint configuration (eslint-config-phun-ky, including Prettier) and strict TypeScript, and must pass npm run lint and npm run typecheck: https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md#coding-style",
   "coding_standards_enforced_status": "Met",
-  "coding_standards_enforced_justification": "The Checks workflow runs ESLint (with Prettier through eslint-plugin-prettier) and the TypeScript compiler in strict mode on every pull request, and branch protection requires it to pass.",
+  "coding_standards_enforced_justification": "The Checks workflow runs ESLint (with Prettier through eslint-plugin-prettier) and the TypeScript compiler in strict mode on every pull request, and the ruleset on main requires it to pass before merging.",
   "build_standard_variables_status": "N/A",
   "build_standard_variables_justification": "No native binaries are built; the project compiles TypeScript to JavaScript.",
   "build_preserve_debug_status": "Met",
@@ -106,7 +106,7 @@
   "assurance_case_status": "Met",
   "assurance_case_justification": "Threat model, trust boundaries, secure design principles and the common weaknesses countered: https://github.com/phun-ky/interstellar-tools/blob/main/ASSURANCE.md",
   "static_analysis_common_vulnerabilities_status": "Met",
-  "static_analysis_common_vulnerabilities_justification": "CodeQL (GitHub default setup) analyses the JavaScript/TypeScript code and the GitHub Actions workflows on every push to main and every pull request: https://github.com/phun-ky/interstellar-tools/security/code-scanning",
+  "static_analysis_common_vulnerabilities_justification": "CodeQL (GitHub default setup) analyses the JavaScript/TypeScript code and the GitHub Actions workflows on every push to main and every pull request, and the ruleset on main requires its results, with no errors and no high or critical security alerts, before merging: https://github.com/phun-ky/interstellar-tools/security/code-scanning",
   "dynamic_analysis_unsafe_status": "N/A",
   "dynamic_analysis_unsafe_justification": "All software is TypeScript on JavaScript runtimes, which are memory-safe; there is no C, C++ or other memory-unsafe code."
 }

@@ -34,6 +34,10 @@ project:
     reports-accepted: true
     bug-bounty-available: false
     policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md
+    comment: |
+      Report privately with GitHub's private vulnerability reporting
+      (https://github.com/phun-ky/interstellar-tools/security/advisories/new)
+      or by email to the contact below.
     contact:
       name: Interstellar Tools security contact
       email: security@phun-ky.net
