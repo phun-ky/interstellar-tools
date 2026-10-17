@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.61.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%400.61.0...%40interstellar-tools%2Fconstants%400.61.1) (2026-10-17)
+
+### Bug
+
+* 🐛 Use true anomalies and real positions at J2000 for the planets ([fc340d0](https://github.com/phun-ky/interstellar-tools/commit/fc340d00fe0ea12fbe666e6a43cfd653e540706f))
+
 ## [0.61.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%400.60.1...%40interstellar-tools%2Fconstants%400.61.0) (2026-10-17)
 
 ### ⚠ BREAKING CHANGES
