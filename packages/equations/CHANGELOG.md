@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.61.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.60.2...%40interstellar-tools%2Fequations%400.61.0) (2026-10-17)
+
+### ⚠ BREAKING CHANGES
+
+* `system` is replaced by `parent` (an id), and `a`, `e`,
+  `period`, `angle` (plus `i`, `w`, `om`, `q` on comets and asteroids) move into
+  `orbit`. `StarSystemInterface` is removed; `SystemInterface` becomes a
+  barycenter node with `id`, `kind`, `parent`, `orbit` and `distance` (now a
+  DistanceInterface) instead of `stars`. Stars lose `system` and constellation
+  names, and gain optional `mass` (M☉). Asteroids and comets use their official
+  designations as ids, e.g. `4-vesta` and `1p-halley`. `meanToEccentricAnomaly`
+  and `computeAngle` take an orbit (`body.orbit`) instead of a body.
+* meanToEccentricAnomaly is renamed to advanceMeanAnomaly,
+  with the same arguments.
+
+### Documentation
+
+* ✏️ Match the computeAngle documentation to the function ([e02ad23](https://github.com/phun-ky/interstellar-tools/commit/e02ad235ffb0a37bc815ba056661bea539c9c4ed))
+
+### Feature
+
+* 🎸 Model orbits as a tree of parents and orbits ([3b1b62c](https://github.com/phun-ky/interstellar-tools/commit/3b1b62ca96ed79fecc3ae94f366fbaae1afab111))
+
+### Bug
+
+* 🐛 Convert the time step to days in meanToEccentricAnomaly ([9fe0e51](https://github.com/phun-ky/interstellar-tools/commit/9fe0e51b76a03b296a6572311cd99d08ad7e0186))
+
+### Refactoring
+
+* 💡 Rename meanToEccentricAnomaly to advanceMeanAnomaly ([24cba57](https://github.com/phun-ky/interstellar-tools/commit/24cba573df6c9c683343df049f6882ef45133bb0))
+
+### Adding missing tests
+
+* 💍 Add property-based tests with fast-check ([c06f57d](https://github.com/phun-ky/interstellar-tools/commit/c06f57d3cfb336eb6c129ce131fb20c7e37474f0))
+
 ## [0.60.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.60.1...%40interstellar-tools%2Fequations%400.60.2) (2026-10-16)
 
 ### Bug
