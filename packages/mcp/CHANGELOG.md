@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.0...%40interstellar-tools%2Fmcp%400.2.1) (2026-10-17)
+
+### Bug
+
+* 🐛 Protect the MCP HTTP server against DNS rebinding ([02de055](https://github.com/phun-ky/interstellar-tools/commit/02de0555d64ded15098cd8428ac360d443d3db63))
+
 ## [0.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.1.2...%40interstellar-tools%2Fmcp%400.2.0) (2026-10-17)
 
 ### ⚠ BREAKING CHANGES

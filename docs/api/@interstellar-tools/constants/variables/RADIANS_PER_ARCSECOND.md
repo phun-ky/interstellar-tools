@@ -8,7 +8,7 @@ const RADIANS_PER_ARCSECOND: number;
 ```
 
 Defined in:
-[distance.ts:56](https://github.com/phun-ky/interstellar-tools/blob/e34e70d11d6992afbf0893b789b57877dbc6210d/packages/constants/src/distance.ts#L56)
+[distance.ts:56](https://github.com/phun-ky/interstellar-tools/blob/3e1c4cd4ff4585f3c32f5e7530e7df5d0b18f6f6/packages/constants/src/distance.ts#L56)
 
 Radians in one arcsecond: `π / 648 000`.
 

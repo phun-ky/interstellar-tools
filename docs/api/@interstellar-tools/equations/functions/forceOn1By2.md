@@ -14,7 +14,7 @@ function forceOn1By2(
 ```
 
 Defined in:
-[gravity/force-on1-by2.ts:90](https://github.com/phun-ky/interstellar-tools/blob/e34e70d11d6992afbf0893b789b57877dbc6210d/packages/equations/src/categories/gravity/force-on1-by2.ts#L90)
+[gravity/force-on1-by2.ts:90](https://github.com/phun-ky/interstellar-tools/blob/3e1c4cd4ff4585f3c32f5e7530e7df5d0b18f6f6/packages/equations/src/categories/gravity/force-on1-by2.ts#L90)
 
 Gravitational **force vector** on body 1 due to body 2 (newtons, N).
 
