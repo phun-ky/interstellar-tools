@@ -1,6 +1,12 @@
+import { PLANETS } from '@interstellar-tools/constants';
+import type { Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
+import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
+import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
+import { norm2pi } from '../categories/helpers/misc.js';
+import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
@@ -80,5 +86,31 @@ describe('In practice values', () => {
 
     assert.equal(Math.round(soi / 1000) * 1000, 925_000);
     assert.ok(384_400 < soi);
+  });
+});
+
+// The numbers in docs/learn/where-is-earth-today.md, computed the same way
+describe('Where is Earth today? (tutorial)', () => {
+  const deg = (r: number) => ((((r * 180) / Math.PI) % 360) + 360) % 360;
+  const { e, angle, period } = PLANETS.find((p) => p.id === 'earth')!.orbit!;
+  const P = Math.abs(period.value);
+  const M0 = trueToMeanAnomaly(angle, e);
+  const M = norm2pi(M0 + ((2 * Math.PI) / P) * 9786) as Radians;
+  const E = solveKepler(M, e);
+  const nu = eccentricToTrueAnomaly(E, e);
+
+  test('starts 2.47° before perihelion at J2000', () => {
+    assert.equal(((M0 * 180) / Math.PI).toFixed(2), '-2.47');
+  });
+
+  test('reaches M 282.7°, E 281.8° and ν 280.8° on 17 October 2026', () => {
+    assert.equal(deg(M).toFixed(1), '282.7');
+    assert.equal(deg(E).toFixed(1), '281.8');
+    assert.equal(deg(nu).toFixed(1), '280.8');
+  });
+
+  test('puts Earth 0.9966 au from the Sun, 287 days past perihelion', () => {
+    assert.equal((1 - e * Math.cos(E)).toFixed(4), '0.9966');
+    assert.equal(Math.round((deg(M) / 360) * P), 287);
   });
 });

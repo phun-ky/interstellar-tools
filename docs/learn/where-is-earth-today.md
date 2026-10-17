@@ -5,7 +5,8 @@ January, when it's closest, and slowest in early July. In this tutorial you'll
 find where Earth is on its orbit today, using three equations and the idea that
 ties them together: **Kepler's equation**.
 
-- **You'll use:** `solveKepler`, `eccentricToTrueAnomaly`, `norm2pi`
+- **You'll use:** `PLANETS`, `trueToMeanAnomaly`, `solveKepler`,
+  `eccentricToTrueAnomaly`, `norm2pi`
 - **Time:** about 10 minutes
 
 ## 1. Three ways to describe a position
@@ -25,20 +26,23 @@ orbit, the further they drift apart.
 
 ## 2. Mean anomaly today
 
-The mean anomaly is the easy part. At J2000 (1 January 2000, 12:00), Earth's
-mean anomaly was -2.473°: its mean longitude (100.464°) minus its longitude of
-perihelion (102.937°), both from
-[JPL's orbital elements](https://ssd.jpl.nasa.gov/planets/approx_pos.html). It
-advances by $2\pi / P$ every day:
+Start from Earth's orbit in the `PLANETS` dataset. Its `orbit.angle` is the true
+anomaly at J2000 (1 January 2000, 12:00), so first turn it into a mean anomaly
+with `trueToMeanAnomaly`. That's the easy direction, with a closed-form formula.
+The mean anomaly then advances by the same $2\pi / P$ every day:
 
 ```ts
-import { norm2pi } from '@interstellar-tools/equations';
+import { PLANETS } from '@interstellar-tools/constants';
+import { norm2pi, trueToMeanAnomaly } from '@interstellar-tools/equations';
+import type { Radians } from '@interstellar-tools/types';
 
-const e = 0.0167; // Earth's eccentricity
-const P = 365.256; // orbital period, days
-const M0 = -2.473 * (Math.PI / 180); // mean anomaly at J2000
+const earth = PLANETS.find((planet) => planet.id === 'earth')!;
+const { e, angle, period } = earth.orbit!; // e 0.0167, P 365.256 days
+const M0 = trueToMeanAnomaly(angle, e); // -2.47°: just before perihelion
 const days = 9786; // J2000 to 17 October 2026
-const M = norm2pi(M0 + ((2 * Math.PI) / P) * days); // 282.7°
+const M = norm2pi(
+  M0 + ((2 * Math.PI) / Math.abs(period.value)) * days
+) as Radians; // 282.7°
 ```
 
 ## 3. Solve Kepler's equation
