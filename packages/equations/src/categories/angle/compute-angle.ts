@@ -9,59 +9,52 @@ import { meanToEccentricAnomaly } from '../anomalies/mean-to-eccentric-anomaly.j
 import { solveKepler } from '../kepler/solve-kepler.js';
 
 /**
- * Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given date and time step.
+ * Advances a body along its orbit by one time step and returns its new
+ * **true anomaly** ($\nu$).
  *
- * **Mathematical Explanation:**
+ * The orbit's `angle` is the starting true anomaly. There is no date input:
+ * call this once per frame or step, and feed the result back in as the next
+ * `angle` to move the body over time.
  *
- * This function determines the **true anomaly** ($ν$) based on the time elapsed since the
- * **J2000 epoch** (January 1, 2000) and the provided time step. The calculation follows these steps:
+ * **Step 1: Mean anomaly after the time step ($M$)**
  *
- * **Step 1: Compute Time Elapsed Since J2000**
- *
- * The number of days since **J2000** is computed as:
- * $$ \Delta T = \frac{t - t_{J2000}}{\text{MILLISECONDS\_PER\_DAY}} $$
+ * Done by {@link meanToEccentricAnomaly}:
+ * $$ M = M_0 + n \cdot \Delta t, \qquad n = \frac{2\pi}{|P|} $$
  * where:
- * - $t$ is the current date in milliseconds.
- * - $t_{J2000}$ is **J2000** (2000-01-01T00:00:00Z).
- * - **MILLISECONDS_PER_DAY** is the number of milliseconds in one day.
+ * - $M_0$ is the mean anomaly at the start, converted from the true anomaly
+ *   `angle` (equal to it when $e = 0$).
+ * - $n$ is the mean motion, from the period $P$ converted to days. The sign of
+ *   $P$ is ignored, so the angle always increases.
+ * - $\Delta t$ is `timeStep.value` in days, clamped to at least $10^{-5}$ days
+ *   and at most $10\,|P|$ ($|P|$ when $e \geq 0.9$).
  *
- * **Step 2: Compute the Mean Anomaly ($M$)**
+ * The result is wrapped to $[0, 2\pi)$.
  *
- * The **mean anomaly** is calculated as:
- * $$ M = M_0 + n \cdot (\Delta T + \text{timeStep}) $$
- * where:
- * - $M_0$ is the initial mean anomaly at **J2000**.
- * - $n$ is the mean motion (orbital angular velocity).
- * - $\text{timeStep}$ is the time step in days.
+ * **Step 2: Solve Kepler's equation for the eccentric anomaly ($E$)**
  *
- * **Step 3: Solve Kepler’s Equation for Eccentric Anomaly ($E$)**
- *
- * Kepler’s equation:
  * $$ M = E - e \sin(E) $$
- * is solved numerically to obtain the **eccentric anomaly** ($E$).
+ * is solved numerically by {@link solveKepler}.
  *
- * **Step 4: Convert Eccentric Anomaly ($E$) to True Anomaly ($ν$)**
+ * **Step 3: Convert the eccentric anomaly to the true anomaly ($\nu$)**
  *
- * Using the relation:
- * $$ ν = 2 \tan^{-1} \left( \sqrt{\frac{1+e}{1-e}} \tan\left(\frac{E}{2}\right) \right) $$
- *
- * **Step 5: Adjust the True Anomaly for Certain Bodies**
- * - For **comets**, the final **true anomaly** is adjusted by subtracting the **eccentricity** ($e$).
- * - For **stars and other celestial objects**, the computed **true anomaly** is used directly.
+ * Done by {@link eccentricToTrueAnomaly}:
+ * $$ \nu = 2 \tan^{-1} \left( \sqrt{\frac{1+e}{1-e}} \tan\left(\frac{E}{2}\right) \right) $$
  *
  * @param {Pick<OrbitInterface, 'e' | 'angle' | 'period'>} orbit - The body's orbit, for example `body.orbit` from a dataset.
- * @param {TimeStepInterface} timeStep - The time step in days since the last frame.
- * @returns {Radians} The computed true anomaly in radians.
+ * @param {TimeStepInterface} timeStep - How far to advance, in days.
+ * @returns {Radians} The true anomaly after the time step, in radians.
+ * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If the orbit's eccentricity is outside $0 \leq e < 1$.
  *
  * @example
  * ```ts
  * import { PLANETS } from '@interstellar-tools/constants';
  * import { computeAngle } from '@interstellar-tools/equations';
  *
- * const earth = PLANETS.find((planet) => planet.id === 'earth');
- * const timeStep: TimeStepInterface = { value: 1, unit: 'd' }; // Time step of 1 day
- * const angle: Radians = computeAngle(earth.orbit, timeStep);
- * console.log(angle); // Output: Computed true anomaly in radians
+ * const earth = PLANETS.find((planet) => planet.id === 'earth')!;
+ * const timeStep: TimeStepInterface = { value: 1, unit: 'd' };
+ *
+ * // Earth's true anomaly one day after its dataset position
+ * const angle: Radians = computeAngle(earth.orbit!, timeStep);
  * ```
  *
  * @see [Kepler's Equation (Wikipedia)](https://en.wikipedia.org/wiki/Kepler%27s_equation)
