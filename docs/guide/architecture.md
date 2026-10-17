@@ -51,11 +51,11 @@ The datasets in `constants` form a tree. Every body, system and galaxy has a
 stable `id`. A body names what it is bound to in `parent` (a star, planet,
 system barycenter or galaxy), and describes its motion around that parent in
 `orbit` (an `OrbitInterface`: semi-major axis, eccentricity, period and true
-anomaly at J2000; the comets still store the mean anomaly, which is on the
-[todo list](https://github.com/phun-ky/interstellar-tools/blob/main/TODO.md)).
-Systems are barycenter nodes, so multiple star systems nest: Alpha Centauri A
-and B orbit the AB barycenter, which orbits the Alpha Centauri system barycenter
-together with Proxima Centauri.
+anomaly at J2000; the comets still store the mean anomaly, see
+[#150](https://github.com/phun-ky/interstellar-tools/issues/150)). Systems are
+barycenter nodes, so multiple star systems nest: Alpha Centauri A and B orbit
+the AB barycenter, which orbits the Alpha Centauri system barycenter together
+with Proxima Centauri.
 
 ## The MCP server
 

@@ -16,7 +16,7 @@
   "bus_factor_status": "Unmet",
   "bus_factor_justification": "The project has one maintainer, so the bus factor is 1: https://github.com/phun-ky/interstellar-tools/graphs/contributors",
   "documentation_roadmap_status": "Met",
-  "documentation_roadmap_justification": "What the project plans to do, and not do, until October 2027: https://github.com/phun-ky/interstellar-tools/blob/main/ROADMAP.md",
+  "documentation_roadmap_justification": "What the project plans to do, and not do, until October 2027, with the work tracked in GitHub issues and the 1.0 milestone (https://github.com/phun-ky/interstellar-tools/milestone/1): https://github.com/phun-ky/interstellar-tools/blob/main/ROADMAP.md",
   "documentation_architecture_status": "Met",
   "documentation_architecture_justification": "Packages, dependencies, design, build and release: https://phun-ky.net/interstellar-tools/guide/architecture",
   "documentation_security_status": "Met",

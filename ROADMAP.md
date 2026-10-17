@@ -2,33 +2,41 @@
 
 What Interstellar Tools intends to do, and not do, from October 2026 to
 October 2027. It's a plan, not a promise: priorities can change, and changes to
-this file are made in pull requests like any other. The detailed list of
-equations still to add is in [TODO.md](TODO.md).
+this file are made in pull requests like any other. Individual pieces of work
+are tracked as
+[GitHub issues](https://github.com/phun-ky/interstellar-tools/issues), and the
+formulas that could be added are listed in the [equation backlog](TODO.md).
 
 ## Planned
 
 ### Correct, complete datasets
 
 - **Comet angles:** store the true anomaly at J2000 in `orbit.angle`, as every
-  other dataset does, instead of the mean anomaly.
+  other dataset does, instead of the mean anomaly
+  ([#150](https://github.com/phun-ky/interstellar-tools/issues/150)).
 - **Moon positions:** replace the placeholder angles (26 of the 27 moons are 0)
   with real J2000 values from published elements, checked by tests as the
-  planets are.
-- **Star systems:** add the orientation of each orbit in a pair (argument of
-  periapsis and its reference frame), and model Spica as the binary it is.
+  planets are
+  ([#154](https://github.com/phun-ky/interstellar-tools/issues/154)).
+- **Star systems:** add the orientation of each orbit in a pair
+  ([#155](https://github.com/phun-ky/interstellar-tools/issues/155)), and model
+  Spica as the binary it is
+  ([#156](https://github.com/phun-ky/interstellar-tools/issues/156)).
 
 ### Propagation
 
 - **A position after any span of time:** add a function for where a body is at a
   given time, without the 10-period cap that `advanceMeanAnomaly` uses for
-  animation frames.
+  animation frames
+  ([#152](https://github.com/phun-ky/interstellar-tools/issues/152)).
 
 ### New equations
 
-Grow `@interstellar-tools/equations` along the lines in [TODO.md](TODO.md):
-geodesy and distances on spheres and ellipsoids, map projections, perturbations
-for low Earth orbit, and three-body tools such as the Jacobi integral and the
-Tisserand parameter. Every new function comes with tests and documentation.
+Grow `@interstellar-tools/equations` along the lines in the
+[equation backlog](TODO.md): geodesy and distances on spheres and ellipsoids,
+map projections, perturbations for low Earth orbit, and three-body tools such as
+the Jacobi integral and the Tisserand parameter. Every new function comes with
+tests and documentation.
 
 ### Time
 
@@ -44,10 +52,31 @@ Tisserand parameter. Every new function comes with tests and documentation.
   Centauri takes 547 000 years to orbit, a slingshot around Jupiter, and why
   satellites drift.
 
+### A stable 1.0
+
+Release `@interstellar-tools/types`, `constants` and `equations` as 1.0: a
+promise that their API won't break without a major version. The work is in the
+[1.0 milestone](https://github.com/phun-ky/interstellar-tools/milestone/1), and
+covers the decisions that would be breaking changes afterwards:
+
+- release breaking changes as major versions after 1.0
+  ([#148](https://github.com/phun-ky/interstellar-tools/issues/148))
+- let the orbit tree from 0.61 settle in use first
+  ([#149](https://github.com/phun-ky/interstellar-tools/issues/149))
+- make `orbit.angle` mean the same in every dataset
+  ([#150](https://github.com/phun-ky/interstellar-tools/issues/150))
+- put `mu` last in every equation
+  ([#151](https://github.com/phun-ky/interstellar-tools/issues/151))
+- decide how `advanceMeanAnomaly` handles long spans
+  ([#152](https://github.com/phun-ky/interstellar-tools/issues/152))
+- decide whether display fields belong in the core types
+  ([#153](https://github.com/phun-ky/interstellar-tools/issues/153))
+
+`temporal` and `mcp` stay below 1.0 until their APIs have settled.
+
 ### Project health
 
 - Reach the OpenSSF Best Practices **silver** level.
-- Settle the dataset model and the equation APIs, working towards a stable 1.0.
 
 ## Not planned
 
