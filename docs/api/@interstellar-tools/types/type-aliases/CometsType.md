@@ -8,28 +8,33 @@ type CometsType = CometInterface[];
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/types/src/celestial-bodies/comets.ts#L96)
+[celestial-bodies/comets.ts:87](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/comets.ts#L87)
 
 Type alias for an array of **comets**.
 
 ## Example
 
 ```ts
-const halley: CometInterface = [{
-  name: 'Halley',
-  type: 'periodic comet',
-  category: 'halley-type comet',
-  system: 'Sun,
-  a: { value: 17.8, unit: 'au' },
-  e: 0.967,
-  i: 162.26,
-  w: 111.33,
-  om: 58.42,
-  angle: 0,
-  period: { value: 76, unit: 'years' },
-  q: 0.586,
-  radius: { value: 11, unit: 'km' },
-  color: '#ffffff',
-  size: 1.2
-}];
+const halley: CometsType = [
+  {
+    id: '1p-halley',
+    name: 'Halley',
+    type: 'periodic comet',
+    category: 'halley-type comet',
+    parent: 'sun',
+    orbit: {
+      a: { value: 17.834, unit: 'au' },
+      e: 0.96714,
+      i: 162.26,
+      w: 111.33,
+      om: 58.42,
+      angle: 0.669857 as Radians,
+      period: { value: 27576, unit: 'd' },
+      q: 0.586
+    },
+    radius: { value: 11, unit: 'km' },
+    color: '#ffffff',
+    size: 1.2
+  }
+];
 ```

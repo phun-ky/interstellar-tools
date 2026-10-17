@@ -52,15 +52,15 @@ orbits, angles, solve for kelper or find true anomalies.
 
 | Function                                  | Description                                                                                                                                             |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [computeAngle](functions/computeAngle.md) | Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given date and time step.                                                      |
+| [computeAngle](functions/computeAngle.md) | Advances a body along its orbit by one time step and returns its new **true anomaly** ($\nu$).                                                          |
 | [wrapAngle](functions/wrapAngle.md)       | Wrap an angle (in **radians**) to a **single-turn range** and snap values extremely close to **±τ** (±`2π`) back to **0** to curb floating-point drift. |
 
 ## Anomalies
 
 | Function                                                      | Description                                                                          |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [advanceMeanAnomaly](functions/advanceMeanAnomaly.md)         | Advances an orbit by a time step and returns its new **mean anomaly** ($M$).         |
 | [eccentricToTrueAnomaly](functions/eccentricToTrueAnomaly.md) | Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.         |
-| [meanToEccentricAnomaly](functions/meanToEccentricAnomaly.md) | Computes the **mean anomaly** ($M$) of a celestial body for a given time step.       |
 | [trueToMeanAnomaly](functions/trueToMeanAnomaly.md)           | Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation. |
 
 ## Cartography
