@@ -207,14 +207,14 @@ tTransfer / <span class="n">3600</span>; <span class="c">// {{ hours }}  [h]</sp
             </li>
             <li>
               <span class="t">[T+00:01]</span>
-              <span class="call"
-                >CALL hohmann_transfer {r1_m: 6678000, r2_m: 42164000}</span
+              <span class="call">
+                CALL hohmann_transfer {r1_m: 6678000, r2_m: 42164000}</span
               >
             </li>
             <li>
               <span class="t">[T+00:01]</span>
-              <span class="ok"
-                >ACK dv_total_m_s={{ dvTotal.toFixed(1) }} t_transfer_s={{
+              <span class="ok">
+                ACK dv_total_m_s={{ dvTotal.toFixed(1) }} t_transfer_s={{
                   tTransfer.toFixed(0)
                 }}</span
               >
