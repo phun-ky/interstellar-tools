@@ -24,7 +24,7 @@ type TemporalUnitType =
 ```
 
 Defined in:
-[temporal.ts:37](https://github.com/phun-ky/interstellar-tools/blob/2097e53acceb41ae322e6aa3a44460924fa066e2/packages/types/src/temporal.ts#L37)
+[temporal.ts:37](https://github.com/phun-ky/interstellar-tools/blob/67f4eb8ba20d421a65a56d0a4b194110e4445a49/packages/types/src/temporal.ts#L37)
 
 Canonical **temporal unit symbols** for spacetime/physics **durations**.
 

@@ -10,7 +10,7 @@ type DegreesType = number & {
 ```
 
 Defined in:
-[numeric.ts:99](https://github.com/phun-ky/interstellar-tools/blob/2097e53acceb41ae322e6aa3a44460924fa066e2/packages/types/src/numeric.ts#L99)
+[numeric.ts:99](https://github.com/phun-ky/interstellar-tools/blob/67f4eb8ba20d421a65a56d0a4b194110e4445a49/packages/types/src/numeric.ts#L99)
 
 **Angle in degrees** (branded nominal type).
 
@@ -33,7 +33,7 @@ and **radians** at compile time. Construct explicitly (via a helper or cast).
 
 | Name     | Type        | Defined in                                                                                                                                     |
 | -------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__unit` | `"degrees"` | [numeric.ts:99](https://github.com/phun-ky/interstellar-tools/blob/2097e53acceb41ae322e6aa3a44460924fa066e2/packages/types/src/numeric.ts#L99) |
+| `__unit` | `"degrees"` | [numeric.ts:99](https://github.com/phun-ky/interstellar-tools/blob/67f4eb8ba20d421a65a56d0a4b194110e4445a49/packages/types/src/numeric.ts#L99) |
 
 ## Examples
 
