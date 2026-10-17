@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.60.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.1...%40interstellar-tools%2Ftemporal%400.60.2) (2026-10-17)
+
+### Documentation
+
+* ✏️ Document SECONDS_PER in the API reference ([9f959a3](https://github.com/phun-ky/interstellar-tools/commit/9f959a3055511041e01dadb30fd58086836a34d6))
+
+### Adding missing tests
+
+* 💍 Add property-based tests with fast-check ([c06f57d](https://github.com/phun-ky/interstellar-tools/commit/c06f57d3cfb336eb6c129ce131fb20c7e37474f0))
+
 ## [0.60.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.0...%40interstellar-tools%2Ftemporal%400.60.1) (2026-10-16)
 
 ### Tasks
