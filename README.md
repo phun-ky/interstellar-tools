@@ -7,6 +7,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/phun-ky/interstellar-tools)
 [![build](https://github.com/phun-ky/interstellar-tools/actions/workflows/check.yml/badge.svg)](https://github.com/phun-ky/interstellar-tools/actions/workflows/check.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/phun-ky/interstellar-tools/badge)](https://scorecard.dev/viewer/?uri=github.com/phun-ky/interstellar-tools)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15627/badge)](https://www.bestpractices.dev/projects/15627)
 
 ---
 
