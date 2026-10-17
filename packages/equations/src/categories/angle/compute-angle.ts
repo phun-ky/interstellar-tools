@@ -4,8 +4,8 @@ import type {
   TimeStepInterface
 } from '@interstellar-tools/types';
 
+import { advanceMeanAnomaly } from '../anomalies/advance-mean-anomaly.js';
 import { eccentricToTrueAnomaly } from '../anomalies/eccentric-to-true-anomaly.js';
-import { meanToEccentricAnomaly } from '../anomalies/mean-to-eccentric-anomaly.js';
 import { solveKepler } from '../kepler/solve-kepler.js';
 
 /**
@@ -18,7 +18,7 @@ import { solveKepler } from '../kepler/solve-kepler.js';
  *
  * **Step 1: Mean anomaly after the time step ($M$)**
  *
- * Done by {@link meanToEccentricAnomaly}:
+ * Done by {@link advanceMeanAnomaly}:
  * $$ M = M_0 + n \cdot \Delta t, \qquad n = \frac{2\pi}{|P|} $$
  * where:
  * - $M_0$ is the mean anomaly at the start, converted from the true anomaly
@@ -68,7 +68,7 @@ export const computeAngle = (
   timeStep: TimeStepInterface
 ): Radians => {
   // Compute mean anomaly (M) with time step
-  const M: Radians = meanToEccentricAnomaly(orbit, timeStep);
+  const M: Radians = advanceMeanAnomaly(orbit, timeStep);
   // Solve Kepler's equation for eccentric anomaly (E)
   const E: Radians = solveKepler(M, orbit.e);
   // Convert eccentric anomaly (E) to true anomaly (ν)

@@ -13,7 +13,10 @@ import { areEqual } from './utils/are-equal.js';
 
 /* node:coverage disable */
 /**
- * Computes the **mean anomaly** ($M$) of a celestial body for a given time step.
+ * Advances an orbit by a time step and returns its new **mean anomaly** ($M$).
+ *
+ * The orbit's `angle` (true anomaly) is the starting point. To get the eccentric
+ * anomaly from the result, pass it to {@link solveKepler}.
  *
  * **Mathematical Explanation:**
  *
@@ -38,7 +41,7 @@ import { areEqual } from './utils/are-equal.js';
  *
  * @example
  * ```ts
- * import { meanToEccentricAnomaly } from '@interstellar-tools/equations';
+ * import { advanceMeanAnomaly } from '@interstellar-tools/equations';
  *
  * const marsOrbit = {
  *   e: 0.0934, // Eccentricity of Mars' orbit
@@ -47,16 +50,17 @@ import { areEqual } from './utils/are-equal.js';
  * };
  *
  * const timeStep: TemporalInterface = { value: 1, unit: 'd' }; // 1-day step
- * const meanAnomaly = meanToEccentricAnomaly(marsOrbit, timeStep);
+ * const meanAnomaly = advanceMeanAnomaly(marsOrbit, timeStep);
  * console.log(meanAnomaly); // Output: Computed mean anomaly in radians
  * ```
  *
+ * @see {@link solveKepler} to convert the mean anomaly to the eccentric anomaly.
  * @see [Mean Anomaly (Wikipedia)](https://en.wikipedia.org/wiki/Mean_anomaly)
  * @see [Orbital Mechanics (NASA)](https://solarsystem.nasa.gov/basics/chapter2-2/)
  * @group Anomalies
  */
 /* node:coverage enable */
-export const meanToEccentricAnomaly = (
+export const advanceMeanAnomaly = (
   orbit: Pick<OrbitInterface, 'e' | 'angle' | 'period'>,
   timeStep: TemporalInterface
 ): Radians => {

@@ -14,6 +14,9 @@ import { solveKeplerNewtonRaphson } from './solve-kepler-newton-raphson.js';
  * - **High-eccentricity solver** for extreme orbits ($e > 0.9$).
  * - **Bisection fallback** if the selected solver doesn't return a root.
  *
+ * This is the conversion from **mean anomaly** to **eccentric anomaly**. Use
+ * {@link eccentricToTrueAnomaly} on the result to get the true anomaly.
+ *
  * ---
  *
  * **Mathematical Explanation:**
