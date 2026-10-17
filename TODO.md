@@ -234,6 +234,10 @@
 - **Comet angles:** `COMETS` stores the mean anomaly at J2000 in `orbit.angle`,
   while every other dataset stores the true anomaly. Convert the comets to the
   true anomaly, so `orbit.angle` means the same everywhere.
+- **Moon angles:** 26 of the 27 moons in `MOONS` have `orbit.angle` set to 0, a
+  placeholder rather than their true anomaly at J2000 (only the Moon has a
+  value). Compute real J2000 angles from published elements, as `PLANETS` does,
+  and add a test like the planets' conic-equation check.
 
 ## Propagation
 
