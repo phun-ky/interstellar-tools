@@ -8,7 +8,7 @@ const SOLAR_RADIUS_PHOTOSPHERIC_KM: 695660 = 695_660;
 ```
 
 Defined in:
-[objects.ts:27](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/constants/src/objects.ts#L27)
+[objects.ts:27](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/constants/src/objects.ts#L27)
 
 Photospheric / "standard" solar radius suggested for models (HSK 2008).
 Reconciles seismic and photospheric definitions.

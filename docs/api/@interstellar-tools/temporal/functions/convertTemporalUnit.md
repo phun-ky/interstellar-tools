@@ -11,12 +11,13 @@ function convertTemporalUnit(
 ```
 
 Defined in:
-[convert-temporal-unit.ts:96](https://github.com/phun-ky/interstellar-tools/blob/c06f57d3cfb336eb6c129ce131fb20c7e37474f0/packages/temporal/src/convert-temporal-unit.ts#L96)
+[convert-temporal-unit.ts:95](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/temporal/src/convert-temporal-unit.ts#L95)
 
 Convert a temporal **duration** between any two canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md) units.
 
-- Uses SECONDS_PER with **seconds** as the intermediate unit.
+- Uses [SECONDS_PER](../variables/SECONDS_PER.md) with **seconds** as the
+  intermediate unit.
 - Interprets `d` as the **SI day** and `yr/kyr/Myr/Gyr` via the **Julian year**
   convention.
 - The `time.unit` is expected to be **canonical**; if you accept aliases
