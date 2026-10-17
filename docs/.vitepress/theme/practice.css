@@ -1,0 +1,137 @@
+/*
+ * "In practice" boxes: one real situation and one real number, written as
+ * `::: practice Title` in Markdown or TSDoc. A paragraph holding only **bold**
+ * text is the readout, and a paragraph holding only _italics_ is its label.
+ * The numbers are checked in packages/equations/src/__tests__/in-practice.spec.ts.
+ */
+
+.vp-doc .mc-practice {
+  position: relative;
+  margin: 24px 0;
+  border: 1px solid var(--mc-line);
+  background: var(--mc-bg-2);
+}
+
+.mc-practice__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--mc-line);
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mc-practice__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--mc-teal);
+  font-weight: 600;
+}
+
+.mc-practice__tag::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mc-green);
+  box-shadow: 0 0 8px var(--mc-green);
+  animation: mc-practice-blink 2.4s steps(1) infinite;
+}
+
+.mc-practice__title {
+  color: var(--mc-muted);
+}
+
+.mc-practice__title::before {
+  content: '// ';
+  color: var(--mc-faint);
+}
+
+.vp-doc .mc-practice__body {
+  padding: 4px 16px 8px;
+  color: var(--mc-text);
+}
+
+.vp-doc .mc-practice__body > p {
+  margin: 12px 0;
+}
+
+.vp-doc .mc-practice__body div[class*='language-'] {
+  margin: 12px 0;
+}
+
+@keyframes mc-practice-blink {
+  0%,
+  90% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-practice__tag::before {
+    animation: none;
+  }
+}
+
+/* Corner brackets, like the code blocks */
+
+.mc-practice::before,
+.mc-practice::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--mc-teal);
+  pointer-events: none;
+}
+
+.mc-practice::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.mc-practice::after {
+  right: -1px;
+  bottom: -1px;
+  border-top: 0;
+  border-left: 0;
+}
+
+/* A paragraph holding only **bold** text is the readout */
+.vp-doc .mc-practice__body > p:has(> strong:only-child) {
+  margin: 16px 0 4px;
+}
+
+.vp-doc .mc-practice__body > p > strong:only-child {
+  font-family: var(--vp-font-family-mono);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--mc-teal);
+  text-shadow: 0 0 18px var(--mc-teal-soft);
+}
+
+/* An *emphasised* line right after it is the readout's label */
+.vp-doc .mc-practice__body > p:has(> em:only-child) {
+  margin-top: 0;
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-faint);
+}
+
+.vp-doc .mc-practice__body > p > em:only-child {
+  font-style: normal;
+}

@@ -8,7 +8,7 @@ function escapeSpeed(r: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/escape-speed.ts:49](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/equations/src/categories/orbits/escape-speed.ts#L49)
+[orbits/escape-speed.ts:65](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/equations/src/categories/orbits/escape-speed.ts#L65)
 
 **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's
 gravity from radius ($r$) (ignoring drag/perturbations).
@@ -32,6 +32,22 @@ from the central body's center.
 - Relationship to circular speed ($v_c$): ($v_{\text{esc}}=\sqrt{2}\,v_c$).
 - This corresponds to **parabolic** specific energy (($\varepsilon = 0$)).
 - For general (non-escape) orbital speed use `visVivaSpeed(r, a, mu)`.
+
+:::
+
+::: practice Leaving Earth
+
+**11.19 km/s**
+
+_Escape speed at Earth's surface_
+
+That's √2 times the 7.91 km/s it takes to orbit just above the surface, which is
+why a rocket for the Moon or Mars is so much bigger than one for low Earth
+orbit.
+
+```ts
+escapeSpeed(6.371e6, 3.986004418e14); // ≈ 11 186 m/s
+```
 
 :::
 

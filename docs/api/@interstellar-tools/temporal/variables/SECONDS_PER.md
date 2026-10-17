@@ -8,7 +8,7 @@ const SECONDS_PER: Record<TemporalUnitType, number>;
 ```
 
 Defined in:
-[convert-temporal-unit.ts:32](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/temporal/src/convert-temporal-unit.ts#L32)
+[convert-temporal-unit.ts:32](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/temporal/src/convert-temporal-unit.ts#L32)
 
 Seconds-per-unit lookup for all canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md) symbols.

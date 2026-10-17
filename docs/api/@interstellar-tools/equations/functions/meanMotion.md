@@ -8,7 +8,7 @@ function meanMotion(mu: number, a: number): number;
 ```
 
 Defined in:
-[orbits/mean-motion.ts:36](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/equations/src/categories/orbits/mean-motion.ts#L36)
+[orbits/mean-motion.ts:51](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/equations/src/categories/orbits/mean-motion.ts#L51)
 
 Compute **mean motion** for a (near-)circular reference orbit.
 
@@ -33,6 +33,21 @@ Where:
 Common usage: reference rate for relative motion models (e.g.,
 Clohessy–Wiltshire / Hill), orbital period estimates, and circular-orbit
 dynamics.
+
+::: practice The ISS, orbit by orbit
+
+**15.51 orbits/day**
+
+_Mean motion at 420 km altitude_
+
+The function returns 0.001128 rad/s. Multiply by 86 400 s and divide by 2π for
+orbits per day, the unit used in a satellite's two-line elements (TLEs).
+
+```ts
+meanMotion(3.986004418e14, 6.371e6 + 420e3); // ≈ 0.001128 rad/s
+```
+
+:::
 
 ## Parameters
 

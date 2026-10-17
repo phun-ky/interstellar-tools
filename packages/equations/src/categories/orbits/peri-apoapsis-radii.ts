@@ -19,6 +19,23 @@ import { PeriApoRadiiType } from '@interstellar-tools/types';
  * - Inputs: ($ a $) in **meters (m)**, ($ e $) dimensionless.
  * - Output: ($ r_p, r_a $) in **meters (m)**.
  *
+ * ::: practice Molniya orbit
+ *
+ * **545 km / 39 913 km**
+ *
+ * _Altitude at perigee and apogee_
+ *
+ * With e = 0.74, a Molniya satellite races through perigee and spends most of its
+ * 12 hour orbit slowly crossing apogee, high above the northern latitudes it
+ * serves.
+ *
+ * ```ts
+ * periApoapsisRadii(26600e3, 0.74);
+ * // rp = 6 916 km, ra = 46 284 km from Earth's centre
+ * ```
+ *
+ * :::
+ *
  * @param {number} a Semi-major axis ($ a $) (m). Must be finite and **≠ 0**.
  * @param {number} e Eccentricity ($ e $) (dimensionless). Must be finite and **≥ 0**.
  * @returns {{ rp: number; ra: number | null }} Object with periapsis `rp` and apoapsis `ra` (or `null` if undefined for hyperbolic).

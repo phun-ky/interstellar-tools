@@ -8,7 +8,7 @@ type SystemKindType = 'planetary' | 'binary' | 'multiple' | 'cluster';
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:14](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/types/src/celestial-bodies/systems.ts#L14)
+[celestial-bodies/systems.ts:14](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/types/src/celestial-bodies/systems.ts#L14)
 
 Kind of system a barycenter holds together.
 

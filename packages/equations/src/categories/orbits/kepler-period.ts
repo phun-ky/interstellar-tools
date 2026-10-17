@@ -18,6 +18,21 @@
  *
  * :::
  *
+ * ::: practice Geostationary orbit
+ *
+ * **23.93 h**
+ *
+ * _Orbital period 42 164 km from Earth's centre_
+ *
+ * That's one sidereal day, the time Earth takes to turn once relative to the
+ * stars, so a satellite there stays over the same spot on the equator.
+ *
+ * ```ts
+ * keplerPeriod(42164e3, 3.986004418e14); // ≈ 86 164 s
+ * ```
+ *
+ * :::
+ *
  * @param {number} a  Semi-major axis (m), must be finite and **> 0**.
  * @param {number} mu Gravitational parameter (m³/s²), must be finite and **> 0**.
  * @returns {number} Orbital period ($ T $) (s).

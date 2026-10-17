@@ -8,7 +8,7 @@ function keplerPeriod(a: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/kepler-period.ts:44](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/equations/src/categories/orbits/kepler-period.ts#L44)
+[orbits/kepler-period.ts:59](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/equations/src/categories/orbits/kepler-period.ts#L59)
 
 **Kepler's 3rd law** - orbital period ($T$) from semi-major axis ($a$) and
 gravitational parameter ($\mu$).
@@ -30,6 +30,21 @@ $$
   defined for parabolic/hyperbolic trajectories.
 - ($\mu$) is the **standard gravitational parameter** of the central body (e.g.,
   Earth ($\approx 3.986004418\times10^{14}\ \text{m}^3/\text{s}^2$)).
+
+:::
+
+::: practice Geostationary orbit
+
+**23.93 h**
+
+_Orbital period 42 164 km from Earth's centre_
+
+That's one sidereal day, the time Earth takes to turn once relative to the
+stars, so a satellite there stays over the same spot on the equator.
+
+```ts
+keplerPeriod(42164e3, 3.986004418e14); // ≈ 86 164 s
+```
 
 :::
 

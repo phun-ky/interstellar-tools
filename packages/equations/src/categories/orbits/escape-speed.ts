@@ -22,6 +22,22 @@
  *
  * :::
  *
+ * ::: practice Leaving Earth
+ *
+ * **11.19 km/s**
+ *
+ * _Escape speed at Earth's surface_
+ *
+ * That's √2 times the 7.91 km/s it takes to orbit just above the surface, which
+ * is why a rocket for the Moon or Mars is so much bigger than one for low Earth
+ * orbit.
+ *
+ * ```ts
+ * escapeSpeed(6.371e6, 3.986004418e14); // ≈ 11 186 m/s
+ * ```
+ *
+ * :::
+ *
  * @param {number} r  Radius ($ r $) (m), distance from the central body’s center (must be finite and **> 0**).
  * @param {number} mu Gravitational parameter ($ \mu $) (m³/s²), must be finite and **≥ 0**.
  * @returns {number} Escape speed ($ v_{\text{esc}} $) (m/s).

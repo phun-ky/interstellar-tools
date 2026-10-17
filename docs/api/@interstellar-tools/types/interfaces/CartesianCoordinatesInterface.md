@@ -4,7 +4,7 @@ CartesianCoordinatesInterface
 # Interface: CartesianCoordinatesInterface
 
 Defined in:
-[celestial-bodies/planets.ts:16](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/types/src/celestial-bodies/planets.ts#L16)
+[celestial-bodies/planets.ts:16](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/types/src/celestial-bodies/planets.ts#L16)
 
 Represents **2D coordinates** for planetary positioning.
 
@@ -23,7 +23,7 @@ x: number;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:17](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/types/src/celestial-bodies/planets.ts#L17)
+[celestial-bodies/planets.ts:17](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/types/src/celestial-bodies/planets.ts#L17)
 
 The x-coordinate.
 
@@ -36,6 +36,6 @@ y: number;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:18](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/types/src/celestial-bodies/planets.ts#L18)
+[celestial-bodies/planets.ts:18](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/types/src/celestial-bodies/planets.ts#L18)
 
 The y-coordinate.

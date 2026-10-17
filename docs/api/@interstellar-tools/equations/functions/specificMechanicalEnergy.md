@@ -8,7 +8,7 @@ function specificMechanicalEnergy(v: number, r: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/specific-mechanical-energy.ts:48](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/equations/src/categories/orbits/specific-mechanical-energy.ts#L48)
+[orbits/specific-mechanical-energy.ts:68](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/equations/src/categories/orbits/specific-mechanical-energy.ts#L68)
 
 **Specific mechanical energy** ($ \varepsilon $) of a point mass in a central
 gravity field.
@@ -37,6 +37,26 @@ the gravitational parameter.
 
 - For circular orbits ($v = \sqrt{\mu/r}$), so ($ \varepsilon = -\mu/(2r) $).
 - If you have the semi-major axis ($a$), then ($ \varepsilon = -\mu/(2a) $).
+
+:::
+
+::: practice Energy of the ISS orbit
+
+**-29.35 MJ/kg**
+
+_Specific orbital energy at 420 km altitude_
+
+Negative means the orbit is bound. Escaping Earth from there takes 29.35 MJ more
+for every kilogram, which brings the energy up to zero.
+
+```ts
+const mu = 3.986004418e14;
+const r = 6.371e6 + 420e3;
+
+const v = circularSpeed(r, mu);
+
+specificMechanicalEnergy(v, r, mu); // ≈ -2.935e7 J/kg
+```
 
 :::
 
