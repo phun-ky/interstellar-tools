@@ -230,6 +230,11 @@ This project aims to be:
 - **Inclusive**: welcoming to newcomers and experts alike.
 - **Practical**: focused on real-world reliability and clarity over spectacle.
 
+How the project is run, who does what and where it's heading are described in
+[GOVERNANCE.md](GOVERNANCE.md) and [ROADMAP.md](ROADMAP.md). Security
+expectations and the assurance case are in [SECURITY.md](SECURITY.md) and
+[ASSURANCE.md](ASSURANCE.md).
+
 ---
 
 ## Local development

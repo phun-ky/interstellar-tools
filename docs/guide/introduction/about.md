@@ -166,6 +166,11 @@ Interstellar Tools is created and maintained by Alexander Vassbotn
 Røyne-Helgesen, who holds the copyright to it under the
 [MIT License](https://github.com/phun-ky/interstellar-tools/blob/main/LICENSE).
 
+How decisions are made and who does what is described in the
+[governance](https://github.com/phun-ky/interstellar-tools/blob/main/GOVERNANCE.md),
+and where the project is heading in the
+[roadmap](https://github.com/phun-ky/interstellar-tools/blob/main/ROADMAP.md).
+
 ## A note from the author
 
 > I built @interstellar-tools to help catalyse the space+software wave I'm
