@@ -27,27 +27,30 @@ import { CometsType, Radians } from '@interstellar-tools/types';
  */
 export const COMETS: CometsType = [
   {
+    id: '1p-halley',
     // eslint-disable-next-line @stylistic/quotes
     name: "Halley's Comet",
     type: 'periodic comet',
     category: 'halley-type comet',
-    system: 'Sun',
-    /** Semi-major axis in AU */
-    a: { value: 17.834, unit: 'au' },
-    /** Eccentricity (0 = circular orbit, 1 = parabolic trajectory) */
-    e: 0.96714,
-    /** Inclination in degrees */
-    i: 162.26,
-    /** Argument of perihelion in degrees */
-    w: 111.33,
-    /** Longitude of the ascending node in degrees */
-    om: 58.42,
-    /** Mean anomaly in radians at J2000 epoch */
-    angle: 0.669857 as Radians,
-    /** Orbital period in days */
-    period: { value: 27576, unit: 'd' }, // ~76 years
-    /** Perihelion distance in AU */
-    q: 0.586,
+    parent: 'sun',
+    orbit: {
+      /** Semi-major axis in AU */
+      a: { value: 17.834, unit: 'au' },
+      /** Eccentricity (0 = circular orbit, 1 = parabolic trajectory) */
+      e: 0.96714,
+      /** Inclination in degrees */
+      i: 162.26,
+      /** Argument of perihelion in degrees */
+      w: 111.33,
+      /** Longitude of the ascending node in degrees */
+      om: 58.42,
+      /** Mean anomaly in radians at J2000 epoch */
+      angle: 0.669857 as Radians,
+      /** Orbital period in days */
+      period: { value: 27576, unit: 'd' }, // ~76 years
+      /** Perihelion distance in AU */
+      q: 0.586
+    },
     /** Visual representation color */
     color: '#FFFFFF', // Bright white (reflective comet dust)
     /** Scaled size for visualization */
@@ -56,53 +59,62 @@ export const COMETS: CometsType = [
     radius: { value: 5.5, unit: 'km' }
   },
   {
+    id: 'c-1995-o1-hale-bopp',
     name: 'Comet Hale-Bopp',
     type: 'oort cloud comet',
     category: 'long-period comet',
-    system: 'Sun',
-    a: { value: 186.0, unit: 'au' },
-    e: 0.9951,
-    i: 89.4,
-    w: 130.6,
-    om: 282.5,
-    angle: 3.141593 as Radians,
-    period: { value: -926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au)
-    q: 0.914,
+    parent: 'sun',
+    orbit: {
+      a: { value: 186.0, unit: 'au' },
+      e: 0.9951,
+      i: 89.4,
+      w: 130.6,
+      om: 282.5,
+      angle: 3.141593 as Radians,
+      period: { value: -926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au),
+      q: 0.914
+    },
     color: '#00A6FF', // Electric blue (ionized tail appearance)
     size: 4,
     radius: { value: 30, unit: 'km' }
   },
   {
+    id: '67p-churyumov-gerasimenko',
     name: 'Comet 67P/Churyumov–Gerasimenko',
     category: 'jupiter-family comet',
     type: 'short-period comet',
-    system: 'Sun',
-    a: { value: 3.464, unit: 'au' }, // Semi-major axis
-    e: 0.641, // Eccentricity
-    i: 7.04, // Inclination in degrees
-    w: 12.78, // Argument of perihelion in degrees
-    om: 50.14, // Longitude of ascending node in degrees
-    angle: 0.0 as Radians, // Initial angle (could be updated based on epoch)
-    period: { value: -2355, unit: 'd' }, // ~6.45 years
-    q: 1.243, // Perihelion distance in AU
+    parent: 'sun',
+    orbit: {
+      a: { value: 3.464, unit: 'au' }, // Semi-major axis
+      e: 0.641, // Eccentricity
+      i: 7.04, // Inclination in degrees
+      w: 12.78, // Argument of perihelion in degrees
+      om: 50.14, // Longitude of ascending node in degrees
+      angle: 0.0 as Radians, // Initial angle (could be updated based on epoch)
+      period: { value: -2355, unit: 'd' }, // ~6.45 years
+      q: 1.243 // Perihelion distance in AU
+    },
     color: '#AAAAAA', // Greyish surface color
     size: 4, // Visualization size
     radius: { value: 2, unit: 'km' } // Approximate average radius (~4km total diameter)
   },
   // #region datasetComets
   {
+    id: '2p-encke',
     name: 'Comet Encke',
     type: 'short-period comet',
     category: 'jupiter-family comet',
-    system: 'Sun',
-    a: { value: 2.22, unit: 'au' },
-    e: 0.85,
-    i: 11.8,
-    w: 186.5,
-    om: 334.6,
-    angle: 2.792527 as Radians,
-    period: { value: -1204, unit: 'd' }, // ~3.3 years
-    q: 0.34,
+    parent: 'sun',
+    orbit: {
+      a: { value: 2.22, unit: 'au' },
+      e: 0.85,
+      i: 11.8,
+      w: 186.5,
+      om: 334.6,
+      angle: 2.792527 as Radians,
+      period: { value: -1204, unit: 'd' }, // ~3.3 years
+      q: 0.34
+    },
     color: '#FFD700', // Golden yellow (dusty tail, lower albedo)
     size: 3,
     radius: { value: 4.8, unit: 'km' }

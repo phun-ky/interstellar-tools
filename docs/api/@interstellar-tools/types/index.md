@@ -49,10 +49,9 @@ npm i --save @interstellar-tools/types
 | [CometInterface](interfaces/CometInterface.md)                               | Represents a **comet** in the solar system simulation.                                            |
 | [GalaxyInterface](interfaces/GalaxyInterface.md)                             | Represents a **galaxy** in the universe simulation.                                               |
 | [MoonInterface](interfaces/MoonInterface.md)                                 | Represents a **moon** (natural satellite) orbiting a planet.                                      |
-| [PlanetInterface](interfaces/PlanetInterface.md)                             | Represents a **planet** in the solar system simulation.                                           |
-| [StarInterface](interfaces/StarInterface.md)                                 | Represents a **star** in a planetary or stellar system.                                           |
-| [StarSystemInterface](interfaces/StarSystemInterface.md)                     | Represents a **star system**, which can be a planetary system or a stellar system.                |
-| [SystemInterface](interfaces/SystemInterface.md)                             | Represents a star system within the space visualization.                                          |
+| [PlanetInterface](interfaces/PlanetInterface.md)                             | Represents a **planet** or **planetoid**.                                                         |
+| [StarInterface](interfaces/StarInterface.md)                                 | Represents a **star**.                                                                            |
+| [SystemInterface](interfaces/SystemInterface.md)                             | Represents a **system**: the barycenter (centre of mass) that its members orbit.                  |
 | [AsteroidBeltsType](type-aliases/AsteroidBeltsType.md)                       | Type alias for a collection of asteroid belts.                                                    |
 | [AsteroidCategory](type-aliases/AsteroidCategory.md)                         | More specific **group/category** for dynamical families or special bodies.                        |
 | [AsteroidSpectralType](type-aliases/AsteroidSpectralType.md)                 | **Spectral (taxonomic) class** based on reflectance spectra & albedo.                             |
@@ -66,7 +65,8 @@ npm i --save @interstellar-tools/types
 | [MoonsType](type-aliases/MoonsType.md)                                       | Type alias for a collection of **moons**.                                                         |
 | [PlanetsType](type-aliases/PlanetsType.md)                                   | Type alias for a collection of **planets**.                                                       |
 | [StarsType](type-aliases/StarsType.md)                                       | Type alias for a collection of **stars**.                                                         |
-| [SystemsType](type-aliases/SystemsType.md)                                   | Type alias for a collection of star systems.                                                      |
+| [SystemKindType](type-aliases/SystemKindType.md)                             | Kind of system a barycenter holds together.                                                       |
+| [SystemsType](type-aliases/SystemsType.md)                                   | Type alias for a collection of systems.                                                           |
 
 ## Distance
 
@@ -87,8 +87,9 @@ npm i --save @interstellar-tools/types
 
 ## Orbits
 
-| Type Alias                                             | Description                                                                   |
+| Name                                                   | Description                                                                   |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| [OrbitInterface](interfaces/OrbitInterface.md)         | Kepler **orbital elements** of one body around its parent.                    |
 | [CwState](type-aliases/CwState.md)                     | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame. |
 | [CwStateDerivative](type-aliases/CwStateDerivative.md) | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.   |
 | [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)   | **Peri/apoapsis radii pair**.                                                 |

@@ -42,7 +42,7 @@ npm i --save @interstellar-tools/constants
 | [MOONS](variables/MOONS.md)                   | Represents a dataset of natural satellites (moons) in the solar system.             |
 | [PLANETS](variables/PLANETS.md)               | Represents a dataset of planets and planetoids in the solar system.                 |
 | [STARS](variables/STARS.md)                   | Represents a dataset of well-known stars within the Milky Way.                      |
-| [SYSTEMS](variables/SYSTEMS.md)               | Predefined star systems in the galaxy.                                              |
+| [SYSTEMS](variables/SYSTEMS.md)               | Predefined systems: the barycenters that stars and planets orbit.                   |
 
 ## Date
 

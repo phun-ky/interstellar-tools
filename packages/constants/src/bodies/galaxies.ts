@@ -28,6 +28,7 @@ import { GalaxiesType } from '@interstellar-tools/types';
 export const GALAXIES: GalaxiesType = [
   // #region datasetGalaxies
   {
+    id: 'milky-way',
     name: 'Milky Way',
     type: 'Barred Spiral',
     /** Diameter of the galaxy in light-years. */
@@ -48,6 +49,7 @@ export const GALAXIES: GalaxiesType = [
   },
   // #endregion datasetGalaxies
   {
+    id: 'andromeda',
     name: 'Andromeda',
     type: 'Barred Spiral',
     diameter: { value: 220000, unit: 'ly' },
@@ -61,6 +63,7 @@ export const GALAXIES: GalaxiesType = [
     }
   },
   {
+    id: 'triangulum',
     name: 'Triangulum',
     type: 'Spiral',
     diameter: { value: 60000, unit: 'ly' },

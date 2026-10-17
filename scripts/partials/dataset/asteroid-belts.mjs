@@ -3,13 +3,12 @@ import { writeFile } from 'node:fs/promises';
 import { ASTEROID_BELTS } from '../../../packages/constants/dist/bodies/asteroid-belts.js';
 
 const header =
-  '| name               | innerRadius | outerRadius | color   | opacity | density |\n' +
-  '| ------------------ | ----------- | ----------- | ------- | ------- | ------- |\n';
-const rows = ASTEROID_BELTS.map((belt) => {
-  const { name, innerRadius, outerRadius, color, opacity, density } = belt;
-
-  return `| ${name} | ${innerRadius} | ${outerRadius} | ${color} | ${opacity} | ${density} |`;
-}).join('\n');
+  '| id | name | parent | innerRadius | outerRadius | color | opacity | density |\n' +
+  '| --- | --- | --- | --- | --- | --- | --- | --- |\n';
+const rows = ASTEROID_BELTS.map(
+  (belt) =>
+    `| ${belt.id} | ${belt.name} | ${belt.parent} | ${belt.innerRadius} | ${belt.outerRadius} | ${belt.color} | ${belt.opacity} | ${belt.density} |`
+).join('\n');
 const out = `## Full list of asteroid belts in the dataset
 
 This list is not an exhaustive list, and addition/changes will be added over time.

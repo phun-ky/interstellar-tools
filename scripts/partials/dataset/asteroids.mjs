@@ -2,31 +2,14 @@ import { writeFile } from 'node:fs/promises';
 
 import { ASTEROIDS } from '../../../packages/constants/dist/bodies/asteroids.js';
 
+const m = (measure) => (measure ? `${measure.value} ${measure.unit}` : '');
 const header =
-  '| name       | type                | category       | spectralType | system | a | e     | i    | w     | om    | angle    | period | q     | radius | color   | size |\n' +
-  '| ---------- | ------------------- | -------------- | ------------ | ------ | ------- | ----- | ---- | ----- | ----- | -------- | ----------- | -----  | ----------- | ------- | ---- |\n';
-const rows = ASTEROIDS.map((asteroid) => {
-  const {
-    name,
-    type,
-    category,
-    spectralType,
-    system,
-    a,
-    e,
-    i,
-    w,
-    om,
-    angle,
-    period,
-    q,
-    radius,
-    color,
-    size
-  } = asteroid;
-
-  return `| ${name} | ${type} | ${category} | ${spectralType} | ${system} | ${a.value} ${a.unit}  | ${e} | ${i} | ${w} | ${om} | ${angle} | ${period.value} ${period.unit} | ${q} | ${radius.value} ${radius.unit} | ${color} | ${size} |`;
-}).join('\n');
+  '| id | name | type | category | spectralType | parent | orbit.a | orbit.e | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.q | radius | color | size |\n' +
+  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
+const rows = ASTEROIDS.map(
+  (asteroid) =>
+    `| ${asteroid.id} | ${asteroid.name} | ${asteroid.type} | ${asteroid.category} | ${asteroid.spectralType} | ${asteroid.parent} | ${m(asteroid.orbit.a)} | ${asteroid.orbit.e} | ${asteroid.orbit.i} | ${asteroid.orbit.w} | ${asteroid.orbit.om} | ${asteroid.orbit.angle} | ${m(asteroid.orbit.period)} | ${asteroid.orbit.q} | ${m(asteroid.radius)} | ${asteroid.color} | ${asteroid.size} |`
+).join('\n');
 const out = `## Full list of asteroids in the dataset
 
 This list is not an exhaustive list, and addition/changes will be added over time.

@@ -2,28 +2,14 @@ import { writeFile } from 'node:fs/promises';
 
 import { STARS } from '../../../packages/constants/dist/bodies/stars.js';
 
+const m = (measure) => (measure ? `${measure.value} ${measure.unit}` : '');
 const header =
-  '| name   | type     | category | system.name  | system.type      | radius | color      | x | y | z | a | e     | angle              | period |\n' +
-  '| ------ | -------- | -------- | ------------ | ---------------- | ----------- | ---------- | ------ | ------ | ------------------ | ------ | ------------------ | ------------ | ----------- |\n';
-const rows = STARS.map((star) => {
-  const {
-    name,
-    type,
-    category,
-    system,
-    radius,
-    color,
-    x,
-    y,
-    z,
-    a,
-    e,
-    angle,
-    period
-  } = star;
-
-  return `| ${name} | ${type} | ${category} | ${system.name} | ${system.type} | ${radius.value} ${radius.unit} | ${color} | ${x.value} ${x.unit} | ${y.value} ${y.unit} | ${z.value} ${z.unit} | ${a.value} ${a.unit} | ${e} | ${angle} | ${period.value} ${period.unit} |`;
-}).join('\n');
+  '| id | name | type | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | mass (M☉) | radius | color | x | y | z |\n' +
+  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
+const rows = STARS.map(
+  (star) =>
+    `| ${star.id} | ${star.name} | ${star.type} | ${star.category} | ${star.parent ?? ''} | ${m(star.orbit?.a)} | ${star.orbit?.e ?? ''} | ${m(star.orbit?.period)} | ${star.orbit?.angle ?? ''} | ${star.mass ?? ''} | ${m(star.radius)} | ${star.color} | ${m(star.x)} | ${m(star.y)} | ${m(star.z)} |`
+).join('\n');
 const out = `## Full list of stars in the dataset
 
 This list is not an exhaustive list, and addition/changes will be added over time.

@@ -242,11 +242,29 @@ describe('bodies', () => {
     assert.equal(planets[0].name, 'Mercury');
   });
 
-  test('stars omit Alpha Centauri', async () => {
-    const stars = await readJson('interstellar://datasets/stars');
+  test('stars include Alpha Centauri, bound to its systems', async () => {
+    const stars = (await readJson('interstellar://datasets/stars')) as {
+      name: string;
+      parent?: string;
+    }[];
 
     assert.ok(stars.some((s) => s.name === 'Sun'));
-    assert.ok(!stars.some((s) => s.name.includes('Centauri')));
+    assert.equal(
+      stars.find((s) => s.name === 'Proxima Centauri')?.parent,
+      'alpha-centauri'
+    );
+  });
+
+  test('find_body matches ids', async () => {
+    const res = await call('find_body', { query: 'alpha-centauri-ab' });
+    const { matches } = res.structuredContent!;
+
+    assert.ok(
+      matches.some(
+        (m: { dataset: string; body: { id: string } }) =>
+          m.dataset === 'systems' && m.body.id === 'alpha-centauri-ab'
+      )
+    );
   });
 
   test('find_body is case-insensitive', async () => {

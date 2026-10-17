@@ -8,15 +8,18 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:28](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/constants/src/bodies/stars.ts#L28)
+[bodies/stars.ts:29](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/constants/src/bodies/stars.ts#L29)
 
 Represents a dataset of well-known stars within the Milky Way.
 
 ::: info
 
-- Units: `radius` (km); galactocentric coordinates `x`,`y`,`z` (ly); orbital
-  semi-major axis `a` (ly); `period` in million years (Myr); orbital angles are
-  unitless here (radians) if provided.
+- Each star names its `parent` (a galaxy or a system barycenter) and its `orbit`
+  around it.
+
+- Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly,
+  `period` in Myr. Orbits within a system: `a` in au, `period` in yr or kyr.
+  `angle` in radians. `mass` in M☉.
 
 - `color` is for visualization only.
 
@@ -35,16 +38,16 @@ time.
 
 <div class="ph table-overflow">
 
-| name             | type     | category | system.name    | system.type      | radius                                                                         | color   | x         | y                     | z     | a                     | e     | angle              | period   |
-| ---------------- | -------- | -------- | -------------- | ---------------- | ------------------------------------------------------------------------------ | ------- | --------- | --------------------- | ----- | --------------------- | ----- | ------------------ | -------- |
-| Sun              | G2V      | star     | Solar System   | planetary system | 696340 km                                                                      | #fff5f1 | 0 ly      | 27000 ly              | 20 ly | 27000 ly              | 0.07  | 1.5707963267948966 | -230 Myr |
-| Vega             | A0V      | star     | Lyra           | stellar system   | [`2600000`](https://github.com/phun-ky/interstellar-tools/commit/2600000) km   | blue    | 25.3 ly   | 27230.011753394454 ly | 0 ly  | 27230.011753394454 ly | 0.005 | 1.569867205171707  | -480 Myr |
-| Altair           | A7V      | star     | Aquila         | stellar system   | [`1700000`](https://github.com/phun-ky/interstellar-tools/commit/1700000) km   | white   | 16.7 ly   | 27050.005155082687 ly | 0 ly  | 27050.005155082687 ly | 0.004 | 1.5701789517599378 | -410 Myr |
-| Deneb            | A2Ia     | star     | Cygnus         | stellar system   | [`1080000`](https://github.com/phun-ky/interstellar-tools/commit/108000000) km | #cad7ff | 2616 ly   | 27375.280016832705 ly | 0 ly  | 27375.280016832705 ly | 0.009 | 1.475524958596149  | -720 Myr |
-| Spica            | B1III-IV | star     | Virgo          | stellar system   | [`7350000`](https://github.com/phun-ky/interstellar-tools/commit/73500000) km  | blue    | 250 ly    | 27201.148872795795 ly | 0 ly  | 27201.148872795795 ly | 0.006 | 1.5616057972952029 | -550 Myr |
-| Alpha Centauri A | G2V      | star     | Alpha Centauri | stellar system   | 851119 km                                                                      | #fff4ea | 4.37 ly   | 27000.000353646294 ly | 0 ly  | 27000.000353646294 ly | 0.07  | 1.570634474946578  | -230 Myr |
-| Alpha Centauri B | K1V      | star     | Alpha Centauri | stellar system   | 600528 km                                                                      | #ffd2a1 | 4.37 ly   | 27000.000353646294 ly | 0 ly  | 27000.000353646294 ly | 0.07  | 1.570634474946578  | -230 Myr |
-| Proxima Centauri | M5.5Ve   | star     | Alpha Centauri | stellar system   | 107277 km                                                                      | #ffcc6f | 4.2465 ly | 27000.00033394004 ly  | 0 ly  | 27000.00033394004 ly  | 0.07  | 1.570639049020361  | -230 Myr |
+| id               | name             | type     | category | parent            | orbit.a               | orbit.e | orbit.period | orbit.angle        | mass (M☉) | radius                                                                         | color   | x       | y                     | z    |
+| ---------------- | ---------------- | -------- | -------- | ----------------- | --------------------- | ------- | ------------ | ------------------ | --------- | ------------------------------------------------------------------------------ | ------- | ------- | --------------------- | ---- |
+| sun              | Sun              | G2V      | star     | solar-system      |                       |         |              |                    | 1         | 696340 km                                                                      | #fff5f1 |         |                       |      |
+| vega             | Vega             | A0V      | star     | milky-way         | 27230.011753394454 ly | 0.005   | -480 Myr     | 1.569867205171707  |           | [`2600000`](https://github.com/phun-ky/interstellar-tools/commit/2600000) km   | blue    | 25.3 ly | 27230.011753394454 ly | 0 ly |
+| altair           | Altair           | A7V      | star     | milky-way         | 27050.005155082687 ly | 0.004   | -410 Myr     | 1.5701789517599378 |           | [`1700000`](https://github.com/phun-ky/interstellar-tools/commit/1700000) km   | white   | 16.7 ly | 27050.005155082687 ly | 0 ly |
+| deneb            | Deneb            | A2Ia     | star     | milky-way         | 27375.280016832705 ly | 0.009   | -720 Myr     | 1.475524958596149  |           | [`1080000`](https://github.com/phun-ky/interstellar-tools/commit/108000000) km | #cad7ff | 2616 ly | 27375.280016832705 ly | 0 ly |
+| spica            | Spica            | B1III-IV | star     | milky-way         | 27201.148872795795 ly | 0.006   | -550 Myr     | 1.5616057972952029 |           | [`7350000`](https://github.com/phun-ky/interstellar-tools/commit/73500000) km  | blue    | 250 ly  | 27201.148872795795 ly | 0 ly |
+| alpha-centauri-a | Alpha Centauri A | G2V      | star     | alpha-centauri-ab | 10.66 au              | 0.51947 | -79.762 yr   | 3.275243601437025  | 1.0788    | 847015 km                                                                      | #fff4ea |         |                       |      |
+| alpha-centauri-b | Alpha Centauri B | K1V      | star     | alpha-centauri-ab | 12.64 au              | 0.51947 | -79.762 yr   | 3.275243601437025  | 0.9092    | 597676 km                                                                      | #ffd2a1 |         |                       |      |
+| proxima-centauri | Proxima Centauri | M5.5Ve   | star     | alpha-centauri    | 8197 au               | 0.5     | -547 kyr     | 3.099566485428788  | 0.1221    | 107277 km                                                                      | #ffcc6f |         |                       |      |
 
 </div>
 
@@ -52,26 +55,30 @@ time.
 
 ```ts
 {
-  name: 'Sun',
-  type: 'G2V', // Yellow Dwarf, Main Sequence
+  id: 'vega',
+  name: 'Vega',
+  type: 'A0V', // White-Blue Main Sequence
   category: 'star',
-  system: { name: 'Solar System', type: 'planetary system' },
+  /** A single star orbits the galaxy directly */
+  parent: 'milky-way',
+  orbit: {
+    /** Semi-major axis in light-years */
+    a: { value: 27230.011753394454, unit: 'ly' },
+    /** Orbital eccentricity */
+    e: 0.005,
+    /** Orbital period in million years (Myr) */
+    period: { value: -480, unit: 'Myr' },
+    /** Initial angle in orbit */
+    angle: 1.569867205171707 as Radians
+  },
   /** Radius in km */
-  radius: { value: 696340, unit: 'km' },
+  radius: { value: 2600000, unit: 'km' },
   /** Visual representation color */
-  color: '#fff5f1',
+  color: 'blue',
   /** Galactic position in light-years (relative to Milky Way center) */
-  x: { value: 0, unit: 'ly' },
-  y: { value: 27000, unit: 'ly' },
-  z: { value: 20, unit: 'ly' },
-  /** Semi-major axis in light-years */
-  a: { value: 27000, unit: 'ly' },
-  /** Orbital eccentricity */
-  e: 0.07,
-  /** Initial angle in orbit */
-  angle: 1.5707963267948966 as Radians,
-  /** Orbital period in million years (Myr) */
-  period: { value: -230, unit: 'Myr' }
+  x: { value: 25.3, unit: 'ly' },
+  y: { value: 27230.011753394454, unit: 'ly' },
+  z: { value: 0, unit: 'ly' }
 },
 ```
 

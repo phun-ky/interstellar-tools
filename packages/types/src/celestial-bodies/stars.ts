@@ -1,95 +1,70 @@
-import { DistanceInterface, MeasureInterface } from '../distance.js';
-import type { Radians } from '../numeric.js';
-import { TemporalInterface } from '../temporal.js';
+import { DistanceInterface } from '../distance.js';
+import type { OrbitInterface } from '../orbits.js';
 
 import { CartesianCoordinatesInterface } from './planets.js';
 
 /**
- * Represents a **star system**, which can be a planetary system or a stellar system.
+ * Represents a **star**.
  *
- * @property {string} name - Name of the star system.
- * @property {'planetary system' | 'stellar system'} type - Specifies if it is a **planetary system** or a **stellar system**.
- *
- * @example
- * ```ts
- * const solarSystem: StarSystemInterface = {
- *   name: 'Solar System',
- *   type: 'planetary system'
- * };
- * ```
- * @group Celestial Bodies
- */
-export interface StarSystemInterface {
-  name: string;
-  type: 'planetary system' | 'stellar system';
-}
-
-/**
- * Represents a **star** in a planetary or stellar system.
- *
- * **Orbital & Physical Properties:**
- * - **Semi-major axis (`a`)**: Defines the star’s orbit size (AU or light-years).
- * - **Orbital eccentricity (`e`)**: Determines how elliptical the orbit is.
- * - **Orbital period (`period`)**: Time taken for one full orbit. Negative values indicates counter clockwise direction.
- * - **True anomaly (`angle`)**: The star’s current position in its orbit (in **radians**).
- * - **Radius (`radius`)**: Physical size of the star.
+ * A star is bound to one `parent`: a galaxy for a single star like Vega, or a
+ * system barycenter for a star in a planetary, binary or multiple system. Its
+ * `orbit` describes the motion around that parent. A star without a `parent`
+ * is unbound, like a hypervelocity star leaving its galaxy.
  *
  * **Classification & Visualization:**
- * - **Type (`type`)**: Classification of the star (e.g., **main-sequence star, white dwarf**).
+ * - **Type (`type`)**: Spectral classification of the star (e.g., `'G2V'`).
  * - **Category (`category`)**: Defined as `'star'`.
  * - **Color (`color`)**: Used for visual representation.
  *
  * @example
  * ```ts
- * const sun: StarInterface = {
- *   name: 'Sun',
- *   type: 'G-type main-sequence',
+ * const vega: StarInterface = {
+ *   id: 'vega',
+ *   name: 'Vega',
+ *   type: 'A0V',
  *   category: 'star',
- *   system: solarSystem,
- *   radius: { value: 695700, unit: 'km' },
- *   color: '#ffcc00',
- *   a: { value: 0, unit: 'au' },
- *   e: 0,
- *   period: { value: 0, unit: 'years' },
- *   angle: 0,
- *   x: { value: 0, unit: 'au' },
- *   y: { value: 0, unit: 'au' },
- *   z: { value: 0, unit: 'au' }
+ *   parent: 'milky-way',
+ *   orbit: {
+ *     a: { value: 27230, unit: 'ly' },
+ *     e: 0.005,
+ *     period: { value: -480, unit: 'Myr' },
+ *     angle: 1.5699 as Radians
+ *   },
+ *   radius: { value: 2600000, unit: 'km' },
+ *   color: 'blue'
  * };
  * ```
  * @group Celestial Bodies
  */
 export interface StarInterface {
+  /** Stable identifier, used by `parent` references. Never translated. */
+  id: string;
   /** Name of the star. */
   name: string;
-  /** Classification of the star (e.g., main-sequence, red giant, white dwarf). */
+  /** Spectral classification of the star (e.g., `'G2V'`). */
   type: string;
   /** Defines the category as a star. */
   category: 'star';
-  /** The system in which the star exists. */
-  system: StarSystemInterface;
+  /** Id of the galaxy or system the star is bound to. */
+  parent?: string;
+  /** Orbit around the parent. */
+  orbit?: OrbitInterface;
+  /** Mass in solar masses ($M_\odot$). */
+  mass?: number;
   /** Physical radius of the star. */
   radius: DistanceInterface;
   /** Visual representation color. */
   color: string;
-  /** Semi-major axis of the orbit (AU or light-years). */
-  a: MeasureInterface;
-  /** Orbital eccentricity (0 = circular, closer to 1 = highly elliptical). */
-  e: number;
   /** Semi-minor axis of the orbit (calculated from `a` and `e`). */
   miA?: number;
   /** X-offset for the ellipse focus (accounts for eccentricity). */
   focus_x?: number;
-  /** Current orbital position in radians (True Anomaly). */
-  angle: Radians;
-  /** X-coordinate in a distance-based system. */
-  x: DistanceInterface;
-  /** Y-coordinate in a distance-based system. */
-  y: DistanceInterface;
-  /** Z-coordinate in a distance-based system. */
-  z: DistanceInterface;
-  /** Orbital period of the star. Negative values indicate counter clockwise direction. */
-  period: TemporalInterface;
+  /** X-coordinate in the parent's frame. */
+  x?: DistanceInterface;
+  /** Y-coordinate in the parent's frame. */
+  y?: DistanceInterface;
+  /** Z-coordinate in the parent's frame. */
+  z?: DistanceInterface;
   /** Precomputed orbital path points for visualization (optional). */
   orbitPath?: CartesianCoordinatesInterface[];
 }

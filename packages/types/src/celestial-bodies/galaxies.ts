@@ -46,6 +46,7 @@ export interface BlackHoleInterface {
  * @example
  * ```ts
  * const milkyWay: GalaxyInterface = {
+ *   id: 'milky-way',
  *   name: 'Milky Way',
  *   type: 'Spiral',
  *   diameter: { value: 105700, unit: 'lightyears' },
@@ -56,6 +57,8 @@ export interface BlackHoleInterface {
  * @group Celestial Bodies
  */
 export interface GalaxyInterface {
+  /** Stable identifier, used by `parent` references. Never translated. */
+  id: string;
   /** Name of the galaxy. */
   name: string;
   /** Morphological classification of the galaxy. */

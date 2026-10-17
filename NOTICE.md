@@ -34,6 +34,9 @@ copyright. They're compiled from public references, credited here:
   [ESA](https://www.esa.int/Science_Exploration/Space_Science) and
   [Wikipedia](https://en.wikipedia.org/). Some values are approximations for
   visualisation, as noted in each dataset's documentation.
+- **Alpha Centauri orbits and masses:** Akeson et al. 2021 (AJ 162, 14) for the
+  A-B orbit, masses and radii, and Kervella et al. 2017 (A&A 598, L7) for Proxima
+  Centauri's orbit around the pair.
 
 Wikipedia text is licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Only factual

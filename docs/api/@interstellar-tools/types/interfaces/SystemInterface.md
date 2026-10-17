@@ -4,22 +4,74 @@ SystemInterface
 # Interface: SystemInterface
 
 Defined in:
-[celestial-bodies/systems.ts:5](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/types/src/celestial-bodies/systems.ts#L5)
+[celestial-bodies/systems.ts:46](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L46)
 
-Represents a star system within the space visualization.
+Represents a **system**: the barycenter (centre of mass) that its members orbit.
+
+A system does not list its members. Each member names the system as its
+`parent`, so the member list is derived and there is one source of truth.
+Systems nest: the Alpha Centauri AB pair is a system whose parent is the Alpha
+Centauri system.
+
+- `parent` and `orbit` set: the system orbits its parent as one body.
+- `parent` without `orbit`: bound to the parent, but not on a Kepler orbit.
+- Neither: unbound.
+
+## Example
+
+```ts
+const alphaCentauriAB: SystemInterface = {
+  id: 'alpha-centauri-ab',
+  name: 'Alpha Centauri AB',
+  kind: 'binary',
+  parent: 'alpha-centauri',
+  orbit: {
+    a: { value: 503, unit: 'au' },
+    e: 0.5,
+    period: { value: -547, unit: 'kyr' },
+    angle: Math.PI as Radians
+  }
+};
+```
 
 ## Properties
 
-### distance
+### distance?
 
 ```ts
-distance: number;
+optional distance?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:11](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/types/src/celestial-bodies/systems.ts#L11)
+[celestial-bodies/systems.ts:58](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L58)
 
-Distance from the Sun in light-years.
+Distance from the Sun.
+
+---
+
+### id
+
+```ts
+id: string;
+```
+
+Defined in:
+[celestial-bodies/systems.ts:48](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L48)
+
+Stable identifier, used by `parent` references. Never translated.
+
+---
+
+### kind
+
+```ts
+kind: SystemKindType;
+```
+
+Defined in:
+[celestial-bodies/systems.ts:52](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L52)
+
+What kind of system the barycenter holds together.
 
 ---
 
@@ -30,19 +82,71 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:7](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/types/src/celestial-bodies/systems.ts#L7)
+[celestial-bodies/systems.ts:50](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L50)
 
-Name of the star system.
+Display name of the system.
 
 ---
 
-### stars
+### orbit?
 
 ```ts
-stars: string[];
+optional orbit?: OrbitInterface;
 ```
 
 Defined in:
-[celestial-bodies/systems.ts:9](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/types/src/celestial-bodies/systems.ts#L9)
+[celestial-bodies/systems.ts:56](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L56)
 
-List of star names in the system.
+Orbit of the system's barycenter around its parent.
+
+---
+
+### parent?
+
+```ts
+optional parent?: string;
+```
+
+Defined in:
+[celestial-bodies/systems.ts:54](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L54)
+
+Id of the galaxy or system this system is bound to.
+
+---
+
+### x?
+
+```ts
+optional x?: DistanceInterface;
+```
+
+Defined in:
+[celestial-bodies/systems.ts:60](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L60)
+
+X-coordinate of the barycenter in the parent's frame.
+
+---
+
+### y?
+
+```ts
+optional y?: DistanceInterface;
+```
+
+Defined in:
+[celestial-bodies/systems.ts:62](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L62)
+
+Y-coordinate of the barycenter in the parent's frame.
+
+---
+
+### z?
+
+```ts
+optional z?: DistanceInterface;
+```
+
+Defined in:
+[celestial-bodies/systems.ts:64](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/types/src/celestial-bodies/systems.ts#L64)
+
+Z-coordinate of the barycenter in the parent's frame.

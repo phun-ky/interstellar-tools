@@ -13,7 +13,7 @@ function solveKepler(
 ```
 
 Defined in:
-[kepler/solve-kepler.ts:95](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/equations/src/categories/kepler/solve-kepler.ts#L95)
+[kepler/solve-kepler.ts:98](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/equations/src/categories/kepler/solve-kepler.ts#L98)
 
 Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an
 adaptive approach:
@@ -21,6 +21,10 @@ adaptive approach:
 - **Newton-Raphson method** for fast convergence.
 - **High-eccentricity solver** for extreme orbits ($e > 0.9$).
 - **Bisection fallback** if the selected solver doesn't return a root.
+
+This is the conversion from **mean anomaly** to **eccentric anomaly**. Use
+[eccentricToTrueAnomaly](eccentricToTrueAnomaly.md) on the result to get the
+true anomaly.
 
 ---
 

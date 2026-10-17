@@ -2,14 +2,14 @@ import { writeFile } from 'node:fs/promises';
 
 import { MOONS } from '../../../packages/constants/dist/bodies/moons.js';
 
+const m = (measure) => (measure ? `${measure.value} ${measure.unit}` : '');
 const header =
-  '| name      | category             | system  | a  | e        | period | radius | color   | angle |\n' +
-  '| --------- | -------------------- | ------- | -------- | -------- | ------------ | ----------- | ------- | ----- |\n';
-const rows = MOONS.map((moon) => {
-  const { name, category, system, a, e, period, radius, color, angle } = moon;
-
-  return `| ${name} | ${category} | ${system} | ${a.value} ${a.unit}  | ${e} | ${period.value} ${period.unit} |  ${radius.value} ${radius.unit} | ${color} | ${angle} |`;
-}).join('\n');
+  '| id | name | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | radius | color |\n' +
+  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
+const rows = MOONS.map(
+  (moon) =>
+    `| ${moon.id} | ${moon.name} | ${moon.category} | ${moon.parent} | ${m(moon.orbit.a)} | ${moon.orbit.e} | ${m(moon.orbit.period)} | ${moon.orbit.angle} | ${m(moon.radius)} | ${moon.color} |`
+).join('\n');
 const out = `## Full list of moons in the dataset
 
 This list is not an exhaustive list, and addition/changes will be added over time.

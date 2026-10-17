@@ -12,8 +12,12 @@ import { CartesianCoordinatesInterface } from './planets.js';
  * @group Celestial Bodies
  */
 export interface AsteroidBeltInterface {
+  /** Stable identifier. Never translated. */
+  id: string;
   /** Name of the asteroid belt. */
   name: string;
+  /** Id of the star the belt orbits (e.g., `'sun'`). */
+  parent: string;
   /** Inner radius of the belt in Astronomical Units (AU). */
   innerRadius: number;
   /** Outer radius of the belt in Astronomical Units (AU). */
@@ -34,8 +38,10 @@ export interface AsteroidBeltInterface {
  * @typedef {AsteroidBeltInterface[]} AsteroidBeltsType
  * @example
  * ```ts
- * const asteroidBelt: AsteroidBeltInterface = [{
+ * const asteroidBelts: AsteroidBeltsType = [{
+ *   id: 'main-asteroid-belt',
  *   name: 'Main Belt',
+ *   parent: 'sun',
  *   innerRadius: 2.1,
  *   outerRadius: 3.3,
  *   color: '#888888',

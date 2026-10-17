@@ -5,85 +5,73 @@
 
 ```ts
 function computeAngle(
-  body: CelestialBodyType,
+  orbit: Pick<OrbitInterface, 'e' | 'angle' | 'period'>,
   timeStep: TimeStepInterface
 ): Radians;
 ```
 
 Defined in:
-[angle/compute-angle.ts:77](https://github.com/phun-ky/interstellar-tools/blob/793108c926c50dd5cacb5f46351703cbb7f33acb/packages/equations/src/categories/angle/compute-angle.ts#L77)
+[angle/compute-angle.ts:66](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/equations/src/categories/angle/compute-angle.ts#L66)
 
-Computes the orbital angle (true anomaly, $ν$) of a celestial body for a given
-date and time step.
+Advances a body along its orbit by one time step and returns its new **true
+anomaly** ($\nu$).
 
-**Mathematical Explanation:**
+The orbit's `angle` is the starting true anomaly. There is no date input: call
+this once per frame or step, and feed the result back in as the next `angle` to
+move the body over time.
 
-This function determines the **true anomaly** ($ν$) based on the time elapsed
-since the **J2000 epoch** (January 1, 2000) and the provided time step. The
-calculation follows these steps:
+**Step 1: Mean anomaly after the time step ($M$)**
 
-**Step 1: Compute Time Elapsed Since J2000**
+Done by [advanceMeanAnomaly](advanceMeanAnomaly.md): $M = M_0 + n \cdot \Delta
+t, \qquad n = \frac{2\pi}{|P|}$ where:
 
-The number of days since **J2000** is computed as: $\Delta T = \frac{t -
-t_{J2000}}{\text{MILLISECONDS\_PER\_DAY}}$ where:
+- $M_0$ is the mean anomaly at the start, converted from the true anomaly
+  `angle` (equal to it when $e = 0$).
+- $n$ is the mean motion, from the period $P$ converted to days. The sign of $P$
+  is ignored, so the angle always increases.
+- $\Delta t$ is `timeStep.value` in days, clamped to at least $10^{-5}$ days and
+  at most $10\,|P|$ ($|P|$ when $e \geq 0.9$).
 
-- $t$ is the current date in milliseconds.
-- $t_{J2000}$ is **J2000** (2000-01-01T00:00:00Z).
-- **MILLISECONDS_PER_DAY** is the number of milliseconds in one day.
+The result is wrapped to $[0, 2\pi)$.
 
-**Step 2: Compute the Mean Anomaly ($M$)**
+**Step 2: Solve Kepler's equation for the eccentric anomaly ($E$)**
 
-The **mean anomaly** is calculated as: $M = M_0 + n \cdot (\Delta T +
-\text{timeStep})$ where:
+$M = E - e \sin(E)$ is solved numerically by [solveKepler](solveKepler.md).
 
-- $M_0$ is the initial mean anomaly at **J2000**.
-- $n$ is the mean motion (orbital angular velocity).
-- $\text{timeStep}$ is the time step in days.
+**Step 3: Convert the eccentric anomaly to the true anomaly ($\nu$)**
 
-**Step 3: Solve Kepler’s Equation for Eccentric Anomaly ($E$)**
-
-Kepler’s equation: $M = E - e \sin(E)$ is solved numerically to obtain the
-**eccentric anomaly** ($E$).
-
-**Step 4: Convert Eccentric Anomaly ($E$) to True Anomaly ($ν$)**
-
-Using the relation: $ν = 2 \tan^{-1} \left( \sqrt{\frac{1+e}{1-e}}
-\tan\left(\frac{E}{2}\right) \right)$
-
-**Step 5: Adjust the True Anomaly for Certain Bodies**
-
-- For **comets**, the final **true anomaly** is adjusted by subtracting the
-  **eccentricity** ($e$).
-- For **stars and other celestial objects**, the computed **true anomaly** is
-  used directly.
+Done by [eccentricToTrueAnomaly](eccentricToTrueAnomaly.md): $\nu = 2 \tan^{-1}
+\left( \sqrt{\frac{1+e}{1-e}} \tan\left(\frac{E}{2}\right) \right)$
 
 ## Parameters
 
-| Parameter  | Type                                                                 | Description                                               |
-| ---------- | -------------------------------------------------------------------- | --------------------------------------------------------- |
-| `body`     | [`CelestialBodyType`](../../types/type-aliases/CelestialBodyType.md) | The celestial body for which to compute the true anomaly. |
-| `timeStep` | [`TimeStepInterface`](../../types/interfaces/TimeStepInterface.md)   | The time step in days since the last frame.               |
+| Parameter  | Type                                                                                                                                                        | Description                  |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `orbit`    | [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)<[`OrbitInterface`](../../types/interfaces/OrbitInterface.md), `"e"` | `"angle"`                    | `"period"`> | The body's orbit, for example `body.orbit` from a dataset. |
+| `timeStep` | [`TimeStepInterface`](../../types/interfaces/TimeStepInterface.md)                                                                                          | How far to advance, in days. |
 
 ## Returns
 
 [`Radians`](../../types/type-aliases/Radians.md)
 
-The computed true anomaly in radians.
+The true anomaly after the time step, in radians.
+
+## Throws
+
+[RangeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)
+If the orbit's eccentricity is outside $0 \leq e < 1$.
 
 ## Example
 
 ```ts
+import { PLANETS } from '@interstellar-tools/constants';
 import { computeAngle } from '@interstellar-tools/equations';
 
-const earth: CelestialBodyType = {
-  name: 'Earth',
-  e: 0.0167, // Orbital eccentricity
-  angle: 0 // Initial angle
-};
+const earth = PLANETS.find((planet) => planet.id === 'earth')!;
+const timeStep: TimeStepInterface = { value: 1, unit: 'd' };
 
-const timeStep: TimeStepInterface = { days: 1 }; // Time step of 1 day
-const angle: Radians = computeAngle(earth, timeStep);
-console.log(angle); // Output: Computed true anomaly in radians
+// Earth's true anomaly one day after its dataset position
+const angle: Radians = computeAngle(earth.orbit!, timeStep);
 ```
 
 ## See

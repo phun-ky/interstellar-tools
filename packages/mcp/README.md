@@ -64,22 +64,22 @@ returned as `{ "rad": …, "deg": … }`.
 
 ## Tools
 
-| Tool                         | What it computes                                     |
-| ---------------------------- | ---------------------------------------------------- |
-| `gravitational_parameter`    | μ = G·(M + m) from masses                            |
-| `circular_speed`             | Circular orbit speed at radius r                     |
-| `escape_speed`               | Escape speed at radius r                             |
-| `vis_viva_speed`             | Speed at radius r on an orbit with semi-major axis a |
-| `kepler_period`              | Orbital period from semi-major axis                  |
-| `peri_apoapsis_radii`        | Periapsis and apoapsis radii from a and e            |
-| `sphere_of_influence_radius` | Laplace sphere of influence                          |
-| `hohmann_transfer`           | Both burns, total Δv and transfer time               |
-| `rocket_delta_v`             | Tsiolkovsky rocket equation from Isp and masses      |
-| `plane_change_delta_v`       | Δv for a pure inclination change                     |
-| `solve_kepler`               | Eccentric anomaly from mean anomaly and eccentricity |
-| `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly (elliptic orbits)    |
-| `convert_time`               | Duration between units, attoseconds to gigayears     |
-| `find_body`                  | Look up planets, moons, stars, comets, … by name     |
+| Tool                         | What it computes                                       |
+| ---------------------------- | ------------------------------------------------------ |
+| `gravitational_parameter`    | μ = G·(M + m) from masses                              |
+| `circular_speed`             | Circular orbit speed at radius r                       |
+| `escape_speed`               | Escape speed at radius r                               |
+| `vis_viva_speed`             | Speed at radius r on an orbit with semi-major axis a   |
+| `kepler_period`              | Orbital period from semi-major axis                    |
+| `peri_apoapsis_radii`        | Periapsis and apoapsis radii from a and e              |
+| `sphere_of_influence_radius` | Laplace sphere of influence                            |
+| `hohmann_transfer`           | Both burns, total Δv and transfer time                 |
+| `rocket_delta_v`             | Tsiolkovsky rocket equation from Isp and masses        |
+| `plane_change_delta_v`       | Δv for a pure inclination change                       |
+| `solve_kepler`               | Eccentric anomaly from mean anomaly and eccentricity   |
+| `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly (elliptic orbits)      |
+| `convert_time`               | Duration between units, attoseconds to gigayears       |
+| `find_body`                  | Look up planets, moons, stars, comets, … by name or id |
 
 All tools are pure and offline: no network access, no side effects.
 
@@ -88,11 +88,6 @@ All tools are pure and offline: no network access, no side effects.
 Each dataset in `@interstellar-tools/constants` is available as a JSON resource
 at `interstellar://datasets/{name}`, where `name` is one of `planets`, `moons`,
 `stars`, `comets`, `asteroids`, `asteroid-belts`, `galaxies` or `systems`.
-
-> [!NOTE]
->
-> The Alpha Centauri entries are left out of `stars` until their orbital model
-> is corrected.
 
 ## Programmatic use
 

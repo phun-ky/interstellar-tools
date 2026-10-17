@@ -1,6 +1,5 @@
-import { DistanceInterface, MeasureInterface } from '../distance.js';
-import type { Radians } from '../numeric.js';
-import { TemporalInterface } from '../temporal.js';
+import { DistanceInterface } from '../distance.js';
+import type { OrbitInterface } from '../orbits.js';
 
 import { CartesianCoordinatesInterface } from './planets.js';
 
@@ -92,9 +91,9 @@ export type AsteroidSpectralType =
  *
  * ::: info
  *
- * **Orbital elements (angles & distances):**
+ * **Orbital elements (angles & distances)**, all in `orbit`:
  *
- * - Semi-major axis `a` should be in **astronomical units (au)** via {@link MeasureInterface}.
+ * - Semi-major axis `a` should be in **astronomical units (au)**.
  * - Eccentricity `e` for bound ellipses typically satisfies \(0 \le e < 1\).
  * - Inclination `i`, argument of perihelion `w` (ω), and longitude of ascending node `om` (Ω)
  *   are given in **degrees**.
@@ -105,7 +104,7 @@ export type AsteroidSpectralType =
  * q \;=\; a\,(1 - e)
  * $$
  *
- * **Period convention:** `period` is a duration (e.g., in **days**) using {@link TemporalInterface}.
+ * **Period convention:** `period` is a duration (e.g., in **days**).
  * If you encode direction, a **negative value** indicates **counter-clockwise** in your display
  * convention (visualization-specific; not a physical requirement).
  *
@@ -117,6 +116,9 @@ export type AsteroidSpectralType =
  * @group Celestial Bodies
  */
 export interface AsteroidInterface {
+  /** Stable identifier, used by `parent` references. Never translated. */
+  id: string;
+
   /** Name of the asteroid (e.g., `"Ceres"`, `"Vesta"`). */
   name: string;
 
@@ -129,57 +131,11 @@ export interface AsteroidInterface {
   /** Spectral/taxonomic class (composition & albedo proxy). */
   spectralType: AsteroidSpectralType;
 
-  /** Star system identifier (e.g., `"Solar System"`). */
-  system: string;
+  /** Id of the star the asteroid orbits (e.g., `'sun'`). */
+  parent: string;
 
-  /**
-   * **Semi-major axis** (typically in **au**).
-   *
-   * @example
-   * ```ts
-   * a: { value: 2.77, unit: 'au' }
-   * ```
-   */
-  a: MeasureInterface;
-
-  /**
-   * **Eccentricity** of the orbit.
-   * ::: info
-   *
-   * Elliptical orbits: \(0 \le e < 1\). Parabolic: \(e=1\). Hyperbolic: \(e>1\).
-   *
-   * :::
-   */
-  e: number;
-
-  /** **Inclination** \(i\) in **degrees**. */
-  i: number;
-
-  /** **Argument of perihelion** \( \omega \) in **degrees**. */
-  w: number;
-
-  /** **Longitude of ascending node** \( \Omega \) in **degrees**. */
-  om: number;
-
-  /** **True anomaly** \( \nu \) (current orbital position) in **radians**. */
-  angle: Radians;
-
-  /**
-   * **Orbital period** as a duration (e.g., in **days**).
-   * ::: info
-   *
-   * A **negative** value may be used to flag **counter-clockwise** drawing direction in UIs.
-   *
-   * :::
-   */
-  period: TemporalInterface;
-
-  /**
-   * **Perihelion distance** \( q = a(1-e) \) (typically in **au**).
-   * @see a
-   * @see e
-   */
-  q: number;
+  /** Orbit around the parent, with all elements including `i`, `w`, `om` and `q`. */
+  orbit: Required<OrbitInterface>;
 
   /**
    * Optional **Cartesian coordinates** (distance values) in a specified frame.
