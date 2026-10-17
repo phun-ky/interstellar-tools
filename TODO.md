@@ -223,3 +223,16 @@
 - **LEO lifetime/groundtrack:** Drag \(a_D\), J2 precession
 
 ---
+
+## Datasets
+
+- **Orientation of pairs:** members of a pair (such as Alpha Centauri A and B)
+  share `orbit.angle`, but their periapses point in opposite directions. Without
+  an argument of periapsis (`orbit.w`) in a defined reference frame, a renderer
+  has to rotate one member's ellipse by 180° itself. Add `w` (and the frame it is
+  measured in) for star systems.
+- **Comet angles:** `COMETS` stores the mean anomaly at J2000 in `orbit.angle`,
+  while every other dataset stores the true anomaly. Convert the comets to the
+  true anomaly, so `orbit.angle` means the same everywhere.
+
+---
