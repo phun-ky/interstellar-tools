@@ -94,18 +94,18 @@ See [Using the MCP server](../mcp/) for step-by-step setup.
 // Constants
 import { G_SI } from '@interstellar-tools/constants';
 // Equations (examples)
-import { circularSpeed, escapeSpeed } from '@interstellar-tools/equations';
 import {
+  accelerationOn1By2,
+  circularSpeed,
+  escapeSpeed,
   gravitationalForce,
-  gravitationalAccelerationOn1By2
-} from '@interstellar-tools/equations';
-import { visVivaSpeed, keplerPeriod } from '@interstellar-tools/equations';
-import { specificMechanicalEnergy } from '@interstellar-tools/equations';
-import {
+  keplerPeriod,
+  periApoapsisRadii,
   specificAngularMomentum,
-  specificAngularMomentumFromElements
+  specificAngularMomentumFromElements,
+  specificMechanicalEnergy,
+  visVivaSpeed
 } from '@interstellar-tools/equations';
-import { periApoapsisRadii } from '@interstellar-tools/equations';
 // Types
 import type { Vector3DTupleType } from '@interstellar-tools/types';
 ```

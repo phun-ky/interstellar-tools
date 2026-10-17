@@ -31,22 +31,26 @@ forward to your contributions. 🎉
     - [Suggesting Enhancements](#suggesting-enhancements)
       - [Before Submitting an Enhancement](#before-submitting-an-enhancement)
       - [How Do I Submit a Good Enhancement Suggestion?](#how-do-i-submit-a-good-enhancement-suggestion)
+    - [Contributing Code](#contributing-code)
+      - [Coding Style](#coding-style)
+      - [Tests](#tests)
+      - [Commits and Pull Requests](#commits-and-pull-requests)
   - [Attribution](#attribution)
 
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[**@interstellar-tools** Code of Conduct](https://github.com/phun-ky/@interstellar-tools/blob/master/CODE_OF_CONDUCT.md).
+[**@interstellar-tools** Code of Conduct](https://github.com/phun-ky/interstellar-tools/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report
 unacceptable behaviour to <code-of-conduct@phun-ky.net>.
 
 ## I Have a Question
 
 > If you want to ask a question, we assume that you have read the available
-> [Documentation](https://github.com/phun-ky/@interstellar-tools).
+> [Documentation](https://phun-ky.net/interstellar-tools/).
 
 Before you ask a question, it is best to search for existing
-[Issues](https://github.com/phun-ky/@interstellar-tools/issues) that might help
+[Issues](https://github.com/phun-ky/interstellar-tools/issues) that might help
 you. In case you have found a suitable issue and still need clarification, you
 can write your question in this issue. It is also advisable to search the
 internet for answers first.
@@ -54,7 +58,7 @@ internet for answers first.
 If you then still feel the need to ask a question and need clarification, we
 recommend the following:
 
-- Open an [Issue](https://github.com/phun-ky/@interstellar-tools/issues/new).
+- Open an [Issue](https://github.com/phun-ky/interstellar-tools/issues/new).
 - Provide as much context as you can about what you're running into.
 - Provide project and platform versions (nodejs, npm, etc), depending on what
   seems relevant.
@@ -96,13 +100,12 @@ steps in advance to help us fix any potential bug as fast as possible.
 - Make sure that you are using the latest version.
 - Determine if your bug is really a bug and not an error on your side e.g. using
   incompatible environment components/versions (Make sure that you have read the
-  [documentation](https://github.com/phun-ky/@interstellar-tools). If you are
-  looking for support, you might want to check
-  [this section](#i-have-a-question)).
+  [documentation](https://phun-ky.net/interstellar-tools/). If you are looking
+  for support, you might want to check [this section](#i-have-a-question)).
 - To see if other users have experienced (and potentially already solved) the
   same issue you are having, check if there is not already a bug report existing
   for your bug or error in the
-  [bug tracker](https://github.com/phun-ky/@interstellar-toolsissues?q=label%3Abug).
+  [bug tracker](https://github.com/phun-ky/interstellar-tools/issues?q=label%3Abug).
 - Also make sure to search the internet (including Stack Overflow) to see if
   users outside of the GitHub community have discussed the issue.
 - Collect information about the bug:
@@ -126,7 +129,7 @@ steps in advance to help us fix any potential bug as fast as possible.
 We use GitHub issues to track bugs and errors. If you run into an issue with the
 project:
 
-- Open an [Issue](https://github.com/phun-ky/@interstellar-tools/issues/new).
+- Open an [Issue](https://github.com/phun-ky/interstellar-tools/issues/new).
   (Since we can't be sure at this point whether it is a bug or not, we ask you
   not to talk about a bug yet and not to label the issue.)
 - Explain the behaviour you would expect and the actual behaviour.
@@ -161,10 +164,10 @@ suggestions.
 #### Before Submitting an Enhancement
 
 - Make sure that you are using the latest version.
-- Read the [documentation](https://github.com/phun-ky/@interstellar-tools)
-  carefully and find out if the functionality is already covered, maybe by an
-  individual configuration.
-- Perform a [search](https://github.com/phun-ky/@interstellar-tools/issues) to
+- Read the [documentation](https://phun-ky.net/interstellar-tools/) carefully
+  and find out if the functionality is already covered, maybe by an individual
+  configuration.
+- Perform a [search](https://github.com/phun-ky/interstellar-tools/issues) to
   see if the enhancement has already been suggested. If it has, add a comment to
   the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. It's
@@ -176,7 +179,7 @@ suggestions.
 #### How Do I Submit a Good Enhancement Suggestion?
 
 Enhancement suggestions are tracked as
-[GitHub issues](https://github.com/phun-ky/@interstellar-tools/issues).
+[GitHub issues](https://github.com/phun-ky/interstellar-tools/issues).
 
 - Use a **clear and descriptive title** for the issue to identify the
   suggestion.
@@ -196,6 +199,40 @@ Enhancement suggestions are tracked as
   projects that solved it better and which could serve as inspiration.
 
 <!-- You might want to create an issue template for enhancement suggestions that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
+
+### Contributing Code
+
+Set up the project as described in the
+[development guide](https://phun-ky.net/interstellar-tools/guide/development):
+`npm install`, `npm run build`, then `npm test`. Larger changes are best
+discussed in an issue first, so the work fits the
+[roadmap](https://github.com/phun-ky/interstellar-tools/blob/main/ROADMAP.md).
+
+#### Coding Style
+
+Code follows the project's [ESLint](https://eslint.org/) configuration
+(`eslint-config-phun-ky`, which includes [Prettier](https://prettier.io/)
+formatting) and TypeScript in strict mode. A contribution must pass
+`npm run lint` and `npm run typecheck` with no errors. Both run in CI on every
+pull request, and a pull request that fails them can't be merged.
+
+#### Tests
+
+- **New functionality must come with tests** in the package's `__tests__`
+  folder, run by `npm test`.
+- **Bug fixes must come with a regression test** that fails without the fix.
+- **Numbers in the documentation**, such as the "In practice" examples, are
+  checked by tests too, so update the matching test when you change one.
+- Coverage should not drop. CI uploads a coverage report for every pull request.
+
+#### Commits and Pull Requests
+
+- Commits follow [Conventional Commits](https://www.conventionalcommits.org/)
+  (`feat:`, `fix:`, `docs:`, …). `npm run commit` helps write them. Releases and
+  changelogs are generated from them, so a breaking change needs a
+  `BREAKING CHANGE:` footer that says what to change.
+- Open a pull request against `main`. The Checks workflow builds, lints,
+  type-checks, checks the API docs and runs the tests; all of it must pass.
 
 ## Attribution
 
