@@ -87,6 +87,38 @@ describe('meanToEccentricAnomaly', () => {
     }
   });
 
+  test('Time Step Units Are Converted to Days', () => {
+    const body: OrbitInterface = {
+      e: 0.3,
+      angle: 2.0,
+      period: { value: 400, unit: 'd' }
+    } as OrbitInterface;
+    const oneDay = meanToEccentricAnomaly(body, { value: 1, unit: 'd' });
+
+    assertApproxEqual(
+      meanToEccentricAnomaly(body, { value: 24, unit: 'h' }),
+      oneDay
+    );
+    assertApproxEqual(
+      meanToEccentricAnomaly(body, { value: 86_400, unit: 's' }),
+      oneDay
+    );
+  });
+
+  test('Time Step Clamping Applies After Unit Conversion', () => {
+    const body: OrbitInterface = {
+      e: 0.3,
+      angle: 2.0,
+      period: { value: 400, unit: 'd' }
+    } as OrbitInterface;
+
+    // 1 yr is 365.25 d, below the 10-period cap, so it must not be clamped
+    assertApproxEqual(
+      meanToEccentricAnomaly(body, { value: 1, unit: 'yr' }),
+      meanToEccentricAnomaly(body, { value: 365.25, unit: 'd' })
+    );
+  });
+
   test('Zero Time Step Returns Initial Mean Anomaly', () => {
     const body: OrbitInterface = {
       e: 0.3,
