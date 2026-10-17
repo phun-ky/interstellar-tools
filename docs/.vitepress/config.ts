@@ -129,7 +129,12 @@ export default defineConfig({
         },
         {
           text: 'Development',
-          link: '/guide/development'
+          collapsed: false,
+          items: [
+            { text: 'Development setup', link: '/guide/development' },
+            { text: 'Architecture', link: '/guide/architecture' },
+            { text: 'Upgrading', link: '/guide/upgrading' }
+          ]
         },
         {
           text: 'Reference',
