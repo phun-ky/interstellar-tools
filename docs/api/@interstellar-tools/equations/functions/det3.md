@@ -8,7 +8,7 @@ function det3(A: Matrix3x3Type): number;
 ```
 
 Defined in:
-[helpers/det-3.ts:52](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/equations/src/categories/helpers/det-3.ts#L52)
+[helpers/det-3.ts:52](https://github.com/phun-ky/interstellar-tools/blob/2097e53acceb41ae322e6aa3a44460924fa066e2/packages/equations/src/categories/helpers/det-3.ts#L52)
 
 Compute the **determinant** of a **3×3** matrix (row-major).
 

@@ -14,7 +14,7 @@ function atmosphericDragAcceleration(
 ```
 
 Defined in:
-[orbits/atmospheric-drag-acceleration.ts:39](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/equations/src/categories/orbits/atmospheric-drag-acceleration.ts#L39)
+[orbits/atmospheric-drag-acceleration.ts:39](https://github.com/phun-ky/interstellar-tools/blob/2097e53acceb41ae322e6aa3a44460924fa066e2/packages/equations/src/categories/orbits/atmospheric-drag-acceleration.ts#L39)
 
 Compute **atmospheric drag acceleration magnitude**.
 

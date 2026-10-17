@@ -8,7 +8,7 @@ function residual(E: number, e: number, M: number): number;
 ```
 
 Defined in:
-[helpers/misc.ts:137](https://github.com/phun-ky/interstellar-tools/blob/24cba573df6c9c683343df049f6882ef45133bb0/packages/equations/src/categories/helpers/misc.ts#L137)
+[helpers/misc.ts:137](https://github.com/phun-ky/interstellar-tools/blob/2097e53acceb41ae322e6aa3a44460924fa066e2/packages/equations/src/categories/helpers/misc.ts#L137)
 
 Compute the **Kepler equation residual** for an elliptical orbit:
 
