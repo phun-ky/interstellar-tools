@@ -251,6 +251,36 @@ describe('heliocentric orbits', () => {
   });
 });
 
+describe('planet positions at J2000', () => {
+  // r = a(1 − e²) / (1 + e cos ν): the position and the angle describe the same
+  // point on the same orbit
+  test('x, y, z lie on the orbit at orbit.angle (conic equation, within 0.1 %)', () => {
+    for (const { name, orbit, x, y, z } of PLANETS) {
+      const { a, e, angle } = orbit!;
+      const expected = (a.value * (1 - e ** 2)) / (1 + e * Math.cos(angle));
+      const r = Math.hypot(x.value, y.value, z.value);
+
+      assert.ok(
+        Math.abs(r / expected - 1) < 0.001,
+        `${name}: |x, y, z| = ${r.toFixed(4)} au, orbit at ν = ${angle} gives ${expected.toFixed(4)} au`
+      );
+    }
+  });
+
+  test('Earth is 0.983 au from the Sun, 2.5 days before perihelion', () => {
+    const { orbit, x, y, z } = PLANETS.find((planet) => planet.id === 'earth')!;
+    const { e, angle, period } = orbit!;
+    // True to mean anomaly, in closed form
+    const E = 2 * Math.atan(Math.sqrt((1 - e) / (1 + e)) * Math.tan(angle / 2));
+    const M = (E - e * Math.sin(E) + 2 * Math.PI) % (2 * Math.PI);
+    const daysToPerihelion =
+      ((2 * Math.PI - M) / (2 * Math.PI)) * Math.abs(period.value);
+
+    assert.equal(Math.hypot(x.value, y.value, z.value).toFixed(3), '0.983');
+    assert.equal(daysToPerihelion.toFixed(1), '2.5');
+  });
+});
+
 describe('moons', () => {
   test('retrograde moons have a positive period, regular moons a negative one', () => {
     for (const moon of MOONS) {
