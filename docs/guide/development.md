@@ -37,6 +37,7 @@ output.
 ```shell
 npm run lint
 npm run typecheck # type-checks sources and tests (the build excludes tests)
+npm run docs:check # runs TypeDoc without writing docs; warnings fail it
 ```
 
 Each package has two TypeScript configs:

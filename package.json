@@ -112,6 +112,7 @@
     "commit": "npx git-cz",
     "predocs:gen": "npm run docs:partials:gen",
     "docs:gen": "node ./node_modules/.bin/typedoc",
+    "docs:check": "node ./node_modules/.bin/typedoc --emit none --treatWarningsAsErrors",
     "predocs:dev": "npm run docs:gen",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
