@@ -14,9 +14,11 @@ import '@fontsource/ibm-plex-sans-condensed/700.css';
 import 'virtual:group-icons.css';
 import './custom.css';
 import './mission.css';
+import './practice.css';
 
 import MissionHome from './components/home/MissionHome.vue';
 import NavStatus from './components/NavStatus.vue';
+import OrbitWidget from './components/OrbitWidget.vue';
 import PullQuote from './components/PullQuote.vue';
 
 const GLOBAL_CLASS = 'ph';
@@ -34,6 +36,7 @@ export default {
     DefaultTheme.enhanceApp?.(ctx);
     ctx.app.component('MissionHome', MissionHome);
     ctx.app.component('PullQuote', PullQuote);
+    ctx.app.component('OrbitWidget', OrbitWidget);
 
     if (typeof window !== 'undefined') {
       document.documentElement.classList.add(GLOBAL_CLASS);
