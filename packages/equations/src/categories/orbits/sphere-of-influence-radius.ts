@@ -14,6 +14,23 @@
  * Units:
  * - Output `rSOI` has the same distance unit as `a` (since the mass ratio is dimensionless).
  *
+ * ::: practice Earth's sphere of influence
+ *
+ * **925 000 km**
+ *
+ * _Where Earth's gravity outweighs the Sun's_
+ *
+ * The Moon, at 384 400 km, is well inside it. Beyond this distance, a
+ * spacecraft's path is best described as an orbit around the Sun.
+ *
+ * ```ts
+ * const au = 1.495978707e11; // m
+ *
+ * sphereOfInfluenceRadius(au, 5.972e24, 1.989e30); // ≈ 9.245e8 m
+ * ```
+ *
+ * :::
+ *
  * @param {number} a Semi-major axis `a` of the secondary around the primary (finite, > 0).
  * @param {number} m Mass of the secondary body `m` (finite, > 0).
  * @param {number} M Mass of the primary body `M` (finite, > 0).

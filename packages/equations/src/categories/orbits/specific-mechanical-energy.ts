@@ -25,6 +25,26 @@
  *
  * :::
  *
+ * ::: practice Energy of the ISS orbit
+ *
+ * **-29.35 MJ/kg**
+ *
+ * _Specific orbital energy at 420 km altitude_
+ *
+ * Negative means the orbit is bound. Escaping Earth from there takes 29.35 MJ
+ * more for every kilogram, which brings the energy up to zero.
+ *
+ * ```ts
+ * const mu = 3.986004418e14;
+ * const r = 6.371e6 + 420e3;
+ *
+ * const v = circularSpeed(r, mu);
+ *
+ * specificMechanicalEnergy(v, r, mu); // ≈ -2.935e7 J/kg
+ * ```
+ *
+ * :::
+ *
  * @param {number} v  Speed magnitude ($ v $) (m/s).
  * @param {number} r  Radius ($ r=\|\mathbf r\| $) from the central body (m).
  * @param {number} mu Gravitational parameter ($ \mu $) (m³/s²).

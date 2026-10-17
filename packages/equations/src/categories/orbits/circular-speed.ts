@@ -21,6 +21,20 @@
  *
  * :::
  *
+ * ::: practice The International Space Station
+ *
+ * **7.66 km/s**
+ *
+ * _Circular speed at 420 km altitude_
+ *
+ * That's about 27 600 km/h, fast enough to circle Earth every 93 minutes.
+ *
+ * ```ts
+ * circularSpeed(6.371e6 + 420e3, 3.986004418e14); // ≈ 7661 m/s
+ * ```
+ *
+ * :::
+ *
  * @param {number} r  Orbital radius ($ r $) (m), must be finite and **> 0**.
  * @param {number} mu Gravitational parameter ($ \mu $) (m³/s²), must be finite and **≥ 0**.
  * @returns {number} Circular speed ($ v_c $) (m/s).

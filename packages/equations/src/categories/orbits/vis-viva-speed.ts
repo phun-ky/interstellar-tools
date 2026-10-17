@@ -22,6 +22,25 @@
  *
  * :::
  *
+ * ::: practice Departing for Mars
+ *
+ * **32.73 km/s**
+ *
+ * _Speed at the start of a Hohmann transfer to Mars_
+ *
+ * Earth moves around the Sun at 29.78 km/s, so a spacecraft leaving on the
+ * transfer orbit needs 2.95 km/s on top of Earth's own speed.
+ *
+ * ```ts
+ * const au = 1.495978707e11; // m
+ * const muSun = 1.32712440018e20; // m³/s²
+ * const a = ((1 + 1.524) / 2) * au; // transfer orbit
+ *
+ * visVivaSpeed(au, a, muSun); // ≈ 32 731 m/s
+ * ```
+ *
+ * :::
+ *
  * @param {number} r  Radius ($ r $) (m), distance to the attracting body.
  * @param {number} a  Semi-major axis ($ a $) (m). Use `Infinity` for parabolic, negative for hyperbolic.
  * @param {number} mu Gravitational parameter ($ \mu $) (m³/s²).

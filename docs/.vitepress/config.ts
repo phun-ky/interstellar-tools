@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import container from 'markdown-it-container';
 import { defineConfig } from 'vitepress';
 import {
   groupIconMdPlugin,
@@ -54,6 +55,7 @@ export default defineConfig({
         link: '/guide/mcp/',
         activeMatch: '/guide/mcp/'
       },
+      { text: 'Learn', link: '/learn/', activeMatch: '/learn/' },
       { text: 'Reference', link: '/api/', activeMatch: '/api/' },
       { text: 'Sponsor', link: 'https://github.com/sponsors/phun-ky' },
 
@@ -79,6 +81,19 @@ export default defineConfig({
         'Copyright © 2025-present <a href="https://phun-ky.net/">Alexander Vassbotn Røyne-Helgesen</a>'
     },
     sidebar: {
+      '/learn/': [
+        {
+          text: 'Learn',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/learn/' },
+            {
+              text: 'Where is Earth today?',
+              link: '/learn/where-is-earth-today'
+            }
+          ]
+        }
+      ],
       '/guide/': [
         {
           text: 'Introduction',
@@ -163,6 +178,20 @@ export default defineConfig({
     },
     config(md) {
       md.use(groupIconMdPlugin);
+      // `::: practice Title` → an "In practice" readout box (see practice.css)
+      md.use(container, 'practice', {
+        render(tokens: any[], idx: number) {
+          const token = tokens[idx];
+
+          if (token.nesting !== 1) return '</div></div>\n';
+
+          const title = md.renderInline(
+            token.info.trim().slice('practice'.length).trim()
+          );
+
+          return `<div class="mc-practice"><div class="mc-practice__head"><span class="mc-practice__tag">In practice</span><span class="mc-practice__title">${title}</span></div><div class="mc-practice__body">\n`;
+        }
+      });
     },
 
     theme: {

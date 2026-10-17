@@ -18,6 +18,21 @@
  * Common usage: reference rate for relative motion models (e.g., Clohessy–Wiltshire / Hill),
  * orbital period estimates, and circular-orbit dynamics.
  *
+ * ::: practice The ISS, orbit by orbit
+ *
+ * **15.51 orbits/day**
+ *
+ * _Mean motion at 420 km altitude_
+ *
+ * The function returns 0.001128 rad/s. Multiply by 86 400 s and divide by 2π for
+ * orbits per day, the unit used in a satellite's two-line elements (TLEs).
+ *
+ * ```ts
+ * meanMotion(3.986004418e14, 6.371e6 + 420e3); // ≈ 0.001128 rad/s
+ * ```
+ *
+ * :::
+ *
  * @param mu - Standard gravitational parameter $ \mu $ (finite, > 0).
  * @param a - Semi-major axis $ a $ (finite, > 0).
  * @returns Mean motion $ n $ in **rad/s**.
