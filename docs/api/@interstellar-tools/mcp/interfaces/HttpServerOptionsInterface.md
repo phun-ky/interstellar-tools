@@ -4,7 +4,7 @@ HttpServerOptionsInterface
 # Interface: HttpServerOptionsInterface
 
 Defined in:
-[http.ts:7](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/mcp/src/http.ts#L7)
+[http.ts:7](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/mcp/src/http.ts#L7)
 
 ## Properties
 
@@ -15,7 +15,7 @@ optional host?: string;
 ```
 
 Defined in:
-[http.ts:11](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/mcp/src/http.ts#L11)
+[http.ts:11](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/mcp/src/http.ts#L11)
 
 Interface to bind to. Defaults to loopback only.
 
@@ -28,7 +28,7 @@ optional path?: string;
 ```
 
 Defined in:
-[http.ts:13](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/mcp/src/http.ts#L13)
+[http.ts:13](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/mcp/src/http.ts#L13)
 
 Path that serves MCP requests.
 
@@ -41,6 +41,6 @@ port: number;
 ```
 
 Defined in:
-[http.ts:9](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/mcp/src/http.ts#L9)
+[http.ts:9](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/mcp/src/http.ts#L9)
 
 Port to listen on. Use 0 for a random free port.

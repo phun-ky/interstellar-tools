@@ -8,7 +8,7 @@ function sphereOfInfluenceRadius(a: number, m: number, M: number): number;
 ```
 
 Defined in:
-[orbits/sphere-of-influence-radius.ts:35](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/equations/src/categories/orbits/sphere-of-influence-radius.ts#L35)
+[orbits/sphere-of-influence-radius.ts:52](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/equations/src/categories/orbits/sphere-of-influence-radius.ts#L52)
 
 Compute **sphere of influence** radius (patched conics approximation).
 
@@ -29,6 +29,23 @@ Units:
 
 - Output `rSOI` has the same distance unit as `a` (since the mass ratio is
   dimensionless).
+
+::: practice Earth's sphere of influence
+
+**925 000 km**
+
+_Where Earth's gravity outweighs the Sun's_
+
+The Moon, at 384 400 km, is well inside it. Beyond this distance, a spacecraft's
+path is best described as an orbit around the Sun.
+
+```ts
+const au = 1.495978707e11; // m
+
+sphereOfInfluenceRadius(au, 5.972e24, 1.989e30); // ≈ 9.245e8 m
+```
+
+:::
 
 ## Parameters
 

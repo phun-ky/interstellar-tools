@@ -8,7 +8,7 @@ function periApoapsisRadii(a: number, e: number): PeriApoRadiiType;
 ```
 
 Defined in:
-[orbits/peri-apoapsis-radii.ts:48](https://github.com/phun-ky/interstellar-tools/blob/863383fff6e28d7137a1400d3602561b477a518c/packages/equations/src/categories/orbits/peri-apoapsis-radii.ts#L48)
+[orbits/peri-apoapsis-radii.ts:65](https://github.com/phun-ky/interstellar-tools/blob/553025c86206fb0b337446892f555a77561ee55e/packages/equations/src/categories/orbits/peri-apoapsis-radii.ts#L65)
 
 **Peri/apoapsis radii** from semi-major axis ($a$) and eccentricity ($e$).
 
@@ -30,6 +30,23 @@ $$
 
 - Inputs: ($a$) in **meters (m)**, ($e$) dimensionless.
 - Output: ($r_p, r_a$) in **meters (m)**.
+
+::: practice Molniya orbit
+
+**545 km / 39 913 km**
+
+_Altitude at perigee and apogee_
+
+With e = 0.74, a Molniya satellite races through perigee and spends most of its
+12 hour orbit slowly crossing apogee, high above the northern latitudes it
+serves.
+
+```ts
+periApoapsisRadii(26600e3, 0.74);
+// rp = 6 916 km, ra = 46 284 km from Earth's centre
+```
+
+:::
 
 ## Parameters
 
