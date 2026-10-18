@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.61.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.61.0...%40interstellar-tools%2Fequations%400.61.1) (2026-10-18)
+
+### Documentation
+
+* ✏️ Add "In practice" boxes to the orbit equations ([97e607b](https://github.com/phun-ky/interstellar-tools/commit/97e607becd146abbf37a3013d9d0d6377d3a2f24))
+* ✏️ Adopt the Developer Certificate of Origin ([44b4416](https://github.com/phun-ky/interstellar-tools/commit/44b44169efe1b77b6cc612e2b2bf0465a5c3e99c))
+* ✏️ Use PLANETS in the "Where is Earth today?" tutorial ([948a847](https://github.com/phun-ky/interstellar-tools/commit/948a84796398f2426d564725bd6ee40d0eecb9be))
+
+### Bug
+
+* 🐛 Include the licence in every published package ([9b4a5fb](https://github.com/phun-ky/interstellar-tools/commit/9b4a5fb09b377159a87b675be57b5b89c3b12e6f))
+
 ## [0.61.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.60.2...%40interstellar-tools%2Fequations%400.61.0) (2026-10-17)
 
 ### ⚠ BREAKING CHANGES
