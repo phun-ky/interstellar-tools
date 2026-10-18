@@ -8,7 +8,7 @@ function normalizeTemporalUnit(u: string): TemporalUnitType;
 ```
 
 Defined in:
-[normalize-temporal-unit.ts:131](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/temporal/src/normalize-temporal-unit.ts#L131)
+[normalize-temporal-unit.ts:127](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/temporal/src/normalize-temporal-unit.ts#L127)
 
 Normalize a user-provided **temporal unit string** into a canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md).
@@ -17,8 +17,8 @@ Normalize a user-provided **temporal unit string** into a canonical
 - Accepts both **canonical symbols** (e.g., `"s"`, `"ms"`, `"μs"`, `"min"`,
   `"h"`, `"d"`, `"yr"`, `"kyr"`, `"Myr"`, `"Gyr"`) and **aliases** (e.g.,
   `"seconds"`, `"milliseconds"`, `"us"`, `"hours"`, `"years"`, `"Ma"`, `"Ga"`),
-  using [NORMALIZE_UNIT](../variables/NORMALIZE_UNIT.md) as the single source of
-  truth.
+  using [NORMALIZE_TEMPORAL_UNIT](../variables/NORMALIZE_TEMPORAL_UNIT.md) as
+  the single source of truth.
 - Returns a **canonical** unit suitable for arithmetic, storage, and
   serialization.
 
@@ -28,9 +28,9 @@ Normalize a user-provided **temporal unit string** into a canonical
   like `"Ma"`/`"Ga"` are interpreted as durations and normalized to
   `"Myr"`/`"Gyr"`.
 - **Case-sensitive** exact match against
-  [NORMALIZE_UNIT](../variables/NORMALIZE_UNIT.md). For example, `"Seconds"`
-  (capital S) will fail; use `"seconds"` instead, or pre-normalize casing
-  upstream if desired.
+  [NORMALIZE_TEMPORAL_UNIT](../variables/NORMALIZE_TEMPORAL_UNIT.md). For
+  example, `"Seconds"` (capital S) will fail; use `"seconds"` instead, or
+  pre-normalize casing upstream if desired.
 - The ASCII alias `"us"` is accepted and normalized to the Unicode microsecond
   symbol `"μs"`.
 
@@ -52,7 +52,7 @@ The canonical [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md)
 
 [RangeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)
 If `u` does not match any known key in
-[NORMALIZE_UNIT](../variables/NORMALIZE_UNIT.md).
+[NORMALIZE_TEMPORAL_UNIT](../variables/NORMALIZE_TEMPORAL_UNIT.md).
 
 ## Example
 
@@ -70,8 +70,8 @@ normalizeTemporalUnit('Ga'); // → 'Gyr'
 
 ## See
 
-- [NORMALIZE_UNIT](../variables/NORMALIZE_UNIT.md) for the complete
-  alias→canonical mapping.
+- [NORMALIZE_TEMPORAL_UNIT](../variables/NORMALIZE_TEMPORAL_UNIT.md) for the
+  complete alias→canonical mapping.
 - https://www.bipm.org/en/publications/si-brochure (SI Brochure - second/day)
 - https://en.wikipedia.org/wiki/Julian_year\_(astronomy) (Julian year for
   yr/kyr/Myr/Gyr)

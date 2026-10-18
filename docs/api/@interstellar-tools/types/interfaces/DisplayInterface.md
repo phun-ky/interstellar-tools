@@ -4,7 +4,7 @@ DisplayInterface
 # Interface: DisplayInterface
 
 Defined in:
-[celestial-bodies/display.ts:48](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L48)
+[celestial-bodies/display.ts:48](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L48)
 
 How a body is **drawn**: everything about rendering, kept apart from its
 physical data and its `orbit`.
@@ -44,7 +44,7 @@ optional color?: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:50](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L50)
+[celestial-bodies/display.ts:50](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L50)
 
 Colour to draw the body in, as a hex string (`#rrggbb`) or a CSS colour name.
 
@@ -57,7 +57,7 @@ optional density?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:56](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L56)
+[celestial-bodies/display.ts:56](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L56)
 
 How densely to fill an area, e.g. how many asteroids to draw in a belt.
 
@@ -70,7 +70,7 @@ optional focusOffsetX?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:60](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L60)
+[celestial-bodies/display.ts:60](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L60)
 
 Distance from the ellipse's centre to its focus, $c = a e$, computed by a
 renderer.
@@ -84,7 +84,7 @@ optional opacity?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:54](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L54)
+[celestial-bodies/display.ts:54](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L54)
 
 Transparency, from 0 (invisible) to 1 (solid).
 
@@ -97,7 +97,7 @@ optional orbitPath?: CartesianCoordinatesInterface[];
 ```
 
 Defined in:
-[celestial-bodies/display.ts:62](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L62)
+[celestial-bodies/display.ts:62](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L62)
 
 Points along the drawn orbit, computed by a renderer.
 
@@ -110,7 +110,7 @@ optional semiMinorAxis?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:58](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L58)
+[celestial-bodies/display.ts:58](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L58)
 
 Semi-minor axis of the orbit, $b = a\sqrt{1 - e^2}$, computed by a renderer.
 
@@ -123,6 +123,6 @@ optional size?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:52](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L52)
+[celestial-bodies/display.ts:52](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/types/src/celestial-bodies/display.ts#L52)
 
 Scaled size for drawing, not the physical size (see `radius`).

@@ -8,6 +8,6 @@ const SECONDS_PER_DAY: 86400;
 ```
 
 Defined in:
-[temporal.ts:24](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/constants/src/temporal.ts#L24)
+[temporal.ts:24](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/constants/src/temporal.ts#L24)
 
 Length of the **SI day** in seconds (exact).
