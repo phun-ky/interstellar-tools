@@ -61,7 +61,18 @@ if (!response.ok) {
   process.exit(1);
 }
 
-const saved = await response.json();
+const project = await response.json();
+// Baseline answers are read back under their original ids:
+// osps_qa_07_01_status is returned as OSPS-QA-07.01_status
+const originalId = (field) =>
+  field.replace(
+    /^osps_([a-z]{2})_(\d{2})_(\d{2})_/,
+    (_, category, number, section) =>
+      `OSPS-${category.toUpperCase()}-${number}.${section}_`
+  );
+const saved = new Proxy(project, {
+  get: (target, field) => target[field] ?? target[originalId(String(field))]
+});
 const params = new URLSearchParams();
 const changed = [];
 
