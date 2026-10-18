@@ -11,7 +11,7 @@ function meanAnomalyAt(
 ```
 
 Defined in:
-[anomalies/anomaly-at.ts:53](https://github.com/phun-ky/interstellar-tools/blob/252dd3ac244f95681e2ed31cec6cd670ff1f9a83/packages/equations/src/categories/anomalies/anomaly-at.ts#L53)
+[anomalies/anomaly-at.ts:53](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/equations/src/categories/anomalies/anomaly-at.ts#L53)
 
 The **mean anomaly** ($M$) of an orbit at a given date.
 

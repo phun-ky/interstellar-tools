@@ -11,7 +11,7 @@ function trueAnomalyAt(
 ```
 
 Defined in:
-[anomalies/anomaly-at.ts:86](https://github.com/phun-ky/interstellar-tools/blob/252dd3ac244f95681e2ed31cec6cd670ff1f9a83/packages/equations/src/categories/anomalies/anomaly-at.ts#L86)
+[anomalies/anomaly-at.ts:86](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/equations/src/categories/anomalies/anomaly-at.ts#L86)
 
 The **true anomaly** ($\nu$) of an orbit at a given date: where the body is.
 

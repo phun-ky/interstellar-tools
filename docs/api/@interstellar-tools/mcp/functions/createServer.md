@@ -8,7 +8,7 @@ function createServer(): McpServer;
 ```
 
 Defined in:
-[server.ts:30](https://github.com/phun-ky/interstellar-tools/blob/252dd3ac244f95681e2ed31cec6cd670ff1f9a83/packages/mcp/src/server.ts#L30)
+[server.ts:30](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/mcp/src/server.ts#L30)
 
 Create an MCP server with every interstellar-tools tool and resource registered.
 Connect it to a transport of your choice.

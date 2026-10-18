@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.63.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.62.0...%40interstellar-tools%2Fequations%400.63.0) (2026-10-18)
+
+### Feature
+
+* 🎸 Add meanAnomalyAt and trueAnomalyAt to find a body at a date ([252dd3a](https://github.com/phun-ky/interstellar-tools/commit/252dd3ac244f95681e2ed31cec6cd670ff1f9a83)), closes [#152](https://github.com/phun-ky/interstellar-tools/issues/152)
+
+### Bug
+
+* 🐛 Let advanceMeanAnomaly move any span of time, forwards or back ([eab4817](https://github.com/phun-ky/interstellar-tools/commit/eab481709f01e1f58ef21a5eb408f9b6bf430b49))
+
 ## [0.62.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.61.1...%40interstellar-tools%2Fequations%400.62.0) (2026-10-18)
 
 ### ⚠ BREAKING CHANGES

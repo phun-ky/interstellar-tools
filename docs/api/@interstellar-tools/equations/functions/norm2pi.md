@@ -8,7 +8,7 @@ function norm2pi(x: number): number;
 ```
 
 Defined in:
-[helpers/misc.ts:104](https://github.com/phun-ky/interstellar-tools/blob/252dd3ac244f95681e2ed31cec6cd670ff1f9a83/packages/equations/src/categories/helpers/misc.ts#L104)
+[helpers/misc.ts:104](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/equations/src/categories/helpers/misc.ts#L104)
 
 Normalize an angle to the range **\[0, 2π)**.
 
