@@ -142,3 +142,29 @@ hyperbolicPeriapsisSpeed(vInfinity, rp, mu);
 
 All arguments are plain numbers, so TypeScript won't catch an old call: search
 your code for both functions and swap the arguments.
+
+## equations 0.63: positions at any time
+
+`advanceMeanAnomaly` no longer caps or rounds the time step, so results change
+for steps it used to clamp:
+
+- **Longer than 10 orbital periods** (1 when $e \geq 0.9$): the body used to
+  stop at the cap. It now moves the whole step, so positions over years or
+  centuries are right.
+- **Negative:** a negative step used to become a tiny step forward. It now goes
+  back in time.
+- **Shorter than 0.00001 days:** these used to be rounded up. They now move
+  exactly as far as the step.
+
+Results are now always in $[0, 2\pi)$. `computeAngle` follows, since it uses
+`advanceMeanAnomaly`.
+
+Two new functions find a body at a date, measured from J2000, the epoch of every
+`orbit.angle`:
+
+```ts
+import { meanAnomalyAt, trueAnomalyAt } from '@interstellar-tools/equations';
+
+meanAnomalyAt(earth.orbit!, new Date('2026-10-17T12:00:00Z')); // 282.7°
+trueAnomalyAt(earth.orbit!, new Date('2026-10-17T12:00:00Z')); // 280.8°
+```

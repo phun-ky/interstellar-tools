@@ -45,6 +45,8 @@ export * from './categories/helpers/transpose-3.js';
 
 export * from './categories/anomalies/advance-mean-anomaly.js';
 
+export * from './categories/anomalies/anomaly-at.js';
+
 export * from './categories/anomalies/eccentric-to-true-anomaly.js';
 
 export * from './categories/anomalies/true-to-mean-anomaly.js';
