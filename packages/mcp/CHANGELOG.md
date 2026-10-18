@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.4.0...%40interstellar-tools%2Fmcp%400.5.0) (2026-10-18)
+
+### ⚠ BREAKING CHANGES
+
+* belt radii are DistanceInterface values, CelestialBodiesType
+  is CelestialBodyType[], and the id spica names the system; its stars are
+  spica-a and spica-b. See the migration guide.
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@0.64.0 ([1c9dd4b](https://github.com/phun-ky/interstellar-tools/commit/1c9dd4b9fb1ebcabd1f0e9fc35dd503fe85bd636))
+* 🤖 @interstellar-tools/types@0.64.0 ([9db7544](https://github.com/phun-ky/interstellar-tools/commit/9db75443da1efc3de6b47d06e4413e463863168d))
+
+### Refactoring
+
+* 💡 Get the datasets ready for 1.0 ([d2528ba](https://github.com/phun-ky/interstellar-tools/commit/d2528ba143d7418fec2148167a97e3a4a07039b3)), closes [#154](https://github.com/phun-ky/interstellar-tools/issues/154) [#155](https://github.com/phun-ky/interstellar-tools/issues/155) [#156](https://github.com/phun-ky/interstellar-tools/issues/156)
+
 ## [0.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.3.0...%40interstellar-tools%2Fmcp%400.4.0) (2026-10-18)
 
 ### ⚠ BREAKING CHANGES
