@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { normalizeTemporalUnit } from '../normalize-temporal-unit.js';
+import {
+  NORMALIZE_TEMPORAL_UNIT,
+  normalizeTemporalUnit
+} from '../normalize-temporal-unit.js';
 
 const canonical = [
   's',
@@ -107,5 +110,26 @@ describe('normalizeTemporalUnit', () => {
       () => normalizeTemporalUnit('lightyear'),
       /Unsupported unit:/
     );
+  });
+
+  test('throws a RangeError', () => {
+    assert.throws(() => normalizeTemporalUnit('lightyear'), RangeError);
+  });
+
+  test('ignores keys inherited from Object.prototype', () => {
+    for (const key of [
+      'toString',
+      'constructor',
+      '__proto__',
+      'hasOwnProperty'
+    ]) {
+      assert.throws(() => normalizeTemporalUnit(key), RangeError, key);
+    }
+  });
+});
+
+describe('NORMALIZE_TEMPORAL_UNIT', () => {
+  test('is frozen', () => {
+    assert.ok(Object.isFrozen(NORMALIZE_TEMPORAL_UNIT));
   });
 });

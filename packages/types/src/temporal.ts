@@ -142,11 +142,11 @@ export interface TemporalInterface extends ValueInterface {
  * Represents a **time step measurement** in simulation, restricted to days.
  *
  * @extends ValueInterface
- * @property {'day'} unit - The unit is always **days**.
+ * @property {'d'} unit - The unit is always **days** (`'d'`).
  *
  * @example
  * ```ts
- * const timeStep: TimeStepInterface = { value: 1, unit: 'day' };
+ * const timeStep: TimeStepInterface = { value: 1, unit: 'd' };
  * ```
  * @group Temporal
  */

@@ -1,7 +1,7 @@
 import { TemporalInterface, TemporalUnitType } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { convertTemporalUnit } from '../convert-temporal-unit.js';
+import { convertTemporalUnit, SECONDS_PER } from '../convert-temporal-unit.js';
 import {
   JULIAN_YEAR_SECONDS,
   SECONDS_PER_DAY
@@ -109,5 +109,28 @@ describe('convert-temporal-unit', () => {
   test('unit labels in output are canonical', () => {
     const out = conv(42, 'h', 'min');
     assert.equal(out.unit, 'min');
+  });
+
+  test('accepts an alias as the target unit', () => {
+    const out = convertTemporalUnit({ value: 2, unit: 'd' }, 'hours');
+
+    assert.deepEqual(out, { value: 48, unit: 'h' });
+  });
+
+  test('throws a RangeError for an unknown target unit', () => {
+    assert.throws(
+      () =>
+        convertTemporalUnit(
+          { value: 1, unit: 's' },
+          'fortnight' as TemporalUnitType
+        ),
+      RangeError
+    );
+  });
+});
+
+describe('SECONDS_PER', () => {
+  test('is frozen', () => {
+    assert.ok(Object.isFrozen(SECONDS_PER));
   });
 });

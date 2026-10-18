@@ -8,7 +8,7 @@ function toRad(deg: number): Radians;
 ```
 
 Defined in:
-[helpers/radians.ts:21](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/equations/src/categories/helpers/radians.ts#L21)
+[helpers/radians.ts:21](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/equations/src/categories/helpers/radians.ts#L21)
 
 Convert **degrees → radians**.
 
