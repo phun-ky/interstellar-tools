@@ -8,7 +8,7 @@ function periApoapsisRadii(a: number, e: number): PeriApoRadiiType;
 ```
 
 Defined in:
-[orbits/peri-apoapsis-radii.ts:65](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/orbits/peri-apoapsis-radii.ts#L65)
+[orbits/peri-apoapsis-radii.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/peri-apoapsis-radii.ts#L65)
 
 **Peri/apoapsis radii** from semi-major axis ($a$) and eccentricity ($e$).
 

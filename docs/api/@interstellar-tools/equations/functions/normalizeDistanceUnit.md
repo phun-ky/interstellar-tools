@@ -8,7 +8,7 @@ function normalizeDistanceUnit(u: string): DistanceUnitType;
 ```
 
 Defined in:
-[helpers/normalize-distance-unit.ts:94](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/helpers/normalize-distance-unit.ts#L94)
+[helpers/normalize-distance-unit.ts:94](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/helpers/normalize-distance-unit.ts#L94)
 
 Normalize a **distance unit string** into a canonical
 [DistanceUnitType](../../types/type-aliases/DistanceUnitType.md).

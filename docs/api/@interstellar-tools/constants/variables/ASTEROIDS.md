@@ -8,7 +8,7 @@ const ASTEROIDS: AsteroidsType;
 ```
 
 Defined in:
-[bodies/asteroids.ts:27](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/constants/src/bodies/asteroids.ts#L27)
+[bodies/asteroids.ts:27](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/asteroids.ts#L27)
 
 Represents a collection of well-known asteroids within the solar system
 simulation.

@@ -11,7 +11,7 @@ function computeAngle(
 ```
 
 Defined in:
-[angle/compute-angle.ts:68](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/angle/compute-angle.ts#L68)
+[angle/compute-angle.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/angle/compute-angle.ts#L68)
 
 Advances a body along its orbit by one time step and returns its new **true
 anomaly** ($\nu$).

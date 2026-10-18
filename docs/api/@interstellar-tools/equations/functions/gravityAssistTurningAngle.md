@@ -12,7 +12,7 @@ function gravityAssistTurningAngle(
 ```
 
 Defined in:
-[manoeuvres/gravity-assist-turning-angle.ts:36](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/manoeuvres/gravity-assist-turning-angle.ts#L36)
+[manoeuvres/gravity-assist-turning-angle.ts:36](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/manoeuvres/gravity-assist-turning-angle.ts#L36)
 
 Compute **gravity-assist turning angle** (flyby deflection) for a hyperbolic
 encounter.
