@@ -13,7 +13,7 @@ type CelestialBodyType =
 ```
 
 Defined in:
-[celestial-bodies/celestial-bodies.ts:47](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/types/src/celestial-bodies/celestial-bodies.ts#L47)
+[celestial-bodies/celestial-bodies.ts:39](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/celestial-bodies.ts#L39)
 
 Type alias representing a single celestial body.
 
@@ -27,9 +27,6 @@ Includes:
 ## Example
 
 ```ts
-const earth: CelestialBodyType = {
-  name: 'Earth',
-  type: 'planet',
-  mass: 5.972e24
-};
+const describe = (body: CelestialBodyType) =>
+  `${body.name}, bound to ${body.parent}`;
 ```

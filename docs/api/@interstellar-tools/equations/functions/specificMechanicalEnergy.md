@@ -8,7 +8,7 @@ function specificMechanicalEnergy(v: number, r: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/specific-mechanical-energy.ts:68](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/orbits/specific-mechanical-energy.ts#L68)
+[orbits/specific-mechanical-energy.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/specific-mechanical-energy.ts#L68)
 
 **Specific mechanical energy** ($ \varepsilon $) of a point mass in a central
 gravity field.

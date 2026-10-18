@@ -4,27 +4,20 @@ CelestialBodiesType
 # Type Alias: CelestialBodiesType
 
 ```ts
-type CelestialBodiesType =
-  StarsType | PlanetsType | MoonsType | CometsType | AsteroidsType;
+type CelestialBodiesType = CelestialBodyType[];
 ```
 
 Defined in:
-[celestial-bodies/celestial-bodies.ts:27](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/types/src/celestial-bodies/celestial-bodies.ts#L27)
+[celestial-bodies/celestial-bodies.ts:20](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/celestial-bodies.ts#L20)
 
-Type alias representing a collection of celestial bodies.
-
-Includes:
-
-- **Stars** (`StarsType`)
-- **Planets** (`PlanetsType`)
-- **Moons** (`MoonsType`)
-- **Comets** (`CometsType`)
+A list of celestial bodies of any kind: stars, planets, moons, comets and
+asteroids, mixed.
 
 ## Example
 
 ```ts
-const celestialObjects: CelestialBodiesType = [
-  { name: 'Sun', type: 'star', mass: 1.989e30 },
-  { name: 'Earth', type: 'planet', mass: 5.972e24 }
-];
+import { MOONS, PLANETS, STARS } from '@interstellar-tools/constants';
+
+const solarSystem: CelestialBodiesType = [...STARS, ...PLANETS, ...MOONS];
+const earth = solarSystem.find((body) => body.id === 'earth');
 ```

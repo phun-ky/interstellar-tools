@@ -12,7 +12,9 @@ import test, { describe } from 'node:test';
 import {
   ASTEROID_BELTS,
   ASTEROIDS,
+  AU_METERS,
   COMETS,
+  G_SI,
   GALAXIES,
   MOONS,
   PLANETS,
@@ -372,13 +374,14 @@ describe('stars', () => {
     }
   });
 
-  test('orbiting within a system use au and yr or kyr', () => {
+  // Days for close binaries such as Spica, years for wide ones
+  test('orbiting within a system use au and d, yr or kyr', () => {
     for (const star of STARS.filter((s) => SYSTEM_IDS.has(s.parent ?? ''))) {
       if (!star.orbit) continue;
 
       assert.equal(star.orbit.a.unit, 'au', `${star.name}.orbit.a`);
       assert.ok(
-        ['yr', 'kyr'].includes(star.orbit.period.unit),
+        ['d', 'yr', 'kyr'].includes(star.orbit.period.unit),
         `${star.name}.orbit.period`
       );
     }
@@ -448,7 +451,12 @@ describe('SYSTEMS', () => {
   // P² = (a₁ + a₂)³ / (m₁ + m₂) in years, au and solar masses
   test('pair periods match Kepler III (within 3 %)', () => {
     const AU: Record<string, number> = { au: 1 };
-    const YEARS: Record<string, number> = { yr: 1, kyr: 1e3, Myr: 1e6 };
+    const YEARS: Record<string, number> = {
+      d: 1 / 365.25,
+      yr: 1,
+      kyr: 1e3,
+      Myr: 1e6
+    };
 
     for (const { system, members } of pairs) {
       const [one, two] = members;
@@ -464,6 +472,86 @@ describe('SYSTEMS', () => {
       assert.ok(
         Math.abs(period / expected - 1) < 0.03,
         `${system.name}: |period| ${period} yr, expected ≈ ${expected.toFixed(1)} yr`
+      );
+    }
+  });
+});
+
+describe('pair orientation', () => {
+  // Where a pair gives its orientation, both members share the plane (i, om), and their
+  // periapses point opposite ways
+  const oriented = SYSTEMS.map((system) =>
+    NODES.filter(
+      (node) => node.parent === system.id && node.orbit?.w !== undefined
+    )
+  ).filter((members) => members.length > 0);
+
+  test('both members carry w, 180° apart, with the same i and om', () => {
+    assert.ok(oriented.length > 0, 'at least one oriented pair');
+
+    for (const members of oriented) {
+      const [one, two] = members.map((member) => member.orbit!);
+      const label = members.map((member) => member.id).join(' and ');
+
+      assert.equal(members.length, 2, label);
+      assert.equal(one.i, two.i, `${label}: i`);
+      assert.equal(one.om, two.om, `${label}: om`);
+      assert.ok(
+        Math.abs(((one.w! - two.w! + 360) % 360) - 180) < 1e-9,
+        `${label}: w ${one.w} and ${two.w}`
+      );
+    }
+  });
+});
+
+describe('mu', () => {
+  const withMu = [...STARS, ...PLANETS, ...MOONS].filter(
+    (body) => body.mu !== undefined
+  );
+  const MU_BY_ID = new Map(withMu.map((body) => [body.id, body.mu!]));
+
+  test('is positive and finite where given', () => {
+    assert.ok(withMu.length > 30);
+
+    for (const { name, mu } of withMu) {
+      assert.ok(Number.isFinite(mu) && mu! > 0, `${name}.mu = ${mu}`);
+    }
+  });
+
+  test("the Sun's mu matches its mass, through G (within 0.1 %)", () => {
+    const sun = STARS.find((star) => star.id === 'sun')!;
+    const SOLAR_MASS_KG = 1.98841e30;
+
+    assert.ok(Math.abs(sun.mu! / (G_SI * SOLAR_MASS_KG) - 1) < 0.001);
+  });
+
+  // T = 2π √(a³ / μ) with the parent's μ: catches a wrong a or period
+  test('moon periods match Kepler III around their planet (within 2 %)', () => {
+    for (const { name, parent, orbit } of MOONS) {
+      const mu = MU_BY_ID.get(parent);
+
+      assert.ok(mu, `${name}: parent ${parent} has a mu`);
+
+      const a = orbit.a.value * AU_METERS;
+      const expected = (2 * Math.PI * Math.sqrt(a ** 3 / mu!)) / 86_400;
+
+      assert.ok(
+        Math.abs(orbit.period.value / expected - 1) < 0.02,
+        `${name}: period ${orbit.period.value} d, Kepler III gives ${expected.toFixed(3)} d`
+      );
+    }
+  });
+
+  test('planet periods match Kepler III around the Sun (within 1 %)', () => {
+    const muSun = MU_BY_ID.get('sun')!;
+
+    for (const { name, orbit } of PLANETS) {
+      const a = orbit!.a.value * AU_METERS;
+      const expected = (2 * Math.PI * Math.sqrt(a ** 3 / muSun)) / 86_400;
+
+      assert.ok(
+        Math.abs(orbit!.period.value / expected - 1) < 0.01,
+        `${name}: period ${orbit!.period.value} d, Kepler III gives ${expected.toFixed(1)} d`
       );
     }
   });
@@ -500,8 +588,12 @@ describe('ASTEROID_BELTS', () => {
     );
 
     for (const belt of ASTEROID_BELTS) {
-      assert.ok(belt.innerRadius > 0, `${belt.name}.innerRadius`);
-      assert.ok(belt.innerRadius < belt.outerRadius, `${belt.name} radii`);
+      const { innerRadius, outerRadius } = belt;
+
+      assert.equal(innerRadius.unit, 'au', `${belt.name}.innerRadius`);
+      assert.equal(outerRadius.unit, innerRadius.unit, `${belt.name} radii`);
+      assert.ok(innerRadius.value > 0, `${belt.name}.innerRadius`);
+      assert.ok(innerRadius.value < outerRadius.value, `${belt.name} radii`);
       const { color = '', opacity = -1, density = -1 } = belt.display ?? {};
 
       assert.ok(opacity >= 0 && opacity <= 1, `${belt.name}.display.opacity`);

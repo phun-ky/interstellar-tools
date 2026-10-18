@@ -59,7 +59,7 @@ npm i --save @interstellar-tools/types
 | [AsteroidsType](type-aliases/AsteroidsType.md)                               | Convenience alias for a list of asteroids.                                                              |
 | [AsteroidType](type-aliases/AsteroidType.md)                                 | High-level **orbital class** of an asteroid (by dynamical region).                                      |
 | [BlackHolesType](type-aliases/BlackHolesType.md)                             | Type alias for a collection of **black holes**.                                                         |
-| [CelestialBodiesType](type-aliases/CelestialBodiesType.md)                   | Type alias representing a collection of celestial bodies.                                               |
+| [CelestialBodiesType](type-aliases/CelestialBodiesType.md)                   | A list of celestial bodies of any kind: stars, planets, moons, comets and asteroids, mixed.             |
 | [CelestialBodyType](type-aliases/CelestialBodyType.md)                       | Type alias representing a single celestial body.                                                        |
 | [CometsType](type-aliases/CometsType.md)                                     | Type alias for an array of **comets**.                                                                  |
 | [GalaxiesType](type-aliases/GalaxiesType.md)                                 | Type alias for a collection of **galaxies**.                                                            |
