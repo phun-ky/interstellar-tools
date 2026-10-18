@@ -61,6 +61,8 @@ orbits, angles, solve for kelper or find true anomalies.
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [advanceMeanAnomaly](functions/advanceMeanAnomaly.md)         | Advances an orbit by a time step and returns its new **mean anomaly** ($M$).         |
 | [eccentricToTrueAnomaly](functions/eccentricToTrueAnomaly.md) | Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.         |
+| [meanAnomalyAt](functions/meanAnomalyAt.md)                   | The **mean anomaly** ($M$) of an orbit at a given date.                              |
+| [trueAnomalyAt](functions/trueAnomalyAt.md)                   | The **true anomaly** ($\nu$) of an orbit at a given date: where the body is.         |
 | [trueToMeanAnomaly](functions/trueToMeanAnomaly.md)           | Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation. |
 
 ## Cartography
