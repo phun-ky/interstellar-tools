@@ -11,7 +11,7 @@ import { PlanetsType, Radians } from '@interstellar-tools/types';
  *   position at J2000 in the J2000 ecliptic frame, x towards the equinox.
  * - Both are computed from the J2000 elements in JPL's "Approximate Positions of the Planets" (Table 1),
  *   and for Ceres and Pluto from the JPL Small-Body Database, using this dataset's `a` and `e`.
- * - Some entries may encode integration direction via a negative `period`; the table reflects the raw value.
+ * - `period` is always positive; retrograde orbits have `retrograde: true`.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -43,7 +43,7 @@ export const PLANETS: PlanetsType = [
       /** Orbital eccentricity */
       e: 0.2056,
       /** Orbital period in days */
-      period: { value: -87.969, unit: 'd' },
+      period: { value: 87.969, unit: 'd' },
       /** True anomaly at J2000 */
       angle: 3.080377 as Radians
     },
@@ -68,7 +68,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 0.723, unit: 'au' },
       e: 0.0068,
-      period: { value: -224.701, unit: 'd' },
+      period: { value: 224.701, unit: 'd' },
       angle: 0.88977 as Radians
     },
     radius: { value: 6052, unit: 'km' },
@@ -88,7 +88,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 1.0, unit: 'au' },
       e: 0.0167,
-      period: { value: -365.256, unit: 'd' },
+      period: { value: 365.256, unit: 'd' },
       angle: 6.238549 as Radians
     },
     radius: { value: 6371, unit: 'km' },
@@ -108,7 +108,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 1.524, unit: 'au' },
       e: 0.0934,
-      period: { value: -686.98, unit: 'd' },
+      period: { value: 686.98, unit: 'd' },
       angle: 0.408015 as Radians
     },
     radius: { value: 3389, unit: 'km' },
@@ -128,7 +128,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 2.766, unit: 'au' },
       e: 0.079,
-      period: { value: -1680.5, unit: 'd' },
+      period: { value: 1680.5, unit: 'd' },
       angle: 0.106686 as Radians
     },
     radius: { value: 469.7, unit: 'km' },
@@ -148,7 +148,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 5.203, unit: 'au' },
       e: 0.0489,
-      period: { value: -4332.59, unit: 'd' },
+      period: { value: 4332.59, unit: 'd' },
       angle: 0.378185 as Radians
     },
     radius: { value: 69911, unit: 'km' },
@@ -168,7 +168,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 9.537, unit: 'au' },
       e: 0.0565,
-      period: { value: -10759.22, unit: 'd' },
+      period: { value: 10759.22, unit: 'd' },
       angle: 5.458247 as Radians
     },
     radius: { value: 58232, unit: 'km' },
@@ -188,7 +188,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 19.191, unit: 'au' },
       e: 0.0463,
-      period: { value: -30687.15, unit: 'd' },
+      period: { value: 30687.15, unit: 'd' },
       angle: 2.537459 as Radians
     },
     radius: { value: 25362, unit: 'km' },
@@ -208,7 +208,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 30.069, unit: 'au' },
       e: 0.0086,
-      period: { value: -60190.03, unit: 'd' },
+      period: { value: 60190.03, unit: 'd' },
       angle: 4.519475 as Radians
     },
     radius: { value: 24622, unit: 'km' },
@@ -228,7 +228,7 @@ export const PLANETS: PlanetsType = [
     orbit: {
       a: { value: 39.482, unit: 'au' },
       e: 0.2488,
-      period: { value: -90560.0, unit: 'd' },
+      period: { value: 90560.0, unit: 'd' },
       angle: 0.436892 as Radians
     },
     radius: { value: 1188, unit: 'km' },

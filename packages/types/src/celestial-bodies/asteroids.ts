@@ -1,5 +1,5 @@
 import { DistanceInterface } from '../distance.js';
-import type { OrbitInterface } from '../orbits.js';
+import type { FullOrbitInterface } from '../orbits.js';
 
 import type { DisplayInterface } from './display.js';
 
@@ -104,9 +104,8 @@ export type AsteroidSpectralType =
  * q \;=\; a\,(1 - e)
  * $$
  *
- * **Period convention:** `period` is a duration (e.g., in **days**).
- * If you encode direction, a **negative value** indicates **counter-clockwise** in your display
- * convention (visualization-specific; not a physical requirement).
+ * **Period convention:** `period` is a positive duration (e.g., in **days**).
+ * A retrograde orbit (`i > 90°`) has `retrograde: true`.
  *
  * **Coordinates:** Optional `x,y,z` are distances in a chosen reference frame (e.g., ecliptic
  * J2000). Always document the frame you use in calling code.
@@ -135,7 +134,7 @@ export interface AsteroidInterface {
   parent: string;
 
   /** Orbit around the parent, with all elements including `i`, `w`, `om` and `q`. */
-  orbit: Required<OrbitInterface>;
+  orbit: FullOrbitInterface;
 
   /**
    * Optional **Cartesian coordinates** (distance values) in a specified frame.

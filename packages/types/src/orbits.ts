@@ -1,5 +1,5 @@
-import type { MeasureInterface } from './distance.js';
-import type { Radians } from './numeric.js';
+import type { DistanceInterface } from './distance.js';
+import type { DegreesType, Radians } from './numeric.js';
 import type { TemporalInterface } from './temporal.js';
 
 /**
@@ -105,9 +105,11 @@ export type CwStateDerivative = readonly [
  *   B), each carries its own orbit. Both share `e`, `period` and `angle`, their
  *   periapses point in opposite directions, and their semi-major axes split by
  *   mass ratio: $a_1 = a \, m_2 / (m_1 + m_2)$, where $a$ is their separation.
- * - **Direction**: a negative `period` indicates a counter-clockwise orbit.
+ * - **Direction**: `period` is always a positive duration. A retrograde orbit,
+ *   moving against its parent's rotation, has `retrograde: true`; a renderer
+ *   can use `retrograde ? -1 : 1` as the direction of travel.
  * - `i`, `w`, `om` and `q` are only given where the dataset has them (comets and
- *   asteroids).
+ *   asteroids). Where `i` is given, `retrograde` is set exactly when `i > 90°`.
  *
  * :::
  *
@@ -116,7 +118,7 @@ export type CwStateDerivative = readonly [
  * const earthOrbit: OrbitInterface = {
  *   a: { value: 1.0, unit: 'au' },
  *   e: 0.0167,
- *   period: { value: -365.256, unit: 'd' },
+ *   period: { value: 365.256, unit: 'd' },
  *   angle: 1.753 as Radians
  * };
  * ```
@@ -124,19 +126,38 @@ export type CwStateDerivative = readonly [
  */
 export interface OrbitInterface {
   /** Semi-major axis of this body's orbit around the parent's centre of mass. */
-  a: MeasureInterface;
+  a: DistanceInterface;
   /** Orbital eccentricity (0 = circular, closer to 1 = highly elliptical). */
   e: number;
-  /** Orbital period. Negative values indicate counter clockwise direction. */
+  /** Orbital period, always positive. See `retrograde` for the direction. */
   period: TemporalInterface;
+  /** `true` for a retrograde orbit. Omitted for the usual prograde orbits. */
+  retrograde?: boolean;
   /** Current orbital position at J2000 in radians (true anomaly). */
   angle: Radians;
-  /** Orbital inclination in degrees. */
-  i?: number;
+  /** Orbital inclination in degrees, as catalogues give it. */
+  i?: DegreesType;
   /** Argument of periapsis in degrees. */
-  w?: number;
+  w?: DegreesType;
   /** Longitude of the ascending node in degrees. */
-  om?: number;
-  /** Periapsis distance $q = a(1 - e)$ in the unit of `a`. */
-  q?: number;
+  om?: DegreesType;
+  /** Periapsis distance $q = a(1 - e)$. */
+  q?: DistanceInterface;
+}
+
+/**
+ * An {@link OrbitInterface} with every orientation element given: `i`, `w`,
+ * `om` and `q`. Comets and asteroids carry these.
+ *
+ * @group Orbits
+ */
+export interface FullOrbitInterface extends OrbitInterface {
+  /** Orbital inclination in degrees. */
+  i: DegreesType;
+  /** Argument of periapsis in degrees. */
+  w: DegreesType;
+  /** Longitude of the ascending node in degrees. */
+  om: DegreesType;
+  /** Periapsis distance $q = a(1 - e)$. */
+  q: DistanceInterface;
 }

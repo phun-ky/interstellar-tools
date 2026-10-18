@@ -1,4 +1,4 @@
-import { CometsType, Radians } from '@interstellar-tools/types';
+import { CometsType, DegreesType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a collection of well-known comets within the solar system simulation.
@@ -8,7 +8,7 @@ import { CometsType, Radians } from '@interstellar-tools/types';
  * - Units: `a` (au), `period` (days), `radius` (km); angles `i`, `w`, `om` in degrees.
  * - `orbit.angle` is the true anomaly at J2000, from the mean anomaly in JPL Horizons' osculating
  *   elements at J2000, converted with this dataset's `e`.
- * - Some entries may encode integration direction via a negative `period`; the table reflects the raw value.
+ * - `period` is always positive; retrograde orbits have `retrograde: true`.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -41,17 +41,18 @@ export const COMETS: CometsType = [
       /** Eccentricity (0 = circular orbit, 1 = parabolic trajectory) */
       e: 0.96714,
       /** Inclination in degrees */
-      i: 162.26,
+      i: 162.26 as DegreesType,
       /** Argument of perihelion in degrees */
-      w: 111.33,
+      w: 111.33 as DegreesType,
       /** Longitude of the ascending node in degrees */
-      om: 58.42,
+      om: 58.42 as DegreesType,
       /** True anomaly at J2000 */
       angle: 2.97966 as Radians,
       /** Orbital period in days */
       period: { value: 27576, unit: 'd' }, // ~76 years
-      /** Perihelion distance in AU */
-      q: 0.586
+      retrograde: true,
+      /** Perihelion distance */
+      q: { value: 0.586, unit: 'au' }
     },
     display: {
       /** Visual representation color */
@@ -71,12 +72,12 @@ export const COMETS: CometsType = [
     orbit: {
       a: { value: 186.0, unit: 'au' },
       e: 0.9951,
-      i: 89.4,
-      w: 130.6,
-      om: 282.5,
+      i: 89.4 as DegreesType,
+      w: 130.6 as DegreesType,
+      om: 282.5 as DegreesType,
       angle: 2.550719 as Radians,
-      period: { value: -926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au),
-      q: 0.914
+      period: { value: 926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au),
+      q: { value: 0.914, unit: 'au' }
     },
     display: {
       color: '#00A6FF', // Electric blue (ionized tail appearance)
@@ -93,12 +94,12 @@ export const COMETS: CometsType = [
     orbit: {
       a: { value: 3.464, unit: 'au' }, // Semi-major axis
       e: 0.641, // Eccentricity
-      i: 7.04, // Inclination in degrees
-      w: 12.78, // Argument of perihelion in degrees
-      om: 50.14, // Longitude of ascending node in degrees
+      i: 7.04 as DegreesType, // Inclination in degrees
+      w: 12.78 as DegreesType, // Argument of perihelion in degrees
+      om: 50.14 as DegreesType, // Longitude of ascending node in degrees
       angle: 3.32542 as Radians,
-      period: { value: -2355, unit: 'd' }, // ~6.45 years
-      q: 1.243 // Perihelion distance in AU
+      period: { value: 2355, unit: 'd' }, // ~6.45 years
+      q: { value: 1.243, unit: 'au' } // Perihelion distance
     },
     display: {
       color: '#AAAAAA', // Greyish surface color
@@ -116,12 +117,12 @@ export const COMETS: CometsType = [
     orbit: {
       a: { value: 2.22, unit: 'au' },
       e: 0.85,
-      i: 11.8,
-      w: 186.5,
-      om: 334.6,
+      i: 11.8 as DegreesType,
+      w: 186.5 as DegreesType,
+      om: 334.6 as DegreesType,
       angle: 3.479299 as Radians,
-      period: { value: -1204, unit: 'd' }, // ~3.3 years
-      q: 0.34
+      period: { value: 1204, unit: 'd' }, // ~3.3 years
+      q: { value: 0.34, unit: 'au' }
     },
     display: {
       color: '#FFD700', // Golden yellow (dusty tail, lower albedo)

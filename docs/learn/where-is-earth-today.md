@@ -41,7 +41,7 @@ const { e, angle, period } = earth.orbit!; // e 0.0167, P 365.256 days
 const M0 = trueToMeanAnomaly(angle, e); // -2.47°: just before perihelion
 const days = 9786; // J2000 to 17 October 2026
 const M = norm2pi(
-  M0 + ((2 * Math.PI) / Math.abs(period.value)) * days
+  M0 + ((2 * Math.PI) / period.value) * days
 ) as Radians; // 282.7°
 ```
 
