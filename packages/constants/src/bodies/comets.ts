@@ -6,6 +6,8 @@ import { CometsType, Radians } from '@interstellar-tools/types';
  * ::: info
  *
  * - Units: `a` (au), `period` (days), `radius` (km); angles `i`, `w`, `om` in degrees.
+ * - `orbit.angle` is the true anomaly at J2000, from the mean anomaly in JPL Horizons' osculating
+ *   elements at J2000, converted with this dataset's `e`.
  * - Some entries may encode integration direction via a negative `period`; the table reflects the raw value.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
@@ -44,8 +46,8 @@ export const COMETS: CometsType = [
       w: 111.33,
       /** Longitude of the ascending node in degrees */
       om: 58.42,
-      /** Mean anomaly in radians at J2000 epoch */
-      angle: 0.669857 as Radians,
+      /** True anomaly at J2000 */
+      angle: 2.97966 as Radians,
       /** Orbital period in days */
       period: { value: 27576, unit: 'd' }, // ~76 years
       /** Perihelion distance in AU */
@@ -70,7 +72,7 @@ export const COMETS: CometsType = [
       i: 89.4,
       w: 130.6,
       om: 282.5,
-      angle: 3.141593 as Radians,
+      angle: 2.550719 as Radians,
       period: { value: -926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au),
       q: 0.914
     },
@@ -90,7 +92,7 @@ export const COMETS: CometsType = [
       i: 7.04, // Inclination in degrees
       w: 12.78, // Argument of perihelion in degrees
       om: 50.14, // Longitude of ascending node in degrees
-      angle: 0.0 as Radians, // Initial angle (could be updated based on epoch)
+      angle: 3.32542 as Radians,
       period: { value: -2355, unit: 'd' }, // ~6.45 years
       q: 1.243 // Perihelion distance in AU
     },
@@ -111,7 +113,7 @@ export const COMETS: CometsType = [
       i: 11.8,
       w: 186.5,
       om: 334.6,
-      angle: 2.792527 as Radians,
+      angle: 3.479299 as Radians,
       period: { value: -1204, unit: 'd' }, // ~3.3 years
       q: 0.34
     },

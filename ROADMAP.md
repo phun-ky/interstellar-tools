@@ -11,9 +11,6 @@ formulas that could be added are listed in the [equation backlog](TODO.md).
 
 ### Correct, complete datasets
 
-- **Comet angles:** store the true anomaly at J2000 in `orbit.angle`, as every
-  other dataset does, instead of the mean anomaly
-  ([#150](https://github.com/phun-ky/interstellar-tools/issues/150)).
 - **Moon positions:** replace the placeholder angles (26 of the 27 moons are 0)
   with real J2000 values from published elements, checked by tests as the
   planets are
@@ -64,8 +61,6 @@ covers the decisions that would be breaking changes afterwards:
   ([#148](https://github.com/phun-ky/interstellar-tools/issues/148))
 - let the orbit tree from 0.61 settle in use first
   ([#149](https://github.com/phun-ky/interstellar-tools/issues/149))
-- make `orbit.angle` mean the same in every dataset
-  ([#150](https://github.com/phun-ky/interstellar-tools/issues/150))
 - put `mu` last in every equation
   ([#151](https://github.com/phun-ky/interstellar-tools/issues/151))
 - decide how `advanceMeanAnomaly` handles long spans

@@ -13,7 +13,7 @@ import { CartesianCoordinatesInterface } from './planets.js';
  * - **Argument of perihelion (`w`)**: The angle from the **ascending node** to the **perihelion**.
  * - **Longitude of the ascending node (`om`)**: Defines where the orbit crosses the ecliptic.
  * - **Perihelion distance (`q`)**: The closest approach to the Sun in **AU**.
- * - **Angle (`angle`)**: For comets this is the **mean anomaly** at J2000, as in the source data.
+ * - **Angle (`angle`)**: The **true anomaly** at J2000, as for every other body.
  *
  * **Visualization Parameters:**
  * - **Orbit Path (`orbitPath`)**: Precomputed trajectory for rendering.
