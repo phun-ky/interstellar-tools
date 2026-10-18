@@ -110,7 +110,7 @@
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-coverage-exclude='**/__tests__/helpers/**' --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
-    "@interstellar-tools/constants": "^0.64.0",
+    "@interstellar-tools/constants": "^1.0.0",
     "@interstellar-tools/temporal": "^0.61.0",
     "@interstellar-tools/types": "^1.0.0"
   },
