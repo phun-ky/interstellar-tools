@@ -3,6 +3,8 @@
 // Open it, review the highlighted fields, and save: nothing is written until
 // you do. Saved justifications are kept unless you pass --justifications.
 // Usage: node scripts/bestpractices-url.mjs [--level silver] [--justifications]
+// Levels: passing, silver, gold (the metal series) and baseline-1, baseline-2,
+// baseline-3 (OSPS Baseline, read from the official criteria list).
 import { readFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 
@@ -16,6 +18,40 @@ const { values } = parseArgs({
 const answers = JSON.parse(
   readFileSync(new URL('../.bestpractices.json', import.meta.url), 'utf8')
 );
+const CRITERIA =
+  'https://raw.githubusercontent.com/ossf/best-practices-badge/main/criteria/baseline_criteria.yml';
+/** The criteria in one Baseline level, from the official criteria list. */
+const baselineCriteria = async (level) => {
+  const res = await fetch(CRITERIA);
+
+  if (!res.ok) {
+    console.error(`Couldn't read the Baseline criteria: HTTP ${res.status}`);
+    process.exit(1);
+  }
+
+  const names = new Set();
+
+  let current;
+
+  for (const line of (await res.text()).split('\n')) {
+    const heading = line.match(/^(baseline-\d):/);
+
+    if (heading) current = heading[1];
+    else if (current === level) {
+      const criterion = line.match(/^ {6}(osps_\w+):\s*$/);
+
+      if (criterion) names.add(criterion[1]);
+    }
+  }
+
+  return names;
+};
+// Fields from another level are ignored by the site, so leave them out
+const inLevel = values.level.startsWith('baseline-')
+  ? await baselineCriteria(values.level).then(
+      (names) => (name) => names.has(name)
+    )
+  : (name) => !name.startsWith('osps_');
 const response = await fetch(
   `https://www.bestpractices.dev/projects/${PROJECT}.json`
 );
@@ -35,6 +71,9 @@ for (const [key, value] of Object.entries(answers)) {
   if (!key.endsWith('_status')) continue;
 
   const name = key.slice(0, -'_status'.length);
+
+  if (!inLevel(name)) continue;
+
   const justification = answers[`${name}_justification`];
 
   if (saved[key] === value) {

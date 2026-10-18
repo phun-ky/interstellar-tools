@@ -9,12 +9,21 @@ and
 
 :::
 
+## Requirements
+
+- [Node.js](https://nodejs.org/) 24.15 or newer, and npm 11.5.1 or newer (see
+  `engines` in `package.json`)
+- [Git](https://git-scm.com/)
+
+Everything else, including TypeScript, the test runner and the docs tooling, is
+installed from `package-lock.json`.
+
 ## Install
 
-To develop **Hybrid Compute**, fork it, and then in the project root:
+To develop **Interstellar Tools**, fork it, and then in the project root:
 
 ```shell
-npm i
+npm ci
 ```
 
 ## Build
