@@ -23,7 +23,7 @@ const SUBSYSTEMS = [
   {
     id: 'EQ-01',
     title: 'Orbital mechanics',
-    text: 'Vis-viva, Kepler solvers that hold up as e → 1, anomaly conversions, Hohmann transfers, plane changes, J2 precession and Clohessy–Wiltshire motion. 59 functions and counting.',
+    text: 'Vis-viva, Kepler solvers that hold up as e → 1, anomaly conversions, Hohmann transfers, plane changes, J2 precession and Clohessy-Wiltshire motion. 63 functions and counting.',
     link: '/api/@interstellar-tools/equations/',
     cta: 'Browse equations'
   },
@@ -102,24 +102,24 @@ const MANIFEST = [
   {
     pkg: equations,
     payload: 'Orbits, gravity, manoeuvres, anomalies, cartography',
-    status: 'Alpha'
+    status: 'Stable'
   },
   {
     pkg: constants,
     payload: 'Physical constants and celestial datasets',
-    status: 'Alpha'
+    status: 'Stable'
   },
   {
     pkg: temporal,
     payload: 'Time unit conversion and normalisation',
-    status: 'WIP'
+    status: 'Stable'
   },
   {
     pkg: types,
     payload: 'Shared, zero-dependency TypeScript types',
-    status: 'Alpha'
+    status: 'Stable'
   },
-  { pkg: mcp, payload: 'MCP server for AI assistants', status: 'WIP' }
+  { pkg: mcp, payload: 'MCP server for AI assistants', status: 'Stable' }
 ].map((row) => ({
   ...row,
   link: `/api/${row.pkg.name}/`
@@ -272,7 +272,7 @@ tTransfer / <span class="n">3600</span>; <span class="c">// {{ hours }}  [h]</sp
               <td>
                 <span
                   class="pill"
-                  :class="row.status === 'WIP' ? 'wip' : 'alpha'"
+                  :class="row.status === 'Stable' ? 'stable' : 'wip'"
                   >{{ row.status }}</span
                 >
               </td>
@@ -283,8 +283,9 @@ tTransfer / <span class="n">3600</span>; <span class="c">// {{ hours }}  [h]</sp
       <div class="mc-caution">
         <b>Caution</b>
         <span>
-          Early alpha. APIs can change between minor versions, and the equations
-          are unit-tested but not yet cross-validated against flight software.
+          Stable since 1.0: breaking changes only come in a major release. The
+          equations are unit-tested, but not cross-validated against flight
+          software, so they aren't for operating real spacecraft.
           <a href="https://github.com/phun-ky/interstellar-tools/issues"
             >Tell us what you need</a
           >.
@@ -571,7 +572,7 @@ td code {
   text-transform: uppercase;
 }
 
-.pill.alpha {
+.pill.stable {
   color: var(--mc-green);
 }
 

@@ -103,9 +103,11 @@ JetBrains and others.
 
 ## Status
 
-> **Project status:** Early alpha
+> **Project status:** Stable (1.0)
 
-- API surface: changing between minor versions.
+- API surface: stable. Breaking changes only come in a major release, and
+  deprecated APIs keep working for one full major; see
+  [how versions work](https://phun-ky.net/interstellar-tools/guide/upgrading#how-versions-work).
 - Validation: unit tests in place; not yet cross-validated against flight-grade
   references.
 - Runtime targets: Node 22.9+, modern browsers with ESM bundlers (Vite, Webpack,
@@ -137,11 +139,11 @@ orbital and mission software easier to build and easier to verify.
 
 | Package                         | Description                                       | Status |
 | ------------------------------- | ------------------------------------------------- | ------ |
-| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Alpha  |
-| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Alpha  |
-| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | WIP    |
-| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | WIP    |
-| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Alpha  |
+| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Stable |
+| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Stable |
+| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | Stable |
+| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | Stable |
+| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Stable |
 
 ### Details
 

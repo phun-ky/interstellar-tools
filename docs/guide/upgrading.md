@@ -1,15 +1,15 @@
 # Upgrading
 
-Only the latest release of each package is supported (see the
-[security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md)),
-so upgrading is the way to get fixes. This page explains how versions work and
-how to migrate your code.
+Each major is supported as a whole: fixes come as new releases within it, so
+upgrading within your major is the way to get them, and never breaks your code
+(see the
+[security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#supported-versions)).
+This page explains how versions work and how to migrate your code.
 
 **Every major release has a migration guide** here, covering every breaking
-change since the previous major, with before-and-after code. Until 1.0, that's
-the guide from 0.x to 1.0 below, which grows with each breaking change. For the
-story behind the changes, and whether to upgrade now, read the
-[release notes](./releases/index.md).
+change since the previous major, with before-and-after code. The guide from 0.x
+to 1.0 is below. For the story behind the changes, and whether to upgrade now,
+read the [release notes](./releases/index.md).
 
 ## How versions work
 
