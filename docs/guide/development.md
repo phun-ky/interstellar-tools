@@ -64,6 +64,19 @@ Each package has two TypeScript configs:
 - `tsconfig.json` covers sources and tests with Node types and emits nothing.
   Editors pick it up, and `npm run typecheck` uses it.
 
+### Generated docs
+
+The API reference in `docs/api` and the dataset tables in `docs/partials` are
+generated from the sources, and committed so they can be read on GitHub. **Don't
+regenerate them in a pull request:** every release runs `npm run docs:gen` and
+commits the result with the release, and the site deploys from there. In a pull
+request, `npm run docs:check` is enough. To preview the generated pages locally,
+run `npm run docs:dev`, then discard the changes in `docs/api` and
+`docs/partials` before committing.
+
+Source links in the API reference point to `main`, so a regeneration only
+changes the pages whose content changed.
+
 ### Links from the security metadata
 
 `.bestpractices.json` (answers for the
