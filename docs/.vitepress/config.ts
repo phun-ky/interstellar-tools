@@ -132,7 +132,15 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: 'Development setup', link: '/guide/development' },
-            { text: 'Architecture', link: '/guide/architecture' },
+            { text: 'Architecture', link: '/guide/architecture' }
+          ]
+        },
+        {
+          text: 'Releases',
+          collapsed: false,
+          items: [
+            { text: 'Release notes', link: '/guide/releases/' },
+            { text: '1.0 release notes', link: '/guide/releases/1.0' },
             { text: 'Upgrading', link: '/guide/upgrading' }
           ]
         },
