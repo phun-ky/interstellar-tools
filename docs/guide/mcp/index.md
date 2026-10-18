@@ -25,13 +25,23 @@ tested equations instead of recalling a number that looks plausible.
 | `solve_kepler`               | Eccentric anomaly from mean anomaly                  |
 | `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly                      |
 | `convert_time`               | Durations from attoseconds to gigayears              |
+| `convert_distance`           | Distances from metres to gigaparsecs                 |
 | `find_body`                  | Planets, moons, stars, comets and more, by name      |
 
-Every field name carries its unit (`r_m`, `mu_m3_s2`, `dv_total_m_s`), and
-angles are passed as `{ "value": 28.5, "unit": "deg" }`, so there is no room for
-kilometre/metre or degree/radian mix-ups. All tools are read-only and run
-offline. The celestial datasets are also available as MCP resources at
-`interstellar://datasets/{name}`.
+The names follow a few rules, so there is no room for kilometre/metre or
+degree/radian mix-ups:
+
+- **A field with a unit ends with it:** `r_m` is metres, `mu_m3_s2` is m³/s²,
+  `dv_total_m_s` is m/s and `T_d` is days. The orbit tools take SI units.
+- **Dimensionless fields have no suffix**, like the eccentricity `e`.
+- **Angles carry their unit:** they go in as `{ "value": 28.5, "unit": "deg" }`
+  and come back as `{ "rad": …, "deg": … }`.
+- **Tool names** are snake_case and say what they compute.
+
+All tools are read-only and run offline. The celestial datasets are also
+available as MCP resources at `interstellar://datasets/{name}`. Their distances
+are in au or km, so the assistant converts them with `convert_distance` before
+using the orbit tools.
 
 ## Before you start
 
@@ -379,6 +389,7 @@ More to try:
 - _I have 4 tonnes of propellant on a 1 tonne spacecraft with an Isp of 320 s.
   What's my Δv budget?_
 - _How long is a megayear in seconds?_
+- _Using the dataset, how fast does Jupiter move around the Sun?_
 - _What does the dataset say about Europa?_
 
 ::: tip Give the assistant a nudge
@@ -404,6 +415,21 @@ await createServer().connect(new StdioServerTransport());
 // or Streamable HTTP on http://127.0.0.1:3000/mcp
 await startHttpServer({ port: 3000 });
 ```
+
+## What stays stable
+
+From 1.0, the server follows
+[semantic versioning](../upgrading.md#how-versions-work) like the other
+packages, and its public API is what assistant setups depend on:
+
+- **Tools:** renaming or removing a tool, or one of its input or output fields,
+  is a major release. A new tool, or a new optional field, is a minor release.
+- **Resources:** the URIs `interstellar://datasets/{name}` stay the same. Their
+  JSON is the datasets from `@interstellar-tools/constants`, so it follows the
+  dataset types: a breaking change to a type is a major release here too, a new
+  field is a minor release, and corrected or added data is a patch.
+- **Library and CLI:** `createServer`, `startHttpServer` and its options, and
+  the command-line options above.
 
 ## Troubleshooting
 

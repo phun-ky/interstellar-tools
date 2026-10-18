@@ -60,6 +60,7 @@ describe('tool listing', () => {
     assert.deepEqual(names, [
       'circular_speed',
       'convert_anomaly',
+      'convert_distance',
       'convert_time',
       'escape_speed',
       'find_body',
@@ -215,6 +216,43 @@ describe('time tools', () => {
     });
 
     assert.equal(res.isError, true);
+  });
+});
+
+describe('distance tools', () => {
+  test('convert_distance turns au into metres', async () => {
+    const res = await call('convert_distance', {
+      value: 1,
+      from: 'au',
+      to: 'm'
+    });
+
+    assert.deepEqual(res.structuredContent, {
+      value: 149_597_870_700,
+      unit: 'm'
+    });
+  });
+
+  test('convert_distance accepts aliases and returns the canonical unit', async () => {
+    const res = await call('convert_distance', {
+      value: 1,
+      from: 'parsecs',
+      to: 'light-years'
+    });
+
+    approx(res.structuredContent!.value, 3.2615637771674333, 1e-12);
+    assert.equal(res.structuredContent!.unit, 'ly');
+  });
+
+  test('convert_distance rejects unknown units', async () => {
+    for (const [from, to] of [
+      ['miles', 'km'],
+      ['km', 'toString']
+    ]) {
+      const res = await call('convert_distance', { value: 1, from, to });
+
+      assert.equal(res.isError, true, `${from} → ${to}`);
+    }
   });
 });
 
