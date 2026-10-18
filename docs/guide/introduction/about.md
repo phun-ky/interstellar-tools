@@ -171,6 +171,27 @@ How decisions are made and who does what is described in the
 and where the project is heading in the
 [roadmap](https://github.com/phun-ky/interstellar-tools/blob/main/ROADMAP.md).
 
+## Security and supply chain
+
+The project follows the
+[OpenSSF Best Practices](https://www.bestpractices.dev/projects/15627) criteria,
+at the **passing** level and **OpenSSF Baseline level 2**, and is scored by the
+[OpenSSF Scorecard](https://scorecard.dev/viewer/?uri=github.com/phun-ky/interstellar-tools).
+In practice, that means:
+
+- **Signed releases.** Every package is built and published from GitHub Actions
+  with signed provenance, verifiable with `npm audit signatures`, and every
+  release comes with a software bill of materials.
+- **Checked changes.** Every pull request is built, linted, type-checked,
+  tested, scanned by CodeQL, checked for vulnerable dependencies, and signed off
+  under the Developer Certificate of Origin before it can be merged.
+- **Documented policies.** How vulnerabilities are reported and fixed, how
+  dependencies and secrets are handled, and why the security expectations hold
+  are in the
+  [security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md)
+  and the
+  [assurance case](https://github.com/phun-ky/interstellar-tools/blob/main/ASSURANCE.md).
+
 ## A note from the author
 
 > I built @interstellar-tools to help catalyse the space+software wave I'm
