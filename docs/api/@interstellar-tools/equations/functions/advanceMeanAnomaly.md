@@ -11,41 +11,46 @@ function advanceMeanAnomaly(
 ```
 
 Defined in:
-[anomalies/advance-mean-anomaly.ts:63](https://github.com/phun-ky/interstellar-tools/blob/dcd3a66d393fbe7b89573e26e1161f598ed5d4fd/packages/equations/src/categories/anomalies/advance-mean-anomaly.ts#L63)
+[anomalies/advance-mean-anomaly.ts:65](https://github.com/phun-ky/interstellar-tools/blob/252dd3ac244f95681e2ed31cec6cd670ff1f9a83/packages/equations/src/categories/anomalies/advance-mean-anomaly.ts#L65)
 
 Advances an orbit by a time step and returns its new **mean anomaly** ($M$).
 
 The orbit's `angle` (true anomaly) is the starting point. To get the eccentric
-anomaly from the result, pass it to [solveKepler](solveKepler.md).
+anomaly from the result, pass it to [solveKepler](solveKepler.md). To find a
+body at a given date, use [meanAnomalyAt](meanAnomalyAt.md) or
+[trueAnomalyAt](trueAnomalyAt.md).
 
 **Mathematical Explanation:**
 
 The **mean anomaly** is a measure of the position of an orbiting body as if it
 moved with uniform angular motion along a circular orbit with the same period as
-the actual elliptical orbit. It is computed as:
+the actual elliptical orbit. It grows linearly with time:
 
-$M = M_0 + n \cdot \Delta T$
+$M = M_0 + n \cdot \Delta T, \qquad n = \frac{2\pi}{|P|}$
 
 where:
 
-- $M_0$ is the **initial mean anomaly** (converted from true anomaly if
-  necessary).
-- $n$ is the **mean motion**, given by: $n = \frac{2\pi}{P}$ where $P$ is the
-  orbital period in days.
+- $M_0$ is the **initial mean anomaly**, converted from the true anomaly
+  `angle`.
+- $n$ is the **mean motion**, from the period $P$ in days. The sign of $P$ is
+  ignored, so a positive step always moves the body forward along its orbit.
 - $\Delta T$ is the time step, converted to days from its unit.
+
+The step can be any length, from a fraction of a second to many orbits, and
+negative to go back in time. The result is wrapped to $[0, 2\pi)$.
 
 ## Parameters
 
 | Parameter  | Type                                                                                                                                                        | Description                                                           |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `orbit`    | [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)<[`OrbitInterface`](../../types/interfaces/OrbitInterface.md), `"e"` | `"angle"`                                                             | `"period"`> | The body's orbit, for example `body.orbit` from a dataset. |
-| `timeStep` | [`TemporalInterface`](../../types/interfaces/TemporalInterface.md)                                                                                          | The time step over which to compute the change, in any temporal unit. |
+| `timeStep` | [`TemporalInterface`](../../types/interfaces/TemporalInterface.md)                                                                                          | How far to advance, in any temporal unit; negative goes back in time. |
 
 ## Returns
 
 [`Radians`](../../types/type-aliases/Radians.md)
 
-The computed mean anomaly in radians.
+The mean anomaly after the time step, in $[0, 2\pi)$.
 
 ## Throws
 
@@ -63,9 +68,9 @@ const marsOrbit = {
   period: { value: 687, unit: 'd' } // Orbital period in days
 };
 
-const timeStep: TemporalInterface = { value: 1, unit: 'd' }; // 1-day step
-const meanAnomaly = advanceMeanAnomaly(marsOrbit, timeStep);
-console.log(meanAnomaly); // Output: Computed mean anomaly in radians
+advanceMeanAnomaly(marsOrbit, { value: 1, unit: 'd' }); // one day on
+advanceMeanAnomaly(marsOrbit, { value: 10, unit: 'yr' }); // ten years on
+advanceMeanAnomaly(marsOrbit, { value: -1, unit: 'd' }); // one day back
 ```
 
 ## See

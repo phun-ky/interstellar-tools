@@ -11,14 +11,15 @@ function computeAngle(
 ```
 
 Defined in:
-[angle/compute-angle.ts:66](https://github.com/phun-ky/interstellar-tools/blob/dcd3a66d393fbe7b89573e26e1161f598ed5d4fd/packages/equations/src/categories/angle/compute-angle.ts#L66)
+[angle/compute-angle.ts:67](https://github.com/phun-ky/interstellar-tools/blob/252dd3ac244f95681e2ed31cec6cd670ff1f9a83/packages/equations/src/categories/angle/compute-angle.ts#L67)
 
 Advances a body along its orbit by one time step and returns its new **true
 anomaly** ($\nu$).
 
 The orbit's `angle` is the starting true anomaly. There is no date input: call
 this once per frame or step, and feed the result back in as the next `angle` to
-move the body over time.
+move the body over time. To find a body at a given date instead, use
+[trueAnomalyAt](trueAnomalyAt.md).
 
 **Step 1: Mean anomaly after the time step ($M$)**
 
@@ -28,9 +29,9 @@ t, \qquad n = \frac{2\pi}{|P|}$ where:
 - $M_0$ is the mean anomaly at the start, converted from the true anomaly
   `angle` (equal to it when $e = 0$).
 - $n$ is the mean motion, from the period $P$ converted to days. The sign of $P$
-  is ignored, so the angle always increases.
-- $\Delta t$ is `timeStep.value` in days, clamped to at least $10^{-5}$ days and
-  at most $10\,|P|$ ($|P|$ when $e \geq 0.9$).
+  is ignored, so a positive step always moves the body forward.
+- $\Delta t$ is `timeStep.value` in days. It can be any length, and negative to
+  go back in time.
 
 The result is wrapped to $[0, 2\pi)$.
 

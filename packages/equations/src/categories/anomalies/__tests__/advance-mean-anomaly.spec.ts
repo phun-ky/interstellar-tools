@@ -7,6 +7,7 @@ import { OrbitInterface, TemporalInterface } from '@interstellar-tools/types';
 import { TWO_PI } from '@interstellar-tools/constants';
 import { trueToMeanAnomaly } from '../true-to-mean-anomaly.js';
 import { wrapAngle } from '../../angle/wrap-angle.js';
+import { norm2pi } from '../../helpers/misc.js';
 
 const EPSILON = 1e-10; // Increased tolerance for floating-point comparisons
 
@@ -56,23 +57,63 @@ describe('advanceMeanAnomaly', () => {
     assertApproxEqual(result, expectedM);
   });
 
-  test('Large Time Step Clamping (Max 10 Orbits)', () => {
+  test('Long Time Steps Are Not Capped', () => {
     const body: OrbitInterface = {
       e: 0.1,
       angle: 1.0,
       period: { value: 100, unit: 'd' }
     } as OrbitInterface;
-    const timeStep: TemporalInterface = { value: 2000, unit: 'd' };
-    const periodInDays = body.period.value;
-    const meanMotion = TWO_PI / Math.abs(periodInDays);
-    const maxAllowedTimeStep = 10 * periodInDays;
+    // 20.5 orbits: the old 10-orbit cap would have returned the start instead
+    const timeStep: TemporalInterface = { value: 2050, unit: 'd' };
+    const meanMotion = TWO_PI / body.period.value;
     const M0 = trueToMeanAnomaly(body.angle, body.e);
-    /* node:coverage disable */
-    const expectedM = wrapAngle(M0 + meanMotion * maxAllowedTimeStep);
-    /* node:coverage enable */
+    const expectedM = norm2pi(M0 + meanMotion * 2050);
     const result = advanceMeanAnomaly(body, timeStep);
 
     assertApproxEqual(result, expectedM);
+    assertApproxEqual(result, norm2pi(M0 + Math.PI));
+  });
+
+  test('Negative Time Steps Go Back in Time', () => {
+    const body: OrbitInterface = {
+      e: 0.3,
+      angle: 2.0,
+      period: { value: 400, unit: 'd' }
+    } as OrbitInterface;
+    const meanMotion = TWO_PI / body.period.value;
+    const M0 = trueToMeanAnomaly(body.angle, body.e);
+
+    assertApproxEqual(
+      advanceMeanAnomaly(body, { value: -10, unit: 'd' }),
+      norm2pi(M0 - meanMotion * 10)
+    );
+    // One orbit back is where it started
+    assertApproxEqual(
+      advanceMeanAnomaly(body, { value: -400, unit: 'd' }),
+      norm2pi(M0)
+    );
+  });
+
+  test('Whole Orbits Return to the Start, Forwards or Back', () => {
+    const body: OrbitInterface = {
+      e: 0.2,
+      angle: 0.7,
+      period: { value: -365.25, unit: 'd' }
+    } as OrbitInterface;
+    const M0 = norm2pi(trueToMeanAnomaly(body.angle, body.e));
+
+    for (const orbits of [1, 7, 1000, -3]) {
+      const result = advanceMeanAnomaly(body, {
+        value: orbits * 365.25,
+        unit: 'd'
+      });
+
+      assert.ok(
+        Math.abs(result - M0) < 1e-9 ||
+          Math.abs(Math.abs(result - M0) - TWO_PI) < 1e-9,
+        `${orbits} orbits: ${result} vs ${M0}`
+      );
+    }
   });
 
   test('Eccentricity Out of Bounds Throws Error', () => {
@@ -105,14 +146,13 @@ describe('advanceMeanAnomaly', () => {
     );
   });
 
-  test('Time Step Clamping Applies After Unit Conversion', () => {
+  test('Years and Days Agree', () => {
     const body: OrbitInterface = {
       e: 0.3,
       angle: 2.0,
       period: { value: 400, unit: 'd' }
     } as OrbitInterface;
 
-    // 1 yr is 365.25 d, below the 10-period cap, so it must not be clamped
     assertApproxEqual(
       advanceMeanAnomaly(body, { value: 1, unit: 'yr' }),
       advanceMeanAnomaly(body, { value: 365.25, unit: 'd' })
@@ -151,41 +191,38 @@ describe('advanceMeanAnomaly', () => {
     assertApproxEqual(result, expectedM);
   });
 
-  test('Angle Wrapping within [-2π, 2π]', () => {
+  test('Results Are Wrapped to [0, 2π)', () => {
     const body: OrbitInterface = {
       e: 0.5,
       angle: 3 * Math.PI,
       period: { value: 365, unit: 'd' }
     } as OrbitInterface;
-    const timeStep: TemporalInterface = { value: 10, unit: 'd' };
-    const periodInDays = body.period.value;
-    const meanMotion = TWO_PI / Math.abs(periodInDays);
+    const meanMotion = TWO_PI / Math.abs(body.period.value);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
-    /* node:coverage disable */
-    const expectedM = wrapAngle(M0 + meanMotion * 10);
-    /* node:coverage enable */
-    const result = advanceMeanAnomaly(body, timeStep);
 
-    assertApproxEqual(result, expectedM);
-    assert(result <= 2 * Math.PI && result >= -2 * Math.PI);
+    for (const days of [10, -10, 1e6, -1e6]) {
+      const result = advanceMeanAnomaly(body, { value: days, unit: 'd' });
+
+      assertApproxEqual(result, norm2pi(M0 + meanMotion * days));
+      assert.ok(result >= 0 && result < TWO_PI, `${days} d: ${result}`);
+    }
   });
 
-  test('Minimum Time Step Clamping', () => {
+  test('Tiny Time Steps Are Not Rounded Up', () => {
     const body: OrbitInterface = {
       e: 0.5,
       angle: Math.PI / 2,
       period: { value: 365, unit: 'd' }
     } as OrbitInterface;
-    const timeStep: TemporalInterface = { value: 1e-6, unit: 'd' };
-    const periodInDays = body.period.value;
-    const meanMotion = TWO_PI / Math.abs(periodInDays);
+    const meanMotion = TWO_PI / Math.abs(body.period.value);
     const M0 = trueToMeanAnomaly(body.angle, body.e);
-    /* node:coverage disable */
-    const expectedM = wrapAngle(M0 + meanMotion * 1e-5); // Minimum time step
-    /* node:coverage enable */
-    const result = advanceMeanAnomaly(body, timeStep);
+    // One millisecond, far below the old 1e-5 day minimum
+    const step = 1 / 86_400_000;
 
-    assertApproxEqual(result, expectedM);
+    assertApproxEqual(
+      advanceMeanAnomaly(body, { value: step, unit: 'd' }),
+      norm2pi(M0 + meanMotion * step)
+    );
   });
 
   test("Halley's Comet", () => {

@@ -45,6 +45,14 @@ const M = norm2pi(
 ) as Radians; // 282.7°
 ```
 
+::: tip Shortcut
+
+`meanAnomalyAt(earth.orbit!, new Date('2026-10-17T12:00:00Z'))` does this step
+for any date, measuring from J2000 for you, and `trueAnomalyAt` does all three
+steps of this tutorial in one call.
+
+:::
+
 ## 3. Solve Kepler's equation
 
 Going from $M$ to $E$ means solving $M = E - e \sin E$, which has no algebraic

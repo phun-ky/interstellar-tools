@@ -20,13 +20,6 @@ formulas that could be added are listed in the [equation backlog](TODO.md).
   Spica as the binary it is
   ([#156](https://github.com/phun-ky/interstellar-tools/issues/156)).
 
-### Propagation
-
-- **A position after any span of time:** add a function for where a body is at a
-  given time, without the 10-period cap that `advanceMeanAnomaly` uses for
-  animation frames
-  ([#152](https://github.com/phun-ky/interstellar-tools/issues/152)).
-
 ### New equations
 
 Grow `@interstellar-tools/equations` along the lines in the
@@ -63,8 +56,6 @@ covers the decisions that would be breaking changes afterwards:
   ([#149](https://github.com/phun-ky/interstellar-tools/issues/149))
 - put `mu` last in every equation
   ([#151](https://github.com/phun-ky/interstellar-tools/issues/151))
-- decide how `advanceMeanAnomaly` handles long spans
-  ([#152](https://github.com/phun-ky/interstellar-tools/issues/152))
 - decide whether display fields belong in the core types
   ([#153](https://github.com/phun-ky/interstellar-tools/issues/153))
 - review the `temporal` API
