@@ -53,7 +53,7 @@ const NORMALIZE_TEMPORAL_UNIT: Readonly<{
 ```
 
 Defined in:
-[normalize-temporal-unit.ts:33](https://github.com/phun-ky/interstellar-tools/blob/404e170095de0a5bb1c3b66d63adb9df680b908e/packages/temporal/src/normalize-temporal-unit.ts#L33)
+[normalize-temporal-unit.ts:33](https://github.com/phun-ky/interstellar-tools/blob/3b3e9ce5b537aa4032c382fccd8b2cef0ae6ff57/packages/temporal/src/normalize-temporal-unit.ts#L33)
 
 Lookup table that **normalizes user-facing time unit aliases** (and the
 canonical symbols themselves) to a single, canonical

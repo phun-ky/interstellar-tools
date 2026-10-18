@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.61.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.4...%40interstellar-tools%2Ftemporal%400.61.0) (2026-10-18)
+
+### ⚠ BREAKING CHANGES
+
+* NORMALIZE_UNIT is renamed to NORMALIZE_TEMPORAL_UNIT, and
+  it and SECONDS_PER are frozen. See the migration guide.
+
+### Refactoring
+
+* 💡 Settle the temporal API for 1.0 ([e75b858](https://github.com/phun-ky/interstellar-tools/commit/e75b858b4eb6def9852d2c911b2ed5b56d54ae4e)), closes [#162](https://github.com/phun-ky/interstellar-tools/issues/162)
+
 ## [0.60.4](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.3...%40interstellar-tools%2Ftemporal%400.60.4) (2026-10-18)
 
 ## [0.60.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.2...%40interstellar-tools%2Ftemporal%400.60.3) (2026-10-18)
