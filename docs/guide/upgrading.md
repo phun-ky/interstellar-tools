@@ -37,6 +37,8 @@ order; skip the ones older than the version you're on.
       `hyperbolicPeriapsisSpeed(vInfinity, rp, mu)`.
 - [ ] Read drawing values from `display` (`body.display.color`, not
       `body.color`), and keep renderer state there too.
+- [ ] Rename `NORMALIZE_UNIT` to `NORMALIZE_TEMPORAL_UNIT`, and catch
+      `RangeError` from the unit functions.
 - [ ] Expect new values for planet and comet positions, which are now real J2000
       data.
 - [ ] Behind a tunnel or on a public host, configure the MCP server's
@@ -221,6 +223,23 @@ The renderer state fields move there too, with clearer names:
 `CartesianCoordinatesInterface` is unchanged, and is now defined with
 `DisplayInterface`. The datasets only set `color`, `size`, `opacity` and
 `density`; the rest is for a renderer to compute.
+
+### temporal 0.61: frozen unit tables
+
+The alias table is renamed, so it can't be mixed up with the distance one:
+
+| 0.60             | 0.61                      |
+| ---------------- | ------------------------- |
+| `NORMALIZE_UNIT` | `NORMALIZE_TEMPORAL_UNIT` |
+
+- `NORMALIZE_TEMPORAL_UNIT` and `SECONDS_PER` are frozen. Code that changed them
+  at runtime now fails; build your own table instead.
+- `normalizeTemporalUnit` and `convertTemporalUnit` throw a `RangeError` for an
+  unknown unit. It is still an `Error`, so existing `catch` blocks keep working.
+- Keys from `Object.prototype` such as `'toString'` are no longer accepted as
+  units.
+- `convertTemporalUnit` now also accepts an alias as the target unit, such as
+  `'days'`.
 
 ### For renderers: drawing with the library
 
