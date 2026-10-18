@@ -9,7 +9,7 @@ import { Radians, StarsType } from '@interstellar-tools/types';
  * - Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly, `period` in Myr.
  *   Orbits within a system: `a` in au, `period` in yr or kyr. `angle` in radians. `mass` in M☉.
  * - `color` is for visualization only.
- * - Negative `period` may encode integration direction; the table shows raw values.
+ * - `period` is always positive; retrograde orbits have `retrograde: true`.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -58,7 +58,7 @@ export const STARS: StarsType = [
       /** Orbital eccentricity */
       e: 0.005,
       /** Orbital period in million years (Myr) */
-      period: { value: -480, unit: 'Myr' },
+      period: { value: 480, unit: 'Myr' },
       /** Initial angle in orbit */
       angle: 1.569867205171707 as Radians
     },
@@ -83,7 +83,7 @@ export const STARS: StarsType = [
     orbit: {
       a: { value: 27050.005155082687, unit: 'ly' },
       e: 0.004,
-      period: { value: -410, unit: 'Myr' },
+      period: { value: 410, unit: 'Myr' },
       angle: 1.5701789517599378 as Radians
     },
     radius: { value: 1700000, unit: 'km' },
@@ -103,7 +103,7 @@ export const STARS: StarsType = [
     orbit: {
       a: { value: 27375.280016832705, unit: 'ly' },
       e: 0.009,
-      period: { value: -720, unit: 'Myr' },
+      period: { value: 720, unit: 'Myr' },
       angle: 1.475524958596149 as Radians
     },
     radius: { value: 108000000, unit: 'km' },
@@ -124,7 +124,7 @@ export const STARS: StarsType = [
     orbit: {
       a: { value: 27201.148872795795, unit: 'ly' },
       e: 0.006,
-      period: { value: -550, unit: 'Myr' },
+      period: { value: 550, unit: 'Myr' },
       angle: 1.5616057972952029 as Radians
     },
     radius: { value: 73500000, unit: 'km' },
@@ -151,7 +151,7 @@ export const STARS: StarsType = [
     orbit: {
       a: { value: 10.66, unit: 'au' }, // 23.30 au × m_B / (m_A + m_B)
       e: 0.51947,
-      period: { value: -79.762, unit: 'yr' },
+      period: { value: 79.762, unit: 'yr' },
       angle: 3.275243601437025 as Radians // true anomaly at J2000
     },
     mass: 1.0788,
@@ -169,7 +169,7 @@ export const STARS: StarsType = [
     orbit: {
       a: { value: 12.64, unit: 'au' }, // 23.30 au × m_A / (m_A + m_B)
       e: 0.51947,
-      period: { value: -79.762, unit: 'yr' },
+      period: { value: 79.762, unit: 'yr' },
       angle: 3.275243601437025 as Radians
     },
     mass: 0.9092,
@@ -187,7 +187,7 @@ export const STARS: StarsType = [
     orbit: {
       a: { value: 8197, unit: 'au' }, // 8700 au × m_AB / (m_AB + m_P)
       e: 0.5,
-      period: { value: -547, unit: 'kyr' },
+      period: { value: 547, unit: 'kyr' },
       angle: 3.099566485428788 as Radians // near apastron, 13.0 kau from AB
     },
     mass: 0.1221,

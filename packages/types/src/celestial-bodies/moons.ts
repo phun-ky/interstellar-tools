@@ -23,7 +23,7 @@ import type { DisplayInterface } from './display.js';
  *   orbit: {
  *     a: { value: 0.00448, unit: 'au' },
  *     e: 0.009,
- *     period: { value: -3.551, unit: 'd' },
+ *     period: { value: 3.551, unit: 'd' },
  *     angle: 0 as Radians
  *   },
  *   radius: { value: 1560.8, unit: 'km' },

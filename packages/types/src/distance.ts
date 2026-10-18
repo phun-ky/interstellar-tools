@@ -141,6 +141,8 @@ export type DistanceUnitAliasType =
 /**
  * Represents a measurement with an associated unit.
  *
+ * @deprecated Use {@link DistanceInterface}, which is identical. `MeasureInterface` will be
+ * removed in 2.0.
  * @extends ValueInterface
  * @property {DistanceUnitType} unit - The unit of measurement.
  *

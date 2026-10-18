@@ -80,7 +80,11 @@ const assertUnique = (label: string, values: string[]) => {
 const assertValidOrbit = (name: string, orbit: OrbitInterface) => {
   assert.ok(orbit.e >= 0 && orbit.e < 1, `${name}.orbit.e = ${orbit.e}`);
   assert.ok(orbit.a.value > 0, `${name}.orbit.a`);
-  assert.notEqual(orbit.period.value, 0, `${name}.orbit.period`);
+  assert.ok(orbit.period.value > 0, `${name}.orbit.period must be positive`);
+  assert.ok(
+    orbit.retrograde === undefined || orbit.retrograde === true,
+    `${name}.orbit.retrograde is true or left out`
+  );
   assert.ok(
     orbit.angle >= 0 && orbit.angle < TWO_PI,
     `${name}.orbit.angle = ${orbit.angle}`
@@ -247,20 +251,20 @@ describe('heliocentric orbits', () => {
     for (const { name, orbit } of [...COMETS, ...ASTEROIDS]) {
       const expected = orbit.a.value * (1 - orbit.e);
 
+      assert.equal(orbit.q.unit, orbit.a.unit, `${name}: q and a share a unit`);
       assert.ok(
-        Math.abs(orbit.q / expected - 1) < 0.03,
-        `${name}: q = ${orbit.q} au, a(1 − e) = ${expected.toFixed(4)} au`
+        Math.abs(orbit.q.value / expected - 1) < 0.03,
+        `${name}: q = ${orbit.q.value} au, a(1 − e) = ${expected.toFixed(4)} au`
       );
     }
   });
 
-  // Negative period = counter-clockwise (prograde), positive = retrograde
-  test('period sign matches orbit direction (i > 90° is retrograde)', () => {
+  test('retrograde is set exactly when i > 90°', () => {
     for (const { name, orbit } of [...COMETS, ...ASTEROIDS]) {
       assert.equal(
-        orbit.period.value > 0,
+        orbit.retrograde === true,
         orbit.i > 90,
-        `${name}: i = ${orbit.i}°, period = ${orbit.period.value}`
+        `${name}: i = ${orbit.i}°, retrograde = ${orbit.retrograde}`
       );
     }
   });
@@ -273,7 +277,7 @@ describe('planet positions at J2000', () => {
     for (const { name, orbit, x, y, z } of PLANETS) {
       const { a, e, angle } = orbit!;
       const expected = (a.value * (1 - e ** 2)) / (1 + e * Math.cos(angle));
-      const r = Math.hypot(x.value, y.value, z.value);
+      const r = Math.hypot(x!.value, y!.value, z!.value);
 
       assert.ok(
         Math.abs(r / expected - 1) < 0.001,
@@ -291,7 +295,7 @@ describe('planet positions at J2000', () => {
     const daysToPerihelion =
       ((2 * Math.PI - M) / (2 * Math.PI)) * Math.abs(period.value);
 
-    assert.equal(Math.hypot(x.value, y.value, z.value).toFixed(3), '0.983');
+    assert.equal(Math.hypot(x!.value, y!.value, z!.value).toFixed(3), '0.983');
     assert.equal(daysToPerihelion.toFixed(1), '2.5');
   });
 });
@@ -339,14 +343,18 @@ describe('display sizes', () => {
 });
 
 describe('moons', () => {
-  test('retrograde moons have a positive period, regular moons a negative one', () => {
+  test('retrograde satellites are flagged retrograde, regular moons are not', () => {
     for (const moon of MOONS) {
       if (moon.category === 'retrograde satellite') {
-        assert.ok(moon.orbit.period.value > 0, `${moon.name} is retrograde`);
+        assert.equal(moon.orbit.retrograde, true, `${moon.name} is retrograde`);
       }
 
       if (moon.category === 'natural satellite') {
-        assert.ok(moon.orbit.period.value < 0, `${moon.name} is prograde`);
+        assert.equal(
+          moon.orbit.retrograde,
+          undefined,
+          `${moon.name} is prograde`
+        );
       }
     }
   });

@@ -36,7 +36,7 @@ export type SystemKindType = 'planetary' | 'binary' | 'multiple' | 'cluster';
  *   orbit: {
  *     a: { value: 503, unit: 'au' },
  *     e: 0.5,
- *     period: { value: -547, unit: 'kyr' },
+ *     period: { value: 547, unit: 'kyr' },
  *     angle: Math.PI as Radians
  *   }
  * };

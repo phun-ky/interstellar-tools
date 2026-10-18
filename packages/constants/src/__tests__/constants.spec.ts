@@ -159,7 +159,10 @@ describe('derived constants match their definitions', () => {
   });
 
   test('TT − UTC in ms matches seconds', () => {
-    assert.equal(TT_MINUS_UTC_AT_J2000_MS, TT_MINUS_UTC_AT_J2000_SECONDS * 1_000);
+    assert.equal(
+      TT_MINUS_UTC_AT_J2000_MS,
+      TT_MINUS_UTC_AT_J2000_SECONDS * 1_000
+    );
   });
 
   test('J2000_UTC is 2000-01-01 12:00 TT expressed in UTC', () => {

@@ -24,8 +24,9 @@ import { solveKepler } from '../kepler/solve-kepler.js';
  * where:
  * - $M_0$ is the mean anomaly at the start, converted from the true anomaly
  *   `angle` (equal to it when $e = 0$).
- * - $n$ is the mean motion, from the period $P$ converted to days. The sign of
- *   $P$ is ignored, so a positive step always moves the body forward.
+ * - $n$ is the mean motion, from the period $P$ converted to days. $P$ is a
+ *   positive duration; a negative one, from data in the old 0.x convention, is
+ *   read as its absolute value. A positive step always moves the body forward.
  * - $\Delta t$ is `timeStep.value` in days. It can be any length, and negative
  *   to go back in time.
  *

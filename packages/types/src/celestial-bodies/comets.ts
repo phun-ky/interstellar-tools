@@ -1,5 +1,5 @@
 import { DistanceInterface } from '../distance.js';
-import type { OrbitInterface } from '../orbits.js';
+import type { FullOrbitInterface } from '../orbits.js';
 
 import type { DisplayInterface } from './display.js';
 
@@ -12,7 +12,8 @@ import type { DisplayInterface } from './display.js';
  * - **Inclination (`i`)**: The tilt of the orbit relative to the **ecliptic plane**, measured in **degrees**.
  * - **Argument of perihelion (`w`)**: The angle from the **ascending node** to the **perihelion**.
  * - **Longitude of the ascending node (`om`)**: Defines where the orbit crosses the ecliptic.
- * - **Perihelion distance (`q`)**: The closest approach to the Sun in **AU**.
+ * - **Perihelion distance (`q`)**: The closest approach to the Sun, as a distance.
+ * - **Direction (`retrograde`)**: `true` when `i > 90°`, like Halley's comet.
  * - **Angle (`angle`)**: The **true anomaly** at J2000, as for every other body.
  *
  * **Drawing (`display`)**: colour and a scaled drawing size (not the physical
@@ -32,7 +33,7 @@ export interface CometInterface {
   /** Id of the star the comet orbits (e.g., `'sun'`). */
   parent: string;
   /** Orbit around the parent, with all elements including `i`, `w`, `om` and `q`. */
-  orbit: Required<OrbitInterface>;
+  orbit: FullOrbitInterface;
   /** X-coordinate in a distance-based system (optional). */
   x?: DistanceInterface;
   /** Y-coordinate in a distance-based system (optional). */
@@ -60,12 +61,13 @@ export interface CometInterface {
  *   orbit: {
  *     a: { value: 17.834, unit: 'au' },
  *     e: 0.96714,
- *     i: 162.26,
- *     w: 111.33,
- *     om: 58.42,
+ *     i: 162.26 as DegreesType,
+ *     w: 111.33 as DegreesType,
+ *     om: 58.42 as DegreesType,
  *     angle: 2.97966 as Radians,
  *     period: { value: 27576, unit: 'd' },
- *     q: 0.586
+ *     retrograde: true,
+ *     q: { value: 0.586, unit: 'au' }
  *   },
  *   radius: { value: 11, unit: 'km' },
  *   display: { color: '#ffffff', size: 1.2 }

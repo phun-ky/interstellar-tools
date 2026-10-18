@@ -42,7 +42,7 @@ const DATASET_NAMES = Object.keys(DATASETS) as [
 ];
 const uriFor = (name: DatasetNameType) => `interstellar://datasets/${name}`;
 const UNITS_NOTE =
-  'Each body has a stable `id` and names the body, system or galaxy it is bound to in `parent`; `orbit` holds its elements around that parent. Values carry their own units ({ value, unit }); `orbit.a` is usually in au, `orbit.period` in days (negative = counter-clockwise), `radius` in km, `orbit.angle` in radians at J2000.';
+  'Each body has a stable `id` and names the body, system or galaxy it is bound to in `parent`; `orbit` holds its elements around that parent. Values carry their own units ({ value, unit }); `orbit.a` is usually in au, `orbit.period` in days (always positive; `orbit.retrograde: true` marks a retrograde orbit), `radius` in km, `orbit.angle` in radians at J2000.';
 
 export const registerBodies = (server: McpServer) => {
   server.registerResource(

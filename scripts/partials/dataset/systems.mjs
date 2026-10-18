@@ -4,11 +4,11 @@ import { SYSTEMS } from '../../../packages/constants/dist/bodies/systems.js';
 
 const m = (measure) => (measure ? `${measure.value} ${measure.unit}` : '');
 const header =
-  '| id | name | kind | parent | orbit.a | orbit.e | orbit.period | orbit.angle | distance | x | y | z |\n' +
-  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
+  '| id | name | kind | parent | orbit.a | orbit.e | orbit.period | orbit.retrograde | orbit.angle | distance | x | y | z |\n' +
+  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
 const rows = SYSTEMS.map(
   (system) =>
-    `| ${system.id} | ${system.name} | ${system.kind} | ${system.parent ?? ''} | ${m(system.orbit?.a)} | ${system.orbit?.e ?? ''} | ${m(system.orbit?.period)} | ${system.orbit?.angle ?? ''} | ${m(system.distance)} | ${m(system.x)} | ${m(system.y)} | ${m(system.z)} |`
+    `| ${system.id} | ${system.name} | ${system.kind} | ${system.parent ?? ''} | ${m(system.orbit?.a)} | ${system.orbit?.e ?? ''} | ${m(system.orbit?.period)} | ${system.orbit?.retrograde ? 'yes' : ''} | ${system.orbit?.angle ?? ''} | ${m(system.distance)} | ${m(system.x)} | ${m(system.y)} | ${m(system.z)} |`
 ).join('\n');
 const out = `## Full list of systems in the dataset
 

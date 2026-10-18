@@ -36,7 +36,7 @@ export const SYSTEMS: SystemsType = [
     orbit: {
       a: { value: 27000, unit: 'ly' },
       e: 0.07,
-      period: { value: -230, unit: 'Myr' },
+      period: { value: 230, unit: 'Myr' },
       angle: 1.5707963267948966 as Radians
     },
     distance: { value: 0, unit: 'ly' },
@@ -55,7 +55,7 @@ export const SYSTEMS: SystemsType = [
     orbit: {
       a: { value: 27000.000353646294, unit: 'ly' },
       e: 0.07,
-      period: { value: -230, unit: 'Myr' },
+      period: { value: 230, unit: 'Myr' },
       angle: 1.570634474946578 as Radians
     },
     distance: { value: 4.37, unit: 'ly' },
@@ -72,7 +72,7 @@ export const SYSTEMS: SystemsType = [
     orbit: {
       a: { value: 503, unit: 'au' }, // 8700 au × m_P / (m_AB + m_P)
       e: 0.5,
-      period: { value: -547, unit: 'kyr' },
+      period: { value: 547, unit: 'kyr' },
       angle: 3.099566485428788 as Radians
     }
   }

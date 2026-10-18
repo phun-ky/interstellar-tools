@@ -40,7 +40,7 @@ export const MOONS: MoonsType = [
       /** Eccentricity (0 = circular orbit, 1 = parabolic trajectory) */
       e: 0.0549,
       /** Orbital period in days */
-      period: { value: -27.322, unit: 'd' },
+      period: { value: 27.322, unit: 'd' },
       /** Initial angle in orbit at J2000 */
       angle: 2.41 as Radians
     },
@@ -61,7 +61,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00006, unit: 'au' },
       e: 0.0151,
-      period: { value: -0.3189, unit: 'd' },
+      period: { value: 0.3189, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 11, unit: 'km' },
@@ -77,7 +77,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00016, unit: 'au' },
       e: 0.0002,
-      period: { value: -1.2624, unit: 'd' },
+      period: { value: 1.2624, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 6, unit: 'km' },
@@ -95,7 +95,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00282, unit: 'au' },
       e: 0.0041,
-      period: { value: -1.769, unit: 'd' },
+      period: { value: 1.769, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 1821, unit: 'km' },
@@ -111,7 +111,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00448, unit: 'au' },
       e: 0.0094,
-      period: { value: -3.551, unit: 'd' },
+      period: { value: 3.551, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 1560, unit: 'km' },
@@ -127,7 +127,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00715, unit: 'au' },
       e: 0.0013,
-      period: { value: -7.155, unit: 'd' },
+      period: { value: 7.155, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 2634, unit: 'km' },
@@ -143,7 +143,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.01258, unit: 'au' },
       e: 0.0074,
-      period: { value: -16.689, unit: 'd' },
+      period: { value: 16.689, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 2410, unit: 'km' },
@@ -159,7 +159,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.0025, unit: 'au' },
       e: 0.003,
-      period: { value: -0.498, unit: 'd' },
+      period: { value: 0.498, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 83, unit: 'km' },
@@ -175,7 +175,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.045, unit: 'au' },
       e: 0.25,
-      period: { value: -250.2, unit: 'd' },
+      period: { value: 250.2, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 85, unit: 'km' },
@@ -191,7 +191,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00179, unit: 'au' },
       e: 0.0002,
-      period: { value: -0.295, unit: 'd' },
+      period: { value: 0.295, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 21, unit: 'km' },
@@ -207,7 +207,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00222, unit: 'au' },
       e: 0.0176,
-      period: { value: -0.675, unit: 'd' },
+      period: { value: 0.675, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 49, unit: 'km' },
@@ -224,6 +224,7 @@ export const MOONS: MoonsType = [
       a: { value: 0.157, unit: 'au' },
       e: 0.407,
       period: { value: 735, unit: 'd' },
+      retrograde: true,
       angle: 0 as Radians
     },
     radius: { value: 30, unit: 'km' },
@@ -241,7 +242,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00817, unit: 'au' },
       e: 0.0288,
-      period: { value: -15.945, unit: 'd' },
+      period: { value: 15.945, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 2575, unit: 'km' },
@@ -257,7 +258,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00159, unit: 'au' },
       e: 0.0047,
-      period: { value: -1.37, unit: 'd' },
+      period: { value: 1.37, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 252, unit: 'km' },
@@ -273,7 +274,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00874, unit: 'au' },
       e: 0.0012,
-      period: { value: -4.518, unit: 'd' },
+      period: { value: 4.518, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 764, unit: 'km' },
@@ -289,7 +290,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.0238, unit: 'au' },
       e: 0.0283,
-      period: { value: -79.33, unit: 'd' },
+      period: { value: 79.33, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 735, unit: 'km' },
@@ -305,7 +306,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00873, unit: 'au' },
       e: 0.123,
-      period: { value: -21.3, unit: 'd' },
+      period: { value: 21.3, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 135, unit: 'km' },
@@ -322,6 +323,7 @@ export const MOONS: MoonsType = [
       a: { value: 0.0865, unit: 'au' },
       e: 0.1634,
       period: { value: 550, unit: 'd' },
+      retrograde: true,
       angle: 0 as Radians
     },
     radius: { value: 106, unit: 'km' },
@@ -339,7 +341,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00292, unit: 'au' },
       e: 0.0011,
-      period: { value: -8.706, unit: 'd' },
+      period: { value: 8.706, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 788, unit: 'km' },
@@ -355,7 +357,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00384, unit: 'au' },
       e: 0.0014,
-      period: { value: -13.46, unit: 'd' },
+      period: { value: 13.46, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 761, unit: 'km' },
@@ -371,7 +373,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00129, unit: 'au' },
       e: 0.0013,
-      period: { value: -1.41, unit: 'd' },
+      period: { value: 1.41, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 235, unit: 'km' },
@@ -387,7 +389,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00191, unit: 'au' },
       e: 0.0012,
-      period: { value: -2.52, unit: 'd' },
+      period: { value: 2.52, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 578, unit: 'km' },
@@ -403,7 +405,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00266, unit: 'au' },
       e: 0.0039,
-      period: { value: -4.14, unit: 'd' },
+      period: { value: 4.14, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 584, unit: 'km' },
@@ -422,6 +424,7 @@ export const MOONS: MoonsType = [
       a: { value: 0.002375, unit: 'au' },
       e: 0.000016,
       period: { value: 5.87685, unit: 'd' },
+      retrograde: true,
       angle: 0 as Radians // Consider updating based on actual epoch
     },
     radius: { value: 1353.4, unit: 'km' },
@@ -437,7 +440,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.0369, unit: 'au' },
       e: 0.75,
-      period: { value: -360.14, unit: 'd' },
+      period: { value: 360.14, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 170, unit: 'km' },
@@ -453,7 +456,7 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.00082, unit: 'au' },
       e: 0.0005,
-      period: { value: -1.12, unit: 'd' },
+      period: { value: 1.12, unit: 'd' },
       angle: 0 as Radians
     },
     radius: { value: 210, unit: 'km' },
@@ -469,7 +472,8 @@ export const MOONS: MoonsType = [
     orbit: {
       a: { value: 0.0985, unit: 'au' },
       e: 0.5711,
-      period: { value: 1879, unit: 'd' }, // Positive: retrograde orbit (i ≈ 134°)
+      period: { value: 1879, unit: 'd' }, // Retrograde orbit (i ≈ 134°)
+      retrograde: true,
       angle: 0 as Radians
     },
     radius: { value: 62, unit: 'km' },

@@ -39,7 +39,7 @@ dependencies outside the monorepo.
 - **Pure functions.** Equations take numbers or typed values and return new
   values. They do no I/O, keep no state and have no side effects.
 - **SI units throughout.** Inputs and outputs are in SI units unless a type says
-  otherwise, such as `MeasureInterface` values that carry their own unit.
+  otherwise, such as `DistanceInterface` values that carry their own unit.
 - **Fail loudly.** Functions validate their inputs and throw on invalid or
   out-of-domain values instead of returning a wrong number.
 - **Typed units.** Branded types such as `Radians` stop degrees and radians from

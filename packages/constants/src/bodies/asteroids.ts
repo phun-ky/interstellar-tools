@@ -1,4 +1,4 @@
-import { AsteroidsType, Radians } from '@interstellar-tools/types';
+import { AsteroidsType, DegreesType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a collection of well-known asteroids within the solar system simulation.
@@ -7,7 +7,7 @@ import { AsteroidsType, Radians } from '@interstellar-tools/types';
  *
  * - Units: `a` in astronomical units (au); `period` in days (d); `radius` in km.
  * - Orbital angles `i`, `w`, and `om` are in degrees.
- * - `color` and `size` are visual rendering hints only.
+ * - `display.color` and `display.size` are rendering hints only.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -36,12 +36,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 2.362, unit: 'au' },
       e: 0.09,
-      i: 7.1,
-      w: 151.2,
-      om: 103.8,
+      i: 7.1 as DegreesType,
+      w: 151.2 as DegreesType,
+      om: 103.8 as DegreesType,
       angle: 5.527458 as Radians,
-      period: { value: -1325.2, unit: 'd' },
-      q: 2.151
+      period: { value: 1325.2, unit: 'd' },
+      q: { value: 2.151, unit: 'au' }
     },
     radius: { value: 262.7, unit: 'km' },
     display: {
@@ -60,12 +60,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 1.458, unit: 'au' },
       e: 0.223,
-      i: 10.8,
-      w: 178.9,
-      om: 304.3,
+      i: 10.8 as DegreesType,
+      w: 178.9 as DegreesType,
+      om: 304.3 as DegreesType,
       angle: 1.553343 as Radians,
-      period: { value: -643.2, unit: 'd' },
-      q: 1.134
+      period: { value: 643.2, unit: 'd' },
+      q: { value: 1.134, unit: 'au' }
     },
     radius: { value: 8.4, unit: 'km' },
     display: {
@@ -83,12 +83,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 2.773, unit: 'au' },
       e: 0.231,
-      i: 34.8,
-      w: 310.2,
-      om: 173.1,
+      i: 34.8 as DegreesType,
+      w: 310.2 as DegreesType,
+      om: 173.1 as DegreesType,
       angle: 0.579449 as Radians,
-      period: { value: -1684.9, unit: 'd' },
-      q: 2.13
+      period: { value: 1684.9, unit: 'd' },
+      q: { value: 2.13, unit: 'au' }
     },
     radius: { value: 256, unit: 'km' },
     display: {
@@ -106,12 +106,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 3.141, unit: 'au' },
       e: 0.112,
-      i: 3.8,
-      w: 312.3,
-      om: 283.2,
+      i: 3.8 as DegreesType,
+      w: 312.3 as DegreesType,
+      om: 283.2 as DegreesType,
       angle: 2.656391 as Radians,
-      period: { value: -2033.8, unit: 'd' },
-      q: 2.788
+      period: { value: 2033.8, unit: 'd' },
+      q: { value: 2.788, unit: 'au' }
     },
     radius: { value: 216.5, unit: 'km' },
     display: {
@@ -129,12 +129,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 3.062, unit: 'au' },
       e: 0.127,
-      i: 17.3,
-      w: 339.4,
-      om: 73.1,
+      i: 17.3 as DegreesType,
+      w: 339.4 as DegreesType,
+      om: 73.1 as DegreesType,
       angle: 0.788889 as Radians,
-      period: { value: -1960.9, unit: 'd' },
-      q: 2.671
+      period: { value: 1960.9, unit: 'd' },
+      q: { value: 2.671, unit: 'au' }
     },
     radius: { value: 166, unit: 'km' },
     display: {
@@ -152,12 +152,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 3.155, unit: 'au' },
       e: 0.223,
-      i: 26.3,
-      w: 34.8,
-      om: 359.2,
+      i: 26.3 as DegreesType,
+      w: 34.8 as DegreesType,
+      om: 359.2 as DegreesType,
       angle: 3.150319 as Radians,
-      period: { value: -2045.5, unit: 'd' },
-      q: 2.451
+      period: { value: 2045.5, unit: 'd' },
+      q: { value: 2.451, unit: 'au' }
     },
     radius: { value: 134, unit: 'km' },
     display: {
@@ -175,12 +175,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 2.924, unit: 'au' },
       e: 0.14,
-      i: 3.1,
-      w: 228.0,
-      om: 150.2,
+      i: 3.1 as DegreesType,
+      w: 228.0 as DegreesType,
+      om: 150.2 as DegreesType,
       angle: 1.520182 as Radians,
-      period: { value: -1820.1, unit: 'd' },
-      q: 2.515
+      period: { value: 1820.1, unit: 'd' },
+      q: { value: 2.515, unit: 'au' }
     },
     radius: { value: 111, unit: 'km' },
     display: {
@@ -198,12 +198,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 3.168, unit: 'au' },
       e: 0.195,
-      i: 15.9,
-      w: 308.2,
-      om: 296.1,
+      i: 15.9 as DegreesType,
+      w: 308.2 as DegreesType,
+      om: 296.1 as DegreesType,
       angle: 2.099631 as Radians,
-      period: { value: -2059.6, unit: 'd' },
-      q: 2.549
+      period: { value: 2059.6, unit: 'd' },
+      q: { value: 2.549, unit: 'au' }
     },
     radius: { value: 149, unit: 'km' },
     display: {
@@ -221,12 +221,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 3.101, unit: 'au' },
       e: 0.101,
-      i: 7.5,
-      w: 87.7,
-      om: 304.4,
+      i: 7.5 as DegreesType,
+      w: 87.7 as DegreesType,
+      om: 304.4 as DegreesType,
       angle: 3.675663 as Radians,
-      period: { value: -1977.9, unit: 'd' },
-      q: 2.788
+      period: { value: 1977.9, unit: 'd' },
+      q: { value: 2.788, unit: 'au' }
     },
     radius: { value: 156.5, unit: 'km' },
     display: {
@@ -244,12 +244,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 2.67, unit: 'au' },
       e: 0.257,
-      i: 12.9,
-      w: 248.3,
-      om: 169.8,
+      i: 12.9 as DegreesType,
+      w: 248.3 as DegreesType,
+      om: 169.8 as DegreesType,
       angle: 1.74882 as Radians,
-      period: { value: -1594.4, unit: 'd' },
-      q: 1.986
+      period: { value: 1594.4, unit: 'd' },
+      q: { value: 1.986, unit: 'au' }
     },
     radius: { value: 117, unit: 'km' },
     display: {
@@ -267,12 +267,12 @@ export const ASTEROIDS: AsteroidsType = [
     orbit: {
       a: { value: 2.643, unit: 'au' },
       e: 0.186,
-      i: 11.7,
-      w: 97.5,
-      om: 293.3,
+      i: 11.7 as DegreesType,
+      w: 97.5 as DegreesType,
+      om: 293.3 as DegreesType,
       angle: 1.054179 as Radians,
-      period: { value: -1567.6, unit: 'd' },
-      q: 2.153
+      period: { value: 1567.6, unit: 'd' },
+      q: { value: 2.153, unit: 'au' }
     },
     radius: { value: 136, unit: 'km' },
     display: {

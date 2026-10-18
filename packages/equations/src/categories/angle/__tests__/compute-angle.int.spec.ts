@@ -68,7 +68,7 @@ describe('computeAngle', () => {
   test('correctly adjusts for comets', () => {
     const comet = {
       e: 0.8,
-      q: 1.2,
+      q: { value: 1.2, unit: 'au' },
       angle: Math.PI / 4,
       period: { value: 2000, unit: 'd' }
     }; // Adding 'q' property to classify as comet

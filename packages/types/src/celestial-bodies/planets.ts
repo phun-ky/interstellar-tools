@@ -27,7 +27,7 @@ import type { DisplayInterface } from './display.js';
  *   orbit: {
  *     a: { value: 1.0, unit: 'au' },
  *     e: 0.0167,
- *     period: { value: -365.256, unit: 'd' },
+ *     period: { value: 365.256, unit: 'd' },
  *     angle: 1.753 as Radians
  *   },
  *   radius: { value: 6371, unit: 'km' },
@@ -72,12 +72,12 @@ export interface PlanetInterface {
   orbit?: OrbitInterface;
   /** Physical radius of the planet in kilometres. */
   radius: DistanceInterface;
-  /** X-coordinate in the parent's frame. */
-  x: DistanceInterface;
+  /** X-coordinate in the parent's frame. Optional: a rogue planet or an exoplanet may have no known position. */
+  x?: DistanceInterface;
   /** Y-coordinate in the parent's frame. */
-  y: DistanceInterface;
+  y?: DistanceInterface;
   /** Z-coordinate in the parent's frame. */
-  z: DistanceInterface;
+  z?: DistanceInterface;
   /** How to draw the planet: its colour, and state a renderer computes. */
   display?: DisplayInterface;
 }

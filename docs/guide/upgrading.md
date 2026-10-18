@@ -37,6 +37,10 @@ order; skip the ones older than the version you're on.
       `hyperbolicPeriapsisSpeed(vInfinity, rp, mu)`.
 - [ ] Read drawing values from `display` (`body.display.color`, not
       `body.color`), and keep renderer state there too.
+- [ ] Read the direction of an orbit from `orbit.retrograde`, not from the sign
+      of `orbit.period`, which is now always positive.
+- [ ] Brand `i`, `w` and `om` as `DegreesType`, write `q` as a distance, and
+      check `x`, `y`, `z` on planets before using them.
 - [ ] Rename `NORMALIZE_UNIT` to `NORMALIZE_TEMPORAL_UNIT`, and catch
       `RangeError` from the unit functions.
 - [ ] Expect new values for planet and comet positions, which are now real J2000
@@ -241,6 +245,53 @@ The alias table is renamed, so it can't be mixed up with the distance one:
 - `convertTemporalUnit` now also accepts an alias as the target unit, such as
   `'days'`.
 
+### types and constants 0.63: the orbit tree, final shape
+
+The last changes to the orbit tree before 1.0 freezes it.
+
+**`period` is always positive, and `retrograde` gives the direction.** In 0.x, a
+negative `period` meant a prograde orbit and a positive one a retrograde orbit.
+Now `period` is a plain duration, and the five retrograde orbits in the datasets
+(Halley's comet, Triton, Phoebe, Pasiphae and Halimede) have `retrograde: true`:
+
+```ts
+// 0.62
+const direction = Math.sign(-orbit.period.value);
+// 0.63
+const direction = orbit.retrograde ? -1 : 1;
+```
+
+The anomaly functions read `period` as its absolute value, so a negative period
+from your own 0.x data still works there.
+
+**Element types are explicit.**
+
+| Field       | 0.62                       | 0.63                 |
+| ----------- | -------------------------- | -------------------- |
+| `orbit.a`   | `MeasureInterface`         | `DistanceInterface`  |
+| `orbit.i`   | `number` (degrees)         | `DegreesType`        |
+| `orbit.w`   | `number` (degrees)         | `DegreesType`        |
+| `orbit.om`  | `number` (degrees)         | `DegreesType`        |
+| `orbit.q`   | `number` (in `a`'s unit)   | `DistanceInterface`  |
+| comet orbit | `Required<OrbitInterface>` | `FullOrbitInterface` |
+
+The values don't change, so `orbit.i` is still `162.26` for Halley's comet.
+Write your own data as `i: 162.26 as DegreesType` and
+`q: { value: 0.586, unit: 'au' }`. `MeasureInterface` is identical to
+`DistanceInterface`, and stays as a deprecated alias until 2.0.
+
+**Planet positions are optional.** `x`, `y` and `z` on a planet are optional, as
+they already were on every other body, so a rogue planet or an exoplanet can
+leave them out. Every planet in `PLANETS` still has them.
+
+```ts
+// 0.62
+const r = Math.hypot(planet.x.value, planet.y.value, planet.z.value);
+// 0.63
+const { x, y, z } = planet;
+const r = x && y && z ? Math.hypot(x.value, y.value, z.value) : undefined;
+```
+
 ### For renderers: drawing with the library
 
 A renderer that draws orbits typically computes each orbit's shape once and
@@ -277,7 +328,10 @@ for (const body of bodies) {
 }
 
 // Each frame: where is the body now?
-const nu = trueAnomalyAt(bodies[2].orbit!, new Date());
+const { orbit } = bodies[2];
+const nu = trueAnomalyAt(orbit!, new Date());
+// Retrograde bodies travel the other way round the path
+const angleOnPath = orbit!.retrograde ? -nu : nu;
 ```
 
 The distances are in whatever unit the renderer chooses for `orbit.a` (au here),
