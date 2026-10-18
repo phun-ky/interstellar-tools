@@ -27,11 +27,15 @@ export * from './categories/cartography/planetographic-latitude-oblate.js';
 
 export * from './categories/helpers/apply-matrix-3.js';
 
+export * from './categories/helpers/convert-distance-unit.js';
+
 export * from './categories/helpers/det-3.js';
 
 export * from './categories/helpers/mat-mul3.js';
 
 export * from './categories/helpers/misc.js';
+
+export * from './categories/helpers/normalize-distance-unit.js';
 
 export * from './categories/helpers/radians.js';
 

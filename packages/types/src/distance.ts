@@ -72,17 +72,19 @@ export type DistanceUnitType =
  *
  * ### Typical flow
  * 1) Accept `DistanceUnitAliasType | DistanceUnitType` at your API boundary.
- * 2) Normalize to `DistanceUnitType` (e.g., via `normalizeDistanceUnit`).
+ * 2) Normalize to `DistanceUnitType` with `normalizeDistanceUnit` from
+ *    `@interstellar-tools/equations`, or convert directly with `convertDistanceUnit`.
  * 3) Perform calculations using canonical units only.
  *
  * @example
  * ```ts
- * // Assuming `normalizeDistanceUnit` and `NORMALIZE_DISTANCE_UNIT` are defined:
- * normalizeDistanceUnit('AU');           // 'au'
- * normalizeDistanceUnit('lightyears');   // 'ly'
+ * import { normalizeDistanceUnit } from '@interstellar-tools/equations';
+ *
+ * normalizeDistanceUnit('AU'); // 'au'
+ * normalizeDistanceUnit('lightyears'); // 'ly'
  * normalizeDistanceUnit('kilolightyears'); // 'kly'
- * normalizeDistanceUnit('parsecs');      // 'pc'
- * normalizeDistanceUnit('Mpc');          // 'Mpc' (already canonical)
+ * normalizeDistanceUnit('parsecs'); // 'pc'
+ * normalizeDistanceUnit('Mpc'); // 'Mpc' (already canonical)
  * ```
  *
  * @see DistanceUnitType for the canonical symbol set.
