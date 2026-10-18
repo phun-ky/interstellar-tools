@@ -74,7 +74,7 @@ npm i --save @interstellar-tools/types
 | Name                                                           | Description                                                            |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | [DistanceInterface](interfaces/DistanceInterface.md)           | Represents a distance measurement with an associated unit.             |
-| [MeasureInterface](interfaces/MeasureInterface.md)             | Represents a measurement with an associated unit.                      |
+| [~~MeasureInterface~~](interfaces/MeasureInterface.md)         | Represents a measurement with an associated unit.                      |
 | [DistanceUnitAliasType](type-aliases/DistanceUnitAliasType.md) | Human-friendly **distance unit aliases** accepted at input time.       |
 | [DistanceUnitType](type-aliases/DistanceUnitType.md)           | Canonical **distance unit symbols** for astronomy/space visualization. |
 
@@ -88,12 +88,13 @@ npm i --save @interstellar-tools/types
 
 ## Orbits
 
-| Name                                                   | Description                                                                   |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| [OrbitInterface](interfaces/OrbitInterface.md)         | Kepler **orbital elements** of one body around its parent.                    |
-| [CwState](type-aliases/CwState.md)                     | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame. |
-| [CwStateDerivative](type-aliases/CwStateDerivative.md) | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.   |
-| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)   | **Peri/apoapsis radii pair**.                                                 |
+| Name                                                   | Description                                                                                                                                       |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [FullOrbitInterface](interfaces/FullOrbitInterface.md) | An [OrbitInterface](interfaces/OrbitInterface.md) with every orientation element given: `i`, `w`, `om` and `q`. Comets and asteroids carry these. |
+| [OrbitInterface](interfaces/OrbitInterface.md)         | Kepler **orbital elements** of one body around its parent.                                                                                        |
+| [CwState](type-aliases/CwState.md)                     | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame.                                                                     |
+| [CwStateDerivative](type-aliases/CwStateDerivative.md) | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.                                                                       |
+| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)   | **Peri/apoapsis radii pair**.                                                                                                                     |
 
 ## Temporal
 

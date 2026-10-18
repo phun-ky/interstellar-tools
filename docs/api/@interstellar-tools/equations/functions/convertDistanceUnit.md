@@ -54,7 +54,7 @@ function convertDistanceUnit(
 ```
 
 Defined in:
-[helpers/convert-distance-unit.ts:83](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/equations/src/categories/helpers/convert-distance-unit.ts#L83)
+[helpers/convert-distance-unit.ts:83](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/helpers/convert-distance-unit.ts#L83)
 
 Convert a **distance** between any two
 [DistanceUnitType](../../types/type-aliases/DistanceUnitType.md) units.

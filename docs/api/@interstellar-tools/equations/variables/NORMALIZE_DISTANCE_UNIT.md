@@ -52,7 +52,7 @@ const NORMALIZE_DISTANCE_UNIT: Readonly<{
 ```
 
 Defined in:
-[helpers/normalize-distance-unit.ts:20](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/equations/src/categories/helpers/normalize-distance-unit.ts#L20)
+[helpers/normalize-distance-unit.ts:20](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/helpers/normalize-distance-unit.ts#L20)
 
 Lookup table that **normalizes distance unit aliases** (and the canonical
 symbols themselves) to a single, canonical

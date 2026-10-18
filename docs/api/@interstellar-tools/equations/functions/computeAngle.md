@@ -11,7 +11,7 @@ function computeAngle(
 ```
 
 Defined in:
-[angle/compute-angle.ts:67](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/equations/src/categories/angle/compute-angle.ts#L67)
+[angle/compute-angle.ts:68](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/equations/src/categories/angle/compute-angle.ts#L68)
 
 Advances a body along its orbit by one time step and returns its new **true
 anomaly** ($\nu$).
@@ -28,8 +28,9 @@ t, \qquad n = \frac{2\pi}{|P|}$ where:
 
 - $M_0$ is the mean anomaly at the start, converted from the true anomaly
   `angle` (equal to it when $e = 0$).
-- $n$ is the mean motion, from the period $P$ converted to days. The sign of $P$
-  is ignored, so a positive step always moves the body forward.
+- $n$ is the mean motion, from the period $P$ converted to days. $P$ is a
+  positive duration; a negative one, from data in the old 0.x convention, is
+  read as its absolute value. A positive step always moves the body forward.
 - $\Delta t$ is `timeStep.value` in days. It can be any length, and negative to
   go back in time.
 

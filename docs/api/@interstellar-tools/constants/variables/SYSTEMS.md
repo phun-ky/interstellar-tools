@@ -8,7 +8,7 @@ const SYSTEMS: SystemsType;
 ```
 
 Defined in:
-[bodies/systems.ts:29](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/constants/src/bodies/systems.ts#L29)
+[bodies/systems.ts:29](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/constants/src/bodies/systems.ts#L29)
 
 Predefined systems: the barycenters that stars and planets orbit.
 
@@ -33,11 +33,11 @@ time.
 
 <div class="ph table-overflow">
 
-| id                | name              | kind      | parent         | orbit.a               | orbit.e | orbit.period | orbit.angle        | distance | x       | y                     | z     |
-| ----------------- | ----------------- | --------- | -------------- | --------------------- | ------- | ------------ | ------------------ | -------- | ------- | --------------------- | ----- |
-| solar-system      | Solar System      | planetary | milky-way      | 27000 ly              | 0.07    | -230 Myr     | 1.5707963267948966 | 0 ly     | 0 ly    | 27000 ly              | 20 ly |
-| alpha-centauri    | Alpha Centauri    | multiple  | milky-way      | 27000.000353646294 ly | 0.07    | -230 Myr     | 1.570634474946578  | 4.37 ly  | 4.37 ly | 27000.000353646294 ly | 0 ly  |
-| alpha-centauri-ab | Alpha Centauri AB | binary    | alpha-centauri | 503 au                | 0.5     | -547 kyr     | 3.099566485428788  |          |         |                       |       |
+| id                | name              | kind      | parent         | orbit.a               | orbit.e | orbit.period | orbit.retrograde | orbit.angle        | distance | x       | y                     | z     |
+| ----------------- | ----------------- | --------- | -------------- | --------------------- | ------- | ------------ | ---------------- | ------------------ | -------- | ------- | --------------------- | ----- |
+| solar-system      | Solar System      | planetary | milky-way      | 27000 ly              | 0.07    | 230 Myr      |                  | 1.5707963267948966 | 0 ly     | 0 ly    | 27000 ly              | 20 ly |
+| alpha-centauri    | Alpha Centauri    | multiple  | milky-way      | 27000.000353646294 ly | 0.07    | 230 Myr      |                  | 1.570634474946578  | 4.37 ly  | 4.37 ly | 27000.000353646294 ly | 0 ly  |
+| alpha-centauri-ab | Alpha Centauri AB | binary    | alpha-centauri | 503 au                | 0.5     | 547 kyr      |                  | 3.099566485428788  |          |         |                       |       |
 
 </div>
 
@@ -53,7 +53,7 @@ time.
   orbit: {
     a: { value: 27000.000353646294, unit: 'ly' },
     e: 0.07,
-    period: { value: -230, unit: 'Myr' },
+    period: { value: 230, unit: 'Myr' },
     angle: 1.570634474946578 as Radians
   },
   distance: { value: 4.37, unit: 'ly' },
@@ -70,7 +70,7 @@ time.
   orbit: {
     a: { value: 503, unit: 'au' }, // 8700 au × m_P / (m_AB + m_P)
     e: 0.5,
-    period: { value: -547, unit: 'kyr' },
+    period: { value: 547, unit: 'kyr' },
     angle: 3.099566485428788 as Radians
   }
 }

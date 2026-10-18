@@ -8,7 +8,7 @@ type CometsType = CometInterface[];
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:76](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/types/src/celestial-bodies/comets.ts#L76)
+[celestial-bodies/comets.ts:78](https://github.com/phun-ky/interstellar-tools/blob/c937a42cf99d9a589645c5e215479f165095d9c2/packages/types/src/celestial-bodies/comets.ts#L78)
 
 Type alias for an array of **comets**.
 
@@ -25,12 +25,13 @@ const halley: CometsType = [
     orbit: {
       a: { value: 17.834, unit: 'au' },
       e: 0.96714,
-      i: 162.26,
-      w: 111.33,
-      om: 58.42,
+      i: 162.26 as DegreesType,
+      w: 111.33 as DegreesType,
+      om: 58.42 as DegreesType,
       angle: 2.97966 as Radians,
       period: { value: 27576, unit: 'd' },
-      q: 0.586
+      retrograde: true,
+      q: { value: 0.586, unit: 'au' }
     },
     radius: { value: 11, unit: 'km' },
     display: { color: '#ffffff', size: 1.2 }
