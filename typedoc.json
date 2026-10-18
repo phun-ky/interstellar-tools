@@ -15,7 +15,8 @@
     "excludeInternal": true,
     "sort": ["kind", "instance-first", "alphabetical-ignoring-documents"],
     "entryPoints": ["src/index.ts"],
-    "includeVersion": true
+    "includeVersion": true,
+    "gitRevision": "main"
   },
   "out": "docs/api",
   "docsRoot": "./docs",
