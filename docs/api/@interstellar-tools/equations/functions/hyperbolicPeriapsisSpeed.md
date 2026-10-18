@@ -6,13 +6,13 @@
 ```ts
 function hyperbolicPeriapsisSpeed(
   vInfinity: number,
-  mu: number,
-  rp: number
+  rp: number,
+  mu: number
 ): number;
 ```
 
 Defined in:
-[orbits/hyperbolic-periapsis-speed.ts:35](https://github.com/phun-ky/interstellar-tools/blob/b96d8dd82d534ad472a1d6fa410cf27b90d0a731/packages/equations/src/categories/orbits/hyperbolic-periapsis-speed.ts#L35)
+[orbits/hyperbolic-periapsis-speed.ts:35](https://github.com/phun-ky/interstellar-tools/blob/0290b9e8ce2ddb639c74b17d30dc4a1129945c5f/packages/equations/src/categories/orbits/hyperbolic-periapsis-speed.ts#L35)
 
 Compute **hyperbolic periapsis speed** for a flyby/escape hyperbola.
 
@@ -39,8 +39,8 @@ Unit consistency is required:
 | Parameter   | Type     | Description                                                                  |
 | ----------- | -------- | ---------------------------------------------------------------------------- |
 | `vInfinity` | `number` | Hyperbolic excess speed $v_{\infty}$ (must be finite, >= 0).                 |
-| `mu`        | `number` | Standard gravitational parameter $\mu$ (must be finite, > 0).                |
 | `rp`        | `number` | Periapsis radius $r_p$ from the central body's center (must be finite, > 0). |
+| `mu`        | `number` | Standard gravitational parameter $\mu$ (must be finite, > 0).                |
 
 ## Returns
 
@@ -54,12 +54,12 @@ If any input is not finite.
 
 ## Throws
 
-If `vInfinity < 0`, `mu <= 0`, or `rp <= 0`.
+If `vInfinity < 0`, `rp <= 0`, or `mu <= 0`.
 
 ## Example
 
 ```ts
 // Earth example (km-based):
 // mu = 398600.4418 km³/s², rp ~ 6678 km (LEO-ish), v∞ = 3.2 km/s
-const vp = hyperbolicPeriapsisSpeed(3.2, 398600.4418, 6678);
+const vp = hyperbolicPeriapsisSpeed(3.2, 6678, 398600.4418);
 ```

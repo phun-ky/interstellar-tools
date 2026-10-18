@@ -4,11 +4,11 @@
 # Function: meanMotion()
 
 ```ts
-function meanMotion(mu: number, a: number): number;
+function meanMotion(a: number, mu: number): number;
 ```
 
 Defined in:
-[orbits/mean-motion.ts:51](https://github.com/phun-ky/interstellar-tools/blob/b96d8dd82d534ad472a1d6fa410cf27b90d0a731/packages/equations/src/categories/orbits/mean-motion.ts#L51)
+[orbits/mean-motion.ts:51](https://github.com/phun-ky/interstellar-tools/blob/0290b9e8ce2ddb639c74b17d30dc4a1129945c5f/packages/equations/src/categories/orbits/mean-motion.ts#L51)
 
 Compute **mean motion** for a (near-)circular reference orbit.
 
@@ -44,7 +44,7 @@ The function returns 0.001128 rad/s. Multiply by 86 400 s and divide by 2π for
 orbits per day, the unit used in a satellite's two-line elements (TLEs).
 
 ```ts
-meanMotion(3.986004418e14, 6.371e6 + 420e3); // ≈ 0.001128 rad/s
+meanMotion(6.371e6 + 420e3, 3.986004418e14); // ≈ 0.001128 rad/s
 ```
 
 :::
@@ -53,8 +53,8 @@ meanMotion(3.986004418e14, 6.371e6 + 420e3); // ≈ 0.001128 rad/s
 
 | Parameter | Type     | Description                                           |
 | --------- | -------- | ----------------------------------------------------- |
-| `mu`      | `number` | Standard gravitational parameter $\mu$ (finite, > 0). |
 | `a`       | `number` | Semi-major axis $a$ (finite, > 0).                    |
+| `mu`      | `number` | Standard gravitational parameter $\mu$ (finite, > 0). |
 
 ## Returns
 
@@ -64,11 +64,11 @@ Mean motion $n$ in **rad/s**.
 
 ## Throws
 
-If `mu` or `a` is not a finite number.
+If `a` or `mu` is not a finite number.
 
 ## Throws
 
-If `mu <= 0` or `a <= 0`.
+If `a <= 0` or `mu <= 0`.
 
 ## Example
 
@@ -76,5 +76,5 @@ If `mu <= 0` or `a <= 0`.
 // Earth example (km-based):
 const mu = 398600.4418; // km³/s²
 const a = 7000; // km
-const n = meanMotion(mu, a); // rad/s
+const n = meanMotion(a, mu); // rad/s
 ```
