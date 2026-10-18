@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.3.0...%40interstellar-tools%2Fmcp%400.4.0) (2026-10-18)
+
+### ⚠ BREAKING CHANGES
+
+* orbit.period is no longer negative for prograde orbits;
+  read the direction from orbit.retrograde. i, w, om and q have new types,
+  and planet x, y, z are optional. See the migration guide.
+
+### Refactoring
+
+* 💡 Give the orbit tree its final shape for 1.0 ([d93e992](https://github.com/phun-ky/interstellar-tools/commit/d93e992b9128047607281c0e5cdf087c4c861390)), closes [#149](https://github.com/phun-ky/interstellar-tools/issues/149)
+
 ## [0.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.7...%40interstellar-tools%2Fmcp%400.3.0) (2026-10-18)
 
 ### Feature
