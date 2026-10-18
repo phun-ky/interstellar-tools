@@ -7,7 +7,9 @@ how to migrate your code.
 
 **Every major release has a migration guide** here, covering every breaking
 change since the previous major, with before-and-after code. Until 1.0, that's
-the guide from 0.x to 1.0 below, which grows with each breaking change.
+the guide from 0.x to 1.0 below, which grows with each breaking change. For the
+story behind the changes, and whether to upgrade now, read the
+[release notes](./releases/index.md).
 
 ## How versions work
 
