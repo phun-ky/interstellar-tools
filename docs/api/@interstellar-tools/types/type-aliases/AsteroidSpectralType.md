@@ -20,7 +20,7 @@ type AsteroidSpectralType =
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:73](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/asteroids.ts#L73)
+[celestial-bodies/asteroids.ts:73](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/asteroids.ts#L73)
 
 **Spectral (taxonomic) class** based on reflectance spectra & albedo.
 

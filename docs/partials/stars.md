@@ -4,7 +4,7 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 
 <div class="ph table-overflow">
 
-| id | name | type | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | mass (M☉) | radius | color | x | y | z |
+| id | name | type | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | mass (M☉) | radius | display.color | x | y | z |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | sun | Sun | G2V | star | solar-system |  |  |  |  | 1 | 696340 km | #fff5f1 |  |  |  |
 | vega | Vega | A0V | star | milky-way | 27230.011753394454 ly | 0.005 | -480 Myr | 1.569867205171707 |  | 2600000 km | blue | 25.3 ly | 27230.011753394454 ly | 0 ly |

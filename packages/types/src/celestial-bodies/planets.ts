@@ -1,22 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
-/**
- * Represents **2D coordinates** for planetary positioning.
- *
- * @property {number} x - The x-coordinate.
- * @property {number} y - The y-coordinate.
- *
- * @example
- * ```ts
- * const position: CartesianCoordinatesInterface = { x: 100, y: 200 };
- * ```
- * @group Celestial Bodies
- */
-export interface CartesianCoordinatesInterface {
-  x: number;
-  y: number;
-}
+import type { DisplayInterface } from './display.js';
 
 /**
  * Represents a **planet** or **planetoid**.
@@ -28,7 +13,7 @@ export interface CartesianCoordinatesInterface {
  * **Classification & Visualization:**
  * - **Type (`type`)**: Scientific classification of the planet (e.g., **terrestrial, gas giant, ice planet**).
  * - **Category (`category`)**: Defines whether the object is a **planet** or a **planetoid**.
- * - **Color (`color`)**: Used for visual representation in simulations.
+ * - **Drawing (`display`)**: colour, and state a renderer computes; see {@link DisplayInterface}.
  * - **Size (`radius`)**: Physical planet radius in **kilometers (km)**.
  *
  * @example
@@ -38,7 +23,6 @@ export interface CartesianCoordinatesInterface {
  *   name: 'Earth',
  *   type: 'terrestrial planet',
  *   category: 'planet',
- *   color: '#4287f5',
  *   parent: 'sun',
  *   orbit: {
  *     a: { value: 1.0, unit: 'au' },
@@ -47,6 +31,7 @@ export interface CartesianCoordinatesInterface {
  *     angle: 1.753 as Radians
  *   },
  *   radius: { value: 6371, unit: 'km' },
+ *   display: { color: '#4287f5' },
  *   x: { value: 0, unit: 'au' },
  *   y: { value: 1, unit: 'au' },
  *   z: { value: 0, unit: 'au' }
@@ -81,26 +66,20 @@ export interface PlanetInterface {
     | 'terrestrial planet';
   /** Defines whether the object is a planet or a planetoid. */
   category: 'planet' | 'planetoid';
-  /** Visual representation color. */
-  color: string;
   /** Id of the star, system or galaxy the planet is bound to. */
   parent?: string;
   /** Orbit around the parent. */
   orbit?: OrbitInterface;
   /** Physical radius of the planet in kilometres. */
   radius: DistanceInterface;
-  /** Semi-minor axis of the orbit (calculated from `a` and `e`). */
-  miA?: number;
-  /** X-offset for the ellipse focus (accounts for eccentricity). */
-  focus_x?: number;
   /** X-coordinate in the parent's frame. */
   x: DistanceInterface;
   /** Y-coordinate in the parent's frame. */
   y: DistanceInterface;
   /** Z-coordinate in the parent's frame. */
   z: DistanceInterface;
-  /** Precomputed orbital path points for visualization (optional). */
-  orbitPath?: CartesianCoordinatesInterface[];
+  /** How to draw the planet: its colour, and state a renderer computes. */
+  display?: DisplayInterface;
 }
 
 /**

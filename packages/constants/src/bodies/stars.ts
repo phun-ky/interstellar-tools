@@ -39,8 +39,10 @@ export const STARS: StarsType = [
     mass: 1,
     /** Radius in km */
     radius: { value: 696340, unit: 'km' },
-    /** Visual representation color */
-    color: '#fff5f1'
+    display: {
+      /** Visual representation color */
+      color: '#fff5f1'
+    }
   },
   // #region datasetStars
   {
@@ -62,8 +64,10 @@ export const STARS: StarsType = [
     },
     /** Radius in km */
     radius: { value: 2600000, unit: 'km' },
-    /** Visual representation color */
-    color: 'blue',
+    display: {
+      /** Visual representation color */
+      color: 'blue'
+    },
     /** Galactic position in light-years (relative to Milky Way center) */
     x: { value: 25.3, unit: 'ly' },
     y: { value: 27230.011753394454, unit: 'ly' },
@@ -83,7 +87,9 @@ export const STARS: StarsType = [
       angle: 1.5701789517599378 as Radians
     },
     radius: { value: 1700000, unit: 'km' },
-    color: 'white',
+    display: {
+      color: 'white'
+    },
     x: { value: 16.7, unit: 'ly' },
     y: { value: 27050.005155082687, unit: 'ly' },
     z: { value: 0, unit: 'ly' }
@@ -101,7 +107,9 @@ export const STARS: StarsType = [
       angle: 1.475524958596149 as Radians
     },
     radius: { value: 108000000, unit: 'km' },
-    color: '#cad7ff', // A-type (blue-white)
+    display: {
+      color: '#cad7ff' // A-type (blue-white)
+    },
     x: { value: 2616, unit: 'ly' },
     y: { value: 27375.280016832705, unit: 'ly' },
     z: { value: 0, unit: 'ly' }
@@ -120,7 +128,9 @@ export const STARS: StarsType = [
       angle: 1.5616057972952029 as Radians
     },
     radius: { value: 73500000, unit: 'km' },
-    color: 'blue',
+    display: {
+      color: 'blue'
+    },
     x: { value: 250, unit: 'ly' },
     y: { value: 27201.148872795795, unit: 'ly' },
     z: { value: 0, unit: 'ly' }
@@ -146,7 +156,9 @@ export const STARS: StarsType = [
     },
     mass: 1.0788,
     radius: { value: 847015, unit: 'km' }, // 1.2175 R☉
-    color: '#fff4ea' // G-type
+    display: {
+      color: '#fff4ea' // G-type
+    }
   },
   {
     id: 'alpha-centauri-b',
@@ -162,7 +174,9 @@ export const STARS: StarsType = [
     },
     mass: 0.9092,
     radius: { value: 597676, unit: 'km' }, // 0.8591 R☉
-    color: '#ffd2a1' // K-type
+    display: {
+      color: '#ffd2a1' // K-type
+    }
   },
   {
     id: 'proxima-centauri',
@@ -178,6 +192,8 @@ export const STARS: StarsType = [
     },
     mass: 0.1221,
     radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
-    color: '#ffcc6f' // M-type
+    display: {
+      color: '#ffcc6f' // M-type
+    }
   }
 ] as const satisfies StarsType;

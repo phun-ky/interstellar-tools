@@ -4,7 +4,7 @@ CometInterface
 # Interface: CometInterface
 
 Defined in:
-[celestial-bodies/comets.ts:25](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L25)
+[celestial-bodies/comets.ts:23](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L23)
 
 Represents a **comet** in the solar system simulation.
 
@@ -23,11 +23,9 @@ Represents a **comet** in the solar system simulation.
 - **Perihelion distance (`q`)**: The closest approach to the Sun in **AU**.
 - **Angle (`angle`)**: The **true anomaly** at J2000, as for every other body.
 
-**Visualization Parameters:**
-
-- **Orbit Path (`orbitPath`)**: Precomputed trajectory for rendering.
-- **Color (`color`)**: Used for visual representation.
-- **Size (`size`)**: Scaled size for display (not the actual physical size).
+**Drawing (`display`)**: colour and a scaled drawing size (not the physical
+`radius`), and state a renderer computes; see
+[DisplayInterface](DisplayInterface.md).
 
 ## Properties
 
@@ -38,35 +36,22 @@ category: 'halley-type comet' | 'long-period comet' | 'jupiter-family comet';
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:33](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L33)
+[celestial-bodies/comets.ts:31](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L31)
 
 Category classification of the comet.
 
 ---
 
-### color
+### display?
 
 ```ts
-color: string;
+optional display?: DisplayInterface;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:53](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L53)
+[celestial-bodies/comets.ts:45](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L45)
 
-Visual representation color.
-
----
-
-### focus_x?
-
-```ts
-optional focus_x?: number;
-```
-
-Defined in:
-[celestial-bodies/comets.ts:47](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L47)
-
-X-offset for the ellipse focus (accounts for eccentricity).
+How to draw the comet: its colour and drawn size, and state a renderer computes.
 
 ---
 
@@ -77,22 +62,9 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L27)
+[celestial-bodies/comets.ts:25](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L25)
 
 Stable identifier, used by `parent` references. Never translated.
-
----
-
-### miA?
-
-```ts
-optional miA?: number;
-```
-
-Defined in:
-[celestial-bodies/comets.ts:45](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L45)
-
-Semi-minor axis converted to pixels (calculated from `a` and `e`).
 
 ---
 
@@ -103,7 +75,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:29](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L29)
+[celestial-bodies/comets.ts:27](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L27)
 
 Name of the comet (e.g., "Halley", "Hale-Bopp").
 
@@ -116,22 +88,9 @@ orbit: Required<OrbitInterface>;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:37](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L37)
+[celestial-bodies/comets.ts:35](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L35)
 
 Orbit around the parent, with all elements including `i`, `w`, `om` and `q`.
-
----
-
-### orbitPath?
-
-```ts
-optional orbitPath?: CartesianCoordinatesInterface[];
-```
-
-Defined in:
-[celestial-bodies/comets.ts:51](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L51)
-
-Precomputed orbital path points for visualization (optional).
 
 ---
 
@@ -142,7 +101,7 @@ parent: string;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:35](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L35)
+[celestial-bodies/comets.ts:33](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L33)
 
 Id of the star the comet orbits (e.g., `'sun'`).
 
@@ -155,22 +114,9 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:49](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L49)
+[celestial-bodies/comets.ts:43](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L43)
 
 Radius of the comet (for visualization purposes).
-
----
-
-### size
-
-```ts
-size: number;
-```
-
-Defined in:
-[celestial-bodies/comets.ts:55](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L55)
-
-Scaled size for visualization (not actual physical size).
 
 ---
 
@@ -181,7 +127,7 @@ type: 'periodic comet' | 'oort cloud comet' | 'short-period comet';
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:31](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L31)
+[celestial-bodies/comets.ts:29](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L29)
 
 Type of comet based on its orbital characteristics.
 
@@ -194,7 +140,7 @@ optional x?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:39](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L39)
+[celestial-bodies/comets.ts:37](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L37)
 
 X-coordinate in a distance-based system (optional).
 
@@ -207,7 +153,7 @@ optional y?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:41](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L41)
+[celestial-bodies/comets.ts:39](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L39)
 
 Y-coordinate in a distance-based system (optional).
 
@@ -220,6 +166,6 @@ optional z?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/comets.ts:43](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/comets.ts#L43)
+[celestial-bodies/comets.ts:41](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/comets.ts#L41)
 
 Z-coordinate in a distance-based system (optional).

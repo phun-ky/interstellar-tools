@@ -8,7 +8,7 @@ const ASTEROID_BELTS: AsteroidBeltsType;
 ```
 
 Defined in:
-[bodies/asteroid-belts.ts:30](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/constants/src/bodies/asteroid-belts.ts#L30)
+[bodies/asteroid-belts.ts:30](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/constants/src/bodies/asteroid-belts.ts#L30)
 
 Predefined asteroid belts in the solar system visualization.
 
@@ -32,10 +32,10 @@ time.
 
 <div class="ph table-overflow">
 
-| id                 | name               | parent | innerRadius | outerRadius | color   | opacity | density |
-| ------------------ | ------------------ | ------ | ----------- | ----------- | ------- | ------- | ------- |
-| main-asteroid-belt | Main Asteroid Belt | sun    | 2.1         | 3.3         | #C4C4C4 | 0.3     | 0.8     |
-| kuiper-belt        | Kuiper Belt        | sun    | 30          | 50          | #88CCEE | 0.2     | 0.5     |
+| id                 | name               | parent | innerRadius | outerRadius | display.color | display.opacity | display.density |
+| ------------------ | ------------------ | ------ | ----------- | ----------- | ------------- | --------------- | --------------- |
+| main-asteroid-belt | Main Asteroid Belt | sun    | 2.1         | 3.3         | #C4C4C4       | 0.3             | 0.8             |
+| kuiper-belt        | Kuiper Belt        | sun    | 30          | 50          | #88CCEE       | 0.2             | 0.5             |
 
 </div>
 
@@ -48,9 +48,11 @@ time.
   parent: 'sun',
   innerRadius: 2.1,
   outerRadius: 3.3,
-  color: '#C4C4C4', // Light gray (rocky bodies)
-  opacity: 0.3,
-  density: 0.8
+  display: {
+    color: '#C4C4C4', // Light gray (rocky bodies)
+    opacity: 0.3,
+    density: 0.8
+  }
 },
 ```
 

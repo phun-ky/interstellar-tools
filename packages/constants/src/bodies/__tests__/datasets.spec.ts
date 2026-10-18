@@ -137,9 +137,24 @@ for (const [label, { bodies, units }] of Object.entries(ORBITING)) {
       }
     });
 
-    test('has a valid color', () => {
+    test('has a valid display colour, and no renderer state', () => {
       for (const body of bodies) {
-        assert.match(body.color, COLOR, `${body.name}.color`);
+        const display = body.display ?? {};
+
+        assert.match(display.color ?? '', COLOR, `${body.name}.display.color`);
+
+        // Computed by a renderer, never shipped in the data
+        for (const field of [
+          'semiMinorAxis',
+          'focusOffsetX',
+          'orbitPath'
+        ] as const) {
+          assert.equal(
+            display[field],
+            undefined,
+            `${body.name}.display.${field}`
+          );
+        }
       }
     });
   });
@@ -315,6 +330,14 @@ describe('comet positions at J2000', () => {
   });
 });
 
+describe('display sizes', () => {
+  test('comets and asteroids have a positive drawing size', () => {
+    for (const { name, display } of [...COMETS, ...ASTEROIDS]) {
+      assert.ok((display?.size ?? 0) > 0, `${name}.display.size`);
+    }
+  });
+});
+
 describe('moons', () => {
   test('retrograde moons have a positive period, regular moons a negative one', () => {
     for (const moon of MOONS) {
@@ -471,9 +494,11 @@ describe('ASTEROID_BELTS', () => {
     for (const belt of ASTEROID_BELTS) {
       assert.ok(belt.innerRadius > 0, `${belt.name}.innerRadius`);
       assert.ok(belt.innerRadius < belt.outerRadius, `${belt.name} radii`);
-      assert.ok(belt.opacity >= 0 && belt.opacity <= 1, `${belt.name}.opacity`);
-      assert.ok(belt.density >= 0, `${belt.name}.density`);
-      assert.match(belt.color, COLOR, `${belt.name}.color`);
+      const { color = '', opacity = -1, density = -1 } = belt.display ?? {};
+
+      assert.ok(opacity >= 0 && opacity <= 1, `${belt.name}.display.opacity`);
+      assert.ok(density >= 0, `${belt.name}.display.density`);
+      assert.match(color, COLOR, `${belt.name}.display.color`);
     }
   });
 });

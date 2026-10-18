@@ -46,8 +46,10 @@ export const MOONS: MoonsType = [
     },
     /** Radius in km */
     radius: { value: 1737.4, unit: 'km' },
-    /** Visual representation color */
-    color: '#BFBFBF' // Light gray (realistic lunar appearance)
+    display: {
+      /** Visual representation color */
+      color: '#BFBFBF' // Light gray (realistic lunar appearance)
+    }
   },
   // #endregion datasetMoons
   // **Mars**
@@ -63,7 +65,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 11, unit: 'km' },
-    color: '#888888' // Darker gray (rocky, low albedo)
+    display: {
+      color: '#888888' // Darker gray (rocky, low albedo)
+    }
   },
   {
     id: 'deimos',
@@ -77,7 +81,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 6, unit: 'km' },
-    color: '#A0A0A0' // Lighter gray (less cratered surface)
+    display: {
+      color: '#A0A0A0' // Lighter gray (less cratered surface)
+    }
   },
 
   // **Jupiter (Galilean Moons + Minor Moons)**
@@ -93,7 +99,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 1821, unit: 'km' },
-    color: '#FF8C00' // Volcanic orange (due to sulphur deposits)
+    display: {
+      color: '#FF8C00' // Volcanic orange (due to sulphur deposits)
+    }
   },
   {
     id: 'europa',
@@ -107,7 +115,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 1560, unit: 'km' },
-    color: '#E6E6E6' // Icy white (smooth ice-covered surface)
+    display: {
+      color: '#E6E6E6' // Icy white (smooth ice-covered surface)
+    }
   },
   {
     id: 'ganymede',
@@ -121,7 +131,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 2634, unit: 'km' },
-    color: '#8B4513' // Brownish (mixture of ice and rock)
+    display: {
+      color: '#8B4513' // Brownish (mixture of ice and rock)
+    }
   },
   {
     id: 'callisto',
@@ -135,7 +147,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 2410, unit: 'km' },
-    color: '#696969' // Dark gray (heavily cratered)
+    display: {
+      color: '#696969' // Dark gray (heavily cratered)
+    }
   },
   {
     id: 'amalthea',
@@ -149,7 +163,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 83, unit: 'km' },
-    color: '#A0522D'
+    display: {
+      color: '#A0522D'
+    }
   },
   {
     id: 'himalia',
@@ -163,7 +179,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 85, unit: 'km' },
-    color: '#A9A9A9' // Neutral gray (small irregular moon)
+    display: {
+      color: '#A9A9A9' // Neutral gray (small irregular moon)
+    }
   },
   {
     id: 'metis',
@@ -177,7 +195,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 21, unit: 'km' },
-    color: '#CD853F'
+    display: {
+      color: '#CD853F'
+    }
   },
   {
     id: 'thebe',
@@ -191,7 +211,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 49, unit: 'km' },
-    color: '#B87333'
+    display: {
+      color: '#B87333'
+    }
   },
   {
     id: 'pasiphae',
@@ -205,7 +227,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 30, unit: 'km' },
-    color: '#8B0000'
+    display: {
+      color: '#8B0000'
+    }
   },
 
   // **Saturn (Large & Small Moons)**
@@ -221,7 +245,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 2575, unit: 'km' },
-    color: '#D4A017' // Gold/amber (thick haze-rich atmosphere)
+    display: {
+      color: '#D4A017' // Gold/amber (thick haze-rich atmosphere)
+    }
   },
   {
     id: 'enceladus',
@@ -235,7 +261,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 252, unit: 'km' },
-    color: '#F0FFFF' // Ice-blue white (brightest moon in the Solar System)
+    display: {
+      color: '#F0FFFF' // Ice-blue white (brightest moon in the Solar System)
+    }
   },
   {
     id: 'rhea',
@@ -249,7 +277,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 764, unit: 'km' },
-    color: '#C0C0C0' // Silvery gray (icy and cratered)
+    display: {
+      color: '#C0C0C0' // Silvery gray (icy and cratered)
+    }
   },
   {
     id: 'iapetus',
@@ -263,7 +293,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 735, unit: 'km' },
-    color: '#2F4F4F' // Dark gray-green (two-tone color due to one dark side)
+    display: {
+      color: '#2F4F4F' // Dark gray-green (two-tone color due to one dark side)
+    }
   },
   {
     id: 'hyperion',
@@ -277,7 +309,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 135, unit: 'km' },
-    color: '#CDAA7D'
+    display: {
+      color: '#CDAA7D'
+    }
   },
   {
     id: 'phoebe',
@@ -291,7 +325,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 106, unit: 'km' },
-    color: '#483D8B'
+    display: {
+      color: '#483D8B'
+    }
   },
 
   // **Uranus (Major Moons)**
@@ -307,7 +343,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 788, unit: 'km' },
-    color: '#8B8886' // Gray-brown (heavily cratered with bright ice patches)
+    display: {
+      color: '#8B8886' // Gray-brown (heavily cratered with bright ice patches)
+    }
   },
   {
     id: 'oberon',
@@ -321,7 +359,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 761, unit: 'km' },
-    color: '#6E6E6E' // Dark gray (icy and rocky)
+    display: {
+      color: '#6E6E6E' // Dark gray (icy and rocky)
+    }
   },
   {
     id: 'miranda',
@@ -335,7 +375,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 235, unit: 'km' },
-    color: '#CCCCCC' // Light gray (fractured terrain)
+    display: {
+      color: '#CCCCCC' // Light gray (fractured terrain)
+    }
   },
   {
     id: 'ariel',
@@ -349,7 +391,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 578, unit: 'km' },
-    color: '#A9A9A9'
+    display: {
+      color: '#A9A9A9'
+    }
   },
   {
     id: 'umbriel',
@@ -363,7 +407,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 584, unit: 'km' },
-    color: '#5F9EA0'
+    display: {
+      color: '#5F9EA0'
+    }
   },
 
   // **Neptune (Major Moons)**
@@ -379,7 +425,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians // Consider updating based on actual epoch
     },
     radius: { value: 1353.4, unit: 'km' },
-    color: '#C2A17C' // More accurate pale pinkish-brown hue
+    display: {
+      color: '#C2A17C' // More accurate pale pinkish-brown hue
+    }
   },
   {
     id: 'nereid',
@@ -393,7 +441,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 170, unit: 'km' },
-    color: '#87CEFA' // Light blue (possibly icy)
+    display: {
+      color: '#87CEFA' // Light blue (possibly icy)
+    }
   },
   {
     id: 'proteus',
@@ -407,7 +457,9 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 210, unit: 'km' },
-    color: '#708090'
+    display: {
+      color: '#708090'
+    }
   },
   {
     id: 'halimede',
@@ -421,6 +473,8 @@ export const MOONS: MoonsType = [
       angle: 0 as Radians
     },
     radius: { value: 62, unit: 'km' },
-    color: '#A9A9A9'
+    display: {
+      color: '#A9A9A9'
+    }
   }
 ] as const satisfies MoonsType;

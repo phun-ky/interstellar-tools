@@ -44,6 +44,9 @@ dependencies outside the monorepo.
   out-of-domain values instead of returning a wrong number.
 - **Typed units.** Branded types such as `Radians` stop degrees and radians from
   being mixed up at compile time.
+- **Drawing kept apart.** A body's physical data is at the top level, its orbit
+  in `orbit`, and everything about drawing it (colour, drawing size, and state a
+  renderer computes) in `display`.
 
 ### The orbit tree
 

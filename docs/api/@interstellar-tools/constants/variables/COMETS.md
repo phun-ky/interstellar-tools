@@ -8,7 +8,7 @@ const COMETS: CometsType;
 ```
 
 Defined in:
-[bodies/comets.ts:30](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/constants/src/bodies/comets.ts#L30)
+[bodies/comets.ts:30](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/constants/src/bodies/comets.ts#L30)
 
 Represents a collection of well-known comets within the solar system simulation.
 
@@ -35,12 +35,12 @@ time.
 
 <div class="ph table-overflow">
 
-| id                        | name                            | type               | category             | parent | orbit.a   | orbit.e | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.q | color   | size | radius |
-| ------------------------- | ------------------------------- | ------------------ | -------------------- | ------ | --------- | ------- | ------- | ------- | -------- | ----------- | ------------ | ------- | ------- | ---- | ------ |
-| 1p-halley                 | Halley's Comet                  | periodic comet     | halley-type comet    | sun    | 17.834 au | 0.96714 | 162.26  | 111.33  | 58.42    | 2.97966     | 27576 d      | 0.586   | #FFFFFF | 5    | 5.5 km |
-| c-1995-o1-hale-bopp       | Comet Hale-Bopp                 | oort cloud comet   | long-period comet    | sun    | 186 au    | 0.9951  | 89.4    | 130.6   | 282.5    | 2.550719    | -926530 d    | 0.914   | #00A6FF | 4    | 30 km  |
-| 67p-churyumov-gerasimenko | Comet 67P/Churyumov–Gerasimenko | short-period comet | jupiter-family comet | sun    | 3.464 au  | 0.641   | 7.04    | 12.78   | 50.14    | 3.32542     | -2355 d      | 1.243   | #AAAAAA | 4    | 2 km   |
-| 2p-encke                  | Comet Encke                     | short-period comet | jupiter-family comet | sun    | 2.22 au   | 0.85    | 11.8    | 186.5   | 334.6    | 3.479299    | -1204 d      | 0.34    | #FFD700 | 3    | 4.8 km |
+| id                        | name                            | type               | category             | parent | orbit.a   | orbit.e | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.q | display.color | display.size | radius |
+| ------------------------- | ------------------------------- | ------------------ | -------------------- | ------ | --------- | ------- | ------- | ------- | -------- | ----------- | ------------ | ------- | ------------- | ------------ | ------ |
+| 1p-halley                 | Halley's Comet                  | periodic comet     | halley-type comet    | sun    | 17.834 au | 0.96714 | 162.26  | 111.33  | 58.42    | 2.97966     | 27576 d      | 0.586   | #FFFFFF       | 5            | 5.5 km |
+| c-1995-o1-hale-bopp       | Comet Hale-Bopp                 | oort cloud comet   | long-period comet    | sun    | 186 au    | 0.9951  | 89.4    | 130.6   | 282.5    | 2.550719    | -926530 d    | 0.914   | #00A6FF       | 4            | 30 km  |
+| 67p-churyumov-gerasimenko | Comet 67P/Churyumov–Gerasimenko | short-period comet | jupiter-family comet | sun    | 3.464 au  | 0.641   | 7.04    | 12.78   | 50.14    | 3.32542     | -2355 d      | 1.243   | #AAAAAA       | 4            | 2 km   |
+| 2p-encke                  | Comet Encke                     | short-period comet | jupiter-family comet | sun    | 2.22 au   | 0.85    | 11.8    | 186.5   | 334.6    | 3.479299    | -1204 d      | 0.34    | #FFD700       | 3            | 4.8 km |
 
 </div>
 
@@ -63,8 +63,10 @@ time.
     period: { value: -1204, unit: 'd' }, // ~3.3 years
     q: 0.34
   },
-  color: '#FFD700', // Golden yellow (dusty tail, lower albedo)
-  size: 3,
+  display: {
+    color: '#FFD700', // Golden yellow (dusty tail, lower albedo)
+    size: 3
+  },
   radius: { value: 4.8, unit: 'km' }
 }
 ```

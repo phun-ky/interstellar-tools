@@ -1,7 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
-import { CartesianCoordinatesInterface } from './planets.js';
+import type { DisplayInterface } from './display.js';
 
 /**
  * Represents a **comet** in the solar system simulation.
@@ -15,10 +15,8 @@ import { CartesianCoordinatesInterface } from './planets.js';
  * - **Perihelion distance (`q`)**: The closest approach to the Sun in **AU**.
  * - **Angle (`angle`)**: The **true anomaly** at J2000, as for every other body.
  *
- * **Visualization Parameters:**
- * - **Orbit Path (`orbitPath`)**: Precomputed trajectory for rendering.
- * - **Color (`color`)**: Used for visual representation.
- * - **Size (`size`)**: Scaled size for display (not the actual physical size).
+ * **Drawing (`display`)**: colour and a scaled drawing size (not the physical
+ * `radius`), and state a renderer computes; see {@link DisplayInterface}.
  *
  * @group Celestial Bodies
  */
@@ -41,18 +39,10 @@ export interface CometInterface {
   y?: DistanceInterface;
   /** Z-coordinate in a distance-based system (optional). */
   z?: DistanceInterface;
-  /** Semi-minor axis converted to pixels (calculated from `a` and `e`). */
-  miA?: number;
-  /** X-offset for the ellipse focus (accounts for eccentricity). */
-  focus_x?: number;
   /** Radius of the comet (for visualization purposes). */
   radius: DistanceInterface;
-  /** Precomputed orbital path points for visualization (optional). */
-  orbitPath?: CartesianCoordinatesInterface[];
-  /** Visual representation color. */
-  color: string;
-  /** Scaled size for visualization (not actual physical size). */
-  size: number;
+  /** How to draw the comet: its colour and drawn size, and state a renderer computes. */
+  display?: DisplayInterface;
 }
 
 /**
@@ -73,13 +63,12 @@ export interface CometInterface {
  *     i: 162.26,
  *     w: 111.33,
  *     om: 58.42,
- *     angle: 0.669857 as Radians,
+ *     angle: 2.97966 as Radians,
  *     period: { value: 27576, unit: 'd' },
  *     q: 0.586
  *   },
  *   radius: { value: 11, unit: 'km' },
- *   color: '#ffffff',
- *   size: 1.2
+ *   display: { color: '#ffffff', size: 1.2 }
  * }];
  * ```
  * @group Celestial Bodies

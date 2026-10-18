@@ -4,7 +4,7 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 
 <div class="ph table-overflow">
 
-| id | name | type | category | spectralType | parent | orbit.a | orbit.e | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.q | radius | color | size |
+| id | name | type | category | spectralType | parent | orbit.a | orbit.e | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.q | radius | display.color | display.size |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 4-vesta | Vesta | main-belt asteroid | large asteroid | v-type | sun | 2.362 au | 0.09 | 7.1 | 151.2 | 103.8 | 5.527458 | -1325.2 d | 2.151 | 262.7 km | #999999 | 1 |
 | 433-eros | Eros | near-earth asteroid | amor group | s-type | sun | 1.458 au | 0.223 | 10.8 | 178.9 | 304.3 | 1.553343 | -643.2 d | 1.134 | 8.4 km | #aaaaaa | 1 |

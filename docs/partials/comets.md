@@ -4,7 +4,7 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 
 <div class="ph table-overflow">
 
-| id | name | type | category | parent | orbit.a | orbit.e | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.q | color | size | radius |
+| id | name | type | category | parent | orbit.a | orbit.e | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.q | display.color | display.size | radius |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1p-halley | Halley's Comet | periodic comet | halley-type comet | sun | 17.834 au | 0.96714 | 162.26 | 111.33 | 58.42 | 2.97966 | 27576 d | 0.586 | #FFFFFF | 5 | 5.5 km |
 | c-1995-o1-hale-bopp | Comet Hale-Bopp | oort cloud comet | long-period comet | sun | 186 au | 0.9951 | 89.4 | 130.6 | 282.5 | 2.550719 | -926530 d | 0.914 | #00A6FF | 4 | 30 km |

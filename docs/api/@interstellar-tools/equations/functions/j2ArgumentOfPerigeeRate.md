@@ -15,7 +15,7 @@ function j2ArgumentOfPerigeeRate(
 ```
 
 Defined in:
-[orbits/j2-argument-of-perigee-rate.ts:55](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/equations/src/categories/orbits/j2-argument-of-perigee-rate.ts#L55)
+[orbits/j2-argument-of-perigee-rate.ts:55](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/equations/src/categories/orbits/j2-argument-of-perigee-rate.ts#L55)
 
 Compute **argument of perigee rotation** (J2 secular drift of ω) for an orbit
 about an oblate body.
