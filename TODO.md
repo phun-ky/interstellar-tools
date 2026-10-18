@@ -30,9 +30,24 @@ the [roadmap](ROADMAP.md).
 - Planetocentric radius \( r=\|\mathbf r\| \Rightarrow h \approx
   r-R(\varphi,\lambda) \)
 
+**Geodetic to body-fixed Cartesian (ECEF for Earth)**
+
+- \( x=(N+h)\cos\varphi\cos\lambda,\quad y=(N+h)\cos\varphi\sin\lambda,\quad
+  z=\big(N(1-e^2)+h\big)\sin\varphi \)
+- \(N\) is the prime vertical radius above, \(h\) the height above the
+  ellipsoid, and \(1-e^2=b^2/a^2\). For 3D renderers and simulators; the inverse
+  needs an iteration or Bowring's method.
+
 ---
 
 ## Map projections (common for global products)
+
+**Mercator (conformal)**
+
+- \( x = R(\lambda-\lambda_0),\quad y =
+  R\ln\tan\!\big(\tfrac{\pi}{4}+\tfrac{\varphi}{2}\big) \)
+- Preserves angles; \(y\) grows without bound towards the poles, so maps clip
+  latitude (web maps at about ±85.05°).
 
 **Equirectangular (simple cylindrical)**
 
@@ -93,7 +108,7 @@ the [roadmap](ROADMAP.md).
 **Simple reflectance models**
 
 - Lambert: \( r \propto \cos i \)
-- Lommel–Seeliger: \( r \propto \frac{\cos i}{\cos i+\cos e} \)
+- Lommel-Seeliger: \( r \propto \frac{\cos i}{\cos i+\cos e} \)
 
 ---
 
@@ -105,16 +120,42 @@ the [roadmap](ROADMAP.md).
   \text{slope}=\arctan\!\sqrt{z_x^2+z_y^2},\quad \text{aspect}=\arctan2(-z_y,
   -z_x) \)
 
+**Horn's method (gradients from a 3×3 DEM window)**
+
+- With cells \(z_{ij}\) around the centre \(z_{22}\) and cell sizes \(\Delta x,
+  \Delta y\): \(
+  z_x=\frac{(z_{13}+2z_{23}+z_{33})-(z_{11}+2z_{21}+z_{31})}{8\,\Delta x} \), \(
+  z_y=\frac{(z_{31}+2z_{32}+z_{33})-(z_{11}+2z_{12}+z_{13})}{8\,\Delta y} \)
+- Feeds slope and aspect above. Aspect conventions differ (zero at north or
+  east, clockwise or not, rows growing up or down), so the function must state
+  its own.
+
 **Hillshade (illumination from azimuth \(\psi\), elevation \(\alpha\))**
 
 - \( \cos\theta_i = \sin\alpha\cos\text{slope} +
   \cos\alpha\sin\text{slope}\cos(\psi-\text{aspect}) \)
 - Shade \( \propto \max(0,\cos\theta_i) \)
+- Same formula with the solar zenith angle \(\theta_s=\tfrac{\pi}{2}-\alpha\):
+  \(
+  \cos\theta_s\cos\text{slope}+\sin\theta_s\sin\text{slope}\cos(\psi-\text{aspect})
+  \)
 
 **Curvatures**
 
 - Profile curvature \( k*p \) and planform curvature \( k*{pl} \) from second
   derivatives \( z*{xx},z*{yy},z\_{xy} \) (used for hazard & landing analysis)
+
+**Terrain Roughness Index (landing hazard)**
+
+- \( \text{TRI}=\sqrt{\tfrac{1}{8}\sum_{i=1}^{8}(z_0-z_i)^2} \) over the 8
+  neighbours of cell \(z_0\). Riley's original TRI leaves out the
+  \(\tfrac{1}{8}\); pick one and say which.
+
+**Topographic Wetness Index**
+
+- \( \text{TWI}=\ln\frac{\alpha}{\tan\text{slope}} \), with \(\alpha\) the
+  upslope contributing area per unit contour length (from a flow-routing step,
+  e.g. D8). Undefined on flat cells.
 
 ---
 
@@ -157,8 +198,8 @@ the [roadmap](ROADMAP.md).
 ## Practical notes
 
 - **Body conventions:** Many bodies use **planetocentric lat** & **east-positive
-  lon**, but historical Mars/Moon products vary—always check IAU reports for the
-  epoch.
+  lon**, but historical Mars/Moon products vary; always check IAU reports for
+  the epoch.
 - **Reference surfaces:** Choose sphere, ellipsoid, or shape model consistent
   with your mission (e.g., small bodies → triaxial or polyhedral).
 - **Projection choice:** Equal-area for geology, conformal for
@@ -192,9 +233,17 @@ the [roadmap](ROADMAP.md).
   $$
 
 - **Peak convective heating (approx.)**
+
   $$
   \dot{q}\propto \frac{\sqrt{\rho}\,V^3}{\sqrt{R_n}}
   $$
+
+- **Lander static tip-over limit**
+  $$
+  \theta_{\text{terrain}}+\theta_{\text{dynamic}} \ge \arctan\frac{r_{\text{footprint}}}{h_{\text{CoM}}}
+  $$
+  The vehicle tips when the total tilt reaches the angle from its centre of mass
+  to the edge of its leg footprint.
 
 ## Attitude dynamics
 
