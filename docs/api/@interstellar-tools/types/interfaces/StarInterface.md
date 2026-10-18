@@ -4,7 +4,7 @@ StarInterface
 # Interface: StarInterface
 
 Defined in:
-[celestial-bodies/stars.ts:39](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L39)
+[celestial-bodies/stars.ts:39](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L39)
 
 Represents a **star**.
 
@@ -17,7 +17,8 @@ unbound, like a hypervelocity star leaving its galaxy.
 
 - **Type (`type`)**: Spectral classification of the star (e.g., `'G2V'`).
 - **Category (`category`)**: Defined as `'star'`.
-- **Color (`color`)**: Used for visual representation.
+- **Drawing (`display`)**: colour, and state a renderer computes; see
+  [DisplayInterface](DisplayInterface.md).
 
 ## Example
 
@@ -35,7 +36,7 @@ const vega: StarInterface = {
     angle: 1.5699 as Radians
   },
   radius: { value: 2600000, unit: 'km' },
-  color: 'blue'
+  display: { color: 'blue' }
 };
 ```
 
@@ -48,35 +49,22 @@ category: 'star';
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:47](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L47)
+[celestial-bodies/stars.ts:47](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L47)
 
 Defines the category as a star.
 
 ---
 
-### color
+### display?
 
 ```ts
-color: string;
+optional display?: DisplayInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:57](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L57)
+[celestial-bodies/stars.ts:63](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L63)
 
-Visual representation color.
-
----
-
-### focus_x?
-
-```ts
-optional focus_x?: number;
-```
-
-Defined in:
-[celestial-bodies/stars.ts:61](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L61)
-
-X-offset for the ellipse focus (accounts for eccentricity).
+How to draw the star: its colour, and state a renderer computes.
 
 ---
 
@@ -87,7 +75,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:41](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L41)
+[celestial-bodies/stars.ts:41](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L41)
 
 Stable identifier, used by `parent` references. Never translated.
 
@@ -100,22 +88,9 @@ optional mass?: number;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:53](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L53)
+[celestial-bodies/stars.ts:53](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L53)
 
 Mass in solar masses ($M_\odot$).
-
----
-
-### miA?
-
-```ts
-optional miA?: number;
-```
-
-Defined in:
-[celestial-bodies/stars.ts:59](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L59)
-
-Semi-minor axis of the orbit (calculated from `a` and `e`).
 
 ---
 
@@ -126,7 +101,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:43](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L43)
+[celestial-bodies/stars.ts:43](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L43)
 
 Name of the star.
 
@@ -139,22 +114,9 @@ optional orbit?: OrbitInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:51](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L51)
+[celestial-bodies/stars.ts:51](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L51)
 
 Orbit around the parent.
-
----
-
-### orbitPath?
-
-```ts
-optional orbitPath?: CartesianCoordinatesInterface[];
-```
-
-Defined in:
-[celestial-bodies/stars.ts:69](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L69)
-
-Precomputed orbital path points for visualization (optional).
 
 ---
 
@@ -165,7 +127,7 @@ optional parent?: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:49](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L49)
+[celestial-bodies/stars.ts:49](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L49)
 
 Id of the galaxy or system the star is bound to.
 
@@ -178,7 +140,7 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:55](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L55)
+[celestial-bodies/stars.ts:55](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L55)
 
 Physical radius of the star.
 
@@ -191,7 +153,7 @@ type: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:45](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L45)
+[celestial-bodies/stars.ts:45](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L45)
 
 Spectral classification of the star (e.g., `'G2V'`).
 
@@ -204,7 +166,7 @@ optional x?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:63](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L63)
+[celestial-bodies/stars.ts:57](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L57)
 
 X-coordinate in the parent's frame.
 
@@ -217,7 +179,7 @@ optional y?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:65](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L65)
+[celestial-bodies/stars.ts:59](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L59)
 
 Y-coordinate in the parent's frame.
 
@@ -230,6 +192,6 @@ optional z?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:67](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/types/src/celestial-bodies/stars.ts#L67)
+[celestial-bodies/stars.ts:61](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/types/src/celestial-bodies/stars.ts#L61)
 
 Z-coordinate in the parent's frame.

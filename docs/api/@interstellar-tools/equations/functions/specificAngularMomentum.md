@@ -11,7 +11,7 @@ function specificAngularMomentum(
 ```
 
 Defined in:
-[orbits/specific-angular-momentum.ts:57](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/equations/src/categories/orbits/specific-angular-momentum.ts#L57)
+[orbits/specific-angular-momentum.ts:57](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/equations/src/categories/orbits/specific-angular-momentum.ts#L57)
 
 **Specific angular momentum** ($h$) (scalar magnitude).
 

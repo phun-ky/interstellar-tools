@@ -8,7 +8,7 @@ const MOONS: MoonsType;
 ```
 
 Defined in:
-[bodies/moons.ts:29](https://github.com/phun-ky/interstellar-tools/blob/2ea6b45c51014fcd4fd3a03de0d657fe18112efa/packages/constants/src/bodies/moons.ts#L29)
+[bodies/moons.ts:29](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/constants/src/bodies/moons.ts#L29)
 
 Represents a dataset of natural satellites (moons) in the solar system.
 
@@ -33,7 +33,7 @@ time.
 
 <div class="ph table-overflow">
 
-| id        | name      | category             | parent  | orbit.a     | orbit.e  | orbit.period | orbit.angle | radius    | color                                                                  |
+| id        | name      | category             | parent  | orbit.a     | orbit.e  | orbit.period | orbit.angle | radius    | display.color                                                          |
 | --------- | --------- | -------------------- | ------- | ----------- | -------- | ------------ | ----------- | --------- | ---------------------------------------------------------------------- |
 | moon      | Moon      | natural satellite    | earth   | 0.00257 au  | 0.0549   | -27.322 d    | 2.41        | 1737.4 km | #BFBFBF                                                                |
 | phobos    | Phobos    | natural satellite    | mars    | 0.00006 au  | 0.0151   | -0.3189 d    | 0           | 11 km     | [#888888](https://github.com/phun-ky/interstellar-tools/issues/888888) |
@@ -89,8 +89,10 @@ time.
   },
   /** Radius in km */
   radius: { value: 1737.4, unit: 'km' },
-  /** Visual representation color */
-  color: '#BFBFBF' // Light gray (realistic lunar appearance)
+  display: {
+    /** Visual representation color */
+    color: '#BFBFBF' // Light gray (realistic lunar appearance)
+  }
 },
 ```
 
