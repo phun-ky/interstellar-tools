@@ -1,18 +1,24 @@
 # Equation backlog
 
-Formulas that could be added to `@interstellar-tools/equations`, kept here as a
-reference. When work on one starts, it gets a
-[GitHub issue](https://github.com/phun-ky/interstellar-tools/issues) that links
-back to it. Other planned work (datasets, propagation, the road to 1.0) is
-tracked in the issues and the
-[1.0 milestone](https://github.com/phun-ky/interstellar-tools/milestone/1); see
-the [roadmap](ROADMAP.md).
+Formulas that could be added to the packages, kept here as a reference. When
+work on one starts, it gets a
+[GitHub issue](https://github.com/phun-ky/interstellar-tools/issues), linked
+next to it here.
+
+Entries with an issue link belong to the
+[Maps and topography milestone](https://github.com/phun-ky/interstellar-tools/milestone/2),
+the focus after 1.0. Geodesy goes in `@interstellar-tools/equations`
+(cartography), and map projections, tiles, terrain, imaging geometry and landing
+sites in a new `@interstellar-tools/maps` package
+([#181](https://github.com/phun-ky/interstellar-tools/issues/181)). The rest
+waits for a later milestone; see the [roadmap](ROADMAP.md).
 
 ---
 
 ## Geodesy & distances
 
 **Great-circle (sphere)**
+[#184](https://github.com/phun-ky/interstellar-tools/issues/184)
 
 - Central angle: \( \Delta\sigma=\arctan2\!\Big(\|\mathbf r_1\times\mathbf
   r_2\|,\ \mathbf r_1\cdot\mathbf r_2\Big) \)
@@ -21,16 +27,19 @@ the [roadmap](ROADMAP.md).
   \) \( \Delta\sigma = 2\arcsin\sqrt{h},\quad d=R\,\Delta\sigma \)
 
 **Radii of curvature (oblate)**
+[#185](https://github.com/phun-ky/interstellar-tools/issues/185)
 
 - \( M = \frac{a(1-e^2)}{(1-e^2\sin^2\varphi)^{3/2}} \), meridional
 - \( N = \frac{a}{\sqrt{1-e^2\sin^2\varphi}} \), prime vertical
 
 **Altitude above reference**
+[#187](https://github.com/phun-ky/interstellar-tools/issues/187)
 
 - Planetocentric radius \( r=\|\mathbf r\| \Rightarrow h \approx
   r-R(\varphi,\lambda) \)
 
 **Geodetic to body-fixed Cartesian (ECEF for Earth)**
+[#186](https://github.com/phun-ky/interstellar-tools/issues/186)
 
 - \( x=(N+h)\cos\varphi\cos\lambda,\quad y=(N+h)\cos\varphi\sin\lambda,\quad
   z=\big(N(1-e^2)+h\big)\sin\varphi \)
@@ -43,6 +52,7 @@ the [roadmap](ROADMAP.md).
 ## Map projections (common for global products)
 
 **Mercator (conformal)**
+[#190](https://github.com/phun-ky/interstellar-tools/issues/190)
 
 - \( x = R(\lambda-\lambda_0),\quad y =
   R\ln\tan\!\big(\tfrac{\pi}{4}+\tfrac{\varphi}{2}\big) \)
@@ -50,20 +60,24 @@ the [roadmap](ROADMAP.md).
   latitude (web maps at about ±85.05°).
 
 **Equirectangular (simple cylindrical)**
+[#190](https://github.com/phun-ky/interstellar-tools/issues/190)
 
 - \( x = R(\lambda-\lambda_0)\cos\varphi_1,\quad y = R(\varphi-\varphi_0) \)
 
 **Sinusoidal (equal-area)**
+[#191](https://github.com/phun-ky/interstellar-tools/issues/191)
 
 - \( x = R(\lambda-\lambda_0)\cos\varphi,\quad y = R\varphi \)
 
 **Mollweide (equal-area)**
+[#191](https://github.com/phun-ky/interstellar-tools/issues/191)
 
 - Solve \( 2\theta+\sin 2\theta=\pi\sin\varphi \)
 - \( x = \frac{2\sqrt{2}R}{\pi}(\lambda-\lambda_0)\cos\theta,\quad
   y=\sqrt{2}R\sin\theta \)
 
 **Lambert azimuthal equal-area**
+[#192](https://github.com/phun-ky/interstellar-tools/issues/192)
 
 - \( k =
   \sqrt{\frac{2}{1+\sin\varphi_0\sin\varphi+\cos\varphi_0\cos\varphi\cos(\lambda-\lambda_0)}}
@@ -72,6 +86,7 @@ the [roadmap](ROADMAP.md).
   y=Rk\big(\cos\varphi_0\sin\varphi-\sin\varphi_0\cos\varphi\cos(\lambda-\lambda_0)\big) \)
 
 **Stereographic (conformal, polar)**
+[#192](https://github.com/phun-ky/interstellar-tools/issues/192)
 
 - \(
   k=\frac{2R}{1+\sin\varphi_0\sin\varphi+\cos\varphi_0\cos\varphi\cos(\lambda-\lambda_0)}
@@ -80,6 +95,7 @@ the [roadmap](ROADMAP.md).
   y=k\big(\cos\varphi_0\sin\varphi-\sin\varphi_0\cos\varphi\cos(\lambda-\lambda_0)\big) \)
 
 **Orthographic (globe view)**
+[#192](https://github.com/phun-ky/interstellar-tools/issues/192)
 
 - \( x=R\cos\varphi\sin(\lambda-\lambda_0),\quad
   y=R\big(\cos\varphi_0\sin\varphi-\sin\varphi_0\cos\varphi\cos(\lambda-\lambda_0)\big)
@@ -90,22 +106,26 @@ the [roadmap](ROADMAP.md).
 ## Imaging geometry (for mapping pipelines)
 
 **Ground Sample Distance (frame camera)**
+[#199](https://github.com/phun-ky/interstellar-tools/issues/199)
 
 - Pixel pitch \(p\), focal \(f\), altitude (slant) \(H\): \( \text{GSD} \approx
   \frac{H\,p}{f} \)
 
 **Instantaneous FOV (pushbroom/scan)**
+[#199](https://github.com/phun-ky/interstellar-tools/issues/199)
 
 - \( \text{IFOV} \approx \frac{p}{f} \), swath \( \approx H \cdot \text{IFOV}
   \cdot N\_{\text{pixels}} \)
 
 **Photometric/illumination angles**
+[#199](https://github.com/phun-ky/interstellar-tools/issues/199)
 
 - Incidence \(i\), emission \(e\), phase \(g\): \( \cos i = \hat{\mathbf
   n}\cdot\hat{\mathbf s},\ \cos e=\hat{\mathbf n}\cdot\hat{\mathbf o},\ \cos
   g=\hat{\mathbf s}\cdot\hat{\mathbf o} \)
 
 **Simple reflectance models**
+[#199](https://github.com/phun-ky/interstellar-tools/issues/199)
 
 - Lambert: \( r \propto \cos i \)
 - Lommel-Seeliger: \( r \propto \frac{\cos i}{\cos i+\cos e} \)
@@ -115,12 +135,14 @@ the [roadmap](ROADMAP.md).
 ## DEM-derived terrain metrics
 
 **Slope & aspect (from gradients)**
+[#194](https://github.com/phun-ky/interstellar-tools/issues/194)
 
 - Let \( z_x=\partial z/\partial x,\ z_y=\partial z/\partial y \) \(
   \text{slope}=\arctan\!\sqrt{z_x^2+z_y^2},\quad \text{aspect}=\arctan2(-z_y,
   -z_x) \)
 
 **Horn's method (gradients from a 3×3 DEM window)**
+[#194](https://github.com/phun-ky/interstellar-tools/issues/194)
 
 - With cells \(z_{ij}\) around the centre \(z_{22}\) and cell sizes \(\Delta x,
   \Delta y\): \(
@@ -131,6 +153,7 @@ the [roadmap](ROADMAP.md).
   its own.
 
 **Hillshade (illumination from azimuth \(\psi\), elevation \(\alpha\))**
+[#195](https://github.com/phun-ky/interstellar-tools/issues/195)
 
 - \( \cos\theta_i = \sin\alpha\cos\text{slope} +
   \cos\alpha\sin\text{slope}\cos(\psi-\text{aspect}) \)
@@ -140,18 +163,20 @@ the [roadmap](ROADMAP.md).
   \cos\theta_s\cos\text{slope}+\sin\theta_s\sin\text{slope}\cos(\psi-\text{aspect})
   \)
 
-**Curvatures**
+**Curvatures** [#196](https://github.com/phun-ky/interstellar-tools/issues/196)
 
 - Profile curvature \( k*p \) and planform curvature \( k*{pl} \) from second
   derivatives \( z*{xx},z*{yy},z\_{xy} \) (used for hazard & landing analysis)
 
 **Terrain Roughness Index (landing hazard)**
+[#197](https://github.com/phun-ky/interstellar-tools/issues/197)
 
 - \( \text{TRI}=\sqrt{\tfrac{1}{8}\sum_{i=1}^{8}(z_0-z_i)^2} \) over the 8
   neighbours of cell \(z_0\). Riley's original TRI leaves out the
   \(\tfrac{1}{8}\); pick one and say which.
 
 **Topographic Wetness Index**
+[#198](https://github.com/phun-ky/interstellar-tools/issues/198)
 
 - \( \text{TWI}=\ln\frac{\alpha}{\tan\text{slope}} \), with \(\alpha\) the
   upslope contributing area per unit contour length (from a flow-routing step,
@@ -162,25 +187,29 @@ the [roadmap](ROADMAP.md).
 ## Tiling & indexing (web maps / slippy maps)
 
 **Web-mercator tile coordinates (spherical)**
+[#193](https://github.com/phun-ky/interstellar-tools/issues/193)
 
 - \( x\_{\text{tile}} = \left\lfloor \frac{(\lambda+\pi)}{2\pi}\,2^z
   \right\rfloor \)
 - \( y\_{\text{tile}} = \left\lfloor
-  \frac{\big(1-\ln\big(\tan\frac{\varphi}{2}+\sec\varphi\big)/\pi\big)}{2}\,2^z
+  \frac{\big(1-\ln\big(\tan\varphi+\sec\varphi\big)/\pi\big)}{2}\,2^z
   \right\rfloor \)
 
 **Quadkey**: interleave tile bits at zoom \(z\) to index tiles hierarchically.
+[#193](https://github.com/phun-ky/interstellar-tools/issues/193)
 
 ---
 
 ## Grids & footprints
 
 **Footprint area on sphere**
+[#189](https://github.com/phun-ky/interstellar-tools/issues/189)
 
 - Spherical polygon area via l’Huilier (excess \(E\)): \( A = R^2 E,\quad E=\sum
   \alpha_i - (n-2)\pi \)
 
 **Buffer/visibility (simple horizon)**
+[#188](https://github.com/phun-ky/interstellar-tools/issues/188)
 
 - Horizon distance from height \(h\): \( d \approx \sqrt{2Rh+h^2} \)
 
@@ -239,6 +268,7 @@ the [roadmap](ROADMAP.md).
   $$
 
 - **Lander static tip-over limit**
+  [#200](https://github.com/phun-ky/interstellar-tools/issues/200)
   $$
   \theta_{\text{terrain}}+\theta_{\text{dynamic}} \ge \arctan\frac{r_{\text{footprint}}}{h_{\text{CoM}}}
   $$
