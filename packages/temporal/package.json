@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/temporal",
-  "version": "0.61.2",
+  "version": "1.0.0",
   "description": "Time and epoch utilities for space applications (e.g., building blocks toward Julian dates, conversions, and ephemeris-friendly time handling).",
   "keywords": [
     "temporal",
