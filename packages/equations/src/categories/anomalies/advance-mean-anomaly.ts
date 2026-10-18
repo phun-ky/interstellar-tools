@@ -28,8 +28,9 @@ import { trueToMeanAnomaly } from './true-to-mean-anomaly.js';
  *
  * where:
  * - $M_0$ is the **initial mean anomaly**, converted from the true anomaly `angle`.
- * - $n$ is the **mean motion**, from the period $P$ in days. The sign of $P$ is
- *   ignored, so a positive step always moves the body forward along its orbit.
+ * - $n$ is the **mean motion**, from the period $P$ in days. $P$ is a positive
+ *   duration; a negative one, from data in the old 0.x convention, is read as
+ *   its absolute value. A positive step always moves the body forward.
  * - $\Delta T$ is the time step, converted to days from its unit.
  *
  * The step can be any length, from a fraction of a second to many orbits, and
