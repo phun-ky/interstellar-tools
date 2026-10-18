@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.64.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.64.0...%40interstellar-tools%2Fequations%400.64.1) (2026-10-18)
+
+### Documentation
+
+* ✏️ Describe the period as a positive duration in the anomaly functions ([d2d50c8](https://github.com/phun-ky/interstellar-tools/commit/d2d50c8edbcb185fb049b6f878200a5c66eae813))
+
+### Adding missing tests
+
+* 💍 Give the comet in the computeAngle test a q with a unit ([b4be9a8](https://github.com/phun-ky/interstellar-tools/commit/b4be9a8b12d68062e03a69c0a947aaedb227d068))
+
 ## [0.64.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.63.2...%40interstellar-tools%2Fequations%400.64.0) (2026-10-18)
 
 ### Feature
