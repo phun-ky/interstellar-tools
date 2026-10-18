@@ -13,7 +13,7 @@
 // A `Release-As: <package>@<version>` footer on any commit since the package's
 // last tag releases that exact version instead, e.g. for the first 1.0:
 //   git commit --allow-empty -m "chore: 🤖 Release 1.0" \
-//     -m "Release-As: types@1.0.0, constants@1.0.0, equations@1.0.0"
+//     -m "Release-As: types@1.0.0, constants@1.0.0, temporal@1.0.0, equations@1.0.0, mcp@1.0.0"
 // The decisions themselves are in release-plan.mjs.
 //
 // Usage: node scripts/release.mjs [--dry-run]

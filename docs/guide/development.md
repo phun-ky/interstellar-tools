@@ -108,7 +108,7 @@ an empty one:
 
 ```shell
 git commit --allow-empty -m "chore: 🤖 Release 1.0" \
-  -m "Release-As: types@1.0.0, constants@1.0.0, equations@1.0.0"
+  -m "Release-As: types@1.0.0, constants@1.0.0, temporal@1.0.0, equations@1.0.0, mcp@1.0.0"
 ```
 
 The footer must name the packages, so a version is never set for all of them by
