@@ -9,8 +9,9 @@ walks through each upgrade that needs changes in your code.
 
 - Every package follows [Semantic Versioning](https://semver.org/) and has its
   own version.
-- While a package is below 1.0, a **breaking change bumps the minor version**
-  (0.60.x to 0.61.0), and fixes and features bump the patch version.
+- A **breaking change bumps the major version** from 1.0 on (1.x to 2.0.0), and
+  the minor version while a package is below 1.0 (0.60.x to 0.61.0). Features
+  bump the minor version, and fixes the patch version.
 - Each package's `CHANGELOG.md` lists every release. Breaking changes are listed
   under **⚠ BREAKING CHANGES**, with what changed and what replaces it.
 - Upgrade the packages together. They depend on each other, and their version

@@ -2,20 +2,33 @@
 //
 // A package is released when, since its last tag, a commit touching what it
 // publishes (src without tests, package.json, README.md, LICENSE) is:
-//   - feat, or a breaking change (`type!:` / `BREAKING CHANGE:`) → minor (pre-1.0)
-//   - fix, perf or revert                                        → patch
+//   - a breaking change (`type!:` / `BREAKING CHANGE:`) → major from 1.0 on,
+//     minor below 1.0
+//   - feat                                              → minor
+//   - fix, perf or revert                               → patch
 // or when a sibling it depends on gets a version outside its `^` range → patch.
 // Anything else (chore, docs, ci, test, style, refactor, dependency bumps) is
 // not released.
 //
+// A `Release-As: <package>@<version>` footer on any commit since the package's
+// last tag releases that exact version instead, e.g. for the first 1.0:
+//   git commit --allow-empty -m "chore: 🤖 Release 1.0" \
+//     -m "Release-As: types@1.0.0, constants@1.0.0, temporal@1.0.0, equations@1.0.0, mcp@1.0.0"
+// The decisions themselves are in release-plan.mjs.
+//
 // Usage: node scripts/release.mjs [--dry-run]
-import semver from 'semver';
-
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
+import {
+  incrementFor,
+  levelFromCommits,
+  plan,
+  releaseAsIn,
+  SCOPE
+} from './release-plan.mjs';
+
 const PACKAGES = ['types', 'constants', 'temporal', 'equations', 'mcp']; // dependency order
-const SCOPE = '@interstellar-tools';
 const PUBLISHED_PATHS = [
   'src',
   ':(exclude)src/**/__tests__/**',
@@ -23,31 +36,19 @@ const PUBLISHED_PATHS = [
   'README.md',
   'LICENSE'
 ];
-const RANK = { patch: 1, minor: 2 };
 const DRY_RUN = process.argv.includes('--dry-run');
 const ROOT = new URL('../', import.meta.url);
 const git = (args, cwd) =>
   execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
 const run = (args, cwd = ROOT) =>
   execFileSync('npm', args, { cwd, stdio: 'inherit' });
-const higher = (a, b) => ((RANK[a] ?? 0) >= (RANK[b] ?? 0) ? a : b);
-// Release level for one conventional commit, or null if it isn't releasable
-const levelOf = ({ subject, body }) => {
-  const match = /^(\w+)(?:\([^)]*\))?(!)?:/.exec(subject);
-
-  if (!match) return null;
-
-  const [, type, bang] = match;
-
-  if (bang || /^BREAKING[ -]CHANGE:/m.test(body)) return 'minor';
-
-  if (type === 'feat') return 'minor';
-
-  if (['fix', 'perf', 'revert'].includes(type)) return 'patch';
-
-  return null;
-};
-const ownLevel = (name, cwd) => {
+// Release-As footers count on any commit since the tag, not only those
+// touching published files, so an empty commit can carry them
+const releaseAsSince = (name, tag, cwd) =>
+  git(['log', ...(tag ? [`${tag}..HEAD`] : []), '--format=%B%x1e'], cwd)
+    .split('\x1e')
+    .reduce((found, body) => releaseAsIn(body, name) ?? found, null);
+const ownLevel = (name, version, cwd) => {
   let tag;
 
   try {
@@ -56,7 +57,11 @@ const ownLevel = (name, cwd) => {
       cwd
     );
   } catch {
-    return { level: 'minor', reasons: ['no previous release tag'] };
+    return {
+      level: 'minor',
+      reasons: ['no previous release tag'],
+      releaseAs: releaseAsSince(name, undefined, cwd)
+    };
   }
 
   const log = git(
@@ -73,20 +78,11 @@ const ownLevel = (name, cwd) => {
       return { subject, body };
     });
 
-  let level = null;
-
-  const reasons = [];
-
-  for (const commit of commits) {
-    const commitLevel = levelOf(commit);
-
-    if (commitLevel) {
-      level = higher(level, commitLevel);
-      reasons.push(`${commitLevel}: ${commit.subject}`);
-    }
-  }
-
-  return { level, reasons, tag, ignored: commits.length - reasons.length };
+  return {
+    ...levelFromCommits(commits, version),
+    tag,
+    releaseAs: releaseAsSince(name, tag, cwd)
+  };
 };
 
 // Without full history and tags, every package would look like it has never
@@ -109,42 +105,28 @@ const packages = PACKAGES.map((name) => {
   const cwd = new URL(`packages/${name}/`, ROOT);
   const pkg = JSON.parse(readFileSync(new URL('package.json', cwd), 'utf8'));
 
-  return { name, cwd, pkg, ...ownLevel(name, cwd) };
+  return { name, cwd, pkg, ...ownLevel(name, pkg.version, cwd) };
 });
 
-if (!packages.some(({ level }) => level)) {
+if (!packages.some((entry) => incrementFor(entry))) {
   console.log('Nothing to release: no feat, fix, perf, revert or breaking');
-  console.log('commits touch published files since the last release tags.');
+  console.log('commits touch published files since the last release tags,');
+  console.log('and no commit has a Release-As footer.');
   process.exit(0);
 }
 
 // Decide in dependency order, so a sibling's new version is known before its
 // dependents are checked against it
-const next = new Map();
+const next = plan(packages);
 
 for (const entry of packages) {
-  for (const [dependency, range] of Object.entries(
-    entry.pkg.dependencies ?? {}
-  )) {
-    const version = next.get(dependency);
-
-    if (version && !semver.satisfies(version, range)) {
-      entry.level = higher(entry.level, 'patch');
-      entry.reasons.push(`patch: ${dependency}@${version} is outside ${range}`);
-    }
-  }
-
-  if (entry.level) {
-    next.set(entry.pkg.name, semver.inc(entry.pkg.version, entry.level));
-  }
-}
-
-for (const { pkg, level, reasons, ignored, tag } of packages) {
+  const { pkg, reasons, ignored, tag } = entry;
   const since = tag ? ` since ${tag}` : '';
+  const how = entry.releaseAs ? 'release-as' : entry.level;
 
-  if (level) {
+  if (incrementFor(entry)) {
     console.log(
-      `\n▶ ${pkg.name} ${pkg.version} → ${next.get(pkg.name)} (${level})${since}`
+      `\n▶ ${pkg.name} ${pkg.version} → ${next.get(pkg.name)} (${how})${since}`
     );
   } else {
     console.log(`\n▷ ${pkg.name} ${pkg.version}: nothing to release${since}`);
@@ -161,17 +143,19 @@ run(['run', 'build']);
 run(['run', 'docs:gen']);
 git(['add', '.'], ROOT);
 
-for (const { name, level } of packages) {
-  if (!level) continue;
+for (const entry of packages) {
+  const increment = incrementFor(entry);
+
+  if (!increment) continue;
 
   run([
     'run',
     'release',
     '-w',
-    `packages/${name}`,
+    `packages/${entry.name}`,
     '--',
     '--ci',
     '--increment',
-    level
+    increment
   ]);
 }

@@ -90,29 +90,44 @@ repository :)
 Merging a PR runs the publish workflow, which releases only the packages that
 have something to release. For each package, it looks at the commits since the
 package's last release tag that touch what it publishes (`src` without tests,
-`package.json` and `README.md`):
+`package.json`, `README.md` and `LICENSE`):
 
-| Commit type                                        | Release |
-| -------------------------------------------------- | ------- |
-| `feat`, or breaking (`feat!:`, `BREAKING CHANGE:`) | minor   |
-| `fix`, `perf`, `revert`                            | patch   |
-| anything else (`chore`, `docs`, `ci`, `test`, …)   | none    |
+| Commit type                                      | Below 1.0 | From 1.0 on |
+| ------------------------------------------------ | --------- | ----------- |
+| breaking (`feat!:`, `fix!:`, `BREAKING CHANGE:`) | minor     | major       |
+| `feat`                                           | minor     | minor       |
+| `fix`, `perf`, `revert`                          | patch     | patch       |
+| anything else (`chore`, `docs`, `ci`, `test`, …) | none      | none        |
 
-Breaking changes bump the minor version while the packages are below 1.0. A
-package is also released as a patch when a package it depends on gets a version
-outside its `^` range. To see what would be released, without releasing
-anything:
+A package is also released as a patch when a package it depends on gets a
+version outside its `^` range.
+
+To release an exact version instead, such as the first 1.0, add a `Release-As`
+footer naming each package to any commit since their last release, for example
+an empty one:
+
+```shell
+git commit --allow-empty -m "chore: 🤖 Release 1.0" \
+  -m "Release-As: types@1.0.0, constants@1.0.0, temporal@1.0.0, equations@1.0.0, mcp@1.0.0"
+```
+
+The footer must name the packages, so a version is never set for all of them by
+accident, and the version must be higher than the current one.
+
+To see what would be released, without releasing anything:
 
 ```shell
 npm run release:dry-run
 ```
 
-The decision logic lives in `scripts/release.mjs`; `release-it` does the version
-bump, changelog, tag, npm publish and GitHub release for each package. After
-each bump, `scripts/sync-lockfile.mjs` updates `package-lock.json`, so every
-release commit includes a matching lockfile. `release-it` handles one package at
-a time, so it can't skip a package with nothing to release or bump dependents on
-its own. The script fills that gap.
+The decisions live in `scripts/release-plan.mjs`, tested by
+`npm run test:scripts`, and `scripts/release.mjs` gathers the commits and runs
+the releases; `release-it` does the version bump, changelog, tag, npm publish
+and GitHub release for each package. After each bump,
+`scripts/sync-lockfile.mjs` updates `package-lock.json`, so every release commit
+includes a matching lockfile. `release-it` handles one package at a time, so it
+can't skip a package with nothing to release or bump dependents on its own. The
+script fills that gap.
 
 ## Clean code
 

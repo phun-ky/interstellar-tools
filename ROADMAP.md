@@ -54,8 +54,9 @@ tests and documentation.
 
 ### A stable 1.0
 
-Release `@interstellar-tools/types`, `constants` and `equations` as 1.0: a
-promise that their API won't break without a major version. The work is in the
+Release every current package (`types`, `constants`, `temporal`, `equations` and
+`mcp`) as 1.0, together: a promise that their API won't break without a major
+version. Packages added later start below 1.0. The work is in the
 [1.0 milestone](https://github.com/phun-ky/interstellar-tools/milestone/1), and
 covers the decisions that would be breaking changes afterwards:
 
@@ -71,8 +72,13 @@ covers the decisions that would be breaking changes afterwards:
   ([#152](https://github.com/phun-ky/interstellar-tools/issues/152))
 - decide whether display fields belong in the core types
   ([#153](https://github.com/phun-ky/interstellar-tools/issues/153))
+- review the `temporal` API
+  ([#162](https://github.com/phun-ky/interstellar-tools/issues/162))
+- review the MCP server's tools, resources and options, which assistant setups
+  depend on ([#163](https://github.com/phun-ky/interstellar-tools/issues/163))
 
-`temporal` and `mcp` stay below 1.0 until their APIs have settled.
+Adding to a package after 1.0, such as new time scales in `temporal`, is a minor
+release, so 1.0 doesn't stop the packages from growing.
 
 ### Project health
 
