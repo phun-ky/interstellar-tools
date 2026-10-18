@@ -110,6 +110,7 @@
     "check:sibling-ranges": "node scripts/check-sibling-ranges.mjs",
     "check:bestpractices": "node scripts/check-bestpractices.mjs",
     "bestpractices:url": "node scripts/bestpractices-url.mjs",
+    "banners": "node scripts/banners/render.mjs",
     "clean": "npm run clean --workspaces --if-present",
     "commit": "npx git-cz",
     "predocs:gen": "npm run docs:partials:gen",

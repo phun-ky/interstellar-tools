@@ -266,6 +266,12 @@ by Dependabot are exempt.
   with examples, pictures where they help, an FAQ and where to get help. A
   breaking change, or a feature worth telling people about, adds to the notes
   for the next major in the same pull request.
+- Every major release also gets a set of release banners in
+  `docs/public/images`, in the style of the other images there: banner, og,
+  square and portrait, each at 1x and 2x. Write the content in
+  `scripts/banners/<release>.mjs` (copy the previous one) and run
+  `npm run banners -- <release>`. The maintainer decides when older images there
+  can be removed.
 - Don't commit regenerated docs (`docs/api`, `docs/partials`); each release
   regenerates them. Run `npm run docs:check` instead.
 - Open a pull request against `main`. The Checks workflow builds, lints,

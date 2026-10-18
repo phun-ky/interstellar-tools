@@ -23,3 +23,7 @@ complete record.
 - **FAQ:** whether you need to upgrade now, how big the work is, what happens to
   the previous major, and when deprecated APIs are removed.
 - **Getting help:** where to ask, and how to report a problem with the release.
+
+Each major release also gets a set of **release banners** for the notes and for
+sharing: a banner, a social card, a square and a portrait image, each at 1x and
+2x, rendered from `scripts/banners/<release>.mjs`.
