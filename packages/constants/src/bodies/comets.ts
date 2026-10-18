@@ -53,10 +53,12 @@ export const COMETS: CometsType = [
       /** Perihelion distance in AU */
       q: 0.586
     },
-    /** Visual representation color */
-    color: '#FFFFFF', // Bright white (reflective comet dust)
-    /** Scaled size for visualization */
-    size: 5,
+    display: {
+      /** Visual representation color */
+      color: '#FFFFFF', // Bright white (reflective comet dust)
+      /** Scaled size for visualization */
+      size: 5
+    },
     /** Radius of the comet's nucleus in km */
     radius: { value: 5.5, unit: 'km' }
   },
@@ -76,8 +78,10 @@ export const COMETS: CometsType = [
       period: { value: -926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au),
       q: 0.914
     },
-    color: '#00A6FF', // Electric blue (ionized tail appearance)
-    size: 4,
+    display: {
+      color: '#00A6FF', // Electric blue (ionized tail appearance)
+      size: 4
+    },
     radius: { value: 30, unit: 'km' }
   },
   {
@@ -96,8 +100,10 @@ export const COMETS: CometsType = [
       period: { value: -2355, unit: 'd' }, // ~6.45 years
       q: 1.243 // Perihelion distance in AU
     },
-    color: '#AAAAAA', // Greyish surface color
-    size: 4, // Visualization size
+    display: {
+      color: '#AAAAAA', // Greyish surface color
+      size: 4 // Visualization size
+    },
     radius: { value: 2, unit: 'km' } // Approximate average radius (~4km total diameter)
   },
   // #region datasetComets
@@ -117,8 +123,10 @@ export const COMETS: CometsType = [
       period: { value: -1204, unit: 'd' }, // ~3.3 years
       q: 0.34
     },
-    color: '#FFD700', // Golden yellow (dusty tail, lower albedo)
-    size: 3,
+    display: {
+      color: '#FFD700', // Golden yellow (dusty tail, lower albedo)
+      size: 3
+    },
     radius: { value: 4.8, unit: 'km' }
   }
   // #endregion datasetComets

@@ -1,7 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
-import { CartesianCoordinatesInterface } from './planets.js';
+import type { DisplayInterface } from './display.js';
 
 /**
  * High-level **orbital class** of an asteroid (by dynamical region).
@@ -151,46 +151,11 @@ export interface AsteroidInterface {
   /** See {@link x}. */
   z?: DistanceInterface;
 
-  /**
-   * Optional **semi-minor axis** in **pixels** (for 2D ellipse rendering).
-   *
-   * ::: info
-   *
-   * Visualization aid only; not a physical quantity.
-   *
-   * :::
-   */
-  miA?: number;
-
-  /**
-   * Optional **focus offset** along X for ellipse rendering (pixels).
-   *
-   * ::: info
-   *
-   * Visualization aid only; not a physical quantity.
-   *
-   * :::
-   */
-  focus_x?: number;
-
   /** Mean/characteristic **radius** (e.g., in **km**) as a distance value. */
   radius: DistanceInterface;
 
-  /**
-   * Optional precomputed **orbit path** for plotting.
-   * ::: info
-   *
-   * Commonly a list of points in your rendering coordinate system.
-   *
-   * :::
-   */
-  orbitPath?: CartesianCoordinatesInterface[];
-
-  /** Display color (hex string, e.g., `#AABBCC`). */
-  color: string;
-
-  /** Visual **scale factor** (UI only; not physical size). */
-  size: number;
+  /** How to draw the asteroid: its colour and drawn size, and state a renderer computes. */
+  display?: DisplayInterface;
 }
 
 /**

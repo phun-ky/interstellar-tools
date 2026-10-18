@@ -35,9 +35,11 @@ export const ASTEROID_BELTS: AsteroidBeltsType = [
     parent: 'sun',
     innerRadius: 2.1,
     outerRadius: 3.3,
-    color: '#C4C4C4', // Light gray (rocky bodies)
-    opacity: 0.3,
-    density: 0.8
+    display: {
+      color: '#C4C4C4', // Light gray (rocky bodies)
+      opacity: 0.3,
+      density: 0.8
+    }
   },
   // #endregion datasetAsteroidBelts
   {
@@ -46,8 +48,10 @@ export const ASTEROID_BELTS: AsteroidBeltsType = [
     parent: 'sun',
     innerRadius: 30,
     outerRadius: 50,
-    color: '#88CCEE', // Light blue (icy bodies)
-    opacity: 0.2,
-    density: 0.5
+    display: {
+      color: '#88CCEE', // Light blue (icy bodies)
+      opacity: 0.2,
+      density: 0.5
+    }
   }
 ] as const satisfies AsteroidBeltsType;

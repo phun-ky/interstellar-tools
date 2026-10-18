@@ -4,7 +4,7 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 
 <div class="ph table-overflow">
 
-| id | name | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | radius | color |
+| id | name | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | radius | display.color |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | moon | Moon | natural satellite | earth | 0.00257 au | 0.0549 | -27.322 d | 2.41 | 1737.4 km | #BFBFBF |
 | phobos | Phobos | natural satellite | mars | 0.00006 au | 0.0151 | -0.3189 d | 0 | 11 km | #888888 |

@@ -4,7 +4,7 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 
 <div class="ph table-overflow">
 
-| id | name | type | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | radius | color | x | y | z |
+| id | name | type | category | parent | orbit.a | orbit.e | orbit.period | orbit.angle | radius | display.color | x | y | z |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | mercury | Mercury | silicate planet | planet | sun | 0.387 au | 0.2056 | -87.969 d | 3.080377 | 2440 km | #8B8B8B | -0.1301 au | -0.4472 au | -0.0246 au |
 | venus | Venus | silicate planet | planet | sun | 0.723 au | 0.0068 | -224.701 d | 0.88977 | 6052 km | #E49B0F | -0.718 au | -0.0327 au | 0.041 au |

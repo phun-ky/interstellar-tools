@@ -44,8 +44,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.151
     },
     radius: { value: 262.7, unit: 'km' },
-    color: '#999999',
-    size: 1
+    display: {
+      color: '#999999',
+      size: 1
+    }
   },
   // #endregion datasetAsteroids
   {
@@ -66,8 +68,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 1.134
     },
     radius: { value: 8.4, unit: 'km' },
-    color: '#aaaaaa',
-    size: 1
+    display: {
+      color: '#aaaaaa',
+      size: 1
+    }
   },
   {
     id: '2-pallas',
@@ -87,8 +91,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.13
     },
     radius: { value: 256, unit: 'km' },
-    color: '#888888',
-    size: 1
+    display: {
+      color: '#888888',
+      size: 1
+    }
   },
   {
     id: '10-hygiea',
@@ -108,8 +114,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.788
     },
     radius: { value: 216.5, unit: 'km' },
-    color: '#666666',
-    size: 1
+    display: {
+      color: '#666666',
+      size: 1
+    }
   },
   {
     id: '704-interamnia',
@@ -129,8 +137,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.671
     },
     radius: { value: 166, unit: 'km' },
-    color: '#777777',
-    size: 1
+    display: {
+      color: '#777777',
+      size: 1
+    }
   },
   {
     id: '31-euphrosyne',
@@ -150,8 +160,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.451
     },
     radius: { value: 134, unit: 'km' },
-    color: '#555555',
-    size: 1
+    display: {
+      color: '#555555',
+      size: 1
+    }
   },
   {
     id: '16-psyche',
@@ -171,8 +183,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.515
     },
     radius: { value: 111, unit: 'km' },
-    color: '#999999',
-    size: 1
+    display: {
+      color: '#999999',
+      size: 1
+    }
   },
   {
     id: '511-davida',
@@ -192,8 +206,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.549
     },
     radius: { value: 149, unit: 'km' },
-    color: '#444444',
-    size: 1
+    display: {
+      color: '#444444',
+      size: 1
+    }
   },
   {
     id: '52-europa',
@@ -213,8 +229,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.788
     },
     radius: { value: 156.5, unit: 'km' },
-    color: '#555555',
-    size: 1
+    display: {
+      color: '#555555',
+      size: 1
+    }
   },
   {
     id: '3-juno',
@@ -234,8 +252,10 @@ export const ASTEROIDS: AsteroidsType = [
       q: 1.986
     },
     radius: { value: 117, unit: 'km' },
-    color: '#aaaaaa',
-    size: 1
+    display: {
+      color: '#aaaaaa',
+      size: 1
+    }
   },
   {
     id: '15-eunomia',
@@ -255,7 +275,9 @@ export const ASTEROIDS: AsteroidsType = [
       q: 2.153
     },
     radius: { value: 136, unit: 'km' },
-    color: '#bbbbbb',
-    size: 1
+    display: {
+      color: '#bbbbbb',
+      size: 1
+    }
   }
 ] as const satisfies AsteroidsType;

@@ -1,7 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
-import { CartesianCoordinatesInterface } from './planets.js';
+import type { DisplayInterface } from './display.js';
 
 /**
  * Represents a **moon** (natural satellite) orbiting a planet.
@@ -9,10 +9,9 @@ import { CartesianCoordinatesInterface } from './planets.js';
  * A moon always has a `parent` (its planet) and an `orbit` around it; see
  * {@link OrbitInterface}.
  *
- * **Visualization Properties:**
- * - **Orbit Path (`orbitPath`)**: Precomputed trajectory for rendering.
- * - **Color (`color`)**: Visual representation.
+ * **Physical and drawing properties:**
  * - **Size (`radius`)**: Actual moon radius in **kilometers (km)**.
+ * - **Drawing (`display`)**: colour, and state a renderer computes; see {@link DisplayInterface}.
  *
  * @example
  * ```ts
@@ -28,7 +27,7 @@ import { CartesianCoordinatesInterface } from './planets.js';
  *     angle: 0 as Radians
  *   },
  *   radius: { value: 1560.8, unit: 'km' },
- *   color: '#a6a6a6'
+ *   display: { color: '#a6a6a6' }
  * };
  * ```
  * @group Celestial Bodies
@@ -46,22 +45,16 @@ export interface MoonInterface {
   parent: string;
   /** Orbit around the parent planet. */
   orbit: OrbitInterface;
-  /** Semi-minor axis converted to pixels (calculated from `a` and `e`). */
-  miA?: number;
-  /** X-offset for the ellipse focus (accounts for eccentricity). */
-  focus_x?: number;
   /** Physical radius of the moon in kilometres. */
   radius: DistanceInterface;
-  /** Visual representation color. */
-  color: string;
   /** X-coordinate in a distance-based system (optional). */
   x?: DistanceInterface;
   /** Y-coordinate in a distance-based system (optional). */
   y?: DistanceInterface;
   /** Z-coordinate in a distance-based system (optional). */
   z?: DistanceInterface;
-  /** Precomputed orbital path points for visualization (optional). */
-  orbitPath?: CartesianCoordinatesInterface[];
+  /** How to draw the moon: its colour, and state a renderer computes. */
+  display?: DisplayInterface;
 }
 
 /**

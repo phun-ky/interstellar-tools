@@ -4,6 +4,8 @@ export * from './asteroids.js';
 
 export * from './comets.js';
 
+export * from './display.js';
+
 export * from './galaxies.js';
 
 export * from './moons.js';

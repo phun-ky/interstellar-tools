@@ -1,7 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
-import { CartesianCoordinatesInterface } from './planets.js';
+import type { DisplayInterface } from './display.js';
 
 /**
  * Represents a **star**.
@@ -14,7 +14,7 @@ import { CartesianCoordinatesInterface } from './planets.js';
  * **Classification & Visualization:**
  * - **Type (`type`)**: Spectral classification of the star (e.g., `'G2V'`).
  * - **Category (`category`)**: Defined as `'star'`.
- * - **Color (`color`)**: Used for visual representation.
+ * - **Drawing (`display`)**: colour, and state a renderer computes; see {@link DisplayInterface}.
  *
  * @example
  * ```ts
@@ -31,7 +31,7 @@ import { CartesianCoordinatesInterface } from './planets.js';
  *     angle: 1.5699 as Radians
  *   },
  *   radius: { value: 2600000, unit: 'km' },
- *   color: 'blue'
+ *   display: { color: 'blue' }
  * };
  * ```
  * @group Celestial Bodies
@@ -53,20 +53,14 @@ export interface StarInterface {
   mass?: number;
   /** Physical radius of the star. */
   radius: DistanceInterface;
-  /** Visual representation color. */
-  color: string;
-  /** Semi-minor axis of the orbit (calculated from `a` and `e`). */
-  miA?: number;
-  /** X-offset for the ellipse focus (accounts for eccentricity). */
-  focus_x?: number;
   /** X-coordinate in the parent's frame. */
   x?: DistanceInterface;
   /** Y-coordinate in the parent's frame. */
   y?: DistanceInterface;
   /** Z-coordinate in the parent's frame. */
   z?: DistanceInterface;
-  /** Precomputed orbital path points for visualization (optional). */
-  orbitPath?: CartesianCoordinatesInterface[];
+  /** How to draw the star: its colour, and state a renderer computes. */
+  display?: DisplayInterface;
 }
 
 /**

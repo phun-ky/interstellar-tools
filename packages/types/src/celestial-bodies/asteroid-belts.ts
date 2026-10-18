@@ -1,13 +1,12 @@
-import { CartesianCoordinatesInterface } from './planets.js';
+import type { DisplayInterface } from './display.js';
 
 /**
  * Represents an asteroid belt within the solar system simulation.
  *
  * **Asteroid Belt Properties:**
  * - **Inner and Outer Radius**: Defines the spatial boundaries of the belt in **Astronomical Units (AU)**.
- * - **Density**: Determines the number of simulated asteroids within the belt.
- * - **Color and Opacity**: Used for visualization.
- * - **Orbit Path (Optional)**: Stores a precomputed path for asteroid positioning.
+ * - **Drawing (`display`)**: colour, opacity, and density (how many asteroids to draw); see
+ *   {@link DisplayInterface}.
  *
  * @group Celestial Bodies
  */
@@ -22,14 +21,8 @@ export interface AsteroidBeltInterface {
   innerRadius: number;
   /** Outer radius of the belt in Astronomical Units (AU). */
   outerRadius: number;
-  /** Belt color for visualization. */
-  color: string;
-  /** Transparency level (0 = fully transparent, 1 = solid). */
-  opacity: number;
-  /** Density factor affecting how many asteroids are simulated. */
-  density: number;
-  /** Optional: Orbit path for finer asteroid positioning. */
-  orbitPath?: CartesianCoordinatesInterface[];
+  /** How to draw the belt: colour, opacity and density, and state a renderer computes. */
+  display?: DisplayInterface;
 }
 
 /**
@@ -44,9 +37,7 @@ export interface AsteroidBeltInterface {
  *   parent: 'sun',
  *   innerRadius: 2.1,
  *   outerRadius: 3.3,
- *   color: '#888888',
- *   opacity: 0.5,
- *   density: 100,
+ *   display: { color: '#888888', opacity: 0.5, density: 100 }
  * }];
  * ```
  * @group Celestial Bodies
