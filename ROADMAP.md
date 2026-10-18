@@ -9,24 +9,82 @@ formulas that could be added are listed in the [equation backlog](TODO.md).
 
 ## Planned
 
-### Correct, complete datasets
+### A stable 1.0
 
-- **Moon positions:** replace the placeholder angles (26 of the 27 moons are 0)
-  with real J2000 values from published elements, checked by tests as the
-  planets are
-  ([#154](https://github.com/phun-ky/interstellar-tools/issues/154)).
-- **Star systems:** add the orientation of each orbit in a pair
-  ([#155](https://github.com/phun-ky/interstellar-tools/issues/155)), and model
-  Spica as the binary it is
-  ([#156](https://github.com/phun-ky/interstellar-tools/issues/156)).
+Every current package (`types`, `constants`, `temporal`, `equations` and `mcp`)
+goes to 1.0 together: a promise that their API won't break without a major
+version. The
+[1.0 milestone](https://github.com/phun-ky/interstellar-tools/milestone/1) is
+complete; it settled the decisions that would be breaking changes afterwards,
+from the orbit tree and the `display` split to the temporal and MCP APIs, and
+got the datasets ready (real J2000 angles for every moon, `mu` for the major
+bodies, Spica as a binary). What's left is the release itself.
 
-### New equations
+After 1.0, a deprecated API keeps working for one full major, and the current
+major is supported as a whole; see the
+[security policy](SECURITY.md#supported-versions). Packages added later start
+below 1.0.
 
-Grow `@interstellar-tools/equations` along the lines in the
-[equation backlog](TODO.md): geodesy and distances on spheres and ellipsoids,
-map projections, perturbations for low Earth orbit, and three-body tools such as
-the Jacobi integral and the Tisserand parameter. Every new function comes with
-tests and documentation.
+### Maps and topography
+
+The focus after 1.0, in the
+[Maps and topography milestone](https://github.com/phun-ky/interstellar-tools/milestone/2):
+everything needed to map a planet, from distances on its surface to the terrain
+around a landing site. It isn't a major release: the work ships as minor
+releases as it lands, and 2.0 stays reserved for breaking changes.
+
+- **Geodesy, in `@interstellar-tools/equations`** (cartography): reference
+  ellipsoids ([#183](https://github.com/phun-ky/interstellar-tools/issues/183)),
+  great-circle distance
+  ([#184](https://github.com/phun-ky/interstellar-tools/issues/184)), radii of
+  curvature ([#185](https://github.com/phun-ky/interstellar-tools/issues/185)),
+  geodetic and body-fixed coordinates
+  ([#186](https://github.com/phun-ky/interstellar-tools/issues/186)), height
+  above the surface
+  ([#187](https://github.com/phun-ky/interstellar-tools/issues/187)), the
+  horizon ([#188](https://github.com/phun-ky/interstellar-tools/issues/188)) and
+  areas on a sphere
+  ([#189](https://github.com/phun-ky/interstellar-tools/issues/189)).
+- **A new `@interstellar-tools/maps` package**
+  ([#181](https://github.com/phun-ky/interstellar-tools/issues/181)), starting
+  at 0.x so its API can settle before its own 1.0:
+  - map projections: Mercator and equirectangular
+    ([#190](https://github.com/phun-ky/interstellar-tools/issues/190)),
+    sinusoidal and Mollweide
+    ([#191](https://github.com/phun-ky/interstellar-tools/issues/191)), and
+    azimuthal projections
+    ([#192](https://github.com/phun-ky/interstellar-tools/issues/192))
+  - web map tiles and quadkeys
+    ([#193](https://github.com/phun-ky/interstellar-tools/issues/193))
+  - terrain from elevation grids
+    ([#182](https://github.com/phun-ky/interstellar-tools/issues/182)): slope
+    and aspect
+    ([#194](https://github.com/phun-ky/interstellar-tools/issues/194)),
+    hillshading
+    ([#195](https://github.com/phun-ky/interstellar-tools/issues/195)),
+    curvature
+    ([#196](https://github.com/phun-ky/interstellar-tools/issues/196)),
+    roughness ([#197](https://github.com/phun-ky/interstellar-tools/issues/197))
+    and wetness
+    ([#198](https://github.com/phun-ky/interstellar-tools/issues/198))
+  - imaging geometry
+    ([#199](https://github.com/phun-ky/interstellar-tools/issues/199)) and a
+    lander tip-over check
+    ([#200](https://github.com/phun-ky/interstellar-tools/issues/200))
+- **Docs and tools:** guide pages
+  ([#201](https://github.com/phun-ky/interstellar-tools/issues/201)), a Learn
+  tutorial on choosing a landing site on Mars
+  ([#202](https://github.com/phun-ky/interstellar-tools/issues/202)), and MCP
+  tools for geodesy and projections
+  ([#203](https://github.com/phun-ky/interstellar-tools/issues/203)).
+
+### More equations
+
+After maps, grow `@interstellar-tools/equations` along the rest of the
+[equation backlog](TODO.md): perturbations for low Earth orbit, entry, descent
+and landing, attitude dynamics, and three-body tools such as the Jacobi integral
+and the Tisserand parameter. Every new function comes with tests and
+documentation.
 
 ### Time
 
@@ -39,32 +97,9 @@ tests and documentation.
   by a test, as the orbit equations already have.
 - **A guide page per category**, like the existing manoeuvres guide.
 - **More Learn tutorials**, such as planning a trip to Mars, why Proxima
-  Centauri takes 547 000 years to orbit, a slingshot around Jupiter, and why
-  satellites drift.
-
-### A stable 1.0
-
-Release every current package (`types`, `constants`, `temporal`, `equations` and
-`mcp`) as 1.0, together: a promise that their API won't break without a major
-version. Packages added later start below 1.0. The work is in the
-[1.0 milestone](https://github.com/phun-ky/interstellar-tools/milestone/1), and
-covers the decisions that would be breaking changes afterwards:
-
-- release breaking changes as major versions after 1.0
-  ([#148](https://github.com/phun-ky/interstellar-tools/issues/148))
-- let the orbit tree from 0.61 settle in use first
-  ([#149](https://github.com/phun-ky/interstellar-tools/issues/149))
-- put `mu` last in every equation
-  ([#151](https://github.com/phun-ky/interstellar-tools/issues/151))
-- decide whether display fields belong in the core types
-  ([#153](https://github.com/phun-ky/interstellar-tools/issues/153))
-- review the `temporal` API
-  ([#162](https://github.com/phun-ky/interstellar-tools/issues/162))
-- review the MCP server's tools, resources and options, which assistant setups
-  depend on ([#163](https://github.com/phun-ky/interstellar-tools/issues/163))
-
-Adding to a package after 1.0, such as new time scales in `temporal`, is a minor
-release, so 1.0 doesn't stop the packages from growing.
+  Centauri takes 547 000 years to orbit, a slingshot around Jupiter, why
+  satellites drift, and choosing a landing site on Mars
+  ([#202](https://github.com/phun-ky/interstellar-tools/issues/202)).
 
 ### Project health
 
