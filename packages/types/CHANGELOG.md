@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.61.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.61.1...%40interstellar-tools%2Ftypes%400.61.2) (2026-10-18)
+
+### Bug
+
+* 🐛 Store real true anomalies at J2000 for the comets ([175e924](https://github.com/phun-ky/interstellar-tools/commit/175e924545d3951574def97f03dcea4d2f1dec30)), closes [#150](https://github.com/phun-ky/interstellar-tools/issues/150)
+
 ## [0.61.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.61.0...%40interstellar-tools%2Ftypes%400.61.1) (2026-10-18)
 
 ### Documentation
