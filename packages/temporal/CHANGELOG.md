@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.60.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.2...%40interstellar-tools%2Ftemporal%400.60.3) (2026-10-18)
+
+### Documentation
+
+* ✏️ Adopt the Developer Certificate of Origin ([44b4416](https://github.com/phun-ky/interstellar-tools/commit/44b44169efe1b77b6cc612e2b2bf0465a5c3e99c))
+
+### Bug
+
+* 🐛 Include the licence in every published package ([9b4a5fb](https://github.com/phun-ky/interstellar-tools/commit/9b4a5fb09b377159a87b675be57b5b89c3b12e6f))
+
 ## [0.60.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.1...%40interstellar-tools%2Ftemporal%400.60.2) (2026-10-17)
 
 ### Documentation
