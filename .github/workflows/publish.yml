@@ -50,12 +50,30 @@ jobs:
       - name: Install dependencies
         run: | # Install and link dependencies
           npm ci
+      - name: Audit runtime dependencies # No release with a known high or critical vulnerability
+        run: npm audit --omit=dev --audit-level=high
+      - name: Remember existing tags
+        run: |
+          git tag --list '@interstellar-tools/*' | sort > "$RUNNER_TEMP/tags-before"
       - name: 'Release' # Interesting step
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor}}@users.noreply.github.com"
+          git config user.name "$ACTOR"
+          git config user.email "$ACTOR@users.noreply.github.com"
           npm run release
         env: # npm authenticates via trusted publishing (id-token: write), no token needed
+          ACTOR: ${{ github.actor }} # via env, never interpolated into the script
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Attach SBOMs to the new releases # CycloneDX, runtime dependencies only
+        run: |
+          git tag --list '@interstellar-tools/*' | sort > "$RUNNER_TEMP/tags-after"
+          comm -13 "$RUNNER_TEMP/tags-before" "$RUNNER_TEMP/tags-after" | while read -r tag; do
+            name="${tag#@interstellar-tools/}"
+            name="${name%@*}"
+            file="$RUNNER_TEMP/${name}-${tag##*@}.cdx.json"
+            node scripts/sbom.mjs "$name" > "$file"
+            gh release upload "$tag" "$file" --clobber
+          done
+        env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Check sibling ranges # All packages are released, so ranges must match now
         run: npm run check:sibling-ranges
