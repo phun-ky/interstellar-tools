@@ -14,7 +14,8 @@ import { solveKepler } from '../kepler/solve-kepler.js';
  *
  * The orbit's `angle` is the starting true anomaly. There is no date input:
  * call this once per frame or step, and feed the result back in as the next
- * `angle` to move the body over time.
+ * `angle` to move the body over time. To find a body at a given date instead,
+ * use {@link trueAnomalyAt}.
  *
  * **Step 1: Mean anomaly after the time step ($M$)**
  *
@@ -24,9 +25,9 @@ import { solveKepler } from '../kepler/solve-kepler.js';
  * - $M_0$ is the mean anomaly at the start, converted from the true anomaly
  *   `angle` (equal to it when $e = 0$).
  * - $n$ is the mean motion, from the period $P$ converted to days. The sign of
- *   $P$ is ignored, so the angle always increases.
- * - $\Delta t$ is `timeStep.value` in days, clamped to at least $10^{-5}$ days
- *   and at most $10\,|P|$ ($|P|$ when $e \geq 0.9$).
+ *   $P$ is ignored, so a positive step always moves the body forward.
+ * - $\Delta t$ is `timeStep.value` in days. It can be any length, and negative
+ *   to go back in time.
  *
  * The result is wrapped to $[0, 2\pi)$.
  *

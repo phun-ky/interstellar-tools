@@ -6,36 +6,38 @@ import type {
   TemporalInterface
 } from '@interstellar-tools/types';
 
-import { wrapAngle } from '../angle/wrap-angle.js';
+import { norm2pi } from '../helpers/misc.js';
 
 import { trueToMeanAnomaly } from './true-to-mean-anomaly.js';
-import { areEqual } from './utils/are-equal.js';
 
 /* node:coverage disable */
 /**
  * Advances an orbit by a time step and returns its new **mean anomaly** ($M$).
  *
  * The orbit's `angle` (true anomaly) is the starting point. To get the eccentric
- * anomaly from the result, pass it to {@link solveKepler}.
+ * anomaly from the result, pass it to {@link solveKepler}. To find a body at a
+ * given date, use {@link meanAnomalyAt} or {@link trueAnomalyAt}.
  *
  * **Mathematical Explanation:**
  *
  * The **mean anomaly** is a measure of the position of an orbiting body as if it moved
  * with uniform angular motion along a circular orbit with the same period as the actual
- * elliptical orbit. It is computed as:
+ * elliptical orbit. It grows linearly with time:
  *
- * $$ M = M_0 + n \cdot \Delta T $$
+ * $$ M = M_0 + n \cdot \Delta T, \qquad n = \frac{2\pi}{|P|} $$
  *
  * where:
- * - $M_0$ is the **initial mean anomaly** (converted from true anomaly if necessary).
- * - $n$ is the **mean motion**, given by:
- *   $$ n = \frac{2\pi}{P} $$
- *   where $P$ is the orbital period in days.
+ * - $M_0$ is the **initial mean anomaly**, converted from the true anomaly `angle`.
+ * - $n$ is the **mean motion**, from the period $P$ in days. The sign of $P$ is
+ *   ignored, so a positive step always moves the body forward along its orbit.
  * - $\Delta T$ is the time step, converted to days from its unit.
  *
+ * The step can be any length, from a fraction of a second to many orbits, and
+ * negative to go back in time. The result is wrapped to $[0, 2\pi)$.
+ *
  * @param {Pick<OrbitInterface, 'e' | 'angle' | 'period'>} orbit - The body's orbit, for example `body.orbit` from a dataset.
- * @param {TemporalInterface} timeStep - The time step over which to compute the change, in any temporal unit.
- * @returns {Radians} The computed mean anomaly in radians.
+ * @param {TemporalInterface} timeStep - How far to advance, in any temporal unit; negative goes back in time.
+ * @returns {Radians} The mean anomaly after the time step, in $[0, 2\pi)$.
  *
  * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If the orbit's eccentricity is outside the range $0 \leq e < 1$.
  *
@@ -49,9 +51,9 @@ import { areEqual } from './utils/are-equal.js';
  *   period: { value: 687, unit: 'd' } // Orbital period in days
  * };
  *
- * const timeStep: TemporalInterface = { value: 1, unit: 'd' }; // 1-day step
- * const meanAnomaly = advanceMeanAnomaly(marsOrbit, timeStep);
- * console.log(meanAnomaly); // Output: Computed mean anomaly in radians
+ * advanceMeanAnomaly(marsOrbit, { value: 1, unit: 'd' }); // one day on
+ * advanceMeanAnomaly(marsOrbit, { value: 10, unit: 'yr' }); // ten years on
+ * advanceMeanAnomaly(marsOrbit, { value: -1, unit: 'd' }); // one day back
  * ```
  *
  * @see {@link solveKepler} to convert the mean anomaly to the eccentric anomaly.
@@ -76,28 +78,8 @@ export const advanceMeanAnomaly = (
   const periodInDays = convertTemporalUnit(period, 'd').value;
   const timeStepInDays = convertTemporalUnit(timeStep, 'd').value;
   const meanMotion = TWO_PI / Math.abs(periodInDays);
-  // Convert true anomaly (V) to mean anomaly (M0) if necessary
+  // Convert true anomaly (V) to mean anomaly (M0)
   const M0 = e === 0 ? angle : trueToMeanAnomaly(angle, e);
 
-  if (timeStepInDays === 0) {
-    return M0 as Radians;
-  }
-
-  // Clamping small time steps to prevent unnecessary updates
-  const minTimeStep = 1e-5; // Minimum allowed time step
-  const maxTimeStepFactor = e >= 0.9 ? 1 : 10; // Stricter limit for highly eccentric orbits
-  const clampedDeltaT = Math.max(
-    minTimeStep,
-    Math.min(timeStepInDays, maxTimeStepFactor * Math.abs(periodInDays))
-  );
-  // Compute new mean anomaly with hysteresis filter and sign preservation
-  const prevM = M0;
-
-  let newM = wrapAngle(M0 + meanMotion * clampedDeltaT);
-
-  if (areEqual(newM, prevM)) {
-    newM = prevM;
-  }
-
-  return newM as Radians;
+  return norm2pi(M0 + meanMotion * timeStepInDays) as Radians;
 };
