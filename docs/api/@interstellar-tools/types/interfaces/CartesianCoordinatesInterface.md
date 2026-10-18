@@ -4,7 +4,7 @@ CartesianCoordinatesInterface
 # Interface: CartesianCoordinatesInterface
 
 Defined in:
-[celestial-bodies/display.ts:13](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L13)
+[celestial-bodies/display.ts:13](https://github.com/phun-ky/interstellar-tools/blob/3b3e9ce5b537aa4032c382fccd8b2cef0ae6ff57/packages/types/src/celestial-bodies/display.ts#L13)
 
 Represents **2D coordinates**, for example a point on a drawn orbit.
 
@@ -23,7 +23,7 @@ x: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:14](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L14)
+[celestial-bodies/display.ts:14](https://github.com/phun-ky/interstellar-tools/blob/3b3e9ce5b537aa4032c382fccd8b2cef0ae6ff57/packages/types/src/celestial-bodies/display.ts#L14)
 
 The x-coordinate.
 
@@ -36,6 +36,6 @@ y: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:15](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/types/src/celestial-bodies/display.ts#L15)
+[celestial-bodies/display.ts:15](https://github.com/phun-ky/interstellar-tools/blob/3b3e9ce5b537aa4032c382fccd8b2cef0ae6ff57/packages/types/src/celestial-bodies/display.ts#L15)
 
 The y-coordinate.

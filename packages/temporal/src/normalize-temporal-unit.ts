@@ -24,17 +24,13 @@ import type {
  * - Normalize with this map.
  * - Store/compute exclusively with canonical {@link TemporalUnitType}.
  *
- * ::: tip
- *
- * If you require runtime immutability, wrap with `Object.freeze(NORMALIZE_UNIT)`.
- *
- * :::
+ * The table is frozen: it can be read, but not changed at runtime.
  *
  * @see https://www.bipm.org/en/publications/si-brochure  ([SI](https://en.wikipedia.org/wiki/International_System_of_Units) Brochure - second & day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year for yr/kyr/Myr/Gyr)
  */
 /* node:coverage enable */
-export const NORMALIZE_UNIT = {
+export const NORMALIZE_TEMPORAL_UNIT = Object.freeze({
   // canonical already map to themselves:
   s: 's',
   ms: 'ms',
@@ -86,7 +82,7 @@ export const NORMALIZE_UNIT = {
 } as const satisfies Record<
   TemporalUnitAliasType | TemporalUnitType,
   TemporalUnitType
->;
+>);
 
 /* node:coverage disable */
 /**
@@ -95,20 +91,20 @@ export const NORMALIZE_UNIT = {
  * - Trims surrounding whitespace.
  * - Accepts both **canonical symbols** (e.g., `"s"`, `"ms"`, `"μs"`, `"min"`, `"h"`, `"d"`, `"yr"`, `"kyr"`, `"Myr"`, `"Gyr"`)
  *   and **aliases** (e.g., `"seconds"`, `"milliseconds"`, `"us"`, `"hours"`, `"years"`, `"Ma"`, `"Ga"`),
- *   using {@link NORMALIZE_UNIT} as the single source of truth.
+ *   using {@link NORMALIZE_TEMPORAL_UNIT} as the single source of truth.
  * - Returns a **canonical** unit suitable for arithmetic, storage, and serialization.
  *
  * ### Conventions
  * - **Durations only** (no timestamp or "ago" semantics). Geology-style tokens like `"Ma"`/`"Ga"` are
  *   interpreted as durations and normalized to `"Myr"`/`"Gyr"`.
- * - **Case-sensitive** exact match against {@link NORMALIZE_UNIT}. For example, `"Seconds"` (capital S)
+ * - **Case-sensitive** exact match against {@link NORMALIZE_TEMPORAL_UNIT}. For example, `"Seconds"` (capital S)
  *   will fail; use `"seconds"` instead, or pre-normalize casing upstream if desired.
  * - The ASCII alias `"us"` is accepted and normalized to the Unicode microsecond symbol `"μs"`.
  *
  * @param u - The input unit string. Leading/trailing whitespace is ignored; content is **case-sensitive**.
  * @returns The canonical {@link TemporalUnitType} (e.g., `"s"`, `"ms"`, `"μs"`, `"min"`, `"h"`, `"d"`, `"yr"`, `"kyr"`, `"Myr"`, `"Gyr"`).
  *
- * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError}  If `u` does not match any known key in {@link NORMALIZE_UNIT}.
+ * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If `u` does not match any known key in {@link NORMALIZE_TEMPORAL_UNIT}.
  *
  * @example
  * ```ts
@@ -123,16 +119,18 @@ export const NORMALIZE_UNIT = {
  * // normalizeTemporalUnit('Seconds'); // throws (case-sensitive)
  * ```
  *
- * @see {@link NORMALIZE_UNIT} for the complete alias→canonical mapping.
+ * @see {@link NORMALIZE_TEMPORAL_UNIT} for the complete alias→canonical mapping.
  * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure - second/day)
  * @see https://en.wikipedia.org/wiki/Julian_year_(astronomy) (Julian year for yr/kyr/Myr/Gyr)
  */
 /* node:coverage enable */
 export const normalizeTemporalUnit = (u: string): TemporalUnitType => {
   const k = u.trim();
-  const v = NORMALIZE_UNIT[k as keyof typeof NORMALIZE_UNIT];
+  const v = Object.prototype.hasOwnProperty.call(NORMALIZE_TEMPORAL_UNIT, k)
+    ? NORMALIZE_TEMPORAL_UNIT[k as keyof typeof NORMALIZE_TEMPORAL_UNIT]
+    : undefined;
 
-  if (!v) throw new Error(`Unsupported unit: ${u}`);
+  if (!v) throw new RangeError(`Unsupported unit: ${u}`);
 
   return v;
 };

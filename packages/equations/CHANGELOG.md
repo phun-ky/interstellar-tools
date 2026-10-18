@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.63.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.63.1...%40interstellar-tools%2Fequations%400.63.2) (2026-10-18)
+
 ## [0.63.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.63.0...%40interstellar-tools%2Fequations%400.63.1) (2026-10-18)
 
 ## [0.63.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.62.0...%40interstellar-tools%2Fequations%400.63.0) (2026-10-18)

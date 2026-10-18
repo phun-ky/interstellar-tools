@@ -6,12 +6,56 @@
 ```ts
 function convertTemporalUnit(
   time: TemporalInterface,
-  targetUnit: TemporalUnitType
+  targetUnit:
+    | 'second'
+    | 'seconds'
+    | 'millisecond'
+    | 'milliseconds'
+    | 'microsecond'
+    | 'microseconds'
+    | 'us'
+    | 'minute'
+    | 'minutes'
+    | 'hour'
+    | 'hours'
+    | 'day'
+    | 'days'
+    | 'year'
+    | 'years'
+    | 'yr'
+    | 'yrs'
+    | 'kiloyear'
+    | 'kiloyears'
+    | 'kyr'
+    | 'megayear'
+    | 'megayears'
+    | 'megaannum'
+    | 'megaannums'
+    | 'Myr'
+    | 'Ma'
+    | 'gigayear'
+    | 'gigayears'
+    | 'gigaannum'
+    | 'gigaannums'
+    | 'Gyr'
+    | 'Ga'
+    | 's'
+    | 'ms'
+    | 'μs'
+    | 'ns'
+    | 'ps'
+    | 'fs'
+    | 'as'
+    | 'zs'
+    | 'ys'
+    | 'min'
+    | 'h'
+    | 'd'
 ): TemporalInterface;
 ```
 
 Defined in:
-[convert-temporal-unit.ts:95](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/temporal/src/convert-temporal-unit.ts#L95)
+[convert-temporal-unit.ts:103](https://github.com/phun-ky/interstellar-tools/blob/3b3e9ce5b537aa4032c382fccd8b2cef0ae6ff57/packages/temporal/src/convert-temporal-unit.ts#L103)
 
 Convert a temporal **duration** between any two canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md) units.
@@ -22,8 +66,8 @@ Convert a temporal **duration** between any two canonical
   convention.
 - The `time.unit` is expected to be **canonical**; if you accept aliases
   upstream, normalize them before calling (e.g., with `normalizeTemporalUnit`).
-- The `targetUnit` is normalized to a canonical symbol (idempotent for canonical
-  input).
+- The `targetUnit` may be a canonical unit or an alias such as `'days'`; it is
+  normalized to a canonical symbol.
 
 $$
 \text{value}_{\text{target}}
@@ -37,7 +81,7 @@ $$
 | Parameter    | Type                                                               | Description                                          |
 | ------------ | ------------------------------------------------------------------ | ---------------------------------------------------- |
 | `time`       | [`TemporalInterface`](../../types/interfaces/TemporalInterface.md) | Input duration `{ value, unit }` in canonical units. |
-| `targetUnit` | [`TemporalUnitType`](../../types/type-aliases/TemporalUnitType.md) | Desired canonical output unit (will be normalized).  |
+| `targetUnit` |                                                                    | `"second"`                                           | `"seconds"` | `"millisecond"` | `"milliseconds"` | `"microsecond"` | `"microseconds"` | `"us"` | `"minute"` | `"minutes"` | `"hour"` | `"hours"` | `"day"` | `"days"` | `"year"` | `"years"` | `"yr"` | `"yrs"` | `"kiloyear"` | `"kiloyears"` | `"kyr"` | `"megayear"` | `"megayears"` | `"megaannum"` | `"megaannums"` | `"Myr"` | `"Ma"` | `"gigayear"` | `"gigayears"` | `"gigaannum"` | `"gigaannums"` | `"Gyr"` | `"Ga"` | `"s"` | `"ms"` | `"μs"` | `"ns"` | `"ps"` | `"fs"` | `"as"` | `"zs"` | `"ys"` | `"min"` | `"h"` | `"d"` | Desired output unit, canonical or an alias (will be normalized). |
 
 ## Returns
 
@@ -60,6 +104,10 @@ convertTemporalUnit({ value: 3, unit: 'Myr' }, 'kyr');
 convertTemporalUnit({ value: 1, unit: 'yr' }, 'd');
 // → { value: 365.25, unit: 'd' }
 ```
+
+## Throws
+
+If `targetUnit` is not a known unit or alias.
 
 ## See
 

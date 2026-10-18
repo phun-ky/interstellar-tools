@@ -162,7 +162,7 @@ export interface MeasureInterface extends ValueInterface {
  *
  * @example
  * ```ts
- * const distanceToAlphaCentauri: DistanceInterface = { value: 4.367, unit: 'lightyears' };
+ * const distanceToAlphaCentauri: DistanceInterface = { value: 4.367, unit: 'ly' };
  * ```
  * @group Distance
  */

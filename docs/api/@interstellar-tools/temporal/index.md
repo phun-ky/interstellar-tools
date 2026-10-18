@@ -26,10 +26,10 @@ npm i --save @interstellar-tools/temporal
 
 ## Variables
 
-| Variable                                      | Description                                                                                                                                                                                 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [NORMALIZE_UNIT](variables/NORMALIZE_UNIT.md) | Lookup table that **normalizes user-facing time unit aliases** (and the canonical symbols themselves) to a single, canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md). |
-| [SECONDS_PER](variables/SECONDS_PER.md)       | Seconds-per-unit lookup for all canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md) symbols.                                                                            |
+| Variable                                                        | Description                                                                                                                                                                                 |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [NORMALIZE_TEMPORAL_UNIT](variables/NORMALIZE_TEMPORAL_UNIT.md) | Lookup table that **normalizes user-facing time unit aliases** (and the canonical symbols themselves) to a single, canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md). |
+| [SECONDS_PER](variables/SECONDS_PER.md)                         | Seconds-per-unit lookup for all canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md) symbols.                                                                            |
 
 ## Functions
 
