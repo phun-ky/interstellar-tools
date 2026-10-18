@@ -8,7 +8,7 @@ export const muSchema = z
   .number()
   .positive()
   .describe(
-    'Standard gravitational parameter μ = G·M of the central body, in m³/s². Earth ≈ 3.986004418e14, Sun ≈ 1.32712440018e20.'
+    'Standard gravitational parameter μ = G·M of the central body, in m³/s². Take it from the `mu` of the body (find_body); Earth ≈ 3.986004355e14, Sun ≈ 1.32712440041e20.'
   );
 
 /** Angle input that accepts either degrees or radians. */

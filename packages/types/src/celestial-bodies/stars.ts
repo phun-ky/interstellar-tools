@@ -51,6 +51,11 @@ export interface StarInterface {
   orbit?: OrbitInterface;
   /** Mass in solar masses ($M_\odot$). */
   mass?: number;
+  /**
+   * Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s²,
+   * as the orbit equations take it. Given where JPL publishes one.
+   */
+  mu?: number;
   /** Physical radius of the star. */
   radius: DistanceInterface;
   /** X-coordinate in the parent's frame. */

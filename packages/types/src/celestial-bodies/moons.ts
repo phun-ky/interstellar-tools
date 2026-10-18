@@ -47,6 +47,11 @@ export interface MoonInterface {
   orbit: OrbitInterface;
   /** Physical radius of the moon in kilometres. */
   radius: DistanceInterface;
+  /**
+   * Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s²,
+   * as the orbit equations take it. Given where JPL publishes one.
+   */
+  mu?: number;
   /** X-coordinate in a distance-based system (optional). */
   x?: DistanceInterface;
   /** Y-coordinate in a distance-based system (optional). */

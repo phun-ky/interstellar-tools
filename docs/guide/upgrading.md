@@ -41,6 +41,8 @@ order; skip the ones older than the version you're on.
       of `orbit.period`, which is now always positive.
 - [ ] Brand `i`, `w` and `om` as `DegreesType`, write `q` as a distance, and
       check `x`, `y`, `z` on planets before using them.
+- [ ] Read belt radii as distances (`belt.innerRadius.value`), and look Spica's
+      stars up as `spica-a` and `spica-b`.
 - [ ] Rename `NORMALIZE_UNIT` to `NORMALIZE_TEMPORAL_UNIT`, and catch
       `RangeError` from the unit functions.
 - [ ] Expect new values for planet and comet positions, which are now real J2000
@@ -291,6 +293,37 @@ const r = Math.hypot(planet.x.value, planet.y.value, planet.z.value);
 const { x, y, z } = planet;
 const r = x && y && z ? Math.hypot(x.value, y.value, z.value) : undefined;
 ```
+
+### types and constants 0.64: the datasets for 1.0
+
+**Belt radii are distances**, like every other length:
+
+```ts
+// 0.63
+const inner = belt.innerRadius; // 2.1, in au
+// 0.64
+const { value: inner } = belt.innerRadius; // { value: 2.1, unit: 'au' }
+```
+
+**`CelestialBodiesType` is a list of any bodies**, `CelestialBodyType[]`, so a
+mixed list such as `[...STARS, ...PLANETS]` type-checks. Before, it was a list
+of one kind only. Code that relied on the old union, for example to tell from
+the type alone that every entry is a planet, should use `PlanetsType` instead.
+
+**Spica is a binary.** The id `spica` now names the system (in `SYSTEMS`), and
+its stars are `spica-a` and `spica-b` (in `STARS`), the way Alpha Centauri's
+are. Code that looked up `spica` in `STARS` gets nothing back; look up
+`spica-a`, or the system in `SYSTEMS`.
+
+Added without breaking anything, but with new values to expect:
+
+- **`mu`** (G·M in m³/s²) on the Sun, the planets and the larger moons.
+- **Moon orbits** now match JPL: 14 semi-major axes changed, some by a factor of
+  two (Rhea, Metis, Amalthea), Himalia's, Hyperion's and Halimede's
+  eccentricities changed, and every moon has a real `orbit.angle` at J2000
+  instead of 0.
+- **Masses** for Vega, Altair and Deneb, and **orientation** (`i`, `w`, `om`)
+  for Alpha Centauri A and B and the Spica pair.
 
 ### For renderers: drawing with the library
 

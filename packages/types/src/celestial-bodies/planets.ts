@@ -72,6 +72,11 @@ export interface PlanetInterface {
   orbit?: OrbitInterface;
   /** Physical radius of the planet in kilometres. */
   radius: DistanceInterface;
+  /**
+   * Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s²,
+   * as the orbit equations take it. Given where JPL publishes one.
+   */
+  mu?: number;
   /** X-coordinate in the parent's frame. Optional: a rogue planet or an exoplanet may have no known position. */
   x?: DistanceInterface;
   /** Y-coordinate in the parent's frame. */
