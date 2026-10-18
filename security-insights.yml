@@ -1,7 +1,7 @@
 header:
   schema-version: 2.2.0
-  last-updated: '2026-10-17'
-  last-reviewed: '2026-10-17'
+  last-updated: '2026-10-18'
+  last-reviewed: '2026-10-18'
   url: https://raw.githubusercontent.com/phun-ky/interstellar-tools/main/security-insights.yml
   comment: |
     Security information for Interstellar Tools, in the OpenSSF Security
@@ -58,7 +58,7 @@ repository:
     review-policy: https://github.com/phun-ky/interstellar-tools/blob/main/GOVERNANCE.md#model
     security-policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md
     governance: https://github.com/phun-ky/interstellar-tools/blob/main/GOVERNANCE.md
-    dependency-management-policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#security-policy
+    dependency-management-policy: https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#dependencies
   license:
     url: https://github.com/phun-ky/interstellar-tools/blob/main/LICENSE
     expression: MIT
@@ -84,6 +84,12 @@ repository:
           Every package is published from GitHub Actions with npm trusted
           publishing and a Sigstore-signed provenance attestation. Replace
           {package} and {version}, or run npm audit signatures.
+      - name: SBOM
+        predicate-uri: https://cyclonedx.org/bom
+        location: https://github.com/phun-ky/interstellar-tools/releases/tag/@interstellar-tools/{package}@{version}
+        comment: |
+          A CycloneDX SBOM of the package's runtime dependencies,
+          {package}-{version}.cdx.json, is attached to each GitHub release.
   security:
     assessments:
       self:
@@ -116,6 +122,18 @@ repository:
         results: {}
         comment: |
           Weekly checks of the npm dependencies, with update pull requests.
+      - name: Dependency Review
+        type: SCA
+        rulesets:
+          - default
+        integration:
+          adhoc: false
+          ci: true
+          release: false
+        results: {}
+        comment: |
+          Fails pull requests that add a dependency with a known high or
+          critical vulnerability. npm audit gates every release the same way.
       - name: OpenSSF Scorecard
         type: other
         rulesets:

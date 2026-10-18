@@ -4,14 +4,18 @@ The libraries (`@interstellar-tools/constants`, `equations`, `temporal` and
 `types`) have no runtime dependencies outside this monorepo, and they collect,
 store and transmit no data. `@interstellar-tools/mcp` depends on the
 [Model Context Protocol SDK](https://github.com/modelcontextprotocol/typescript-sdk)
-and [Zod](https://github.com/colinhacks/zod), both MIT-licensed. Dependencies
-are monitored with Dependabot, and pinned versions are kept clear of known
-advisories.
+and [Zod](https://github.com/colinhacks/zod), both MIT-licensed. How
+dependencies are chosen, tracked and kept clear of known vulnerabilities is
+described under [Dependencies](#dependencies).
 
 ## Supported Versions
 
 The project is in early alpha (`0.x`). Security fixes are released for the
-latest published version of each package only.
+latest published version of each package only: a release is supported until the
+next release of the same package, and from then on gets no security updates. To
+get a fix, upgrade to the latest version; the
+[upgrading guide](https://phun-ky.net/interstellar-tools/guide/upgrading)
+explains any changes you need to make.
 
 | Package                         | Supported                |
 | ------------------------------- | ------------------------ |
@@ -82,8 +86,79 @@ signing key is stored on npm. To verify the packages you've installed:
 npm audit signatures
 ```
 
-Each package's page on npm also shows its provenance, with links to the source
-commit and the build.
+To check **who** built a release, look at its provenance: it must name the
+repository `phun-ky/interstellar-tools` and the workflow
+`.github/workflows/publish.yml`. Each package's page on npm shows this under
+"Provenance", with links to the source commit and the workflow run, and
+`npm view @interstellar-tools/<package>@<version> dist.attestations` lists the
+attestations themselves.
+
+Each GitHub release also has a software bill of materials attached, in CycloneDX
+format (`<package>-<version>.cdx.json`), listing the package's runtime
+dependencies.
+
+## Dependencies
+
+**Choosing them.** The fewer dependencies, the better. The libraries
+(`constants`, `equations`, `temporal`, `types`) have no runtime dependencies
+outside this monorepo, and should keep it that way. A new runtime dependency is
+discussed in an issue first, and must be widely used, actively maintained and
+under an OSI-approved licence compatible with MIT; strong copyleft licences
+(GPL, AGPL) are not accepted for runtime dependencies. Development dependencies
+follow the same rules, judged more loosely.
+
+**Obtaining them.** Packages come only from the npm registry, with exact
+versions locked in `package-lock.json` and installed with `npm ci` in CI. GitHub
+Actions are pinned to commit SHAs.
+
+**Tracking them.** Dependabot proposes version updates weekly and security
+updates as soon as an advisory is published. Every pull request runs
+[dependency review](https://github.com/phun-ky/interstellar-tools/blob/main/.github/workflows/dependency-review.yml),
+and every release runs `npm audit` first.
+
+**Fixing known vulnerabilities.** Findings are checked against the GitHub
+Advisory Database, which also lists known malicious npm packages:
+
+| Finding                    | Where                  | What happens                                                                                     |
+| -------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------ |
+| Critical or high           | Runtime dependency     | Blocks merging (dependency review) and releasing (`npm audit`); fixed and released within 7 days |
+| Critical or high           | Development dependency | Blocks merging when introduced; an existing one is fixed within 30 days                          |
+| Moderate or low            | Any dependency         | Fixed with the next update, within 90 days                                                       |
+| Licence outside the policy | New dependency         | Not merged                                                                                       |
+
+**Vulnerabilities that don't affect the project.** If a dependency has a
+vulnerability that can't be exploited through this project, for example because
+the vulnerable code is never called, the alert is dismissed with that reason and
+recorded as an [OpenVEX](https://openvex.dev/) statement in `vex.openvex.json`
+in this repository. There are none at the moment.
+
+## Code Scanning
+
+CodeQL analyses every pull request and every push to `main`. The ruleset on
+`main` blocks merging while CodeQL reports an error, or a security alert of high
+or critical severity. Medium and low alerts are reviewed within 30 days, and
+either fixed or dismissed with the reason recorded in the alert.
+
+## Secrets
+
+The project keeps as few secrets as possible:
+
+| Secret          | Used by                                                                     | For                                                                                |
+| --------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `GH_TOKEN`      | `publish.yml`, and the failed-build alerts in `check.yml` and `publish.yml` | Release commits, tags and GitHub releases, and opening an issue when a build fails |
+| `CODECOV_TOKEN` | `check.yml`                                                                 | Uploading coverage reports                                                         |
+
+Publishing to npm needs no secret: it uses short-lived OIDC tokens from GitHub.
+
+- **Storage:** secrets are kept only as encrypted GitHub Actions secrets, never
+  in the repository. Secret scanning with push protection blocks commits that
+  contain one.
+- **Access:** only the maintainer can view or change them, and they are not
+  available to workflows run from forks.
+- **Scope:** each token is limited to this repository and to the permissions its
+  task needs, with an expiry date.
+- **Rotation:** at least once a year, immediately if one may have been exposed,
+  and when someone with access leaves the project.
 
 ## Assurance Case
 

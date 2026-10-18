@@ -38,6 +38,12 @@ to become maintainers. A new maintainer gets write access to the repository and
 is added to this document, and from then on the project needs a review from a
 maintainer other than the author before merging.
 
+Before anyone is given write access or any other escalated permission, such as
+to the npm organisation, the maintainer reviews their contribution history and
+confirms that their GitHub account uses two-factor authentication. They get the
+lowest role that lets them do the work, and the change is recorded in the roles
+table above.
+
 ## Continuity
 
 Today, one person holds everything needed to run the project: admin access to

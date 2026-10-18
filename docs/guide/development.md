@@ -9,12 +9,21 @@ and
 
 :::
 
+## Requirements
+
+- [Node.js](https://nodejs.org/) 24.15 or newer, and npm 11.5.1 or newer (see
+  `engines` in `package.json`)
+- [Git](https://git-scm.com/)
+
+Everything else, including TypeScript, the test runner and the docs tooling, is
+installed from `package-lock.json`.
+
 ## Install
 
-To develop **Hybrid Compute**, fork it, and then in the project root:
+To develop **Interstellar Tools**, fork it, and then in the project root:
 
 ```shell
-npm i
+npm ci
 ```
 
 ## Build
@@ -26,8 +35,16 @@ npm run build
 ## Test the code
 
 ```shell
-npm test
+npm test     # every package's test suite
+npm run test:ci # the same, with coverage reports, as CI runs it
 ```
+
+Tests use Node's built-in test runner, and live next to the code in each
+package's `__tests__` folders. The Checks workflow runs them, with coverage, on
+every push to `main` and every pull request, after the build, lint, type-check
+and docs check; a pull request can't be merged until they pass. Tests are
+required for new functionality and for bug fixes, as described in
+[Contributing code](https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md#tests).
 
 ## Lint and type-check
 

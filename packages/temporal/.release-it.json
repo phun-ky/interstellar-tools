@@ -2,7 +2,8 @@
   "git": {
     "requireCleanWorkingDir": false,
     "tagName": "@interstellar-tools/temporal@${version}",
-    "commitMessage": "chore: 🤖 ${name}@${version}"
+    "commitMessage": "chore: 🤖 ${name}@${version}",
+    "commitArgs": ["-s"]
   },
   "github": {
     "release": true,

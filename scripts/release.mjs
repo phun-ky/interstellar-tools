@@ -1,7 +1,7 @@
 // Releases only the packages that have something to release, in dependency order.
 //
 // A package is released when, since its last tag, a commit touching what it
-// publishes (src without tests, package.json, README.md) is:
+// publishes (src without tests, package.json, README.md, LICENSE) is:
 //   - feat, or a breaking change (`type!:` / `BREAKING CHANGE:`) → minor (pre-1.0)
 //   - fix, perf or revert                                        → patch
 // or when a sibling it depends on gets a version outside its `^` range → patch.
@@ -20,7 +20,8 @@ const PUBLISHED_PATHS = [
   'src',
   ':(exclude)src/**/__tests__/**',
   'package.json',
-  'README.md'
+  'README.md',
+  'LICENSE'
 ];
 const RANK = { patch: 1, minor: 2 };
 const DRY_RUN = process.argv.includes('--dry-run');

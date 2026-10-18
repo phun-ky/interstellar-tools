@@ -34,6 +34,7 @@ forward to your contributions. 🎉
     - [Contributing Code](#contributing-code)
       - [Coding Style](#coding-style)
       - [Tests](#tests)
+      - [Developer Certificate of Origin](#developer-certificate-of-origin)
       - [Commits and Pull Requests](#commits-and-pull-requests)
   - [Attribution](#attribution)
 
@@ -86,7 +87,9 @@ Depending on how large the project is, you may want to outsource the questioning
 >
 > When contributing to this project, you must agree that you have authored 100%
 > of the content, that you have the necessary rights to the content and that the
-> content you contribute may be provided under the project license.
+> content you contribute may be provided under the project license. You confirm
+> this on every commit by signing it off under the
+> [Developer Certificate of Origin](#developer-certificate-of-origin).
 
 ### Reporting Bugs
 
@@ -224,6 +227,28 @@ pull request, and a pull request that fails them can't be merged.
 - **Numbers in the documentation**, such as the "In practice" examples, are
   checked by tests too, so update the matching test when you change one.
 - Coverage should not drop. CI uploads a coverage report for every pull request.
+
+#### Developer Certificate of Origin
+
+Every commit must be signed off under the
+[Developer Certificate of Origin](https://developercertificate.org/) (DCO): a
+statement that you wrote the change, or otherwise have the right to submit it
+under the project's licence. You agree to it by adding a `Signed-off-by` line
+with your name and email to the commit message:
+
+```text
+Signed-off-by: Your Name <you@example.com>
+```
+
+- **Per commit:** `git commit -s` adds the line for you.
+- **Always:** run `git config core.hooksPath .githooks` once in your clone, and
+  the hook in `.githooks/prepare-commit-msg` adds it to every commit, including
+  those made by `npm run commit` or your editor.
+- **Forgot?** Sign off every commit on your branch and push again:
+  `git rebase --signoff main` then `git push --force-with-lease`.
+
+The DCO check on every pull request fails if a commit isn't signed off. Commits
+by Dependabot are exempt.
 
 #### Commits and Pull Requests
 
