@@ -8,7 +8,7 @@ type CwState = readonly [number, number, number, number, number, number];
 ```
 
 Defined in:
-[orbits.ts:37](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/orbits.ts#L37)
+[orbits.ts:37](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/orbits.ts#L37)
 
 Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame.
 

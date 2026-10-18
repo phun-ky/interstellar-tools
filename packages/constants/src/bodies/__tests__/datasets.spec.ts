@@ -281,6 +281,40 @@ describe('planet positions at J2000', () => {
   });
 });
 
+describe('comet positions at J2000', () => {
+  // Perihelion passages nearest J2000 (JD 2451545.0), from the osculating
+  // elements at J2000 in JPL Horizons: days before J2000, or after if negative
+  const PERIHELION_DAYS_BEFORE_J2000: Record<string, number> = {
+    '1p-halley': 5068.81, // 1986-02-14
+    'c-1995-o1-hale-bopp': 1005.5, // 1997-04-01
+    '67p-churyumov-gerasimenko': -959.63, // 2002-08-18
+    '2p-encke': -252.14 // 2000-09-09
+  };
+
+  test('orbit.angle puts each comet at its perihelion time (within 2 % of its period)', () => {
+    for (const { id, name, orbit } of COMETS) {
+      const { e, angle, period } = orbit;
+      const P = Math.abs(period.value);
+      // True to mean anomaly, in closed form, then mean anomaly to time
+      const E =
+        2 * Math.atan(Math.sqrt((1 - e) / (1 + e)) * Math.tan(angle / 2));
+      const M = (E - e * Math.sin(E) + 2 * Math.PI) % (2 * Math.PI);
+      const since = (M / (2 * Math.PI)) * P;
+      const expected = PERIHELION_DAYS_BEFORE_J2000[id];
+
+      assert.ok(expected !== undefined, `${name}: no reference perihelion`);
+
+      // A perihelion after J2000 is the next one: P minus the time since the last
+      const actual = expected >= 0 ? since : since - P;
+
+      assert.ok(
+        Math.abs(actual - expected) < 0.02 * P,
+        `${name}: orbit.angle gives a perihelion ${actual.toFixed(0)} days before J2000, expected ${expected}`
+      );
+    }
+  });
+});
+
 describe('moons', () => {
   test('retrograde moons have a positive period, regular moons a negative one', () => {
     for (const moon of MOONS) {

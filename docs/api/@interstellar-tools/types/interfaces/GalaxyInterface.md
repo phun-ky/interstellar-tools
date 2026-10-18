@@ -4,7 +4,7 @@ GalaxyInterface
 # Interface: GalaxyInterface
 
 Defined in:
-[celestial-bodies/galaxies.ts:59](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/celestial-bodies/galaxies.ts#L59)
+[celestial-bodies/galaxies.ts:59](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/celestial-bodies/galaxies.ts#L59)
 
 Represents a **galaxy** in the universe simulation.
 
@@ -40,7 +40,7 @@ blackHole: BlackHoleInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:71](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/celestial-bodies/galaxies.ts#L71)
+[celestial-bodies/galaxies.ts:71](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/celestial-bodies/galaxies.ts#L71)
 
 Central black hole of the galaxy.
 
@@ -53,7 +53,7 @@ diameter: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:67](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/celestial-bodies/galaxies.ts#L67)
+[celestial-bodies/galaxies.ts:67](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/celestial-bodies/galaxies.ts#L67)
 
 Diameter of the galaxy in light-years.
 
@@ -66,7 +66,7 @@ distance: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:69](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/celestial-bodies/galaxies.ts#L69)
+[celestial-bodies/galaxies.ts:69](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/celestial-bodies/galaxies.ts#L69)
 
 Distance from the Milky Way in light-years.
 
@@ -79,7 +79,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:61](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/celestial-bodies/galaxies.ts#L61)
+[celestial-bodies/galaxies.ts:61](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/celestial-bodies/galaxies.ts#L61)
 
 Stable identifier, used by `parent` references. Never translated.
 
@@ -92,7 +92,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:63](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/celestial-bodies/galaxies.ts#L63)
+[celestial-bodies/galaxies.ts:63](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/celestial-bodies/galaxies.ts#L63)
 
 Name of the galaxy.
 
@@ -105,6 +105,6 @@ type: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:65](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/celestial-bodies/galaxies.ts#L65)
+[celestial-bodies/galaxies.ts:65](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/celestial-bodies/galaxies.ts#L65)
 
 Morphological classification of the galaxy.
