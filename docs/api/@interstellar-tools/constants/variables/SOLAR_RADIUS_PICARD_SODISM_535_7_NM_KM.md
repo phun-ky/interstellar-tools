@@ -9,6 +9,6 @@ const SOLAR_RADIUS_PICARD_SODISM_535_7_NM_KM: 696134 = 696_134;
 ```
 
 Defined in:
-[objects.ts:53](https://github.com/phun-ky/interstellar-tools/blob/5977d495016acdc349922082cca77744d0f1d6a5/packages/constants/src/objects.ts#L53)
+[objects.ts:53](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/constants/src/objects.ts#L53)
 
 PICARD/SODISM radius at 535.7 nm.

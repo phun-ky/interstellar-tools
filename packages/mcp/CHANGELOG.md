@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.7...%40interstellar-tools%2Fmcp%400.3.0) (2026-10-18)
+
+### Feature
+
+* 🎸 Add convert_distance, and settle the MCP API for 1.0 ([488839f](https://github.com/phun-ky/interstellar-tools/commit/488839fc40b30602feea163879021839fa2fe838)), closes [#163](https://github.com/phun-ky/interstellar-tools/issues/163)
+
+### Adding missing tests
+
+* 💍 Close HTTP connections after the tests, so a failure can't hang the run ([c760cf0](https://github.com/phun-ky/interstellar-tools/commit/c760cf01a4cca8d30935e1c1f1929e4be4240aeb))
+
 ## [0.2.7](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.6...%40interstellar-tools%2Fmcp%400.2.7) (2026-10-18)
 
 ## [0.2.6](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.5...%40interstellar-tools%2Fmcp%400.2.6) (2026-10-18)

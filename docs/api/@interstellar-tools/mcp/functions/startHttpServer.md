@@ -10,7 +10,7 @@ function startHttpServer(
 ```
 
 Defined in:
-[http.ts:76](https://github.com/phun-ky/interstellar-tools/blob/5977d495016acdc349922082cca77744d0f1d6a5/packages/mcp/src/http.ts#L76)
+[http.ts:76](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/mcp/src/http.ts#L76)
 
 Serve the MCP server over Streamable HTTP, for clients that only accept remote
 servers. Runs stateless: every request gets a fresh server, which is cheap

@@ -12,7 +12,7 @@ function hyperbolicPeriapsisSpeed(
 ```
 
 Defined in:
-[orbits/hyperbolic-periapsis-speed.ts:35](https://github.com/phun-ky/interstellar-tools/blob/5977d495016acdc349922082cca77744d0f1d6a5/packages/equations/src/categories/orbits/hyperbolic-periapsis-speed.ts#L35)
+[orbits/hyperbolic-periapsis-speed.ts:35](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/equations/src/categories/orbits/hyperbolic-periapsis-speed.ts#L35)
 
 Compute **hyperbolic periapsis speed** for a flyby/escape hyperbola.
 

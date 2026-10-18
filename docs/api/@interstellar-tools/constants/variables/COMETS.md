@@ -8,7 +8,7 @@ const COMETS: CometsType;
 ```
 
 Defined in:
-[bodies/comets.ts:30](https://github.com/phun-ky/interstellar-tools/blob/5977d495016acdc349922082cca77744d0f1d6a5/packages/constants/src/bodies/comets.ts#L30)
+[bodies/comets.ts:30](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/constants/src/bodies/comets.ts#L30)
 
 Represents a collection of well-known comets within the solar system simulation.
 

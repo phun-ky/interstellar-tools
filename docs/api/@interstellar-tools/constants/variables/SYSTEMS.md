@@ -8,7 +8,7 @@ const SYSTEMS: SystemsType;
 ```
 
 Defined in:
-[bodies/systems.ts:29](https://github.com/phun-ky/interstellar-tools/blob/5977d495016acdc349922082cca77744d0f1d6a5/packages/constants/src/bodies/systems.ts#L29)
+[bodies/systems.ts:29](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/constants/src/bodies/systems.ts#L29)
 
 Predefined systems: the barycenters that stars and planets orbit.
 

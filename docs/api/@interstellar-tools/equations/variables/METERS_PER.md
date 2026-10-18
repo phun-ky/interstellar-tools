@@ -8,7 +8,7 @@ const METERS_PER: Readonly<Record<DistanceUnitType, number>>;
 ```
 
 Defined in:
-[helpers/convert-distance-unit.ts:32](https://github.com/phun-ky/interstellar-tools/blob/5977d495016acdc349922082cca77744d0f1d6a5/packages/equations/src/categories/helpers/convert-distance-unit.ts#L32)
+[helpers/convert-distance-unit.ts:32](https://github.com/phun-ky/interstellar-tools/blob/4583759b69f19864e1a8df0657adb68571f0903e/packages/equations/src/categories/helpers/convert-distance-unit.ts#L32)
 
 Meters-per-unit lookup for all canonical
 [DistanceUnitType](../../types/type-aliases/DistanceUnitType.md) symbols.
