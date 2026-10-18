@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.64.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.63.2...%40interstellar-tools%2Fequations%400.64.0) (2026-10-18)
+
+### Feature
+
+* 🎸 Add convertDistanceUnit and normalizeDistanceUnit ([23c6fb6](https://github.com/phun-ky/interstellar-tools/commit/23c6fb6126bd165f61bdcf2d0c4027509d3a5775)), closes [#168](https://github.com/phun-ky/interstellar-tools/issues/168)
+
 ## [0.63.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.63.1...%40interstellar-tools%2Fequations%400.63.2) (2026-10-18)
 
 ## [0.63.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.63.0...%40interstellar-tools%2Fequations%400.63.1) (2026-10-18)

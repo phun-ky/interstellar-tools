@@ -46,7 +46,7 @@ type DistanceUnitAliasType =
 ```
 
 Defined in:
-[distance.ts:94](https://github.com/phun-ky/interstellar-tools/blob/3b3e9ce5b537aa4032c382fccd8b2cef0ae6ff57/packages/types/src/distance.ts#L94)
+[distance.ts:96](https://github.com/phun-ky/interstellar-tools/blob/5977d495016acdc349922082cca77744d0f1d6a5/packages/types/src/distance.ts#L96)
 
 Human-friendly **distance unit aliases** accepted at input time.
 
@@ -72,13 +72,16 @@ These strings should be parsed and **normalized** to canonical
 ### Typical flow
 
 1. Accept `DistanceUnitAliasType | DistanceUnitType` at your API boundary.
-2. Normalize to `DistanceUnitType` (e.g., via `normalizeDistanceUnit`).
+2. Normalize to `DistanceUnitType` with `normalizeDistanceUnit` from
+   `@interstellar-tools/equations`, or convert directly with
+   `convertDistanceUnit`.
 3. Perform calculations using canonical units only.
 
 ## Example
 
 ```ts
-// Assuming `normalizeDistanceUnit` and `NORMALIZE_DISTANCE_UNIT` are defined:
+import { normalizeDistanceUnit } from '@interstellar-tools/equations';
+
 normalizeDistanceUnit('AU'); // 'au'
 normalizeDistanceUnit('lightyears'); // 'ly'
 normalizeDistanceUnit('kilolightyears'); // 'kly'

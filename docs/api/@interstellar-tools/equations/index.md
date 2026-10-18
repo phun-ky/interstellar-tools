@@ -86,21 +86,25 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Helpers
 
-| Function                                  | Description                                                                           |
-| ----------------------------------------- | ------------------------------------------------------------------------------------- |
-| [applyMatrix3](functions/applyMatrix3.md) | Apply a **3×3 matrix** to a **3D vector** (matrix–vector multiplication).             |
-| [det3](functions/det3.md)                 | Compute the **determinant** of a **3×3** matrix (row-major).                          |
-| [dot](functions/dot.md)                   | Compute the **dot product** of two 3D vectors.                                        |
-| [matMul3](functions/matMul3.md)           | Multiply two **3×3 matrices** (row-major).                                            |
-| [norm](functions/norm.md)                 | Compute the **Euclidean norm** (length / magnitude) of a 3D vector.                   |
-| [norm2pi](functions/norm2pi.md)           | Normalize an angle to the range **\[0, 2π)**.                                         |
-| [rad](functions/rad.md)                   | Brand a numeric value as [Radians](../types/type-aliases/Radians.md).                 |
-| [rot1](functions/rot1.md)                 | Construct a **right-handed rotation matrix about the x-axis** (often written **R₁**). |
-| [rot3](functions/rot3.md)                 | Construct a **right-handed rotation matrix about the z-axis** (often written **R₃**). |
-| [scale](functions/scale.md)               | Scale a 3D vector by a scalar.                                                        |
-| [sub](functions/sub.md)                   | Subtract two 3D vectors (`a - b`).                                                    |
-| [toRad](functions/toRad.md)               | Convert **degrees → radians**.                                                        |
-| [transpose3](functions/transpose3.md)     | Transpose a **3×3 matrix** (row-major).                                               |
+| Name                                                            | Description                                                                                                                                                                         |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [METERS_PER](variables/METERS_PER.md)                           | Meters-per-unit lookup for all canonical [DistanceUnitType](../types/type-aliases/DistanceUnitType.md) symbols.                                                                     |
+| [NORMALIZE_DISTANCE_UNIT](variables/NORMALIZE_DISTANCE_UNIT.md) | Lookup table that **normalizes distance unit aliases** (and the canonical symbols themselves) to a single, canonical [DistanceUnitType](../types/type-aliases/DistanceUnitType.md). |
+| [applyMatrix3](functions/applyMatrix3.md)                       | Apply a **3×3 matrix** to a **3D vector** (matrix–vector multiplication).                                                                                                           |
+| [convertDistanceUnit](functions/convertDistanceUnit.md)         | Convert a **distance** between any two [DistanceUnitType](../types/type-aliases/DistanceUnitType.md) units.                                                                         |
+| [det3](functions/det3.md)                                       | Compute the **determinant** of a **3×3** matrix (row-major).                                                                                                                        |
+| [dot](functions/dot.md)                                         | Compute the **dot product** of two 3D vectors.                                                                                                                                      |
+| [matMul3](functions/matMul3.md)                                 | Multiply two **3×3 matrices** (row-major).                                                                                                                                          |
+| [norm](functions/norm.md)                                       | Compute the **Euclidean norm** (length / magnitude) of a 3D vector.                                                                                                                 |
+| [norm2pi](functions/norm2pi.md)                                 | Normalize an angle to the range **\[0, 2π)**.                                                                                                                                       |
+| [normalizeDistanceUnit](functions/normalizeDistanceUnit.md)     | Normalize a **distance unit string** into a canonical [DistanceUnitType](../types/type-aliases/DistanceUnitType.md).                                                                |
+| [rad](functions/rad.md)                                         | Brand a numeric value as [Radians](../types/type-aliases/Radians.md).                                                                                                               |
+| [rot1](functions/rot1.md)                                       | Construct a **right-handed rotation matrix about the x-axis** (often written **R₁**).                                                                                               |
+| [rot3](functions/rot3.md)                                       | Construct a **right-handed rotation matrix about the z-axis** (often written **R₃**).                                                                                               |
+| [scale](functions/scale.md)                                     | Scale a 3D vector by a scalar.                                                                                                                                                      |
+| [sub](functions/sub.md)                                         | Subtract two 3D vectors (`a - b`).                                                                                                                                                  |
+| [toRad](functions/toRad.md)                                     | Convert **degrees → radians**.                                                                                                                                                      |
+| [transpose3](functions/transpose3.md)                           | Transpose a **3×3 matrix** (row-major).                                                                                                                                             |
 
 ## Kepler
 
