@@ -86,7 +86,7 @@ export const registerBodies = (server: McpServer) => {
     'find_body',
     {
       title: 'Find celestial body',
-      description: `Look up celestial bodies by name or id (case-insensitive substring) across the bundled datasets. ${UNITS_NOTE} Only some stars carry a mass (in solar masses); use known μ values with the orbit tools.`,
+      description: `Look up celestial bodies by name or id (case-insensitive substring) across the bundled datasets. ${UNITS_NOTE} The Sun, planets and larger moons carry \`mu\` (G·M in m³/s²), ready for the orbit tools; stars also carry \`mass\` in solar masses.`,
       inputSchema: {
         query: z
           .string()

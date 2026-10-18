@@ -33,8 +33,8 @@ export const ASTEROID_BELTS: AsteroidBeltsType = [
     id: 'main-asteroid-belt',
     name: 'Main Asteroid Belt',
     parent: 'sun',
-    innerRadius: 2.1,
-    outerRadius: 3.3,
+    innerRadius: { value: 2.1, unit: 'au' },
+    outerRadius: { value: 3.3, unit: 'au' },
     display: {
       color: '#C4C4C4', // Light gray (rocky bodies)
       opacity: 0.3,
@@ -46,8 +46,8 @@ export const ASTEROID_BELTS: AsteroidBeltsType = [
     id: 'kuiper-belt',
     name: 'Kuiper Belt',
     parent: 'sun',
-    innerRadius: 30,
-    outerRadius: 50,
+    innerRadius: { value: 30, unit: 'au' },
+    outerRadius: { value: 50, unit: 'au' },
     display: {
       color: '#88CCEE', // Light blue (icy bodies)
       opacity: 0.2,

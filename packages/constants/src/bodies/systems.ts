@@ -45,6 +45,23 @@ export const SYSTEMS: SystemsType = [
     y: { value: 27000, unit: 'ly' },
     z: { value: 20, unit: 'ly' }
   },
+  {
+    // Spica's two stars orbit this barycenter; about 250 ly away (Hipparcos, van Leeuwen 2007)
+    id: 'spica',
+    name: 'Spica',
+    kind: 'binary',
+    parent: 'milky-way',
+    orbit: {
+      a: { value: 27201.148872795795, unit: 'ly' },
+      e: 0.006,
+      period: { value: 550, unit: 'Myr' },
+      angle: 1.5616057972952029 as Radians
+    },
+    distance: { value: 250, unit: 'ly' },
+    x: { value: 250, unit: 'ly' },
+    y: { value: 27201.148872795795, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
   // #region datasetSystems
   {
     id: 'alpha-centauri',

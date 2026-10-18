@@ -1,4 +1,4 @@
-import { Radians, StarsType } from '@interstellar-tools/types';
+import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
 
 /**
  * Represents a dataset of well-known stars within the Milky Way.
@@ -39,6 +39,7 @@ export const STARS: StarsType = [
     mass: 1,
     /** Radius in km */
     radius: { value: 696340, unit: 'km' },
+    mu: 1.3271244004127942e20, // DE440: 1.32712440041279419e20, to double precision
     display: {
       /** Visual representation color */
       color: '#fff5f1'
@@ -63,6 +64,7 @@ export const STARS: StarsType = [
       angle: 1.569867205171707 as Radians
     },
     /** Radius in km */
+    mass: 2.135, // Yoon et al. 2010
     radius: { value: 2600000, unit: 'km' },
     display: {
       /** Visual representation color */
@@ -86,6 +88,7 @@ export const STARS: StarsType = [
       period: { value: 410, unit: 'Myr' },
       angle: 1.5701789517599378 as Radians
     },
+    mass: 1.791, // Peterson et al. 2006
     radius: { value: 1700000, unit: 'km' },
     display: {
       color: 'white'
@@ -106,6 +109,7 @@ export const STARS: StarsType = [
       period: { value: 720, unit: 'Myr' },
       angle: 1.475524958596149 as Radians
     },
+    mass: 19, // Schiller & Przybilla 2008
     radius: { value: 108000000, unit: 'km' },
     display: {
       color: '#cad7ff' // A-type (blue-white)
@@ -114,32 +118,59 @@ export const STARS: StarsType = [
     y: { value: 27375.280016832705, unit: 'ly' },
     z: { value: 0, unit: 'ly' }
   },
+  // Spica: a close binary of A and B around the spica barycenter (see SYSTEMS). Orbit, masses
+  // and radii: Tkachenko et al. 2016, Tables 2 and 7 (P 4.0145 d, e 0.133, a 28.20 R☉ = 0.1311 au,
+  // i 63.1°). The orbit precesses (apsidal period 117.9 yr, Harrington et al. 2016), so `w` is
+  // its value at J2000 from Harrington's fit, and `angle` is illustrative: J2000 is 659 orbits
+  // from the measured periastron, which leaves it uncertain by tens of degrees.
   {
-    // Spica is a close binary; modelled as a single star until the binary is added
-    id: 'spica',
-    name: 'Spica',
-    type: 'B1III-IV', // Blue Giant/Subgiant
+    id: 'spica-a',
+    name: 'Spica A',
+    type: 'B1III-IV', // Blue Giant/Subgiant, a β Cephei variable
     category: 'star',
-    parent: 'milky-way',
+    parent: 'spica',
     orbit: {
-      a: { value: 27201.148872795795, unit: 'ly' },
-      e: 0.006,
-      period: { value: 550, unit: 'Myr' },
-      angle: 1.5616057972952029 as Radians
+      a: { value: 0.050727, unit: 'au' }, // 0.1311 au × m_B / (m_A + m_B)
+      e: 0.133,
+      period: { value: 4.0145, unit: 'd' },
+      angle: 2.3899 as Radians,
+      i: 63.1 as DegreesType,
+      w: 233.9 as DegreesType
     },
-    radius: { value: 73500000, unit: 'km' },
+    mass: 11.43,
+    radius: { value: 5196879, unit: 'km' }, // 7.47 R☉
     display: {
       color: 'blue'
+    }
+  },
+  {
+    id: 'spica-b',
+    name: 'Spica B',
+    type: 'B2V', // Blue Dwarf, Main Sequence
+    category: 'star',
+    parent: 'spica',
+    orbit: {
+      a: { value: 0.080417, unit: 'au' }, // 0.1311 au × m_A / (m_A + m_B)
+      e: 0.133,
+      period: { value: 4.0145, unit: 'd' },
+      angle: 2.3899 as Radians,
+      i: 63.1 as DegreesType,
+      w: 53.9 as DegreesType // opposite A's periapsis
     },
-    x: { value: 250, unit: 'ly' },
-    y: { value: 27201.148872795795, unit: 'ly' },
-    z: { value: 0, unit: 'ly' }
+    mass: 7.21,
+    radius: { value: 2601918, unit: 'km' }, // 3.74 R☉
+    display: {
+      color: '#cad7ff' // B-type (blue-white)
+    }
   },
   // Alpha Centauri: A and B orbit the AB barycenter; the AB pair and Proxima orbit the
   // system barycenter (see SYSTEMS). Each pair shares e, period and angle, and splits its
   // separation by mass ratio, a₁ = a·m₂/(m₁ + m₂).
   // A-B orbit, masses and radii: Akeson et al. 2021, Table 8 (P, e, periastron 1955.564, and a
   // separation of 17.4930 arcsec at a parallax of 750.81 mas = 23.30 au).
+  // Orientation of the A-B orbit: Akeson et al. 2021, Table 8 (i 79.243°, Ω 205.073°, ω 231.519°
+  // for B), with ω measured in the orbital plane from the ascending node on the sky, and Ω from
+  // north through east. A's periapsis points the other way, so its w is 180° less.
   // Proxima's orbit and mass: Kervella et al. 2017, Tables 1 and 3 (a 8.7 kau, e 0.50, P 547 kyr,
   // next periastron in 283 kyr). Proxima's radius from Ribas et al. 2017. R☉ = 695 700 km.
   {
@@ -152,7 +183,10 @@ export const STARS: StarsType = [
       a: { value: 10.66, unit: 'au' }, // 23.30 au × m_B / (m_A + m_B)
       e: 0.51947,
       period: { value: 79.762, unit: 'yr' },
-      angle: 3.275243601437025 as Radians // true anomaly at J2000
+      angle: 3.275243601437025 as Radians, // true anomaly at J2000
+      i: 79.243 as DegreesType,
+      w: 51.519 as DegreesType,
+      om: 205.073 as DegreesType
     },
     mass: 1.0788,
     radius: { value: 847015, unit: 'km' }, // 1.2175 R☉
@@ -170,7 +204,10 @@ export const STARS: StarsType = [
       a: { value: 12.64, unit: 'au' }, // 23.30 au × m_A / (m_A + m_B)
       e: 0.51947,
       period: { value: 79.762, unit: 'yr' },
-      angle: 3.275243601437025 as Radians
+      angle: 3.275243601437025 as Radians,
+      i: 79.243 as DegreesType,
+      w: 231.519 as DegreesType,
+      om: 205.073 as DegreesType
     },
     mass: 0.9092,
     radius: { value: 597676, unit: 'km' }, // 0.8591 R☉

@@ -1,31 +1,23 @@
-import { AsteroidInterface, AsteroidsType } from './asteroids.js';
-import { CometInterface, CometsType } from './comets.js';
-import { MoonInterface, MoonsType } from './moons.js';
-import { PlanetInterface, PlanetsType } from './planets.js';
-import { StarInterface, StarsType } from './stars.js';
+import type { AsteroidInterface } from './asteroids.js';
+import type { CometInterface } from './comets.js';
+import type { MoonInterface } from './moons.js';
+import type { PlanetInterface } from './planets.js';
+import type { StarInterface } from './stars.js';
 
 /**
- * Type alias representing a collection of celestial bodies.
- *
- * Includes:
- * - **Stars** (`StarsType`)
- * - **Planets** (`PlanetsType`)
- * - **Moons** (`MoonsType`)
- * - **Comets** (`CometsType`)
- *
- * @typedef {StarsType | PlanetsType | MoonsType | CometsType | AsteroidsType} CelestialBodiesType
+ * A list of celestial bodies of any kind: stars, planets, moons, comets and
+ * asteroids, mixed.
  *
  * @example
  * ```ts
- * const celestialObjects: CelestialBodiesType = [
- *   { name: 'Sun', type: 'star', mass: 1.989e30 },
- *   { name: 'Earth', type: 'planet', mass: 5.972e24 }
- * ];
+ * import { MOONS, PLANETS, STARS } from '@interstellar-tools/constants';
+ *
+ * const solarSystem: CelestialBodiesType = [...STARS, ...PLANETS, ...MOONS];
+ * const earth = solarSystem.find((body) => body.id === 'earth');
  * ```
  * @group Celestial Bodies
  */
-export type CelestialBodiesType =
-  StarsType | PlanetsType | MoonsType | CometsType | AsteroidsType;
+export type CelestialBodiesType = CelestialBodyType[];
 
 /**
  * Type alias representing a single celestial body.
@@ -40,7 +32,7 @@ export type CelestialBodiesType =
  *
  * @example
  * ```ts
- * const earth: CelestialBodyType = { name: 'Earth', type: 'planet', mass: 5.972e24 };
+ * const describe = (body: CelestialBodyType) => `${body.name}, bound to ${body.parent}`;
  * ```
  * @group Celestial Bodies
  */

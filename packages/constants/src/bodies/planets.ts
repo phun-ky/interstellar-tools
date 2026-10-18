@@ -49,6 +49,7 @@ export const PLANETS: PlanetsType = [
     },
     /** Radius in km */
     radius: { value: 2440, unit: 'km' },
+    mu: 2.2031868551e13,
     display: {
       /** Visual representation color */
       color: '#8B8B8B'
@@ -72,6 +73,7 @@ export const PLANETS: PlanetsType = [
       angle: 0.88977 as Radians
     },
     radius: { value: 6052, unit: 'km' },
+    mu: 3.24858592e14,
     display: {
       color: '#E49B0F'
     },
@@ -92,6 +94,7 @@ export const PLANETS: PlanetsType = [
       angle: 6.238549 as Radians
     },
     radius: { value: 6371, unit: 'km' },
+    mu: 3.98600435507e14,
     display: {
       color: '#1E90FF'
     },
@@ -112,6 +115,7 @@ export const PLANETS: PlanetsType = [
       angle: 0.408015 as Radians
     },
     radius: { value: 3389, unit: 'km' },
+    mu: 4.282837362e13,
     display: {
       color: '#D14A28'
     },
@@ -132,6 +136,7 @@ export const PLANETS: PlanetsType = [
       angle: 0.106686 as Radians
     },
     radius: { value: 469.7, unit: 'km' },
+    mu: 6.26284e10,
     display: {
       color: '#C0C0C0'
     },
@@ -152,6 +157,7 @@ export const PLANETS: PlanetsType = [
       angle: 0.378185 as Radians
     },
     radius: { value: 69911, unit: 'km' },
+    mu: 1.266865319e17,
     display: {
       color: '#C08850'
     },
@@ -172,6 +178,7 @@ export const PLANETS: PlanetsType = [
       angle: 5.458247 as Radians
     },
     radius: { value: 58232, unit: 'km' },
+    mu: 3.793120623e16,
     display: {
       color: '#D2B48C'
     },
@@ -192,6 +199,7 @@ export const PLANETS: PlanetsType = [
       angle: 2.537459 as Radians
     },
     radius: { value: 25362, unit: 'km' },
+    mu: 5.7939513e15,
     display: {
       color: '#78D6FF'
     },
@@ -212,6 +220,7 @@ export const PLANETS: PlanetsType = [
       angle: 4.519475 as Radians
     },
     radius: { value: 24622, unit: 'km' },
+    mu: 6.83509997e15,
     display: {
       color: '#0053D6'
     },
@@ -232,6 +241,7 @@ export const PLANETS: PlanetsType = [
       angle: 0.436892 as Radians
     },
     radius: { value: 1188, unit: 'km' },
+    mu: 8.693e11,
     display: {
       color: '#B0A99F'
     },
