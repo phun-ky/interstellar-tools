@@ -6,10 +6,7 @@ import type {
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 import { rot1 } from '../rot-1.js';
-import {
-  absClose,
-  matRelClose
-} from '../../../__tests__/helpers/index.js';
+import { absClose, matRelClose } from '../../../__tests__/helpers/index.js';
 import { applyMatrix3 } from '../apply-matrix-3.js';
 import { matMul3 } from '../mat-mul3.js';
 import { transpose3 } from '../transpose-3.js';

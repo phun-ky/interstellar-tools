@@ -230,9 +230,10 @@ that looks like this:
 
 ```ts
 import { PLANETS } from '@interstellar-tools/constants';
-import { trueAnomalyAt } from '@interstellar-tools/equations';
-
-import { convertDistance } from './your-app'; // a renderer's own unit helper
+import {
+  convertDistanceUnit,
+  trueAnomalyAt
+} from '@interstellar-tools/equations';
 
 // Work on a copy: the datasets are shared by everything that imports them
 const bodies = structuredClone(PLANETS);
@@ -240,7 +241,7 @@ const bodies = structuredClone(PLANETS);
 for (const body of bodies) {
   if (!body.orbit) continue;
 
-  const a = convertDistance(body.orbit.a, 'au').value;
+  const a = convertDistanceUnit(body.orbit.a, 'au').value;
   const { e } = body.orbit;
   const semiMinorAxis = a * Math.sqrt(1 - e ** 2);
   const focusOffsetX = a * e;
