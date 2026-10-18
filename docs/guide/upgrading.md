@@ -45,6 +45,11 @@ anything:
   migration guide. A major never deprecates and removes the same API.
 - **No runtime warnings.** The functions are pure, and a library that writes to
   the console is noise.
+- **Security comes first.** Deprecated APIs get security fixes like everything
+  else. If a vulnerability can't be fixed without breaking one, the fix may
+  change or remove it before its grace period ends, as the
+  [security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#supported-versions)
+  describes.
 
 ## Migrating from 0.x to 1.0
 

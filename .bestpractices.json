@@ -34,7 +34,7 @@
   "sites_password_security_status": "N/A",
   "sites_password_security_justification": "The project sites (GitHub, npm and a static docs site) store no passwords for external users.",
   "maintenance_or_update_status": "Met",
-  "maintenance_or_update_justification": "Only the latest release is supported; the upgrade path is documented in the upgrading guide and in each package changelog under BREAKING CHANGES: https://phun-ky.net/interstellar-tools/guide/upgrading",
+  "maintenance_or_update_justification": "Until 1.0, only the latest release is supported. From 1.0, the current major is supported as a whole (fixes ship as a new patch or minor, and upgrading within a major never breaks), and the previous major gets high and critical security fixes for 6 months after the next major. Deprecated APIs keep working for one full major. The upgrade path is in the upgrading guide and each package changelog: https://phun-ky.net/interstellar-tools/guide/upgrading",
   "report_tracker_status": "Met",
   "report_tracker_justification": "Issues are tracked on GitHub: https://github.com/phun-ky/interstellar-tools/issues",
   "vulnerability_report_credit_status": "N/A",
