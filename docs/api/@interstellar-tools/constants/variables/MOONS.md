@@ -8,7 +8,7 @@ const MOONS: MoonsType;
 ```
 
 Defined in:
-[bodies/moons.ts:29](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/constants/src/bodies/moons.ts#L29)
+[bodies/moons.ts:29](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/constants/src/bodies/moons.ts#L29)
 
 Represents a dataset of natural satellites (moons) in the solar system.
 

@@ -14,7 +14,7 @@ function gravitationalForce(
 ```
 
 Defined in:
-[gravity/gravitational-force.ts:98](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/equations/src/categories/gravity/gravitational-force.ts#L98)
+[gravity/gravitational-force.ts:98](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/equations/src/categories/gravity/gravitational-force.ts#L98)
 
 Compute the Newtonian **gravitational force** on body 1 due to body 2.
 

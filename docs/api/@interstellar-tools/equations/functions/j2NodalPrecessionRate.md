@@ -15,7 +15,7 @@ function j2NodalPrecessionRate(
 ```
 
 Defined in:
-[orbits/j2-nodal-precession-rate.ts:54](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/equations/src/categories/orbits/j2-nodal-precession-rate.ts#L54)
+[orbits/j2-nodal-precession-rate.ts:54](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/equations/src/categories/orbits/j2-nodal-precession-rate.ts#L54)
 
 Compute **J2 nodal precession** (RAAN drift) for an orbit about an oblate body.
 

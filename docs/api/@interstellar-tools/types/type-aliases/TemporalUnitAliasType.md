@@ -40,7 +40,7 @@ type TemporalUnitAliasType =
 ```
 
 Defined in:
-[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/c48c12d1e1a0c7662e062aba029fbaa6743ccf30/packages/types/src/temporal.ts#L84)
+[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/175e924545d3951574def97f03dcea4d2f1dec30/packages/types/src/temporal.ts#L84)
 
 Human-friendly **temporal unit aliases** accepted at input time.
 
