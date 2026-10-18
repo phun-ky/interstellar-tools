@@ -260,6 +260,8 @@ by Dependabot are exempt.
   [migration guide](https://phun-ky.net/interstellar-tools/guide/upgrading) in
   the same pull request, with before-and-after code. Every major release has a
   guide covering all its breaking changes.
+- Don't commit regenerated docs (`docs/api`, `docs/partials`); each release
+  regenerates them. Run `npm run docs:check` instead.
 - Open a pull request against `main`. The Checks workflow builds, lints,
   type-checks, checks the API docs and runs the tests; all of it must pass.
 
