@@ -57,7 +57,7 @@ import { CwState, CwStateDerivative } from '@interstellar-tools/types';
  *
  * const mu = 398600.4418;  // km³/s²
  * const a  = 7000;         // km
- * const n  = meanMotion(mu, a); // rad/s
+ * const n  = meanMotion(a, mu); // rad/s
  *
  * const s: CwState = [100, 0, 0, 0, 0.01, 0];
  * const ds = cwHillDerivatives(s, n);

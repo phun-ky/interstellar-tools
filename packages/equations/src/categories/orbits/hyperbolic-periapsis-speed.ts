@@ -17,25 +17,25 @@
  * - If $ \mu $ is in km³/s², then $r_p$ must be in km and speeds are in km/s.
  *
  * @param vInfinity Hyperbolic excess speed $ v_{\infty} $ (must be finite, >= 0).
- * @param mu Standard gravitational parameter $ \mu $ (must be finite, > 0).
  * @param rp Periapsis radius $ r_p $ from the central body's center (must be finite, > 0).
+ * @param mu Standard gravitational parameter $ \mu $ (must be finite, > 0).
  * @returns Periapsis speed $ v_p $ in the same speed units as `vInfinity`.
  * @throws {TypeError} If any input is not finite.
- * @throws {RangeError} If `vInfinity < 0`, `mu <= 0`, or `rp <= 0`.
+ * @throws {RangeError} If `vInfinity < 0`, `rp <= 0`, or `mu <= 0`.
  * @group Orbits
  *
  * @example
  * ```ts
  * // Earth example (km-based):
  * // mu = 398600.4418 km³/s², rp ~ 6678 km (LEO-ish), v∞ = 3.2 km/s
- * const vp = hyperbolicPeriapsisSpeed(3.2, 398600.4418, 6678);
+ * const vp = hyperbolicPeriapsisSpeed(3.2, 6678, 398600.4418);
  * ```
  */
 /* node:coverage enable */
 export const hyperbolicPeriapsisSpeed = (
   vInfinity: number,
-  mu: number,
-  rp: number
+  rp: number,
+  mu: number
 ): number => {
   if (!Number.isFinite(vInfinity)) {
     throw new TypeError(
@@ -43,24 +43,24 @@ export const hyperbolicPeriapsisSpeed = (
     );
   }
 
-  if (!Number.isFinite(mu)) {
-    throw new TypeError(`mu must be a finite number. Received: ${mu}`);
-  }
-
   if (!Number.isFinite(rp)) {
     throw new TypeError(`rp must be a finite number. Received: ${rp}`);
+  }
+
+  if (!Number.isFinite(mu)) {
+    throw new TypeError(`mu must be a finite number. Received: ${mu}`);
   }
 
   if (vInfinity < 0) {
     throw new RangeError(`vInfinity must be >= 0. Received: ${vInfinity}`);
   }
 
-  if (mu <= 0) {
-    throw new RangeError(`mu must be > 0. Received: ${mu}`);
-  }
-
   if (rp <= 0) {
     throw new RangeError(`rp must be > 0. Received: ${rp}`);
+  }
+
+  if (mu <= 0) {
+    throw new RangeError(`mu must be > 0. Received: ${mu}`);
   }
 
   const term = vInfinity * vInfinity + (2 * mu) / rp;

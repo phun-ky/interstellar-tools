@@ -125,3 +125,20 @@ it from DNS rebinding.
   or `ngrok http 3000 --host-header=rewrite`.
 - **On another interface or host name:** pass your public host name with
   `--allowed-hosts`, or `allowedHosts` in `startHttpServer`.
+
+## equations 0.62: `mu` last
+
+Every equation now takes the gravitational parameter `mu` as its last argument.
+Two didn't, and their arguments are reordered:
+
+```ts
+// 0.61
+meanMotion(mu, a);
+hyperbolicPeriapsisSpeed(vInfinity, mu, rp);
+// 0.62
+meanMotion(a, mu);
+hyperbolicPeriapsisSpeed(vInfinity, rp, mu);
+```
+
+All arguments are plain numbers, so TypeScript won't catch an old call: search
+your code for both functions and swap the arguments.
