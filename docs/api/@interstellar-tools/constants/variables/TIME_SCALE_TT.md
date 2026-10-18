@@ -8,4 +8,4 @@ const TIME_SCALE_TT: 'TT';
 ```
 
 Defined in:
-[date.ts:18](https://github.com/phun-ky/interstellar-tools/blob/6e83a5875c979f30e6d60949b94ec4505f89ba8e/packages/constants/src/date.ts#L18)
+[date.ts:18](https://github.com/phun-ky/interstellar-tools/blob/08c86c0d17e8945b4ff7b3559c6fe5852df4925c/packages/constants/src/date.ts#L18)

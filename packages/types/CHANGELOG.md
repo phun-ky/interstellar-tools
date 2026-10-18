@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.62.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.61.2...%40interstellar-tools%2Ftypes%400.62.0) (2026-10-18)
+
+### ⚠ BREAKING CHANGES
+
+* color, size, opacity and density move from the top level of
+  bodies and belts into display (body.display.color). miA, focus_x and
+  orbitPath become display.semiMinorAxis, display.focusOffsetX and
+  display.orbitPath.
+
+### Refactoring
+
+* 💡 Move everything about drawing into display ([c01bfeb](https://github.com/phun-ky/interstellar-tools/commit/c01bfeb51906b81d808b6908bcdfbf91b4ef6ba0)), closes [#153](https://github.com/phun-ky/interstellar-tools/issues/153)
+
 ## [0.61.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.61.1...%40interstellar-tools%2Ftypes%400.61.2) (2026-10-18)
 
 ### Bug
