@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.62.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.61.1...%40interstellar-tools%2Fequations%400.62.0) (2026-10-18)
+
+### ⚠ BREAKING CHANGES
+
+* meanMotion(mu, a) is now meanMotion(a, mu), and
+  hyperbolicPeriapsisSpeed(vInfinity, mu, rp) is now
+  hyperbolicPeriapsisSpeed(vInfinity, rp, mu).
+
+### Refactoring
+
+* 💡 Put mu last in meanMotion and hyperbolicPeriapsisSpeed ([0290b9e](https://github.com/phun-ky/interstellar-tools/commit/0290b9e8ce2ddb639c74b17d30dc4a1129945c5f)), closes [#151](https://github.com/phun-ky/interstellar-tools/issues/151)
+
 ## [0.61.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.61.0...%40interstellar-tools%2Fequations%400.61.1) (2026-10-18)
 
 ### Documentation
