@@ -9,7 +9,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
     const mu = 398600.4418; // km³/s²
     const rp = 6678; // km
 
-    const vp = hyperbolicPeriapsisSpeed(vInf, mu, rp);
+    const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
 
     const expected = Math.sqrt(vInf * vInf + (2 * mu) / rp);
     relClose(vp, expected);
@@ -20,7 +20,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
     const mu = 398600.4418;
     const rp = 6678;
 
-    const vp = hyperbolicPeriapsisSpeed(vInf, mu, rp);
+    const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
 
     const expected = Math.sqrt((2 * mu) / rp);
     relClose(vp, expected);
@@ -31,7 +31,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
     const mu = 1e5;
     const rp = 1e3;
 
-    const vp = hyperbolicPeriapsisSpeed(vInf, mu, rp);
+    const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
 
     assert.ok(vp >= vInf, `expected vp (${vp}) >= vInfinity (${vInf})`);
   });
@@ -47,7 +47,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
 
   test('throws TypeError when mu is Infinity', () => {
     assert.throws(
-      () => hyperbolicPeriapsisSpeed(1, Number.POSITIVE_INFINITY, 1),
+      () => hyperbolicPeriapsisSpeed(1, 1, Number.POSITIVE_INFINITY),
       (err) =>
         err instanceof TypeError &&
         err.message === 'mu must be a finite number. Received: Infinity'
@@ -56,7 +56,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
 
   test('throws TypeError when rp is undefined/NaN-ish (NaN)', () => {
     assert.throws(
-      () => hyperbolicPeriapsisSpeed(1, 1, Number.NaN),
+      () => hyperbolicPeriapsisSpeed(1, Number.NaN, 1),
       (err) =>
         err instanceof TypeError &&
         err.message === 'rp must be a finite number. Received: NaN'
@@ -74,7 +74,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
 
   test('throws RangeError when mu <= 0 (mu === 0)', () => {
     assert.throws(
-      () => hyperbolicPeriapsisSpeed(0, 0, 1),
+      () => hyperbolicPeriapsisSpeed(0, 1, 0),
       (err) =>
         err instanceof RangeError &&
         err.message === 'mu must be > 0. Received: 0'
@@ -83,7 +83,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
 
   test('throws RangeError when rp <= 0 (rp === 0)', () => {
     assert.throws(
-      () => hyperbolicPeriapsisSpeed(0, 1, 0),
+      () => hyperbolicPeriapsisSpeed(0, 0, 1),
       (err) =>
         err instanceof RangeError &&
         err.message === 'rp must be > 0. Received: 0'
@@ -95,7 +95,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
     const mu = 3.986004418e5;
     const rp = 1e12;
 
-    const vp = hyperbolicPeriapsisSpeed(vInf, mu, rp);
+    const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
 
     const delta = vp - vInf;
     const approx = mu / (rp * vInf);

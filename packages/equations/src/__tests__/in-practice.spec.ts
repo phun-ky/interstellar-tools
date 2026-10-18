@@ -57,7 +57,7 @@ describe('In practice values', () => {
   });
 
   test('meanMotion: 0.001128 rad/s, 15.51 orbits/day for the ISS', () => {
-    const n = meanMotion(MU_EARTH, ISS);
+    const n = meanMotion(ISS, MU_EARTH);
 
     assert.equal(n.toFixed(6), '0.001128');
     assert.equal(((n * 86_400) / (2 * Math.PI)).toFixed(2), '15.51');

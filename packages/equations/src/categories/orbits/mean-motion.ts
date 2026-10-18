@@ -28,16 +28,16 @@
  * orbits per day, the unit used in a satellite's two-line elements (TLEs).
  *
  * ```ts
- * meanMotion(3.986004418e14, 6.371e6 + 420e3); // ≈ 0.001128 rad/s
+ * meanMotion(6.371e6 + 420e3, 3.986004418e14); // ≈ 0.001128 rad/s
  * ```
  *
  * :::
  *
- * @param mu - Standard gravitational parameter $ \mu $ (finite, > 0).
  * @param a - Semi-major axis $ a $ (finite, > 0).
+ * @param mu - Standard gravitational parameter $ \mu $ (finite, > 0).
  * @returns Mean motion $ n $ in **rad/s**.
- * @throws {TypeError} If `mu` or `a` is not a finite number.
- * @throws {RangeError} If `mu <= 0` or `a <= 0`.
+ * @throws {TypeError} If `a` or `mu` is not a finite number.
+ * @throws {RangeError} If `a <= 0` or `mu <= 0`.
  * @group Orbits
  *
  * @example
@@ -45,19 +45,19 @@
  * // Earth example (km-based):
  * const mu = 398600.4418; // km³/s²
  * const a = 7000;         // km
- * const n = meanMotion(mu, a); // rad/s
+ * const n = meanMotion(a, mu); // rad/s
  * ```
  */
-export const meanMotion = (mu: number, a: number): number => {
-  if (!Number.isFinite(mu))
-    throw new TypeError(`mu must be finite. Received: ${mu}`);
-
+export const meanMotion = (a: number, mu: number): number => {
   if (!Number.isFinite(a))
     throw new TypeError(`a must be finite. Received: ${a}`);
 
-  if (mu <= 0) throw new RangeError(`mu must be > 0. Received: ${mu}`);
+  if (!Number.isFinite(mu))
+    throw new TypeError(`mu must be finite. Received: ${mu}`);
 
   if (a <= 0) throw new RangeError(`a must be > 0. Received: ${a}`);
+
+  if (mu <= 0) throw new RangeError(`mu must be > 0. Received: ${mu}`);
 
   return Math.sqrt(mu / (a * a * a));
 };

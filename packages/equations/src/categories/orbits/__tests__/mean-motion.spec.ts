@@ -8,7 +8,7 @@ describe('meanMotion', () => {
     const mu = 398600.4418; // km³/s²
     const a = 7000; // km
 
-    const n = meanMotion(mu, a);
+    const n = meanMotion(a, mu);
 
     const expected = Math.sqrt(mu / (a * a * a));
     relClose(n, expected);
@@ -20,8 +20,8 @@ describe('meanMotion', () => {
     const a1 = 7000;
     const a2 = 2 * a1;
 
-    const n1 = meanMotion(mu, a1);
-    const n2 = meanMotion(mu, a2);
+    const n1 = meanMotion(a1, mu);
+    const n2 = meanMotion(a2, mu);
 
     const expectedRatio = 1 / Math.pow(2, 3 / 2); // n2/n1
     relClose(n2 / n1, expectedRatio);
@@ -32,15 +32,15 @@ describe('meanMotion', () => {
     const mu2 = 4 * mu1;
     const a = 10;
 
-    const n1 = meanMotion(mu1, a);
-    const n2 = meanMotion(mu2, a);
+    const n1 = meanMotion(a, mu1);
+    const n2 = meanMotion(a, mu2);
 
     relClose(n2 / n1, 2);
   });
 
   test('throws TypeError when mu is not finite (NaN)', () => {
     assert.throws(
-      () => meanMotion(Number.NaN, 1),
+      () => meanMotion(1, Number.NaN),
       (err) =>
         err instanceof TypeError &&
         err.message === 'mu must be finite. Received: NaN'
@@ -49,7 +49,7 @@ describe('meanMotion', () => {
 
   test('throws TypeError when a is not finite (Infinity)', () => {
     assert.throws(
-      () => meanMotion(1, Number.POSITIVE_INFINITY),
+      () => meanMotion(Number.POSITIVE_INFINITY, 1),
       (err) =>
         err instanceof TypeError &&
         err.message === 'a must be finite. Received: Infinity'
@@ -58,7 +58,7 @@ describe('meanMotion', () => {
 
   test('throws RangeError when mu <= 0 (mu === 0)', () => {
     assert.throws(
-      () => meanMotion(0, 1),
+      () => meanMotion(1, 0),
       (err) =>
         err instanceof RangeError &&
         err.message === 'mu must be > 0. Received: 0'
@@ -67,7 +67,7 @@ describe('meanMotion', () => {
 
   test('throws RangeError when a <= 0 (a === 0)', () => {
     assert.throws(
-      () => meanMotion(1, 0),
+      () => meanMotion(0, 1),
       (err) =>
         err instanceof RangeError &&
         err.message === 'a must be > 0. Received: 0'
