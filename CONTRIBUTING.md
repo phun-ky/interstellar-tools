@@ -266,6 +266,12 @@ by Dependabot are exempt.
   with examples, pictures where they help, an FAQ and where to get help. A
   breaking change, or a feature worth telling people about, adds to the notes
   for the next major in the same pull request.
+- Deprecating an API isn't a breaking change, so it can land in any release.
+  Mark it `@deprecated` with its replacement and the major it will be removed
+  in, and list it in the next major's release notes. It keeps working through
+  one full major: deprecated during 1.x or at 2.0, it can be removed in 3.0 at
+  the earliest. See
+  [deprecations](https://phun-ky.net/interstellar-tools/guide/upgrading#deprecations).
 - Every major release also gets a set of release banners in
   `docs/public/images`, in the style of the other images there: banner, og,
   square and portrait, each at 1x and 2x. Write the content in

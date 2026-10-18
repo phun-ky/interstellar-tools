@@ -10,21 +10,39 @@ described under [Dependencies](#dependencies).
 
 ## Supported Versions
 
-The project is in early alpha (`0.x`). Security fixes are released for the
-latest published version of each package only: a release is supported until the
-next release of the same package, and from then on gets no security updates. To
-get a fix, upgrade to the latest version; the
+The project is in early alpha (`0.x`). Until 1.0, security fixes are released
+for the latest published version of each package only: a release is supported
+until the next release of the same package. To get a fix, upgrade to the latest
+version; the
 [upgrading guide](https://phun-ky.net/interstellar-tools/guide/upgrading)
 explains any changes you need to make.
 
-| Package                         | Supported                |
-| ------------------------------- | ------------------------ |
-| `@interstellar-tools/constants` | Latest release on npm ✅ |
-| `@interstellar-tools/equations` | Latest release on npm ✅ |
-| `@interstellar-tools/mcp`       | Latest release on npm ✅ |
-| `@interstellar-tools/temporal`  | Latest release on npm ✅ |
-| `@interstellar-tools/types`     | Latest release on npm ✅ |
-| Any older release               | ❌                       |
+From 1.0, support follows the major version:
+
+- **The current major is supported as a whole.** Fixes are released as a new
+  patch or minor of it, and upgrading within a major never breaks your code, so
+  everyone on 1.x gets a fix by upgrading to the newest 1.x. That includes
+  **deprecated APIs**: as long as a major ships them, they get security fixes
+  like everything else.
+- **The previous major gets fixes for high and critical vulnerabilities for 6
+  months** after the next major is released, as a patch on its latest release.
+  That leaves time to migrate without staying exposed. This starts with 1.x when
+  2.0 ships; `0.x` gets no more releases once 1.0 is out.
+- **Security comes before the deprecation grace period.** If a vulnerability
+  can't be fixed without breaking an API, deprecated or not, the fix may change
+  or remove it in a patch or minor release instead of waiting for a major. The
+  change is kept as small as possible, and the advisory and the release notes
+  say what changed and why.
+
+| Release                                     | Supported                        |
+| ------------------------------------------- | -------------------------------- |
+| Latest release of the current major         | ✅                               |
+| Older releases of the current major         | ✅ by upgrading within the major |
+| Previous major, for 6 months after the next | ✅ high and critical fixes only  |
+| Anything older                              | ❌                               |
+
+Every package is covered: `@interstellar-tools/constants`, `equations`, `mcp`,
+`temporal` and `types`.
 
 ## Reporting a Vulnerability
 

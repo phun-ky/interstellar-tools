@@ -23,6 +23,34 @@ story behind the changes, and whether to upgrade now, read the
 - Upgrade the packages together. They depend on each other, and their version
   ranges are kept in sync at release.
 
+### Deprecations
+
+A deprecated API keeps working for **one full major** before it can be removed,
+so you always see the warning on a release you can upgrade to without breaking
+anything:
+
+| Deprecated in        | Still works in | Removed in, at the earliest |
+| -------------------- | -------------- | --------------------------- |
+| any 1.x release, 2.0 | all of 2.x     | 3.0                         |
+| any 2.x release, 3.0 | all of 3.x     | 4.0                         |
+
+- **Marked in the code:** `@deprecated` in its documentation, naming what to use
+  instead and the major it will be removed in. Editors strike it through, and
+  the API reference shows it.
+- **Announced:** in the changelog of the release that deprecates it, and in a
+  **Deprecated** section of the next major's
+  [release notes](./releases/index.md), with the major it goes in. That's the
+  earliest one by the table above, or a later one if the notes name it.
+- **Removed only in a major,** and listed in that major's release notes and
+  migration guide. A major never deprecates and removes the same API.
+- **No runtime warnings.** The functions are pure, and a library that writes to
+  the console is noise.
+- **Security comes first.** Deprecated APIs get security fixes like everything
+  else. If a vulnerability can't be fixed without breaking one, the fix may
+  change or remove it before its grace period ends, as the
+  [security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#supported-versions)
+  describes.
+
 ## Migrating from 0.x to 1.0
 
 All five current packages go to 1.0 together. The changes below are in release
@@ -282,7 +310,8 @@ from your own 0.x data still works there.
 The values don't change, so `orbit.i` is still `162.26` for Halley's comet.
 Write your own data as `i: 162.26 as DegreesType` and
 `q: { value: 0.586, unit: 'au' }`. `MeasureInterface` is identical to
-`DistanceInterface`, and stays as a deprecated alias until 2.0.
+`DistanceInterface`, and stays as a deprecated alias through 1.x; it can be
+removed in 2.0 at the earliest (see [deprecations](#deprecations)).
 
 **Planet positions are optional.** `x`, `y` and `z` on a planet are optional, as
 they already were on every other body, so a rogue planet or an exoplanet can
