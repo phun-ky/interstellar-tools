@@ -33,7 +33,11 @@ const sbom = JSON.parse(
     { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }
   )
 );
-const purl = `pkg:npm/${encodeURIComponent(pkg.name).replace('%2F', '/')}@${pkg.version}`;
+// A package URL encodes the scope and name separately: pkg:npm/%40scope/name@1.0.0
+const purl = `pkg:npm/${pkg.name
+  .split('/')
+  .map((part) => encodeURIComponent(part))
+  .join('/')}@${pkg.version}`;
 const rootRef = sbom.metadata.component['bom-ref'];
 const packageRef = sbom.components.find(
   (component) => component.name === pkg.name
