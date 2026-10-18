@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/mcp",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Model Context Protocol (MCP) server exposing interstellar-tools orbital mechanics equations and celestial body datasets to AI assistants.",
   "keywords": [
     "mcp",
