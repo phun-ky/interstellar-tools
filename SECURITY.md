@@ -10,14 +10,7 @@ described under [Dependencies](#dependencies).
 
 ## Supported Versions
 
-The project is in early alpha (`0.x`). Until 1.0, security fixes are released
-for the latest published version of each package only: a release is supported
-until the next release of the same package. To get a fix, upgrade to the latest
-version; the
-[upgrading guide](https://phun-ky.net/interstellar-tools/guide/upgrading)
-explains any changes you need to make.
-
-From 1.0, support follows the major version:
+Support follows the major version:
 
 - **The current major is supported as a whole.** Fixes are released as a new
   patch or minor of it, and upgrading within a major never breaks your code, so
@@ -33,6 +26,10 @@ From 1.0, support follows the major version:
   or remove it in a patch or minor release instead of waiting for a major. The
   change is kept as small as possible, and the advisory and the release notes
   say what changed and why.
+
+To get a fix, upgrade to the newest release of your major; nothing in it breaks
+your code. Moving to a new major is described in the
+[upgrading guide](https://phun-ky.net/interstellar-tools/guide/upgrading).
 
 | Release                                     | Supported                        |
 | ------------------------------------------- | -------------------------------- |

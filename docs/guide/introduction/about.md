@@ -25,9 +25,11 @@ simulation, visualization, mission tooling, and teaching.
 
 ## Status
 
-> **Project status:** Early alpha
+> **Project status:** Stable (1.0)
 
-- API surface: changing between minor versions.
+- API surface: stable. Breaking changes only come in a major release, and
+  deprecated APIs keep working for one full major; see
+  [how versions work](../upgrading.md#how-versions-work).
 - Validation: unit tests in place; not yet cross-validated against flight-grade
   references.
 - Runtime targets: Node 22.9+, modern browsers with ESM bundlers (Vite, Webpack,

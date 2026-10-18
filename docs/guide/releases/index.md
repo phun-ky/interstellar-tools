@@ -6,9 +6,9 @@ next to the [migration guide](../upgrading.md), which has the step-by-step code
 changes. Read the release notes to decide when to upgrade, and the migration
 guide when you do.
 
-| Release         | Status   | Covers                     |
-| --------------- | -------- | -------------------------- |
-| [1.0](./1.0.md) | Upcoming | Everything from 0.x to 1.0 |
+| Release         | Status                   | Covers                     |
+| --------------- | ------------------------ | -------------------------- |
+| [1.0](./1.0.md) | Released 18 October 2026 | Everything from 0.x to 1.0 |
 
 Each package's `CHANGELOG.md` still lists every single release, minor and patch
 included. The release notes are the summary for people, the changelogs the

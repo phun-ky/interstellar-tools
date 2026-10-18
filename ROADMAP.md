@@ -18,7 +18,7 @@ version. The
 complete; it settled the decisions that would be breaking changes afterwards,
 from the orbit tree and the `display` split to the temporal and MCP APIs, and
 got the datasets ready (real J2000 angles for every moon, `mu` for the major
-bodies, Spica as a binary). What's left is the release itself.
+bodies, Spica as a binary), and 1.0 was released on 18 October 2026.
 
 After 1.0, a deprecated API keeps working for one full major, and the current
 major is supported as a whole; see the
