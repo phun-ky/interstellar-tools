@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.2.7](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.6...%40interstellar-tools%2Fmcp%400.2.7) (2026-10-18)
+
 ## [0.2.6](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.5...%40interstellar-tools%2Fmcp%400.2.6) (2026-10-18)
 
 ## [0.2.5](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.2.4...%40interstellar-tools%2Fmcp%400.2.5) (2026-10-18)
