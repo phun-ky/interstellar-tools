@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.64.0...%40interstellar-tools%2Ftypes%401.0.0) (2026-10-18)
+
 ## [0.64.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.63.0...%40interstellar-tools%2Ftypes%400.64.0) (2026-10-18)
 
 ### ⚠ BREAKING CHANGES

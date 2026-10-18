@@ -112,7 +112,7 @@
   "dependencies": {
     "@interstellar-tools/constants": "^0.64.0",
     "@interstellar-tools/temporal": "^0.61.0",
-    "@interstellar-tools/types": "^0.64.0"
+    "@interstellar-tools/types": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
