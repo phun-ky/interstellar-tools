@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.61.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.61.0...%40interstellar-tools%2Ftemporal%400.61.1) (2026-10-18)
+
 ## [0.61.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%400.60.4...%40interstellar-tools%2Ftemporal%400.61.0) (2026-10-18)
 
 ### ⚠ BREAKING CHANGES
