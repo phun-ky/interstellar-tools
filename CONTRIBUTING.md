@@ -256,6 +256,10 @@ by Dependabot are exempt.
   (`feat:`, `fix:`, `docs:`, …). `npm run commit` helps write them. Releases and
   changelogs are generated from them, so a breaking change needs a
   `BREAKING CHANGE:` footer that says what to change.
+- A breaking change also updates the
+  [migration guide](https://phun-ky.net/interstellar-tools/guide/upgrading) in
+  the same pull request, with before-and-after code. Every major release has a
+  guide covering all its breaking changes.
 - Open a pull request against `main`. The Checks workflow builds, lints,
   type-checks, checks the API docs and runs the tests; all of it must pass.
 

@@ -3,7 +3,11 @@
 Only the latest release of each package is supported (see the
 [security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md)),
 so upgrading is the way to get fixes. This page explains how versions work and
-walks through each upgrade that needs changes in your code.
+how to migrate your code.
+
+**Every major release has a migration guide** here, covering every breaking
+change since the previous major, with before-and-after code. Until 1.0, that's
+the guide from 0.x to 1.0 below, which grows with each breaking change.
 
 ## How versions work
 
@@ -17,7 +21,28 @@ walks through each upgrade that needs changes in your code.
 - Upgrade the packages together. They depend on each other, and their version
   ranges are kept in sync at release.
 
-## 0.60 to 0.61: the orbit tree
+## Migrating from 0.x to 1.0
+
+All five current packages go to 1.0 together. The changes below are in release
+order; skip the ones older than the version you're on.
+
+### Checklist
+
+- [ ] Read orbital elements from `orbit` (`body.orbit.a`, not `body.a`).
+- [ ] Replace `system` with `parent`, and look bodies up by `id`.
+- [ ] Treat systems as barycenters; members point to them with `parent`.
+- [ ] Pass `body.orbit` to `computeAngle` and `advanceMeanAnomaly` (was
+      `meanToEccentricAnomaly`).
+- [ ] Swap the arguments of `meanMotion(a, mu)` and
+      `hyperbolicPeriapsisSpeed(vInfinity, rp, mu)`.
+- [ ] Read drawing values from `display` (`body.display.color`, not
+      `body.color`), and keep renderer state there too.
+- [ ] Expect new values for planet and comet positions, which are now real J2000
+      data.
+- [ ] Behind a tunnel or on a public host, configure the MCP server's
+      `--allowed-hosts`.
+
+### 0.60 to 0.61: the orbit tree
 
 Affects `@interstellar-tools/types`, `constants` and `equations` 0.61.0, and
 `@interstellar-tools/mcp` 0.2.0.
@@ -26,7 +51,7 @@ Celestial bodies changed from flat orbital fields to a tree: every body has an
 `id`, names what it's bound to in `parent`, and keeps its orbital elements in
 `orbit`.
 
-### 1. Read orbital elements from `orbit`
+#### 1. Read orbital elements from `orbit`
 
 `a`, `e`, `period` and `angle` moved into `orbit`. On comets and asteroids, `i`,
 `w`, `om` and `q` moved too.
@@ -42,7 +67,7 @@ const { a, e, period, angle } = planet.orbit!;
 but not on a Kepler orbit, like the Sun around the Solar System barycenter), and
 required on moons, comets and asteroids.
 
-### 2. Replace `system` with `parent`
+#### 2. Replace `system` with `parent`
 
 `system` held a name, or on stars a `{ name, type }` object. `parent` holds the
 `id` of what the body is bound to.
@@ -54,7 +79,7 @@ const moons = MOONS.filter((moon) => moon.system === 'Jupiter');
 const moons = MOONS.filter((moon) => moon.parent === 'jupiter');
 ```
 
-### 3. Look things up by `id`, not by name
+#### 3. Look things up by `id`, not by name
 
 Every body, system, galaxy and asteroid belt has a stable `id` that never
 changes, even if names are translated. Asteroids and comets use their official
@@ -64,7 +89,7 @@ designations, such as `4-vesta` and `1p-halley`.
 const earth = PLANETS.find((planet) => planet.id === 'earth');
 ```
 
-### 4. Systems are barycenters
+#### 4. Systems are barycenters
 
 `StarSystemInterface` is removed. `SystemInterface` no longer lists its `stars`;
 members point to it with `parent` instead, and systems can nest.
@@ -82,7 +107,7 @@ const members = [...STARS, ...SYSTEMS].filter(
 (`{ value, unit: 'ly' }`). Stars lost their constellation `system` names, and
 gained an optional `mass` in solar masses.
 
-### 5. Pass the orbit to the anomaly functions
+#### 5. Pass the orbit to the anomaly functions
 
 `computeAngle` takes an orbit instead of a whole body, and
 `meanToEccentricAnomaly` is renamed to `advanceMeanAnomaly`, since it returns
@@ -100,13 +125,13 @@ advanceMeanAnomaly(planet.orbit!, { value: 1, unit: 'd' });
 
 To convert a mean anomaly to an eccentric anomaly, use `solveKepler(M, e)`.
 
-### 6. MCP datasets
+#### 6. MCP datasets
 
 The MCP server's dataset resources use the new shape, and `find_body` matches
 ids as well as names. Clients that read `system`, `a` or `period` from a body
 should read `parent` and `orbit` instead.
 
-## constants 0.61.1: planet positions
+### constants 0.61.1: planet positions
 
 No code changes are needed, but values changed. `PLANETS` held other orbital
 elements in `orbit.angle` and placeholder `x`, `y`, `z`. Both are now real: the
@@ -114,7 +139,7 @@ true anomaly at J2000 and the heliocentric position at J2000 in the J2000
 ecliptic frame. If you stored or compared these values, expect different
 numbers.
 
-## mcp 0.2.1: host check over HTTP
+### mcp 0.2.1: host check over HTTP
 
 Bound to loopback, the HTTP server now rejects requests addressed to any host
 name other than `localhost`, `127.0.0.1` or `[::1]` with `403`, which protects
@@ -126,7 +151,7 @@ it from DNS rebinding.
 - **On another interface or host name:** pass your public host name with
   `--allowed-hosts`, or `allowedHosts` in `startHttpServer`.
 
-## equations 0.62: `mu` last
+### equations 0.62: `mu` last
 
 Every equation now takes the gravitational parameter `mu` as its last argument.
 Two didn't, and their arguments are reordered:
@@ -143,7 +168,7 @@ hyperbolicPeriapsisSpeed(vInfinity, rp, mu);
 All arguments are plain numbers, so TypeScript won't catch an old call: search
 your code for both functions and swap the arguments.
 
-## equations 0.63: positions at any time
+### equations 0.63: positions at any time
 
 `advanceMeanAnomaly` no longer caps or rounds the time step, so results change
 for steps it used to clamp:
@@ -168,3 +193,73 @@ import { meanAnomalyAt, trueAnomalyAt } from '@interstellar-tools/equations';
 meanAnomalyAt(earth.orbit!, new Date('2026-10-17T12:00:00Z')); // 282.7°
 trueAnomalyAt(earth.orbit!, new Date('2026-10-17T12:00:00Z')); // 280.8°
 ```
+
+### types and constants 0.62: `display`
+
+Everything about drawing moves into an optional `display` object on every body
+(`DisplayInterface`), the way orbital elements live in `orbit`:
+
+```ts
+// 0.61
+const { color } = planet;
+const { size } = comet;
+const { opacity, density } = belt;
+// 0.62
+const { color } = planet.display ?? {};
+const { size } = comet.display ?? {};
+const { opacity, density } = belt.display ?? {};
+```
+
+The renderer state fields move there too, with clearer names:
+
+| 0.61             | 0.62                         |
+| ---------------- | ---------------------------- |
+| `body.miA`       | `body.display.semiMinorAxis` |
+| `body.focus_x`   | `body.display.focusOffsetX`  |
+| `body.orbitPath` | `body.display.orbitPath`     |
+
+`CartesianCoordinatesInterface` is unchanged, and is now defined with
+`DisplayInterface`. The datasets only set `color`, `size`, `opacity` and
+`density`; the rest is for a renderer to compute.
+
+### For renderers: drawing with the library
+
+A renderer that draws orbits typically computes each orbit's shape once and
+keeps it on the body, then places the body on it every frame. With the library,
+that looks like this:
+
+```ts
+import { PLANETS } from '@interstellar-tools/constants';
+import { trueAnomalyAt } from '@interstellar-tools/equations';
+
+import { convertDistance } from './your-app'; // a renderer's own unit helper
+
+// Work on a copy: the datasets are shared by everything that imports them
+const bodies = structuredClone(PLANETS);
+
+for (const body of bodies) {
+  if (!body.orbit) continue;
+
+  const a = convertDistance(body.orbit.a, 'au').value;
+  const { e } = body.orbit;
+  const semiMinorAxis = a * Math.sqrt(1 - e ** 2);
+  const focusOffsetX = a * e;
+  const orbitPath = Array.from({ length: 361 }, (_, i) => {
+    const theta = (i / 360) * 2 * Math.PI;
+
+    return {
+      x: a * Math.cos(theta) - focusOffsetX,
+      y: semiMinorAxis * Math.sin(theta)
+    };
+  });
+
+  body.display = { ...body.display, semiMinorAxis, focusOffsetX, orbitPath };
+}
+
+// Each frame: where is the body now?
+const nu = trueAnomalyAt(bodies[2].orbit!, new Date());
+```
+
+The distances are in whatever unit the renderer chooses for `orbit.a` (au here),
+with the parent body at the origin and periapsis along +x. Scale them to pixels
+when drawing.
