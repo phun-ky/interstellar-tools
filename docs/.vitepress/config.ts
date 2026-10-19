@@ -17,6 +17,16 @@ import lightTheme from './shiki/accessible-aa-light-shiki.json' with { type: 'js
 // const here = fileURLToPath(new URL('.', import.meta.url));
 // const root = path.resolve(here, '../../..');
 
+const SITE_URL = 'https://phun-ky.net/interstellar-tools/';
+const SITE_NAME = 'Interstellar Tools';
+const DEFAULT_IMAGE = 'images/interstellar-tools-brand-og.png';
+const DEFAULT_IMAGE_ALT =
+  'Interstellar Tools: engineering the next spacefaring stack';
+/** The public URL of a page, from its source path (cleanUrls on). */
+const pageUrl = (relativePath: string) =>
+  SITE_URL +
+  relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '');
+
 export default defineConfig({
   base: '/interstellar-tools/',
   lang: 'en-GB',
@@ -25,15 +35,43 @@ export default defineConfig({
   cleanUrls: true,
   metaChunk: true,
   description:
-    'Open, tested building blocks for orbital mechanics and space software in TypeScript: equations, constants, datasets, time utilities and an MCP server for AI assistants.',
-  title: 'Interstellar Tools',
+    'Tested TypeScript building blocks for orbital mechanics: equations, constants, J2000 datasets and an MCP server.',
+  title: SITE_NAME,
   // Mission Control is designed dark-first; the toggle switches to light
   appearance: 'dark',
   head: [
     ['meta', { name: 'theme-color', content: '#0b1016' }],
     // Add the theme's scope class before first paint, not after hydration
-    ['script', {}, 'document.documentElement.classList.add("ph");']
+    ['script', {}, 'document.documentElement.classList.add("ph");'],
+    ['meta', { property: 'og:site_name', content: SITE_NAME }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'en_GB' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }]
   ],
+  // Social cards for every page: title, description, URL and image. A page can
+  // set its own `image` (path under docs/public) and `imageAlt` in frontmatter.
+  transformHead: ({ pageData, title, description }) => {
+    const url = pageUrl(pageData.relativePath);
+    const image =
+      SITE_URL +
+      (pageData.frontmatter.image ?? DEFAULT_IMAGE).replace(/^\//, '');
+    const imageAlt = pageData.frontmatter.imageAlt ?? DEFAULT_IMAGE_ALT;
+
+    return [
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:image', content: image }],
+      ['meta', { property: 'og:image:width', content: '1200' }],
+      ['meta', { property: 'og:image:height', content: '630' }],
+      ['meta', { property: 'og:image:alt', content: imageAlt }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }],
+      ['meta', { name: 'twitter:image', content: image }],
+      ['meta', { name: 'twitter:image:alt', content: imageAlt }]
+    ];
+  },
   themeConfig: {
     search: {
       provider: 'local'
