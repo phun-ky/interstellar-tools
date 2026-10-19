@@ -115,6 +115,16 @@ and the Lagrange points. Like maps, it ships as minor releases as it lands.
   ([#209](https://github.com/phun-ky/interstellar-tools/issues/209)), and the
   Sun's position with satellite eclipses
   ([#215](https://github.com/phun-ky/interstellar-tools/issues/215)).
+- **Drag and perturbations**, requested by OrbitNTNU: atmospheric density models
+  ([#226](https://github.com/phun-ky/interstellar-tools/issues/226)), orbit
+  decay and lifetime
+  ([#227](https://github.com/phun-ky/interstellar-tools/issues/227)), numerical
+  propagation with a force model
+  ([#228](https://github.com/phun-ky/interstellar-tools/issues/228)),
+  sun-synchronous and frozen orbits
+  ([#229](https://github.com/phun-ky/interstellar-tools/issues/229)), and
+  fitting TLEs to propagated states
+  ([#230](https://github.com/phun-ky/interstellar-tools/issues/230)).
 - **Lagrange points**, the Hill sphere and the Jacobi integral in `equations`
   ([#221](https://github.com/phun-ky/interstellar-tools/issues/221)).
 - **Docs and tools:** guide pages
@@ -157,9 +167,11 @@ comes with tests and documentation.
 - **Flight-certified or safety-critical software.** The equations are for
   learning, prototyping, visualisation and tooling, not for operating real
   spacecraft.
-- **High-fidelity ephemerides or N-body integration.** For precise positions,
-  use dedicated tools such as JPL Horizons or SPICE. The tracking package reads
-  their output; it doesn't replace them.
+- **High-fidelity ephemerides or N-body integration of planets.** For precise
+  positions, use dedicated tools such as JPL Horizons or SPICE, and for
+  high-fidelity mission analysis GMAT or Orekit. The numerical propagator for a
+  single satellite with a force model is planned, but not at that fidelity. The
+  tracking package reads their output; it doesn't replace them.
 - **Live data feeds.** The libraries don't fetch orbital elements or
   ephemerides; users pass them in.
 - **A graphical application.** The project provides libraries, data and an MCP
