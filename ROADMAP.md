@@ -78,13 +78,60 @@ releases as it lands, and 2.0 stays reserved for breaking changes.
   tools for geodesy and projections
   ([#203](https://github.com/phun-ky/interstellar-tools/issues/203)).
 
+### Satellite tracking
+
+After maps, in the
+[Satellite tracking milestone](https://github.com/phun-ky/interstellar-tools/milestone/3):
+tracking satellites and deep-space probes, drawing them on flat maps and globes,
+and the Lagrange points. Like maps, it ships as minor releases as it lands.
+
+- **A new `@interstellar-tools/tracking` package**
+  ([#207](https://github.com/phun-ky/interstellar-tools/issues/207)), starting
+  at 0.x, with two categories:
+  - `satellites`: TLE and OMM elements
+    ([#210](https://github.com/phun-ky/interstellar-tools/issues/210)), SGP4 and
+    SDP4 propagation
+    ([#211](https://github.com/phun-ky/interstellar-tools/issues/211)), the
+    point under a satellite
+    ([#212](https://github.com/phun-ky/interstellar-tools/issues/212)), look
+    angles and Doppler
+    ([#213](https://github.com/phun-ky/interstellar-tools/issues/213)), pass
+    predictions
+    ([#214](https://github.com/phun-ky/interstellar-tools/issues/214)), and a
+    small, dated CelesTrak snapshot of well-known satellites
+    ([#216](https://github.com/phun-ky/interstellar-tools/issues/216))
+  - `probes`: positions from JPL Horizons and CCSDS ephemeris files
+    ([#217](https://github.com/phun-ky/interstellar-tools/issues/217)), and a
+    dataset of notable probes
+    ([#218](https://github.com/phun-ky/interstellar-tools/issues/218))
+- **On maps and globes:** ground tracks split at the antimeridian, coverage
+  footprints ([#219](https://github.com/phun-ky/interstellar-tools/issues/219)),
+  and 3D paths and orthographic views
+  ([#220](https://github.com/phun-ky/interstellar-tools/issues/220)), using the
+  projections from the maps milestone.
+- **Time and the sky:** Julian dates and time scales with a leap second table
+  ([#208](https://github.com/phun-ky/interstellar-tools/issues/208)), Earth
+  rotation and sidereal time
+  ([#209](https://github.com/phun-ky/interstellar-tools/issues/209)), and the
+  Sun's position with satellite eclipses
+  ([#215](https://github.com/phun-ky/interstellar-tools/issues/215)).
+- **Lagrange points**, the Hill sphere and the Jacobi integral in `equations`
+  ([#221](https://github.com/phun-ky/interstellar-tools/issues/221)).
+- **Docs and tools:** guide pages
+  ([#222](https://github.com/phun-ky/interstellar-tools/issues/222)), a Learn
+  tutorial on where the ISS is and when to see it
+  ([#223](https://github.com/phun-ky/interstellar-tools/issues/223)), and MCP
+  tools ([#224](https://github.com/phun-ky/interstellar-tools/issues/224)).
+
+The libraries never fetch data: users bring the elements or ephemerides, and the
+docs show where to get them.
+
 ### More equations
 
-After maps, grow `@interstellar-tools/equations` along the rest of the
+After that, grow `@interstellar-tools/equations` along the rest of the
 [equation backlog](TODO.md): perturbations for low Earth orbit, entry, descent
-and landing, attitude dynamics, and three-body tools such as the Jacobi integral
-and the Tisserand parameter. Every new function comes with tests and
-documentation.
+and landing, attitude dynamics, and the Tisserand parameter. Every new function
+comes with tests and documentation.
 
 ### Time
 
@@ -111,7 +158,10 @@ documentation.
   learning, prototyping, visualisation and tooling, not for operating real
   spacecraft.
 - **High-fidelity ephemerides or N-body integration.** For precise positions,
-  use dedicated tools such as JPL Horizons or SPICE.
+  use dedicated tools such as JPL Horizons or SPICE. The tracking package reads
+  their output; it doesn't replace them.
+- **Live data feeds.** The libraries don't fetch orbital elements or
+  ephemerides; users pass them in.
 - **A graphical application.** The project provides libraries, data and an MCP
   server, not a user interface.
 - **Collecting data.** The packages, the MCP server and the website don't

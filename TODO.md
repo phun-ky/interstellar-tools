@@ -5,11 +5,13 @@ work on one starts, it gets a
 [GitHub issue](https://github.com/phun-ky/interstellar-tools/issues), linked
 next to it here.
 
-Entries with an issue link belong to the
-[Maps and topography milestone](https://github.com/phun-ky/interstellar-tools/milestone/2),
-the focus after 1.0. Geodesy goes in `@interstellar-tools/equations`
-(cartography), and map projections, tiles, terrain, imaging geometry and landing
-sites in a new `@interstellar-tools/maps` package
+Entries with an issue link belong to a milestone: most to
+[Maps and topography](https://github.com/phun-ky/interstellar-tools/milestone/2),
+the focus after 1.0, and the Jacobi integral to
+[Satellite tracking](https://github.com/phun-ky/interstellar-tools/milestone/3).
+Geodesy goes in `@interstellar-tools/equations` (cartography), and map
+projections, tiles, terrain, imaging geometry and landing sites in a new
+`@interstellar-tools/maps` package
 ([#181](https://github.com/phun-ky/interstellar-tools/issues/181)). The rest
 waits for a later milestone; see the [roadmap](ROADMAP.md).
 
@@ -291,6 +293,7 @@ waits for a later milestone; see the [roadmap](ROADMAP.md).
 ## Three-body & special tools
 
 - **CR3BP Jacobi integral**
+  [#221](https://github.com/phun-ky/interstellar-tools/issues/221)
 
   $$
   C_J=2U-\|\dot{\mathbf{r}}\|^2
