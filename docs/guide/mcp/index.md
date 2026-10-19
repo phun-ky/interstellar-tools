@@ -1,3 +1,11 @@
+---
+description:
+  Give AI assistants tested orbital mechanics. Set up the Interstellar Tools MCP
+  server in Claude, ChatGPT, Le Chat and more.
+image: /images/interstellar-tools-mcp-og.png
+imageAlt: 'Interstellar Tools MCP server: orbital mechanics for AI assistants'
+---
+
 # Using the MCP server
 
 `@interstellar-tools/mcp` is a
