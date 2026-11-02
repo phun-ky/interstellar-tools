@@ -40,8 +40,8 @@ import { norm2pi } from '../helpers/misc.js';
  *
  * const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
  *
- * // Due north inertially at 7.8 km/s, from a pad moving east at 408 m/s
- * const beta = rotatingLaunchAzimuth(toRad(0), 7800, 408);
+ * // Due north inertially at 7.8 km/s, from a pad moving east at 409 m/s
+ * const beta = rotatingLaunchAzimuth(toRad(0), 7800, 409);
  * // beta ≈ 357.0°: aim slightly west of north to cancel the pad's eastward speed
  * ```
  *
