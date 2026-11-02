@@ -20,10 +20,16 @@ const NMI = 1852; // m per nautical mile
 /** Where the spacecraft is drawn on the mission map, and how far along. */
 export type MapLeg = 'pad' | 'park' | 'out' | 'moon' | 'surface' | 'ret';
 
+/**
+ * How far along a leg: a fraction of its drawn length, or, on the way out or
+ * back, the point where the path is a given distance from the Moon.
+ */
+export type MapAt = number | { moonKm: number };
+
 export interface MissionEventInterface {
   get: string;
   title: string;
-  where: readonly [leg: MapLeg, fraction?: number];
+  where: readonly [leg: MapLeg, at?: MapAt];
   position: string;
   figure: string;
   text: string;
@@ -51,6 +57,27 @@ const km = (m: number) =>
     .toLocaleString('en-US')
     .replace(/,/g, ' ');
 
+/**
+ * The free return the mission map draws: from Apollo 11's TLI point (ABN:
+ * 180.581 n mi up, 7.367° above the horizontal), in the Earth–Moon plane with
+ * the Moon at its mean distance. The angle from the Earth–Moon line and the
+ * speed were solved for a 61.5 n mi pericynthion (MR Table 7-III) and a
+ * 38.5 km return perigee, the vacuum perigee of the flown entry; the speed is
+ * 3.7 m/s above the flown 35 545.6 ft/s. Checked in in-practice.spec.ts.
+ */
+export const FREE_RETURN = {
+  /** Angle of the TLI point from the Earth–Moon line, counterclockwise, deg */
+  angle: 242.26601,
+  /** Height above the 6 378 137 m equator, m */
+  altitude: 334_400,
+  /** Inertial speed, m/s */
+  speed: 10_837.9617,
+  /** Flight-path angle, deg */
+  fpa: 7.367,
+  /** Time to integrate, in units of 1/n: just past the return perigee */
+  duration: 1.32
+} as const;
+
 export const EVENTS: readonly MissionEventInterface[] = [
   {
     get: '000:00:00',
@@ -71,7 +98,7 @@ export const EVENTS: readonly MissionEventInterface[] = [
   {
     get: '002:50:13',
     title: 'Trans-lunar injection',
-    where: ['out', 0.02],
+    where: ['out', 0],
     position: `${km(180.581 * NMI)} km up`,
     figure: `${((35_545.6 * FT) / 1000).toFixed(2)} km/s`,
     text: 'After a second S-IVB burn of almost six minutes, Apollo 11 is on a long ellipse that reaches out to the Moon.'
@@ -79,7 +106,7 @@ export const EVENTS: readonly MissionEventInterface[] = [
   {
     get: '061:39:55',
     title: 'Into the Moon’s sphere',
-    where: ['out', 0.84],
+    where: ['out', { moonKm: (33_823 * NMI) / 1000 }],
     position: `${km(33_823 * NMI)} km from the Moon`,
     figure: `${((3775 * FT) / 1000).toFixed(2)} km/s from the Moon`,
     text: 'Earth’s gravity has slowed the spacecraft to 0.91 km/s. From here on, the Moon’s gravity dominates, and the spacecraft falls towards it.'
@@ -119,7 +146,7 @@ export const EVENTS: readonly MissionEventInterface[] = [
   {
     get: '148:07:23',
     title: 'Leaving the Moon’s sphere',
-    where: ['ret', 0.22],
+    where: ['ret', { moonKm: (33_800 * NMI) / 1000 }],
     position: `About ${km(33_800 * NMI)} km from the Moon`,
     figure: `About ${km(174_000 * NMI)} km from Earth`,
     text: 'Earth’s gravity takes over again. From here the spacecraft speeds up all the way home.'

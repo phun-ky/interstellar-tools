@@ -12,8 +12,12 @@ the mission actually flew.
 
 ## The mission at a glance
 
-Step through the mission's main events. The distances are to scale, but the path
-is drawn by hand for now; a later chapter computes the real one.
+Step through the mission's main events. The map turns with the Moon, and the
+distances are to scale. The path is computed: a free return from Apollo 11's
+trans-lunar injection, integrated with the restricted three-body equations
+(`cr3bpDerivatives`, `rk4Integrate`). It's the figure-eight that loops behind
+the Moon and back to Earth, the way home if the service module's engine had
+failed; the real return, after lunar orbit, followed a similar path.
 
 <ApolloMissionMap />
 
