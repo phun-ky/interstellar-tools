@@ -6,7 +6,10 @@ import test, { describe } from 'node:test';
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
+import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { hohmannTransfer } from '../categories/manoeuvres/hohmann-transfer.js';
+import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
+import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { planeChangeDeltaV } from '../categories/manoeuvres/plane-change-delta-v.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
@@ -146,6 +149,41 @@ describe('manoeuvres', () => {
           rocketDeltaVFromIsp(Isp, m0, m1) + rocketDeltaVFromIsp(Isp, m1, mf);
 
         relClose(staged, rocketDeltaVFromIsp(Isp, m0, mf), 1e-9);
+      })
+    );
+  });
+
+  test('initialMassForDeltaV inverts the rocket equation', () => {
+    const isp = fc.double({ min: 50, max: 10_000, noNaN: true }); // [s]
+    const mass = fc.double({ min: 1, max: 1e7, noNaN: true }); // [kg]
+    const ratio = fc.double({ min: 1.001, max: 20, noNaN: true });
+
+    fc.assert(
+      fc.property(isp, mass, ratio, (Isp, mf, k) => {
+        const dv = rocketDeltaVFromIsp(Isp, mf * k, mf);
+
+        relClose(initialMassForDeltaV(mf, dv, Isp), mf * k, 1e-9);
+      })
+    );
+  });
+
+  test('a burn takes as long as its propellant lasts at the mass flow rate', () => {
+    const isp = fc.double({ min: 50, max: 10_000, noNaN: true }); // [s]
+    const mass = fc.double({ min: 1, max: 1e7, noNaN: true }); // [kg]
+    const thrust = fc.double({ min: 1e-3, max: 1e8, noNaN: true }); // [N]
+    // From 1 m/s: below that, m0 - mf cancels in floating point, while
+    // burnTime stays accurate (see its unit tests)
+    const dv = fc.double({ min: 1, max: 20_000, noNaN: true }); // [m/s]
+
+    fc.assert(
+      fc.property(mass, dv, thrust, isp, (mf, d, F, Isp) => {
+        const m0 = initialMassForDeltaV(mf, d, Isp);
+
+        relClose(
+          burnTime(m0, d, F, Isp),
+          (m0 - mf) / massFlowRate(F, Isp),
+          1e-9
+        );
       })
     );
   });

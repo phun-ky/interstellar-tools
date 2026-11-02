@@ -1,4 +1,4 @@
-import { PLANETS } from '@interstellar-tools/constants';
+import { MOONS, PLANETS } from '@interstellar-tools/constants';
 import type { Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
@@ -7,6 +7,10 @@ import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-tru
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { norm2pi } from '../categories/helpers/misc.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
+import { burnTime } from '../categories/manoeuvres/burn-time.js';
+import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
+import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
+import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
@@ -86,6 +90,40 @@ describe('In practice values', () => {
 
     assert.equal(Math.round(soi / 1000) * 1000, 925_000);
     assert.ok(384_400 < soi);
+  });
+});
+
+// Apollo 11's lunar module ascent stage: 10 776.6 lb at liftoff and 6070.1 ft/s
+// (Mission Report Tables A-I and 7-V), 3464 lbf at 309 s (pre-flight
+// prediction, Mission Report Table 9.9-I)
+describe('In practice values: rocket performance', () => {
+  const F = 15_409; // N, 3464 lbf
+  const Isp = 309; // s
+  const m0 = 4888; // kg
+
+  test('massFlowRate: 5.09 kg/s for the ascent engine', () => {
+    assert.equal(massFlowRate(F, Isp).toFixed(2), '5.09');
+  });
+
+  test('burnTime: 439 s against 434.9 s flown, 1% more', () => {
+    const t = burnTime(m0, 1850.2, F, Isp);
+
+    assert.equal(Math.round(t), 439);
+    assert.equal(Math.round((100 * (t - 434.9)) / 434.9), 1);
+  });
+
+  test('initialMassForDeltaV: 9 905 kg before landing', () => {
+    assert.equal(group(initialMassForDeltaV(m0, 2112.3, 305)), '9 905');
+  });
+
+  test('thrustToWeight: 1.94 on the Moon (1.62 m/s²), 0.32 on Earth', () => {
+    const moon = MOONS.find((body) => body.id === 'moon')!;
+    const g = moon.mu! / (moon.radius.value * 1e3) ** 2;
+
+    assert.equal(g.toFixed(2), '1.62');
+    assert.equal(g.toFixed(3), '1.624');
+    assert.equal(thrustToWeight(F, m0, 1.624).toFixed(2), '1.94');
+    assert.equal(thrustToWeight(F, m0, 9.80665).toFixed(2), '0.32');
   });
 });
 
