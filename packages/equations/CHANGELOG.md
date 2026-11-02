@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.3.0...%40interstellar-tools%2Fequations%401.4.0) (2026-11-02)
+
+### Feature
+
+* 🎸 Add atmospheric entry: ballistic coefficient, deceleration, heating and parachutes ([a52fc12](https://github.com/phun-ky/interstellar-tools/commit/a52fc12f09927297467b276cd1232b506345d498)), closes [#250](https://github.com/phun-ky/interstellar-tools/issues/250) [#251](https://github.com/phun-ky/interstellar-tools/issues/251)
+
 ## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.2.0...%40interstellar-tools%2Fequations%401.3.0) (2026-11-02)
 
 ### Feature

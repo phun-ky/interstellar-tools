@@ -85,6 +85,17 @@ orbits, angles, solve for kelper or find true anomalies.
 | [isOnTriaxialEllipsoidSurface](functions/isOnTriaxialEllipsoidSurface.md)           | Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within a tolerance). |
 | [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.      |
 
+## Entry
+
+| Function                                                                            | Description                                                                                                        |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [ballisticCoefficient](functions/ballisticCoefficient.md)                           | Compute the **ballistic coefficient** of an entry vehicle: how much mass it has per unit of drag.                  |
+| [ballisticEntrySpeed](functions/ballisticEntrySpeed.md)                             | Compute the **speed of a ballistic entry** at an altitude, with the Allen–Eggers solution.                         |
+| [ballisticPeakDeceleration](functions/ballisticPeakDeceleration.md)                 | Compute the **peak deceleration of a ballistic entry**, with the Allen–Eggers solution.                            |
+| [ballisticPeakDecelerationAltitude](functions/ballisticPeakDecelerationAltitude.md) | Compute the **altitude of peak deceleration** in a ballistic entry, with the Allen–Eggers solution.                |
+| [stagnationHeatFlux](functions/stagnationHeatFlux.md)                               | Compute the **convective heat flux at the stagnation point** of an entry vehicle, with the Sutton–Graves relation. |
+| [terminalVelocity](functions/terminalVelocity.md)                                   | Compute the **terminal speed** of a falling body: where drag balances its weight.                                  |
+
 ## Gravity
 
 | Function                                                      | Description                                                            |

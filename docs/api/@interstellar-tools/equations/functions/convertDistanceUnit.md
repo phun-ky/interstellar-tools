@@ -7,6 +7,7 @@
 function convertDistanceUnit(
   distance: DistanceInterface,
   targetUnit:
+    | 'm'
     | 'meter'
     | 'meters'
     | 'metre'
@@ -45,7 +46,6 @@ function convertDistanceUnit(
     | 'gigaparsec'
     | 'gigaparsecs'
     | 'Gpc'
-    | 'm'
     | 'km'
     | 'au'
     | 'ly'
@@ -77,7 +77,7 @@ $$
 | Parameter    | Type                                                               | Description                                           |
 | ------------ | ------------------------------------------------------------------ | ----------------------------------------------------- |
 | `distance`   | [`DistanceInterface`](../../types/interfaces/DistanceInterface.md) | Input distance `{ value, unit }` in a canonical unit. |
-| `targetUnit` |                                                                    | `"meter"`                                             | `"meters"` | `"metre"` | `"metres"` | `"kilometer"` | `"kilometers"` | `"kilometre"` | `"kilometres"` | `"AU"` | `"Au"` | `"astronomical-unit"` | `"astronomical-units"` | `"astronomical unit"` | `"astronomical units"` | `"lightyear"` | `"lightyears"` | `"light-year"` | `"light-years"` | `"kilolightyear"` | `"kilolightyears"` | `"kly"` | `"megalightyear"` | `"megalightyears"` | `"Mly"` | `"gigalightyear"` | `"gigalightyears"` | `"Gly"` | `"parsec"` | `"parsecs"` | `"kiloparsec"` | `"kiloparsecs"` | `"kpc"` | `"megaparsec"` | `"megaparsecs"` | `"Mpc"` | `"gigaparsec"` | `"gigaparsecs"` | `"Gpc"` | `"m"` | `"km"` | `"au"` | `"ly"` | `"pc"` | Desired output unit, canonical or an alias (will be normalized). |
+| `targetUnit` |                                                                    | `"m"`                                                 | `"meter"` | `"meters"` | `"metre"` | `"metres"` | `"kilometer"` | `"kilometers"` | `"kilometre"` | `"kilometres"` | `"AU"` | `"Au"` | `"astronomical-unit"` | `"astronomical-units"` | `"astronomical unit"` | `"astronomical units"` | `"lightyear"` | `"lightyears"` | `"light-year"` | `"light-years"` | `"kilolightyear"` | `"kilolightyears"` | `"kly"` | `"megalightyear"` | `"megalightyears"` | `"Mly"` | `"gigalightyear"` | `"gigalightyears"` | `"Gly"` | `"parsec"` | `"parsecs"` | `"kiloparsec"` | `"kiloparsecs"` | `"kpc"` | `"megaparsec"` | `"megaparsecs"` | `"Mpc"` | `"gigaparsec"` | `"gigaparsecs"` | `"Gpc"` | `"km"` | `"au"` | `"ly"` | `"pc"` | Desired output unit, canonical or an alias (will be normalized). |
 
 ## Returns
 
