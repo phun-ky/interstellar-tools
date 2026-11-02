@@ -1,0 +1,83 @@
+{
+  "git": {
+    "requireCleanWorkingDir": false,
+    "tagName": "@interstellar-tools/maps@${version}",
+    "commitMessage": "chore: 🤖 ${name}@${version}",
+    "commitArgs": ["-s"]
+  },
+  "github": {
+    "release": true,
+    "releaseName": "@interstellar-tools/maps@${version}",
+    "tokenRef": "GH_TOKEN"
+  },
+  "npm": {
+    "publish": true,
+    "skipChecks": true
+  },
+  "hooks": {
+    "after:bump": [
+      "node ../../scripts/sync-sibling-ranges.mjs ${name} ${version}",
+      "node ../../scripts/sync-lockfile.mjs"
+    ],
+    "after:release": "echo Successfully released ${name} v${version}."
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "header": "# Changelog",
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "chore",
+            "section": "Tasks"
+          },
+          {
+            "type": "docs",
+            "section": "Documentation"
+          },
+          {
+            "type": "feat",
+            "section": "Feature"
+          },
+          {
+            "type": "fix",
+            "section": "Bug"
+          },
+          {
+            "type": "perf",
+            "section": "Performance change"
+          },
+          {
+            "type": "refactor",
+            "section": "Refactoring"
+          },
+          {
+            "type": "release",
+            "section": "Create a release commit",
+            "hidden": true
+          },
+          {
+            "type": "style",
+            "section": "Markup, white-space, formatting, missing semi-colons...",
+            "hidden": true
+          },
+          {
+            "type": "test",
+            "section": "Adding missing tests",
+            "hidden": true
+          }
+        ]
+      },
+      "infile": "CHANGELOG.md",
+      "tagOpts": {
+        "prefix": "@interstellar-tools/maps@"
+      },
+      "commitsOpts": {
+        "path": "."
+      },
+      "gitRawCommitsOpts": {
+        "path": "."
+      }
+    }
+  }
+}
