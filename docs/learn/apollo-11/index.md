@@ -26,7 +26,7 @@ the equations it needs; the issues show what's still missing.
 | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | [Prologue: Why lunar orbit rendezvous?](/learn/apollo-11/why-lunar-orbit-rendezvous) | Three ways to the Moon, compared by mass                                      | Ready                                                                                                                                    |
 | I. Leaving Earth                                                                     | Launch, Earth parking orbit, trans-lunar injection                            | Needs [#186](https://github.com/phun-ky/interstellar-tools/issues/186), [#226](https://github.com/phun-ky/interstellar-tools/issues/226) |
-| II. Coasting to the Moon                                                             | Docking with the LM, the midcourse correction, the Moon's sphere of influence | Equations ready                                                                                                                          |
+| [II. Coasting to the Moon](/learn/apollo-11/coasting-to-the-moon)                    | Docking with the LM, the midcourse correction, the Moon's sphere of influence | Ready                                                                                                                                    |
 | III. Down to the surface                                                             | Lunar orbit insertion, descent orbit, powered descent, landing                | Needs the [Maps milestone](https://github.com/phun-ky/interstellar-tools/milestone/2)                                                    |
 | [IV. Lunar orbit rendezvous](/learn/apollo-11/lunar-orbit-rendezvous)                | Lunar ascent, rendezvous and docking                                          | Ready                                                                                                                                    |
 | [V. Coming home](/learn/apollo-11/coming-home)                                       | Trans-Earth injection, coast, entry and splashdown                            | Ready                                                                                                                                    |
@@ -63,3 +63,10 @@ text is checked by a test.
 - [_Apollo Flight Journal_: Apollo 11](https://apollojournals.org/afj/ap11fj/)
 - [_Apollo Experience Report: Descent Propulsion System_](https://ntrs.nasa.gov/api/citations/19730011150/downloads/19730011150.pdf),
   NASA TN D-7143
+- [_Mission Planning for Apollo Entry_](https://ntrs.nasa.gov/api/citations/19720013191/downloads/19720013191.pdf),
+  NASA TN D-6725
+- Ernest R. Hillje,
+  [_Entry Aerodynamics at Lunar Return Conditions Obtained From the Flight of Apollo 4 (AS-501)_](https://ntrs.nasa.gov/api/citations/19690029435/downloads/19690029435.pdf),
+  NASA TN D-5399
+- [_Apollo Experience Report: Earth Landing System_](https://ntrs.nasa.gov/api/citations/19740003586/downloads/19740003586.pdf),
+  NASA TN D-7437

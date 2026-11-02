@@ -16,6 +16,7 @@ import './custom.css';
 import './mission.css';
 import './practice.css';
 
+import ApolloAimPlot from './components/apollo/ApolloAimPlot.vue';
 import ApolloDvLedger from './components/apollo/ApolloDvLedger.vue';
 import ApolloEntryPlot from './components/apollo/ApolloEntryPlot.vue';
 import ApolloMissionMap from './components/apollo/ApolloMissionMap.vue';
@@ -42,6 +43,7 @@ export default {
     ctx.app.component('PullQuote', PullQuote);
     ctx.app.component('OrbitWidget', OrbitWidget);
     ctx.app.component('ApolloMissionMap', ApolloMissionMap);
+    ctx.app.component('ApolloAimPlot', ApolloAimPlot);
     ctx.app.component('ApolloDvLedger', ApolloDvLedger);
     ctx.app.component('ApolloRendezvousPlot', ApolloRendezvousPlot);
     ctx.app.component('ApolloEntryPlot', ApolloEntryPlot);

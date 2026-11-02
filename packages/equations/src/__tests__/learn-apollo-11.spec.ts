@@ -2,12 +2,15 @@ import type { CwState, Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
+import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-anomaly.js';
+import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { ballisticCoefficient } from '../categories/entry/ballistic-coefficient.js';
 import { ballisticEntrySpeed } from '../categories/entry/ballistic-entry-speed.js';
 import { ballisticPeakDecelerationAltitude } from '../categories/entry/ballistic-peak-deceleration-altitude.js';
 import { ballisticPeakDeceleration } from '../categories/entry/ballistic-peak-deceleration.js';
 import { terminalVelocity } from '../categories/entry/terminal-velocity.js';
+import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { cwTwoImpulseTransfer } from '../categories/manoeuvres/cw-two-impulse-transfer.js';
 import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
@@ -15,8 +18,13 @@ import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
+import { circularSpeed } from '../categories/orbits/circular-speed.js';
+import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentricity.js';
+import { hyperbolicPeriapsisSpeed } from '../categories/orbits/hyperbolic-periapsis-speed.js';
+import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
 import { hyperbolicTimeOfFlight } from '../categories/orbits/hyperbolic-time-of-flight.js';
 import { meanMotion } from '../categories/orbits/mean-motion.js';
+import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
 import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
 import { synodicPeriod } from '../categories/orbits/synodic-period.js';
@@ -112,6 +120,150 @@ describe('Why lunar orbit rendezvous? (tutorial)', () => {
 
   test('makes direct ascent 2.35 times heavier', () => {
     assert.equal((direct / lor).toFixed(2), '2.35');
+  });
+});
+
+describe('II. Coasting to the Moon (tutorial)', () => {
+  const MU_EARTH = 3.986004418e14;
+  const R_EARTH = 6_378_166;
+  const MU_MOON = 4.902800118e12;
+  const R_MOON = 1_737_400;
+  const deg = Math.PI / 180;
+  const hms = (h: number, m: number, s: number) => h * 3600 + m * 60 + s;
+  // Translunar injection, cutoff + 10 s (Apollo by the Numbers; LVFE Table 10-6)
+  const r = 6_712_602;
+  const v = 10_834.3;
+  const fpa = 7.367 * deg;
+  const tli = stateToElements(
+    [r, 0, 0],
+    [v * Math.sin(fpa), v * Math.cos(fpa), 0],
+    MU_EARTH
+  );
+  const n = meanMotion(tli.a, MU_EARTH);
+  const M0 = trueToMeanAnomaly(tli.nu, tli.e);
+  const p = tli.a * (1 - tli.e ** 2);
+  const t0 = hms(2, 50, 13.03);
+  const radiusAt = (t: number) => {
+    const M = (M0 + n * (t - t0)) as Radians;
+    const nu = eccentricToTrueAnomaly(solveKepler(M, tli.e), tli.e);
+
+    return p / (1 + tli.e * Math.cos(nu));
+  };
+  const speedAt = (radius: number) =>
+    Math.sqrt(v ** 2 + 2 * MU_EARTH * (1 / radius - 1 / r));
+  const vInf = 1080;
+  const a = hyperbolicSemiMajorAxis(vInf, MU_MOON);
+  const aim = (rp: number) => {
+    const e = hyperbolicEccentricity(vInf, rp, MU_MOON);
+
+    return -a * Math.sqrt(e ** 2 - 1);
+  };
+
+  test('converts the sources', () => {
+    assert.equal(Math.round(180.581 * 1.852 * 10) / 10, 334.4);
+    assert.equal(Math.round(186_436 * 1852), 345_279_472);
+    assert.equal(Math.round(61.5 * 1.852 * 10) / 10, 113.9);
+    assert.equal(Math.round(180.8 * 1.852), 335);
+    assert.equal((20.9 * FT).toFixed(2), '6.37');
+    assert.equal((2990 * FT).toFixed(1), '911.4');
+    assert.equal((3775 * FT).toFixed(1), '1150.6');
+    assert.equal(Math.round(10_441 * FT), 3182);
+  });
+
+  test('1. leaves on an ellipse: a 288 889 km, e 0.977, out to 571 177 km, 17.9 days round', () => {
+    assert.equal(group(tli.a / 1000), '288 889');
+    assert.equal(tli.e.toFixed(3), '0.977');
+    assert.equal(group((tli.a * (1 + tli.e)) / 1000), '571 177');
+    assert.ok(tli.a * (1 + tli.e) > 1.4 * 384_400_000);
+    assert.equal((keplerPeriod(tli.a, MU_EARTH) / 86_400).toFixed(1), '17.9');
+  });
+
+  test('2. docks 8 min 41 s after separating, 9 850 km up at 6.91 km/s', () => {
+    const gap = hms(3, 24, 3.7) - hms(3, 15, 23);
+
+    assert.equal(
+      `${Math.floor(gap / 60)} min ${Math.round(gap % 60)} s`,
+      '8 min 41 s'
+    );
+
+    const docking = radiusAt(hms(3, 24, 3.7));
+
+    assert.equal(group(docking / 1000), '16 231');
+    assert.equal(Math.round((docking - R_EARTH) / 50_000) * 50, 9850);
+    assert.equal((speedAt(docking) / 1000).toFixed(2), '6.91');
+  });
+
+  test('3. is 210 000 km out at 1.55 km/s at the MCC; reaches the sphere in 55.6 h at 964 m/s, against 58.8 h', () => {
+    const atMcc = radiusAt(hms(26, 44, 58.64));
+
+    assert.equal(Math.round(atMcc / 1e7) * 10_000, 210_000);
+    assert.equal((speedAt(atMcc) / 1000).toFixed(2), '1.55');
+
+    const rSoi = 345_279_000;
+    const nuSoi = Math.acos((p / rSoi - 1) / tli.e) as Radians;
+    const toSoi = (trueToMeanAnomaly(nuSoi, tli.e) - M0) / n;
+
+    assert.equal((toSoi / 3600).toFixed(1), '55.6');
+    assert.equal(Math.round(speedAt(rSoi)), 964);
+    assert.equal(((hms(61, 39, 55) - t0) / 3600).toFixed(1), '58.8');
+  });
+
+  test('4. aims 4 358 km out for 114 km, 4 198 km to hit, a 160 km corridor', () => {
+    assert.equal(group(a / 1000), '-4 203');
+    assert.equal(group(aim(R_MOON + 113_900) / 1000), '4 358');
+    assert.equal(group(aim(R_MOON) / 1000), '4 198');
+    assert.equal(Math.round((aim(R_MOON + 113_900) - aim(R_MOON)) / 1000), 160);
+    assert.equal((aim(R_MOON) / R_MOON).toFixed(1), '2.4');
+  });
+
+  test('4. moves the aim 302 km, from 4 660 km, 49 hours before LOI', () => {
+    const before = aim(R_MOON + 180.8 * 1852);
+
+    assert.equal(group(before / 1000), '4 660');
+    assert.equal(Math.round((before - aim(R_MOON + 61.5 * 1852)) / 1000), 302);
+    assert.equal(
+      Math.round((hms(75, 49, 50.37) - hms(26, 44, 58.64)) / 3600),
+      49
+    );
+    assert.ok(radiusAt(hms(26, 44, 58.64)) > 200_000_000);
+  });
+
+  test('4. the aim plot turns the flown path 88° and passes at 2.54 km/s', () => {
+    const rp = R_MOON + 113_900;
+    const e = Math.sqrt(1 + (aim(rp) / a) ** 2);
+
+    assert.equal(e.toFixed(2), '1.44');
+    assert.equal(
+      Math.round(((2 * asymptoteTrueAnomaly(e) - Math.PI) * 180) / Math.PI),
+      88
+    );
+    assert.equal(
+      (hyperbolicPeriapsisSpeed(vInf, rp, MU_MOON) / 1000).toFixed(2),
+      '2.54'
+    );
+  });
+
+  test('5. puts the sphere at 66 169 km; fits 911 and 1 151 m/s at 73°', () => {
+    assert.equal(
+      group(sphereOfInfluenceRadius(384_400_000, 7.342e22, 5.9722e24) / 1000),
+      '66 169'
+    );
+
+    const vMoon = circularSpeed(384_400_000, MU_EARTH);
+
+    assert.equal(Math.round(vMoon), 1018);
+    assert.equal((vMoon / 1000).toFixed(2), '1.02');
+
+    const vEarth = 911.4;
+    const vRel = 1150.6;
+    const angle =
+      (Math.acos(
+        (vEarth ** 2 + vMoon ** 2 - vRel ** 2) / (2 * vEarth * vMoon)
+      ) *
+        180) /
+      Math.PI;
+
+    assert.equal(Math.round(angle), 73);
   });
 });
 
