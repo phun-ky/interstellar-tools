@@ -4,8 +4,11 @@ import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
+import { hyperbolicToTrueAnomaly } from '../categories/anomalies/hyperbolic-to-true-anomaly.js';
+import { trueToHyperbolicAnomaly } from '../categories/anomalies/true-to-hyperbolic-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
+import { solveKeplerHyperbolic } from '../categories/kepler/solve-kepler-hyperbolic.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { hohmannTransfer } from '../categories/manoeuvres/hohmann-transfer.js';
 import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
@@ -69,6 +72,34 @@ describe('Kepler’s equation', () => {
     fc.assert(
       fc.property(anomaly, (M) => {
         angleClose(solveKepler(M as Radians, 0), M, 1e-9);
+      })
+    );
+  });
+});
+
+describe('hyperbolas', () => {
+  const hyperbolicE = fc.double({ min: 1.001, max: 100, noNaN: true });
+  const fraction = fc.double({ min: -0.999, max: 0.999, noNaN: true });
+
+  test('solveKeplerHyperbolic satisfies Mh = e sinh F - F', () => {
+    const Mh = fc.double({ min: -1e6, max: 1e6, noNaN: true });
+
+    fc.assert(
+      fc.property(Mh, hyperbolicE, (M, e) => {
+        const F = solveKeplerHyperbolic(M, e);
+
+        relClose(e * Math.sinh(F) - F, M, 1e-9);
+      })
+    );
+  });
+
+  test('true → hyperbolic → true anomaly round-trips inside the asymptotes', () => {
+    fc.assert(
+      fc.property(hyperbolicE, fraction, (e, f) => {
+        const nu = (f * Math.acos(-1 / e)) as Radians;
+        const F = trueToHyperbolicAnomaly(nu, e);
+
+        relClose(hyperbolicToTrueAnomaly(F, e), nu, 1e-9);
       })
     );
   });

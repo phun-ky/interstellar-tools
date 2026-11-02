@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
+import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { norm2pi } from '../categories/helpers/misc.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
@@ -13,6 +14,9 @@ import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
+import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentricity.js';
+import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
+import { hyperbolicTimeOfFlight } from '../categories/orbits/hyperbolic-time-of-flight.js';
 import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
 import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth-for-inclination.js';
@@ -202,6 +206,66 @@ describe('In practice values: state vectors and orbital elements', () => {
 
     assert.equal(e.toFixed(3), '0.977');
     assert.equal(e.toFixed(5), '0.97715');
+  });
+});
+
+// Apollo 11 entering the Moon's sphere of influence: 3775 ft/s relative to the
+// Moon, 33 823 n mi out (Mission Director's Summary Report); closest approach
+// 61.5 n mi up after the midcourse correction (Mission Report Table 7-III);
+// from entry at 061:39:55 to LOI-1 ignition at 075:49:50 (Apollo by the Numbers)
+describe('In practice values: hyperbolas', () => {
+  const MU_MOON = 4.902800118e12;
+  const R_MOON = 1_737_400;
+
+  test('derives v∞ ≈ 1.08 km/s and the 62 640 km entry distance', () => {
+    const v = 3775 * 0.3048;
+    const r = 33_823 * 1852;
+
+    assert.equal(Math.round(r / 1000), 62_640);
+    assert.equal(
+      (Math.sqrt(v * v - (2 * MU_MOON) / r) / 1000).toFixed(2),
+      '1.08'
+    );
+    assert.equal(Math.round(61.5 * 1.852 * 10) / 10, 113.9);
+  });
+
+  test('hyperbolicSemiMajorAxis: -4 203 km', () => {
+    assert.equal(
+      group(hyperbolicSemiMajorAxis(1080, MU_MOON) / 1000),
+      '-4 203'
+    );
+  });
+
+  test('hyperbolicEccentricity: 1.44', () => {
+    assert.equal(
+      hyperbolicEccentricity(1080, R_MOON + 113_900, MU_MOON).toFixed(2),
+      '1.44'
+    );
+  });
+
+  test('asymptoteTrueAnomaly: 134.0°, a turn of 88°', () => {
+    const nuInf = asymptoteTrueAnomaly(1.44);
+
+    assert.equal(((nuInf * 180) / Math.PI).toFixed(1), '134.0');
+    assert.equal(Math.round(((2 * nuInf - Math.PI) * 180) / Math.PI), 88);
+  });
+
+  test('hyperbolicTimeOfFlight: 13.8 h, against 14 h 10 min to LOI ignition', () => {
+    const e = 1.44;
+    const a = -4_203_000;
+    const p = a * (1 - e * e);
+    const nuSoi = -Math.acos((p / 62_640_000 - 1) / e) as Radians;
+    const t = hyperbolicTimeOfFlight(nuSoi, 0 as Radians, e, a, MU_MOON);
+
+    assert.equal((t / 3600).toFixed(1), '13.8');
+    assert.equal(Math.round(t / 100) * 100, 49_600);
+
+    const flown = 75 * 3600 + 49 * 60 + 50 - (61 * 3600 + 39 * 60 + 55);
+
+    assert.equal(
+      `${Math.floor(flown / 3600)} h ${Math.round((flown % 3600) / 60)} min`,
+      '14 h 10 min'
+    );
   });
 });
 
