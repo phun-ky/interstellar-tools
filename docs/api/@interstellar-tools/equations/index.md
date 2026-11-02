@@ -63,13 +63,16 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Anomalies
 
-| Function                                                      | Description                                                                          |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [advanceMeanAnomaly](functions/advanceMeanAnomaly.md)         | Advances an orbit by a time step and returns its new **mean anomaly** ($M$).         |
-| [eccentricToTrueAnomaly](functions/eccentricToTrueAnomaly.md) | Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.         |
-| [meanAnomalyAt](functions/meanAnomalyAt.md)                   | The **mean anomaly** ($M$) of an orbit at a given date.                              |
-| [trueAnomalyAt](functions/trueAnomalyAt.md)                   | The **true anomaly** ($\nu$) of an orbit at a given date: where the body is.         |
-| [trueToMeanAnomaly](functions/trueToMeanAnomaly.md)           | Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation. |
+| Function                                                        | Description                                                                                                             |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [advanceMeanAnomaly](functions/advanceMeanAnomaly.md)           | Advances an orbit by a time step and returns its new **mean anomaly** ($M$).                                            |
+| [asymptoteTrueAnomaly](functions/asymptoteTrueAnomaly.md)       | Compute the **true anomaly of a hyperbola's asymptotes**: the limit a body on a hyperbola approaches but never reaches. |
+| [eccentricToTrueAnomaly](functions/eccentricToTrueAnomaly.md)   | Converts **Eccentric Anomaly** ($E$) to **True Anomaly** ($V$) for an orbit.                                            |
+| [hyperbolicToTrueAnomaly](functions/hyperbolicToTrueAnomaly.md) | Convert a **hyperbolic anomaly** $F$ to the **true anomaly** on a hyperbola.                                            |
+| [meanAnomalyAt](functions/meanAnomalyAt.md)                     | The **mean anomaly** ($M$) of an orbit at a given date.                                                                 |
+| [trueAnomalyAt](functions/trueAnomalyAt.md)                     | The **true anomaly** ($\nu$) of an orbit at a given date: where the body is.                                            |
+| [trueToHyperbolicAnomaly](functions/trueToHyperbolicAnomaly.md) | Convert a **true anomaly** on a hyperbola to the **hyperbolic anomaly** $F$.                                            |
+| [trueToMeanAnomaly](functions/trueToMeanAnomaly.md)             | Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation.                                    |
 
 ## Cartography
 
@@ -126,6 +129,7 @@ orbits, angles, solve for kelper or find true anomalies.
 | [solveKepler](functions/solveKepler.md)                                 | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using an adaptive approach:                                                             |
 | [solveKeplerBisection](functions/solveKeplerBisection.md)               | Solve **Kepler's equation** for the **eccentric anomaly** ($E$) via **bisection** (elliptic case: ($0 \le e < 1$)).                                      |
 | [solveKeplerHighEccentricity](functions/solveKeplerHighEccentricity.md) | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) in highly eccentric orbits ($e > 0.9$) using an iterative numerical approach.           |
+| [solveKeplerHyperbolic](functions/solveKeplerHyperbolic.md)             | Solve **Kepler's equation for a hyperbola**: find the hyperbolic anomaly $F$ from the hyperbolic mean anomaly $M_h$.                                     |
 | [solveKeplerNewtonRaphson](functions/solveKeplerNewtonRaphson.md)       | Solves **Kepler's Equation** for the **Eccentric Anomaly** ($E$) using the **Newton-Raphson method** with Householder acceleration for fast convergence. |
 
 ## Manoeuvres
@@ -159,7 +163,10 @@ orbits, angles, solve for kelper or find true anomalies.
 | [elementsToState](functions/elementsToState.md)                                         | Convert the six **classical orbital elements** to a **state vector** (position and velocity).                                           |
 | [escapeSpeed](functions/escapeSpeed.md)                                                 | **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's gravity from radius ($r$) (ignoring drag/perturbations). |
 | [flightPathAngleFromTrueAnomaly](functions/flightPathAngleFromTrueAnomaly.md)           | **Flight-path angle** ($\gamma$) from **true anomaly** ($\nu$) and eccentricity ($e$).                                                  |
+| [hyperbolicEccentricity](functions/hyperbolicEccentricity.md)                           | Compute the **eccentricity of a hyperbola** from the excess speed and the periapsis distance.                                           |
 | [hyperbolicPeriapsisSpeed](functions/hyperbolicPeriapsisSpeed.md)                       | Compute **hyperbolic periapsis speed** for a flyby/escape hyperbola.                                                                    |
+| [hyperbolicSemiMajorAxis](functions/hyperbolicSemiMajorAxis.md)                         | Compute the **semi-major axis of a hyperbola** from the hyperbolic excess speed.                                                        |
+| [hyperbolicTimeOfFlight](functions/hyperbolicTimeOfFlight.md)                           | Compute the **time of flight between two points on a hyperbola**, given by their true anomalies.                                        |
 | [inclinationFromLaunchAzimuth](functions/inclinationFromLaunchAzimuth.md)               | Compute the **inclination** of the orbit reached by launching from a latitude on an azimuth.                                            |
 | [j2ArgumentOfPerigeeRate](functions/j2ArgumentOfPerigeeRate.md)                         | Compute **argument of perigee rotation** (J2 secular drift of ω) for an orbit about an oblate body.                                     |
 | [j2NodalPrecessionRate](functions/j2NodalPrecessionRate.md)                             | Compute **J2 nodal precession** (RAAN drift) for an orbit about an oblate body.                                                         |
