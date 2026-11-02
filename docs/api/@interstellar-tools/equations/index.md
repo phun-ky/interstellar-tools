@@ -36,6 +36,12 @@ mechanics, YMMV!
 Here you will find a set of function that can assist you when calculating
 orbits, angles, solve for kelper or find true anomalies.
 
+## Interfaces
+
+| Interface                                                        | Description |
+| ---------------------------------------------------------------- | ----------- |
+| [LaunchAzimuthsInterface](interfaces/LaunchAzimuthsInterface.md) | -           |
+
 ## Type Aliases
 
 | Type Alias                                                             | Description |
@@ -92,6 +98,7 @@ orbits, angles, solve for kelper or find true anomalies.
 | [NORMALIZE_DISTANCE_UNIT](variables/NORMALIZE_DISTANCE_UNIT.md) | Lookup table that **normalizes distance unit aliases** (and the canonical symbols themselves) to a single, canonical [DistanceUnitType](../types/type-aliases/DistanceUnitType.md). |
 | [applyMatrix3](functions/applyMatrix3.md)                       | Apply a **3×3 matrix** to a **3D vector** (matrix–vector multiplication).                                                                                                           |
 | [convertDistanceUnit](functions/convertDistanceUnit.md)         | Convert a **distance** between any two [DistanceUnitType](../types/type-aliases/DistanceUnitType.md) units.                                                                         |
+| [cross](functions/cross.md)                                     | Compute the **cross product** of two 3D vectors.                                                                                                                                    |
 | [det3](functions/det3.md)                                       | Compute the **determinant** of a **3×3** matrix (row-major).                                                                                                                        |
 | [dot](functions/dot.md)                                         | Compute the **dot product** of two 3D vectors.                                                                                                                                      |
 | [matMul3](functions/matMul3.md)                                 | Multiply two **3×3 matrices** (row-major).                                                                                                                                          |
@@ -123,17 +130,23 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Manoeuvres
 
-| Function                                                            | Description                                                                                          |
-| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [combineBurnsDeltaV](functions/combineBurnsDeltaV.md)               | **Combine non-collinear burns** (vector law / law of cosines for velocities).                        |
-| [gravityAssistTurningAngle](functions/gravityAssistTurningAngle.md) | Compute **gravity-assist turning angle** (flyby deflection) for a hyperbolic encounter.              |
-| [hohmannSemiMajorAxis](functions/hohmannSemiMajorAxis.md)           | Convenience: compute only the **semi-major axis** ($a_t$) (m) of the Hohmann transfer.               |
-| [hohmannTransfer](functions/hohmannTransfer.md)                     | **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).                                           |
-| [hohmannTransferTime](functions/hohmannTransferTime.md)             | Convenience: compute only the **transfer time** ($t_t$) (s).                                         |
-| [oberthEnergyGain](functions/oberthEnergyGain.md)                   | **Oberth effect (specific energy gain near periapsis)**.                                             |
-| [planeChangeDeltaV](functions/planeChangeDeltaV.md)                 | **Inclination (plane) change** Δv at speed ($v$).                                                    |
-| [rocketDeltaVFromIsp](functions/rocketDeltaVFromIsp.md)             | Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using specific impulse.           |
-| [rocketDeltaVFromVe](functions/rocketDeltaVFromVe.md)               | Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using effective exhaust velocity. |
+| Function                                                            | Description                                                                                                   |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [burnTime](functions/burnTime.md)                                   | Compute the **burn time** needed for a given delta-v, at constant thrust and mass flow.                       |
+| [combineBurnsDeltaV](functions/combineBurnsDeltaV.md)               | **Combine non-collinear burns** (vector law / law of cosines for velocities).                                 |
+| [gravityAssistTurningAngle](functions/gravityAssistTurningAngle.md) | Compute **gravity-assist turning angle** (flyby deflection) for a hyperbolic encounter.                       |
+| [gravityLoss](functions/gravityLoss.md)                             | Compute the **gravity loss** of a burn from samples of gravity and flight-path angle.                         |
+| [hohmannSemiMajorAxis](functions/hohmannSemiMajorAxis.md)           | Convenience: compute only the **semi-major axis** ($a_t$) (m) of the Hohmann transfer.                        |
+| [hohmannTransfer](functions/hohmannTransfer.md)                     | **Hohmann transfer** (coplanar, circular ($r_1 \to r_2$)).                                                    |
+| [hohmannTransferTime](functions/hohmannTransferTime.md)             | Convenience: compute only the **transfer time** ($t_t$) (s).                                                  |
+| [initialMassForDeltaV](functions/initialMassForDeltaV.md)           | Compute the **mass needed at ignition** to give a final mass a delta-v: the rocket equation solved for $m_0$. |
+| [massFlowRate](functions/massFlowRate.md)                           | Compute the **mass flow rate** of a rocket engine from its thrust and specific impulse.                       |
+| [oberthEnergyGain](functions/oberthEnergyGain.md)                   | **Oberth effect (specific energy gain near periapsis)**.                                                      |
+| [planeChangeDeltaV](functions/planeChangeDeltaV.md)                 | **Inclination (plane) change** Δv at speed ($v$).                                                             |
+| [rocketDeltaVFromIsp](functions/rocketDeltaVFromIsp.md)             | Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using specific impulse.                    |
+| [rocketDeltaVFromVe](functions/rocketDeltaVFromVe.md)               | Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using effective exhaust velocity.          |
+| [rocketThrust](functions/rocketThrust.md)                           | Compute the **thrust** of a rocket engine from its exhaust, including the pressure term.                      |
+| [thrustToWeight](functions/thrustToWeight.md)                       | Compute the **thrust-to-weight ratio** of a vehicle in a gravity field.                                       |
 
 ## Orbits
 
@@ -143,16 +156,22 @@ orbits, angles, solve for kelper or find true anomalies.
 | [characteristicEnergyC3](functions/characteristicEnergyC3.md)                           | Compute **characteristic energy** (C3) from hyperbolic excess speed.                                                                    |
 | [circularSpeed](functions/circularSpeed.md)                                             | **Circular speed** ($v_c$) for a body in a circular orbit at radius ($r$).                                                              |
 | [cwHillDerivatives](functions/cwHillDerivatives.md)                                     | Compute the **time-derivative** of a Clohessy–Wiltshire / Hill relative-motion state (right-hand side for ODE integration).             |
+| [elementsToState](functions/elementsToState.md)                                         | Convert the six **classical orbital elements** to a **state vector** (position and velocity).                                           |
 | [escapeSpeed](functions/escapeSpeed.md)                                                 | **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's gravity from radius ($r$) (ignoring drag/perturbations). |
 | [flightPathAngleFromTrueAnomaly](functions/flightPathAngleFromTrueAnomaly.md)           | **Flight-path angle** ($\gamma$) from **true anomaly** ($\nu$) and eccentricity ($e$).                                                  |
 | [hyperbolicPeriapsisSpeed](functions/hyperbolicPeriapsisSpeed.md)                       | Compute **hyperbolic periapsis speed** for a flyby/escape hyperbola.                                                                    |
+| [inclinationFromLaunchAzimuth](functions/inclinationFromLaunchAzimuth.md)               | Compute the **inclination** of the orbit reached by launching from a latitude on an azimuth.                                            |
 | [j2ArgumentOfPerigeeRate](functions/j2ArgumentOfPerigeeRate.md)                         | Compute **argument of perigee rotation** (J2 secular drift of ω) for an orbit about an oblate body.                                     |
 | [j2NodalPrecessionRate](functions/j2NodalPrecessionRate.md)                             | Compute **J2 nodal precession** (RAAN drift) for an orbit about an oblate body.                                                         |
 | [keplerPeriod](functions/keplerPeriod.md)                                               | **Kepler's 3rd law** - orbital period ($T$) from semi-major axis ($a$) and gravitational parameter ($\mu$).                             |
+| [launchAzimuthForInclination](functions/launchAzimuthForInclination.md)                 | Compute the **inertial launch azimuths** that reach an inclination from a latitude.                                                     |
 | [meanMotion](functions/meanMotion.md)                                                   | Compute **mean motion** for a (near-)circular reference orbit.                                                                          |
 | [periApoapsisRadii](functions/periApoapsisRadii.md)                                     | **Peri/apoapsis radii** from semi-major axis ($a$) and eccentricity ($e$).                                                              |
+| [rotatingLaunchAzimuth](functions/rotatingLaunchAzimuth.md)                             | Compute the **azimuth over the ground** for an inertial launch azimuth, on a rotating body.                                             |
 | [specificAngularMomentum](functions/specificAngularMomentum.md)                         | **Specific angular momentum** ($h$) (scalar magnitude).                                                                                 |
 | [specificAngularMomentumFromElements](functions/specificAngularMomentumFromElements.md) | **Specific angular momentum** ($h$) from **orbital elements**.                                                                          |
 | [specificMechanicalEnergy](functions/specificMechanicalEnergy.md)                       | **Specific mechanical energy** ($\varepsilon$) of a point mass in a central gravity field.                                              |
 | [sphereOfInfluenceRadius](functions/sphereOfInfluenceRadius.md)                         | Compute **sphere of influence** radius (patched conics approximation).                                                                  |
+| [stateToElements](functions/stateToElements.md)                                         | Convert a **state vector** (position and velocity) to the six **classical orbital elements**.                                           |
+| [surfaceRotationSpeed](functions/surfaceRotationSpeed.md)                               | Compute the **eastward speed** of a point on a rotating body's surface, at a latitude.                                                  |
 | [visVivaSpeed](functions/visVivaSpeed.md)                                               | **Vis-viva (orbital speed)** - compute speed magnitude ($v$) from ($r$), ($a$), and ($\mu$).                                            |

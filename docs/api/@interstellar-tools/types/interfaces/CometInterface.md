@@ -46,7 +46,7 @@ Category classification of the comet.
 ### display?
 
 ```ts
-optional display?: DisplayInterface;
+display?: DisplayInterface;
 ```
 
 Defined in:
@@ -137,7 +137,7 @@ Type of comet based on its orbital characteristics.
 ### x?
 
 ```ts
-optional x?: DistanceInterface;
+x?: DistanceInterface;
 ```
 
 Defined in:
@@ -150,7 +150,7 @@ X-coordinate in a distance-based system (optional).
 ### y?
 
 ```ts
-optional y?: DistanceInterface;
+y?: DistanceInterface;
 ```
 
 Defined in:
@@ -163,7 +163,7 @@ Y-coordinate in a distance-based system (optional).
 ### z?
 
 ```ts
-optional z?: DistanceInterface;
+z?: DistanceInterface;
 ```
 
 Defined in:

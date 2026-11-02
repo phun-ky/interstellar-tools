@@ -88,13 +88,15 @@ npm i --save @interstellar-tools/types
 
 ## Orbits
 
-| Name                                                   | Description                                                                                                                                       |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [FullOrbitInterface](interfaces/FullOrbitInterface.md) | An [OrbitInterface](interfaces/OrbitInterface.md) with every orientation element given: `i`, `w`, `om` and `q`. Comets and asteroids carry these. |
-| [OrbitInterface](interfaces/OrbitInterface.md)         | Kepler **orbital elements** of one body around its parent.                                                                                        |
-| [CwState](type-aliases/CwState.md)                     | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame.                                                                     |
-| [CwStateDerivative](type-aliases/CwStateDerivative.md) | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.                                                                       |
-| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)   | **Peri/apoapsis radii pair**.                                                                                                                     |
+| Name                                                                   | Description                                                                                                                                       |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ClassicalElementsInterface](interfaces/ClassicalElementsInterface.md) | The six **classical orbital elements** of a two-body orbit, in SI units and radians.                                                              |
+| [FullOrbitInterface](interfaces/FullOrbitInterface.md)                 | An [OrbitInterface](interfaces/OrbitInterface.md) with every orientation element given: `i`, `w`, `om` and `q`. Comets and asteroids carry these. |
+| [OrbitInterface](interfaces/OrbitInterface.md)                         | Kepler **orbital elements** of one body around its parent.                                                                                        |
+| [StateVectorInterface](interfaces/StateVectorInterface.md)             | A body's **state vector**: its position and velocity in an inertial frame centred on the body it orbits.                                          |
+| [CwState](type-aliases/CwState.md)                                     | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame.                                                                     |
+| [CwStateDerivative](type-aliases/CwStateDerivative.md)                 | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.                                                                       |
+| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)                   | **Peri/apoapsis radii pair**.                                                                                                                     |
 
 ## Temporal
 

@@ -40,7 +40,7 @@ body.display = {
 ### color?
 
 ```ts
-optional color?: string;
+color?: string;
 ```
 
 Defined in:
@@ -53,7 +53,7 @@ Colour to draw the body in, as a hex string (`#rrggbb`) or a CSS colour name.
 ### density?
 
 ```ts
-optional density?: number;
+density?: number;
 ```
 
 Defined in:
@@ -66,7 +66,7 @@ How densely to fill an area, e.g. how many asteroids to draw in a belt.
 ### focusOffsetX?
 
 ```ts
-optional focusOffsetX?: number;
+focusOffsetX?: number;
 ```
 
 Defined in:
@@ -80,7 +80,7 @@ renderer.
 ### opacity?
 
 ```ts
-optional opacity?: number;
+opacity?: number;
 ```
 
 Defined in:
@@ -93,7 +93,7 @@ Transparency, from 0 (invisible) to 1 (solid).
 ### orbitPath?
 
 ```ts
-optional orbitPath?: CartesianCoordinatesInterface[];
+orbitPath?: CartesianCoordinatesInterface[];
 ```
 
 Defined in:
@@ -106,7 +106,7 @@ Points along the drawn orbit, computed by a renderer.
 ### semiMinorAxis?
 
 ```ts
-optional semiMinorAxis?: number;
+semiMinorAxis?: number;
 ```
 
 Defined in:
@@ -119,7 +119,7 @@ Semi-minor axis of the orbit, $b = a\sqrt{1 - e^2}$, computed by a renderer.
 ### size?
 
 ```ts
-optional size?: number;
+size?: number;
 ```
 
 Defined in:

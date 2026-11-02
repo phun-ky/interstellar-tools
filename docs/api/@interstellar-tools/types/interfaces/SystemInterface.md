@@ -39,7 +39,7 @@ const alphaCentauriAB: SystemInterface = {
 ### distance?
 
 ```ts
-optional distance?: DistanceInterface;
+distance?: DistanceInterface;
 ```
 
 Defined in:
@@ -91,7 +91,7 @@ Display name of the system.
 ### orbit?
 
 ```ts
-optional orbit?: OrbitInterface;
+orbit?: OrbitInterface;
 ```
 
 Defined in:
@@ -104,7 +104,7 @@ Orbit of the system's barycenter around its parent.
 ### parent?
 
 ```ts
-optional parent?: string;
+parent?: string;
 ```
 
 Defined in:
@@ -117,7 +117,7 @@ Id of the galaxy or system this system is bound to.
 ### x?
 
 ```ts
-optional x?: DistanceInterface;
+x?: DistanceInterface;
 ```
 
 Defined in:
@@ -130,7 +130,7 @@ X-coordinate of the barycenter in the parent's frame.
 ### y?
 
 ```ts
-optional y?: DistanceInterface;
+y?: DistanceInterface;
 ```
 
 Defined in:
@@ -143,7 +143,7 @@ Y-coordinate of the barycenter in the parent's frame.
 ### z?
 
 ```ts
-optional z?: DistanceInterface;
+z?: DistanceInterface;
 ```
 
 Defined in:

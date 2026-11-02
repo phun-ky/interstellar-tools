@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.0.0...%40interstellar-tools%2Ftypes%401.1.0) (2026-11-02)
+
+### Feature
+
+* 🎸 Convert between state vectors and orbital elements ([50d6021](https://github.com/phun-ky/interstellar-tools/commit/50d6021da37271920216a13a9580f8ac8435191c)), closes [#243](https://github.com/phun-ky/interstellar-tools/issues/243)
+
 ## [1.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.64.0...%40interstellar-tools%2Ftypes%401.0.0) (2026-10-18)
 
 ## [0.64.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%400.63.0...%40interstellar-tools%2Ftypes%400.64.0) (2026-10-18)

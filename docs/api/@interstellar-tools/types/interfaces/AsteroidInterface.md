@@ -50,7 +50,7 @@ Specific family/group classification (e.g., Apollo group, Plutino).
 ### display?
 
 ```ts
-optional display?: DisplayInterface;
+display?: DisplayInterface;
 ```
 
 Defined in:
@@ -155,7 +155,7 @@ General dynamical region (e.g., main-belt, NEO, Trojan).
 ### x?
 
 ```ts
-optional x?: DistanceInterface;
+x?: DistanceInterface;
 ```
 
 Defined in:
@@ -173,7 +173,7 @@ Provide the reference frame (e.g., ecliptic J2000) in calling code.
 ### y?
 
 ```ts
-optional y?: DistanceInterface;
+y?: DistanceInterface;
 ```
 
 Defined in:
@@ -186,7 +186,7 @@ See [x](#x).
 ### z?
 
 ```ts
-optional z?: DistanceInterface;
+z?: DistanceInterface;
 ```
 
 Defined in:

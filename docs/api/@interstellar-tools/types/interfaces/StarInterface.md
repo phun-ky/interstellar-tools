@@ -58,7 +58,7 @@ Defines the category as a star.
 ### display?
 
 ```ts
-optional display?: DisplayInterface;
+display?: DisplayInterface;
 ```
 
 Defined in:
@@ -84,7 +84,7 @@ Stable identifier, used by `parent` references. Never translated.
 ### mass?
 
 ```ts
-optional mass?: number;
+mass?: number;
 ```
 
 Defined in:
@@ -97,7 +97,7 @@ Mass in solar masses ($M_\odot$).
 ### mu?
 
 ```ts
-optional mu?: number;
+mu?: number;
 ```
 
 Defined in:
@@ -124,7 +124,7 @@ Name of the star.
 ### orbit?
 
 ```ts
-optional orbit?: OrbitInterface;
+orbit?: OrbitInterface;
 ```
 
 Defined in:
@@ -137,7 +137,7 @@ Orbit around the parent.
 ### parent?
 
 ```ts
-optional parent?: string;
+parent?: string;
 ```
 
 Defined in:
@@ -176,7 +176,7 @@ Spectral classification of the star (e.g., `'G2V'`).
 ### x?
 
 ```ts
-optional x?: DistanceInterface;
+x?: DistanceInterface;
 ```
 
 Defined in:
@@ -189,7 +189,7 @@ X-coordinate in the parent's frame.
 ### y?
 
 ```ts
-optional y?: DistanceInterface;
+y?: DistanceInterface;
 ```
 
 Defined in:
@@ -202,7 +202,7 @@ Y-coordinate in the parent's frame.
 ### z?
 
 ```ts
-optional z?: DistanceInterface;
+z?: DistanceInterface;
 ```
 
 Defined in:

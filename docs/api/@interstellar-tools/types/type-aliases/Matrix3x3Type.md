@@ -5,9 +5,9 @@ Matrix3x3Type
 
 ```ts
 type Matrix3x3Type = readonly [
-  readonly [number, number, number],
-  readonly [number, number, number],
-  readonly [number, number, number]
+  readonly [x: number, y: number, z: number],
+  readonly [x: number, y: number, z: number],
+  readonly [x: number, y: number, z: number]
 ];
 ```
 

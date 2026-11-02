@@ -41,7 +41,7 @@ $$
 | Parameter | Type     | Default value | Description                                       |
 | --------- | -------- | ------------- | ------------------------------------------------- |
 | `M`       | `number` | `undefined`   | Mass of the primary body (kg).                    |
-| `m`       | `number` | `0`           | Mass of the secondary body (kg). Defaults to `0`. |
+| `m?`      | `number` | `0`           | Mass of the secondary body (kg). Defaults to `0`. |
 | `G?`      | `number` | `G_SI`        | Gravitational constant. Defaults to `G_SI`.       |
 
 ## Returns

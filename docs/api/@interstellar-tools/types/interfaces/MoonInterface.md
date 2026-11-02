@@ -54,7 +54,7 @@ Classification of the moon.
 ### display?
 
 ```ts
-optional display?: DisplayInterface;
+display?: DisplayInterface;
 ```
 
 Defined in:
@@ -80,7 +80,7 @@ Stable identifier, used by `parent` references. Never translated.
 ### mu?
 
 ```ts
-optional mu?: number;
+mu?: number;
 ```
 
 Defined in:
@@ -146,7 +146,7 @@ Physical radius of the moon in kilometres.
 ### type?
 
 ```ts
-optional type?: undefined;
+type?: undefined;
 ```
 
 Defined in:
@@ -157,7 +157,7 @@ Defined in:
 ### x?
 
 ```ts
-optional x?: DistanceInterface;
+x?: DistanceInterface;
 ```
 
 Defined in:
@@ -170,7 +170,7 @@ X-coordinate in a distance-based system (optional).
 ### y?
 
 ```ts
-optional y?: DistanceInterface;
+y?: DistanceInterface;
 ```
 
 Defined in:
@@ -183,7 +183,7 @@ Y-coordinate in a distance-based system (optional).
 ### z?
 
 ```ts
-optional z?: DistanceInterface;
+z?: DistanceInterface;
 ```
 
 Defined in:
