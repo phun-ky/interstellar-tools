@@ -139,6 +139,10 @@ export default defineConfig({
             {
               text: 'Why lunar orbit rendezvous?',
               link: '/learn/apollo-11/why-lunar-orbit-rendezvous'
+            },
+            {
+              text: 'IV. Lunar orbit rendezvous',
+              link: '/learn/apollo-11/lunar-orbit-rendezvous'
             }
           ]
         }
