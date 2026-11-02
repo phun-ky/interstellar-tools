@@ -1,5 +1,5 @@
 import { MOONS, PLANETS } from '@interstellar-tools/constants';
-import type { Radians } from '@interstellar-tools/types';
+import type { Cr3bpState, Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -10,6 +10,7 @@ import { norm2pi } from '../categories/helpers/misc.js';
 import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
 import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { ballisticPeakDeceleration } from '../categories/entry/ballistic-peak-deceleration.js';
+import { rk4Integrate } from '../categories/helpers/rk4.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
@@ -32,6 +33,9 @@ import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
 import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
 import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
+import { cr3bpDerivatives } from '../categories/three-body/cr3bp-derivatives.js';
+import { cr3bpUnits } from '../categories/three-body/cr3bp-units.js';
+import { jacobiConstant } from '../categories/three-body/jacobi-constant.js';
 
 // Every number shown in an "In practice" box, so the docs can't drift from the
 // code. Each expected string is the readout exactly as the box prints it.
@@ -410,5 +414,78 @@ describe('Where is Earth today? (tutorial)', () => {
   test('puts Earth 0.9966 au from the Sun, 287 days past perihelion', () => {
     assert.equal((1 - e * Math.cos(E)).toFixed(4), '0.9966');
     assert.equal(Math.round((deg(M) / 360) * P), 287);
+  });
+});
+
+// A free return from Apollo 11's TLI point, 334.4 km up at 7.367° above the
+// horizontal (Apollo by the Numbers), in the Earth–Moon plane with the Moon at
+// its mean distance. The angle and speed were solved for a 114 km pericynthion
+// and a 38.5 km return perigee, the vacuum perigee of the flown entry.
+describe('In practice values: three-body', () => {
+  const { mu, time, speed, length } = cr3bpUnits(
+    3.986004418e14,
+    4.902800118e12,
+    384_400_000
+  );
+  const R_EARTH = 6_378_137 / length;
+  const R_MOON = 1_737_400 / length;
+  const tliState = (angleDeg: number, v: number, fpaDeg: number) => {
+    const th = (angleDeg * Math.PI) / 180;
+    const fpa = (fpaDeg * Math.PI) / 180;
+    const r = (6_378_137 + 334_400) / length;
+    const [ux, uy] = [Math.cos(th), Math.sin(th)];
+    const vin = v / speed;
+    const vx = vin * (Math.sin(fpa) * ux - Math.cos(fpa) * uy);
+    const vy = vin * (Math.sin(fpa) * uy + Math.cos(fpa) * ux);
+    const x = -mu + r * ux;
+    const y = r * uy;
+
+    // Inertial to rotating: subtract ω × r, with ω = 1
+    return [x, y, 0, vx + y, vy - x, 0];
+  };
+  const start = tliState(242.26601, 10_837.9617, 7.367);
+  const f = (_t: number, s: readonly number[]) =>
+    cr3bpDerivatives(s as unknown as Cr3bpState, mu);
+  const { t, y } = rk4Integrate(f, start, 0, 1.45, 145_000);
+  const r1 = y.map((s) => Math.hypot(s[0] + mu, s[1]));
+  const r2 = y.map((s) => Math.hypot(s[0] - 1 + mu, s[1]));
+  const argMin = (values: number[], from = 0) => {
+    let best = from;
+
+    for (let k = from; k < values.length; k++)
+      if (values[k] < values[best]) best = k;
+
+    return best;
+  };
+  const atMoon = argMin(r2);
+  const atEarth = argMin(r1, atMoon);
+
+  test('cr3bpUnits: 4.342 days, 27.28 days a revolution, 1 024.5 m/s', () => {
+    assert.equal((time / 86_400).toFixed(3), '4.342');
+    assert.equal(((2 * Math.PI * time) / 86_400).toFixed(2), '27.28');
+    assert.equal(speed.toFixed(1), '1024.5');
+    assert.equal(mu.toFixed(6), '0.012151');
+  });
+
+  test('cr3bpDerivatives: a free return for 3.7 m/s more, 114 km behind the Moon, back to 38.5 km', () => {
+    assert.equal((10_837.9617 - 10_834.3).toFixed(1), '3.7');
+    assert.equal((242.26601).toFixed(2), '242.27');
+    assert.equal(Math.round(((r2[atMoon] - R_MOON) * length) / 1000), 114);
+    assert.equal(((t[atMoon] * time) / 3600).toFixed(1), '68.6');
+    // Behind the Moon, as seen from Earth
+    assert.ok(y[atMoon][0] > 1 - mu);
+    assert.ok(Math.abs(((r1[atEarth] - R_EARTH) * length) / 1000 - 38.5) < 0.5);
+    assert.equal(((t[atEarth] * time) / 3600).toFixed(1), '137.4');
+  });
+
+  test('jacobiConstant: 1.778 for the free return, well below 3.188 at L1', () => {
+    const c = jacobiConstant(start as unknown as Cr3bpState, mu);
+
+    assert.equal(c.toFixed(3), '1.778');
+    assert.ok(c < 3.188);
+    assert.ok(
+      Math.abs(jacobiConstant(y[atEarth] as unknown as Cr3bpState, mu) - c) <
+        1e-6
+    );
   });
 });

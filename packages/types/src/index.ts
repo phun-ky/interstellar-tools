@@ -12,4 +12,6 @@ export * from './orbits.js';
 
 export * from './cartography.js';
 
+export * from './three-body.js';
+
 export * from './celestial-bodies/index.js';

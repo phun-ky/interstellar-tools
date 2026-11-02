@@ -46,3 +46,33 @@ export type Matrix3x3Type = readonly [
   readonly [x: number, y: number, z: number],
   readonly [x: number, y: number, z: number]
 ];
+
+/**
+ * The right-hand side of a system of first-order ODEs, $ \dot{\mathbf y} = f(t, \mathbf y) $.
+ *
+ * Takes the time and the state, and returns the state's time derivative, with
+ * the same length. Used by the integrators in `@interstellar-tools/equations`
+ * (`rk4Step`, `rk4Integrate`).
+ *
+ * @example
+ * ```ts
+ * // A harmonic oscillator: y = [x, v]
+ * const f: OdeRightHandSideType = (_t, [x, v]) => [v, -x];
+ * ```
+ */
+export type OdeRightHandSideType = (
+  t: number,
+  y: readonly number[]
+) => readonly number[];
+
+/**
+ * The output of a numerical integration: the times, and the state at each.
+ *
+ * `t[k]` and `y[k]` belong together; `t[0]` and `y[0]` are the starting point.
+ */
+export interface OdeSolutionInterface {
+  /** Times, in the units the right-hand side uses. */
+  t: number[];
+  /** States, one per time. */
+  y: number[][];
+}
