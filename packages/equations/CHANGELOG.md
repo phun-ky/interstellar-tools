@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.1.0...%40interstellar-tools%2Fequations%401.2.0) (2026-11-02)
+
+### Feature
+
+* 🎸 Add hyperbolic trajectories: shape, anomaly and time of flight ([ecea9e9](https://github.com/phun-ky/interstellar-tools/commit/ecea9e9dfa5f201d7d8ed3a71b2aa969630b7c43)), closes [#244](https://github.com/phun-ky/interstellar-tools/issues/244)
+
 ## [1.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.0.0...%40interstellar-tools%2Fequations%401.1.0) (2026-11-02)
 
 ### Documentation
