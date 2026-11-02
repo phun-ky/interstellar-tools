@@ -16,6 +16,8 @@ import './custom.css';
 import './mission.css';
 import './practice.css';
 
+import ApolloDvLedger from './components/apollo/ApolloDvLedger.vue';
+import ApolloMissionMap from './components/apollo/ApolloMissionMap.vue';
 import MissionHome from './components/home/MissionHome.vue';
 import NavStatus from './components/NavStatus.vue';
 import OrbitWidget from './components/OrbitWidget.vue';
@@ -37,6 +39,8 @@ export default {
     ctx.app.component('MissionHome', MissionHome);
     ctx.app.component('PullQuote', PullQuote);
     ctx.app.component('OrbitWidget', OrbitWidget);
+    ctx.app.component('ApolloMissionMap', ApolloMissionMap);
+    ctx.app.component('ApolloDvLedger', ApolloDvLedger);
 
     if (typeof window !== 'undefined') {
       document.documentElement.classList.add(GLOBAL_CLASS);

@@ -321,3 +321,76 @@ console.log(`Approx. semi-major axis change Δa ≈ ${deltaA.toFixed(0)} m`);
 - Use with care when ($\Delta v$) is large or burn duration is non-negligible.
 
 :::
+
+## Rocket performance
+
+Example usage of: `rocketDeltaVFromIsp`, `initialMassForDeltaV`,
+`massFlowRate`, `burnTime`, `thrustToWeight`, `rocketThrust`, `gravityLoss`.
+
+### From a Δv to a burn plan
+
+Start from what the burn must do, and work out what it costs: how much
+propellant, how long the engine runs, and whether the vehicle can lift itself.
+
+```typescript
+import {
+  burnTime,
+  initialMassForDeltaV,
+  massFlowRate,
+  thrustToWeight
+} from '@interstellar-tools/equations';
+
+// A 2000 kg Mars lander must climb back to orbit: about 4.1 km/s
+const dryAtOrbit = 2000; // kg, after the burn
+const dv = 4100; // m/s
+const F = 45_000; // N
+const Isp = 320; // s
+const gMars = 3.71; // m/s²
+const m0 = initialMassForDeltaV(dryAtOrbit, dv, Isp); // ≈ 7387 kg
+const propellant = m0 - dryAtOrbit; // ≈ 5387 kg
+const mDot = massFlowRate(F, Isp); // ≈ 14.3 kg/s
+const t = burnTime(m0, dv, F, Isp); // ≈ 376 s
+const tw = thrustToWeight(F, m0, gMars); // ≈ 1.64 at liftoff
+
+console.log({ m0, propellant, mDot, t, tw });
+```
+
+### Vacuum and sea-level thrust
+
+The same engine pushes harder in vacuum: the ambient pressure acts against the
+nozzle exit.
+
+```typescript
+import { rocketThrust } from '@interstellar-tools/equations';
+
+const vacuum = rocketThrust(250, 3000, 70_000, 0, 1.2); // 834 000 N
+const seaLevel = rocketThrust(250, 3000, 70_000, 101_325, 1.2); // ≈ 712 410 N
+```
+
+### Gravity loss during a climb
+
+Thrust spent holding the vehicle up doesn't speed it up. Sample the flight-path
+angle through the burn and integrate:
+
+```typescript
+import { gravityLoss } from '@interstellar-tools/equations';
+import type { Radians } from '@interstellar-tools/types';
+
+// Pitch over from vertical to horizontal in 120 s, sampled every second
+const gamma = Array.from(
+  { length: 121 },
+  (_, i) => ((Math.PI / 2) * (1 - i / 120)) as Radians
+);
+
+gravityLoss(9.80665, gamma, 1); // ≈ 749 m/s
+```
+
+::: info Notes
+
+- `burnTime` assumes constant thrust and specific impulse. Split a throttled
+  burn into steps.
+- `initialMassForDeltaV` counts propellant only. Add the tanks and engines that
+  hold and burn it, and work backwards through a sequence of burns from the last
+  one.
+
+:::

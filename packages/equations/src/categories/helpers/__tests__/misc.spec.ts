@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
-import { dot, norm, norm2pi, residual, scale, sub } from '../misc.js';
+import { cross, dot, norm, norm2pi, residual, scale, sub } from '../misc.js';
 import { TWO_PI } from '@interstellar-tools/constants';
 import type { Vector3DTupleType } from '@interstellar-tools/types';
 
@@ -125,5 +125,27 @@ describe('misc', () => {
     const r = residual(E, e, M);
 
     absClose(r, 0, 1e-12);
+  });
+
+  describe('cross', () => {
+    test('follows the right-hand rule for the unit axes', () => {
+      assert.deepEqual(cross([1, 0, 0], [0, 1, 0]), [0, 0, 1]);
+      assert.deepEqual(cross([0, 1, 0], [0, 0, 1]), [1, 0, 0]);
+      assert.deepEqual(cross([0, 0, 1], [1, 0, 0]), [0, 1, 0]);
+    });
+
+    test('is anti-commutative and perpendicular to both inputs', () => {
+      const a: Vector3DTupleType = [1.5, -2, 3];
+      const b: Vector3DTupleType = [-4, 0.5, 2];
+      const c = cross(a, b);
+
+      assert.deepEqual(cross(b, a), scale(c, -1));
+      absClose(dot(c, a), 0);
+      absClose(dot(c, b), 0);
+    });
+
+    test('is the zero vector for parallel inputs', () => {
+      assert.deepEqual(cross([1, 2, 3], [2, 4, 6]), [0, 0, 0]);
+    });
   });
 });

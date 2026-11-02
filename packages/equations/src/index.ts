@@ -85,11 +85,15 @@ export * from './categories/orbits/circular-speed.js';
 
 export * from './categories/orbits/cw-hill-derivatives.js';
 
+export * from './categories/orbits/elements-to-state.js';
+
 export * from './categories/orbits/escape-speed.js';
 
 export * from './categories/orbits/flight-path-angle-from-true-anomaly.js';
 
 export * from './categories/orbits/hyperbolic-periapsis-speed.js';
+
+export * from './categories/orbits/inclination-from-launch-azimuth.js';
 
 export * from './categories/orbits/j2-argument-of-perigee-rate.js';
 
@@ -97,9 +101,13 @@ export * from './categories/orbits/j2-nodal-precession-rate.js';
 
 export * from './categories/orbits/kepler-period.js';
 
+export * from './categories/orbits/launch-azimuth-for-inclination.js';
+
 export * from './categories/orbits/mean-motion.js';
 
 export * from './categories/orbits/peri-apoapsis-radii.js';
+
+export * from './categories/orbits/rotating-launch-azimuth.js';
 
 export * from './categories/orbits/specific-angular-momentum-from-elements.js';
 
@@ -109,15 +117,27 @@ export * from './categories/orbits/specific-mechanical-energy.js';
 
 export * from './categories/orbits/sphere-of-influence-radius.js';
 
+export * from './categories/orbits/state-to-elements.js';
+
+export * from './categories/orbits/surface-rotation-speed.js';
+
 export * from './categories/orbits/vis-viva-speed.js';
 
 // categories/manoeuvres
+
+export * from './categories/manoeuvres/burn-time.js';
 
 export * from './categories/manoeuvres/combine-burns-delta-v.js';
 
 export * from './categories/manoeuvres/gravity-assist-turning-angle.js';
 
+export * from './categories/manoeuvres/gravity-loss.js';
+
 export * from './categories/manoeuvres/hohmann-transfer.js';
+
+export * from './categories/manoeuvres/initial-mass-for-delta-v.js';
+
+export * from './categories/manoeuvres/mass-flow-rate.js';
 
 export * from './categories/manoeuvres/oberth-energy-gain.js';
 
@@ -126,3 +146,7 @@ export * from './categories/manoeuvres/plane-change-delta-v.js';
 export * from './categories/manoeuvres/rocket-delta-v-from-isp.js';
 
 export * from './categories/manoeuvres/rocket-delta-v-from-ve.js';
+
+export * from './categories/manoeuvres/rocket-thrust.js';
+
+export * from './categories/manoeuvres/thrust-to-weight.js';
