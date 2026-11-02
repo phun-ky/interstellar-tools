@@ -346,7 +346,6 @@ const dv = 4100; // m/s
 const F = 45_000; // N
 const Isp = 320; // s
 const gMars = 3.71; // m/s²
-
 const m0 = initialMassForDeltaV(dryAtOrbit, dv, Isp); // ≈ 7387 kg
 const propellant = m0 - dryAtOrbit; // ≈ 5387 kg
 const mDot = massFlowRate(F, Isp); // ≈ 14.3 kg/s
