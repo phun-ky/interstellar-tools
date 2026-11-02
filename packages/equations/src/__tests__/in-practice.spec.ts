@@ -20,6 +20,7 @@ import { meanMotion } from '../categories/orbits/mean-motion.js';
 import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
 import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azimuth.js';
 import { specificMechanicalEnergy } from '../categories/orbits/specific-mechanical-energy.js';
+import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
 import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
 import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
@@ -132,6 +133,29 @@ describe('In practice values: launch site geometry', () => {
       toDeg(rotatingLaunchAzimuth(northbound, v, vRot)).toFixed(1),
       '42.8'
     );
+  });
+});
+
+// Apollo 11 at trans-lunar injection: 180.581 n mi above a 6378.166 km
+// spherical Earth, 35 545.6 ft/s, 7.367° flight-path angle; e 0.97696
+// (Apollo by the Numbers; AS-506 flight evaluation report, Table 10-6)
+describe('In practice values: state vectors and orbital elements', () => {
+  test('stateToElements: e = 0.977 at trans-lunar injection', () => {
+    const r = 6_378_166 + 180.581 * 1852;
+    const v = 35_545.6 * 0.3048;
+    const gamma = (7.367 * Math.PI) / 180;
+
+    assert.equal(Math.round(r), 6_712_602);
+    assert.equal(v.toFixed(1), '10834.3');
+
+    const { e } = stateToElements(
+      [6_712_602, 0, 0],
+      [10_834.3 * Math.sin(gamma), 10_834.3 * Math.cos(gamma), 0],
+      MU_EARTH
+    );
+
+    assert.equal(e.toFixed(3), '0.977');
+    assert.equal(e.toFixed(5), '0.97715');
   });
 });
 

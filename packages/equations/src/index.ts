@@ -85,6 +85,8 @@ export * from './categories/orbits/circular-speed.js';
 
 export * from './categories/orbits/cw-hill-derivatives.js';
 
+export * from './categories/orbits/elements-to-state.js';
+
 export * from './categories/orbits/escape-speed.js';
 
 export * from './categories/orbits/flight-path-angle-from-true-anomaly.js';
@@ -114,6 +116,8 @@ export * from './categories/orbits/specific-angular-momentum.js';
 export * from './categories/orbits/specific-mechanical-energy.js';
 
 export * from './categories/orbits/sphere-of-influence-radius.js';
+
+export * from './categories/orbits/state-to-elements.js';
 
 export * from './categories/orbits/surface-rotation-speed.js';
 

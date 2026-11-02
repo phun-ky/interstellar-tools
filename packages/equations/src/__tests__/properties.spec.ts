@@ -13,11 +13,13 @@ import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { planeChangeDeltaV } from '../categories/manoeuvres/plane-change-delta-v.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
+import { elementsToState } from '../categories/orbits/elements-to-state.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
 import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth-for-inclination.js';
 import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
+import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
 
 import { angleClose, relClose } from './helpers/index.js';
@@ -116,6 +118,91 @@ describe('orbit geometry', () => {
         assert.ok(rp > 0 && rp <= ra, `rp=${rp}, ra=${ra}`);
         relClose(rp + ra, 2 * a, 1e-12);
       })
+    );
+  });
+});
+
+describe('state vectors and orbital elements', () => {
+  // Away from the circular, equatorial and parabolic special cases
+  const angle = fc.double({
+    min: 0,
+    max: TWO_PI,
+    maxExcluded: true,
+    noNaN: true
+  });
+  const inclination = fc.double({
+    min: 0.01,
+    max: Math.PI - 0.01,
+    noNaN: true
+  });
+  const ellipticE = fc.double({ min: 0.001, max: 0.95, noNaN: true });
+  const hyperbolicE = fc.double({ min: 1.05, max: 5, noNaN: true });
+  const a = fc.double({ min: 7e6, max: 1e9, noNaN: true }); // [m]
+  const MU = 3.986004418e14;
+
+  test('elliptic elements → state → elements round-trips', () => {
+    fc.assert(
+      fc.property(
+        a,
+        ellipticE,
+        inclination,
+        angle,
+        angle,
+        angle,
+        (sma, e, i, raan, argp, nu) => {
+          const el = {
+            a: sma,
+            e,
+            i: i as Radians,
+            raan: raan as Radians,
+            argp: argp as Radians,
+            nu: nu as Radians
+          };
+          const { r, v } = elementsToState(el, MU);
+          const back = stateToElements(r, v, MU);
+
+          relClose(back.a, sma, 1e-8);
+          relClose(back.e, e, 1e-7);
+          angleClose(back.i, i, 1e-9);
+          angleClose(back.raan, raan, 1e-8);
+          angleClose(back.argp, argp, 1e-6);
+          angleClose(back.nu, nu, 1e-6);
+        }
+      )
+    );
+  });
+
+  test('hyperbolic elements → state → elements round-trips', () => {
+    fc.assert(
+      fc.property(
+        a,
+        hyperbolicE,
+        inclination,
+        angle,
+        angle,
+        fc.double({ min: -0.95, max: 0.95, noNaN: true }),
+        (sma, e, i, raan, argp, f) => {
+          // A true anomaly inside the asymptotes: |ν| < ν∞
+          const nu = f * Math.acos(-1 / e);
+          const el = {
+            a: -sma,
+            e,
+            i: i as Radians,
+            raan: raan as Radians,
+            argp: argp as Radians,
+            nu: nu as Radians
+          };
+          const { r, v } = elementsToState(el, MU);
+          const back = stateToElements(r, v, MU);
+
+          relClose(back.a, -sma, 1e-8);
+          relClose(back.e, e, 1e-8);
+          angleClose(back.i, i, 1e-9);
+          angleClose(back.raan, raan, 1e-8);
+          angleClose(back.argp, argp, 1e-7);
+          angleClose(back.nu, nu, 1e-7);
+        }
+      )
     );
   });
 });
