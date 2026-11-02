@@ -10,12 +10,14 @@ import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { solveKeplerHyperbolic } from '../categories/kepler/solve-kepler-hyperbolic.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
+import { cwTwoImpulseTransfer } from '../categories/manoeuvres/cw-two-impulse-transfer.js';
 import { hohmannTransfer } from '../categories/manoeuvres/hohmann-transfer.js';
 import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
 import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { planeChangeDeltaV } from '../categories/manoeuvres/plane-change-delta-v.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
+import { cwPropagate } from '../categories/orbits/cw-propagate.js';
 import { elementsToState } from '../categories/orbits/elements-to-state.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
@@ -234,6 +236,67 @@ describe('state vectors and orbital elements', () => {
           angleClose(back.nu, nu, 1e-7);
         }
       )
+    );
+  });
+});
+
+describe('relative motion', () => {
+  const n = 0.00113; // rad/s
+  const position = fc.double({ min: -50_000, max: 50_000, noNaN: true }); // [m]
+  const velocity = fc.double({ min: -20, max: 20, noNaN: true }); // [m/s]
+  const state = fc.tuple(
+    position,
+    position,
+    position,
+    velocity,
+    velocity,
+    velocity
+  );
+
+  test('propagating t1 then t2 equals propagating t1 + t2', () => {
+    const time = fc.double({ min: -20_000, max: 20_000, noNaN: true });
+
+    fc.assert(
+      fc.property(state, time, time, (s, t1, t2) => {
+        const twoSteps = cwPropagate(cwPropagate(s, n, t1), n, t2);
+        const oneStep = cwPropagate(s, n, t1 + t2);
+
+        for (let i = 0; i < 6; i++) {
+          const scale =
+            i < 3
+              ? 1e-6 * (1 + Math.abs(oneStep[i]))
+              : 1e-9 * (1 + Math.abs(oneStep[i]));
+
+          assert.ok(Math.abs(twoSteps[i] - oneStep[i]) <= scale);
+        }
+      })
+    );
+  });
+
+  test('a two-impulse transfer arrives at its target', () => {
+    // Fractions of an orbit away from the singular whole and half orbits
+    const fraction = fc.double({ min: 0.05, max: 0.45, noNaN: true });
+
+    fc.assert(
+      fc.property(state, state, fraction, (s0, target, f) => {
+        const t = (2 * Math.PI * f) / n;
+        const { dv1, dv2 } = cwTwoImpulseTransfer(s0, target, n, t);
+        const after = cwPropagate(
+          [s0[0], s0[1], s0[2], s0[3] + dv1[0], s0[4] + dv1[1], s0[5] + dv1[2]],
+          n,
+          t
+        );
+
+        for (let i = 0; i < 3; i++) {
+          assert.ok(
+            Math.abs(after[i] - target[i]) <= 1e-6 * (1 + Math.abs(target[i]))
+          );
+          assert.ok(
+            Math.abs(after[i + 3] + dv2[i] - target[i + 3]) <=
+              1e-8 * (1 + Math.abs(target[i + 3]))
+          );
+        }
+      })
     );
   });
 });
