@@ -19,7 +19,7 @@ export interface LaunchAzimuthsInterface {
  * Where:
  * - $ \beta $ is the inertial azimuth, clockwise from north (rad)
  * - $ i $ is the target inclination (rad)
- * - $ \varphi $ is the launch latitude (rad)
+ * - $ \varphi $ is the geocentric launch latitude (rad)
  *
  * Two azimuths reach every reachable inclination: one heading north ($ \beta $) and one heading south ($ \pi - \beta $).
  *
@@ -29,6 +29,7 @@ export interface LaunchAzimuthsInterface {
  *
  * ::: info Notes
  *
+ * - `lat` is the **geocentric** latitude. Published latitudes are usually geodetic, which on Earth differ by up to 0.19°, and the inclination by about as much. Convert first (see [#186](https://github.com/phun-ky/interstellar-tools/issues/186)).
  * - A site can only reach inclinations between $ |\varphi| $ and $ \pi - |\varphi| $ directly. Anything else needs a plane change, or a dogleg during ascent.
  * - The azimuths are inertial. Over the ground, the rocket flies a slightly different heading; see {@link rotatingLaunchAzimuth}.
  * - At $ i = |\varphi| $ the two solutions meet, due east (or due west for retrograde orbits).
@@ -37,19 +38,19 @@ export interface LaunchAzimuthsInterface {
  *
  * ::: practice To the ISS from Cape Canaveral
  *
- * **45.0°**
+ * **44.9°**
  *
- * _Inertial azimuth from 28.61° N to an orbit inclined 51.64°_
+ * _Inertial azimuth from Pad 39A, 28.447° N geocentric, to an orbit inclined 51.64°_
  *
- * Over the ground the rocket flies 42.8°, because the pad is already moving east at 408 m/s.
+ * Over the ground the rocket flies 42.7°, because the pad is already moving east at 409 m/s.
  *
  * ```ts
- * launchAzimuthForInclination(toRad(28.608), toRad(51.64)).northbound; // ≈ 45.0°
+ * launchAzimuthForInclination(toRad(28.447), toRad(51.64)).northbound; // ≈ 44.9°
  * ```
  *
  * :::
  *
- * @param lat - Launch latitude $ \varphi $ in **radians** (finite, in (-π/2, π/2)).
+ * @param lat - Geocentric launch latitude $ \varphi $ in **radians** (finite, in (-π/2, π/2)).
  * @param i - Target inclination $ i $ in **radians** (finite, in [0, π]).
  * @returns The northbound and southbound inertial azimuths, in **radians**.
  * @throws {TypeError} If any input is not a finite number.

@@ -9,8 +9,8 @@ import type { Radians } from '@interstellar-tools/types';
  *
  * Where:
  * - $ i $ is the orbit's inclination (rad)
- * - $ \varphi $ is the launch latitude (rad)
- * - $ \beta $ is the inertial azimuth, clockwise from north (rad)
+ * - $ \varphi $ is the geocentric latitude of the point (rad)
+ * - $ \beta $ is the inertial azimuth or heading at that point, clockwise from north (rad)
  *
  * **Units**
  * - Inputs: `lat` and `azimuth` in **radians**.
@@ -18,6 +18,7 @@ import type { Radians } from '@interstellar-tools/types';
  *
  * ::: info Notes
  *
+ * - `lat` is the **geocentric** latitude. Published latitudes are usually geodetic, which on Earth differ by up to 0.19°, and the inclination by about as much. Convert first (see [#186](https://github.com/phun-ky/interstellar-tools/issues/186)).
  * - The relation holds at every point of the ground track, not only at launch: an orbit never reaches a latitude higher than its inclination.
  * - Launching due east ($ \beta = 90° $) gives the lowest inclination a site can reach without a plane change: its own latitude.
  * - Azimuths between 180° and 360° head west, into retrograde orbits ($ i > 90° $).
@@ -25,21 +26,21 @@ import type { Radians } from '@interstellar-tools/types';
  *
  * :::
  *
- * ::: practice Due east from Pad 39A
+ * ::: practice Apollo 11, entering Earth orbit
  *
- * **28.6°**
+ * **32.52°**
  *
- * _The lowest inclination Cape Canaveral can reach directly_
+ * _At orbit insertion: 32.497° N geocentric, heading 88.848°_
  *
- * Apollo 11's parking orbit was inclined 32.5°, and the ISS orbits at 51.6°: both higher, so both launched north of east.
+ * The flown parking orbit was inclined 32.521°. Apollo 11 entered orbit near the northernmost point of its track, heading almost due east. With the published geodetic latitude, 32.672°, the result would be 32.69°.
  *
  * ```ts
- * inclinationFromLaunchAzimuth(toRad(28.608), toRad(90)); // ≈ 28.6°
+ * inclinationFromLaunchAzimuth(toRad(32.497), toRad(88.848)); // ≈ 32.52°
  * ```
  *
  * :::
  *
- * @param lat - Launch latitude $ \varphi $ in **radians** (finite, in [-π/2, π/2]).
+ * @param lat - Geocentric latitude $ \varphi $ in **radians** (finite, in [-π/2, π/2]).
  * @param azimuth - Inertial azimuth $ \beta $ in **radians**, clockwise from north (finite).
  * @returns Inclination $ i $ in **radians**, in [0, π].
  * @throws {TypeError} If any input is not a finite number.

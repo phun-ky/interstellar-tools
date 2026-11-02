@@ -97,40 +97,86 @@ describe('In practice values', () => {
   });
 });
 
-// Pad 39A at 28.608° N (Apollo by the Numbers), Earth's sidereal rotation
-// rate and WGS 84 equatorial radius
+// The formulas are spherical, so they take geocentric latitudes. Pad 39A is at
+// 28.608422° N geodetic (Apollo by the Numbers); Apollo 11 entered orbit at
+// 32.672° N geodetic, heading 88.848°, into an orbit inclined 32.521° (AS-506
+// flight evaluation report, Table 4-5). Earth: WGS 84, sidereal rotation rate.
 describe('In practice values: launch site geometry', () => {
   const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
   const toDeg = (rad: number) => (rad * 180) / Math.PI;
   const OMEGA = 7.292115e-5; // rad/s
-  const R_EQ = 6_378_137; // m
-  const PAD_39A = toRad(28.608);
+  const A = 6_378_137; // m, equatorial radius
+  const F = 1 / 298.257223563;
+  const B = A * (1 - F);
+  const geocentric = (geodeticDeg: number) =>
+    Math.atan((1 - F) ** 2 * Math.tan(toRad(geodeticDeg))) as Radians;
+  const radiusAt = (lat: number) =>
+    (A * B) / Math.hypot(B * Math.cos(lat), A * Math.sin(lat));
+  const PAD_39A = geocentric(28.608422);
+  const R_PAD = radiusAt(PAD_39A);
 
-  test('surfaceRotationSpeed: 408 m/s at Pad 39A, 465 at the equator, 463 at Kourou', () => {
-    assert.equal(Math.round(surfaceRotationSpeed(PAD_39A, R_EQ, OMEGA)), 408);
-    assert.equal(Math.round(surfaceRotationSpeed(toRad(0), R_EQ, OMEGA)), 465);
+  test('converts Pad 39A to 28.447° N geocentric, 6 373.3 km from the centre', () => {
+    assert.equal(toDeg(PAD_39A).toFixed(3), '28.447');
+    assert.equal((R_PAD / 1000).toFixed(1), '6373.3');
+  });
+
+  test('surfaceRotationSpeed: 408.6 m/s at Pad 39A, 465.1 at the equator, 463 at Kourou', () => {
     assert.equal(
-      Math.round(surfaceRotationSpeed(toRad(5.236), R_EQ, OMEGA)),
+      surfaceRotationSpeed(PAD_39A, R_PAD, OMEGA).toFixed(1),
+      '408.6'
+    );
+    assert.equal(
+      surfaceRotationSpeed(toRad(28.447), 6_373_266, OMEGA).toFixed(1),
+      '408.6'
+    );
+    assert.equal(surfaceRotationSpeed(toRad(0), A, OMEGA).toFixed(1), '465.1');
+
+    const kourou = geocentric(5.236);
+
+    assert.equal(
+      Math.round(surfaceRotationSpeed(kourou, radiusAt(kourou), OMEGA)),
       463
     );
   });
 
-  test('inclinationFromLaunchAzimuth: 28.6° due east from Pad 39A', () => {
+  test('inclinationFromLaunchAzimuth: 32.52° at Apollo 11’s insertion, 32.69° with the geodetic latitude', () => {
+    const insertion = geocentric(32.672);
+
+    assert.equal(toDeg(insertion).toFixed(3), '32.497');
     assert.equal(
-      toDeg(inclinationFromLaunchAzimuth(PAD_39A, toRad(90))).toFixed(1),
-      '28.6'
+      toDeg(inclinationFromLaunchAzimuth(insertion, toRad(88.848))).toFixed(2),
+      '32.52'
+    );
+    assert.equal(
+      toDeg(inclinationFromLaunchAzimuth(toRad(32.497), toRad(88.848))).toFixed(
+        2
+      ),
+      '32.52'
+    );
+    assert.equal(
+      toDeg(inclinationFromLaunchAzimuth(toRad(32.672), toRad(88.848))).toFixed(
+        2
+      ),
+      '32.69'
     );
   });
 
-  test('launchAzimuthForInclination: 45.0° to the ISS, 42.8° over the ground', () => {
+  test('launchAzimuthForInclination: 44.9° to the ISS, 42.7° over the ground', () => {
     const { northbound } = launchAzimuthForInclination(PAD_39A, toRad(51.64));
-    const v = circularSpeed(R_EQ + 200e3, MU_EARTH);
-    const vRot = surfaceRotationSpeed(PAD_39A, R_EQ, OMEGA);
+    const v = circularSpeed(A + 200e3, MU_EARTH);
+    const vRot = surfaceRotationSpeed(PAD_39A, R_PAD, OMEGA);
 
-    assert.equal(toDeg(northbound).toFixed(1), '45.0');
+    assert.equal(Math.round(vRot), 409);
+    assert.equal(toDeg(northbound).toFixed(1), '44.9');
+    assert.equal(
+      toDeg(
+        launchAzimuthForInclination(toRad(28.447), toRad(51.64)).northbound
+      ).toFixed(1),
+      '44.9'
+    );
     assert.equal(
       toDeg(rotatingLaunchAzimuth(northbound, v, vRot)).toFixed(1),
-      '42.8'
+      '42.7'
     );
   });
 });
