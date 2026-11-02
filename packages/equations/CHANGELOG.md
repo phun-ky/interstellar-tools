@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.2.0...%40interstellar-tools%2Fequations%401.3.0) (2026-11-02)
+
+### Feature
+
+* 🎸 Add the Clohessy–Wiltshire solution and rendezvous targeting ([c57bfff](https://github.com/phun-ky/interstellar-tools/commit/c57bfffa3d751171b17e3fb7fe65bce2493d5622)), closes [#247](https://github.com/phun-ky/interstellar-tools/issues/247)
+
 ## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.1.0...%40interstellar-tools%2Fequations%401.2.0) (2026-11-02)
 
 ### Feature
