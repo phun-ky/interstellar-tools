@@ -77,13 +77,15 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Cartography
 
-| Function                                                                            | Description                                                                                   |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [bodyFixedFromInertialDcmIAU](functions/bodyFixedFromInertialDcmIAU.md)             | Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).                  |
-| [eccentricitySquaredOblateSpheroid](functions/eccentricitySquaredOblateSpheroid.md) | Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.                        |
-| [flatteningOblateSpheroid](functions/flatteningOblateSpheroid.md)                   | Compute **flattening** ($f$) of an oblate spheroid.                                           |
-| [isOnTriaxialEllipsoidSurface](functions/isOnTriaxialEllipsoidSurface.md)           | Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within a tolerance). |
-| [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.      |
+| Function                                                                            | Description                                                                                                               |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| [bodyFixedFromInertialDcmIAU](functions/bodyFixedFromInertialDcmIAU.md)             | Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).                                              |
+| [bodyFixedToGeodetic](functions/bodyFixedToGeodetic.md)                             | Convert a **body-fixed Cartesian** position (ECEF for Earth) to **geodetic coordinates**: latitude, longitude and height. |
+| [eccentricitySquaredOblateSpheroid](functions/eccentricitySquaredOblateSpheroid.md) | Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.                                                    |
+| [flatteningOblateSpheroid](functions/flatteningOblateSpheroid.md)                   | Compute **flattening** ($f$) of an oblate spheroid.                                                                       |
+| [geodeticToBodyFixed](functions/geodeticToBodyFixed.md)                             | Convert **geodetic coordinates** (latitude, longitude, height) to a **body-fixed Cartesian** position, ECEF for Earth.    |
+| [isOnTriaxialEllipsoidSurface](functions/isOnTriaxialEllipsoidSurface.md)           | Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within a tolerance).                             |
+| [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.                                  |
 
 ## Entry
 

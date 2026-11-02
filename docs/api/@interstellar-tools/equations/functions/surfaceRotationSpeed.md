@@ -37,8 +37,8 @@ Where:
   result is negative: westward.
 - $R\cos\varphi$ is the distance from the rotation axis. On an oblate body, pass
   the geocentric latitude and the point's distance from the body's centre, not
-  the equatorial radius with a geodetic latitude (see
-  [#186](https://github.com/phun-ky/interstellar-tools/issues/186)).
+  the equatorial radius with a geodetic latitude;
+  [geodeticToBodyFixed](geodeticToBodyFixed.md) gives both.
 
 :::
 
