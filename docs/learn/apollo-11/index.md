@@ -22,21 +22,21 @@ is drawn by hand for now; a later chapter computes the real one.
 The chapters follow the flight plan. Each one is published once the library has
 the equations it needs; the issues show what's still missing.
 
-| Chapter                                                                              | What happens                                                                  | Status                                                                                                                                   |
-| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| [Prologue: Why lunar orbit rendezvous?](/learn/apollo-11/why-lunar-orbit-rendezvous) | Three ways to the Moon, compared by mass                                      | Ready                                                                                                                                    |
-| I. Leaving Earth                                                                     | Launch, Earth parking orbit, trans-lunar injection                            | Needs [#186](https://github.com/phun-ky/interstellar-tools/issues/186), [#226](https://github.com/phun-ky/interstellar-tools/issues/226) |
-| [II. Coasting to the Moon](/learn/apollo-11/coasting-to-the-moon)                    | Docking with the LM, the midcourse correction, the Moon's sphere of influence | Ready                                                                                                                                    |
-| III. Down to the surface                                                             | Lunar orbit insertion, descent orbit, powered descent, landing                | Needs the [Maps milestone](https://github.com/phun-ky/interstellar-tools/milestone/2)                                                    |
-| [IV. Lunar orbit rendezvous](/learn/apollo-11/lunar-orbit-rendezvous)                | Lunar ascent, rendezvous and docking                                          | Ready                                                                                                                                    |
-| [V. Coming home](/learn/apollo-11/coming-home)                                       | Trans-Earth injection, coast, entry and splashdown                            | Ready                                                                                                                                    |
+| Chapter                                                                              | What happens                                                                  | Status                                                                                |
+| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Prologue: Why lunar orbit rendezvous?](/learn/apollo-11/why-lunar-orbit-rendezvous) | Three ways to the Moon, compared by mass                                      | Ready                                                                                 |
+| [I. Leaving Earth](/learn/apollo-11/leaving-earth)                                   | Launch, Earth parking orbit, trans-lunar injection                            | Ready                                                                                 |
+| [II. Coasting to the Moon](/learn/apollo-11/coasting-to-the-moon)                    | Docking with the LM, the midcourse correction, the Moon's sphere of influence | Ready                                                                                 |
+| III. Down to the surface                                                             | Lunar orbit insertion, descent orbit, powered descent, landing                | Needs the [Maps milestone](https://github.com/phun-ky/interstellar-tools/milestone/2) |
+| [IV. Lunar orbit rendezvous](/learn/apollo-11/lunar-orbit-rendezvous)                | Lunar ascent, rendezvous and docking                                          | Ready                                                                                 |
+| [V. Coming home](/learn/apollo-11/coming-home)                                       | Trans-Earth injection, coast, entry and splashdown                            | Ready                                                                                 |
 
 ## The Δv budget
 
 Every burn after Earth orbit, grouped by the engine that made it. Open a row to
 see what the burn did. The ascent to orbit isn't listed: NASA reports where it
-ended, not a single Δv for it, and its losses to gravity and drag come with
-chapter I.
+ended, not a single Δv for it, and its losses to gravity and drag are in
+[chapter I](/learn/apollo-11/leaving-earth).
 
 <ApolloDvLedger />
 
