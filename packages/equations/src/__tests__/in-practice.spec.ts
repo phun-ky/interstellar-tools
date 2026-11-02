@@ -7,6 +7,8 @@ import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-tru
 import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { norm2pi } from '../categories/helpers/misc.js';
+import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
+import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { ballisticPeakDeceleration } from '../categories/entry/ballistic-peak-deceleration.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
@@ -115,6 +117,7 @@ describe('In practice values: launch site geometry', () => {
   const A = 6_378_137; // m, equatorial radius
   const F = 1 / 298.257223563;
   const B = A * (1 - F);
+  const E2 = F * (2 - F);
   const geocentric = (geodeticDeg: number) =>
     Math.atan((1 - F) ** 2 * Math.tan(toRad(geodeticDeg))) as Radians;
   const radiusAt = (lat: number) =>
@@ -146,19 +149,52 @@ describe('In practice values: launch site geometry', () => {
     );
   });
 
-  test('inclinationFromLaunchAzimuth: 32.52° at Apollo 11’s insertion, 32.69° with the geodetic latitude', () => {
-    const insertion = geocentric(32.672);
-
-    assert.equal(toDeg(insertion).toFixed(3), '32.497');
-    assert.equal(
-      toDeg(inclinationFromLaunchAzimuth(insertion, toRad(88.848))).toFixed(2),
-      '32.52'
+  test('geodeticToBodyFixed: Pad 39A 6 373.3 km from the centre, at 28.447° geocentric', () => {
+    const [x, y, z] = geodeticToBodyFixed(
+      toRad(28.608422),
+      toRad(-80.604133),
+      0,
+      A,
+      E2
     );
+
+    assert.equal(Math.round(Math.hypot(x, y, z)), 6_373_266);
+    assert.equal(toDeg(Math.atan2(z, Math.hypot(x, y))).toFixed(3), '28.447');
+    assert.equal((28.608422 - 28.447).toFixed(3), '0.161');
+  });
+
+  test('bodyFixedToGeodetic: 32.672° N, 191.1 km up at orbit insertion, 0.170° north of 32.502°', () => {
+    const lat = toRad(32.502);
+    const r = 6_563_041;
+    const { phi, h } = bodyFixedToGeodetic(
+      r * Math.cos(lat),
+      0,
+      r * Math.sin(lat),
+      A,
+      E2
+    );
+
+    assert.equal(toDeg(phi).toFixed(3), '32.672');
+    assert.equal((h / 1000).toFixed(1), '191.1');
+    assert.equal((r / 1000).toFixed(1), '6563.0');
+    assert.equal((32.672 - 32.502).toFixed(3), '0.170');
+  });
+
+  test('inclinationFromLaunchAzimuth: 32.521° at Apollo 11’s insertion, 32.69° with the geodetic latitude', () => {
+    const [x, y, z] = geodeticToBodyFixed(
+      toRad(32.672),
+      toRad(-52.694),
+      191_100,
+      A,
+      E2
+    );
+    const insertion = Math.atan2(z, Math.hypot(x, y)) as Radians;
+
+    assert.equal(toDeg(insertion).toFixed(3), '32.502');
+    assert.equal(Math.round(Math.hypot(x, y, z)), 6_563_041);
     assert.equal(
-      toDeg(inclinationFromLaunchAzimuth(toRad(32.497), toRad(88.848))).toFixed(
-        2
-      ),
-      '32.52'
+      toDeg(inclinationFromLaunchAzimuth(insertion, toRad(88.848))).toFixed(3),
+      '32.521'
     );
     assert.equal(
       toDeg(inclinationFromLaunchAzimuth(toRad(32.672), toRad(88.848))).toFixed(

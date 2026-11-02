@@ -10,4 +10,6 @@ export * from './physics.js';
 
 export * from './orbits.js';
 
+export * from './cartography.js';
+
 export * from './celestial-bodies/index.js';

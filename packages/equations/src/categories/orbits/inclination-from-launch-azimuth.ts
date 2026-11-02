@@ -18,7 +18,7 @@ import type { Radians } from '@interstellar-tools/types';
  *
  * ::: info Notes
  *
- * - `lat` is the **geocentric** latitude. Published latitudes are usually geodetic, which on Earth differ by up to 0.19°, and the inclination by about as much. Convert first (see [#186](https://github.com/phun-ky/interstellar-tools/issues/186)).
+ * - `lat` is the **geocentric** latitude. Published latitudes are usually geodetic, which on Earth differ by up to 0.19°, and the inclination by about as much. Convert first with {@link geodeticToBodyFixed}, at the point's height.
  * - The relation holds at every point of the ground track, not only at launch: an orbit never reaches a latitude higher than its inclination.
  * - Launching due east ($ \beta = 90° $) gives the lowest inclination a site can reach without a plane change: its own latitude.
  * - Azimuths between 180° and 360° head west, into retrograde orbits ($ i > 90° $).
@@ -28,14 +28,16 @@ import type { Radians } from '@interstellar-tools/types';
  *
  * ::: practice Apollo 11, entering Earth orbit
  *
- * **32.52°**
+ * **32.521°**
  *
- * _At orbit insertion: 32.497° N geocentric, heading 88.848°_
+ * _At orbit insertion: 32.502° N geocentric (32.672° geodetic, 191.1 km up), heading 88.848°_
  *
  * The flown parking orbit was inclined 32.521°. Apollo 11 entered orbit near the northernmost point of its track, heading almost due east. With the published geodetic latitude, 32.672°, the result would be 32.69°.
  *
  * ```ts
- * inclinationFromLaunchAzimuth(toRad(32.497), toRad(88.848)); // ≈ 32.52°
+ * const [x, y, z] = geodeticToBodyFixed(toRad(32.672), toRad(-52.694), 191_100, 6_378_137, 0.00669437999014);
+ * const lat = Math.atan2(z, Math.hypot(x, y)); // 32.502°
+ * inclinationFromLaunchAzimuth(lat, toRad(88.848)); // ≈ 32.521°
  * ```
  *
  * :::

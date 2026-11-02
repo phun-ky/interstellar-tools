@@ -3,6 +3,8 @@ import fc from 'fast-check';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
+import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
+import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { hyperbolicToTrueAnomaly } from '../categories/anomalies/hyperbolic-to-true-anomaly.js';
 import { trueToHyperbolicAnomaly } from '../categories/anomalies/true-to-hyperbolic-anomaly.js';
@@ -413,6 +415,51 @@ describe('manoeuvres', () => {
           'Δv outside [0, 2v]'
         );
         assert.ok(dvLo <= dvHi + 1e-9 * Math.max(1, v), 'Δv not monotonic');
+      })
+    );
+  });
+});
+
+describe('geodetic coordinates', () => {
+  const A = 6_378_137; // m, WGS84
+  const E2 = 0.00669437999014;
+
+  test('geodetic → body-fixed → geodetic gets the same point back, to 0.1 mm', () => {
+    const phi = fc.double({ min: -Math.PI / 2, max: Math.PI / 2, noNaN: true });
+    const lambda = fc.double({
+      min: -Math.PI + 1e-9,
+      max: Math.PI,
+      noNaN: true
+    });
+    const height = fc.double({ min: -10_000, max: 1e8, noNaN: true }); // [m]
+    const e2 = fc.constantFrom(0, E2, 0.0326); // a sphere, Earth, Mars-like
+
+    fc.assert(
+      fc.property(phi, lambda, height, e2, (f, l, h, e) => {
+        const [x, y, z] = geodeticToBodyFixed(
+          f as Radians,
+          l as Radians,
+          h,
+          A,
+          e
+        );
+        const back = bodyFixedToGeodetic(x, y, z, A, e);
+        const scale = A + Math.abs(h);
+
+        // Compare positions, not angles: longitude is undefined at the poles
+        const [x2, y2, z2] = geodeticToBodyFixed(
+          back.phi,
+          back.lambda,
+          back.h,
+          A,
+          e
+        );
+
+        assert.ok(
+          Math.hypot(x2 - x, y2 - y, z2 - z) <= 1e-4 + 1e-14 * scale,
+          'position not recovered'
+        );
+        assert.ok(Math.abs(back.h - h) <= 1e-4 + 1e-14 * scale, 'h differs');
       })
     );
   });
