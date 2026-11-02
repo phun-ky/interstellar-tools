@@ -57,6 +57,8 @@ export * from './categories/helpers/normalize-distance-unit.js';
 
 export * from './categories/helpers/radians.js';
 
+export * from './categories/helpers/rk4.js';
+
 export * from './categories/helpers/rot-1.js';
 
 export * from './categories/helpers/rot-3.js';
@@ -192,3 +194,13 @@ export * from './categories/manoeuvres/rocket-delta-v-from-ve.js';
 export * from './categories/manoeuvres/rocket-thrust.js';
 
 export * from './categories/manoeuvres/thrust-to-weight.js';
+
+// categories/three-body
+
+export * from './categories/three-body/cr3bp-derivatives.js';
+
+export * from './categories/three-body/cr3bp-mass-ratio.js';
+
+export * from './categories/three-body/cr3bp-units.js';
+
+export * from './categories/three-body/jacobi-constant.js';
