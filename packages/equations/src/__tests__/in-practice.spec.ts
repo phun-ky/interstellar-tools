@@ -13,11 +13,15 @@ import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
+import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
+import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth-for-inclination.js';
 import { meanMotion } from '../categories/orbits/mean-motion.js';
 import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
+import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azimuth.js';
 import { specificMechanicalEnergy } from '../categories/orbits/specific-mechanical-energy.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
+import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
 import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
 
 // Every number shown in an "In practice" box, so the docs can't drift from the
@@ -90,6 +94,44 @@ describe('In practice values', () => {
 
     assert.equal(Math.round(soi / 1000) * 1000, 925_000);
     assert.ok(384_400 < soi);
+  });
+});
+
+// Pad 39A at 28.608° N (Apollo by the Numbers), Earth's sidereal rotation
+// rate and WGS 84 equatorial radius
+describe('In practice values: launch site geometry', () => {
+  const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
+  const toDeg = (rad: number) => (rad * 180) / Math.PI;
+  const OMEGA = 7.292115e-5; // rad/s
+  const R_EQ = 6_378_137; // m
+  const PAD_39A = toRad(28.608);
+
+  test('surfaceRotationSpeed: 408 m/s at Pad 39A, 465 at the equator, 463 at Kourou', () => {
+    assert.equal(Math.round(surfaceRotationSpeed(PAD_39A, R_EQ, OMEGA)), 408);
+    assert.equal(Math.round(surfaceRotationSpeed(toRad(0), R_EQ, OMEGA)), 465);
+    assert.equal(
+      Math.round(surfaceRotationSpeed(toRad(5.236), R_EQ, OMEGA)),
+      463
+    );
+  });
+
+  test('inclinationFromLaunchAzimuth: 28.6° due east from Pad 39A', () => {
+    assert.equal(
+      toDeg(inclinationFromLaunchAzimuth(PAD_39A, toRad(90))).toFixed(1),
+      '28.6'
+    );
+  });
+
+  test('launchAzimuthForInclination: 45.0° to the ISS, 42.8° over the ground', () => {
+    const { northbound } = launchAzimuthForInclination(PAD_39A, toRad(51.64));
+    const v = circularSpeed(R_EQ + 200e3, MU_EARTH);
+    const vRot = surfaceRotationSpeed(PAD_39A, R_EQ, OMEGA);
+
+    assert.equal(toDeg(northbound).toFixed(1), '45.0');
+    assert.equal(
+      toDeg(rotatingLaunchAzimuth(northbound, v, vRot)).toFixed(1),
+      '42.8'
+    );
   });
 });
 

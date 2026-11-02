@@ -14,7 +14,9 @@ import { planeChangeDeltaV } from '../categories/manoeuvres/plane-change-delta-v
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
+import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
+import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth-for-inclination.js';
 import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
 import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
 
@@ -113,6 +115,33 @@ describe('orbit geometry', () => {
         assert.ok(ra !== null, 'elliptic orbits have an apoapsis');
         assert.ok(rp > 0 && rp <= ra, `rp=${rp}, ra=${ra}`);
         relClose(rp + ra, 2 * a, 1e-12);
+      })
+    );
+  });
+});
+
+describe('launch geometry', () => {
+  test('the azimuths for an inclination give that inclination back', () => {
+    // Away from the poles and from the singular i = |lat| edge
+    const lat = fc.double({ min: -1.4, max: 1.4, noNaN: true }); // [rad]
+    const azimuth = fc.double({ min: 0, max: TWO_PI, noNaN: true }); // [rad]
+
+    fc.assert(
+      fc.property(lat, azimuth, (phi, beta) => {
+        const i = inclinationFromLaunchAzimuth(phi as Radians, beta as Radians);
+
+        fc.pre(Math.abs(Math.sin(beta)) < 0.999);
+
+        const { northbound, southbound } = launchAzimuthForInclination(
+          phi as Radians,
+          i
+        );
+
+        // beta is one of the two solutions
+        const dNorth = Math.abs(Math.sin((northbound - beta) / 2));
+        const dSouth = Math.abs(Math.sin((southbound - beta) / 2));
+
+        assert.ok(Math.min(dNorth, dSouth) < 1e-9, `β=${beta} not recovered`);
       })
     );
   });
