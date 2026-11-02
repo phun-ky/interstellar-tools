@@ -24,6 +24,7 @@ import { meanMotion } from '../categories/orbits/mean-motion.js';
 import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
 import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azimuth.js';
 import { specificMechanicalEnergy } from '../categories/orbits/specific-mechanical-energy.js';
+import { synodicPeriod } from '../categories/orbits/synodic-period.js';
 import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
 import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
@@ -265,6 +266,36 @@ describe('In practice values: hyperbolas', () => {
     assert.equal(
       `${Math.floor(flown / 3600)} h ${Math.round((flown % 3600) / 60)} min`,
       '14 h 10 min'
+    );
+  });
+});
+
+// Apollo 11 after lunar liftoff: the LM in 9.4 × 48.0 n mi (Mission Report
+// Table 7-V), the CSM in 62 × 56 n mi (Mission Report section 5); lunar liftoff
+// at 124:22:00 and docking at 128:03:00 (Apollo by the Numbers)
+describe('In practice values: rendezvous', () => {
+  const MU_MOON = 4.902800118e12;
+  const R_MOON = 1_737_400;
+  const sma = (low: number, high: number) => R_MOON + ((low + high) / 2) * 1852;
+
+  test('synodicPeriod: 41.8 h for the LM and the CSM, gaining about 16° an orbit', () => {
+    const aLM = sma(9.4, 48.0);
+    const aCSM = sma(56, 62);
+
+    assert.equal(Math.round(aLM), 1_790_552);
+    assert.equal(Math.round(aCSM), 1_846_668);
+
+    const nLM = meanMotion(aLM, MU_MOON);
+    const nCSM = meanMotion(aCSM, MU_MOON);
+
+    assert.equal((synodicPeriod(nLM, nCSM) / 3600).toFixed(1), '41.8');
+    assert.equal(Math.round(360 * (1 - nCSM / nLM)), 16);
+
+    const flown = 128 * 3600 + 3 * 60 - (124 * 3600 + 22 * 60);
+
+    assert.equal(
+      `${Math.floor(flown / 3600)} h ${Math.round((flown % 3600) / 60)} min`,
+      '3 h 41 min'
     );
   });
 });

@@ -93,6 +93,10 @@ export * from './categories/orbits/circular-speed.js';
 
 export * from './categories/orbits/cw-hill-derivatives.js';
 
+export * from './categories/orbits/cw-propagate.js';
+
+export * from './categories/orbits/cw-state-transition.js';
+
 export * from './categories/orbits/elements-to-state.js';
 
 export * from './categories/orbits/escape-speed.js';
@@ -135,6 +139,8 @@ export * from './categories/orbits/state-to-elements.js';
 
 export * from './categories/orbits/surface-rotation-speed.js';
 
+export * from './categories/orbits/synodic-period.js';
+
 export * from './categories/orbits/vis-viva-speed.js';
 
 // categories/manoeuvres
@@ -142,6 +148,8 @@ export * from './categories/orbits/vis-viva-speed.js';
 export * from './categories/manoeuvres/burn-time.js';
 
 export * from './categories/manoeuvres/combine-burns-delta-v.js';
+
+export * from './categories/manoeuvres/cw-two-impulse-transfer.js';
 
 export * from './categories/manoeuvres/gravity-assist-turning-angle.js';
 
@@ -154,6 +162,8 @@ export * from './categories/manoeuvres/initial-mass-for-delta-v.js';
 export * from './categories/manoeuvres/mass-flow-rate.js';
 
 export * from './categories/manoeuvres/oberth-energy-gain.js';
+
+export * from './categories/manoeuvres/phasing-wait-time.js';
 
 export * from './categories/manoeuvres/plane-change-delta-v.js';
 
