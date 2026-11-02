@@ -143,6 +143,10 @@ export default defineConfig({
             {
               text: 'IV. Lunar orbit rendezvous',
               link: '/learn/apollo-11/lunar-orbit-rendezvous'
+            },
+            {
+              text: 'V. Coming home',
+              link: '/learn/apollo-11/coming-home'
             }
           ]
         }

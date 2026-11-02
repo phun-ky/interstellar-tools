@@ -205,6 +205,4 @@ stage was cast off.
 - In the plot, find the separation where TPI and TPF cost the same. Why would
   planners prefer a cheap braking burn over a cheap first burn?
 
-Next: V. Coming home, once the entry equations are released
-([#250](https://github.com/phun-ky/interstellar-tools/issues/250),
-[#251](https://github.com/phun-ky/interstellar-tools/issues/251)).
+Next: [V. Coming home](/learn/apollo-11/coming-home).

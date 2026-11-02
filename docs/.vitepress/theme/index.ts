@@ -17,6 +17,7 @@ import './mission.css';
 import './practice.css';
 
 import ApolloDvLedger from './components/apollo/ApolloDvLedger.vue';
+import ApolloEntryPlot from './components/apollo/ApolloEntryPlot.vue';
 import ApolloMissionMap from './components/apollo/ApolloMissionMap.vue';
 import ApolloRendezvousPlot from './components/apollo/ApolloRendezvousPlot.vue';
 import MissionHome from './components/home/MissionHome.vue';
@@ -43,6 +44,7 @@ export default {
     ctx.app.component('ApolloMissionMap', ApolloMissionMap);
     ctx.app.component('ApolloDvLedger', ApolloDvLedger);
     ctx.app.component('ApolloRendezvousPlot', ApolloRendezvousPlot);
+    ctx.app.component('ApolloEntryPlot', ApolloEntryPlot);
 
     if (typeof window !== 'undefined') {
       document.documentElement.classList.add(GLOBAL_CLASS);
