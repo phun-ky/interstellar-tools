@@ -7,10 +7,14 @@ next to it here.
 
 Entries with an issue link belong to a milestone: most to
 [Maps and topography](https://github.com/phun-ky/interstellar-tools/milestone/2),
-the focus after 1.0, and the Jacobi integral to
-[Satellite tracking](https://github.com/phun-ky/interstellar-tools/milestone/3).
-Geodesy goes in `@interstellar-tools/equations` (cartography), and map
-projections, tiles, terrain, imaging geometry and landing sites in a new
+the focus after 1.0, the Jacobi integral to
+[Satellite tracking](https://github.com/phun-ky/interstellar-tools/milestone/3),
+and the transfers, rocket performance, rendezvous and entry formulas that the
+Apollo 11 tutorial needs
+([#252](https://github.com/phun-ky/interstellar-tools/issues/252)) to
+[Apollo 11](https://github.com/phun-ky/interstellar-tools/milestone/4). Geodesy
+goes in `@interstellar-tools/equations` (cartography), and map projections,
+tiles, terrain, imaging geometry and landing sites in a new
 `@interstellar-tools/maps` package
 ([#181](https://github.com/phun-ky/interstellar-tools/issues/181)). The rest
 waits for a later milestone; see the [roadmap](ROADMAP.md).
@@ -242,15 +246,52 @@ waits for a later milestone; see the [roadmap](ROADMAP.md).
 
 ---
 
+## Orbits, transfers & rendezvous
+
+**State vectors ↔ classical elements**
+[#243](https://github.com/phun-ky/interstellar-tools/issues/243)
+
+- \( \mathbf h=\mathbf r\times\mathbf v,\quad \mathbf e=\frac{\mathbf
+  v\times\mathbf h}{\mu}-\frac{\mathbf r}{r},\quad a=-\frac{\mu}{2\varepsilon}
+  \), and back through the perifocal frame
+
+**Hyperbolic trajectories**
+[#244](https://github.com/phun-ky/interstellar-tools/issues/244)
+
+- \( a=-\mu/v_\infty^2,\quad e=1+r_p v_\infty^2/\mu \)
+- \( \tanh\frac{F}{2}=\sqrt{\frac{e-1}{e+1}}\tan\frac{\nu}{2},\quad
+  t-t_p=\sqrt{-a^3/\mu}\,(e\sinh F-F) \)
+
+**Launch site geometry**
+[#245](https://github.com/phun-ky/interstellar-tools/issues/245)
+
+- \( v_\text{rot}=\omega R\cos\varphi,\quad \cos i=\cos\varphi\sin\beta \)
+
+**Clohessy–Wiltshire solution & two-impulse rendezvous**
+[#247](https://github.com/phun-ky/interstellar-tools/issues/247)
+
+- Closed-form state transition matrix \( \Phi(t) \) of the CW equations, and \(
+  \mathbf v_0^+=\Phi_{rv}^{-1}(\mathbf r_f-\Phi_{rr}\mathbf r_0) \)
+
+**Lambert's problem**
+[#248](https://github.com/phun-ky/interstellar-tools/issues/248)
+
+- Given \( \mathbf r_1, \mathbf r_2, \Delta t \), find \( \mathbf v_1, \mathbf
+  v_2 \) (universal variables, Stumpff functions)
+
+---
+
 ## Perturbations (common LEO/MEO approximations)
 
 - **Thrust (vacuum, general form)**
+  [#246](https://github.com/phun-ky/interstellar-tools/issues/246)
 
   $$
   F=\dot{m}v_e+(p_e-p_a)A_e
   $$
 
 - **Gravity loss (rule-of-thumb)**
+  [#246](https://github.com/phun-ky/interstellar-tools/issues/246)
   $$
   \Delta v_g \approx \int g\,\sin\gamma \, dt
   $$
@@ -258,15 +299,31 @@ waits for a later milestone; see the [roadmap](ROADMAP.md).
 ## Entry, descent, landing (EDL)
 
 - **Ballistic coefficient**
+  [#250](https://github.com/phun-ky/interstellar-tools/issues/250)
 
   $$
   \beta=\frac{m}{C_D A}
   $$
 
+- **Peak deceleration (Allen–Eggers, ballistic)**
+  [#250](https://github.com/phun-ky/interstellar-tools/issues/250)
+
+  $$
+  a_\text{max}=\frac{V_E^2\sin|\gamma|}{2eH}
+  $$
+
 - **Peak convective heating (approx.)**
+  [#250](https://github.com/phun-ky/interstellar-tools/issues/250)
 
   $$
   \dot{q}\propto \frac{\sqrt{\rho}\,V^3}{\sqrt{R_n}}
+  $$
+
+- **Terminal speed under a parachute**
+  [#251](https://github.com/phun-ky/interstellar-tools/issues/251)
+
+  $$
+  v_t=\sqrt{\frac{2mg}{\rho C_D A}}
   $$
 
 - **Lander static tip-over limit**
@@ -297,6 +354,13 @@ waits for a later milestone; see the [roadmap](ROADMAP.md).
 
   $$
   C_J=2U-\|\dot{\mathbf{r}}\|^2
+  $$
+
+- **CR3BP equations of motion (rotating frame)**
+  [#249](https://github.com/phun-ky/interstellar-tools/issues/249)
+
+  $$
+  \ddot x-2\dot y=U_x,\quad \ddot y+2\dot x=U_y,\quad \ddot z=U_z
   $$
 
 - **Tisserand parameter (w.r.t. planet with semimajor axis \(a_p\))**

@@ -78,6 +78,44 @@ releases as it lands, and 2.0 stays reserved for breaking changes.
   tools for geodesy and projections
   ([#203](https://github.com/phun-ky/interstellar-tools/issues/203)).
 
+### Apollo 11
+
+Alongside maps, in the
+[Apollo 11 milestone](https://github.com/phun-ky/interstellar-tools/milestone/4):
+a Learn tutorial that flies the whole Apollo 11 mission with the library, from
+the pad to the Moon and home through the atmosphere
+([#252](https://github.com/phun-ky/interstellar-tools/issues/252)), and the
+equations it's missing. It's a hub page and five chapters, and each chapter
+ships when the equations it needs land; the equations ship as minor releases of
+`@interstellar-tools/equations`.
+
+- **Orbits and transfers:** state vectors and orbital elements
+  ([#243](https://github.com/phun-ky/interstellar-tools/issues/243)), hyperbolic
+  trajectories
+  ([#244](https://github.com/phun-ky/interstellar-tools/issues/244)), launch
+  site geometry
+  ([#245](https://github.com/phun-ky/interstellar-tools/issues/245)) and
+  Lambert's problem
+  ([#248](https://github.com/phun-ky/interstellar-tools/issues/248)).
+- **Rockets and rendezvous:** burn time, thrust-to-weight and gravity loss
+  ([#246](https://github.com/phun-ky/interstellar-tools/issues/246)), and the
+  Clohessy–Wiltshire solution with rendezvous targeting
+  ([#247](https://github.com/phun-ky/interstellar-tools/issues/247)).
+- **Coming home:** atmospheric entry
+  ([#250](https://github.com/phun-ky/interstellar-tools/issues/250)) and
+  parachute descent
+  ([#251](https://github.com/phun-ky/interstellar-tools/issues/251)), using the
+  density models from satellite tracking
+  ([#226](https://github.com/phun-ky/interstellar-tools/issues/226)).
+- **The free return:** the restricted three-body equations of motion
+  ([#249](https://github.com/phun-ky/interstellar-tools/issues/249)), next to
+  the Lagrange points
+  ([#221](https://github.com/phun-ky/interstellar-tools/issues/221)), to draw
+  the real figure-eight trajectory.
+
+The landing chapter uses the geodesy and terrain work from the maps milestone,
+so it's finished together with it.
+
 ### Satellite tracking
 
 After maps, in the
@@ -153,9 +191,10 @@ comes with tests and documentation.
 - **"In practice" boxes** for every equation category, with each number checked
   by a test, as the orbit equations already have.
 - **A guide page per category**, like the existing manoeuvres guide.
-- **More Learn tutorials**, such as planning a trip to Mars, why Proxima
-  Centauri takes 547 000 years to orbit, a slingshot around Jupiter, why
-  satellites drift, and choosing a landing site on Mars
+- **More Learn tutorials**, such as the Apollo 11 mission
+  ([#252](https://github.com/phun-ky/interstellar-tools/issues/252)), planning a
+  trip to Mars, why Proxima Centauri takes 547 000 years to orbit, a slingshot
+  around Jupiter, why satellites drift, and choosing a landing site on Mars
   ([#202](https://github.com/phun-ky/interstellar-tools/issues/202)).
 
 ### Project health

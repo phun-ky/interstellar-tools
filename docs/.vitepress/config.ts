@@ -130,6 +130,17 @@ export default defineConfig({
               link: '/learn/where-is-earth-today'
             }
           ]
+        },
+        {
+          text: 'Apollo 11',
+          collapsed: false,
+          items: [
+            { text: 'Mission overview', link: '/learn/apollo-11/' },
+            {
+              text: 'Why lunar orbit rendezvous?',
+              link: '/learn/apollo-11/why-lunar-orbit-rendezvous'
+            }
+          ]
         }
       ],
       '/guide/': [
