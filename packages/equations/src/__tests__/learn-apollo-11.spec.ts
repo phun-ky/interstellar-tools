@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
+import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 
 // Every number in the Apollo 11 tutorial's text (docs/learn/apollo-11), so the
@@ -14,8 +15,6 @@ const LB = 0.45359237; // kg per pound
 
 const group = (n: number) =>
   Math.round(n).toLocaleString('en-US').replace(/,/g, ' ');
-const massBefore = (mAfter: number, dv: number, Isp: number) =>
-  mAfter * Math.exp(dv / (Isp * g0));
 
 describe('Apollo 11: sources', () => {
   test('converts the Mission Report figures used in the text', () => {
@@ -65,9 +64,9 @@ describe('Why lunar orbit rendezvous? (tutorial)', () => {
 
   const priceDescent = Math.exp(DESCENT.dv / (DESCENT.Isp * g0));
   const priceAscent = Math.exp(ASCENT.dv / (ASCENT.Isp * g0));
-  const atLiftoff = massBefore(csm, ASCENT.dv, ASCENT.Isp);
-  const direct = massBefore(atLiftoff, DESCENT.dv, DESCENT.Isp);
-  const lm = massBefore(ascentStage, DESCENT.dv, DESCENT.Isp);
+  const atLiftoff = initialMassForDeltaV(csm, ASCENT.dv, ASCENT.Isp);
+  const direct = initialMassForDeltaV(atLiftoff, DESCENT.dv, DESCENT.Isp);
+  const lm = initialMassForDeltaV(ascentStage, DESCENT.dv, DESCENT.Isp);
   const lor = csm + lm;
 
   test('prices descent at 2.026 and ascent at 1.841 kg per kg, 3.73 together', () => {
