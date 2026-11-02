@@ -113,11 +113,19 @@ export * from './categories/orbits/vis-viva-speed.js';
 
 // categories/manoeuvres
 
+export * from './categories/manoeuvres/burn-time.js';
+
 export * from './categories/manoeuvres/combine-burns-delta-v.js';
 
 export * from './categories/manoeuvres/gravity-assist-turning-angle.js';
 
+export * from './categories/manoeuvres/gravity-loss.js';
+
 export * from './categories/manoeuvres/hohmann-transfer.js';
+
+export * from './categories/manoeuvres/initial-mass-for-delta-v.js';
+
+export * from './categories/manoeuvres/mass-flow-rate.js';
 
 export * from './categories/manoeuvres/oberth-energy-gain.js';
 
@@ -126,3 +134,7 @@ export * from './categories/manoeuvres/plane-change-delta-v.js';
 export * from './categories/manoeuvres/rocket-delta-v-from-isp.js';
 
 export * from './categories/manoeuvres/rocket-delta-v-from-ve.js';
+
+export * from './categories/manoeuvres/rocket-thrust.js';
+
+export * from './categories/manoeuvres/thrust-to-weight.js';
