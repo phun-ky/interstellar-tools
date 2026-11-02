@@ -3,6 +3,8 @@ import type {
   Radians
 } from '@interstellar-tools/types';
 
+import { assertEllipsoid, assertFinite } from './validate.js';
+
 /**
  * Convert a **body-fixed Cartesian** position (ECEF for Earth) to **geodetic coordinates**: latitude, longitude and height.
  *
@@ -84,21 +86,14 @@ export const bodyFixedToGeodetic = (
   a: number,
   eSquared: number
 ): GeodeticCoordinatesInterface => {
-  for (const [name, v] of [
+  assertFinite([
     ['x', x],
     ['y', y],
     ['z', z],
     ['a', a],
     ['eSquared', eSquared]
-  ] as const) {
-    if (!Number.isFinite(v))
-      throw new TypeError(`${name} must be a finite number. Received: ${v}`);
-  }
-
-  if (a <= 0) throw new RangeError(`a must be > 0. Received: ${a}`);
-
-  if (eSquared < 0 || eSquared >= 1)
-    throw new RangeError(`eSquared must be in [0, 1). Received: ${eSquared}`);
+  ]);
+  assertEllipsoid(a, eSquared);
 
   const p = Math.hypot(x, y);
 

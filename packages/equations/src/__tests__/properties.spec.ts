@@ -3,6 +3,8 @@ import fc from 'fast-check';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
+import { centralAngle } from '../categories/cartography/central-angle.js';
+import { centralAngleFromVectors } from '../categories/cartography/central-angle-from-vectors.js';
 import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
 import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
@@ -423,6 +425,30 @@ describe('manoeuvres', () => {
 describe('geodetic coordinates', () => {
   const A = 6_378_137; // m, WGS84
   const E2 = 0.00669437999014;
+
+  test('the haversine and vector central angles agree, between 0 and π', () => {
+    const lat = fc.double({ min: -Math.PI / 2, max: Math.PI / 2, noNaN: true });
+    const lon = fc.double({ min: -Math.PI, max: Math.PI, noNaN: true });
+
+    fc.assert(
+      fc.property(lat, lon, lat, lon, (a, b, c, d) => {
+        const sigma = centralAngle(
+          a as Radians,
+          b as Radians,
+          c as Radians,
+          d as Radians
+        );
+        const p = geodeticToBodyFixed(a as Radians, b as Radians, 0, 1, 0);
+        const q = geodeticToBodyFixed(c as Radians, d as Radians, 0, 1, 0);
+
+        assert.ok(sigma >= 0 && sigma <= Math.PI, 'outside [0, π]');
+        assert.ok(
+          Math.abs(sigma - centralAngleFromVectors(p, q)) < 1e-7,
+          'forms disagree'
+        );
+      })
+    );
+  });
 
   test('geodetic → body-fixed → geodetic gets the same point back, to 0.1 mm', () => {
     const phi = fc.double({ min: -Math.PI / 2, max: Math.PI / 2, noNaN: true });

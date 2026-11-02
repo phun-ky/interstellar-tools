@@ -15,17 +15,27 @@ export * from './categories/cartography/body-fixed-from-inertial-dcm-iau.js';
 
 export * from './categories/cartography/body-fixed-to-geodetic.js';
 
+export * from './categories/cartography/central-angle.js';
+
+export * from './categories/cartography/central-angle-from-vectors.js';
+
 export * from './categories/cartography/eccentricity-squared-oblate-spheroid.js';
 
 export * from './categories/cartography/flattening-oblate-spheroid.js';
 
 export * from './categories/cartography/geodetic-to-body-fixed.js';
 
+export * from './categories/cartography/great-circle-distance.js';
+
 export * from './categories/cartography/is-on-triaxial-ellipsoid-surface.js';
+
+export * from './categories/cartography/meridional-radius-of-curvature.js';
 
 export * from './categories/cartography/planetocentric-latitude.js';
 
 export * from './categories/cartography/planetographic-latitude-oblate.js';
+
+export * from './categories/cartography/prime-vertical-radius-of-curvature.js';
 
 // categories/entry
 

@@ -9,6 +9,9 @@ import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.
 import { norm2pi } from '../categories/helpers/misc.js';
 import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
 import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
+import { greatCircleDistance } from '../categories/cartography/great-circle-distance.js';
+import { meridionalRadiusOfCurvature } from '../categories/cartography/meridional-radius-of-curvature.js';
+import { primeVerticalRadiusOfCurvature } from '../categories/cartography/prime-vertical-radius-of-curvature.js';
 import { ballisticPeakDeceleration } from '../categories/entry/ballistic-peak-deceleration.js';
 import { rk4Integrate } from '../categories/helpers/rk4.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
@@ -151,6 +154,24 @@ describe('In practice values: launch site geometry', () => {
       Math.round(surfaceRotationSpeed(kourou, radiusAt(kourou), OMEGA)),
       463
     );
+  });
+
+  test('meridionalRadiusOfCurvature: a degree of latitude is 110.83 km at Pad 39A, M = 6 350.1 km', () => {
+    const M = meridionalRadiusOfCurvature(toRad(28.608422), A, E2);
+
+    assert.equal((M / 1000).toFixed(1), '6350.1');
+    assert.equal(((M * Math.PI) / 180 / 1000).toFixed(2), '110.83');
+    assert.equal(Math.round((M * Math.PI) / 180), 110_829);
+  });
+
+  test('primeVerticalRadiusOfCurvature: a degree of longitude is 97.80 km at Pad 39A, N = 6 383.0 km', () => {
+    const phi = toRad(28.608422);
+    const N = primeVerticalRadiusOfCurvature(phi, A, E2);
+    const degree = (N * Math.cos(phi) * Math.PI) / 180;
+
+    assert.equal((N / 1000).toFixed(1), '6383.0');
+    assert.equal((degree / 1000).toFixed(2), '97.80');
+    assert.equal(Math.round(degree), 97_804);
   });
 
   test('geodeticToBodyFixed: Pad 39A 6 373.3 km from the centre, at 28.447° geocentric', () => {
@@ -486,6 +507,30 @@ describe('In practice values: three-body', () => {
     assert.ok(
       Math.abs(jacobiConstant(y[atEarth] as unknown as Cr3bpState, mu) - c) <
         1e-6
+    );
+  });
+});
+
+// Landing sites in IAU Mean Earth/Polar Axis coordinates (Apollo by the
+// Numbers, landing site table); the Moon as a sphere of 1 737.4 km
+describe('In practice values: lunar distances', () => {
+  const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
+  const R_MOON = 1_737_400;
+  const APOLLO_11 = [toRad(0.67408), toRad(23.47297)] as const;
+  const APOLLO_12 = [toRad(-3.01239), toRad(-23.42157)] as const;
+  const APOLLO_17 = [toRad(20.1908), toRad(30.77168)] as const;
+
+  test('greatCircleDistance: 1 426 km from Tranquility Base to Apollo 12, 47° of arc; 630 km to Apollo 17', () => {
+    const d = greatCircleDistance(...APOLLO_11, ...APOLLO_12, R_MOON);
+
+    assert.equal(group(d / 1000), '1 426');
+    assert.equal(Math.round(d), 1_425_826);
+    assert.equal(Math.round(((d / R_MOON) * 180) / Math.PI), 47);
+    assert.equal(
+      Math.round(
+        greatCircleDistance(...APOLLO_11, ...APOLLO_17, R_MOON) / 1000
+      ),
+      630
     );
   });
 });

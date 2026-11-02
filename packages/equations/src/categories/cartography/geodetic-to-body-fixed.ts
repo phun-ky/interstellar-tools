@@ -1,5 +1,8 @@
 import type { Radians, Vector3DTupleType } from '@interstellar-tools/types';
 
+import { primeVerticalRadiusOfCurvature } from './prime-vertical-radius-of-curvature.js';
+import { assertEllipsoid, assertFinite, assertLatitude } from './validate.js';
+
 /**
  * Convert **geodetic coordinates** (latitude, longitude, height) to a **body-fixed Cartesian** position, ECEF for Earth.
  *
@@ -17,7 +20,7 @@ import type { Radians, Vector3DTupleType } from '@interstellar-tools/types';
  * - $ \varphi $ is the geodetic latitude and $ \lambda $ the longitude (rad)
  * - $ h $ is the height above the ellipsoid, along its normal (m)
  * - $ a $ is the equatorial radius (m) and $ e^2 $ the first eccentricity squared
- * - $ N $ is the prime vertical radius of curvature (m)
+ * - $ N $ is the prime vertical radius of curvature (m), from {@link primeVerticalRadiusOfCurvature}
  *
  * **Units**
  * - Inputs: `phi` and `lambda` in **radians**, `h` and `a` in **m**, `eSquared` dimensionless.
@@ -77,28 +80,19 @@ export const geodeticToBodyFixed = (
   a: number,
   eSquared: number
 ): Vector3DTupleType => {
-  for (const [name, x] of [
+  assertFinite([
     ['phi', phi],
     ['lambda', lambda],
     ['h', h],
     ['a', a],
     ['eSquared', eSquared]
-  ] as const) {
-    if (!Number.isFinite(x))
-      throw new TypeError(`${name} must be a finite number. Received: ${x}`);
-  }
-
-  if (Math.abs(phi) > Math.PI / 2)
-    throw new RangeError(`phi must be in [-π/2, π/2]. Received: ${phi}`);
-
-  if (a <= 0) throw new RangeError(`a must be > 0. Received: ${a}`);
-
-  if (eSquared < 0 || eSquared >= 1)
-    throw new RangeError(`eSquared must be in [0, 1). Received: ${eSquared}`);
+  ]);
+  assertLatitude('phi', phi);
+  assertEllipsoid(a, eSquared);
 
   const sinPhi = Math.sin(phi);
   const cosPhi = Math.cos(phi);
-  const N = a / Math.sqrt(1 - eSquared * sinPhi * sinPhi);
+  const N = primeVerticalRadiusOfCurvature(phi, a, eSquared);
 
   return [
     (N + h) * cosPhi * Math.cos(lambda),
