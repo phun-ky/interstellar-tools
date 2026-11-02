@@ -8,7 +8,7 @@ Houbolt, would leave the return spacecraft in lunar orbit and send only a small
 lander down. NASA chose LOR in 1962. In this prologue you'll see why, using the
 mass Apollo 11 actually flew and one equation: the rocket equation.
 
-- **You'll use:** `rocketDeltaVFromIsp`
+- **You'll use:** `initialMassForDeltaV`, `rocketDeltaVFromIsp`
 - **Time:** about 10 minutes
 
 ## 1. The price of a burn
@@ -45,16 +45,16 @@ the way home. On Apollo 11 that was the command and service module, the CSM: 16
 spacecraft would have had to land, and lift off again:
 
 ```ts
-import { rocketDeltaVFromIsp } from '@interstellar-tools/equations';
+import {
+  initialMassForDeltaV,
+  rocketDeltaVFromIsp
+} from '@interstellar-tools/equations';
 
-const g0 = 9.80665;
-const massBefore = (mAfter: number, dv: number, Isp: number) =>
-  mAfter * Math.exp(dv / (Isp * g0));
 const DESCENT = { dv: 2112.3, Isp: 305 }; // m/s, s
 const ASCENT = { dv: 1850.2, Isp: 309 };
 const csm = 16_767; // kg, CSM at trans-Earth injection
-const atLiftoff = massBefore(csm, ASCENT.dv, ASCENT.Isp); // 30 876 kg
-const direct = massBefore(atLiftoff, DESCENT.dv, DESCENT.Isp); // 62 565 kg
+const atLiftoff = initialMassForDeltaV(csm, ASCENT.dv, ASCENT.Isp); // 30 876 kg
+const direct = initialMassForDeltaV(atLiftoff, DESCENT.dv, DESCENT.Isp); // 62 565 kg
 
 // The rocket equation, forwards, gives the descent's Δv back
 rocketDeltaVFromIsp(DESCENT.Isp, direct, atLiftoff); // 2112.3 m/s
@@ -68,7 +68,7 @@ descent price once, and the CSM pays nothing:
 
 ```ts
 const ascentStage = 4888; // kg, at lunar liftoff
-const lm = massBefore(ascentStage, DESCENT.dv, DESCENT.Isp); // 9 905 kg
+const lm = initialMassForDeltaV(ascentStage, DESCENT.dv, DESCENT.Isp); // 9 905 kg
 const lor = csm + lm; // 26 672 kg
 ```
 
