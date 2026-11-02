@@ -141,6 +141,10 @@ export default defineConfig({
               link: '/learn/apollo-11/why-lunar-orbit-rendezvous'
             },
             {
+              text: 'II. Coasting to the Moon',
+              link: '/learn/apollo-11/coasting-to-the-moon'
+            },
+            {
               text: 'IV. Lunar orbit rendezvous',
               link: '/learn/apollo-11/lunar-orbit-rendezvous'
             },

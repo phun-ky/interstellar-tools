@@ -101,6 +101,7 @@ advantage bigger, not smaller.
   home. Which other burn would a direct-ascent spacecraft skip, and would that
   change the answer much?
 
-Next: [I. Leaving Earth](/learn/apollo-11/), once the launch equations land
-([#245](https://github.com/phun-ky/interstellar-tools/issues/245),
-[#246](https://github.com/phun-ky/interstellar-tools/issues/246)).
+Next: I. Leaving Earth, once the launch equations land
+([#186](https://github.com/phun-ky/interstellar-tools/issues/186),
+[#226](https://github.com/phun-ky/interstellar-tools/issues/226)). Until then,
+skip ahead to [II. Coasting to the Moon](/learn/apollo-11/coasting-to-the-moon).
