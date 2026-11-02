@@ -20,7 +20,7 @@ Represents an asteroid belt within the solar system simulation.
 ### display?
 
 ```ts
-optional display?: DisplayInterface;
+display?: DisplayInterface;
 ```
 
 Defined in:

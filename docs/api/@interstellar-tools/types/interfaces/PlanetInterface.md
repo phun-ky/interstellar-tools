@@ -63,7 +63,7 @@ Defines whether the object is a planet or a planetoid.
 ### display?
 
 ```ts
-optional display?: DisplayInterface;
+display?: DisplayInterface;
 ```
 
 Defined in:
@@ -89,7 +89,7 @@ Stable identifier, used by `parent` references. Never translated.
 ### mu?
 
 ```ts
-optional mu?: number;
+mu?: number;
 ```
 
 Defined in:
@@ -116,7 +116,7 @@ Name of the planet (e.g., "Earth", "Mars").
 ### orbit?
 
 ```ts
-optional orbit?: OrbitInterface;
+orbit?: OrbitInterface;
 ```
 
 Defined in:
@@ -129,7 +129,7 @@ Orbit around the parent.
 ### parent?
 
 ```ts
-optional parent?: string;
+parent?: string;
 ```
 
 Defined in:
@@ -186,7 +186,7 @@ Type classification of the planet.
 ### x?
 
 ```ts
-optional x?: DistanceInterface;
+x?: DistanceInterface;
 ```
 
 Defined in:
@@ -200,7 +200,7 @@ have no known position.
 ### y?
 
 ```ts
-optional y?: DistanceInterface;
+y?: DistanceInterface;
 ```
 
 Defined in:
@@ -213,7 +213,7 @@ Y-coordinate in the parent's frame.
 ### z?
 
 ```ts
-optional z?: DistanceInterface;
+z?: DistanceInterface;
 ```
 
 Defined in:

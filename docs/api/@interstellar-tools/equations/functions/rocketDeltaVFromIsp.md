@@ -50,7 +50,7 @@ Where:
 | `Isp`     | `number` | `undefined`   | Specific impulse $I_{sp}$ in **seconds** (finite, > 0).                  |
 | `m0`      | `number` | `undefined`   | Initial mass $m_0$ in **kg** (finite, > 0).                              |
 | `mf`      | `number` | `undefined`   | Final mass $m_f$ in **kg** (finite, > 0 and < `m0`).                     |
-| `g0`      | `number` | `9.80665`     | Standard gravity $g_0$ in **m/s²** (finite, > 0). Defaults to `9.80665`. |
+| `g0?`     | `number` | `9.80665`     | Standard gravity $g_0$ in **m/s²** (finite, > 0). Defaults to `9.80665`. |
 
 ## Returns
 

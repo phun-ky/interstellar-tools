@@ -4,7 +4,7 @@ Vector3DTupleType
 # Type Alias: Vector3DTupleType
 
 ```ts
-type Vector3DTupleType = readonly [number, number, number];
+type Vector3DTupleType = readonly [x: number, y: number, z: number];
 ```
 
 Defined in:

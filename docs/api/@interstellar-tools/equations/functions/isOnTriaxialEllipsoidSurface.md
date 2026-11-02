@@ -50,7 +50,7 @@ of 1.
 | `a`       | `number` | `undefined`   | Semi-axis length along x (finite, > 0).                                               |
 | `b`       | `number` | `undefined`   | Semi-axis length along y (finite, > 0).                                               |
 | `c`       | `number` | `undefined`   | Semi-axis length along z (finite, > 0).                                               |
-| `eps`     | `number` | `1e-12`       | Allowed absolute tolerance on the implicit value (finite, >= 0). Defaults to `1e-12`. |
+| `eps?`    | `number` | `1e-12`       | Allowed absolute tolerance on the implicit value (finite, >= 0). Defaults to `1e-12`. |
 
 ## Returns
 

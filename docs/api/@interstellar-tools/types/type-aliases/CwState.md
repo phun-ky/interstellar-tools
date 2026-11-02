@@ -4,11 +4,18 @@ CwState
 # Type Alias: CwState
 
 ```ts
-type CwState = readonly [number, number, number, number, number, number];
+type CwState = readonly [
+  x: number,
+  y: number,
+  z: number,
+  xDot: number,
+  yDot: number,
+  zDot: number
+];
 ```
 
 Defined in:
-[orbits.ts:37](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L37)
+[orbits.ts:38](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L38)
 
 Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame.
 

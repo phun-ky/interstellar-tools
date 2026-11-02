@@ -11,7 +11,7 @@ Defined in:
 ### allowedHosts?
 
 ```ts
-optional allowedHosts?: string[];
+allowedHosts?: string[];
 ```
 
 Defined in:
@@ -27,7 +27,7 @@ hosts when binding to another interface.
 ### host?
 
 ```ts
-optional host?: string;
+host?: string;
 ```
 
 Defined in:
@@ -40,7 +40,7 @@ Interface to bind to. Defaults to loopback only.
 ### path?
 
 ```ts
-optional path?: string;
+path?: string;
 ```
 
 Defined in:

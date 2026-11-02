@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.0.0...%40interstellar-tools%2Fequations%401.1.0) (2026-11-02)
+
+### Documentation
+
+* ✏️ Say that the launch geometry functions take geocentric latitudes ([c86fd90](https://github.com/phun-ky/interstellar-tools/commit/c86fd90ba671dd1604d54c82cf264db5a89198c5))
+* ✏️ Start the Apollo 11 tutorial with the hub and the LOR prologue ([d38f1f3](https://github.com/phun-ky/interstellar-tools/commit/d38f1f34ba05d39cfaf3a3e6065fcc8bc0028298)), references [#252](https://github.com/phun-ky/interstellar-tools/issues/252)
+* ✏️ Use initialMassForDeltaV in the LOR prologue ([f08dd04](https://github.com/phun-ky/interstellar-tools/commit/f08dd04b164114ff70d08f1c4acc84d9f72a12b8)), references [#246](https://github.com/phun-ky/interstellar-tools/issues/246)
+
+### Feature
+
+* 🎸 Add launch site geometry: rotation speed, azimuth and inclination ([b5f1866](https://github.com/phun-ky/interstellar-tools/commit/b5f18669a064e77a7ab42ede4769531e2680ff0a)), closes [#245](https://github.com/phun-ky/interstellar-tools/issues/245)
+* 🎸 Add rocket performance: mass flow, burn time, thrust-to-weight and gravity loss ([ca54ed8](https://github.com/phun-ky/interstellar-tools/commit/ca54ed89e89d5da0c4e38bbdb8198150ef6fab7a)), closes [#246](https://github.com/phun-ky/interstellar-tools/issues/246)
+* 🎸 Convert between state vectors and orbital elements ([50d6021](https://github.com/phun-ky/interstellar-tools/commit/50d6021da37271920216a13a9580f8ac8435191c)), closes [#243](https://github.com/phun-ky/interstellar-tools/issues/243)
+
 ## [1.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%400.64.2...%40interstellar-tools%2Fequations%401.0.0) (2026-10-18)
 
 ### Tasks
