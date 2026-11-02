@@ -5,6 +5,7 @@ import test, { describe } from 'node:test';
 import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-anomaly.js';
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
+import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { ballisticCoefficient } from '../categories/entry/ballistic-coefficient.js';
 import { ballisticEntrySpeed } from '../categories/entry/ballistic-entry-speed.js';
 import { ballisticPeakDecelerationAltitude } from '../categories/entry/ballistic-peak-deceleration-altitude.js';
@@ -23,7 +24,10 @@ import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentri
 import { hyperbolicPeriapsisSpeed } from '../categories/orbits/hyperbolic-periapsis-speed.js';
 import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
 import { hyperbolicTimeOfFlight } from '../categories/orbits/hyperbolic-time-of-flight.js';
+import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
+import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth-for-inclination.js';
 import { meanMotion } from '../categories/orbits/mean-motion.js';
+import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azimuth.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
 import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
@@ -120,6 +124,173 @@ describe('Why lunar orbit rendezvous? (tutorial)', () => {
 
   test('makes direct ascent 2.35 times heavier', () => {
     assert.equal((direct / lor).toFixed(2), '2.35');
+  });
+});
+
+describe('I. Leaving Earth (tutorial)', () => {
+  const A = 6_378_137;
+  const E2 = 0.00669437999014;
+  const MU_EARTH = 3.986004418e14;
+  const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
+  const toDeg = (rad: number) => (rad * 180) / Math.PI;
+  // Pad 39A (Apollo by the Numbers); insertion (LVFE Table 4-5)
+  const [x, y, z] = geodeticToBodyFixed(
+    toRad(28.608422),
+    toRad(-80.604133),
+    0,
+    A,
+    E2
+  );
+  const R = Math.hypot(x, y, z);
+  const lat = Math.atan2(z, Math.hypot(x, y)) as Radians;
+  const [xi, yi, zi] = geodeticToBodyFixed(
+    toRad(32.672),
+    toRad(-52.694),
+    191_100,
+    A,
+    E2
+  );
+  const r = Math.hypot(xi, yi, zi);
+  const insertion = Math.atan2(zi, Math.hypot(xi, yi)) as Radians;
+  // Vehicle masses, kg (LVFE Table 20-9)
+  const sIC = rocketDeltaVFromIsp(264, 2_899_008, 827_292);
+  const sII = rocketDeltaVFromIsp(423.2, 658_363, 213_888);
+  const sIVB = rocketDeltaVFromIsp(428.7, 166_571, 135_182);
+
+  test('converts the sources', () => {
+    assert.equal(group(6_391_218 * LB), '2 899 008');
+    assert.equal(group(1_823_866 * LB), '827 292');
+    assert.equal(group(1_451_441 * LB), '658 363');
+    assert.equal(group(471_542 * LB), '213 888');
+    assert.equal(group(367_227 * LB), '166 571');
+    assert.equal(group(298_026 * LB), '135 182');
+    assert.equal(group(295_521 * LB), '134 046');
+    assert.equal(group(139_309 * LB), '63 189');
+    assert.equal(((735.2 * 47.880259) / 1000).toFixed(1), '35.2');
+    assert.equal(Math.round((201_061 * 4.448222) / 100) * 100, 894_400);
+    assert.equal((25_567.9 * FT).toFixed(1), '7793.1');
+    assert.equal(Math.round(10_441 * FT), 3182);
+  });
+
+  test('says less than 5% reached orbit, 2 938 t at ignition, 135 t in orbit', () => {
+    assert.equal(Math.round((6_477_875 * LB) / 1000), 2938);
+    assert.ok(135_182 / 2_938_315 < 0.05);
+    assert.equal(Math.round(135_182 / 1000), 135);
+    assert.equal(Math.round(2_899_008 / 1000), 2899);
+  });
+
+  test('1. puts Pad 39A 6 373 266 m out at 28.447° geocentric, moving east at 408.6 m/s, 5% of orbital speed', () => {
+    assert.equal(Math.round(R), 6_373_266);
+    assert.equal(toDeg(lat).toFixed(3), '28.447');
+
+    const east = surfaceRotationSpeed(lat, R, 7.292115e-5);
+
+    assert.equal(east.toFixed(1), '408.6');
+    assert.equal(Math.round((100 * east) / 7793.1), 5);
+  });
+
+  test('2. lifts off at T/W 1.19', () => {
+    assert.equal(
+      thrustToWeight(7_610_000 * 4.448222, 2_899_008, g0).toFixed(2),
+      '1.19'
+    );
+  });
+
+  test('3. gets 3 246, 4 666 and 878 m/s from the stages, 8 790 in all, against 7 383 gained', () => {
+    assert.equal(group(sIC), '3 246');
+    assert.equal(group(sII), '4 666');
+    assert.equal(Math.round(sIVB), 878);
+    assert.equal(group(sIC + sII + sIVB), '8 790');
+
+    const gains = [2764.1 - 408.6, 6916.1 - 2764.1, 7791.2 - 6916.1];
+
+    assert.deepEqual(
+      gains.map((g) => Math.round(g)),
+      [2356, 4152, 875]
+    );
+    assert.equal(Math.round(gains[0] / 5) * 5, 2355);
+    assert.equal(group(gains.reduce((sum, g) => sum + g, 0)), '7 383');
+  });
+
+  test('3. loses about 1.4 km/s, nearly all in the first two stages', () => {
+    const lost = sIC + sII + sIVB - (7791.2 - 408.6);
+
+    assert.equal((lost / 1000).toFixed(1), '1.4');
+    assert.ok(sIVB - (7791.2 - 6916.1) < 0.01 * lost);
+    assert.equal(Math.round(90 - 72.058), 18);
+  });
+
+  test('4. enters orbit 6 563 041 m out at 32.502°, 184.9 km above a 6 378.165 km sphere', () => {
+    assert.equal(Math.round(r), 6_563_041);
+    assert.equal(toDeg(insertion).toFixed(3), '32.502');
+    assert.equal(((r - 6_378_165) / 1000).toFixed(1), '184.9');
+    assert.ok(r - 6_378_165 > 183_200 && r - 6_378_165 < 186_000);
+  });
+
+  test('4. orbits at 7 793.2 m/s circular, 88.18 min', () => {
+    assert.equal(circularSpeed(r, MU_EARTH).toFixed(1), '7793.2');
+    assert.equal(
+      (keplerPeriod(6_378_165 + 184_600, MU_EARTH) / 60).toFixed(2),
+      '88.18'
+    );
+    assert.equal((186.0 + 183.2) / 2, 184.6);
+  });
+
+  test('4. inclines the orbit 32.521°; 32.69° geodetic, 32.516° from the surface point', () => {
+    assert.equal(
+      toDeg(inclinationFromLaunchAzimuth(insertion, toRad(88.848))).toFixed(3),
+      '32.521'
+    );
+    assert.equal(
+      toDeg(inclinationFromLaunchAzimuth(toRad(32.672), toRad(88.848))).toFixed(
+        2
+      ),
+      '32.69'
+    );
+
+    const [xs, ys, zs] = geodeticToBodyFixed(
+      toRad(32.672),
+      0 as Radians,
+      0,
+      A,
+      E2
+    );
+    const below = Math.atan2(zs, Math.hypot(xs, ys));
+
+    assert.equal(toDeg(below).toFixed(3), '32.497');
+    assert.equal(
+      toDeg(
+        inclinationFromLaunchAzimuth(below as Radians, toRad(88.848))
+      ).toFixed(3),
+      '32.516'
+    );
+  });
+
+  test('4. aims 73.53° inertial from the pad, 72.6° over the ground, within 0.6° of 72.058°', () => {
+    const { northbound } = launchAzimuthForInclination(lat, toRad(32.521));
+
+    assert.equal(toDeg(northbound).toFixed(2), '73.53');
+
+    const ground = toDeg(rotatingLaunchAzimuth(northbound, 7793.1, 408.6));
+
+    assert.equal(ground.toFixed(1), '72.6');
+    assert.ok(Math.abs(ground - 72.058) < 0.6);
+  });
+
+  test('5. lights TLI after 1¾ orbits; 3 162 m/s in 333 s, against 3 182 m/s in 347.3 s', () => {
+    const orbits = (9856.2 - 709.34) / (88.18 * 60);
+
+    assert.equal(Math.round(orbits * 4) / 4, 1.75);
+
+    const tli = rocketDeltaVFromIsp(428.7, 134_046, 63_189);
+
+    assert.equal(group(tli), '3 162');
+    assert.ok((10_441 * FT - tli) / (10_441 * FT) < 0.01);
+
+    const t = burnTime(134_046, tli, 894_400, 428.7);
+
+    assert.equal(Math.round(t), 333);
+    assert.equal(Math.round((100 * (347.3 - t)) / 347.3), 4);
   });
 });
 
