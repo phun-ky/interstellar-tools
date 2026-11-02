@@ -1,8 +1,8 @@
 # Security Policy
 
-The libraries (`@interstellar-tools/constants`, `equations`, `temporal` and
-`types`) have no runtime dependencies outside this monorepo, and they collect,
-store and transmit no data. `@interstellar-tools/mcp` depends on the
+The libraries (`@interstellar-tools/constants`, `equations`, `maps`, `temporal`
+and `types`) have no runtime dependencies outside this monorepo, and they
+collect, store and transmit no data. `@interstellar-tools/mcp` depends on the
 [Model Context Protocol SDK](https://github.com/modelcontextprotocol/typescript-sdk)
 and [Zod](https://github.com/colinhacks/zod), both MIT-licensed. How
 dependencies are chosen, tracked and kept clear of known vulnerabilities is
@@ -38,8 +38,9 @@ your code. Moving to a new major is described in the
 | Previous major, for 6 months after the next | ✅ high and critical fixes only  |
 | Anything older                              | ❌                               |
 
-Every package is covered: `@interstellar-tools/constants`, `equations`, `mcp`,
-`temporal` and `types`.
+Every package is covered: `@interstellar-tools/constants`, `equations`, `maps`,
+`mcp`, `temporal` and `types`. `maps` is versioned 0.x: until its 1.0, only its
+latest release is supported.
 
 ## Reporting a Vulnerability
 
@@ -66,9 +67,9 @@ security problem.
 
 What you can rely on:
 
-- **The libraries do no I/O.** `constants`, `equations`, `temporal` and `types`
-  are pure functions and data: no file, network or process access, no `eval`,
-  and no data collection.
+- **The libraries do no I/O.** `constants`, `equations`, `maps`, `temporal` and
+  `types` are pure functions and data: no file, network or process access, no
+  `eval`, and no data collection.
 - **Invalid input is rejected.** Equations validate their inputs and throw on
   non-finite or out-of-domain values instead of returning a wrong result.
 - **The MCP server only calculates.** Its tools are offline, read-only
@@ -115,12 +116,12 @@ dependencies.
 ## Dependencies
 
 **Choosing them.** The fewer dependencies, the better. The libraries
-(`constants`, `equations`, `temporal`, `types`) have no runtime dependencies
-outside this monorepo, and should keep it that way. A new runtime dependency is
-discussed in an issue first, and must be widely used, actively maintained and
-under an OSI-approved licence compatible with MIT; strong copyleft licences
-(GPL, AGPL) are not accepted for runtime dependencies. Development dependencies
-follow the same rules, judged more loosely.
+(`constants`, `equations`, `maps`, `temporal`, `types`) have no runtime
+dependencies outside this monorepo, and should keep it that way. A new runtime
+dependency is discussed in an issue first, and must be widely used, actively
+maintained and under an OSI-approved licence compatible with MIT; strong
+copyleft licences (GPL, AGPL) are not accepted for runtime dependencies.
+Development dependencies follow the same rules, judged more loosely.
 
 **Obtaining them.** Packages come only from the npm registry, with exact
 versions locked in `package-lock.json` and installed with `npm ci` in CI. GitHub
