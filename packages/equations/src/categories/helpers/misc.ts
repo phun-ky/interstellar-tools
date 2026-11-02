@@ -87,6 +87,34 @@ export const dot = (a: Vector3DTupleType, b: Vector3DTupleType) => {
 };
 
 /**
+ * Compute the **cross product** of two 3D vectors.
+ *
+ * $$
+ * \mathbf{a}\times\mathbf{b} = \begin{pmatrix} a_y b_z - a_z b_y \\ a_z b_x - a_x b_z \\ a_x b_y - a_y b_x \end{pmatrix}
+ * $$
+ *
+ * @param a - First vector.
+ * @param b - Second vector.
+ * @returns Cross product, perpendicular to both (units: product of the input component units).
+ * @group Helpers
+ *
+ * @example
+ * ```ts
+ * cross([1, 0, 0], [0, 1, 0]); // [0, 0, 1]
+ * ```
+ */
+export const cross = (
+  a: Vector3DTupleType,
+  b: Vector3DTupleType
+): Vector3DTupleType => {
+  return [
+    a[1] * b[2] - a[2] * b[1],
+    a[2] * b[0] - a[0] * b[2],
+    a[0] * b[1] - a[1] * b[0]
+  ];
+};
+
+/**
  * Normalize an angle to the range **[0, 2π)**.
  *
  * This is commonly used to keep anomalies / angles within a canonical interval.
