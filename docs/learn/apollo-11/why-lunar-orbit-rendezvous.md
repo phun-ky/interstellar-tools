@@ -50,10 +50,8 @@ import { rocketDeltaVFromIsp } from '@interstellar-tools/equations';
 const g0 = 9.80665;
 const massBefore = (mAfter: number, dv: number, Isp: number) =>
   mAfter * Math.exp(dv / (Isp * g0));
-
 const DESCENT = { dv: 2112.3, Isp: 305 }; // m/s, s
 const ASCENT = { dv: 1850.2, Isp: 309 };
-
 const csm = 16_767; // kg, CSM at trans-Earth injection
 const atLiftoff = massBefore(csm, ASCENT.dv, ASCENT.Isp); // 30 876 kg
 const direct = massBefore(atLiftoff, DESCENT.dv, DESCENT.Isp); // 62 565 kg
