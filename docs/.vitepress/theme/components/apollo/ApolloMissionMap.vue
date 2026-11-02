@@ -1,14 +1,21 @@
 <script setup lang="ts">
 /**
- * The Apollo 11 round trip on a schematic Earth–Moon map. Step through the
- * mission's events and see where the spacecraft was, with the flown numbers
- * from mission.ts. Distances are to scale; the path is drawn by hand until
- * the restricted three-body equations (#249) can compute it.
+ * The Apollo 11 round trip on an Earth–Moon map, in the frame that turns with
+ * the Moon. Step through the mission's events and see where the spacecraft
+ * was, with the flown numbers from mission.ts. The path is a free return from
+ * Apollo 11's TLI point, integrated with the restricted three-body equations:
+ * the figure-eight that loops behind the Moon and back to Earth.
  * Use it in Markdown as <ApolloMissionMap />.
  */
-import { computed, onMounted, ref } from 'vue';
+import {
+  cr3bpDerivatives,
+  cr3bpUnits,
+  rk4Integrate
+} from '@interstellar-tools/equations';
+import type { Cr3bpState } from '@interstellar-tools/types';
+import { computed, ref } from 'vue';
 
-import { EVENTS, type MapLeg } from './mission';
+import { EVENTS, FREE_RETURN, type MapAt, type MapLeg } from './mission';
 
 const props = withDefaults(defineProps<{ start?: number }>(), { start: 0 });
 
@@ -18,51 +25,158 @@ const event = computed(() => EVENTS[index.value]);
 // Drawing: Earth–Moon distance (384 400 km) is 590 px, so 1 px ≈ 651 km
 const EARTH = { x: 150, y: 200 };
 const MOON = { x: 740, y: 200 };
-const KM_PER_PX = 384_400 / 590;
+const SEPARATION_KM = 384_400;
+const PX = 590;
+const KM_PER_PX = SEPARATION_KM / PX;
 const RINGS = [100_000, 200_000, 300_000];
 const SOI_KM = 66_100;
+// The bodies and their orbits are drawn enlarged
+const PARK_PX = 26;
+const LUNAR_ORBIT_PX = 16;
 
-const OUT = 'M150 226 C 300 330, 560 60, 726 191';
-const RET = 'M754 209 C 640 370, 320 340, 172 214';
+type Point = { x: number; y: number };
 
-const outPath = ref<SVGPathElement>();
-const retPath = ref<SVGPathElement>();
-const parkPath = ref<SVGCircleElement>();
-const moonPath = ref<SVGCircleElement>();
-const lengths = ref({ out: 0, ret: 0, park: 0, moon: 0 });
+// The free return, integrated once: 13 200 RK4 steps, drawn to 0.04 px
+const freeReturn = (() => {
+  const { mu, speed, length } = cr3bpUnits(
+    3.986004418e14,
+    4.902800118e12,
+    SEPARATION_KM * 1000
+  );
+  const th = (FREE_RETURN.angle * Math.PI) / 180;
+  const fpa = (FREE_RETURN.fpa * Math.PI) / 180;
+  const r = (6_378_137 + FREE_RETURN.altitude) / length;
+  const v = FREE_RETURN.speed / speed;
+  const [ux, uy] = [Math.cos(th), Math.sin(th)];
+  const x = -mu + r * ux;
+  const y = r * uy;
+  // Inertial velocity, then into the rotating frame: subtract ω × r
+  const vx = v * (Math.sin(fpa) * ux - Math.cos(fpa) * uy) + y;
+  const vy = v * (Math.sin(fpa) * uy + Math.cos(fpa) * ux) - x;
+  const { y: states } = rk4Integrate(
+    (_t, s) => cr3bpDerivatives(s as unknown as Cr3bpState, mu),
+    [x, y, 0, vx, vy, 0],
+    0,
+    FREE_RETURN.duration,
+    13_200,
+    { every: 10 }
+  );
+  // SVG's y points down; the Moon moves towards −y on screen, up the page
+  const points = states.map(([sx, sy]) => ({
+    x: EARTH.x + (sx + mu) * PX,
+    y: EARTH.y - sy * PX
+  }));
+  const fromEarth = (p: Point) => Math.hypot(p.x - EARTH.x, p.y - EARTH.y);
+  const fromMoon = (p: Point) => Math.hypot(p.x - MOON.x, p.y - MOON.y);
+  let closest = 0;
 
-onMounted(() => {
-  lengths.value = {
-    out: outPath.value?.getTotalLength() ?? 0,
-    ret: retPath.value?.getTotalLength() ?? 0,
-    park: parkPath.value?.getTotalLength() ?? 0,
-    moon: moonPath.value?.getTotalLength() ?? 0
-  };
+  for (let k = 0; k < points.length; k++)
+    if (fromMoon(points[k]) < fromMoon(points[closest])) closest = k;
+
+  // Clip each leg to outside the enlarged parking and lunar orbits
+  const out = points
+    .slice(0, closest + 1)
+    .filter((p) => fromEarth(p) >= PARK_PX && fromMoon(p) >= LUNAR_ORBIT_PX);
+  const back = points.slice(closest);
+  const home = back.findIndex(
+    (p, k) =>
+      k > 0 && fromEarth(p) < PARK_PX && fromEarth(back[k - 1]) >= PARK_PX
+  );
+  const ret = back
+    .slice(0, home < 0 ? undefined : home)
+    .filter((p) => fromMoon(p) >= LUNAR_ORBIT_PX);
+
+  return { out, ret };
+})();
+
+const measure = (points: Point[]) => {
+  const at = [0];
+
+  for (let k = 1; k < points.length; k++)
+    at.push(
+      at[k - 1] +
+        Math.hypot(points[k].x - points[k - 1].x, points[k].y - points[k - 1].y)
+    );
+
+  return at;
+};
+
+const legs = {
+  out: { points: freeReturn.out, at: measure(freeReturn.out) },
+  ret: { points: freeReturn.ret, at: measure(freeReturn.ret) }
+};
+
+const toPath = (points: Point[]) =>
+  points
+    .map((p, k) => `${k ? 'L' : 'M'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`)
+    .join(' ');
+
+const OUT = toPath(legs.out.points);
+const RET = toPath(legs.ret.points);
+
+const lengths = {
+  out: legs.out.at[legs.out.at.length - 1],
+  ret: legs.ret.at[legs.ret.at.length - 1],
+  park: 2 * Math.PI * PARK_PX,
+  moon: 2 * Math.PI * LUNAR_ORBIT_PX
+};
+
+// A fraction of a leg's length, from a fraction or a distance from the Moon
+const fractionOf = (leg: 'out' | 'ret', at: MapAt) => {
+  if (typeof at === 'number') return at;
+
+  const { points, at: along } = legs[leg];
+  const target = at.moonKm / KM_PER_PX;
+  const k = points.findIndex(
+    (p, i) =>
+      i > 0 &&
+      Math.sign(Math.hypot(p.x - MOON.x, p.y - MOON.y) - target) !==
+        Math.sign(
+          Math.hypot(points[i - 1].x - MOON.x, points[i - 1].y - MOON.y) -
+            target
+        )
+  );
+
+  return k < 0 ? 0 : along[k] / lengths[leg];
+};
+
+const pointOn = (leg: 'out' | 'ret', fraction: number): Point => {
+  const { points, at } = legs[leg];
+  const target = fraction * lengths[leg];
+  const k = Math.max(
+    1,
+    at.findIndex((d) => d >= target)
+  );
+  const [a, b] = [points[k - 1], points[k]];
+  const span = at[k] - at[k - 1] || 1;
+  const u = Math.min(1, Math.max(0, (target - at[k - 1]) / span));
+
+  return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u };
+};
+
+// An SVG circle's path starts at 3 o'clock and runs clockwise on screen
+const pointOnCircle = (centre: Point, r: number, fraction: number): Point => ({
+  x: centre.x + r * Math.cos(2 * Math.PI * fraction),
+  y: centre.y + r * Math.sin(2 * Math.PI * fraction)
 });
 
-const pathFor = (leg: MapLeg) =>
-  ({
-    out: outPath.value,
-    ret: retPath.value,
-    park: parkPath.value,
-    moon: moonPath.value
-  })[leg as 'out' | 'ret' | 'park' | 'moon'];
+const where = computed(() => {
+  const [leg, at = 0] = event.value.where;
+  const fraction =
+    leg === 'out' || leg === 'ret' ? fractionOf(leg, at) : (at as number);
 
-const craft = computed(() => {
-  // Read lengths so this recomputes once the paths have been measured
-  void lengths.value;
-  const [leg, t = 0] = event.value.where;
+  return { leg, fraction };
+});
+
+const craft = computed((): Point => {
+  const { leg, fraction } = where.value;
 
   if (leg === 'pad') return { x: EARTH.x, y: EARTH.y - 20 };
   if (leg === 'surface') return { x: MOON.x, y: MOON.y - 9 };
+  if (leg === 'park') return pointOnCircle(EARTH, PARK_PX, fraction);
+  if (leg === 'moon') return pointOnCircle(MOON, LUNAR_ORBIT_PX, fraction);
 
-  const path = pathFor(leg);
-
-  if (!path) return EARTH;
-
-  const point = path.getPointAtLength(path.getTotalLength() * t);
-
-  return { x: point.x, y: point.y };
+  return pointOn(leg, fraction);
 });
 
 const ORDER: Record<MapLeg, number> = {
@@ -76,7 +190,7 @@ const ORDER: Record<MapLeg, number> = {
 
 // How much of each leg has been flown, as a stroke-dashoffset
 const flown = computed(() => {
-  const [leg, t = 0] = event.value.where;
+  const { leg, fraction: t } = where.value;
   const at = ORDER[leg];
   const fraction = (of: MapLeg) => {
     if (ORDER[of] < at) return 1;
@@ -86,7 +200,7 @@ const flown = computed(() => {
     return 0;
   };
   const offset = (of: 'out' | 'ret' | 'moon') =>
-    lengths.value[of] * (1 - fraction(of));
+    lengths[of] * (1 - fraction(of));
 
   return { out: offset('out'), ret: offset('ret'), moon: offset('moon') };
 });
@@ -131,7 +245,7 @@ const flown = computed(() => {
         <circle
           :cx="EARTH.x"
           :cy="EARTH.y"
-          :r="590"
+          :r="PX"
           class="mc-map__moon-orbit"
         />
         <circle
@@ -149,20 +263,13 @@ const flown = computed(() => {
           Moon's sphere of influence
         </text>
 
+        <circle :cx="EARTH.x" :cy="EARTH.y" :r="PARK_PX" class="mc-map__path" />
+        <path :d="OUT" class="mc-map__path" />
+        <path :d="RET" class="mc-map__path" />
         <circle
-          ref="parkPath"
-          :cx="EARTH.x"
-          :cy="EARTH.y"
-          r="26"
-          class="mc-map__path"
-        />
-        <path ref="outPath" :d="OUT" class="mc-map__path" />
-        <path ref="retPath" :d="RET" class="mc-map__path" />
-        <circle
-          ref="moonPath"
           :cx="MOON.x"
           :cy="MOON.y"
-          r="16"
+          :r="LUNAR_ORBIT_PX"
           class="mc-map__path"
         />
 
@@ -181,7 +288,7 @@ const flown = computed(() => {
         <circle
           :cx="MOON.x"
           :cy="MOON.y"
-          r="16"
+          :r="LUNAR_ORBIT_PX"
           class="mc-map__flown"
           :stroke-dasharray="`${lengths.moon} ${lengths.moon}`"
           :stroke-dashoffset="flown.moon"
@@ -203,7 +310,8 @@ const flown = computed(() => {
         </g>
 
         <text x="890" y="390" text-anchor="end" class="mc-map__label">
-          Distances to scale · bodies enlarged · path schematic
+          To scale, turning with the Moon · bodies enlarged · path: a computed
+          free return
         </text>
       </g>
     </svg>
@@ -222,8 +330,8 @@ const flown = computed(() => {
         <dd>{{ event.position }}</dd>
       </div>
       <div>
-        <dt>Speed</dt>
-        <dd>{{ event.speed }}</dd>
+        <dt>Figure</dt>
+        <dd>{{ event.figure }}</dd>
       </div>
     </dl>
 
