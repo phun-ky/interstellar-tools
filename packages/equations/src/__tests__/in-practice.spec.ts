@@ -10,6 +10,7 @@ import { norm2pi } from '../categories/helpers/misc.js';
 import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
 import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { greatCircleDistance } from '../categories/cartography/great-circle-distance.js';
+import { horizonDistance } from '../categories/cartography/horizon-distance.js';
 import { meridionalRadiusOfCurvature } from '../categories/cartography/meridional-radius-of-curvature.js';
 import { primeVerticalRadiusOfCurvature } from '../categories/cartography/prime-vertical-radius-of-curvature.js';
 import { ballisticPeakDeceleration } from '../categories/entry/ballistic-peak-deceleration.js';
@@ -532,5 +533,17 @@ describe('In practice values: lunar distances', () => {
       ),
       630
     );
+  });
+
+  // The low point of the descent orbit, 7.8 n mi (Apollo by the Numbers)
+  test('horizonDistance: 224.5 km ahead at PDI, 2.5 km standing on the Moon, 4.8 km on Earth', () => {
+    assert.equal(Math.round((7.8 * 1852) / 100) / 10, 14.4);
+    assert.equal(
+      (horizonDistance(7.8 * 1852, R_MOON) / 1000).toFixed(1),
+      '224.5'
+    );
+    assert.equal(Math.round(horizonDistance(7.8 * 1852, R_MOON)), 224_509);
+    assert.equal((horizonDistance(1.8, R_MOON) / 1000).toFixed(1), '2.5');
+    assert.equal((horizonDistance(1.8, 6_371_000) / 1000).toFixed(1), '4.8');
   });
 });

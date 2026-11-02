@@ -27,6 +27,10 @@ export * from './categories/cartography/geodetic-to-body-fixed.js';
 
 export * from './categories/cartography/great-circle-distance.js';
 
+export * from './categories/cartography/horizon-distance.js';
+
+export * from './categories/cartography/horizon-surface-distance.js';
+
 export * from './categories/cartography/is-on-triaxial-ellipsoid-surface.js';
 
 export * from './categories/cartography/meridional-radius-of-curvature.js';
