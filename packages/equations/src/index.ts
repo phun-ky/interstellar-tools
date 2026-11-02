@@ -13,9 +13,13 @@ export * from './categories/angle/wrap-angle.js';
 
 export * from './categories/cartography/body-fixed-from-inertial-dcm-iau.js';
 
+export * from './categories/cartography/body-fixed-to-geodetic.js';
+
 export * from './categories/cartography/eccentricity-squared-oblate-spheroid.js';
 
 export * from './categories/cartography/flattening-oblate-spheroid.js';
+
+export * from './categories/cartography/geodetic-to-body-fixed.js';
 
 export * from './categories/cartography/is-on-triaxial-ellipsoid-surface.js';
 

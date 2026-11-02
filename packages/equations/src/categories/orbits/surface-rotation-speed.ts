@@ -21,7 +21,7 @@ import type { Radians } from '@interstellar-tools/types';
  * - A rocket launched eastward gets this speed for free; one launched westward has to cancel it first.
  * - Earth's sidereal rotation rate is about 7.2921150 × 10⁻⁵ rad/s.
  * - A body that rotates backwards (Venus, Uranus) has a negative `omega`, and the result is negative: westward.
- * - $ R\cos\varphi $ is the distance from the rotation axis. On an oblate body, pass the geocentric latitude and the point's distance from the body's centre, not the equatorial radius with a geodetic latitude (see [#186](https://github.com/phun-ky/interstellar-tools/issues/186)).
+ * - $ R\cos\varphi $ is the distance from the rotation axis. On an oblate body, pass the geocentric latitude and the point's distance from the body's centre, not the equatorial radius with a geodetic latitude; {@link geodeticToBodyFixed} gives both.
  *
  * :::
  *
