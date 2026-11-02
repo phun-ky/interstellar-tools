@@ -51,15 +51,23 @@ export * from './categories/anomalies/advance-mean-anomaly.js';
 
 export * from './categories/anomalies/anomaly-at.js';
 
+export * from './categories/anomalies/asymptote-true-anomaly.js';
+
 export * from './categories/anomalies/eccentric-to-true-anomaly.js';
 
+export * from './categories/anomalies/hyperbolic-to-true-anomaly.js';
+
 export * from './categories/anomalies/true-to-mean-anomaly.js';
+
+export * from './categories/anomalies/true-to-hyperbolic-anomaly.js';
 
 // categories/kepler (solvers)
 
 export * from './categories/kepler/solve-kepler-bisection.js';
 
 export * from './categories/kepler/solve-kepler-high-eccentricity.js';
+
+export * from './categories/kepler/solve-kepler-hyperbolic.js';
 
 export * from './categories/kepler/solve-kepler-newton-raphson.js';
 
@@ -91,7 +99,13 @@ export * from './categories/orbits/escape-speed.js';
 
 export * from './categories/orbits/flight-path-angle-from-true-anomaly.js';
 
+export * from './categories/orbits/hyperbolic-eccentricity.js';
+
 export * from './categories/orbits/hyperbolic-periapsis-speed.js';
+
+export * from './categories/orbits/hyperbolic-semi-major-axis.js';
+
+export * from './categories/orbits/hyperbolic-time-of-flight.js';
 
 export * from './categories/orbits/inclination-from-launch-azimuth.js';
 
