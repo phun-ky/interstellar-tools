@@ -103,7 +103,12 @@ const markY = (b: number) => CY - b / 1000 / KM_PER_PX;
     >
       <line x1="0" :x2="CX" :y1="aimY" :y2="aimY" class="mc-aim__asymptote" />
       <line :x1="CX" :x2="CX" :y1="CY" :y2="aimY" class="mc-aim__offset" />
-      <text :x="CX + 6" :y="(CY + aimY) / 2 + 4" class="mc-aim__label">
+      <text
+        :x="CX - HIT / 1000 / KM_PER_PX - 8"
+        :y="aimY - 6"
+        text-anchor="end"
+        class="mc-aim__label"
+      >
         aim {{ aimKm.toLocaleString('en-US').replace(/,/g, ' ') }} km
       </text>
       <g v-for="m in MARKS" :key="m.label">
@@ -116,7 +121,7 @@ const markY = (b: number) => CY - b / 1000 / KM_PER_PX;
         />
         <text
           x="18"
-          :y="markY(m.b) + (m.label === 'After MCC' ? 12 : -4)"
+          :y="markY(m.b) + (m.label === 'After MCC' ? 16 : -6)"
           class="mc-aim__label mc-aim__label--mark"
         >
           {{ m.label }}
@@ -138,7 +143,7 @@ const markY = (b: number) => CY - b / 1000 / KM_PER_PX;
         :d="path"
         :class="['mc-aim__path', { 'mc-aim__path--impact': flyby.impact }]"
       />
-      <text :x="W - 12" :y="H - 12" text-anchor="end" class="mc-aim__label">
+      <text x="12" :y="H - 12" class="mc-aim__label">
         Dashed ring: aim inside it and you hit the Moon
       </text>
     </svg>
@@ -314,6 +319,7 @@ svg {
 
 .mc-aim__controls output {
   text-align: right;
+  text-transform: none;
   color: var(--mc-text);
 }
 

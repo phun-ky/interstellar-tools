@@ -65,7 +65,7 @@ const profile = computed(() => {
 // Drawing: deceleration across, altitude up, to a fixed scale
 const W = 640;
 const H_PX = 300;
-const PAD = { l: 44, r: 16, t: 16, b: 34 };
+const PAD = { l: 44, r: 16, t: 30, b: 34 };
 const G_MAX = 60;
 const KM_MAX = 125;
 const px = (g: number) =>
@@ -137,8 +137,8 @@ const peak = computed(() => ({
         </text>
       </g>
       <text
-        :x="W - PAD.r"
-        :y="H_PX - 2"
+        :x="W - PAD.r - 4"
+        :y="py(0) - 8"
         text-anchor="end"
         class="mc-entry__label"
       >
@@ -146,7 +146,7 @@ const peak = computed(() => ({
       </text>
       <text
         :x="PAD.l - 8"
-        :y="PAD.t - 4"
+        :y="PAD.t - 14"
         text-anchor="end"
         class="mc-entry__label"
       >
@@ -339,6 +339,7 @@ svg {
 
 .mc-entry__controls output {
   text-align: right;
+  text-transform: none;
   color: var(--mc-text);
 }
 

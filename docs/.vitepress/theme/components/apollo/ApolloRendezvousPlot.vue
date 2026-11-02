@@ -157,12 +157,7 @@ const speed = (v: readonly number[]) => Math.hypot(...v).toFixed(2);
         :y2="view.py(0)"
         class="mc-rdv__axis"
       />
-      <text
-        :x="W - PAD"
-        :y="view.py(0) - 8"
-        text-anchor="end"
-        class="mc-rdv__label"
-      >
+      <text :x="PAD" :y="view.py(0) - 8" class="mc-rdv__label">
         CSM's orbit · direction of motion →
       </text>
       <path :d="drift" class="mc-rdv__drift" />
@@ -171,7 +166,7 @@ const speed = (v: readonly number[]) => Math.hypot(...v).toFixed(2);
         <circle :cx="m.px" :cy="m.py" r="3.5" class="mc-rdv__mark" />
         <text
           :x="m.px"
-          :y="m.py + 18"
+          :y="m.label === 'TPF' ? m.py - 12 : m.py + 18"
           text-anchor="middle"
           class="mc-rdv__label"
         >
@@ -361,6 +356,7 @@ svg {
 
 .mc-rdv__controls output {
   text-align: right;
+  text-transform: none;
   color: var(--mc-text);
 }
 

@@ -119,9 +119,7 @@ const group = (n: number) =>
         :y2="py(DRAWN_B) - 16"
         class="mc-lat__axis"
       />
-      <text :x="px(A) + 20" :y="OY - 6" text-anchor="end" class="mc-lat__label">
-        Equator
-      </text>
+      <text :x="OX + 6" :y="OY + 14" class="mc-lat__label">Equator</text>
       <text :x="OX + 6" :y="py(DRAWN_B) - 6" class="mc-lat__label">Axis</text>
       <path :d="outline" class="mc-lat__earth" />
 
@@ -381,6 +379,7 @@ svg {
 
 .mc-lat__controls output {
   text-align: right;
+  text-transform: none;
   color: var(--mc-text);
 }
 
