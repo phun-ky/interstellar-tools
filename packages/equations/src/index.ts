@@ -23,6 +23,20 @@ export * from './categories/cartography/planetocentric-latitude.js';
 
 export * from './categories/cartography/planetographic-latitude-oblate.js';
 
+// categories/entry
+
+export * from './categories/entry/ballistic-coefficient.js';
+
+export * from './categories/entry/ballistic-entry-speed.js';
+
+export * from './categories/entry/ballistic-peak-deceleration-altitude.js';
+
+export * from './categories/entry/ballistic-peak-deceleration.js';
+
+export * from './categories/entry/stagnation-heat-flux.js';
+
+export * from './categories/entry/terminal-velocity.js';
+
 // categories/helpers
 
 export * from './categories/helpers/apply-matrix-3.js';

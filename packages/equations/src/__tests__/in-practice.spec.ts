@@ -7,6 +7,7 @@ import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-tru
 import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { norm2pi } from '../categories/helpers/misc.js';
+import { ballisticPeakDeceleration } from '../categories/entry/ballistic-peak-deceleration.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
@@ -297,6 +298,22 @@ describe('In practice values: rendezvous', () => {
       `${Math.floor(flown / 3600)} h ${Math.round((flown % 3600) / 60)} min`,
       '3 h 41 min'
     );
+  });
+});
+
+// Apollo 11 at entry interface: 36 194.4 ft/s, flight-path angle -6.48°;
+// peak 6.56 g as flown (Mission Report Table 7-VII and section 7.5). Earth's
+// atmosphere as one exponential with a 7.2 km scale height.
+describe('In practice values: atmospheric entry', () => {
+  test('ballisticPeakDeceleration: 35.8 g ballistic, against 6.56 g flown with lift', () => {
+    const VE = 36_194.4 * 0.3048;
+
+    assert.equal(Math.round(VE), 11_032);
+
+    const a = ballisticPeakDeceleration(11_032, (-6.48 * Math.PI) / 180, 7200);
+
+    assert.equal((a / 9.80665).toFixed(1), '35.8');
+    assert.ok(a / 9.80665 > 5 * 6.56);
   });
 });
 
