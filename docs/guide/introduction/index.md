@@ -20,6 +20,7 @@ npm i @interstellar-tools/constants
 npm i @interstellar-tools/equations
 npm i @interstellar-tools/types
 npm i @interstellar-tools/temporal
+npm i @interstellar-tools/maps
 npm i @interstellar-tools/mcp
 
 # or add the core packages at once
@@ -53,6 +54,10 @@ See [Using the MCP server](../mcp/) for step-by-step setup.
 
 - **@interstellar-tools/temporal** Time/epoch helpers for space applications
   (WIP, expanding).
+
+- **@interstellar-tools/maps** Map projections, terrain and imaging geometry,
+  and landing site checks, for any planet or moon (0.x, new; the API can still
+  change).
 
 - **@interstellar-tools/types** Shared, zero-dependency TypeScript types (e.g.,
   3-tuples for vectors, result interfaces).

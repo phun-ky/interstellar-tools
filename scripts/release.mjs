@@ -37,7 +37,7 @@ import {
   SCOPE
 } from './release-plan.mjs';
 
-const PACKAGES = ['types', 'constants', 'temporal', 'equations', 'mcp']; // dependency order
+const PACKAGES = ['types', 'constants', 'temporal', 'equations', 'maps', 'mcp']; // dependency order
 const PUBLISHED_PATHS = [
   'src',
   ':(exclude)src/**/__tests__/**',
