@@ -46,6 +46,17 @@ The full documentation lives at
 npm i --save @interstellar-tools/maps
 ```
 
+## Imaging
+
+| Function                                                            | Description                                                                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [groundSampleDistance](functions/groundSampleDistance.md)           | Compute the **ground sample distance**: how much ground one pixel covers, looking straight down.                   |
+| [illuminationAngles](functions/illuminationAngles.md)               | Compute the **illumination angles** at a point on a surface: incidence, emission and phase.                        |
+| [instantaneousFieldOfView](functions/instantaneousFieldOfView.md)   | Compute the **instantaneous field of view** of one detector pixel: the angle it sees.                              |
+| [lambertReflectance](functions/lambertReflectance.md)               | Compute the relative brightness of a **Lambertian** surface: one that scatters light equally in all directions.    |
+| [lommelSeeligerReflectance](functions/lommelSeeligerReflectance.md) | Compute the relative brightness of a **Lommel–Seeliger** surface: a dark, dusty one, like the Moon or an asteroid. |
+| [swathWidth](functions/swathWidth.md)                               | Compute the **swath width**: the strip of ground a camera covers across its track, looking straight down.          |
+
 ## Landing sites
 
 | Function                                        | Description                                                                                                             |
