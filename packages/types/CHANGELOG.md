@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.1.0...%40interstellar-tools%2Ftypes%401.2.0) (2026-11-02)
+
+### Feature
+
+* 🎸 Convert between geodetic and body-fixed Cartesian coordinates ([34b29ad](https://github.com/phun-ky/interstellar-tools/commit/34b29ad0b95782e8dedcef8dda9a3e9a3cc3a699)), closes [#186](https://github.com/phun-ky/interstellar-tools/issues/186)
+
 ## [1.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.0.0...%40interstellar-tools%2Ftypes%401.1.0) (2026-11-02)
 
 ### Feature
