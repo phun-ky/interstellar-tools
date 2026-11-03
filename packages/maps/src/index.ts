@@ -24,3 +24,9 @@ export * from './landing/tip-over-angle.js';
 // terrain
 
 export * from './terrain/grid.js';
+
+export * from './terrain/aspect.js';
+
+export * from './terrain/gradient-at.js';
+
+export * from './terrain/slope.js';

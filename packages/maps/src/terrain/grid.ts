@@ -1,4 +1,4 @@
-import { assertGrid } from './window.js';
+import { assertCell, assertGrid } from './window.js';
 
 /**
  * A **raster grid** of values over a map, such as a digital elevation model (DEM): `rows × columns` cells of equal size, stored row by row.
@@ -119,14 +119,7 @@ export const gridValueAt = (
   row: number,
   column: number
 ): number => {
-  for (const [name, index, size] of [
-    ['row', row, grid.rows],
-    ['column', column, grid.columns]
-  ] as const)
-    if (!Number.isInteger(index) || index < 0 || index >= size)
-      throw new RangeError(
-        `${name} must be an integer in [0, ${size}). Received: ${index}`
-      );
+  assertCell(grid, row, column);
 
   const z = grid.values[row * grid.columns + column]!;
 
