@@ -35,3 +35,39 @@ export interface GeodeticCoordinatesInterface {
   /** Height above the ellipsoid in metres, along its normal. */
   h: number;
 }
+
+/**
+ * The **illumination angles** at a point on a surface: where the light comes
+ * from and where it's seen from, relative to the surface and each other.
+ *
+ * Returned by `illuminationAngles` in `@interstellar-tools/maps`.
+ *
+ * ::: info
+ *
+ * - `incidence` is 0 with the Sun straight overhead and π/2 at sunrise or
+ *   sunset; past π/2 the point is in its own shadow.
+ * - `emission` is 0 looking straight down, π/2 at the observer's horizon.
+ * - `phase` is 0 with the Sun directly behind the observer, where the
+ *   surface looks brightest and shadows vanish.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // Sun 30° from overhead, seen from straight above
+ * const angles: IlluminationAnglesInterface = {
+ *   incidence: (Math.PI / 6) as Radians,
+ *   emission: 0 as Radians,
+ *   phase: (Math.PI / 6) as Radians
+ * };
+ * ```
+ * @group Cartography
+ */
+export interface IlluminationAnglesInterface {
+  /** Incidence angle $i$, between the surface normal and the direction to the Sun, in radians. */
+  incidence: Radians;
+  /** Emission angle $e$, between the surface normal and the direction to the observer, in radians. */
+  emission: Radians;
+  /** Phase angle $g$, between the directions to the Sun and to the observer, in radians. */
+  phase: Radians;
+}

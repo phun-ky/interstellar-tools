@@ -1,6 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
-import { assertFinite, assertPositive } from './validate.js';
+import { assertFinite, assertPositive } from '../validate.js';
 
 /**
  * Compute the **tip-over angle** of a lander: the tilt at which its centre of mass passes over the edge of its footprint.
