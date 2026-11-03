@@ -38,6 +38,12 @@ npm i --save @interstellar-tools/types
 | [Matrix3x3Type](type-aliases/Matrix3x3Type.md)         | Immutable 3×3 matrix of numbers.         |
 | [Vector3DTupleType](type-aliases/Vector3DTupleType.md) | A read-only 3D vector tuple `[x, y, z]`. |
 
+## Cartography
+
+| Interface                                                                  | Description                                                                                                                                  |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| [GeodeticCoordinatesInterface](interfaces/GeodeticCoordinatesInterface.md) | A point's **geodetic coordinates** on an oblate body: latitude, longitude and height above the reference ellipsoid, in SI units and radians. |
+
 ## Celestial Bodies
 
 | Name                                                                         | Description                                                                                             |

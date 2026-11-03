@@ -27,6 +27,11 @@ on:
 # Read-only by default; only the publish job gets an OIDC token for npm
 permissions:
   contents: read
+# One release at a time: two runs side by side compute the same versions, and
+# the second fails to publish them (and the first can't push its commits)
+concurrency:
+  group: publish
+  cancel-in-progress: false
 jobs:
   publish:
     if: github.event.pull_request.merged == true

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.4.0...%40interstellar-tools%2Fequations%401.5.0) (2026-11-02)
+
+### Documentation
+
+* ✏️ Add chapter II of the Apollo 11 tutorial: coasting to the Moon ([d921fc4](https://github.com/phun-ky/interstellar-tools/commit/d921fc4de33ee26fc016cfe1c65738a1e4ea3844)), references [#252](https://github.com/phun-ky/interstellar-tools/issues/252)
+* ✏️ Add chapter IV of the Apollo 11 tutorial: lunar orbit rendezvous ([2f3df8a](https://github.com/phun-ky/interstellar-tools/commit/2f3df8ad8a11ad74564385532e7024a7ed3ab84d)), references [#252](https://github.com/phun-ky/interstellar-tools/issues/252)
+* ✏️ Add chapter V of the Apollo 11 tutorial: coming home ([c8d1253](https://github.com/phun-ky/interstellar-tools/commit/c8d125398db782e21e6a1680293d47b1fd3baabb)), references [#252](https://github.com/phun-ky/interstellar-tools/issues/252)
+
+### Feature
+
+* 🎸 Convert between geodetic and body-fixed Cartesian coordinates ([34b29ad](https://github.com/phun-ky/interstellar-tools/commit/34b29ad0b95782e8dedcef8dda9a3e9a3cc3a699)), closes [#186](https://github.com/phun-ky/interstellar-tools/issues/186)
+
 ## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.3.0...%40interstellar-tools%2Fequations%401.4.0) (2026-11-02)
 
 ### Feature
