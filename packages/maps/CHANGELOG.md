@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.4.0...%40interstellar-tools%2Fmaps%400.5.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add hillshading to maps ([3a5ac08](https://github.com/phun-ky/interstellar-tools/commit/3a5ac08847920eb563d1b1d27b04f474addf1f27)), closes [#195](https://github.com/phun-ky/interstellar-tools/issues/195)
+
 ## [0.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.3.0...%40interstellar-tools%2Fmaps%400.4.0) (2026-11-03)
 
 ### Feature
