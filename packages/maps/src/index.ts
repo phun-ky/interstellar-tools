@@ -34,3 +34,5 @@ export * from './terrain/gradient-at.js';
 export * from './terrain/slope.js';
 
 export * from './terrain/terrain-roughness-index.js';
+
+export * from './terrain/hillshade.js';
