@@ -13,7 +13,7 @@ function isStableLanding(
 ```
 
 Defined in:
-[landing/is-stable-landing.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/landing/is-stable-landing.ts#L53)
+[landing/is-stable-landing.ts:54](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/landing/is-stable-landing.ts#L54)
 
 Check whether a lander **stays upright** on a slope: whether its total tilt
 stays below its tip-over angle.
@@ -42,10 +42,8 @@ Where:
   sliding.
 - Pass the slope in the direction the lander is most likely to tip, and the
   footprint distance in that direction too.
-- For a whole elevation grid, combine it with the slope and roughness of each
-  cell (planned in
-  [#194](https://github.com/phun-ky/interstellar-tools/issues/194) and
-  [#197](https://github.com/phun-ky/interstellar-tools/issues/197)).
+- For a whole elevation grid, [safeLandingGrid](safeLandingGrid.md) combines it
+  with each cell's slope and roughness.
 
 :::
 
@@ -86,4 +84,5 @@ isStableLanding(toRad(40), toRad(10), 2, 2); // false
 
 ## See
 
-[tipOverAngle](tipOverAngle.md)
+- [tipOverAngle](tipOverAngle.md)
+- [safeLandingGrid](safeLandingGrid.md)

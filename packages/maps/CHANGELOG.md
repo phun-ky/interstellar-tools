@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.3.0...%40interstellar-tools%2Fmaps%400.4.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add a safe-to-land mask for elevation grids ([f2d58e8](https://github.com/phun-ky/interstellar-tools/commit/f2d58e80357b0fe2d4d6bf3e5bda5fa2c1b86de5)), closes [#200](https://github.com/phun-ky/interstellar-tools/issues/200)
+
 ## [0.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.2.0...%40interstellar-tools%2Fmaps%400.3.0) (2026-11-03)
 
 ### Feature
