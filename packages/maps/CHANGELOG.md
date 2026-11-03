@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.6.0...%40interstellar-tools%2Fmaps%400.7.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add flow routing and the Topographic Wetness Index to maps ([3022a6d](https://github.com/phun-ky/interstellar-tools/commit/3022a6dbf471e1c63dc9719e7c13c1c06f713d0f)), closes [#198](https://github.com/phun-ky/interstellar-tools/issues/198)
+
 ## [0.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.5.0...%40interstellar-tools%2Fmaps%400.6.0) (2026-11-03)
 
 ### Feature
