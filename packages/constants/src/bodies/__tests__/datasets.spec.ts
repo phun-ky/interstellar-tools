@@ -19,7 +19,8 @@ import {
   MOONS,
   PLANETS,
   STARS,
-  SYSTEMS
+  SYSTEMS,
+  WGS84
 } from '../../index.js';
 
 type MeasureType = { value: number; unit: string };
@@ -600,5 +601,78 @@ describe('ASTEROID_BELTS', () => {
       assert.ok(density >= 0, `${belt.name}.display.density`);
       assert.match(color, COLOR, `${belt.name}.display.color`);
     }
+  });
+});
+
+// IAU WGCCRE 2015 (Archinal et al. 2018), Tables 4 and 5
+describe('reference ellipsoids', () => {
+  const withEllipsoid = [...PLANETS, ...MOONS].filter((body) => body.ellipsoid);
+
+  test('cover the planets, Pluto and the IAU’s large moons', () => {
+    assert.deepEqual(withEllipsoid.map((body) => body.id).sort(), [
+      'callisto',
+      'deimos',
+      'earth',
+      'enceladus',
+      'europa',
+      'ganymede',
+      'io',
+      'jupiter',
+      'mars',
+      'mercury',
+      'moon',
+      'neptune',
+      'phobos',
+      'pluto',
+      'saturn',
+      'titan',
+      'uranus',
+      'venus'
+    ]);
+  });
+
+  test('order the axes a >= b >= c > 0, in km', () => {
+    for (const { name, ellipsoid } of withEllipsoid) {
+      const a = ellipsoid!.equatorialRadius;
+      const b = ellipsoid!.alongOrbitRadius ?? a;
+      const c = ellipsoid!.polarRadius;
+
+      for (const r of [a, b, c]) assert.equal(r.unit, 'km', name);
+
+      assert.ok(a.value >= b.value && b.value >= c.value && c.value > 0, name);
+    }
+  });
+
+  test('put the mean radius between the polar and equatorial radii, within the datasets’ rounding (0.2%)', () => {
+    for (const { name, radius, ellipsoid } of withEllipsoid) {
+      const a = ellipsoid!.equatorialRadius.value;
+      const c = ellipsoid!.polarRadius.value;
+
+      assert.ok(
+        radius.value >= c * 0.998 && radius.value <= a * 1.002,
+        `${name}: ${radius.value} km outside ${c}–${a} km`
+      );
+    }
+  });
+
+  test('give WGS 84 its defined radius and flattening', () => {
+    assert.equal(WGS84.equatorialRadius.value, 6_378_137);
+    assert.equal(WGS84.equatorialRadius.unit, 'm');
+    assert.equal(WGS84.inverseFlattening, 298.257223563);
+    assert.equal(WGS84.polarRadius.value.toFixed(6), '6356752.314245');
+    assert.ok(Object.isFrozen(WGS84) && Object.isFrozen(WGS84.polarRadius));
+  });
+
+  test('agree with WGS 84 for Earth to within a metre', () => {
+    const earth = PLANETS.find((planet) => planet.id === 'earth')!.ellipsoid!;
+
+    assert.ok(
+      Math.abs(
+        earth.equatorialRadius.value * 1000 - WGS84.equatorialRadius.value
+      ) < 1
+    );
+    assert.ok(
+      Math.abs(earth.polarRadius.value * 1000 - WGS84.polarRadius.value) < 1
+    );
   });
 });

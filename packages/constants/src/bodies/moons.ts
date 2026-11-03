@@ -52,6 +52,10 @@ export const MOONS: MoonsType = [
     },
     /** Radius in km */
     radius: { value: 1737.4, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 1737.4, unit: 'km' },
+      polarRadius: { value: 1737.4, unit: 'km' }
+    },
     mu: 4.902800118e12,
     display: {
       /** Visual representation color */
@@ -72,6 +76,11 @@ export const MOONS: MoonsType = [
       angle: 3.307969 as Radians
     },
     radius: { value: 11, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 13.0, unit: 'km' },
+      polarRadius: { value: 9.1, unit: 'km' },
+      alongOrbitRadius: { value: 11.4, unit: 'km' }
+    },
     mu: 7.087e5,
     display: {
       color: '#888888' // Darker gray (rocky, low albedo)
@@ -89,6 +98,11 @@ export const MOONS: MoonsType = [
       angle: 0.088942 as Radians
     },
     radius: { value: 6, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 7.8, unit: 'km' },
+      polarRadius: { value: 5.1, unit: 'km' },
+      alongOrbitRadius: { value: 6.0, unit: 'km' }
+    },
     mu: 9.62e4,
     display: {
       color: '#A0A0A0' // Lighter gray (less cratered surface)
@@ -108,6 +122,11 @@ export const MOONS: MoonsType = [
       angle: 5.846065 as Radians
     },
     radius: { value: 1821, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 1829.4, unit: 'km' },
+      polarRadius: { value: 1815.7, unit: 'km' },
+      alongOrbitRadius: { value: 1819.4, unit: 'km' }
+    },
     mu: 5.95991547e12,
     display: {
       color: '#FF8C00' // Volcanic orange (due to sulphur deposits)
@@ -125,6 +144,11 @@ export const MOONS: MoonsType = [
       angle: 6.02377 as Radians
     },
     radius: { value: 1560, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 1562.6, unit: 'km' },
+      polarRadius: { value: 1559.5, unit: 'km' },
+      alongOrbitRadius: { value: 1560.3, unit: 'km' }
+    },
     mu: 3.2027121e12,
     display: {
       color: '#E6E6E6' // Icy white (smooth ice-covered surface)
@@ -142,6 +166,10 @@ export const MOONS: MoonsType = [
       angle: 4.832832 as Radians
     },
     radius: { value: 2634, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 2631.2, unit: 'km' },
+      polarRadius: { value: 2631.2, unit: 'km' }
+    },
     mu: 9.88783275e12,
     display: {
       color: '#8B4513' // Brownish (mixture of ice and rock)
@@ -159,6 +187,10 @@ export const MOONS: MoonsType = [
       angle: 1.500362 as Radians
     },
     radius: { value: 2410, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 2410.3, unit: 'km' },
+      polarRadius: { value: 2410.3, unit: 'km' }
+    },
     mu: 7.1792834e12,
     display: {
       color: '#696969' // Dark gray (heavily cratered)
@@ -263,6 +295,11 @@ export const MOONS: MoonsType = [
       angle: 2.868371 as Radians
     },
     radius: { value: 2575, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 2575.15, unit: 'km' },
+      polarRadius: { value: 2574.47, unit: 'km' },
+      alongOrbitRadius: { value: 2574.78, unit: 'km' }
+    },
     mu: 8.9781371e12,
     display: {
       color: '#D4A017' // Gold/amber (thick haze-rich atmosphere)
@@ -280,6 +317,11 @@ export const MOONS: MoonsType = [
       angle: 0.122504 as Radians
     },
     radius: { value: 252, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 256.6, unit: 'km' },
+      polarRadius: { value: 248.3, unit: 'km' },
+      alongOrbitRadius: { value: 251.4, unit: 'km' }
+    },
     mu: 7.21037e9,
     display: {
       color: '#F0FFFF' // Ice-blue white (brightest moon in the Solar System)
