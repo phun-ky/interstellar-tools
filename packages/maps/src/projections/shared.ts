@@ -24,3 +24,15 @@ export const assertSphere = (R: number, lambda0: number) => {
   ]);
   assertPositive([['R', R]]);
 };
+
+/**
+ * Throw unless `x` is within half a turn of the central meridian, on a
+ * parallel `perRadian` metres long per radian of longitude. Allows for
+ * rounding at the edge.
+ */
+export const assertOnMap = (x: number, perRadian: number) => {
+  if (Math.abs(x) > Math.PI * perRadian * (1 + 1e-12))
+    throw new RangeError(
+      `x must be on the map: it is beyond the edge meridians. Received: ${x}`
+    );
+};
