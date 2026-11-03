@@ -115,6 +115,33 @@ describe('solveLambert', () => {
     assert.ok(energy(3000) < 0);
   });
 
+  test('refuses transfers too fast to solve to 8 digits', () => {
+    for (const prograde of [true, false])
+      assert.throws(
+        () =>
+          solveLambert([7e6, 0, 1e5], [0, 9e6, -2e5], 1e-3, MU, { prograde }),
+        { name: 'RangeError', message: /too short/ }
+      );
+  });
+
+  test('refuses transfers longer than a single revolution can take', () => {
+    for (const prograde of [true, false])
+      assert.throws(
+        () =>
+          solveLambert([7e6, 0, 1e5], [0, 9e6, -2e5], 1e30, MU, { prograde }),
+        { name: 'RangeError', message: /too long/ }
+      );
+  });
+
+  test('stays accurate for a one-second transfer', () => {
+    const r1: Vector3DTupleType = [7e6, 0, 1e5];
+    const r2: Vector3DTupleType = [0, 9e6, -2e5];
+    const { v1 } = solveLambert(r1, r2, 1, MU);
+
+    // Nearly a straight line at 11 400 km/s
+    for (let i = 0; i < 3; i++) relClose(v1[i], r2[i] - r1[i], 1e-3);
+  });
+
   test('throws when the positions are 0° or 180° apart', () => {
     assert.throws(
       () => solveLambert([7e6, 0, 0], [9e6, 0, 0], 3000, MU),
