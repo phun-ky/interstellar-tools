@@ -1,5 +1,9 @@
 import { MOONS, PLANETS, WGS84 } from '@interstellar-tools/constants';
-import type { Cr3bpState, Radians } from '@interstellar-tools/types';
+import type {
+  Cr3bpState,
+  Radians,
+  Vector3DTupleType
+} from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -21,6 +25,7 @@ import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
 import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
+import { solveLambert } from '../categories/manoeuvres/solve-lambert.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
@@ -592,5 +597,47 @@ describe('Reference ellipsoids with the cartography functions', () => {
     assert.equal(ellipsoid!.equatorialRadius.value, 1737.4);
     assert.equal(ellipsoid!.polarRadius.value, 1737.4);
     assert.equal(radius.value, 1737.4);
+  });
+});
+
+describe('In practice values: Lambert', () => {
+  test('solveLambert: 11 032 m/s at −6.48° on entry, 44.8 h and 154.15° from the edge of the Moon’s sphere, leaving it at 1 239 m/s', () => {
+    const toRad = (deg: number) => (deg * Math.PI) / 180;
+    // Chapter V's orbit home, from the flown entry state
+    const rEI = 6_378_166 + 121_920;
+    const gamma = toRad(-6.48);
+    const home = stateToElements(
+      [rEI, 0, 0],
+      [11_032 * Math.sin(gamma), 11_032 * Math.cos(gamma), 0],
+      MU_EARTH
+    );
+    const p = home.a * (1 - home.e ** 2);
+    const nuEdge = (2 * Math.PI -
+      Math.acos((p / 322e6 - 1) / home.e)) as Radians;
+    const fall =
+      (trueToMeanAnomaly(home.nu, home.e) - trueToMeanAnomaly(nuEdge, home.e)) /
+      meanMotion(home.a, MU_EARTH);
+
+    assert.equal(Math.round(rEI), 6_500_086);
+    assert.equal((((home.nu - nuEdge) * 180) / Math.PI).toFixed(2), '154.15');
+    assert.equal(Math.round(fall), 161_219);
+    assert.equal((fall / 3600).toFixed(1), '44.8');
+
+    // The box's inputs, rounded as printed
+    const swept = toRad(154.15);
+    const edge: Vector3DTupleType = [
+      322e6 * Math.cos(swept),
+      -322e6 * Math.sin(swept),
+      0
+    ];
+    const { v1, v2 } = solveLambert(edge, [6_500_086, 0, 0], 161_219, MU_EARTH);
+    const speed = Math.hypot(...v2);
+
+    assert.equal(group(speed), '11 032');
+    assert.equal(
+      ((Math.asin(v2[0] / speed) * 180) / Math.PI).toFixed(2),
+      '-6.48'
+    );
+    assert.equal(group(Math.hypot(...v1)), '1 239');
   });
 });

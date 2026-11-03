@@ -77,6 +77,8 @@ export * from './categories/helpers/rot-1.js';
 
 export * from './categories/helpers/rot-3.js';
 
+export * from './categories/helpers/stumpff.js';
+
 export * from './categories/helpers/transpose-3.js';
 
 // categories/anomalies
@@ -206,6 +208,8 @@ export * from './categories/manoeuvres/rocket-delta-v-from-isp.js';
 export * from './categories/manoeuvres/rocket-delta-v-from-ve.js';
 
 export * from './categories/manoeuvres/rocket-thrust.js';
+
+export * from './categories/manoeuvres/solve-lambert.js';
 
 export * from './categories/manoeuvres/thrust-to-weight.js';
 
