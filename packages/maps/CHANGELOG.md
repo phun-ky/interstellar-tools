@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.5.0...%40interstellar-tools%2Fmaps%400.6.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add profile and planform curvature to maps ([378e202](https://github.com/phun-ky/interstellar-tools/commit/378e2025a91021cff87323b8aedd83f08022e0c7)), closes [#196](https://github.com/phun-ky/interstellar-tools/issues/196)
+
 ## [0.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.4.0...%40interstellar-tools%2Fmaps%400.5.0) (2026-11-03)
 
 ### Feature
