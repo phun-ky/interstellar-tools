@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/maps",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Map projections, web map tiles, terrain from elevation grids, imaging geometry and landing site analysis for planets and moons.",
   "keywords": [
     "maps",
