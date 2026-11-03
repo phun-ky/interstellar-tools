@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.7.0...%40interstellar-tools%2Fequations%401.8.0) (2026-11-03)
+
+### Documentation
+
+* ✏️ Add Apollo 11 chapter III, Down to the surface ([ae17981](https://github.com/phun-ky/interstellar-tools/commit/ae17981e57069ac5cb5692d25e886800007d366d))
+
+### Feature
+
+* 🎸 Solve Lambert's problem ([13272f1](https://github.com/phun-ky/interstellar-tools/commit/13272f11548c58c63c5ce58e6b3ba76a69d66e74)), closes [#248](https://github.com/phun-ky/interstellar-tools/issues/248)
+
 ## [1.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.6.0...%40interstellar-tools%2Fequations%401.7.0) (2026-11-03)
 
 ### Feature

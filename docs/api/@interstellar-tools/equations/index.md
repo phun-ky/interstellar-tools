@@ -41,7 +41,9 @@ orbits, angles, solve for kelper or find true anomalies.
 | Interface                                                                    | Description |
 | ---------------------------------------------------------------------------- | ----------- |
 | [CwTwoImpulseTransferInterface](interfaces/CwTwoImpulseTransferInterface.md) | -           |
+| [LambertSolutionInterface](interfaces/LambertSolutionInterface.md)           | -           |
 | [LaunchAzimuthsInterface](interfaces/LaunchAzimuthsInterface.md)             | -           |
+| [SolveLambertOptionsInterface](interfaces/SolveLambertOptionsInterface.md)   | -           |
 
 ## Type Aliases
 
@@ -135,6 +137,8 @@ orbits, angles, solve for kelper or find true anomalies.
 | [rot1](functions/rot1.md)                                       | Construct a **right-handed rotation matrix about the x-axis** (often written **R₁**).                                                                                               |
 | [rot3](functions/rot3.md)                                       | Construct a **right-handed rotation matrix about the z-axis** (often written **R₃**).                                                                                               |
 | [scale](functions/scale.md)                                     | Scale a 3D vector by a scalar.                                                                                                                                                      |
+| [stumpffC](functions/stumpffC.md)                               | Compute the **Stumpff function** $C(z)$, used by the universal-variable formulation of the two-body problem.                                                                        |
+| [stumpffS](functions/stumpffS.md)                               | Compute the **Stumpff function** $S(z)$, used by the universal-variable formulation of the two-body problem.                                                                        |
 | [sub](functions/sub.md)                                         | Subtract two 3D vectors (`a - b`).                                                                                                                                                  |
 | [toRad](functions/toRad.md)                                     | Convert **degrees → radians**.                                                                                                                                                      |
 | [transpose3](functions/transpose3.md)                           | Transpose a **3×3 matrix** (row-major).                                                                                                                                             |
@@ -175,6 +179,7 @@ orbits, angles, solve for kelper or find true anomalies.
 | [rocketDeltaVFromIsp](functions/rocketDeltaVFromIsp.md)             | Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using specific impulse.                                                         |
 | [rocketDeltaVFromVe](functions/rocketDeltaVFromVe.md)               | Compute ideal **delta-v** from the **Tsiolkovsky rocket equation** using effective exhaust velocity.                                               |
 | [rocketThrust](functions/rocketThrust.md)                           | Compute the **thrust** of a rocket engine from its exhaust, including the pressure term.                                                           |
+| [solveLambert](functions/solveLambert.md)                           | Solve **Lambert's problem**: find the orbit that goes from one position to another in a given time.                                                |
 | [thrustToWeight](functions/thrustToWeight.md)                       | Compute the **thrust-to-weight ratio** of a vehicle in a gravity field.                                                                            |
 
 ## Orbits
