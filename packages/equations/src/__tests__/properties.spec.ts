@@ -1,4 +1,4 @@
-import type { Radians } from '@interstellar-tools/types';
+import type { Radians, Vector3DTupleType } from '@interstellar-tools/types';
 import fc from 'fast-check';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
@@ -20,6 +20,7 @@ import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-
 import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { planeChangeDeltaV } from '../categories/manoeuvres/plane-change-delta-v.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
+import { solveLambert } from '../categories/manoeuvres/solve-lambert.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { cwPropagate } from '../categories/orbits/cw-propagate.js';
 import { elementsToState } from '../categories/orbits/elements-to-state.js';
@@ -487,6 +488,94 @@ describe('geodetic coordinates', () => {
         );
         assert.ok(Math.abs(back.h - h) <= 1e-4 + 1e-14 * scale, 'h differs');
       })
+    );
+  });
+});
+
+describe('Lambert’s problem', () => {
+  const MU = 3.986004418e14;
+  const direction = fc
+    .tuple(
+      fc.double({ min: -1, max: 1, noNaN: true }),
+      fc.double({ min: -1, max: 1, noNaN: true }),
+      fc.double({ min: -1, max: 1, noNaN: true })
+    )
+    .filter((v) => Math.hypot(...v) > 0.1);
+  const radius = fc.double({ min: 6.6e6, max: 5e7, noNaN: true }); // [m]
+  const scaleTo = (v: number[], r: number): Vector3DTupleType => {
+    const n = Math.hypot(...v);
+
+    return [(v[0] * r) / n, (v[1] * r) / n, (v[2] * r) / n];
+  };
+
+  // Two-body propagation with Kepler's equation, elliptic or hyperbolic
+  const propagate = (
+    r: Vector3DTupleType,
+    v: Vector3DTupleType,
+    dt: number
+  ): Vector3DTupleType => {
+    const el = stateToElements(r, v, MU);
+    const n = Math.sqrt(MU / Math.abs(el.a) ** 3);
+
+    let nu: number;
+
+    if (el.e < 1) {
+      const M = trueToMeanAnomaly(el.nu, el.e) + n * dt;
+
+      nu = eccentricToTrueAnomaly(
+        solveKepler((M % (2 * Math.PI)) as Radians, el.e, 100, 1e-15),
+        el.e
+      );
+    } else {
+      const F = trueToHyperbolicAnomaly(el.nu, el.e);
+      const M = el.e * Math.sinh(F) - F + n * dt;
+
+      nu = hyperbolicToTrueAnomaly(solveKeplerHyperbolic(M, el.e), el.e);
+    }
+
+    return elementsToState({ ...el, nu: nu as Radians }, MU).r;
+  };
+
+  test('flying (r1, v1) for dt reaches r2', () => {
+    fc.assert(
+      fc.property(
+        direction,
+        direction,
+        radius,
+        radius,
+        fc.double({ min: 300, max: 2 * 86_400, noNaN: true }),
+        fc.boolean(),
+        (u1, u2, a, b, dt, prograde) => {
+          const r1 = scaleTo(u1, a);
+          const r2 = scaleTo(u2, b);
+          const cos = (r1[0] * r2[0] + r1[1] * r2[1] + r1[2] * r2[2]) / (a * b);
+
+          // Keep away from 0° and 180°, where the plane is undefined, and from
+          // nearly equatorial or circular orbits, where the elements are
+          fc.pre(Math.abs(cos) < Math.cos(0.1));
+
+          const { v1, v2 } = solveLambert(r1, r2, dt, MU, { prograde });
+          const el = stateToElements(r1, v1, MU);
+
+          fc.pre(el.e > 1e-3 && Math.abs(el.e - 1) > 1e-3);
+          fc.pre(el.i > 1e-3 && el.i < Math.PI - 1e-3);
+
+          const arrived = propagate(r1, v1, dt);
+
+          for (let i = 0; i < 3; i++)
+            assert.ok(
+              Math.abs(arrived[i] - r2[i]) <= 1e-6 * b,
+              `r2[${i}]: ${arrived[i]} vs ${r2[i]}`
+            );
+
+          // Energy is conserved between the two ends
+          relClose(
+            Math.hypot(...v1) ** 2 / 2 - MU / a,
+            Math.hypot(...v2) ** 2 / 2 - MU / b,
+            1e-8
+          );
+        }
+      )
     );
   });
 });
