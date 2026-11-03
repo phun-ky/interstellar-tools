@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
 import {
+  changelogSection,
   higher,
   incrementFor,
   levelFromCommits,
@@ -181,5 +182,56 @@ describe('plan', () => {
 
     assert.equal(next.has('@interstellar-tools/temporal'), false);
     assert.equal(incrementFor(quiet), null);
+  });
+});
+
+describe('changelogSection', () => {
+  const changelog = [
+    '# Changelog',
+    '',
+    '## [1.3.0](https://example.com/compare) (2026-11-03)',
+    '',
+    '### Feature',
+    '',
+    '* 🎸 Add the three-body problem',
+    '',
+    '## [1.2.0](https://example.com/compare) (2026-11-02)',
+    '',
+    '### Bug',
+    '',
+    '* 🐛 Fix a thing',
+    ''
+  ].join('\n');
+
+  test('returns the section for a version, up to the next one', () => {
+    assert.equal(
+      changelogSection(changelog, '1.3.0'),
+      [
+        '## [1.3.0](https://example.com/compare) (2026-11-03)',
+        '',
+        '### Feature',
+        '',
+        '* 🎸 Add the three-body problem'
+      ].join('\n')
+    );
+  });
+
+  test('returns the last section up to the end', () => {
+    assert.equal(
+      changelogSection(changelog, '1.2.0'),
+      '## [1.2.0](https://example.com/compare) (2026-11-02)\n\n### Bug\n\n* 🐛 Fix a thing'
+    );
+  });
+
+  test('matches whole versions, and returns null for a missing one', () => {
+    assert.equal(changelogSection(changelog, '1.3'), null);
+    assert.equal(changelogSection(changelog, '2.0.0'), null);
+  });
+
+  test('accepts a heading without a link', () => {
+    assert.equal(
+      changelogSection('# Changelog\n\n## 0.1.0\n\nFirst release\n', '0.1.0'),
+      '## 0.1.0\n\nFirst release'
+    );
   });
 });

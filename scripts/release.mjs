@@ -16,11 +16,20 @@
 //     -m "Release-As: types@1.0.0, constants@1.0.0, temporal@1.0.0, equations@1.0.0, mcp@1.0.0"
 // The decisions themselves are in release-plan.mjs.
 //
+// release-it bumps, writes the changelog, commits, tags and publishes each
+// package, but doesn't push or create the GitHub release: main can move while
+// a release runs, and a rejected push would leave the published versions'
+// commits and tags off main. Instead, once every package is published, this
+// script merges main back in (a merge, not a rebase, so the release commits
+// keep the hashes their tags point at), pushes main and the new tags together,
+// and then creates the GitHub releases from the changelogs.
+//
 // Usage: node scripts/release.mjs [--dry-run]
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
 import {
+  changelogSection,
   incrementFor,
   levelFromCommits,
   plan,
@@ -143,6 +152,8 @@ run(['run', 'build']);
 run(['run', 'docs:gen']);
 git(['add', '.'], ROOT);
 
+const released = [];
+
 for (const entry of packages) {
   const increment = incrementFor(entry);
 
@@ -156,6 +167,78 @@ for (const entry of packages) {
     '--',
     '--ci',
     '--increment',
-    increment
+    increment,
+    '--no-git.push',
+    '--no-git.requireUpstream',
+    '--no-github.release'
   ]);
+
+  const { version } = JSON.parse(
+    readFileSync(new URL('package.json', entry.cwd), 'utf8')
+  );
+
+  released.push({
+    ...entry,
+    version,
+    tag: `${SCOPE}/${entry.name}@${version}`
+  });
+}
+
+// Push main and the new tags in one go, merging in whatever reached main while
+// the packages were published.
+const tags = released.map(({ tag }) => `refs/tags/${tag}`);
+const names = released.map(({ tag }) => tag).join(', ');
+
+for (let attempt = 1; ; attempt++) {
+  git(['fetch', 'origin', 'main'], ROOT);
+
+  try {
+    git(['merge', '--no-edit', '--signoff', 'origin/main'], ROOT);
+  } catch (error) {
+    // The versions are already on npm, so keep their release commits: push the
+    // tags alone, and leave the merge into main to a person
+    git(['merge', '--abort'], ROOT);
+    git(['push', 'origin', ...tags], ROOT);
+    throw new Error(
+      `Published ${names}, but merging origin/main into the release commits conflicts. The tags are pushed: merge the last one into main with a merge commit (not a squash), resolving the conflict.`,
+      { cause: error }
+    );
+  }
+
+  try {
+    git(['push', '--atomic', 'origin', 'HEAD:main', ...tags], ROOT);
+    break;
+  } catch (error) {
+    // Main moved again between the fetch and the push: try again, and after
+    // three tries keep the release commits by pushing the tags alone
+    if (attempt === 3) {
+      git(['push', 'origin', ...tags], ROOT);
+      throw new Error(
+        `Published ${names}, but couldn't push main. The tags are pushed: merge the last one into main with a merge commit (not a squash).`,
+        { cause: error }
+      );
+    }
+  }
+}
+
+for (const { name, version, tag, cwd } of released) {
+  const notes = changelogSection(
+    readFileSync(new URL('CHANGELOG.md', cwd), 'utf8'),
+    version
+  );
+
+  execFileSync(
+    'gh',
+    [
+      'release',
+      'create',
+      tag,
+      '--title',
+      tag,
+      '--verify-tag',
+      '--notes',
+      notes ?? `Released ${SCOPE}/${name} ${version}.`
+    ],
+    { cwd: ROOT, stdio: 'inherit' }
+  );
 }
