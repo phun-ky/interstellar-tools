@@ -44,6 +44,22 @@ export const assertGrid = ({
     );
 };
 
+/** Throw unless `row` and `column` are integer indices inside the grid. */
+export const assertCell = (
+  { rows, columns }: GridInterface,
+  row: number,
+  column: number
+) => {
+  for (const [name, index, size] of [
+    ['row', row, rows],
+    ['column', column, columns]
+  ] as const)
+    if (!Number.isInteger(index) || index < 0 || index >= size)
+      throw new RangeError(
+        `${name} must be an integer in [0, ${size}). Received: ${index}`
+      );
+};
+
 /**
  * The 3 × 3 neighbourhood of a cell, row by row from the north-west:
  * `[z11, z12, z13, z21, z22, z23, z31, z32, z33]`, with `z22` the cell itself.
