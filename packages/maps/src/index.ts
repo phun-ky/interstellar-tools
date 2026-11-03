@@ -30,3 +30,5 @@ export * from './terrain/aspect.js';
 export * from './terrain/gradient-at.js';
 
 export * from './terrain/slope.js';
+
+export * from './terrain/terrain-roughness-index.js';
