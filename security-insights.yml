@@ -74,6 +74,8 @@ repository:
         comment: npm package
       - uri: pkg:npm/%40interstellar-tools/equations
         comment: npm package
+      - uri: pkg:npm/%40interstellar-tools/maps
+        comment: npm package
       - uri: pkg:npm/%40interstellar-tools/mcp
         comment: npm package
     attestations:

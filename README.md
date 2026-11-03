@@ -137,14 +137,14 @@ orbital and mission software easier to build and easier to verify.
 
 ## Packages
 
-| Package                         | Description                                       | Status                |
-| ------------------------------- | ------------------------------------------------- | --------------------- |
-| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Stable                |
-| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Stable                |
-| `@interstellar-tools/maps`      | Map projections, terrain and imaging geometry.    | 0.x, not yet released |
-| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | Stable                |
-| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | Stable                |
-| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Stable                |
+| Package                         | Description                                       | Status |
+| ------------------------------- | ------------------------------------------------- | ------ |
+| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Stable |
+| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Stable |
+| `@interstellar-tools/maps`      | Map projections, terrain and imaging geometry.    | 0.x    |
+| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | Stable |
+| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | Stable |
+| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Stable |
 
 ### Details
 
