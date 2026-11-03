@@ -71,7 +71,7 @@ export interface PlanetInterface {
   parent?: string;
   /** Orbit around the parent. */
   orbit?: OrbitInterface;
-  /** Physical radius of the planet in kilometres. */
+  /** Mean radius of the planet in kilometres; the IAU's, where it gives one. */
   radius: DistanceInterface;
   /**
    * Reference ellipsoid, from the IAU Working Group on Cartographic

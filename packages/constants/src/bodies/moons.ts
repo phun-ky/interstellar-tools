@@ -75,7 +75,7 @@ export const MOONS: MoonsType = [
       period: { value: 0.3189, unit: 'd' },
       angle: 3.307969 as Radians
     },
-    radius: { value: 11, unit: 'km' },
+    radius: { value: 11.08, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 13.0, unit: 'km' },
       polarRadius: { value: 9.1, unit: 'km' },
@@ -97,7 +97,7 @@ export const MOONS: MoonsType = [
       period: { value: 1.2624, unit: 'd' },
       angle: 0.088942 as Radians
     },
-    radius: { value: 6, unit: 'km' },
+    radius: { value: 6.2, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 7.8, unit: 'km' },
       polarRadius: { value: 5.1, unit: 'km' },
@@ -121,7 +121,7 @@ export const MOONS: MoonsType = [
       period: { value: 1.769, unit: 'd' },
       angle: 5.846065 as Radians
     },
-    radius: { value: 1821, unit: 'km' },
+    radius: { value: 1821.49, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 1829.4, unit: 'km' },
       polarRadius: { value: 1815.7, unit: 'km' },
@@ -143,7 +143,7 @@ export const MOONS: MoonsType = [
       period: { value: 3.551, unit: 'd' },
       angle: 6.02377 as Radians
     },
-    radius: { value: 1560, unit: 'km' },
+    radius: { value: 1560.8, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 1562.6, unit: 'km' },
       polarRadius: { value: 1559.5, unit: 'km' },
@@ -165,7 +165,7 @@ export const MOONS: MoonsType = [
       period: { value: 7.155, unit: 'd' },
       angle: 4.832832 as Radians
     },
-    radius: { value: 2634, unit: 'km' },
+    radius: { value: 2631.2, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 2631.2, unit: 'km' },
       polarRadius: { value: 2631.2, unit: 'km' }
@@ -186,7 +186,7 @@ export const MOONS: MoonsType = [
       period: { value: 16.689, unit: 'd' },
       angle: 1.500362 as Radians
     },
-    radius: { value: 2410, unit: 'km' },
+    radius: { value: 2410.3, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 2410.3, unit: 'km' },
       polarRadius: { value: 2410.3, unit: 'km' }
@@ -316,7 +316,7 @@ export const MOONS: MoonsType = [
       period: { value: 1.37, unit: 'd' },
       angle: 0.122504 as Radians
     },
-    radius: { value: 252, unit: 'km' },
+    radius: { value: 252.1, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 256.6, unit: 'km' },
       polarRadius: { value: 248.3, unit: 'km' },
@@ -497,7 +497,7 @@ export const MOONS: MoonsType = [
       retrograde: true,
       angle: 5.99451 as Radians // Consider updating based on actual epoch
     },
-    radius: { value: 1353.4, unit: 'km' },
+    radius: { value: 1352.6, unit: 'km' },
     mu: 1.42849546e12,
     display: {
       color: '#C2A17C' // More accurate pale pinkish-brown hue
