@@ -1,7 +1,8 @@
 import type { Radians } from '@interstellar-tools/types';
 
+import { assertFinite } from '../validate.js';
+
 import { tipOverAngle } from './tip-over-angle.js';
-import { assertFinite } from './validate.js';
 
 /**
  * Check whether a lander **stays upright** on a slope: whether its total tilt stays below its tip-over angle.
