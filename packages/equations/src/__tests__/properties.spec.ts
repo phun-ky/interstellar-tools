@@ -543,7 +543,7 @@ describe('Lambert’s problem', () => {
         direction,
         radius,
         radius,
-        fc.double({ min: 300, max: 2 * 86_400, noNaN: true }),
+        fc.double({ min: 60, max: 2 * 86_400, noNaN: true }),
         fc.boolean(),
         (u1, u2, a, b, dt, prograde) => {
           const r1 = scaleTo(u1, a);

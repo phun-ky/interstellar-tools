@@ -54,6 +54,7 @@ const FULL_TURN = 4 * Math.PI ** 2;
  * ::: info Notes
  *
  * - One formula for ellipses, parabolas and hyperbolas: $ z > 0 $ is an ellipse, $ z < 0 $ a hyperbola. The time of flight grows steadily with $ z $, so this solves for $ z $ by bisection, which can't diverge, below $ z = 4\pi^2 $: single-revolution transfers only.
+ * - The fastest transfers, seconds across thousands of kilometres, end where the terms of the equation nearly cancel. If fewer than about 8 significant digits would be left, the function throws instead of returning an inaccurate answer. It also throws for a time too long for a single revolution.
  * - Two positions allow two transfers, the short way round and the long way. `prograde` picks the one that goes counterclockwise seen from $ +z $, so $ \Delta\theta $ is under 180° when $ (\mathbf r_1 \times \mathbf r_2)_z \ge 0 $; `prograde: false` picks the clockwise one.
  * - At 0° and 180° the transfer plane isn't defined by the two positions, and the function throws. Near 180° the solution exists but is sensitive to small changes in the positions.
  * - For a transfer between two circular orbits, the velocity changes are `v1` minus the speed of the first orbit and the speed of the second minus `v2`, as vectors.
@@ -86,7 +87,7 @@ const FULL_TURN = 4 * Math.PI ** 2;
  * @param options - `prograde` (default `true`): the direction of the transfer. Room for more, such as multi-revolution transfers, later.
  * @returns The velocities `v1` at `r1` and `v2` at `r2`, in **m/s**.
  * @throws {TypeError} If any input is not finite.
- * @throws {RangeError} If `dt <= 0`, `mu <= 0`, a position is zero, the positions are 0° or 180° apart, or no transfer was found.
+ * @throws {RangeError} If `dt <= 0`, `mu <= 0`, a position is zero, the positions are 0° or 180° apart, or `dt` is too short to solve accurately or too long for a single revolution.
  * @group Manoeuvres
  *
  * @example
@@ -152,20 +153,43 @@ export const solveLambert = (
     ? Math.acos(cosTheta)
     : 2 * Math.PI - Math.acos(cosTheta);
   const A = Math.sin(theta) * Math.sqrt((r1n * r2n) / (1 - cosTheta));
-  const y = (z: number) =>
-    r1n + r2n + (A * (z * stumpffS(z) - 1)) / Math.sqrt(stumpffC(z));
+  // The terms of the time-of-flight equation at z, and how many times larger
+  // than the result the terms it adds up are: the digits lost to cancellation
+  const terms = (z: number) => {
+    const C = stumpffC(z);
+    const S = stumpffS(z);
+    const shift = (A * (z * S - 1)) / Math.sqrt(C);
+    const yz = r1n + r2n + shift;
+    const t1 = (yz / C) ** 1.5 * S;
+    const t2 = A * Math.sqrt(yz);
+
+    return {
+      yz,
+      t: t1 + t2,
+      lost: Math.max(
+        (r1n + r2n + Math.abs(shift)) / yz,
+        (t1 + Math.abs(t2)) / (t1 + t2)
+      )
+    };
+  };
   // √μ times the time of flight; −∞ where y < 0 (no orbit), +∞ from one
-  // revolution on
+  // revolution on. Where the terms overflow, the transfer is out of reach in
+  // that direction
   const flight = (z: number) => {
     if (z >= FULL_TURN) return Infinity;
 
-    const yz = y(z);
+    const { yz, t } = terms(z);
 
     if (yz < 0) return -Infinity;
 
-    return (yz / stumpffC(z)) ** 1.5 * stumpffS(z) + A * Math.sqrt(yz);
+    if (Number.isNaN(t)) return z < 0 ? -Infinity : Infinity;
+
+    return t;
   };
   const target = Math.sqrt(mu) * dt;
+  const tooShort = new RangeError(
+    `No transfer found: dt=${dt} is too short to solve accurately for these positions.`
+  );
 
   // Bracket the root: hyperbolas (z < 0) for fast transfers. Below about
   // −5 × 10⁵, cosh(√−z) overflows
@@ -173,10 +197,7 @@ export const solveLambert = (
   let hi = FULL_TURN;
 
   while (flight(lo) > target) {
-    if (lo < -1e5)
-      throw new RangeError(
-        `No transfer found: dt=${dt} is too short for these positions.`
-      );
+    if (lo < -1e5) throw tooShort;
 
     hi = lo;
     lo *= 4;
@@ -192,12 +213,18 @@ export const solveLambert = (
     else hi = mid;
   }
 
-  if (hi === FULL_TURN)
-    throw new RangeError(
-      `No transfer found: dt=${dt} is too long for a single revolution.`
-    );
+  const tooLong = new RangeError(
+    `No transfer found: dt=${dt} is too long for a single revolution.`
+  );
 
-  const yz = y(hi);
+  if (hi === FULL_TURN) throw tooLong;
+
+  // Very fast transfers end where the terms nearly cancel, and very slow ones
+  // where C(z) underflows: keep at least about 8 significant digits
+  const { yz, lost } = terms(hi);
+
+  if (!(yz > 0) || !(lost <= 1e8)) throw hi > 0 ? tooLong : tooShort;
+
   const f = 1 - yz / r1n;
   const g = A * Math.sqrt(yz / mu);
   const gDot = 1 - yz / r2n;
