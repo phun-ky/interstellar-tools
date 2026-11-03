@@ -36,3 +36,5 @@ export * from './terrain/slope.js';
 export * from './terrain/terrain-roughness-index.js';
 
 export * from './terrain/hillshade.js';
+
+export * from './terrain/curvature.js';
