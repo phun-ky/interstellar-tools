@@ -44,3 +44,11 @@ export * from './terrain/flow-directions.js';
 export * from './terrain/flow-accumulation.js';
 
 export * from './terrain/topographic-wetness-index.js';
+
+// projections
+
+export * from './projections/coordinates.js';
+
+export * from './projections/equirectangular.js';
+
+export * from './projections/mercator.js';
