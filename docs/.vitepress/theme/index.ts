@@ -22,6 +22,7 @@ import ApolloEntryPlot from './components/apollo/ApolloEntryPlot.vue';
 import ApolloLatitudePlot from './components/apollo/ApolloLatitudePlot.vue';
 import ApolloMissionMap from './components/apollo/ApolloMissionMap.vue';
 import ApolloRendezvousPlot from './components/apollo/ApolloRendezvousPlot.vue';
+import ApolloSunPlot from './components/apollo/ApolloSunPlot.vue';
 import MissionHome from './components/home/MissionHome.vue';
 import NavStatus from './components/NavStatus.vue';
 import OrbitWidget from './components/OrbitWidget.vue';
@@ -47,6 +48,7 @@ export default {
     ctx.app.component('ApolloAimPlot', ApolloAimPlot);
     ctx.app.component('ApolloLatitudePlot', ApolloLatitudePlot);
     ctx.app.component('ApolloDvLedger', ApolloDvLedger);
+    ctx.app.component('ApolloSunPlot', ApolloSunPlot);
     ctx.app.component('ApolloRendezvousPlot', ApolloRendezvousPlot);
     ctx.app.component('ApolloEntryPlot', ApolloEntryPlot);
 

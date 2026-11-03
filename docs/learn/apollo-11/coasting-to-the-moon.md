@@ -201,5 +201,4 @@ for lunar orbit insertion 14 h 10 min after the crossing.
 - In the plot, find the aim that just grazes the surface. Why does it get closer
   to the Moon's radius at a higher arrival speed?
 
-Next: III. Down to the surface, once the maps equations land
-([Maps milestone](https://github.com/phun-ky/interstellar-tools/milestone/2)).
+Next: [III. Down to the surface](/learn/apollo-11/down-to-the-surface).
