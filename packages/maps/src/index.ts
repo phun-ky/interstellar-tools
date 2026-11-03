@@ -20,3 +20,7 @@ export * from './imaging/swath-width.js';
 export * from './landing/is-stable-landing.js';
 
 export * from './landing/tip-over-angle.js';
+
+// terrain
+
+export * from './terrain/grid.js';
