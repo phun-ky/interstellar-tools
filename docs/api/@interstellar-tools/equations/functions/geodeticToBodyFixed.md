@@ -14,7 +14,7 @@ function geodeticToBodyFixed(
 ```
 
 Defined in:
-[cartography/geodetic-to-body-fixed.ts:73](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/cartography/geodetic-to-body-fixed.ts#L73)
+[cartography/geodetic-to-body-fixed.ts:76](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/cartography/geodetic-to-body-fixed.ts#L76)
 
 Convert **geodetic coordinates** (latitude, longitude, height) to a **body-fixed
 Cartesian** position, ECEF for Earth.
@@ -34,7 +34,8 @@ Where:
 - $\varphi$ is the geodetic latitude and $\lambda$ the longitude (rad)
 - $h$ is the height above the ellipsoid, along its normal (m)
 - $a$ is the equatorial radius (m) and $e^2$ the first eccentricity squared
-- $N$ is the prime vertical radius of curvature (m)
+- $N$ is the prime vertical radius of curvature (m), from
+  [primeVerticalRadiusOfCurvature](primeVerticalRadiusOfCurvature.md)
 
 **Units**
 

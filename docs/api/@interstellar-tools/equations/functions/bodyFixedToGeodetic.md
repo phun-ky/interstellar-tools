@@ -14,7 +14,7 @@ function bodyFixedToGeodetic(
 ```
 
 Defined in:
-[cartography/body-fixed-to-geodetic.ts:80](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/cartography/body-fixed-to-geodetic.ts#L80)
+[cartography/body-fixed-to-geodetic.ts:82](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/cartography/body-fixed-to-geodetic.ts#L82)
 
 Convert a **body-fixed Cartesian** position (ECEF for Earth) to **geodetic
 coordinates**: latitude, longitude and height.

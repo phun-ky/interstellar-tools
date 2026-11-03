@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.2.0...%40interstellar-tools%2Ftypes%401.3.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add the circular restricted three-body problem and an RK4 integrator ([ef0d191](https://github.com/phun-ky/interstellar-tools/commit/ef0d191eff9422ec8fa709d023a871874deebb9b)), closes [#249](https://github.com/phun-ky/interstellar-tools/issues/249), references [#228](https://github.com/phun-ky/interstellar-tools/issues/228) [#221](https://github.com/phun-ky/interstellar-tools/issues/221)
+
 ## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.1.0...%40interstellar-tools%2Ftypes%401.2.0) (2026-11-02)
 
 ### Feature

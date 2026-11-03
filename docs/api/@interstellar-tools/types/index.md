@@ -30,13 +30,15 @@ npm i --save @interstellar-tools/types
 | Interface                                                  | Description                                                                     |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [ForceResultInterface](interfaces/ForceResultInterface.md) | Result of a Newtonian gravitational force computation between two point masses. |
+| [OdeSolutionInterface](interfaces/OdeSolutionInterface.md) | The output of a numerical integration: the times, and the state at each.        |
 
 ## Type Aliases
 
-| Type Alias                                             | Description                              |
-| ------------------------------------------------------ | ---------------------------------------- |
-| [Matrix3x3Type](type-aliases/Matrix3x3Type.md)         | Immutable 3×3 matrix of numbers.         |
-| [Vector3DTupleType](type-aliases/Vector3DTupleType.md) | A read-only 3D vector tuple `[x, y, z]`. |
+| Type Alias                                                   | Description                                                                               |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| [Matrix3x3Type](type-aliases/Matrix3x3Type.md)               | Immutable 3×3 matrix of numbers.                                                          |
+| [OdeRightHandSideType](type-aliases/OdeRightHandSideType.md) | The right-hand side of a system of first-order ODEs, $\dot{\mathbf y} = f(t, \mathbf y)$. |
+| [Vector3DTupleType](type-aliases/Vector3DTupleType.md)       | A read-only 3D vector tuple `[x, y, z]`.                                                  |
 
 ## Cartography
 
@@ -112,3 +114,11 @@ npm i --save @interstellar-tools/types
 | [TimeStepInterface](interfaces/TimeStepInterface.md)           | Represents a **time step measurement** in simulation, restricted to days.                                                                                                                                  |
 | [TemporalUnitAliasType](type-aliases/TemporalUnitAliasType.md) | Human-friendly **temporal unit aliases** accepted at input time.                                                                                                                                           |
 | [TemporalUnitType](type-aliases/TemporalUnitType.md)           | Canonical **temporal unit symbols** for spacetime/physics **durations**.                                                                                                                                   |
+
+## Three-body
+
+| Name                                                         | Description                                                                                           |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| [Cr3bpUnitsInterface](interfaces/Cr3bpUnitsInterface.md)     | The units of the normalised CR3BP frame for a pair of bodies, in SI.                                  |
+| [Cr3bpState](type-aliases/Cr3bpState.md)                     | A state in the **circular restricted three-body problem** (CR3BP), in the rotating, normalised frame. |
+| [Cr3bpStateDerivative](type-aliases/Cr3bpStateDerivative.md) | The time derivative of a [Cr3bpState](type-aliases/Cr3bpState.md): velocities, then accelerations.    |

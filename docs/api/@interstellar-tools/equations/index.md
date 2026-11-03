@@ -77,15 +77,22 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Cartography
 
-| Function                                                                            | Description                                                                                                               |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| [bodyFixedFromInertialDcmIAU](functions/bodyFixedFromInertialDcmIAU.md)             | Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).                                              |
-| [bodyFixedToGeodetic](functions/bodyFixedToGeodetic.md)                             | Convert a **body-fixed Cartesian** position (ECEF for Earth) to **geodetic coordinates**: latitude, longitude and height. |
-| [eccentricitySquaredOblateSpheroid](functions/eccentricitySquaredOblateSpheroid.md) | Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.                                                    |
-| [flatteningOblateSpheroid](functions/flatteningOblateSpheroid.md)                   | Compute **flattening** ($f$) of an oblate spheroid.                                                                       |
-| [geodeticToBodyFixed](functions/geodeticToBodyFixed.md)                             | Convert **geodetic coordinates** (latitude, longitude, height) to a **body-fixed Cartesian** position, ECEF for Earth.    |
-| [isOnTriaxialEllipsoidSurface](functions/isOnTriaxialEllipsoidSurface.md)           | Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within a tolerance).                             |
-| [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.                                  |
+| Function                                                                            | Description                                                                                                                   |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [bodyFixedFromInertialDcmIAU](functions/bodyFixedFromInertialDcmIAU.md)             | Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).                                                  |
+| [bodyFixedToGeodetic](functions/bodyFixedToGeodetic.md)                             | Convert a **body-fixed Cartesian** position (ECEF for Earth) to **geodetic coordinates**: latitude, longitude and height.     |
+| [centralAngle](functions/centralAngle.md)                                           | Compute the **central angle** between two points on a sphere from their latitudes and longitudes, with the haversine formula. |
+| [centralAngleFromVectors](functions/centralAngleFromVectors.md)                     | Compute the **central angle** between two position vectors, without trigonometry on latitude and longitude.                   |
+| [eccentricitySquaredOblateSpheroid](functions/eccentricitySquaredOblateSpheroid.md) | Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.                                                        |
+| [flatteningOblateSpheroid](functions/flatteningOblateSpheroid.md)                   | Compute **flattening** ($f$) of an oblate spheroid.                                                                           |
+| [geodeticToBodyFixed](functions/geodeticToBodyFixed.md)                             | Convert **geodetic coordinates** (latitude, longitude, height) to a **body-fixed Cartesian** position, ECEF for Earth.        |
+| [greatCircleDistance](functions/greatCircleDistance.md)                             | Compute the **great-circle distance** between two points on a sphere: the shortest path along its surface.                    |
+| [horizonDistance](functions/horizonDistance.md)                                     | Compute the straight-line **distance to the horizon** for an observer at a height above a sphere.                             |
+| [horizonSurfaceDistance](functions/horizonSurfaceDistance.md)                       | Compute the **distance along the surface to the horizon** for an observer at a height above a sphere.                         |
+| [isOnTriaxialEllipsoidSurface](functions/isOnTriaxialEllipsoidSurface.md)           | Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within a tolerance).                                 |
+| [meridionalRadiusOfCurvature](functions/meridionalRadiusOfCurvature.md)             | Compute the **meridional radius of curvature** $M$ of an oblate spheroid at a geodetic latitude.                              |
+| [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.                                      |
+| [primeVerticalRadiusOfCurvature](functions/primeVerticalRadiusOfCurvature.md)       | Compute the **prime vertical radius of curvature** $N$ of an oblate spheroid at a geodetic latitude.                          |
 
 ## Entry
 
@@ -123,6 +130,8 @@ orbits, angles, solve for kelper or find true anomalies.
 | [norm2pi](functions/norm2pi.md)                                 | Normalize an angle to the range **\[0, 2π)**.                                                                                                                                       |
 | [normalizeDistanceUnit](functions/normalizeDistanceUnit.md)     | Normalize a **distance unit string** into a canonical [DistanceUnitType](../types/type-aliases/DistanceUnitType.md).                                                                |
 | [rad](functions/rad.md)                                         | Brand a numeric value as [Radians](../types/type-aliases/Radians.md).                                                                                                               |
+| [rk4Integrate](functions/rk4Integrate.md)                       | **Integrate** a system of ODEs from `t0` to `t1` in fixed fourth-order Runge–Kutta steps.                                                                                           |
+| [rk4Step](functions/rk4Step.md)                                 | Take one **fourth-order Runge–Kutta** step of a system of ODEs, $\dot{\mathbf y} = f(t, \mathbf y)$.                                                                                |
 | [rot1](functions/rot1.md)                                       | Construct a **right-handed rotation matrix about the x-axis** (often written **R₁**).                                                                                               |
 | [rot3](functions/rot3.md)                                       | Construct a **right-handed rotation matrix about the z-axis** (often written **R₃**).                                                                                               |
 | [scale](functions/scale.md)                                     | Scale a 3D vector by a scalar.                                                                                                                                                      |
@@ -202,3 +211,12 @@ orbits, angles, solve for kelper or find true anomalies.
 | [surfaceRotationSpeed](functions/surfaceRotationSpeed.md)                               | Compute the **eastward speed** of a point on a rotating body's surface, at a latitude.                                                                                                                                   |
 | [synodicPeriod](functions/synodicPeriod.md)                                             | Compute the **synodic period** of two bodies on circular orbits: the time between two alignments.                                                                                                                        |
 | [visVivaSpeed](functions/visVivaSpeed.md)                                               | **Vis-viva (orbital speed)** - compute speed magnitude ($v$) from ($r$), ($a$), and ($\mu$).                                                                                                                             |
+
+## Three-body
+
+| Function                                          | Description                                                                                                                     |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| [cr3bpDerivatives](functions/cr3bpDerivatives.md) | Compute the **time derivative** of a state in the circular restricted three-body problem (right-hand side for ODE integration). |
+| [cr3bpMassRatio](functions/cr3bpMassRatio.md)     | Compute the **mass ratio** $\mu$ of the circular restricted three-body problem.                                                 |
+| [cr3bpUnits](functions/cr3bpUnits.md)             | Compute the **units of the normalised CR3BP frame** for a pair of bodies.                                                       |
+| [jacobiConstant](functions/jacobiConstant.md)     | Compute the **Jacobi constant** of a state in the circular restricted three-body problem.                                       |
