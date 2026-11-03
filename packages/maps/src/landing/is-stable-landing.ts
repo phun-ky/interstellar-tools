@@ -24,7 +24,7 @@ import { tipOverAngle } from './tip-over-angle.js';
  *
  * - A static check, the first screen for a landing site: real landers also depend on touchdown speed, leg compression, friction and footpads digging in or sliding.
  * - Pass the slope in the direction the lander is most likely to tip, and the footprint distance in that direction too.
- * - For a whole elevation grid, combine it with the slope and roughness of each cell (planned in [#194](https://github.com/phun-ky/interstellar-tools/issues/194) and [#197](https://github.com/phun-ky/interstellar-tools/issues/197)).
+ * - For a whole elevation grid, {@link safeLandingGrid} combines it with each cell's slope and roughness.
  *
  * :::
  *
@@ -49,6 +49,7 @@ import { tipOverAngle } from './tip-over-angle.js';
  * ```
  *
  * @see {@link tipOverAngle}
+ * @see {@link safeLandingGrid}
  */
 export const isStableLanding = (
   slope: Radians,
