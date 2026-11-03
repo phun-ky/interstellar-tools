@@ -162,7 +162,7 @@ radius: DistanceInterface;
 Defined in:
 [celestial-bodies/planets.ts:75](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L75)
 
-Physical radius of the planet in kilometres.
+Mean radius of the planet in kilometres; the IAU's, where it gives one.
 
 ---
 

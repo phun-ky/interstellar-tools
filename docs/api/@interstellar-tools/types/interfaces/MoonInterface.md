@@ -153,7 +153,7 @@ radius: DistanceInterface;
 Defined in:
 [celestial-bodies/moons.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L50)
 
-Physical radius of the moon in kilometres.
+Mean radius of the moon in kilometres; the IAU's, where it gives one.
 
 ---
 
