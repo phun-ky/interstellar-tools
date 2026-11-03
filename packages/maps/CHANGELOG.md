@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.2.0...%40interstellar-tools%2Fmaps%400.3.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add the Terrain Roughness Index to maps ([e928643](https://github.com/phun-ky/interstellar-tools/commit/e92864350629d539b18dacd738c224abc53a0c31)), closes [#197](https://github.com/phun-ky/interstellar-tools/issues/197)
+
 ## [0.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.1.0...%40interstellar-tools%2Fmaps%400.2.0) (2026-11-03)
 
 ### Documentation

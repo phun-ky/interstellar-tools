@@ -66,15 +66,17 @@ npm i --save @interstellar-tools/maps
 
 ## Terrain
 
-| Name                                                               | Description                                                                                                                               |
-| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| [GridInterface](interfaces/GridInterface.md)                       | A **raster grid** of values over a map, such as a digital elevation model (DEM): `rows × columns` cells of equal size, stored row by row. |
-| [TerrainGradientInterface](interfaces/TerrainGradientInterface.md) | The rate at which the terrain rises, east and north, at a cell.                                                                           |
-| [ElevationGridInterface](type-aliases/ElevationGridInterface.md)   | A **digital elevation model**: a [GridInterface](interfaces/GridInterface.md) of heights in **m**.                                        |
-| [aspectAt](functions/aspectAt.md)                                  | Compute the **aspect** of an elevation grid at a cell: the direction the terrain faces.                                                   |
-| [aspectGrid](functions/aspectGrid.md)                              | Compute the **aspect** of every cell of an elevation grid, as a new grid in radians clockwise from north.                                 |
-| [createGrid](functions/createGrid.md)                              | Create a **raster grid**, such as an elevation model, checking that its parts fit together.                                               |
-| [gradientAt](functions/gradientAt.md)                              | Compute the **gradient** of an elevation grid at a cell, from its 3 × 3 neighbourhood with **Horn's method**.                             |
-| [gridValueAt](functions/gridValueAt.md)                            | Read the value of one **cell** of a grid.                                                                                                 |
-| [slopeAt](functions/slopeAt.md)                                    | Compute the **slope** of an elevation grid at a cell: how steep the terrain is.                                                           |
-| [slopeGrid](functions/slopeGrid.md)                                | Compute the **slope** of every cell of an elevation grid, as a new grid in radians.                                                       |
+| Name                                                                | Description                                                                                                                                               |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [GridInterface](interfaces/GridInterface.md)                        | A **raster grid** of values over a map, such as a digital elevation model (DEM): `rows × columns` cells of equal size, stored row by row.                 |
+| [TerrainGradientInterface](interfaces/TerrainGradientInterface.md)  | The rate at which the terrain rises, east and north, at a cell.                                                                                           |
+| [ElevationGridInterface](type-aliases/ElevationGridInterface.md)    | A **digital elevation model**: a [GridInterface](interfaces/GridInterface.md) of heights in **m**.                                                        |
+| [aspectAt](functions/aspectAt.md)                                   | Compute the **aspect** of an elevation grid at a cell: the direction the terrain faces.                                                                   |
+| [aspectGrid](functions/aspectGrid.md)                               | Compute the **aspect** of every cell of an elevation grid, as a new grid in radians clockwise from north.                                                 |
+| [createGrid](functions/createGrid.md)                               | Create a **raster grid**, such as an elevation model, checking that its parts fit together.                                                               |
+| [gradientAt](functions/gradientAt.md)                               | Compute the **gradient** of an elevation grid at a cell, from its 3 × 3 neighbourhood with **Horn's method**.                                             |
+| [gridValueAt](functions/gridValueAt.md)                             | Read the value of one **cell** of a grid.                                                                                                                 |
+| [slopeAt](functions/slopeAt.md)                                     | Compute the **slope** of an elevation grid at a cell: how steep the terrain is.                                                                           |
+| [slopeGrid](functions/slopeGrid.md)                                 | Compute the **slope** of every cell of an elevation grid, as a new grid in radians.                                                                       |
+| [terrainRoughnessIndexAt](functions/terrainRoughnessIndexAt.md)     | Compute the **Terrain Roughness Index** of an elevation grid at a cell: the root-mean-square height difference between the cell and its eight neighbours. |
+| [terrainRoughnessIndexGrid](functions/terrainRoughnessIndexGrid.md) | Compute the **Terrain Roughness Index** of every cell of an elevation grid, as a new grid in metres.                                                      |
