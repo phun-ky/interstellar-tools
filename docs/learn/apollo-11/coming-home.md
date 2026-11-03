@@ -238,6 +238,5 @@ hours and 18 minutes after liftoff.
 - Work out the entry angle that would give a ballistic body Apollo 11's 6.56 g.
   What would happen to an entry that shallow?
 
-That's the trip home. Chapters I to III, from the pad to the lunar surface,
-follow as their equations land. Back to the
+That's the trip home, and the whole mission. Back to the
 [mission overview](/learn/apollo-11/).

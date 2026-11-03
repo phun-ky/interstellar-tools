@@ -149,6 +149,10 @@ export default defineConfig({
               link: '/learn/apollo-11/coasting-to-the-moon'
             },
             {
+              text: 'III. Down to the surface',
+              link: '/learn/apollo-11/down-to-the-surface'
+            },
+            {
               text: 'IV. Lunar orbit rendezvous',
               link: '/learn/apollo-11/lunar-orbit-rendezvous'
             },

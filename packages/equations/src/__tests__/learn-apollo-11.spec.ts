@@ -6,6 +6,8 @@ import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-ano
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
+import { greatCircleDistance } from '../categories/cartography/great-circle-distance.js';
+import { horizonSurfaceDistance } from '../categories/cartography/horizon-surface-distance.js';
 import { ballisticCoefficient } from '../categories/entry/ballistic-coefficient.js';
 import { ballisticEntrySpeed } from '../categories/entry/ballistic-entry-speed.js';
 import { ballisticPeakDecelerationAltitude } from '../categories/entry/ballistic-peak-deceleration-altitude.js';
@@ -14,12 +16,14 @@ import { terminalVelocity } from '../categories/entry/terminal-velocity.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { cwTwoImpulseTransfer } from '../categories/manoeuvres/cw-two-impulse-transfer.js';
+import { hohmannTransfer } from '../categories/manoeuvres/hohmann-transfer.js';
 import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-delta-v.js';
 import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
+import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentricity.js';
 import { hyperbolicPeriapsisSpeed } from '../categories/orbits/hyperbolic-periapsis-speed.js';
 import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
@@ -435,6 +439,168 @@ describe('II. Coasting to the Moon (tutorial)', () => {
       Math.PI;
 
     assert.equal(Math.round(angle), 73);
+  });
+});
+
+describe('III. Down to the surface (tutorial)', () => {
+  const MU_MOON = 4.902800118e12;
+  const R_MOON = 1_737_400;
+  const NM = 1852;
+  const rp = R_MOON + 61.5 * NM;
+  const vp = 8334 * FT;
+  const vEsc = escapeSpeed(rp, MU_MOON);
+  const vInf = Math.sqrt(vp ** 2 - vEsc ** 2);
+  const low = R_MOON + 60.0 * NM;
+  const high = R_MOON + 169.7 * NM;
+  const a = (low + high) / 2;
+  const columbia = R_MOON + 60 * NM;
+  const doi = hohmannTransfer(columbia, R_MOON + 50_000 * FT, MU_MOON);
+  const gMoon = MU_MOON / R_MOON ** 2;
+  const hms = (h: number, m: number, s: number) => h * 3600 + m * 60 + s;
+  const toRad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
+
+  test('converts the sources', () => {
+    assert.equal((61.5 * 1.852).toFixed(1), '113.9');
+    assert.equal(group(vp), '2 540');
+    assert.equal(Math.round(2917.5 * FT), 889);
+    assert.equal((2917.5 * FT).toFixed(1), '889.3');
+    assert.equal(group(96_061.6 * LB), '43 573');
+    assert.equal(group(20_500 * 4.4482216152605), '91 189');
+    assert.equal((158.8 * FT).toFixed(1), '48.4');
+    assert.equal((76.4 * FT).toFixed(1), '23.3');
+    assert.equal(((50_000 * FT) / 1000).toFixed(1), '15.2');
+    assert.equal(((49_376 * FT) / 1000).toFixed(2), '15.05');
+    assert.equal(group(33_401.6 * LB), '15 151');
+    assert.equal(group(10_500 * 4.4482216152605), '46 706');
+    assert.equal(group(6930 * FT), '2 112');
+    assert.equal(group(16_153.2 * LB), '7 327');
+    assert.equal(((22_500 * FT) / 1000).toFixed(1), '6.9');
+    assert.equal((167.57 * 0.0254).toFixed(3), '4.256');
+    assert.equal((213.5 - 72.84).toFixed(1), '140.7');
+    assert.equal(((213.5 - 72.84) * 0.0254).toFixed(3), '3.573');
+  });
+
+  test('burns for six minutes, and descends for twelve and a half', () => {
+    assert.equal(Math.round(357.5 / 60), 6);
+
+    const descent = hms(102, 45, 39.9) - hms(102, 33, 5);
+
+    assert.equal(Math.round(descent / 30) / 2, 12.5);
+  });
+
+  test('1. arrives at 2 540 m/s, 239 m/s over the 2 301 m/s escape speed: v∞ 1 075 m/s, e 1.44', () => {
+    assert.equal(group(vEsc), '2 301');
+    assert.equal(Math.round(vp - vEsc), 239);
+    assert.equal(group(vInf), '1 075');
+    assert.equal(hyperbolicEccentricity(vInf, rp, MU_MOON).toFixed(2), '1.44');
+  });
+
+  test('2. brakes by 871 m/s into a 128.8 min orbit, 2% under the flown 889 m/s', () => {
+    const loi1 =
+      hyperbolicPeriapsisSpeed(vInf, low, MU_MOON) -
+      visVivaSpeed(low, a, MU_MOON);
+
+    assert.equal(Math.round(loi1), 871);
+    assert.equal(Math.round((100 * (2917.5 * FT - loi1)) / loi1), 2);
+    assert.equal((keplerPeriod(a, MU_MOON) / 60).toFixed(1), '128.8');
+  });
+
+  test('2. predicts a 370 s burn, and loses 10 897 kg, a quarter of the mass', () => {
+    assert.equal(Math.round(burnTime(43_573, 889.3, 91_189, 316.7)), 370);
+
+    const used = (96_061.6 - 72_037.6) * LB;
+
+    assert.equal(group(used), '10 897');
+    assert.equal((used / (96_061.6 * LB)).toFixed(2), '0.25');
+  });
+
+  test('3. rounds the orbit off to 100 × 122 km, 118.8 min a revolution', () => {
+    assert.equal(Math.round(53.8), 54);
+    assert.equal(Math.round(65.7), 66);
+    assert.equal(Math.round(53.8 * 1.852), 100);
+    assert.equal(Math.round(65.7 * 1.852), 122);
+
+    const rev = keplerPeriod(R_MOON + ((53.8 + 65.7) / 2) * NM, MU_MOON) / 60;
+
+    assert.equal(rev.toFixed(1), '118.8');
+    assert.equal(Math.round(rev / 60), 2);
+  });
+
+  test('4. lowers the orbit with 21.8 m/s, and reaches the low point in 57.1 min, 17 s after PDI', () => {
+    assert.equal(doi.dv1.toFixed(1), '21.8');
+    assert.equal((doi.tTransfer / 60).toFixed(1), '57.1');
+
+    const coast = hms(102, 33, 5) - hms(101, 36, 14);
+
+    assert.equal(
+      `${Math.floor(coast / 60)} min ${coast % 60} s`,
+      '56 min 51 s'
+    );
+    assert.equal(Math.round(doi.tTransfer - coast), 17);
+  });
+
+  test('5. cancels 1 695 m/s at T/W 1.76 (0.29 on Earth), 417 m/s under the flown 2 112 m/s', () => {
+    const vPdi = visVivaSpeed(R_MOON + 49_376 * FT, doi.at, MU_MOON);
+    const full = 0.925 * 46_706;
+
+    assert.equal(group(vPdi), '1 695');
+    assert.equal(gMoon.toFixed(2), '1.62');
+    assert.equal(thrustToWeight(full, 15_151, gMoon).toFixed(2), '1.76');
+    assert.equal(thrustToWeight(full, 15_151, 9.80665).toFixed(2), '0.29');
+    assert.equal(Math.round(6930 * FT - vPdi), 417);
+  });
+
+  test('5. lands at 11.9 kN, a quarter of the rated thrust, with about 46 s left', () => {
+    const weight = 16_153.2 * LB * gMoon;
+
+    assert.equal((weight / 1000).toFixed(1), '11.9');
+    assert.equal((weight / 46_706).toFixed(2), '0.25');
+
+    const sinceLight = hms(102, 45, 39.9) - hms(102, 44, 30.4);
+
+    assert.equal(sinceLight.toFixed(1), '69.5');
+    assert.equal(Math.floor(116 - sinceLight), 46);
+    assert.ok(116 - sinceLight < 60);
+  });
+
+  test('6. lands 6.65 km from the target', () => {
+    const miss = greatCircleDistance(
+      toRad(0.691),
+      toRad(23.72),
+      toRad(0.647),
+      toRad(23.505),
+      R_MOON
+    );
+
+    assert.equal((miss / 1000).toFixed(2), '6.65');
+    assert.equal(Math.round(39.371), 39);
+    assert.equal((23.505).toFixed(1), '23.5');
+  });
+
+  test('6. keeps Eagle in Columbia’s view for 13.2 of 118.9 min', () => {
+    const s = horizonSurfaceDistance(60 * NM, R_MOON);
+    const T = keplerPeriod(columbia, MU_MOON);
+    const inView = ((2 * s) / R_MOON / (2 * Math.PI)) * T;
+
+    assert.equal(Math.round(s / 1000), 605);
+    assert.equal((T / 60).toFixed(1), '118.9');
+    assert.equal((inView / 60).toFixed(1), '13.2');
+  });
+
+  test('7. opens a 5–14° landing window for less than a day a month', () => {
+    const climb = 360 / (29.53 * 24); // ° an hour, one lunar day a synodic month
+
+    assert.equal(climb.toFixed(1), '0.5');
+    assert.ok((14 - 5) / climb < 24);
+  });
+
+  test('try it: one burn into a 60 n mi circle costs 913 m/s, against 938 m/s flown in two', () => {
+    const once =
+      hyperbolicPeriapsisSpeed(vInf, low, MU_MOON) -
+      circularSpeed(low, MU_MOON);
+
+    assert.equal(Math.round(once), 913);
+    assert.equal(Math.round((2917.5 + 158.8) * FT), 938);
   });
 });
 
