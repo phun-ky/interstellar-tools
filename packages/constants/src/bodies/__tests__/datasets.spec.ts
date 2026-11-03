@@ -643,16 +643,49 @@ describe('reference ellipsoids', () => {
     }
   });
 
-  test('put the mean radius between the polar and equatorial radii, within the datasets’ rounding (0.2%)', () => {
+  test('put the mean radius between the polar and equatorial radii', () => {
     for (const { name, radius, ellipsoid } of withEllipsoid) {
       const a = ellipsoid!.equatorialRadius.value;
       const c = ellipsoid!.polarRadius.value;
 
       assert.ok(
-        radius.value >= c * 0.998 && radius.value <= a * 1.002,
+        radius.value >= c && radius.value <= a,
         `${name}: ${radius.value} km outside ${c}–${a} km`
       );
     }
+  });
+
+  test('use the IAU mean radii', () => {
+    const iau: Record<string, number> = {
+      mercury: 2439.4,
+      venus: 6051.8,
+      earth: 6371.0084,
+      mars: 3389.5,
+      jupiter: 69_911,
+      saturn: 58_232,
+      uranus: 25_362,
+      neptune: 24_622,
+      pluto: 1188.3,
+      moon: 1737.4,
+      phobos: 11.08,
+      deimos: 6.2,
+      io: 1821.49,
+      europa: 1560.8,
+      ganymede: 2631.2,
+      callisto: 2410.3,
+      enceladus: 252.1,
+      titan: 2575,
+      triton: 1352.6
+    };
+
+    for (const body of [...PLANETS, ...MOONS])
+      if (body.id in iau)
+        assert.equal(body.radius.value, iau[body.id], body.name);
+
+    assert.equal(
+      [...PLANETS, ...MOONS].filter((body) => body.id in iau).length,
+      Object.keys(iau).length
+    );
   });
 
   test('give WGS 84 its defined radius and flattening', () => {

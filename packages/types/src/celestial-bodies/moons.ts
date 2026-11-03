@@ -46,7 +46,7 @@ export interface MoonInterface {
   parent: string;
   /** Orbit around the parent planet. */
   orbit: OrbitInterface;
-  /** Physical radius of the moon in kilometres. */
+  /** Mean radius of the moon in kilometres; the IAU's, where it gives one. */
   radius: DistanceInterface;
   /**
    * Reference ellipsoid, from the IAU Working Group on Cartographic

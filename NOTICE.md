@@ -48,11 +48,11 @@ copyright. They're compiled from public references, credited here:
   537, 515) for Ceres, and JPL's
   [planetary satellite physical parameters](https://ssd.jpl.nasa.gov/sats/phys_par/)
   for the other planets, Pluto and the moons.
-- **Reference ellipsoids:** the equatorial, along-orbit and polar radii of the
-  planets, Pluto and the larger moons from the IAU Working Group on Cartographic
-  Coordinates and Rotational Elements (Archinal et al. 2018, Celestial Mechanics
-  and Dynamical Astronomy 130, 22), and WGS 84 from the US National
-  Geospatial-Intelligence Agency.
+- **Reference ellipsoids and mean radii:** the mean, equatorial, along-orbit and
+  polar radii of the planets, Pluto and the larger moons from the IAU Working
+  Group on Cartographic Coordinates and Rotational Elements (Archinal et al.
+  2018, Celestial Mechanics and Dynamical Astronomy 130, 22), and WGS 84 from
+  the US National Geospatial-Intelligence Agency.
 - **Moon orbits:** semi-major axes and eccentricities from JPL's
   [planetary satellite mean elements](https://ssd.jpl.nasa.gov/sats/elem/), and
   true anomalies at J2000 from the osculating elements in

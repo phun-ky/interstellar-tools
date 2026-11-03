@@ -48,7 +48,7 @@ export const PLANETS: PlanetsType = [
       angle: 3.080377 as Radians
     },
     /** Radius in km */
-    radius: { value: 2440, unit: 'km' },
+    radius: { value: 2439.4, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 2439.4, unit: 'km' },
       polarRadius: { value: 2439.4, unit: 'km' }
@@ -76,7 +76,7 @@ export const PLANETS: PlanetsType = [
       period: { value: 224.701, unit: 'd' },
       angle: 0.88977 as Radians
     },
-    radius: { value: 6052, unit: 'km' },
+    radius: { value: 6051.8, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 6051.8, unit: 'km' },
       polarRadius: { value: 6051.8, unit: 'km' }
@@ -101,7 +101,7 @@ export const PLANETS: PlanetsType = [
       period: { value: 365.256, unit: 'd' },
       angle: 6.238549 as Radians
     },
-    radius: { value: 6371, unit: 'km' },
+    radius: { value: 6371.0084, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 6378.1366, unit: 'km' },
       polarRadius: { value: 6356.7519, unit: 'km' }
@@ -126,7 +126,7 @@ export const PLANETS: PlanetsType = [
       period: { value: 686.98, unit: 'd' },
       angle: 0.408015 as Radians
     },
-    radius: { value: 3389, unit: 'km' },
+    radius: { value: 3389.5, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 3396.19, unit: 'km' },
       polarRadius: { value: 3376.2, unit: 'km' }
@@ -272,7 +272,7 @@ export const PLANETS: PlanetsType = [
       period: { value: 90560.0, unit: 'd' },
       angle: 0.436892 as Radians
     },
-    radius: { value: 1188, unit: 'km' },
+    radius: { value: 1188.3, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 1188.3, unit: 'km' },
       polarRadius: { value: 1188.3, unit: 'km' }
