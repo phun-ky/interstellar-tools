@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.8.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.8.0...%40interstellar-tools%2Fequations%401.8.1) (2026-11-03)
+
+### Bug
+
+* 🐛 Make solveLambert throw instead of returning NaN or imprecise answers ([b22186b](https://github.com/phun-ky/interstellar-tools/commit/b22186b7be877987afe499e41d565dea6fd57c4f))
+
 ## [1.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.7.0...%40interstellar-tools%2Fequations%401.8.0) (2026-11-03)
 
 ### Documentation

@@ -14,7 +14,7 @@ function solveLambert(
 ```
 
 Defined in:
-[manoeuvres/solve-lambert.ts:109](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/manoeuvres/solve-lambert.ts#L109)
+[manoeuvres/solve-lambert.ts:110](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/manoeuvres/solve-lambert.ts#L110)
 
 Solve **Lambert's problem**: find the orbit that goes from one position to
 another in a given time.
@@ -58,6 +58,10 @@ Where:
   < 0$ a hyperbola. The time of flight grows steadily with $z$, so this solves
   for $z$ by bisection, which can't diverge, below $z = 4\pi^2$:
   single-revolution transfers only.
+- The fastest transfers, seconds across thousands of kilometres, end where the
+  terms of the equation nearly cancel. If fewer than about 8 significant digits
+  would be left, the function throws instead of returning an inaccurate answer.
+  It also throws for a time too long for a single revolution.
 - Two positions allow two transfers, the short way round and the long way.
   `prograde` picks the one that goes counterclockwise seen from $+z$, so
   $\Delta\theta$ is under 180° when $(\mathbf r_1 \times \mathbf r_2)_z \ge 0$;
@@ -123,7 +127,7 @@ If any input is not finite.
 ## Throws
 
 If `dt <= 0`, `mu <= 0`, a position is zero, the positions are 0° or 180° apart,
-or no transfer was found.
+or `dt` is too short to solve accurately or too long for a single revolution.
 
 ## Example
 
