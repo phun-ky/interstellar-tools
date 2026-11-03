@@ -13,7 +13,7 @@ function isStableLanding(
 ```
 
 Defined in:
-[is-stable-landing.ts:52](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/landing/is-stable-landing.ts#L52)
+[landing/is-stable-landing.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/landing/is-stable-landing.ts#L53)
 
 Check whether a lander **stays upright** on a slope: whether its total tilt
 stays below its tip-over angle.

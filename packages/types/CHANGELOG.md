@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.4.0...%40interstellar-tools%2Ftypes%401.5.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add imaging geometry to maps ([ea6a9e2](https://github.com/phun-ky/interstellar-tools/commit/ea6a9e24bf37cca3d7a42d9c33c42d25314ae027)), closes [#199](https://github.com/phun-ky/interstellar-tools/issues/199)
+
 ## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.3.0...%40interstellar-tools%2Ftypes%401.4.0) (2026-11-03)
 
 ### Feature

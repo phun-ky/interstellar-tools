@@ -8,7 +8,7 @@ function tipOverAngle(rFootprint: number, hCoM: number): Radians;
 ```
 
 Defined in:
-[tip-over-angle.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/landing/tip-over-angle.ts#L59)
+[landing/tip-over-angle.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/landing/tip-over-angle.ts#L59)
 
 Compute the **tip-over angle** of a lander: the tilt at which its centre of mass
 passes over the edge of its footprint.
