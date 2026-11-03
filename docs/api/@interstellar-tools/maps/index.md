@@ -59,10 +59,12 @@ npm i --save @interstellar-tools/maps
 
 ## Landing sites
 
-| Function                                        | Description                                                                                                             |
-| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [isStableLanding](functions/isStableLanding.md) | Check whether a lander **stays upright** on a slope: whether its total tilt stays below its tip-over angle.             |
-| [tipOverAngle](functions/tipOverAngle.md)       | Compute the **tip-over angle** of a lander: the tilt at which its centre of mass passes over the edge of its footprint. |
+| Name                                                                     | Description                                                                                                                             |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [SafeLandingOptionsInterface](interfaces/SafeLandingOptionsInterface.md) | The lander, for [safeLandingGrid](functions/safeLandingGrid.md).                                                                        |
+| [isStableLanding](functions/isStableLanding.md)                          | Check whether a lander **stays upright** on a slope: whether its total tilt stays below its tip-over angle.                             |
+| [safeLandingGrid](functions/safeLandingGrid.md)                          | Map where a lander can **touch down safely** on an elevation grid: where it stays upright on the slope and the ground is smooth enough. |
+| [tipOverAngle](functions/tipOverAngle.md)                                | Compute the **tip-over angle** of a lander: the tilt at which its centre of mass passes over the edge of its footprint.                 |
 
 ## Terrain
 
