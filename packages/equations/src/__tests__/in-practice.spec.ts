@@ -1,4 +1,4 @@
-import { MOONS, PLANETS } from '@interstellar-tools/constants';
+import { MOONS, PLANETS, WGS84 } from '@interstellar-tools/constants';
 import type { Cr3bpState, Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
@@ -8,6 +8,8 @@ import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-ano
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
 import { norm2pi } from '../categories/helpers/misc.js';
 import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
+import { eccentricitySquaredOblateSpheroid } from '../categories/cartography/eccentricity-squared-oblate-spheroid.js';
+import { flatteningOblateSpheroid } from '../categories/cartography/flattening-oblate-spheroid.js';
 import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { greatCircleDistance } from '../categories/cartography/great-circle-distance.js';
 import { horizonDistance } from '../categories/cartography/horizon-distance.js';
@@ -545,5 +547,50 @@ describe('In practice values: lunar distances', () => {
     assert.equal(Math.round(horizonDistance(7.8 * 1852, R_MOON)), 224_509);
     assert.equal((horizonDistance(1.8, R_MOON) / 1000).toFixed(1), '2.5');
     assert.equal((horizonDistance(1.8, 6_371_000) / 1000).toFixed(1), '4.8');
+  });
+});
+
+// The datasets' reference ellipsoids (IAU WGCCRE 2015) and WGS 84 with the
+// cartography functions
+describe('Reference ellipsoids with the cartography functions', () => {
+  test('flatteningOblateSpheroid gives WGS 84 its defined 1/298.257223563', () => {
+    const f = flatteningOblateSpheroid(
+      WGS84.equatorialRadius.value,
+      WGS84.polarRadius.value
+    );
+
+    assert.equal((1 / f).toFixed(9), '298.257223563');
+    assert.equal(
+      eccentricitySquaredOblateSpheroid(
+        WGS84.equatorialRadius.value,
+        WGS84.polarRadius.value
+      ).toFixed(14),
+      '0.00669437999014'
+    );
+  });
+
+  test('flatteningOblateSpheroid: Saturn 0.098, Jupiter 0.065, Earth 0.0034, Mars 0.0059', () => {
+    const f = (id: string) => {
+      const { ellipsoid } = PLANETS.find((planet) => planet.id === id)!;
+
+      return flatteningOblateSpheroid(
+        ellipsoid!.equatorialRadius.value,
+        ellipsoid!.polarRadius.value
+      );
+    };
+
+    assert.equal(f('saturn').toFixed(3), '0.098');
+    assert.equal(f('jupiter').toFixed(3), '0.065');
+    assert.equal(f('earth').toFixed(4), '0.0034');
+    assert.equal(f('mars').toFixed(4), '0.0059');
+    assert.equal(f('venus'), 0);
+  });
+
+  test('the Moon is a sphere of 1 737.4 km, as the tutorial assumes', () => {
+    const { ellipsoid, radius } = MOONS.find((moon) => moon.id === 'moon')!;
+
+    assert.equal(ellipsoid!.equatorialRadius.value, 1737.4);
+    assert.equal(ellipsoid!.polarRadius.value, 1737.4);
+    assert.equal(radius.value, 1737.4);
   });
 });

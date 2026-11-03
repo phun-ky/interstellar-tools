@@ -1,3 +1,4 @@
+import type { EllipsoidInterface } from '../cartography.js';
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
@@ -47,6 +48,12 @@ export interface MoonInterface {
   orbit: OrbitInterface;
   /** Physical radius of the moon in kilometres. */
   radius: DistanceInterface;
+  /**
+   * Reference ellipsoid, from the IAU Working Group on Cartographic
+   * Coordinates and Rotational Elements, where it gives one. `radius` is the
+   * mean radius.
+   */
+  ellipsoid?: EllipsoidInterface;
   /**
    * Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s²,
    * as the orbit equations take it. Given where JPL publishes one.
