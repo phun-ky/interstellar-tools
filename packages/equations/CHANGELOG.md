@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.5.0...%40interstellar-tools%2Fequations%401.6.0) (2026-11-03)
+
+### Documentation
+
+* ✏️ Add chapter I of the Apollo 11 tutorial: leaving Earth ([328c6d4](https://github.com/phun-ky/interstellar-tools/commit/328c6d4370ce2faf683b92d4878e66a6d80f4fac)), references [#252](https://github.com/phun-ky/interstellar-tools/issues/252) [#265](https://github.com/phun-ky/interstellar-tools/issues/265)
+
+### Feature
+
+* 🎸 Add radii of curvature, central angles and great-circle distance ([4302261](https://github.com/phun-ky/interstellar-tools/commit/43022619076416482cb9ed80a08c4f04d0159f46)), closes [#185](https://github.com/phun-ky/interstellar-tools/issues/185) [#184](https://github.com/phun-ky/interstellar-tools/issues/184)
+* 🎸 Add the circular restricted three-body problem and an RK4 integrator ([ef0d191](https://github.com/phun-ky/interstellar-tools/commit/ef0d191eff9422ec8fa709d023a871874deebb9b)), closes [#249](https://github.com/phun-ky/interstellar-tools/issues/249), references [#228](https://github.com/phun-ky/interstellar-tools/issues/228) [#221](https://github.com/phun-ky/interstellar-tools/issues/221)
+* 🎸 Add the distance to the horizon ([9645fbc](https://github.com/phun-ky/interstellar-tools/commit/9645fbcb235595003b687f8bd4f336c11528d781)), closes [#188](https://github.com/phun-ky/interstellar-tools/issues/188)
+
 ## [1.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.4.0...%40interstellar-tools%2Fequations%401.5.0) (2026-11-02)
 
 ### Documentation
