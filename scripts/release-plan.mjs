@@ -129,3 +129,26 @@ export const plan = (entries) => {
 
 /** What to pass to release-it's --increment: the explicit version, or the level. */
 export const incrementFor = ({ releaseAs, level }) => releaseAs ?? level;
+
+/**
+ * The section of a CHANGELOG for one version: from its `## [version]` (or
+ * `## version`) heading up to the next `## ` heading, trimmed. The GitHub
+ * release notes are this section, as release-it would write them. Null when
+ * the version has no section.
+ */
+export const changelogSection = (markdown, version) => {
+  const lines = markdown.split('\n');
+  const start = lines.findIndex(
+    (line) =>
+      line.startsWith(`## [${version}]`) || line.trim() === `## ${version}`
+  );
+
+  if (start < 0) return null;
+
+  const end = lines.findIndex((line, i) => i > start && line.startsWith('## '));
+
+  return lines
+    .slice(start, end < 0 ? undefined : end)
+    .join('\n')
+    .trim();
+};

@@ -135,12 +135,15 @@ npm run release:dry-run
 
 The decisions live in `scripts/release-plan.mjs`, tested by
 `npm run test:scripts`, and `scripts/release.mjs` gathers the commits and runs
-the releases; `release-it` does the version bump, changelog, tag, npm publish
-and GitHub release for each package. After each bump,
-`scripts/sync-lockfile.mjs` updates `package-lock.json`, so every release commit
-includes a matching lockfile. `release-it` handles one package at a time, so it
-can't skip a package with nothing to release or bump dependents on its own. The
-script fills that gap.
+the releases; `release-it` does the version bump, changelog, commit, tag and npm
+publish for each package. Once every package is published, the script merges in
+anything that reached `main` meanwhile (a merge, not a rebase, so the tags stay
+in `main`'s history), pushes `main` and the new tags in one go, and creates the
+GitHub releases from the changelogs. The Publish workflow also runs one release
+at a time. After each bump, `scripts/sync-lockfile.mjs` updates
+`package-lock.json`, so every release commit includes a matching lockfile.
+`release-it` handles one package at a time, so it can't skip a package with
+nothing to release or bump dependents on its own. The script fills that gap.
 
 ## Clean code
 
