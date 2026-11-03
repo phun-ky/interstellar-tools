@@ -8,4 +8,4 @@ const SERVER_NAME: 'interstellar-tools' = 'interstellar-tools';
 ```
 
 Defined in:
-[server.ts:12](https://github.com/phun-ky/interstellar-tools/blob/main/packages/mcp/src/server.ts#L12)
+[server.ts:13](https://github.com/phun-ky/interstellar-tools/blob/main/packages/mcp/src/server.ts#L13)

@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.0.0...%40interstellar-tools%2Fmcp%401.1.0) (2026-11-03)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group across 1 directory with 6 updates ([a1455cf](https://github.com/phun-ky/interstellar-tools/commit/a1455cf5932bf73ffd7b7a9662e010bc04c8a7cd))
+
+### Feature
+
+* 🎸 Add Lambert, state vector and departure tools to the MCP server ([b0191de](https://github.com/phun-ky/interstellar-tools/commit/b0191de73da0f389b750e5e752ebb69db1cc066f))
+
 ## [1.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%400.5.0...%40interstellar-tools%2Fmcp%401.0.0) (2026-10-18)
 
 ### Tasks
