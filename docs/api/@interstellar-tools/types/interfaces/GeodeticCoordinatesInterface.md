@@ -4,7 +4,7 @@ GeodeticCoordinatesInterface
 # Interface: GeodeticCoordinatesInterface
 
 Defined in:
-[cartography.ts:30](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L30)
+[cartography.ts:31](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L31)
 
 A point's **geodetic coordinates** on an oblate body: latitude, longitude and
 height above the reference ellipsoid, in SI units and radians.
@@ -41,7 +41,7 @@ h: number;
 ```
 
 Defined in:
-[cartography.ts:36](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L36)
+[cartography.ts:37](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L37)
 
 Height above the ellipsoid in metres, along its normal.
 
@@ -54,7 +54,7 @@ lambda: Radians;
 ```
 
 Defined in:
-[cartography.ts:34](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L34)
+[cartography.ts:35](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L35)
 
 Longitude in radians, east positive, in (-π, π].
 
@@ -67,6 +67,6 @@ phi: Radians;
 ```
 
 Defined in:
-[cartography.ts:32](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L32)
+[cartography.ts:33](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L33)
 
 Geodetic latitude in radians, in \[-π/2, π/2].

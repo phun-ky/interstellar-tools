@@ -1,3 +1,4 @@
+import type { DistanceInterface } from './distance.js';
 import type { Radians } from './numeric.js';
 
 /**
@@ -34,6 +35,43 @@ export interface GeodeticCoordinatesInterface {
   lambda: Radians;
   /** Height above the ellipsoid in metres, along its normal. */
   h: number;
+}
+
+/**
+ * A body's **reference ellipsoid**: the smooth surface that latitudes,
+ * longitudes and heights are measured on.
+ *
+ * Most planets and large moons are close to an oblate spheroid, flattened at
+ * the poles: `equatorialRadius` and `polarRadius` describe it. A few moons are
+ * stretched towards their planet too, a triaxial ellipsoid: `equatorialRadius`
+ * is then the radius towards the planet, and `alongOrbitRadius` the equatorial
+ * radius along the orbit.
+ *
+ * ::: info
+ *
+ * - For the giant planets, the radii are at the 1-bar pressure level.
+ * - Get the flattening and eccentricity from the radii with
+ *   `flatteningOblateSpheroid` and `eccentricitySquaredOblateSpheroid` in
+ *   `@interstellar-tools/equations`.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * const mars: EllipsoidInterface = {
+ *   equatorialRadius: { value: 3396.19, unit: 'km' },
+ *   polarRadius: { value: 3376.2, unit: 'km' }
+ * };
+ * ```
+ * @group Cartography
+ */
+export interface EllipsoidInterface {
+  /** Equatorial radius $a$; towards the planet, for a triaxial moon. */
+  equatorialRadius: DistanceInterface;
+  /** Polar radius $c$, along the rotation axis. */
+  polarRadius: DistanceInterface;
+  /** Equatorial radius $b$ along the orbit, for a triaxial moon. Omitted when equal to `equatorialRadius`. */
+  alongOrbitRadius?: DistanceInterface;
 }
 
 /**

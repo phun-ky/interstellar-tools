@@ -8,6 +8,8 @@ export * from './date.js';
 
 export * from './distance.js';
 
+export * from './geodesy.js';
+
 export * from './math.js';
 
 export * from './objects.js';

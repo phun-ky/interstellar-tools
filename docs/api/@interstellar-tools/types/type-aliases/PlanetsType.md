@@ -8,6 +8,6 @@ type PlanetsType = PlanetInterface[];
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L96)
+[celestial-bodies/planets.ts:103](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L103)
 
 Type alias for a collection of **planets**.

@@ -44,6 +44,7 @@ npm i --save @interstellar-tools/types
 
 | Interface                                                                  | Description                                                                                                                                  |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| [EllipsoidInterface](interfaces/EllipsoidInterface.md)                     | A body's **reference ellipsoid**: the smooth surface that latitudes, longitudes and heights are measured on.                                 |
 | [GeodeticCoordinatesInterface](interfaces/GeodeticCoordinatesInterface.md) | A point's **geodetic coordinates** on an oblate body: latitude, longitude and height above the reference ellipsoid, in SI units and radians. |
 
 ## Celestial Bodies
