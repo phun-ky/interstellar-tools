@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.1.0...%40interstellar-tools%2Fconstants%401.1.1) (2026-11-03)
+
+### Bug
+
+* 🐛 Use the IAU mean radii for the planets and larger moons ([e91717d](https://github.com/phun-ky/interstellar-tools/commit/e91717d0c0bdc3131eb3eb38479e20665f586a78))
+
 ## [1.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.0.0...%40interstellar-tools%2Fconstants%401.1.0) (2026-11-03)
 
 ### Feature
