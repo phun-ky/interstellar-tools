@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.1.0...%40interstellar-tools%2Fmaps%400.2.0) (2026-11-03)
+
+### Documentation
+
+* ✏️ Add Apollo 11 chapter III, Down to the surface ([ae17981](https://github.com/phun-ky/interstellar-tools/commit/ae17981e57069ac5cb5692d25e886800007d366d))
+
+### Feature
+
+* 🎸 Add a raster grid type for terrain to maps ([35d1e2e](https://github.com/phun-ky/interstellar-tools/commit/35d1e2e01f2cee78087ed00955b3fd6839a64aba)), closes [#182](https://github.com/phun-ky/interstellar-tools/issues/182)
+* 🎸 Add slope and aspect from an elevation grid (Horn's method) ([c2a6ada](https://github.com/phun-ky/interstellar-tools/commit/c2a6ada14bcdbeb29da015801afb0584e5186615)), closes [#194](https://github.com/phun-ky/interstellar-tools/issues/194)
+
 * chore: 🤖 @interstellar-tools/types@1.5.0 (402e4399)
 * Merge pull request #276 from phun-ky/feat/imaging-geometry (5799d035)
 * Merge remote-tracking branch 'origin/main' into feat/imaging-geometry (798611c1)
