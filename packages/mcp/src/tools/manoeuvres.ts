@@ -1,8 +1,13 @@
 import { SECONDS_PER_DAY } from '@interstellar-tools/constants';
 import {
+  characteristicEnergyC3,
+  circularSpeed,
   hohmannTransfer,
+  hyperbolicEccentricity,
+  hyperbolicPeriapsisSpeed,
   planeChangeDeltaV,
-  rocketDeltaVFromIsp
+  rocketDeltaVFromIsp,
+  solveLambert
 } from '@interstellar-tools/equations';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
@@ -12,7 +17,9 @@ import {
   muSchema,
   PURE_TOOL,
   result,
-  toRadians
+  toRadians,
+  vectorOutputSchema,
+  vectorSchema
 } from './shared.js';
 
 const directionSchema = z.enum(['prograde', 'retrograde', 'none']);
@@ -110,5 +117,87 @@ export const registerManoeuvreTools = (server: McpServer) => {
     },
     ({ v_m_s, delta_i }) =>
       result({ dv_m_s: planeChangeDeltaV(v_m_s, toRadians(delta_i)) })
+  );
+
+  server.registerTool(
+    'solve_lambert',
+    {
+      title: 'Lambert’s problem',
+      description:
+        'Find the orbit from position r1 to position r2 in time dt (Lambert’s problem), single revolution, for ellipses and hyperbolas alike. Returns the velocities at both ends. Positions are in an inertial frame centred on the body. For the burns, subtract the velocity of the orbit you leave from v1, and v2 from the velocity of the orbit you join. Positions 0° or 180° apart are an error: the transfer plane is undefined. Feed v1 to state_to_elements for the transfer orbit.',
+      inputSchema: {
+        r1_m: vectorSchema('Start position [x, y, z], in metres.'),
+        r2_m: vectorSchema('End position [x, y, z], in metres.'),
+        dt_s: z.number().positive().describe('Time of flight, in seconds.'),
+        mu_m3_s2: muSchema,
+        prograde: z
+          .boolean()
+          .default(true)
+          .describe(
+            'true (default): fly counterclockwise seen from +z. false: clockwise.'
+          )
+      },
+      outputSchema: {
+        v1_m_s: vectorOutputSchema,
+        v2_m_s: vectorOutputSchema,
+        speed1_m_s: z.number(),
+        speed2_m_s: z.number()
+      },
+      annotations: PURE_TOOL
+    },
+    ({ r1_m, r2_m, dt_s, mu_m3_s2, prograde }) => {
+      const { v1, v2 } = solveLambert(r1_m, r2_m, dt_s, mu_m3_s2, {
+        prograde
+      });
+
+      return result({
+        v1_m_s: v1,
+        v2_m_s: v2,
+        speed1_m_s: Math.hypot(...v1),
+        speed2_m_s: Math.hypot(...v2)
+      });
+    }
+  );
+
+  server.registerTool(
+    'hyperbolic_departure',
+    {
+      title: 'Hyperbolic departure or capture',
+      description:
+        'The burn from a circular parking orbit of radius rp onto the hyperbola that leaves the body with excess speed v∞, made at periapsis. The same Δv captures an arriving v∞ into that circular orbit. Also returns C3 = v∞², the launch-energy figure, and the hyperbola’s eccentricity. For an interplanetary transfer, v∞ is the difference between the planet’s velocity and the transfer orbit’s (from solve_lambert).',
+      inputSchema: {
+        v_inf_m_s: z
+          .number()
+          .positive()
+          .describe('Hyperbolic excess speed v∞, in m/s.'),
+        rp_m: z
+          .number()
+          .positive()
+          .describe(
+            'Periapsis radius, the parking orbit’s radius from the body’s centre, in metres.'
+          ),
+        mu_m3_s2: muSchema
+      },
+      outputSchema: {
+        vp_m_s: z.number(),
+        v_circular_m_s: z.number(),
+        dv_m_s: z.number(),
+        c3_m2_s2: z.number(),
+        e: z.number()
+      },
+      annotations: PURE_TOOL
+    },
+    ({ v_inf_m_s, rp_m, mu_m3_s2 }) => {
+      const vp = hyperbolicPeriapsisSpeed(v_inf_m_s, rp_m, mu_m3_s2);
+      const vc = circularSpeed(rp_m, mu_m3_s2);
+
+      return result({
+        vp_m_s: vp,
+        v_circular_m_s: vc,
+        dv_m_s: vp - vc,
+        c3_m2_s2: characteristicEnergyC3(v_inf_m_s),
+        e: hyperbolicEccentricity(v_inf_m_s, rp_m, mu_m3_s2)
+      });
+    }
   );
 };

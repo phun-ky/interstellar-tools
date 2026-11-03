@@ -21,6 +21,15 @@ export const angleSchema = z
 
 export type AngleInputType = z.infer<typeof angleSchema>;
 
+/** A 3D vector input, such as a position or a velocity. */
+export const vectorSchema = (description: string) =>
+  z
+    .tuple([z.number().finite(), z.number().finite(), z.number().finite()])
+    .describe(description);
+
+/** A 3D vector output. */
+export const vectorOutputSchema = z.tuple([z.number(), z.number(), z.number()]);
+
 /** Angle output carrying both radians and degrees. */
 export const angleOutputSchema = z.object({
   rad: z.number(),

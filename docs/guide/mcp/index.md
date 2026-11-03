@@ -18,23 +18,27 @@ tested equations instead of recalling a number that looks plausible.
 
 ## What your assistant gets
 
-| Tool                         | What it computes                                     |
-| ---------------------------- | ---------------------------------------------------- |
-| `gravitational_parameter`    | μ = G·(M + m) from masses                            |
-| `circular_speed`             | Circular orbit speed at radius r                     |
-| `escape_speed`               | Escape speed at radius r                             |
-| `vis_viva_speed`             | Speed at radius r on an orbit with semi-major axis a |
-| `kepler_period`              | Orbital period from semi-major axis                  |
-| `peri_apoapsis_radii`        | Periapsis and apoapsis radii from a and e            |
-| `sphere_of_influence_radius` | Laplace sphere of influence                          |
-| `hohmann_transfer`           | Both burns, total Δv and transfer time               |
-| `rocket_delta_v`             | Tsiolkovsky rocket equation from Isp and masses      |
-| `plane_change_delta_v`       | Δv for a pure inclination change                     |
-| `solve_kepler`               | Eccentric anomaly from mean anomaly                  |
-| `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly                      |
-| `convert_time`               | Durations from attoseconds to gigayears              |
-| `convert_distance`           | Distances from metres to gigaparsecs                 |
-| `find_body`                  | Planets, moons, stars, comets and more, by name      |
+| Tool                         | What it computes                                                |
+| ---------------------------- | --------------------------------------------------------------- |
+| `gravitational_parameter`    | μ = G·(M + m) from masses                                       |
+| `circular_speed`             | Circular orbit speed at radius r                                |
+| `escape_speed`               | Escape speed at radius r                                        |
+| `vis_viva_speed`             | Speed at radius r on an orbit with semi-major axis a            |
+| `kepler_period`              | Orbital period from semi-major axis                             |
+| `peri_apoapsis_radii`        | Periapsis and apoapsis radii from a and e                       |
+| `sphere_of_influence_radius` | Laplace sphere of influence                                     |
+| `state_to_elements`          | Orbital elements from a position and velocity                   |
+| `elements_to_state`          | Position and velocity from orbital elements                     |
+| `hohmann_transfer`           | Both burns, total Δv and transfer time                          |
+| `rocket_delta_v`             | Tsiolkovsky rocket equation from Isp and masses                 |
+| `plane_change_delta_v`       | Δv for a pure inclination change                                |
+| `solve_lambert`              | Velocities for a transfer between two positions in a given time |
+| `hyperbolic_departure`       | Δv, C3 and eccentricity to leave or be captured with a given v∞ |
+| `solve_kepler`               | Eccentric anomaly from mean anomaly                             |
+| `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly                                 |
+| `convert_time`               | Durations from attoseconds to gigayears                         |
+| `convert_distance`           | Distances from metres to gigaparsecs                            |
+| `find_body`                  | Planets, moons, stars, comets and more, by name                 |
 
 The names follow a few rules, so there is no room for kilometre/metre or
 degree/radian mix-ups:

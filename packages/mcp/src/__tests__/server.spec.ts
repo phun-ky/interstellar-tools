@@ -62,16 +62,20 @@ describe('tool listing', () => {
       'convert_anomaly',
       'convert_distance',
       'convert_time',
+      'elements_to_state',
       'escape_speed',
       'find_body',
       'gravitational_parameter',
       'hohmann_transfer',
+      'hyperbolic_departure',
       'kepler_period',
       'peri_apoapsis_radii',
       'plane_change_delta_v',
       'rocket_delta_v',
       'solve_kepler',
+      'solve_lambert',
       'sphere_of_influence_radius',
+      'state_to_elements',
       'vis_viva_speed'
     ]);
   });
@@ -158,6 +162,126 @@ describe('manoeuvre tools', () => {
     });
 
     approx(res.structuredContent!.dv_m_s, 300 * 9.80665, 1e-6);
+  });
+});
+
+describe('transfer tools', () => {
+  test('solve_lambert matches Curtis, Example 5.2', async () => {
+    const res = await call('solve_lambert', {
+      r1_m: [5_000_000, 10_000_000, 2_100_000],
+      r2_m: [-14_600_000, 2_500_000, 7_000_000],
+      dt_s: 3600,
+      mu_m3_s2: 3.986e14
+    });
+    const { v1_m_s, v2_m_s, speed1_m_s } = res.structuredContent!;
+    const book1 = [-5992.5, 1925.4, 3245.6];
+    const book2 = [-3312.5, -4196.6, -385.29];
+
+    for (let i = 0; i < 3; i++) {
+      approx(v1_m_s[i], book1[i]!, 0.1);
+      approx(v2_m_s[i], book2[i]!, 0.1);
+    }
+
+    approx(speed1_m_s, Math.hypot(...book1), 0.1);
+  });
+
+  test('solve_lambert goes the other way round with prograde: false', async () => {
+    const args = {
+      r1_m: [7e6, 0, 0],
+      r2_m: [0, 9e6, 0],
+      dt_s: 20_000,
+      mu_m3_s2: MU_EARTH
+    };
+    const pro = (await call('solve_lambert', args)).structuredContent!;
+    const retro = (await call('solve_lambert', { ...args, prograde: false }))
+      .structuredContent!;
+
+    assert.ok(pro.v1_m_s[1] > 0);
+    assert.ok(retro.v1_m_s[1] < 0);
+  });
+
+  test('solve_lambert reports a 180° transfer as an error', async () => {
+    const res = await call('solve_lambert', {
+      r1_m: [7e6, 0, 0],
+      r2_m: [-9e6, 0, 0],
+      dt_s: 3600,
+      mu_m3_s2: MU_EARTH
+    });
+
+    assert.equal(res.isError, true);
+    assert.match(res.content[0]!.text!, /180°/);
+  });
+
+  test('hyperbolic_departure from LEO at v∞ 3 km/s', async () => {
+    const rp = R_EARTH + 300e3;
+    const res = await call('hyperbolic_departure', {
+      v_inf_m_s: 3000,
+      rp_m: rp,
+      mu_m3_s2: MU_EARTH
+    });
+    const out = res.structuredContent!;
+    const vp = Math.sqrt(3000 ** 2 + (2 * MU_EARTH) / rp);
+
+    approx(out.vp_m_s, vp, 1e-6);
+    approx(out.v_circular_m_s, Math.sqrt(MU_EARTH / rp), 1e-6);
+    approx(out.dv_m_s, vp - Math.sqrt(MU_EARTH / rp), 1e-6);
+    approx(out.c3_m2_s2, 9e6, 1e-6);
+    approx(out.e, 1 + (rp * 3000 ** 2) / MU_EARTH, 1e-12);
+  });
+});
+
+describe('state vector tools', () => {
+  const elements = {
+    a_m: 8_000_000,
+    e: 0.1,
+    i: { value: 30, unit: 'deg' },
+    raan: { value: 40, unit: 'deg' },
+    argp: { value: 60, unit: 'deg' },
+    nu: { value: 20, unit: 'deg' },
+    mu_m3_s2: MU_EARTH
+  };
+
+  test('elements_to_state and state_to_elements round-trip', async () => {
+    const state = (await call('elements_to_state', elements))
+      .structuredContent!;
+    const back = (
+      await call('state_to_elements', {
+        r_m: state.r_m,
+        v_m_s: state.v_m_s,
+        mu_m3_s2: MU_EARTH
+      })
+    ).structuredContent!;
+
+    approx(back.a_m, 8_000_000, 1e-3);
+    approx(back.e, 0.1, 1e-12);
+
+    for (const key of ['i', 'raan', 'argp', 'nu'] as const)
+      approx(back[key].deg, elements[key].value, 1e-9);
+
+    approx(back.rp_m, 7_200_000, 1e-3);
+    approx(back.energy_m2_s2, -MU_EARTH / 16e6, 1e-6);
+    approx(back.T_s, 2 * Math.PI * Math.sqrt(8e6 ** 3 / MU_EARTH), 1e-6);
+  });
+
+  test('state_to_elements gives no period for a hyperbola', async () => {
+    const r = R_EARTH + 300e3;
+    const res = await call('state_to_elements', {
+      r_m: [r, 0, 0],
+      v_m_s: [0, 12_000, 0],
+      mu_m3_s2: MU_EARTH
+    });
+    const out = res.structuredContent!;
+
+    assert.ok(out.e > 1);
+    assert.ok(out.a_m < 0);
+    approx(out.rp_m, r, 1e-3);
+    assert.equal(out.T_s, undefined);
+  });
+
+  test('elements_to_state rejects a parabola', async () => {
+    const res = await call('elements_to_state', { ...elements, e: 1 });
+
+    assert.equal(res.isError, true);
   });
 });
 
