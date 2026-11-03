@@ -19,6 +19,8 @@ export * from './imaging/swath-width.js';
 
 export * from './landing/is-stable-landing.js';
 
+export * from './landing/safe-landing-grid.js';
+
 export * from './landing/tip-over-angle.js';
 
 // terrain
