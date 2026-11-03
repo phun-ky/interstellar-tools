@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.3.0...%40interstellar-tools%2Ftypes%401.4.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add reference ellipsoids for the planets and larger moons ([631009a](https://github.com/phun-ky/interstellar-tools/commit/631009a8ecd7f07bb51deff3341078006d33ae08)), closes [#183](https://github.com/phun-ky/interstellar-tools/issues/183)
+
 ## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.2.0...%40interstellar-tools%2Ftypes%401.3.0) (2026-11-03)
 
 ### Feature

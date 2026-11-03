@@ -97,6 +97,10 @@ time.
   },
   /** Radius in km */
   radius: { value: 1737.4, unit: 'km' },
+  ellipsoid: {
+    equatorialRadius: { value: 1737.4, unit: 'km' },
+    polarRadius: { value: 1737.4, unit: 'km' }
+  },
   mu: 4.902800118e12,
   display: {
     /** Visual representation color */
