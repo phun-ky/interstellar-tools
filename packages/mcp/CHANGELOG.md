@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.1.0...%40interstellar-tools%2Fmcp%401.2.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add MCP tools for geodesy and map projections ([aebb0af](https://github.com/phun-ky/interstellar-tools/commit/aebb0afc17bd7fc641eabacfafec0f2237eddbc5)), closes [#203](https://github.com/phun-ky/interstellar-tools/issues/203)
+
 ## [1.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.0.0...%40interstellar-tools%2Fmcp%401.1.0) (2026-11-03)
 
 ### Tasks
