@@ -52,3 +52,7 @@ export * from './projections/coordinates.js';
 export * from './projections/equirectangular.js';
 
 export * from './projections/mercator.js';
+
+export * from './projections/mollweide.js';
+
+export * from './projections/sinusoidal.js';
