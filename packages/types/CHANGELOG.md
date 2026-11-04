@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.6.0...%40interstellar-tools%2Ftypes%401.7.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the mean elements type for TLEs and OMMs ([f45704f](https://github.com/phun-ky/interstellar-tools/commit/f45704fac2cff855e8fdee6374592974ec776fec))
+
 ## [1.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.5.1...%40interstellar-tools%2Ftypes%401.6.0) (2026-11-04)
 
 ### Tasks
