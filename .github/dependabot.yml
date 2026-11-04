@@ -25,3 +25,18 @@ updates:
     allow:
       - dependency-type: direct
       - dependency-type: production
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    # Keeps the pinned action SHAs and their version comments current. Major
+    # updates are not grouped, so each one gets its own PR
+    groups:
+      minor-and-patch:
+        update-types:
+          - 'minor'
+          - 'patch'
+    schedule:
+      interval: 'weekly'
+    labels:
+      - 'mindless: 📦 dependencies'
+    commit-message:
+      prefix: 'chore: 🤖 '

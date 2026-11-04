@@ -4,11 +4,13 @@ name: Checks
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Triggers the workflow on pushes to main that touch these paths, and on every
+  # pull request to main
   push:
     branches: ['main']
     paths:
       - '.github/**'
+      - '.githooks/**'
       - 'packages/**'
       - 'docs/**'
       - 'scripts/**'
@@ -31,33 +33,11 @@ on:
       - 'eslint.config.mjs'
       - 'typedoc.json'
       - '.prettierrc'
+  # No path filter on pull requests: check is a required status, so it must
+  # run on every PR, or one touching only unlisted files could never merge
   pull_request:
     branches: ['main']
     types: [opened, synchronize] # Workflow triggering events
-    paths:
-      - '.github/**'
-      - 'packages/**'
-      - 'docs/**'
-      - 'scripts/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'tsconfig.base.json'
-      - 'tsconfig.json'
-      - '.npmrc'
-      - '.release-it.json'
-      - 'README.md'
-      - 'CONTRIBUTING.md'
-      - 'CODE_OF_CONDUCT.md'
-      - 'SECURITY.md'
-      - 'GOVERNANCE.md'
-      - 'ROADMAP.md'
-      - 'ASSURANCE.md'
-      - '.bestpractices.json'
-      - 'security-insights.yml'
-      - '.browserslistrc'
-      - 'eslint.config.mjs'
-      - 'typedoc.json'
-      - '.prettierrc'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
