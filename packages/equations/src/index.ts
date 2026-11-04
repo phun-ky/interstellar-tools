@@ -49,6 +49,8 @@ export * from './categories/cartography/prime-vertical-radius-of-curvature.js';
 
 export * from './categories/cartography/spherical-polygon-area.js';
 
+export * from './categories/cartography/sun-position.js';
+
 // categories/entry
 
 export * from './categories/entry/ballistic-coefficient.js';
