@@ -8,7 +8,7 @@ const TIME_SCALE_UTC: 'UTC';
 ```
 
 Defined in:
-[date.ts:13](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L13)
+[date.ts:15](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L15)
 
 Time-scale tags used in this package.
 

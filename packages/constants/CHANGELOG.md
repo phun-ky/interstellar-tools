@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.1.1...%40interstellar-tools%2Fconstants%401.2.0) (2026-11-04)
+
+### Tasks
+
+* 🤖 Align with the shared repo brief decisions of 2026-10-23 ([645799b](https://github.com/phun-ky/interstellar-tools/commit/645799be19bebdb956ec6eca38269f037dd14cd1)), references [#237](https://github.com/phun-ky/interstellar-tools/issues/237)
+
+### Feature
+
+* 🎸 Add Julian dates and time scales to temporal ([f423242](https://github.com/phun-ky/interstellar-tools/commit/f423242db15227a8ba9f3e349b241f8623aa0ea8)), closes [#208](https://github.com/phun-ky/interstellar-tools/issues/208)
+
 ## [1.1.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.1.0...%40interstellar-tools%2Fconstants%401.1.1) (2026-11-03)
 
 ### Bug

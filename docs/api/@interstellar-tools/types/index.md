@@ -112,10 +112,12 @@ npm i --save @interstellar-tools/types
 
 | Name                                                           | Description                                                                                                                                                                                                |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [LeapSecondInterface](interfaces/LeapSecondInterface.md)       | One step in the **leap second table**: the offset TAI − UTC from a given UTC day on.                                                                                                                       |
 | [TemporalInterface](interfaces/TemporalInterface.md)           | Typed container for a scalar **duration**, combining a numeric `value` (from [ValueInterface](interfaces/ValueInterface.md)) with a canonical [TemporalUnitType](type-aliases/TemporalUnitType.md) `unit`. |
 | [TimeStepInterface](interfaces/TimeStepInterface.md)           | Represents a **time step measurement** in simulation, restricted to days.                                                                                                                                  |
 | [TemporalUnitAliasType](type-aliases/TemporalUnitAliasType.md) | Human-friendly **temporal unit aliases** accepted at input time.                                                                                                                                           |
 | [TemporalUnitType](type-aliases/TemporalUnitType.md)           | Canonical **temporal unit symbols** for spacetime/physics **durations**.                                                                                                                                   |
+| [TimeScaleType](type-aliases/TimeScaleType.md)                 | A **time scale**: the clock a moment is read on.                                                                                                                                                           |
 
 ## Three-body
 
