@@ -19,6 +19,8 @@ export * from './categories/cartography/central-angle.js';
 
 export * from './categories/cartography/central-angle-from-vectors.js';
 
+export * from './categories/cartography/earth-rotation.js';
+
 export * from './categories/cartography/eccentricity-squared-oblate-spheroid.js';
 
 export * from './categories/cartography/flattening-oblate-spheroid.js';
