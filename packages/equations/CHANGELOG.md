@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.11.1...%40interstellar-tools%2Fequations%401.12.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Find the Sun's position ([031afb9](https://github.com/phun-ky/interstellar-tools/commit/031afb9ad9c100bd5ef76186d82239b3db5976fa)), references [#215](https://github.com/phun-ky/interstellar-tools/issues/215)
+
 ## [1.11.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.11.0...%40interstellar-tools%2Fequations%401.11.1) (2026-11-04)
 
 ### Bug

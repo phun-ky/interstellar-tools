@@ -101,6 +101,7 @@ orbits, angles, solve for kelper or find true anomalies.
 | [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.                                                                                                                        |
 | [primeVerticalRadiusOfCurvature](functions/primeVerticalRadiusOfCurvature.md)       | Compute the **prime vertical radius of curvature** $N$ of an oblate spheroid at a geodetic latitude.                                                                                                            |
 | [sphericalPolygonArea](functions/sphericalPolygonArea.md)                           | Compute the **area of a polygon on a sphere**, such as an instrument footprint or a region on a planet, from its corner points.                                                                                 |
+| [sunPosition](functions/sunPosition.md)                                             | Compute the **Sun's position** seen from Earth's centre at a moment: right ascension, declination and distance, with the low-precision formulas of the Astronomical Almanac.                                    |
 
 ## Entry
 
