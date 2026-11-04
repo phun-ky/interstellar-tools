@@ -74,7 +74,7 @@ img {
   width: 100%;
   height: auto;
   max-height: 70vh;
-  object-fit: contain;
+  object-fit: cover;
   background: var(--mc-bg-3);
   border: 1px solid var(--mc-line);
   border-radius: 4px;
