@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.9.0...%40interstellar-tools%2Fequations%401.10.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the height above a sphere and above an ellipsoid to equations ([47e7161](https://github.com/phun-ky/interstellar-tools/commit/47e71617b9804f3d860a8bc784ed4bfb253e0abb)), closes [#187](https://github.com/phun-ky/interstellar-tools/issues/187)
+
 ## [1.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.8.1...%40interstellar-tools%2Fequations%401.9.0) (2026-11-04)
 
 ### Feature
