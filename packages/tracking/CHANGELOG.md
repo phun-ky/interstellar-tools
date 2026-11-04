@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.1.0...%40interstellar-tools%2Ftracking%400.2.0) (2026-11-04)
+
+### Tasks
+
+* 🤖 Release @interstellar-tools/tracking from CI ([0a60ef4](https://github.com/phun-ky/interstellar-tools/commit/0a60ef47ad256bef0b6b256a6ee074d34d6b6ce0)), closes [#207](https://github.com/phun-ky/interstellar-tools/issues/207)
+
+### Feature
+
+* 🎸 Find the look angles to a satellite from a ground observer ([74169c0](https://github.com/phun-ky/interstellar-tools/commit/74169c0ccfc7d2067ed03cb11a9d25af78bb1d4d)), references [#213](https://github.com/phun-ky/interstellar-tools/issues/213)
+
 ## 0.1.0 (2026-11-04)
 
 The first release, published by hand so npm trusted publishing could be set up
