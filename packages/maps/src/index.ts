@@ -51,8 +51,14 @@ export * from './projections/coordinates.js';
 
 export * from './projections/equirectangular.js';
 
+export * from './projections/lambert-azimuthal-equal-area.js';
+
 export * from './projections/mercator.js';
 
 export * from './projections/mollweide.js';
 
+export * from './projections/orthographic.js';
+
 export * from './projections/sinusoidal.js';
+
+export * from './projections/stereographic.js';

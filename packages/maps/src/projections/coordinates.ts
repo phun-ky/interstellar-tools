@@ -33,3 +33,15 @@ export interface ProjectionOptionsInterface {
   /** The central meridian $ \lambda_0 $, the longitude at the map's centre line, in **radians** (finite). Defaults to 0. */
   lambda0?: Radians;
 }
+
+/**
+ * Where an azimuthal map is centred, for {@link lambertAzimuthalEqualArea}, {@link stereographic} and {@link orthographic}.
+ *
+ * @group Projections
+ */
+export interface AzimuthalOptionsInterface {
+  /** Longitude of the map's centre $ \lambda_0 $, in **radians** (finite). Defaults to 0. */
+  lambda0?: Radians;
+  /** Latitude of the map's centre $ \varphi_0 $, in **radians** (in [−π/2, π/2]). Defaults to 0, the equator; ±π/2 gives a polar map. */
+  phi0?: Radians;
+}
