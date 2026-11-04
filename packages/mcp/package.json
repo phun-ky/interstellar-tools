@@ -60,8 +60,8 @@
     "@interstellar-tools/maps": "^0.11.0",
     "@interstellar-tools/temporal": "^1.0.0",
     "@interstellar-tools/types": "^1.0.0",
-    "@modelcontextprotocol/sdk": "1.32.2",
-    "zod": "4.6.7"
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
