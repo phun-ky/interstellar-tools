@@ -53,6 +53,14 @@ It matches the verification set of Vallado et al. (2006), _Revisiting Spacetrack
 Report #3_, to a millimetre. For orbits of 225 minutes or more it runs as SDP4,
 with the pull of the Moon and Sun.
 
+And find the point on Earth under the satellite, on the WGS 84 ellipsoid:
+
+```ts
+import { subSatellitePoint } from '@interstellar-tools/tracking';
+
+const { phi, lambda, h } = subSatellitePoint(iss, new Date());
+```
+
 ## What's planned
 
 The

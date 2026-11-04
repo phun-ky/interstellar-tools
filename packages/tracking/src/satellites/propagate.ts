@@ -1,4 +1,7 @@
-import { julianDate } from '@interstellar-tools/temporal';
+import {
+  JULIAN_DATE_UNIX_EPOCH,
+  MILLISECONDS_PER_DAY
+} from '@interstellar-tools/constants';
 import type {
   MeanElementsInterface,
   StateVectorInterface
@@ -155,8 +158,13 @@ export const propagate = (
   // Check the elements before reading their epoch
   modelFor(elements);
 
-  return propagateMinutes(
-    elements,
-    (julianDate(date) - elements.epochJulianDate) * 1440
-  );
+  if (!(date instanceof Date) || !Number.isFinite(date.getTime()))
+    throw new TypeError(`date must be a valid Date. Received: ${String(date)}`);
+
+  // Subtract in Unix ms: a Julian date only resolves 40 µs, and the difference
+  // of two would jump by that much from one millisecond to the next
+  const epochMs =
+    (elements.epochJulianDate - JULIAN_DATE_UNIX_EPOCH) * MILLISECONDS_PER_DAY;
+
+  return propagateMinutes(elements, (date.getTime() - epochMs) / 60_000);
 };
