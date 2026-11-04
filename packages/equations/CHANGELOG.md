@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.8.1...%40interstellar-tools%2Fequations%401.9.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the area of a polygon on a sphere to equations ([3c65537](https://github.com/phun-ky/interstellar-tools/commit/3c65537ed51ac65e8c5d76845cc2117d3504810f)), closes [#189](https://github.com/phun-ky/interstellar-tools/issues/189)
+
 ## [1.8.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.8.0...%40interstellar-tools%2Fequations%401.8.1) (2026-11-03)
 
 ### Bug
