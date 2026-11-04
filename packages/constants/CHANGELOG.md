@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.2.0...%40interstellar-tools%2Fconstants%401.2.1) (2026-11-04)
+
+### Bug
+
+* 🐛 Require the sibling versions that hold the APIs each package uses ([c42d4eb](https://github.com/phun-ky/interstellar-tools/commit/c42d4ebcf7eafa745ddf1e71e0313b8c68a5a49c))
+
 ## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.1.1...%40interstellar-tools%2Fconstants%401.2.0) (2026-11-04)
 
 ### Tasks
