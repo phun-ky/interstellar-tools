@@ -13,7 +13,7 @@ function inverseSinusoidal(
 ```
 
 Defined in:
-[projections/sinusoidal.ts:118](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L118)
+[projections/sinusoidal.ts:119](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L119)
 
 Find the point on a sphere for a point on a **sinusoidal** map: the inverse of
 [sinusoidal](sinusoidal.md).
