@@ -41,6 +41,8 @@ export * from './categories/cartography/planetographic-latitude-oblate.js';
 
 export * from './categories/cartography/prime-vertical-radius-of-curvature.js';
 
+export * from './categories/cartography/spherical-polygon-area.js';
+
 // categories/entry
 
 export * from './categories/entry/ballistic-coefficient.js';
