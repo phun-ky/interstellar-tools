@@ -120,3 +120,49 @@ export interface LookAnglesInterface {
   /** Rate of change of the distance in m/s: negative approaching, positive leaving. */
   rangeRate: number;
 }
+
+/**
+ * One **pass** of a satellite over an observer: when it rises above the
+ * horizon, when it's highest, and when it sets.
+ *
+ * Returned by `predictPasses` in `@interstellar-tools/tracking`.
+ *
+ * ::: info
+ *
+ * - Rise and set are where the elevation crosses the minimum asked for, 0 by
+ *   default: the horizon.
+ * - Azimuths run clockwise from north, as in `LookAnglesInterface`.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // A pass of the ISS, low in the south
+ * const pass: SatellitePassInterface = {
+ *   rise: new Date('2026-11-04T16:41:12Z'),
+ *   riseAzimuth: 4.36 as Radians,
+ *   culmination: new Date('2026-11-04T16:45:30Z'),
+ *   culminationAzimuth: 3.31 as Radians,
+ *   maxElevation: 0.29 as Radians,
+ *   set: new Date('2026-11-04T16:49:51Z'),
+ *   setAzimuth: 2.21 as Radians
+ * };
+ * ```
+ * @group Tracking
+ */
+export interface SatellitePassInterface {
+  /** When the satellite rises above the minimum elevation. */
+  rise: Date;
+  /** Azimuth at rise in radians, clockwise from north. */
+  riseAzimuth: Radians;
+  /** When the satellite is highest. */
+  culmination: Date;
+  /** Azimuth at culmination in radians, clockwise from north. */
+  culminationAzimuth: Radians;
+  /** The highest elevation in radians, at culmination. */
+  maxElevation: Radians;
+  /** When the satellite sets below the minimum elevation. */
+  set: Date;
+  /** Azimuth at set in radians, clockwise from north. */
+  setAzimuth: Radians;
+}

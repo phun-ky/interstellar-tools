@@ -12,3 +12,5 @@ export * from './satellites/propagate.js';
 export * from './satellites/earth-fixed.js';
 
 export * from './satellites/look-angles.js';
+
+export * from './satellites/passes.js';
