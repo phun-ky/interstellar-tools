@@ -44,6 +44,21 @@ science, education, and industry need trustworthy, well-typed primitives.
 accelerate that shift: precise functions, clear docs, and strong types that make
 orbital and mission software easier to build and easier to verify.
 
+<DocPhoto
+  src="about/pale-blue-dot-revisited.webp"
+  alt="A dark blue field crossed by pale bands of scattered sunlight, with Earth a single faint point beside the brightest one"
+  :width="1600"
+  :height="1583"
+  credit="NASA/JPL-Caltech"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Pale_Blue_Dot_from_Voyager_1_-_PIA23645.png">
+
+Pale Blue Dot Revisited: Voyager 1's 1990 photo of Earth from 6 billion km,
+reprocessed in 2020. Earth is the faint dot just right of the bright band,
+halfway down.
+
+</DocPhoto>
+
 ## Sustainable Development Goals
 
 Space is part of how the world works towards the United Nations'

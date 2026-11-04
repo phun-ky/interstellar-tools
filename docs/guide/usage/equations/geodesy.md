@@ -224,11 +224,40 @@ the ellipsoid, or the areoid on Mars.
 
 :::
 
+<DocPhoto
+  src="geodesy/geoid.webp"
+  alt="A globe coloured by geoid height, lumpy and exaggerated, with highs in red and lows in blue"
+  :width="1600"
+  :height="1600"
+  credit="NASA Scientific Visualization Studio"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:The_Geoid_(SVS5660).png">
+
+The geoid, Earth's equipotential surface, from satellite gravity data. Its
+height above the ellipsoid is exaggerated thousands of times here; in reality it
+stays within about 100 m.
+
+</DocPhoto>
+
 ## Horizons and footprints
 
 How far can that orbiter see? `horizonDistance(h, R)` is the straight line of
 sight to the horizon, and `horizonSurfaceDistance(h, R)` the distance along the
 ground to it.
+
+<DocPhoto
+  src="geodesy/earth-limb-iss.webp"
+  alt="Earth's curved horizon from orbit, with the thin blue band of the atmosphere above clouds and ocean"
+  :width="1600"
+  :height="1067"
+  credit="NASA Johnson Space Center"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Iss064e006316_(Nov_21,_2020)_---_Earth%27s_limb,_or_horizon,_is_pictured_from_the_International_Space_Station_as_it_orbited_above_the_Pacific_Ocean_off_the_coast_of_Chile.jpg">
+
+The horizon from the International Space Station, about 420 km up, over the
+Pacific off Chile.
+
+</DocPhoto>
 
 <figure class="guide-figure">
 <svg viewBox="0 0 640 200" role="img" aria-labelledby="hor-title hor-desc" xmlns="http://www.w3.org/2000/svg">

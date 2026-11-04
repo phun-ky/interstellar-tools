@@ -12,6 +12,20 @@ for.
   `safeLandingGrid`, `greatCircleDistance`, `PLANETS`
 - **Time:** about 15 minutes
 
+<DocPhoto
+  src="mars/perseverance-parachute.webp"
+  alt="A small white parachute and the spacecraft beneath it, against the reddish surface of Mars"
+  :width="1600"
+  :height="902"
+  credit="NASA/JPL-Caltech/University of Arizona"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:HiRISE_Captured_Perseverance_During_Descent_to_Mars.jpg">
+
+Perseverance under its parachute on 18 February 2021, photographed by HiRISE
+from orbit as it descended to Jezero.
+
+</DocPhoto>
+
 ## 1. A piece of the delta front
 
 The terrain comes from a digital terrain model (DTM) made by the HiRISE camera
@@ -226,6 +240,22 @@ Across 63 m, the curve of Mars hardly matters: on the flat grid, the distance is
 $\sqrt{(3 \times 19.83)^2 + 20.19^2} = 62.8$ m. The great-circle distance earns
 its keep over longer distances, like the 2.1 km to Perseverance, or across the
 planet.
+
+<DocPhoto
+  src="mars/perseverance-components.webp"
+  alt="Rippled ground and two craters on the floor of Jezero crater, seen from orbit"
+  :width="1600"
+  :height="878"
+  credit="NASA/JPL-Caltech/University of Arizona"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Perseverance_and_Mars_2020_Spacecraft_Components_on_the_Surface.jpg">
+
+Jezero from HiRISE after the landing. The rover, its heat shield, back shell and
+parachute, and the descent stage's crash site are all in this frame, kilometres
+apart, but only a few pixels across at this size: open the full image to find
+them.
+
+</DocPhoto>
 
 ## 7. Try it yourself
 
