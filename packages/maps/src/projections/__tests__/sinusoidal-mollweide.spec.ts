@@ -107,6 +107,20 @@ for (const [name, project, inverse] of [
       }
     });
 
+    test('round-trips the poles on any sphere, allowing for rounding', () => {
+      fc.assert(
+        fc.property(radius, longitude, (R, lambda0) => {
+          for (const pole of [Math.PI / 2, -Math.PI / 2]) {
+            const { x, y } = project(pole as Radians, 0 as Radians, R, {
+              lambda0
+            });
+
+            close(inverse(x, y, R, { lambda0 }).phi, pole, 1e-15);
+          }
+        })
+      );
+    });
+
     test('throws off the map and on bad inputs', () => {
       const edge = project(rad(30), rad(180), 1);
 
