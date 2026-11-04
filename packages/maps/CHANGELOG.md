@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.9.0...%40interstellar-tools%2Fmaps%400.10.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the Lambert azimuthal equal-area, stereographic and orthographic projections to maps ([e696cd8](https://github.com/phun-ky/interstellar-tools/commit/e696cd853965608efda07d99e1c9b01a4ae8edd2)), closes [#192](https://github.com/phun-ky/interstellar-tools/issues/192)
+
 ## [0.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.8.0...%40interstellar-tools%2Fmaps%400.9.0) (2026-11-04)
 
 ### Feature
