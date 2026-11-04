@@ -153,3 +153,40 @@ export interface TemporalInterface extends ValueInterface {
 export interface TimeStepInterface extends ValueInterface {
   unit: 'd';
 }
+
+/**
+ * A **time scale**: the clock a moment is read on.
+ *
+ * - `UTC`: Coordinated Universal Time, the civil clock, and what a JavaScript
+ *   `Date` holds. Leap seconds keep it within 0.9 s of Earth's rotation.
+ * - `TAI`: International Atomic Time, a steady atomic clock. TAI − UTC is a
+ *   whole number of seconds that grows by one at each leap second.
+ * - `TT`: Terrestrial Time, the time scale of most astronomical formulas,
+ *   such as the J2000 epoch: TT = TAI + 32.184 s.
+ * - `UT1`: time by Earth's actual rotation angle. It drifts from UTC by up to
+ *   0.9 s, and following it closely takes measurements published by the IERS.
+ *
+ * @example
+ * ```ts
+ * const scale: TimeScaleType = 'TT';
+ * ```
+ * @group Temporal
+ */
+export type TimeScaleType = 'UTC' | 'TAI' | 'TT' | 'UT1';
+
+/**
+ * One step in the **leap second table**: the offset TAI − UTC from a given UTC
+ * day on.
+ *
+ * @example
+ * ```ts
+ * const step: LeapSecondInterface = { date: '2017-01-01', taiMinusUtc: 37 };
+ * ```
+ * @group Temporal
+ */
+export interface LeapSecondInterface {
+  /** The first UTC day with this offset, as `YYYY-MM-DD`. The leap second itself is the last second of the day before, 23:59:60. */
+  date: string;
+  /** TAI − UTC from that day on, in **s**. */
+  taiMinusUtc: number;
+}
