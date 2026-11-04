@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.2.0...%40interstellar-tools%2Ftracking%400.2.1) (2026-11-04)
+
+### Bug
+
+* 🐛 Require @interstellar-tools/types 1.8.0 in tracking ([c55609d](https://github.com/phun-ky/interstellar-tools/commit/c55609d692f030960a61b7e4b10a39fabdd24dec))
+
 ## [0.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.1.0...%40interstellar-tools%2Ftracking%400.2.0) (2026-11-04)
 
 ### Tasks
