@@ -4,9 +4,16 @@ import type { Radians } from '@interstellar-tools/types';
 import { assertFinite, assertPositive } from '../validate.js';
 
 /** Wrap a longitude to (-π, π], the range `atan2` gives. */
-export const wrapLongitude = (lambda: number): Radians =>
-  (lambda -
-    2 * Math.PI * Math.ceil((lambda - Math.PI) / (2 * Math.PI))) as Radians;
+export const wrapLongitude = (lambda: number): Radians => {
+  // % is exact, so only the last step rounds, and only as far as ±π
+  let wrapped = lambda % (2 * Math.PI);
+
+  if (wrapped > Math.PI) wrapped -= 2 * Math.PI;
+  else if (wrapped <= -Math.PI) wrapped += 2 * Math.PI;
+
+  // -π and π are the same meridian
+  return (wrapped === -Math.PI ? Math.PI : wrapped) as Radians;
+};
 
 /** Throw unless `value` is a finite latitude in [-π/2, π/2]. */
 export const assertLatitude = (name: string, value: number) => {
