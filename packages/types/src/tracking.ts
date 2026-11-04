@@ -166,3 +166,20 @@ export interface SatellitePassInterface {
   /** Azimuth at set in radians, clockwise from north. */
   setAzimuth: Radians;
 }
+
+/**
+ * Where a satellite is relative to **Earth's shadow**.
+ *
+ * - `'sunlit'`: the whole Sun is visible from the satellite.
+ * - `'penumbra'`: Earth covers part of the Sun.
+ * - `'umbra'`: Earth covers the whole Sun.
+ *
+ * Returned by `earthShadow` in `@interstellar-tools/tracking`.
+ *
+ * @example
+ * ```ts
+ * const shadow: ShadowType = 'umbra'; // in eclipse: no sunlight on the panels
+ * ```
+ * @group Tracking
+ */
+export type ShadowType = 'sunlit' | 'penumbra' | 'umbra';

@@ -1,4 +1,5 @@
 import type { DistanceInterface } from './distance.js';
+import type { Vector3DTupleType } from './math.js';
 import type { Radians } from './numeric.js';
 
 /**
@@ -108,4 +109,43 @@ export interface IlluminationAnglesInterface {
   emission: Radians;
   /** Phase angle $g$, between the directions to the Sun and to the observer, in radians. */
   phase: Radians;
+}
+
+/**
+ * The **Sun's position** seen from Earth's centre at a moment: its direction
+ * on the sky and its distance.
+ *
+ * Returned by `sunPosition` in `@interstellar-tools/equations`.
+ *
+ * ::: info
+ *
+ * - Geocentric and equatorial, referred to the mean equator and equinox of
+ *   the date. That is close enough to TEME, the frame SGP4 works in, to test
+ *   a satellite for Earth's shadow.
+ * - `declination` is about +23.44° at the June solstice, -23.44° at the
+ *   December solstice and 0 at the equinoxes.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // The June solstice: the Sun is at its farthest north
+ * const sun: SunPositionInterface = {
+ *   rightAscension: 1.5708 as Radians,
+ *   declination: 0.4091 as Radians,
+ *   distance: 1.5203e11,
+ *   r: [0, 1.3947e11, 6.047e10]
+ * };
+ * ```
+ * @group Cartography
+ */
+export interface SunPositionInterface {
+  /** Right ascension $\alpha$ in radians, eastward from the vernal equinox, in [0, 2π). */
+  rightAscension: Radians;
+  /** Declination $\delta$ in radians, north of the celestial equator, in [-π/2, π/2]. */
+  declination: Radians;
+  /** Distance from Earth's centre in m. */
+  distance: number;
+  /** Position in m, from Earth's centre: x toward the vernal equinox, z toward the north celestial pole. */
+  r: Vector3DTupleType;
 }
