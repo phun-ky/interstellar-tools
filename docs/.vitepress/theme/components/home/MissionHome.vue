@@ -4,6 +4,7 @@ import { withBase } from 'vitepress';
 
 import constants from '../../../../../packages/constants/package.json';
 import equations from '../../../../../packages/equations/package.json';
+import maps from '../../../../../packages/maps/package.json';
 import mcp from '../../../../../packages/mcp/package.json';
 import temporal from '../../../../../packages/temporal/package.json';
 import types from '../../../../../packages/types/package.json';
@@ -119,7 +120,12 @@ const MANIFEST = [
     payload: 'Shared, zero-dependency TypeScript types',
     status: 'Stable'
   },
-  { pkg: mcp, payload: 'MCP server for AI assistants', status: 'Stable' }
+  { pkg: mcp, payload: 'MCP server for AI assistants', status: 'Stable' },
+  {
+    pkg: maps,
+    payload: 'Map projections, tiles, terrain and landing sites',
+    status: 'Beta'
+  }
 ].map((row) => ({
   ...row,
   link: `/api/${row.pkg.name}/`
@@ -159,7 +165,7 @@ const MANIFEST = [
     <section aria-labelledby="mc-s1">
       <header class="sec-head">
         <span class="sec-id">01</span>
-        <h2 id="mc-s1">Subsystems</h2>
+        <h2 id="mc-s1">What's inside</h2>
         <p>
           Six capabilities, each tested and documented with the equation it
           implements.
@@ -181,7 +187,7 @@ const MANIFEST = [
     <section aria-labelledby="mc-s2">
       <header class="sec-head">
         <span class="sec-id">02</span>
-        <h2 id="mc-s2">Flight console</h2>
+        <h2 id="mc-s2">From code or from chat</h2>
         <p>Call it from code, or let your assistant call it for you.</p>
       </header>
       <div class="console">
@@ -232,8 +238,8 @@ tTransfer / <span class="n">3600</span>; <span class="c">// {{ hours }}  [h]</sp
     <section aria-labelledby="mc-s3">
       <header class="sec-head">
         <span class="sec-id">03</span>
-        <h2 id="mc-s3">Ground stations</h2>
-        <p>Supported AI assistants. Local over stdio, remote over HTTPS.</p>
+        <h2 id="mc-s3">Supported AI assistants</h2>
+        <p>Local over stdio, remote over HTTPS.</p>
       </header>
       <ul class="stations">
         <li v-for="station in STATIONS" :key="station.name">
@@ -248,7 +254,7 @@ tTransfer / <span class="n">3600</span>; <span class="c">// {{ hours }}  [h]</sp
     <section aria-labelledby="mc-s4">
       <header class="sec-head">
         <span class="sec-id">04</span>
-        <h2 id="mc-s4">Payload manifest</h2>
+        <h2 id="mc-s4">Packages</h2>
       </header>
       <div class="mc-panel manifest">
         <table>
@@ -317,7 +323,7 @@ section {
 .callsign {
   margin: 0;
   font-family: var(--vp-font-family-mono);
-  font-size: 13px;
+  font-size: 0.8125rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--mc-amber);
@@ -326,7 +332,7 @@ section {
 h1 {
   font-family: var(--mc-font-heading);
   margin: 16px 0 20px;
-  font-size: clamp(42px, 5.4vw, 76px);
+  font-size: clamp(2.625rem, 5.4vw, 4.75rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.01em;
@@ -341,7 +347,7 @@ h1 span {
 .lede {
   margin: 0 0 30px;
   max-width: 32em;
-  font-size: 18.5px;
+  font-size: 1.15625rem;
   line-height: 1.55;
   color: var(--mc-muted);
 }
@@ -363,14 +369,14 @@ h1 span {
 
 .sec-id {
   font-family: var(--vp-font-family-mono);
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--mc-amber);
 }
 
 h2 {
   font-family: var(--mc-font-heading);
   margin: 0;
-  font-size: clamp(28px, 3.4vw, 40px);
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
   line-height: 1.1;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -380,7 +386,7 @@ h2 {
 .sec-head p {
   flex-basis: 100%;
   margin: 0;
-  font-size: 17px;
+  font-size: 1.0625rem;
   color: var(--mc-muted);
 }
 
@@ -394,7 +400,7 @@ h2 {
 h3 {
   font-family: var(--mc-font-heading);
   margin: 0 0 8px;
-  font-size: 21px;
+  font-size: 1.3125rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--mc-text);
@@ -402,7 +408,7 @@ h3 {
 
 .subsystems p {
   margin: 0 0 16px;
-  font-size: 15.5px;
+  font-size: 0.96875rem;
   line-height: 1.55;
   color: var(--mc-muted);
 }
@@ -422,7 +428,7 @@ pre {
   margin: 0;
   overflow-x: auto;
   font-family: var(--vp-font-family-mono);
-  font-size: 13.5px;
+  font-size: 0.84375rem;
   line-height: 1.8;
   color: var(--mc-text);
 }
@@ -448,7 +454,7 @@ pre {
   padding: 0;
   list-style: none;
   font-family: var(--vp-font-family-mono);
-  font-size: 13.5px;
+  font-size: 0.84375rem;
   line-height: 1.75;
   color: var(--mc-text);
 }
@@ -476,7 +482,8 @@ pre {
 /* ground stations */
 .stations {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  /* Wide enough for Mistral Le Chat with its EU · REMOTE tag */
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 1px;
   margin: 0;
   padding: 0;
@@ -493,7 +500,7 @@ pre {
   min-height: 52px;
   padding: 14px 16px;
   background: var(--mc-bg-2);
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--mc-text);
   white-space: nowrap;
 }
@@ -505,7 +512,7 @@ pre {
 
 .stations small {
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--mc-muted);
@@ -526,9 +533,11 @@ table {
   width: 100%;
   margin: 0;
   padding: 0;
+  /* ph.css fixes the layout, which gives every column the same width */
+  table-layout: auto;
   border-collapse: collapse;
   background: transparent;
-  font-size: 15.5px;
+  font-size: 0.96875rem;
 }
 
 th,
@@ -545,7 +554,7 @@ tbody tr:nth-child(2n) {
 
 th {
   font-family: var(--vp-font-family-mono);
-  font-size: 11.5px;
+  font-size: 0.71875rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -570,7 +579,7 @@ td code {
   padding: 3px 8px;
   border: 1px solid currentColor;
   font-family: var(--vp-font-family-mono);
-  font-size: 11.5px;
+  font-size: 0.71875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

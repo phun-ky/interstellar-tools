@@ -6,7 +6,7 @@
 Map projections, web map tiles, terrain from elevation grids, imaging geometry
 and landing site analysis, for Earth and any other planet or moon.
 
-> \[!NOTE]
+> [!NOTE]
 >
 > **0.x: the API can still change.** This package is new and versioned 0.x until
 > its API settles; a minor release may change it. Geodesy on body shapes

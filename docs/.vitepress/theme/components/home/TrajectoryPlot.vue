@@ -108,7 +108,7 @@ svg {
 
 text {
   font-family: var(--vp-font-family-mono);
-  font-size: 10px;
+  font-size: 0.625rem;
   fill: var(--mc-muted);
 }
 
@@ -134,7 +134,7 @@ text {
 
 dt {
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mc-muted);
@@ -143,14 +143,14 @@ dt {
 dd {
   margin: 0;
   font-family: var(--vp-font-family-mono);
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 500;
   color: var(--mc-text);
 }
 
 dd i {
   font-style: normal;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--mc-muted);
   margin-left: 4px;
 }

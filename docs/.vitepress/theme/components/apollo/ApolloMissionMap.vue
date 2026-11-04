@@ -380,7 +380,7 @@ const flown = computed(() => {
   padding: 8px 16px;
   border-bottom: 1px solid var(--mc-line);
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mc-muted);
@@ -417,7 +417,7 @@ svg {
 
 .mc-map__label {
   font-family: var(--vp-font-family-mono);
-  font-size: 10px;
+  font-size: 0.625rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   fill: var(--mc-faint);
@@ -429,7 +429,7 @@ svg {
 
 .mc-map__body {
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   fill: var(--mc-text);
@@ -496,7 +496,7 @@ svg {
 
 .mc-map__readout dt {
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mc-faint);
@@ -505,7 +505,7 @@ svg {
 .mc-map__readout dd {
   margin: 2px 0 0;
   font-family: var(--vp-font-family-mono);
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--mc-text);
   font-variant-numeric: tabular-nums;
 }
@@ -525,7 +525,7 @@ svg {
 
 .mc-map__controls button {
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--mc-teal);
   background: var(--mc-teal-soft);
   border: 1px solid var(--mc-line);
@@ -555,7 +555,7 @@ svg {
   margin: 0;
   padding: 12px 16px 16px;
   border-top: 1px solid var(--mc-line);
-  font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 @media (max-width: 640px) {

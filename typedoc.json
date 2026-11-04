@@ -55,6 +55,7 @@
       "remark-github",
       { "repository": "https://github.com/phun-ky/interstellar-tools" }
     ],
-    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
+    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }],
+    "./scripts/typedoc/remark-github-alerts.mjs"
   ]
 }

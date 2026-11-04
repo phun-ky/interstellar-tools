@@ -240,7 +240,7 @@ const speed = (v: readonly number[]) => Math.hypot(...v).toFixed(2);
   padding: 8px 16px;
   border-bottom: 1px solid var(--mc-line);
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mc-muted);
@@ -293,7 +293,7 @@ svg {
 
 .mc-rdv__label {
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   fill: var(--mc-faint);
@@ -317,7 +317,7 @@ svg {
 
 .mc-rdv__readout dt {
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mc-faint);
@@ -326,7 +326,7 @@ svg {
 .mc-rdv__readout dd {
   margin: 2px 0 0;
   font-family: var(--vp-font-family-mono);
-  font-size: 18px;
+  font-size: 1.125rem;
   color: var(--mc-text);
   font-variant-numeric: tabular-nums;
 }
@@ -344,7 +344,7 @@ svg {
   align-items: center;
   gap: 12px;
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--mc-faint);

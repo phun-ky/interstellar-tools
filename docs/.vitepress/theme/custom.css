@@ -235,7 +235,7 @@ html.ph body {
 
 .DocSearch-Button .DocSearch-Button-Key:first-child::before {
   content: 'Ctrl';
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: normal;
   color: var(--docsearch-muted-color);
   text-transform: lowercase;
@@ -244,7 +244,7 @@ html.ph body {
 
 .DocSearch-Button .DocSearch-Button-Key:first-child::after {
   content: ' + ';
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: normal;
   color: var(--docsearch-muted-color);
   text-transform: lowercase;
@@ -261,7 +261,7 @@ html.ph body {
   &::before {
     content: '';
     margin-left: 1ch;
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: normal;
     color: var(--docsearch-muted-color);
     text-transform: lowercase;

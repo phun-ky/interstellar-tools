@@ -30,7 +30,7 @@ const track = [...FORMULAS, ...FORMULAS];
   border-block: 1px solid var(--mc-line);
   background: var(--mc-bg-2);
   font-family: var(--vp-font-family-mono);
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--mc-muted);
 }
 
