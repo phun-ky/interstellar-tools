@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.10.0...%40interstellar-tools%2Fequations%401.11.0) (2026-11-04)
+
+### Tasks
+
+* 🤖 Align with the shared repo brief decisions of 2026-10-23 ([645799b](https://github.com/phun-ky/interstellar-tools/commit/645799be19bebdb956ec6eca38269f037dd14cd1)), references [#237](https://github.com/phun-ky/interstellar-tools/issues/237)
+
+### Documentation
+
+* ✏️ Add guide pages for geodesy and maps ([88bdf17](https://github.com/phun-ky/interstellar-tools/commit/88bdf17c1afca9965197985d3d531addc1fe218c)), closes [#201](https://github.com/phun-ky/interstellar-tools/issues/201)
+
+### Feature
+
+* 🎸 Add the Earth rotation angle and sidereal time to equations ([34e1bcc](https://github.com/phun-ky/interstellar-tools/commit/34e1bccd2eb4e70e6f1eb29b0da78b789cfe7101)), closes [#209](https://github.com/phun-ky/interstellar-tools/issues/209)
+
 ## [1.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.9.0...%40interstellar-tools%2Fequations%401.10.0) (2026-11-04)
 
 ### Feature
