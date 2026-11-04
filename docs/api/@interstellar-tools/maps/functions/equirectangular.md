@@ -13,7 +13,7 @@ function equirectangular(
 ```
 
 Defined in:
-[projections/equirectangular.ts:83](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/equirectangular.ts#L83)
+[projections/equirectangular.ts:88](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/equirectangular.ts#L88)
 
 Project a point on a sphere with the **equirectangular projection**: the simple
 cylindrical map, with latitude and longitude spaced evenly.

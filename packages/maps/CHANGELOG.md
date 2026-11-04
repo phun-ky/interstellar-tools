@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.10.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.10.0...%40interstellar-tools%2Fmaps%400.10.1) (2026-11-04)
+
+### Bug
+
+* 🐛 Accept a y within rounding of a pole in the inverse projections ([8d6f2c5](https://github.com/phun-ky/interstellar-tools/commit/8d6f2c52b95a6cedc372bf7507f883d30f0e3e07))
+
+### Markup, white-space, formatting, missing semi-colons...
+
+* 💄 Drop a blank line between consts in inverseSinusoidal ([4819057](https://github.com/phun-ky/interstellar-tools/commit/4819057e430886266a2184b963c012c27c0b6c3e))
+
 ## [0.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.9.0...%40interstellar-tools%2Fmaps%400.10.0) (2026-11-04)
 
 ### Feature

@@ -13,7 +13,7 @@ function inverseEquirectangular(
 ```
 
 Defined in:
-[projections/equirectangular.ts:142](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/equirectangular.ts#L142)
+[projections/equirectangular.ts:147](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/equirectangular.ts#L147)
 
 Find the point on a sphere for a point on an **equirectangular** map: the
 inverse of [equirectangular](equirectangular.md).

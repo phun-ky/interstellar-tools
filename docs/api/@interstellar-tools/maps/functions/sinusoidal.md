@@ -13,7 +13,7 @@ function sinusoidal(
 ```
 
 Defined in:
-[projections/sinusoidal.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L64)
+[projections/sinusoidal.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L65)
 
 Project a point on a sphere with the **sinusoidal projection**: an equal-area
 map, with every parallel at its true length.
