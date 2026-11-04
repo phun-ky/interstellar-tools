@@ -20,6 +20,20 @@ gave, the parking orbit and trans-lunar injection.
 
 :::
 
+<DocPhoto
+  src="apollo-11/rollout.webp"
+  alt="The Saturn V on its crawler, rolling out of the Vehicle Assembly Building towards the pad"
+  :width="1600"
+  :height="1262"
+  credit="NASA / KSC"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Apollo_11_rollout_(KSC-69PC-0234).jpg">
+
+Apollo 11's Saturn V rolls out to Pad 39A on 20 May 1969, eight weeks before
+launch.
+
+</DocPhoto>
+
 Pad 39A is at 28.608422° N, 80.604133° W. Those are **geodetic** coordinates,
 the ones on maps: the latitude is the angle of the ground's normal, and on an
 oblate Earth the normal doesn't point at the centre. The orbit formulas need the

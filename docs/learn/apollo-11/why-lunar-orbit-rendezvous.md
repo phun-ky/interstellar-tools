@@ -62,6 +62,20 @@ rocketDeltaVFromIsp(DESCENT.Isp, direct, atLiftoff); // 2112.3 m/s
 
 ## 3. Landing only a cabin
 
+<DocPhoto
+  src="apollo-11/houbolt.webp"
+  alt="John Houbolt at a blackboard covered in sketches of the spacecraft and orbits for lunar orbit rendezvous"
+  :width="1600"
+  :height="1280"
+  credit="NASA Langley / Bob Nye"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:John_C._Houbolt_-_GPN-2000-001274.jpg">
+
+John Houbolt explains lunar orbit rendezvous at NASA Langley in 1962. His case
+for landing only a small cabin, worked out below, won NASA over that year.
+
+</DocPhoto>
+
 With LOR, the CSM waits in lunar orbit and only the lunar module's ascent stage
 has to come back up: 4 888 kg at liftoff, propellant included. It pays the
 descent price once, and the CSM pays nothing:

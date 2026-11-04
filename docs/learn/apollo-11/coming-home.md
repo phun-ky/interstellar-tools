@@ -229,6 +229,20 @@ hours and 18 minutes after liftoff.
 
 :::
 
+<DocPhoto
+  src="apollo-11/hornet.webp"
+  alt="The scorched Apollo 11 command module, in its orange flotation collar, hanging from a crane above the sea"
+  :width="1600"
+  :height="1600"
+  credit="NASA"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Apollo_11_CM_hoisted_aboard_Hornet_(S69-21783).jpg">
+
+Columbia is hoisted aboard the recovery ship USS Hornet after splashdown on 24
+July 1969.
+
+</DocPhoto>
+
 ## 6. Try it yourself
 
 - Enter at −5.5° instead of −6.48°. Where is the orbit's low point now, and

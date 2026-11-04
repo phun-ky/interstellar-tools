@@ -9,6 +9,20 @@ ties them together: **Kepler's equation**.
   `eccentricToTrueAnomaly`, `norm2pi`
 - **Time:** about 10 minutes
 
+<DocPhoto
+  src="where-is-earth-today/earth-dscovr.webp"
+  alt="The full sunlit disc of Earth, with clouds over blue oceans and the Americas"
+  :width="1600"
+  :height="1600"
+  credit="NASA / DSCOVR EPIC"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:DSCOVR-EPIC-Earth-natural-true-color1c.jpg">
+
+Earth seen from DSCOVR, 1.5 million km away towards the Sun. From there it's
+always day.
+
+</DocPhoto>
+
 ## 1. Three ways to describe a position
 
 An orbit position can be given as three different angles, all measured from
@@ -79,6 +93,20 @@ Earth is 0.9966 au from the Sun, a little closer than average, and heading for
 perihelion on 3 January.
 
 :::
+
+<DocPhoto
+  src="where-is-earth-today/sun-perihelion-aphelion.webp"
+  alt="Two photos of the Sun's disc side by side, the one at perihelion slightly larger than the one at aphelion"
+  :width="1600"
+  :height="1600"
+  credit="Afdumitriu"
+  licence="CC BY 4.0"
+  source="https://commons.wikimedia.org/wiki/File:The_Sun_at_perihelion_and_aphelion.jpg">
+
+The Sun at perihelion in January and at aphelion in July, photographed with the
+same lens. It looks about 3% wider when Earth is closest.
+
+</DocPhoto>
 
 ## 4. Try it yourself
 

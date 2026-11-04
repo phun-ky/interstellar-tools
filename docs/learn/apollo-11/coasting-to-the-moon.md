@@ -78,6 +78,20 @@ Docking came 9 850 km up, at 6.91 km/s, slowing all the time. The crew pulled
 the lunar module free at 004:17:03, and the S-IVB was sent off on a path of its
 own.
 
+<DocPhoto
+  src="apollo-11/eagle-in-lunar-orbit.webp"
+  alt="The lunar module Eagle, legs extended, flying above the cratered Moon"
+  :width="1600"
+  :height="1594"
+  credit="NASA / Michael Collins"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg">
+
+Eagle in lunar orbit on 20 July, photographed by Michael Collins from Columbia.
+It rode out from Earth docked to Columbia's nose, as above.
+
+</DocPhoto>
+
 ## 3. Slowing down
 
 Everything after TLI was a climb against Earth's gravity. By the midcourse
