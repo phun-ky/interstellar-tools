@@ -40,6 +40,19 @@ const [sameIss] = (await response.json()).map(parseOmm);
 A malformed TLE throws a `RangeError` naming the line, columns and field, and a
 wrong checksum is caught. Alpha-5 catalogue numbers, such as `A0001`, are read.
 
+Then propagate the elements with SGP4, the model they were fitted for, to get
+the satellite's position and velocity in the TEME frame, in m and m/s:
+
+```ts
+import { propagate } from '@interstellar-tools/tracking';
+
+const { r, v } = propagate(iss, new Date('2026-11-04T12:00:00Z'));
+```
+
+It matches the verification set of Vallado et al. (2006), _Revisiting Spacetrack
+Report #3_, to a millimetre. For orbits of 225 minutes or more it runs as SDP4,
+with the pull of the Moon and Sun.
+
 ## What's planned
 
 The

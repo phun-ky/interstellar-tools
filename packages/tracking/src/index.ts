@@ -6,3 +6,5 @@
 export * from './satellites/omm.js';
 
 export * from './satellites/tle.js';
+
+export * from './satellites/propagate.js';
