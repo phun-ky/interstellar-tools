@@ -186,9 +186,14 @@ export default defineConfig({
                 {
                   text: 'Manoeuvres',
                   link: '/guide/usage/equations/manoeuvres'
+                },
+                {
+                  text: 'Geodesy',
+                  link: '/guide/usage/equations/geodesy'
                 }
               ]
-            }
+            },
+            { text: 'Maps', link: '/guide/usage/maps' }
           ]
         },
         {
