@@ -478,7 +478,8 @@ svg {
 
 .mc-map__readout {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1.4fr 1fr;
+  /* Wide enough for a GET of 000:00:00 on one line */
+  grid-template-columns: 1.3fr 1.1fr 1.4fr 1fr;
   margin: 0;
   border-top: 1px solid var(--mc-line);
 }

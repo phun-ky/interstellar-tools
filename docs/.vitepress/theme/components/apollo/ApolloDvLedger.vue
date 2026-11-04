@@ -171,7 +171,7 @@ const duration = (s: number) => {
 
 .mc-ledger__row summary {
   display: grid;
-  grid-template-columns: 6.5em minmax(0, 1.2fr) minmax(0, 2fr) 6em;
+  grid-template-columns: 6.5em minmax(0, 1.6fr) minmax(0, 1.6fr) 6em;
   align-items: center;
   gap: 12px;
   padding: 7px 0;
@@ -259,6 +259,10 @@ const duration = (s: number) => {
   .mc-ledger__bar {
     grid-column: 2 / 4;
     grid-row: 2;
+  }
+
+  .mc-ledger__name {
+    font-size: 15px;
   }
 
   .vp-doc .mc-ledger__row p {

@@ -324,6 +324,7 @@ section {
 }
 
 h1 {
+  font-family: var(--mc-font-heading);
   margin: 16px 0 20px;
   font-size: clamp(42px, 5.4vw, 76px);
   font-weight: 700;
@@ -367,6 +368,7 @@ h1 span {
 }
 
 h2 {
+  font-family: var(--mc-font-heading);
   margin: 0;
   font-size: clamp(28px, 3.4vw, 40px);
   line-height: 1.1;
@@ -390,6 +392,7 @@ h2 {
 }
 
 h3 {
+  font-family: var(--mc-font-heading);
   margin: 0 0 8px;
   font-size: 21px;
   letter-spacing: 0.02em;
