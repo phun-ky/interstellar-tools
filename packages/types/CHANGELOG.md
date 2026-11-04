@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.8.0...%40interstellar-tools%2Ftypes%401.9.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the satellite pass type ([10edb91](https://github.com/phun-ky/interstellar-tools/commit/10edb919df15a8394d7b33635beec292cab6b1a9))
+
 ## [1.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.7.0...%40interstellar-tools%2Ftypes%401.8.0) (2026-11-04)
 
 ### Feature

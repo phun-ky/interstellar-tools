@@ -76,6 +76,18 @@ const { azimuth, elevation, rangeRate } = lookAngles(iss, oslo, new Date());
 const shift = dopplerShift(145_800_000, rangeRate); // Hz
 ```
 
+And predict when it passes over, here for the next day, above 10°:
+
+```ts
+import { predictPasses } from '@interstellar-tools/tracking';
+
+const from = new Date();
+const to = new Date(from.getTime() + 86_400_000);
+
+for (const pass of predictPasses(iss, oslo, from, to, { minElevation: 0.1745 }))
+  console.log(pass.rise, pass.maxElevation, pass.set);
+```
+
 ## What's planned
 
 The
@@ -107,6 +119,12 @@ The full documentation lives at
 npm i --save @interstellar-tools/tracking
 ```
 
+## Interfaces
+
+| Interface                                                                    | Description                                              |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [PredictPassesOptionsInterface](interfaces/PredictPassesOptionsInterface.md) | Options for [predictPasses](functions/predictPasses.md). |
+
 ## Satellites
 
 | Function                                                          | Description                                                                                                                                                                                                                                 |
@@ -116,6 +134,7 @@ npm i --save @interstellar-tools/tracking
 | [lookAnglesFromEarthFixed](functions/lookAnglesFromEarthFixed.md) | The **look angles** to a satellite from an observer, given the satellite's Earth-fixed position and velocity: azimuth, elevation, range and range rate. [lookAngles](functions/lookAngles.md) does the same from orbital elements.          |
 | [parseOmm](functions/parseOmm.md)                                 | Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE, it has room for catalogue numbers above 339 999.                                   |
 | [parseTle](functions/parseTle.md)                                 | Parse a **two-line element set** (TLE): the format NORAD has published satellite orbits in since the 1960s, for SGP4.                                                                                                                       |
+| [predictPasses](functions/predictPasses.md)                       | **Predict the passes** of a satellite over a ground observer between two moments: when it rises above the horizon, when it's highest, and when it sets. It's the first question a tracking app answers.                                     |
 | [propagate](functions/propagate.md)                               | Propagate a satellite's mean elements with **SGP4** to a moment: its position and velocity in the TEME frame. See [propagateMinutes](functions/propagateMinutes.md).                                                                        |
 | [propagateMinutes](functions/propagateMinutes.md)                 | Propagate a satellite's mean elements with **SGP4** to a number of minutes from their epoch: its position and velocity in the TEME frame.                                                                                                   |
 | [subSatellitePoint](functions/subSatellitePoint.md)               | Find the point on Earth **under a satellite** at a moment: the geodetic latitude, longitude and height on the WGS 84 ellipsoid.                                                                                                             |

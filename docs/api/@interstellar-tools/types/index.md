@@ -129,7 +129,8 @@ npm i --save @interstellar-tools/types
 
 ## Tracking
 
-| Interface                                                    | Description                                                                                                                                                                                    |
-| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [LookAnglesInterface](interfaces/LookAnglesInterface.md)     | Where a satellite is in an observer's sky: the direction to point an antenna or a camera, how far away it is and how fast that distance changes.                                               |
-| [MeanElementsInterface](interfaces/MeanElementsInterface.md) | A satellite's **mean elements**, as published in a two-line element set (TLE) or an Orbit Mean-elements Message (OMM): the orbit SGP4 was fitted to at an epoch, with the drag terms it needs. |
+| Interface                                                      | Description                                                                                                                                                                                    |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [LookAnglesInterface](interfaces/LookAnglesInterface.md)       | Where a satellite is in an observer's sky: the direction to point an antenna or a camera, how far away it is and how fast that distance changes.                                               |
+| [MeanElementsInterface](interfaces/MeanElementsInterface.md)   | A satellite's **mean elements**, as published in a two-line element set (TLE) or an Orbit Mean-elements Message (OMM): the orbit SGP4 was fitted to at an epoch, with the drag terms it needs. |
+| [SatellitePassInterface](interfaces/SatellitePassInterface.md) | One **pass** of a satellite over an observer: when it rises above the horizon, when it's highest, and when it sets.                                                                            |
