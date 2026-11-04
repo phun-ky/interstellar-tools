@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.10.1...%40interstellar-tools%2Fmaps%400.11.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add web map tile coordinates and quadkeys to maps ([8abe2c7](https://github.com/phun-ky/interstellar-tools/commit/8abe2c7c3399188d3d9d203e7d81218b023d4867)), closes [#193](https://github.com/phun-ky/interstellar-tools/issues/193)
+
+### Bug
+
+* 🐛 Keep a longitude just short of 180° E in the last tile column ([b96de99](https://github.com/phun-ky/interstellar-tools/commit/b96de99227c3e616ab5a2f9fa4e657107743b5c1))
+* 🐛 Keep wrapLongitude in (-π, π] for a longitude just above -π ([458a247](https://github.com/phun-ky/interstellar-tools/commit/458a247dec2efbdeddc79274a4b7c4307e1d699e))
+
 ## [0.10.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.10.0...%40interstellar-tools%2Fmaps%400.10.1) (2026-11-04)
 
 ### Bug

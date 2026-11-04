@@ -115,3 +115,14 @@ npm i --save @interstellar-tools/maps
 | [terrainRoughnessIndexAt](functions/terrainRoughnessIndexAt.md)                                  | Compute the **Terrain Roughness Index** of an elevation grid at a cell: the root-mean-square height difference between the cell and its eight neighbours.                          |
 | [terrainRoughnessIndexGrid](functions/terrainRoughnessIndexGrid.md)                              | Compute the **Terrain Roughness Index** of every cell of an elevation grid, as a new grid in metres.                                                                               |
 | [topographicWetnessIndex](functions/topographicWetnessIndex.md)                                  | Compute the **Topographic Wetness Index** of every cell of an elevation grid: where water would collect, from how much ground drains through a cell and how slowly it drains away. |
+
+## Tiles
+
+| Name                                                     | Description                                                                                                                                                                   |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [TileBoundsInterface](interfaces/TileBoundsInterface.md) | The edges of a web map tile: the latitudes of its north and south edges and the longitudes of its west and east edges.                                                        |
+| [TileInterface](interfaces/TileInterface.md)             | A **web map tile**, in the scheme web maps use ("slippy maps", XYZ): at zoom `z` the spherical Web Mercator map is cut into $2^z \times 2^z$ square tiles.                    |
+| [fromQuadkey](functions/fromQuadkey.md)                  | Find the web map tile named by a **quadkey**: the inverse of [quadkey](functions/quadkey.md).                                                                                 |
+| [quadkey](functions/quadkey.md)                          | Find the **quadkey** of a web map tile: one base-4 digit per zoom level, naming which quarter of its parent the tile is, from zoom 1 down.                                    |
+| [tileAt](functions/tileAt.md)                            | Find the **web map tile** that holds a point, at a zoom level: the tile scheme web maps use ("slippy maps", XYZ) on the spherical Web Mercator map.                           |
+| [tileBounds](functions/tileBounds.md)                    | Find the edges of a **web map tile**: the latitudes of its north and south edges and the longitudes of its west and east edges. The inverse of [tileAt](functions/tileAt.md). |
