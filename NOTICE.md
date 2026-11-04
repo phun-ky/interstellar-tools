@@ -64,6 +64,14 @@ values are taken from it, never text.
 
 ## Documentation site
 
+- **Mars terrain:** the elevation grid in the tutorial
+  [Choose a landing site on Mars](https://phun-ky.net/interstellar-tools/learn/choose-a-landing-site-on-mars)
+  (`docs/.vitepress/theme/components/mars/jezero-delta-front.json`) samples the
+  HiRISE digital terrain model `DTEEC_045994_1985_046060_1985_U01` of Jezero
+  crater, one height every 20 m. Credit: NASA/JPL/University of Arizona, via the
+  [HiRISE PDS archive](https://hirise-pds.lpl.arizona.edu/PDS/). The coordinates
+  of Perseverance's landing site are from NASA GISS's
+  [Mars24 list of landers](https://www.giss.nasa.gov/tools/mars24/help/landers.html).
 - **Background photo:**
   [photo by Jonny Gios](https://unsplash.com/photos/bxDJ12Kv9Rk) on Unsplash,
   used under the [Unsplash License](https://unsplash.com/license)

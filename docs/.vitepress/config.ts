@@ -128,6 +128,10 @@ export default defineConfig({
             {
               text: 'Where is Earth today?',
               link: '/learn/where-is-earth-today'
+            },
+            {
+              text: 'Choose a landing site on Mars',
+              link: '/learn/choose-a-landing-site-on-mars'
             }
           ]
         },
