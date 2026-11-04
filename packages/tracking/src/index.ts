@@ -10,3 +10,5 @@ export * from './satellites/tle.js';
 export * from './satellites/propagate.js';
 
 export * from './satellites/earth-fixed.js';
+
+export * from './satellites/look-angles.js';
