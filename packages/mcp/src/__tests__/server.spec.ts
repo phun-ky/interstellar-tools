@@ -58,6 +58,7 @@ describe('tool listing', () => {
     const names = tools.map((t) => t.name).sort();
 
     assert.deepEqual(names, [
+      'body_fixed_to_geodetic',
       'circular_speed',
       'convert_anomaly',
       'convert_distance',
@@ -65,12 +66,16 @@ describe('tool listing', () => {
       'elements_to_state',
       'escape_speed',
       'find_body',
+      'geodetic_to_body_fixed',
       'gravitational_parameter',
+      'great_circle_distance',
       'hohmann_transfer',
+      'horizon_distance',
       'hyperbolic_departure',
       'kepler_period',
       'peri_apoapsis_radii',
       'plane_change_delta_v',
+      'project_point',
       'rocket_delta_v',
       'solve_kepler',
       'solve_lambert',
@@ -377,6 +382,204 @@ describe('distance tools', () => {
 
       assert.equal(res.isError, true, `${from} → ${to}`);
     }
+  });
+});
+
+const deg = (value: number) => ({ value, unit: 'deg' });
+
+describe('geodesy tools', () => {
+  test('great_circle_distance on Mars, from the landing site tutorial', async () => {
+    const res = await call('great_circle_distance', {
+      from_latitude: deg(18.464557),
+      from_longitude: deg(77.422182),
+      to_latitude: deg(18.464217),
+      to_longitude: deg(77.423241),
+      body: 'mars'
+    });
+
+    approx(res.structuredContent!.radius_m, 3389.5e3, 1e-6);
+    assert.equal(res.structuredContent!.distance_m.toFixed(1), '62.7');
+  });
+
+  test('great_circle_distance over a quarter of a sphere', async () => {
+    const res = await call('great_circle_distance', {
+      from_latitude: deg(0),
+      from_longitude: deg(0),
+      to_latitude: deg(0),
+      to_longitude: deg(90),
+      radius_m: 1000
+    });
+
+    approx(res.structuredContent!.distance_m, 500 * Math.PI, 1e-9);
+    approx(res.structuredContent!.central_angle.deg, 90, 1e-12);
+  });
+
+  test('takes either a body or a radius', async () => {
+    const points = {
+      from_latitude: deg(0),
+      from_longitude: deg(0),
+      to_latitude: deg(10),
+      to_longitude: deg(10)
+    };
+    const both = await call('great_circle_distance', {
+      ...points,
+      body: 'earth',
+      radius_m: 1000
+    });
+    const neither = await call('great_circle_distance', points);
+    const unknown = await call('great_circle_distance', {
+      ...points,
+      body: 'vulcan'
+    });
+
+    assert.equal(both.isError, true);
+    assert.equal(neither.isError, true);
+    assert.equal(unknown.isError, true);
+    assert.match(unknown.content[0]!.text!, /Unknown body: vulcan/);
+  });
+
+  test('horizon_distance for a 1.7 m observer on Earth', async () => {
+    const R = 6_371_008.4;
+    const res = await call('horizon_distance', {
+      height_m: 1.7,
+      body: 'earth'
+    });
+
+    approx(res.structuredContent!.radius_m, R, 1e-6);
+    approx(
+      res.structuredContent!.distance_m,
+      Math.sqrt(2 * R * 1.7 + 1.7 ** 2),
+      1e-6
+    );
+    approx(
+      res.structuredContent!.surface_distance_m,
+      R * Math.acos(R / (R + 1.7)),
+      1e-6
+    );
+  });
+
+  test('geodetic_to_body_fixed on WGS 84', async () => {
+    const equator = await call('geodetic_to_body_fixed', {
+      latitude: deg(0),
+      longitude: deg(0),
+      height_m: 0,
+      body: 'wgs84'
+    });
+    const pole = await call('geodetic_to_body_fixed', {
+      latitude: deg(90),
+      longitude: deg(0),
+      height_m: 100,
+      body: 'wgs84'
+    });
+    const c = 6_378_137 * (1 - 1 / 298.257223563);
+
+    assert.deepEqual(equator.structuredContent!.r_m, [R_EARTH, 0, 0]);
+    approx(pole.structuredContent!.r_m[2], c + 100, 1e-6);
+    approx(pole.structuredContent!.polar_radius_m, c, 1e-9);
+  });
+
+  test('body_fixed_to_geodetic undoes geodetic_to_body_fixed', async () => {
+    const point = {
+      latitude: deg(59.9139),
+      longitude: deg(10.7522),
+      height_m: 23
+    };
+    const shape = { equatorial_radius_m: 3_396_190, polar_radius_m: 3_376_200 };
+    const forward = await call('geodetic_to_body_fixed', {
+      ...point,
+      ...shape
+    });
+    const back = await call('body_fixed_to_geodetic', {
+      r_m: forward.structuredContent!.r_m,
+      ...shape
+    });
+
+    approx(back.structuredContent!.latitude.deg, 59.9139, 1e-9);
+    approx(back.structuredContent!.longitude.deg, 10.7522, 1e-9);
+    approx(back.structuredContent!.height_m, 23, 1e-6);
+  });
+
+  test('rejects a triaxial moon and a prolate ellipsoid', async () => {
+    const point = { latitude: deg(0), longitude: deg(0), height_m: 0 };
+    const phobos = await call('geodetic_to_body_fixed', {
+      ...point,
+      body: 'phobos'
+    });
+    const prolate = await call('geodetic_to_body_fixed', {
+      ...point,
+      equatorial_radius_m: 1000,
+      polar_radius_m: 2000
+    });
+
+    assert.equal(phobos.isError, true);
+    assert.match(phobos.content[0]!.text!, /triaxial/);
+    assert.equal(prolate.isError, true);
+    assert.match(prolate.content[0]!.text!, /no larger/);
+  });
+});
+
+describe('map tools', () => {
+  test('project_point on Mercator', async () => {
+    const res = await call('project_point', {
+      projection: 'mercator',
+      latitude: deg(0),
+      longitude: deg(90),
+      radius_m: 1000
+    });
+
+    approx(res.structuredContent!.x_m, 500 * Math.PI, 1e-9);
+    approx(res.structuredContent!.y_m, 0, 1e-9);
+  });
+
+  test('project_point on equirectangular with a standard parallel', async () => {
+    const res = await call('project_point', {
+      projection: 'equirectangular',
+      latitude: deg(30),
+      longitude: deg(90),
+      radius_m: 1000,
+      standard_parallel: deg(60)
+    });
+
+    approx(res.structuredContent!.x_m, 250 * Math.PI, 1e-9);
+    approx(res.structuredContent!.y_m, (1000 * Math.PI) / 6, 1e-9);
+  });
+
+  test('project_point on a polar stereographic map', async () => {
+    const res = await call('project_point', {
+      projection: 'stereographic',
+      latitude: deg(90),
+      longitude: deg(0),
+      body: 'moon',
+      center_latitude: deg(90)
+    });
+
+    approx(res.structuredContent!.x_m, 0, 1e-6);
+    approx(res.structuredContent!.y_m, 0, 1e-6);
+    approx(res.structuredContent!.radius_m, 1737.4e3, 1e-6);
+  });
+
+  test('project_point rejects options a projection lacks', async () => {
+    const point = { latitude: deg(10), longitude: deg(10), radius_m: 1000 };
+    const centred = await call('project_point', {
+      ...point,
+      projection: 'mercator',
+      center_latitude: deg(45)
+    });
+    const parallel = await call('project_point', {
+      ...point,
+      projection: 'stereographic',
+      standard_parallel: deg(45)
+    });
+    const pole = await call('project_point', {
+      projection: 'mercator',
+      latitude: deg(90),
+      longitude: deg(0),
+      radius_m: 1000
+    });
+
+    assert.equal(centred.isError, true);
+    assert.equal(parallel.isError, true);
+    assert.equal(pole.isError, true);
   });
 });
 

@@ -24,6 +24,9 @@
     },
     {
       "path": "../equations/tsconfig.build.json"
+    },
+    {
+      "path": "../maps/tsconfig.build.json"
     }
   ]
 }

@@ -38,6 +38,11 @@ tested equations instead of recalling a number that looks plausible.
 | `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly                                 |
 | `convert_time`               | Durations from attoseconds to gigayears                         |
 | `convert_distance`           | Distances from metres to gigaparsecs                            |
+| `great_circle_distance`      | Distance and central angle between two points on a body         |
+| `horizon_distance`           | How far an observer at a height can see                         |
+| `geodetic_to_body_fixed`     | Body-fixed x, y, z from latitude, longitude and height          |
+| `body_fixed_to_geodetic`     | Latitude, longitude and height from body-fixed x, y, z          |
+| `project_point`              | Map x and y of a point in one of seven projections              |
 | `find_body`                  | Planets, moons, stars, comets and more, by name                 |
 
 The names follow a few rules, so there is no room for kilometre/metre or
@@ -49,6 +54,10 @@ degree/radian mix-ups:
 - **Angles carry their unit:** they go in as `{ "value": 28.5, "unit": "deg" }`
   and come back as `{ "rad": …, "deg": … }`.
 - **Tool names** are snake_case and say what they compute.
+
+The geodesy and map tools take the shape of the body as a `body` id from
+`find_body`, such as `"mars"`, or as radii in metres. For GPS coordinates on
+Earth, the ellipsoid tools also take `"wgs84"`.
 
 All tools are read-only and run offline. The celestial datasets are also
 available as MCP resources at `interstellar://datasets/{name}`. Their distances

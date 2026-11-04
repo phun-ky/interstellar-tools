@@ -68,7 +68,7 @@ describe('Streamable HTTP', () => {
       arguments: { r_m: 6_378_137, mu_m3_s2: 3.986004418e14 }
     })) as unknown as { structuredContent: { v_m_s: number } };
 
-    assert.equal(tools.length, 19);
+    assert.equal(tools.length, 24);
     assert.ok(Math.abs(res.structuredContent.v_m_s - 11_179.9) < 1);
 
     await client.close();
