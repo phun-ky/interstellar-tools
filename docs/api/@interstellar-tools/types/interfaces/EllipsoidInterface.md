@@ -4,7 +4,7 @@ EllipsoidInterface
 # Interface: EllipsoidInterface
 
 Defined in:
-[cartography.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L68)
+[cartography.ts:69](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L69)
 
 A body's **reference ellipsoid**: the smooth surface that latitudes, longitudes
 and heights are measured on.
@@ -42,7 +42,7 @@ alongOrbitRadius?: DistanceInterface;
 ```
 
 Defined in:
-[cartography.ts:74](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L74)
+[cartography.ts:75](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L75)
 
 Equatorial radius $b$ along the orbit, for a triaxial moon. Omitted when equal
 to `equatorialRadius`.
@@ -56,7 +56,7 @@ equatorialRadius: DistanceInterface;
 ```
 
 Defined in:
-[cartography.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L70)
+[cartography.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L71)
 
 Equatorial radius $a$; towards the planet, for a triaxial moon.
 
@@ -69,6 +69,6 @@ polarRadius: DistanceInterface;
 ```
 
 Defined in:
-[cartography.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L72)
+[cartography.ts:73](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L73)
 
 Polar radius $c$, along the rotation axis.

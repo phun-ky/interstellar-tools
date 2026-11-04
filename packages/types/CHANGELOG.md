@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.9.0...%40interstellar-tools%2Ftypes%401.10.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the Sun position and shadow types ([cf6cc2e](https://github.com/phun-ky/interstellar-tools/commit/cf6cc2efa93a8687f3e8f59844191518244056dc)), references [#215](https://github.com/phun-ky/interstellar-tools/issues/215)
+
 ## [1.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.8.0...%40interstellar-tools%2Ftypes%401.9.0) (2026-11-04)
 
 ### Feature

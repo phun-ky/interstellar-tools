@@ -4,7 +4,7 @@ IlluminationAnglesInterface
 # Interface: IlluminationAnglesInterface
 
 Defined in:
-[cartography.ts:104](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L104)
+[cartography.ts:105](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L105)
 
 The **illumination angles** at a point on a surface: where the light comes from
 and where it's seen from, relative to the surface and each other.
@@ -41,7 +41,7 @@ emission: Radians;
 ```
 
 Defined in:
-[cartography.ts:108](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L108)
+[cartography.ts:109](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L109)
 
 Emission angle $e$, between the surface normal and the direction to the
 observer, in radians.
@@ -55,7 +55,7 @@ incidence: Radians;
 ```
 
 Defined in:
-[cartography.ts:106](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L106)
+[cartography.ts:107](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L107)
 
 Incidence angle $i$, between the surface normal and the direction to the Sun, in
 radians.
@@ -69,7 +69,7 @@ phase: Radians;
 ```
 
 Defined in:
-[cartography.ts:110](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L110)
+[cartography.ts:111](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/cartography.ts#L111)
 
 Phase angle $g$, between the directions to the Sun and to the observer, in
 radians.
