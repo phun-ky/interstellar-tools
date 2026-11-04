@@ -247,14 +247,19 @@ export default defineConfig({
       alias: [
         // Import the packages from source, so the docs always run the
         // current code and the deploy doesn't need a package build first
-        ...['constants', 'equations', 'maps', 'temporal', 'types'].map(
-          (name) => ({
-            find: `@interstellar-tools/${name}`,
-            replacement: fileURLToPath(
-              new URL(`../../packages/${name}/src/index.ts`, import.meta.url)
-            )
-          })
-        ),
+        ...[
+          'constants',
+          'equations',
+          'maps',
+          'temporal',
+          'tracking',
+          'types'
+        ].map((name) => ({
+          find: `@interstellar-tools/${name}`,
+          replacement: fileURLToPath(
+            new URL(`../../packages/${name}/src/index.ts`, import.meta.url)
+          )
+        })),
         {
           find: /^.*\/VPSwitchAppearance\.vue$/,
           replacement: fileURLToPath(

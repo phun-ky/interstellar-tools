@@ -36,7 +36,7 @@ npm run build
 
 ```shell
 npm test     # every package's test suite
-npm run test:ci # the same, with coverage reports, as CI runs it
+npm run test:ci # the same, with coverage reports and floors, as CI runs it
 ```
 
 Tests use Node's built-in test runner, and live next to the code in each
