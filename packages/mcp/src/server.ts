@@ -5,7 +5,9 @@ import { createRequire } from 'node:module';
 import { registerBodies } from './bodies.js';
 import { registerAnomalyTools } from './tools/anomalies.js';
 import { registerDistanceTools } from './tools/distance.js';
+import { registerGeodesyTools } from './tools/geodesy.js';
 import { registerManoeuvreTools } from './tools/manoeuvres.js';
+import { registerMapTools } from './tools/maps.js';
 import { registerOrbitTools } from './tools/orbits.js';
 import { registerStateVectorTools } from './tools/state-vectors.js';
 import { registerTimeTools } from './tools/time.js';
@@ -44,6 +46,8 @@ export const createServer = (): McpServer => {
   registerAnomalyTools(server);
   registerTimeTools(server);
   registerDistanceTools(server);
+  registerGeodesyTools(server);
+  registerMapTools(server);
   registerBodies(server);
 
   return server;

@@ -88,7 +88,16 @@ returned as `{ "rad": …, "deg": … }`.
 | `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly (elliptic orbits)               |
 | `convert_time`               | Duration between units, attoseconds to gigayears                |
 | `convert_distance`           | Distance between units, metres to gigaparsecs                   |
+| `great_circle_distance`      | Distance and central angle between two points on a body         |
+| `horizon_distance`           | How far an observer at a height can see                         |
+| `geodetic_to_body_fixed`     | Body-fixed x, y, z from latitude, longitude and height          |
+| `body_fixed_to_geodetic`     | Latitude, longitude and height from body-fixed x, y, z          |
+| `project_point`              | Map x and y of a point in one of seven projections              |
 | `find_body`                  | Look up planets, moons, stars, comets, … by name or id          |
+
+The geodesy and map tools take the shape of the body as a `body` id from
+`find_body`, such as `"mars"`, or as radii in metres. For GPS coordinates on
+Earth, the ellipsoid tools also take `"wgs84"`.
 
 All tools are pure and offline: no network access, no side effects.
 
