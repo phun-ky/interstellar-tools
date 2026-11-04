@@ -68,16 +68,20 @@ npm i --save @interstellar-tools/maps
 
 ## Projections
 
-| Name                                                                             | Description                                                                                                                                 |
-| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| [EquirectangularOptionsInterface](interfaces/EquirectangularOptionsInterface.md) | Options for [equirectangular](functions/equirectangular.md) and [inverseEquirectangular](functions/inverseEquirectangular.md).              |
-| [GeographicCoordinatesInterface](interfaces/GeographicCoordinatesInterface.md)   | A point on a sphere: latitude and longitude.                                                                                                |
-| [ProjectedPointInterface](interfaces/ProjectedPointInterface.md)                 | A point on a map, in metres from the projection's origin: `x` east, `y` north.                                                              |
-| [ProjectionOptionsInterface](interfaces/ProjectionOptionsInterface.md)           | Where a map is centred east–west, for the projections.                                                                                      |
-| [equirectangular](functions/equirectangular.md)                                  | Project a point on a sphere with the **equirectangular projection**: the simple cylindrical map, with latitude and longitude spaced evenly. |
-| [inverseEquirectangular](functions/inverseEquirectangular.md)                    | Find the point on a sphere for a point on an **equirectangular** map: the inverse of [equirectangular](functions/equirectangular.md).       |
-| [inverseMercator](functions/inverseMercator.md)                                  | Find the point on a sphere for a point on a **Mercator** map: the inverse of [mercator](functions/mercator.md).                             |
-| [mercator](functions/mercator.md)                                                | Project a point on a sphere with the **Mercator projection**: the conformal cylindrical map, which keeps angles and shapes locally true.    |
+| Name                                                                             | Description                                                                                                                                   |
+| -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| [EquirectangularOptionsInterface](interfaces/EquirectangularOptionsInterface.md) | Options for [equirectangular](functions/equirectangular.md) and [inverseEquirectangular](functions/inverseEquirectangular.md).                |
+| [GeographicCoordinatesInterface](interfaces/GeographicCoordinatesInterface.md)   | A point on a sphere: latitude and longitude.                                                                                                  |
+| [ProjectedPointInterface](interfaces/ProjectedPointInterface.md)                 | A point on a map, in metres from the projection's origin: `x` east, `y` north.                                                                |
+| [ProjectionOptionsInterface](interfaces/ProjectionOptionsInterface.md)           | Where a map is centred east–west, for the projections.                                                                                        |
+| [equirectangular](functions/equirectangular.md)                                  | Project a point on a sphere with the **equirectangular projection**: the simple cylindrical map, with latitude and longitude spaced evenly.   |
+| [inverseEquirectangular](functions/inverseEquirectangular.md)                    | Find the point on a sphere for a point on an **equirectangular** map: the inverse of [equirectangular](functions/equirectangular.md).         |
+| [inverseMercator](functions/inverseMercator.md)                                  | Find the point on a sphere for a point on a **Mercator** map: the inverse of [mercator](functions/mercator.md).                               |
+| [inverseMollweide](functions/inverseMollweide.md)                                | Find the point on a sphere for a point on a **Mollweide** map: the inverse of [mollweide](functions/mollweide.md).                            |
+| [inverseSinusoidal](functions/inverseSinusoidal.md)                              | Find the point on a sphere for a point on a **sinusoidal** map: the inverse of [sinusoidal](functions/sinusoidal.md).                         |
+| [mercator](functions/mercator.md)                                                | Project a point on a sphere with the **Mercator projection**: the conformal cylindrical map, which keeps angles and shapes locally true.      |
+| [mollweide](functions/mollweide.md)                                              | Project a point on a sphere with the **Mollweide projection**: an equal-area map of the whole sphere inside an ellipse twice as wide as tall. |
+| [sinusoidal](functions/sinusoidal.md)                                            | Project a point on a sphere with the **sinusoidal projection**: an equal-area map, with every parallel at its true length.                    |
 
 ## Terrain
 

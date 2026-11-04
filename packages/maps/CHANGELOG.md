@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.8.0...%40interstellar-tools%2Fmaps%400.9.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the sinusoidal and Mollweide equal-area projections to maps ([8672ff0](https://github.com/phun-ky/interstellar-tools/commit/8672ff0a59c5bbf969c67cbec9d66ac209049351)), closes [#191](https://github.com/phun-ky/interstellar-tools/issues/191)
+
 ## [0.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.7.0...%40interstellar-tools%2Fmaps%400.8.0) (2026-11-03)
 
 ### Feature
