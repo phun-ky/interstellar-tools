@@ -22,6 +22,7 @@ import ApolloRendezvousPlot from './components/apollo/ApolloRendezvousPlot.vue';
 import ApolloSunPlot from './components/apollo/ApolloSunPlot.vue';
 import MissionHome from './components/home/MissionHome.vue';
 import ProjectionMap from './components/maps/ProjectionMap.vue';
+import MarsLandingGrid from './components/mars/MarsLandingGrid.vue';
 import NavStatus from './components/NavStatus.vue';
 import OrbitWidget from './components/OrbitWidget.vue';
 import PullQuote from './components/PullQuote.vue';
@@ -50,6 +51,7 @@ export default {
     ctx.app.component('ApolloRendezvousPlot', ApolloRendezvousPlot);
     ctx.app.component('ApolloEntryPlot', ApolloEntryPlot);
     ctx.app.component('ProjectionMap', ProjectionMap);
+    ctx.app.component('MarsLandingGrid', MarsLandingGrid);
 
     if (typeof window !== 'undefined') {
       document.documentElement.classList.add(GLOBAL_CLASS);
