@@ -10,8 +10,9 @@ const ZES = 0.01675;
 const ZEL = 0.0549;
 const ZNS = 1.19459e-5;
 const ZNL = 1.5835218e-4;
-// Earth's rotation rate, rad/min
-const RPTIM = 4.37526908801129966e-3;
+// Earth's rotation rate, rad/min: the report's 4.37526908801129966e-3, as
+// the nearest double
+const RPTIM = 4.3752690880113e-3;
 
 /** The lunar and solar coefficients that stay fixed for an element set. */
 export interface LunarSolarTerms {
@@ -140,7 +141,9 @@ export const dscom = (
   const zsinhl = (0.089683511 * stem) / zsinil;
   const zcoshl = Math.sqrt(1 - zsinhl * zsinhl);
   const gam = 5.8351514 + 0.001944368 * day;
+
   let zx = (0.39785416 * stem) / zsinil;
+
   const zy = zcoshl * ctem + 0.91744867 * zsinhl * stem;
 
   zx = Math.atan2(zx, zy);
@@ -148,6 +151,7 @@ export const dscom = (
 
   const zcosgl = Math.cos(zx);
   const zsingl = Math.sin(zx);
+
   // The Sun first, then the Moon
   let zcosg = zcosgs;
   let zsing = zsings;
@@ -156,8 +160,10 @@ export const dscom = (
   let zcosh = cnodm;
   let zsinh = snodm;
   let cc = c1ss;
+
   const xnoi = 1 / nm;
   const sun = { s: [0, 0, 0, 0, 0, 0, 0], z: [] as number[] };
+
   let s = [0, 0, 0, 0, 0, 0, 0];
   let z: number[] = [];
 
@@ -183,9 +189,11 @@ export const dscom = (
     const z31 = 12 * x1 * x1 - 3 * x3 * x3;
     const z32 = 24 * x1 * x2 - 6 * x3 * x4;
     const z33 = 12 * x2 * x2 - 3 * x4 * x4;
+
     let z1 = 3 * (a1 * a1 + a2 * a2) + z31 * emsq;
     let z2 = 6 * (a1 * a3 + a2 * a4) + z32 * emsq;
     let z3 = 3 * (a3 * a3 + a4 * a4) + z33 * emsq;
+
     const z11 = -6 * a1 * a5 + emsq * (-24 * x1 * x7 - 6 * x3 * x5);
     const z12 =
       -6 * (a1 * a6 + a3 * a5) +
@@ -359,6 +367,7 @@ export const dpper = (
   let sinzf = Math.sin(zf);
   let f2 = 0.5 * sinzf * sinzf - 0.25;
   let f3 = -0.5 * sinzf * Math.cos(zf);
+
   const ses = terms.se2 * f2 + terms.se3 * f3;
   const sis = terms.si2 * f2 + terms.si3 * f3;
   const sls = terms.sl2 * f2 + terms.sl3 * f3 + terms.sl4 * sinzf;
@@ -380,6 +389,7 @@ export const dpper = (
   const pe = ses + sel;
   const pinc = sis + sil;
   const pl = sls + sll;
+
   let pgh = sghs + sghl;
   let ph = shs + shll;
 
@@ -399,8 +409,10 @@ export const dpper = (
     // Lyddane's modification
     const sinop = Math.sin(elements.nodep);
     const cosop = Math.cos(elements.nodep);
+
     let alfdp = sinip * sinop;
     let betdp = sinip * cosop;
+
     const dalf = ph * cosop + pinc * cosip * sinop;
     const dbet = -ph * sinop + pinc * cosip * cosop;
 
@@ -409,6 +421,7 @@ export const dpper = (
     elements.nodep %= TWO_PI;
 
     let xls = elements.mp + elements.argpp + cosip * elements.nodep;
+
     const dls = pl + pgh - pinc * elements.nodep * sinip;
 
     xls += dls;
@@ -463,7 +476,9 @@ export const dsinit = (
   const { cosim, sinim } = c;
   const nm = no;
   const em = inputs.ecco;
+
   let emsq = c.emsq;
+
   // Near 24 hours, or near 12 hours on an eccentric orbit
   const irez =
     nm < 0.0052359877 && nm > 0.0034906585
@@ -479,6 +494,7 @@ export const dsinit = (
   // Within 3° of an equatorial orbit, the node is undefined
   const equatorial =
     inputs.inclm < 5.2359877e-2 || inputs.inclm > Math.PI - 5.2359877e-2;
+
   let shs = equatorial ? 0 : -ZNS * c.ss2 * (c.sz21 + c.sz23);
 
   if (sinim !== 0) shs /= sinim;
@@ -490,6 +506,7 @@ export const dsinit = (
   const dmdt = sls - ZNL * c.s3 * (c.z1 + c.z3 - 14 - 6 * emsq);
   const sghl = c.s4 * ZNL * (c.z31 + c.z33 - 6);
   const shll = equatorial ? 0 : -ZNL * c.s2 * (c.z21 + c.z23);
+
   let domdt = sgs + sghl;
   let dnodt = shs;
 
@@ -536,6 +553,7 @@ export const dsinit = (
 
     const eoc = e * emsq;
     const g201 = -0.306 - (e - 0.64) * 0.44;
+
     let g211: number;
     let g310: number;
     let g322: number;
@@ -602,6 +620,7 @@ export const dsinit = (
       (-2 - 8 * cosim + cosisq * (12 + 8 * cosim - 10 * cosisq));
     const xno2 = nm * nm;
     const ainv2 = aonv * aonv;
+
     let temp1 = 3 * xno2 * ainv2;
     let temp = temp1 * root22;
 
@@ -692,6 +711,7 @@ export const dspace = (
   // integrator's state between calls to resume it; starting again from the
   // epoch takes the same steps, so gives the same result
   const delt = t > 0 ? stepp : -stepp;
+
   let atime = 0;
   let xni = no;
   let xli = r.xlamo;

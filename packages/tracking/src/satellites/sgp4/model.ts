@@ -21,6 +21,7 @@ const TEMP4 = 1.5e-12;
 
 // WGS-72, the gravity model element sets are fitted with
 export const RADIUS_EARTH_KM = 6378.135;
+
 const MU = 398600.8;
 const XKE = 60 / Math.sqrt(RADIUS_EARTH_KM ** 3 / MU);
 const J2 = 0.001082616;
@@ -109,7 +110,9 @@ export const sgp4Init = (elements: MeanElementsInterface): Sgp4Model => {
   const cosio2 = cosio * cosio;
   const ak = Math.pow(XKE / noKozai, X2O3);
   const d1 = (0.75 * J2 * (3 * cosio2 - 1)) / (rteosq * omeosq);
+
   let del = d1 / (ak * ak);
+
   const adel = ak * (1 - del * del - del * (1 / 3 + (134 * del * del) / 81));
 
   del = d1 / (adel * adel);
@@ -126,10 +129,12 @@ export const sgp4Init = (elements: MeanElementsInterface): Sgp4Model => {
   // sgp4init
   const ss = 78 / RADIUS_EARTH_KM + 1;
   const qzms2t = ((120 - 78) / RADIUS_EARTH_KM) ** 4;
+
   // Perigee below 220 km: drop the higher-order drag terms
   let isimp = rp < 220 / RADIUS_EARTH_KM + 1;
   let sfour = ss;
   let qzms24 = qzms2t;
+
   const perige = (rp - 1) * RADIUS_EARTH_KM;
 
   // Below 156 km, move the atmosphere's reference height down with perigee
@@ -290,6 +295,7 @@ export const sgp4 = (
   const argpdf = model.argpo + model.argpdot * t;
   const nodedf = model.nodeo + model.nodedot * t;
   const t2 = t * t;
+
   let argpm = argpdf;
   let mm = xmdf;
   let nodem = nodedf + model.nodecf * t2;
@@ -361,6 +367,7 @@ export const sgp4 = (
     argpp: argpm,
     mp: mm
   };
+
   let sinip = Math.sin(inclm);
   let cosip = Math.cos(inclm);
   let { aycof, xlcof, con41, x1mth2, x7thm1 } = model;
@@ -387,11 +394,14 @@ export const sgp4 = (
 
   // Long-period periodics
   const axnl = p.ep * Math.cos(p.argpp);
+
   let temp = 1 / (am * (1 - p.ep * p.ep));
+
   const aynl = p.ep * Math.sin(p.argpp) + temp * aycof;
   const xl = p.mp + p.argpp + p.nodep + temp * xlcof * axnl;
   // Kepler's equation, with the steps limited
   const u = (xl - p.nodep) % TWO_PI;
+
   let eo1 = u;
   let tem5 = 9999.9;
   let sineo1 = 0;
@@ -425,7 +435,9 @@ export const sgp4 = (
 
   const sinu = (am / rl) * (sineo1 - aynl - axnl * temp);
   const cosu = (am / rl) * (coseo1 - axnl + aynl * temp);
+
   let su = Math.atan2(sinu, cosu);
+
   const sin2u = (cosu + cosu) * sinu;
   const cos2u = 1 - 2 * sinu * sinu;
 
