@@ -79,23 +79,25 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Cartography
 
-| Function                                                                            | Description                                                                                                                     |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| [bodyFixedFromInertialDcmIAU](functions/bodyFixedFromInertialDcmIAU.md)             | Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).                                                    |
-| [bodyFixedToGeodetic](functions/bodyFixedToGeodetic.md)                             | Convert a **body-fixed Cartesian** position (ECEF for Earth) to **geodetic coordinates**: latitude, longitude and height.       |
-| [centralAngle](functions/centralAngle.md)                                           | Compute the **central angle** between two points on a sphere from their latitudes and longitudes, with the haversine formula.   |
-| [centralAngleFromVectors](functions/centralAngleFromVectors.md)                     | Compute the **central angle** between two position vectors, without trigonometry on latitude and longitude.                     |
-| [eccentricitySquaredOblateSpheroid](functions/eccentricitySquaredOblateSpheroid.md) | Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.                                                          |
-| [flatteningOblateSpheroid](functions/flatteningOblateSpheroid.md)                   | Compute **flattening** ($f$) of an oblate spheroid.                                                                             |
-| [geodeticToBodyFixed](functions/geodeticToBodyFixed.md)                             | Convert **geodetic coordinates** (latitude, longitude, height) to a **body-fixed Cartesian** position, ECEF for Earth.          |
-| [greatCircleDistance](functions/greatCircleDistance.md)                             | Compute the **great-circle distance** between two points on a sphere: the shortest path along its surface.                      |
-| [horizonDistance](functions/horizonDistance.md)                                     | Compute the straight-line **distance to the horizon** for an observer at a height above a sphere.                               |
-| [horizonSurfaceDistance](functions/horizonSurfaceDistance.md)                       | Compute the **distance along the surface to the horizon** for an observer at a height above a sphere.                           |
-| [isOnTriaxialEllipsoidSurface](functions/isOnTriaxialEllipsoidSurface.md)           | Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within a tolerance).                                   |
-| [meridionalRadiusOfCurvature](functions/meridionalRadiusOfCurvature.md)             | Compute the **meridional radius of curvature** $M$ of an oblate spheroid at a geodetic latitude.                                |
-| [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.                                        |
-| [primeVerticalRadiusOfCurvature](functions/primeVerticalRadiusOfCurvature.md)       | Compute the **prime vertical radius of curvature** $N$ of an oblate spheroid at a geodetic latitude.                            |
-| [sphericalPolygonArea](functions/sphericalPolygonArea.md)                           | Compute the **area of a polygon on a sphere**, such as an instrument footprint or a region on a planet, from its corner points. |
+| Function                                                                            | Description                                                                                                                                             |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [bodyFixedFromInertialDcmIAU](functions/bodyFixedFromInertialDcmIAU.md)             | Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).                                                                            |
+| [bodyFixedToGeodetic](functions/bodyFixedToGeodetic.md)                             | Convert a **body-fixed Cartesian** position (ECEF for Earth) to **geodetic coordinates**: latitude, longitude and height.                               |
+| [centralAngle](functions/centralAngle.md)                                           | Compute the **central angle** between two points on a sphere from their latitudes and longitudes, with the haversine formula.                           |
+| [centralAngleFromVectors](functions/centralAngleFromVectors.md)                     | Compute the **central angle** between two position vectors, without trigonometry on latitude and longitude.                                             |
+| [eccentricitySquaredOblateSpheroid](functions/eccentricitySquaredOblateSpheroid.md) | Compute **first eccentricity squared** ($e^2$) for an oblate spheroid.                                                                                  |
+| [flatteningOblateSpheroid](functions/flatteningOblateSpheroid.md)                   | Compute **flattening** ($f$) of an oblate spheroid.                                                                                                     |
+| [geodeticToBodyFixed](functions/geodeticToBodyFixed.md)                             | Convert **geodetic coordinates** (latitude, longitude, height) to a **body-fixed Cartesian** position, ECEF for Earth.                                  |
+| [greatCircleDistance](functions/greatCircleDistance.md)                             | Compute the **great-circle distance** between two points on a sphere: the shortest path along its surface.                                              |
+| [heightAboveEllipsoid](functions/heightAboveEllipsoid.md)                           | Compute a point's **height above a body's reference ellipsoid**: the exact height along the ellipsoid's normal, the height maps and GPS receivers give. |
+| [heightAboveSphere](functions/heightAboveSphere.md)                                 | Compute a point's **height above a spherical body**: its distance from the centre less the radius.                                                      |
+| [horizonDistance](functions/horizonDistance.md)                                     | Compute the straight-line **distance to the horizon** for an observer at a height above a sphere.                                                       |
+| [horizonSurfaceDistance](functions/horizonSurfaceDistance.md)                       | Compute the **distance along the surface to the horizon** for an observer at a height above a sphere.                                                   |
+| [isOnTriaxialEllipsoidSurface](functions/isOnTriaxialEllipsoidSurface.md)           | Test whether a 3D point lies on the surface of a **triaxial ellipsoid** (within a tolerance).                                                           |
+| [meridionalRadiusOfCurvature](functions/meridionalRadiusOfCurvature.md)             | Compute the **meridional radius of curvature** $M$ of an oblate spheroid at a geodetic latitude.                                                        |
+| [planetocentricLatitude](functions/planetocentricLatitude.md)                       | Compute **planetocentric latitude** ($\varphi_c$) from body-fixed Cartesian coordinates.                                                                |
+| [primeVerticalRadiusOfCurvature](functions/primeVerticalRadiusOfCurvature.md)       | Compute the **prime vertical radius of curvature** $N$ of an oblate spheroid at a geodetic latitude.                                                    |
+| [sphericalPolygonArea](functions/sphericalPolygonArea.md)                           | Compute the **area of a polygon on a sphere**, such as an instrument footprint or a region on a planet, from its corner points.                         |
 
 ## Entry
 
