@@ -129,7 +129,6 @@ export const inverseSinusoidal = (
   assertSphere(R, lambda0);
 
   const phi = latitudeOnMap(y / R, y);
-
   const width = R * Math.cos(phi);
 
   assertOnMap(x, width);
