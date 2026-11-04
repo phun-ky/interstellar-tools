@@ -34,7 +34,7 @@ html.dark {
   --mc-grid-strong: rgba(71, 184, 190, 0.14);
   --mc-line: rgba(71, 184, 190, 0.22);
   --mc-text: #dfe9ee;
-  --mc-muted: #8ea2ad;
+  --mc-muted: #aabcc6;
   --mc-faint: #5f7781;
   --mc-teal: #47b8be;
   --mc-teal-soft: rgba(71, 184, 190, 0.1);
@@ -59,7 +59,7 @@ html:root.theme--dark {
     Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   /* Headings keep IBM Plex Sans Condensed, with serifs behind it */
   --mc-font-heading:
-    'IBM Plex Sans Condensed', ui-serif, 'DejaVu Serif', 'Free Serif', Palatino,
+    'IBM Plex Sans Condensed', ui-serif, 'DejaVu Serif', FreeSerif, Palatino,
     'Times New Roman', Times, 'Noto Serif', serif;
 
   --vp-c-bg: var(--mc-bg);
@@ -79,6 +79,8 @@ html:root.theme--dark {
   --vp-code-block-bg: var(--mc-bg-2);
   --vp-code-bg: var(--mc-teal-soft);
   --vp-code-color: var(--mc-teal);
+  --vp-code-font-size: 0.875rem;
+  --vp-custom-block-code-font-size: 0.8125rem;
   --vp-nav-bg-color: var(--mc-bg);
   --vp-sidebar-bg-color: var(--mc-bg);
   --vp-local-nav-bg-color: var(--mc-bg);
@@ -146,7 +148,7 @@ html.ph body {
   gap: 12px;
   margin-bottom: 16px;
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mc-muted);
@@ -164,7 +166,7 @@ html.ph body {
   padding: 0 20px;
   border: 1px solid var(--mc-line);
   font-family: var(--vp-font-family-mono);
-  font-size: 14px;
+  font-size: 0.875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--mc-text);
@@ -192,7 +194,7 @@ html.ph body {
 
 .ph a.mc-link {
   font-family: var(--vp-font-family-mono);
-  font-size: 12.5px;
+  font-size: 0.78125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -214,7 +216,7 @@ html.ph body {
   gap: 8px 16px;
   margin-top: 28px;
   padding: 18px 20px;
-  font-size: 15.5px;
+  font-size: 0.96875rem;
   color: var(--mc-text);
 }
 
@@ -230,7 +232,7 @@ html.ph body {
 .VPNavBar .VPNavBarMenuLink,
 .VPNavBar .VPNavBarMenuGroup .text {
   font-family: var(--vp-font-family-mono);
-  font-size: 13px;
+  font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -245,7 +247,7 @@ html.ph body {
 
   .ph .VPNavBar .VPNavBarMenuLink,
   .ph .VPNavBar .VPNavBarMenuGroup .text {
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
   }
 }
@@ -258,7 +260,7 @@ html.ph body {
 
   .ph .VPNavBar .VPNavBarMenuLink,
   .ph .VPNavBar .VPNavBarMenuGroup .text {
-    font-size: 11px;
+    font-size: 0.6875rem;
     letter-spacing: 0.02em;
   }
 
@@ -280,7 +282,7 @@ html.ph body {
   }
 
   .ph .VPNavBarTitle .title {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 }
 
@@ -309,7 +311,7 @@ html.ph body {
 
 .VPSidebarItem.level-0 > .item .text {
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -332,7 +334,7 @@ html.ph body {
 }
 
 .vp-doc h1 {
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0.01em;
@@ -343,13 +345,13 @@ html.ph body {
 .vp-doc h2 {
   padding-top: 28px;
   border-top: 1px solid var(--mc-line);
-  font-size: 28px;
+  font-size: 1.75rem;
   letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 
 .vp-doc h3 {
-  font-size: 21px;
+  font-size: 1.3125rem;
   letter-spacing: 0.02em;
 }
 
@@ -357,6 +359,16 @@ html.ph body {
 .vp-doc h3,
 .vp-doc h4 {
   color: var(--mc-text);
+}
+
+/* VitePress shrinks code in headings by 0.9em; let it follow the heading */
+.vp-doc :is(h1, h2, h3, h4) > code {
+  font-size: inherit;
+}
+
+/* Table text is 0.875rem, so code in a table stays a step smaller */
+.vp-doc table :not(pre) > code {
+  font-size: 0.75rem;
 }
 
 .ph .vp-doc p,
@@ -402,7 +414,7 @@ html.ph body {
 
 .vp-code-group .tabs label {
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -421,7 +433,7 @@ html.ph body {
 
 .ph .vp-doc .custom-block .custom-block-title {
   font-family: var(--vp-font-family-mono);
-  font-size: 12.5px;
+  font-size: 0.78125rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -469,7 +481,7 @@ html.ph body {
 
 .ph .vp-doc th {
   font-family: var(--vp-font-family-mono);
-  font-size: 11.5px;
+  font-size: 0.71875rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -488,7 +500,7 @@ html.ph body {
 .VPBadge {
   border-radius: 0;
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -502,7 +514,7 @@ html.ph body {
 /* on-this-page outline */
 .VPDocAsideOutline .outline-title {
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mc-amber);
@@ -521,7 +533,7 @@ html.ph body {
   border-bottom: 1px solid var(--mc-line);
   border-radius: 0;
   background: none;
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.65;
@@ -541,7 +553,7 @@ html.ph body {
 .ph .vp-doc blockquote footer {
   margin-top: 16px;
   font-family: var(--vp-font-family-mono);
-  font-size: 12.5px;
+  font-size: 0.78125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--mc-muted);

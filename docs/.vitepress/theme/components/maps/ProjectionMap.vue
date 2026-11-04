@@ -266,7 +266,7 @@ svg {
 }
 figcaption {
   margin-top: 8px;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--vp-c-text-2);
 }

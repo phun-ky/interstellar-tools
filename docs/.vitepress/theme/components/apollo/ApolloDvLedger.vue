@@ -100,7 +100,7 @@ const duration = (s: number) => {
   padding: 8px 16px;
   border-bottom: 1px solid var(--mc-line);
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mc-muted);
@@ -117,7 +117,7 @@ const duration = (s: number) => {
   gap: 6px 16px;
   padding: 10px 16px 0;
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .mc-ledger__legend span {
@@ -159,7 +159,7 @@ const duration = (s: number) => {
   padding: 14px 0 6px;
   border-bottom: 1px solid var(--mc-line);
   font-family: var(--vp-font-family-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mc-faint);
@@ -190,7 +190,7 @@ const duration = (s: number) => {
 
 .mc-ledger__get {
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--mc-faint);
 }
 
@@ -212,7 +212,7 @@ const duration = (s: number) => {
 
 .mc-ledger__dv {
   font-family: var(--vp-font-family-mono);
-  font-size: 13px;
+  font-size: 0.8125rem;
   text-align: right;
   color: var(--mc-text);
   font-variant-numeric: tabular-nums;
@@ -221,12 +221,12 @@ const duration = (s: number) => {
 .vp-doc .mc-ledger__row p {
   margin: 0;
   padding: 4px 0 12px 7.3em;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .mc-ledger__burn {
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--mc-faint);
 }
 
@@ -239,13 +239,13 @@ const duration = (s: number) => {
   padding: 12px 16px;
   border-top: 1px solid var(--mc-line);
   font-family: var(--vp-font-family-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .mc-ledger__total b {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 500;
   letter-spacing: 0;
   color: var(--mc-text);
@@ -262,7 +262,7 @@ const duration = (s: number) => {
   }
 
   .mc-ledger__name {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .vp-doc .mc-ledger__row p {

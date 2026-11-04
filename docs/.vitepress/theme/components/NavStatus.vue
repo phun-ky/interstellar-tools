@@ -128,7 +128,7 @@ const request = async () => {
   gap: 16px;
   margin-left: 20px;
   font-family: var(--vp-font-family-mono);
-  font-size: 11.5px;
+  font-size: 0.71875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--mc-muted);
