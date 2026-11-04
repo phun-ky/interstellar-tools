@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.2.1...%40interstellar-tools%2Ftracking%400.3.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Predict satellite passes over a ground observer ([ec0f31c](https://github.com/phun-ky/interstellar-tools/commit/ec0f31c327405f20e432ea13c2233e6328d6b54a)), references [#214](https://github.com/phun-ky/interstellar-tools/issues/214)
+
 ## [0.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.2.0...%40interstellar-tools%2Ftracking%400.2.1) (2026-11-04)
 
 ### Bug
