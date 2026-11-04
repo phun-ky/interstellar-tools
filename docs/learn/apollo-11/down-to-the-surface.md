@@ -232,6 +232,20 @@ Collins searched for Eagle through the sextant on several passes, with
 coordinates from the ground, and never found it. He reported that he could scan
 only one grid square in a pass.
 
+<DocPhoto
+  src="apollo-11/landing-site-lro.webp"
+  alt="An orbital photo of the Apollo 11 landing site, with Eagle's descent stage and the astronauts' dark tracks"
+  :width="1400"
+  :height="1400"
+  credit="NASA Goddard Space Flight Center"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:LRO_Gets_Additional_View_of_Apollo_11_Landing_Site_(4092985062).jpg">
+
+Tranquility Base from the Lunar Reconnaissance Orbiter in 2009: Eagle's descent
+stage is still there, with the crew's footpaths around it.
+
+</DocPhoto>
+
 ## 7. Landing in the morning
 
 The Sun was 10.8° above the eastern horizon when Eagle landed. That was by

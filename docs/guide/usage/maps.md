@@ -65,6 +65,21 @@ round; on an equal-area map they keep their area.
 <ProjectionMap projection="orthographic" :phi0="30" :lambda0="20"><strong>Orthographic</strong>, centred on 30° N, 20° E. One hemisphere, as a globe looks from far away.</ProjectionMap>
 </div>
 
+<DocPhoto
+  src="maps/tissot-mercator.webp"
+  alt="A Mercator world map with red Tissot circles that grow larger towards the poles"
+  :width="1600"
+  :height="1592"
+  credit="Eric Gaba (Sting)"
+  licence="CC BY-SA 4.0"
+  source="https://commons.wikimedia.org/wiki/File:Tissot_indicatrix_world_map_Mercator_proj.svg"
+  paper>
+
+Tissot's circles on a Mercator map of Earth. They grow towards the poles, which
+is why Greenland looks as large as Africa, 14 times its area.
+
+</DocPhoto>
+
 Each projection has an inverse, `inverseMercator`, `inverseEquirectangular` and
 so on, from a point on the map back to latitude and longitude. Here is
 Perseverance's landing site, at 18.4447° N, 77.4508° E, on the equirectangular
@@ -122,6 +137,20 @@ the map is $2^z$ tiles across, so each zoom splits every tile into four. Columns
 85.05° N. This is the XYZ scheme of OpenStreetMap; the same tiles work for any
 body, since they depend only on angles.
 
+<DocPhoto
+  src="maps/blue-marble-next-generation.webp"
+  alt="A colour map of Earth in equirectangular projection, with land relief and ocean depths"
+  :width="1600"
+  :height="800"
+  credit="Reto Stöckli, NASA Earth Observatory"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Blue_Marble_Next_Generation_%2B_topography_%2B_bathymetry.jpg">
+
+Earth in equirectangular projection, the usual layout for a whole-planet image.
+Tiles are cut from images like this after they're reprojected to Web Mercator.
+
+</DocPhoto>
+
 A **quadkey** names a tile with one digit 0–3 per zoom level, for the quarter of
 its parent it is in, so a tile's key starts with its parent's:
 
@@ -174,6 +203,20 @@ At zoom 6 a tile is $2\pi R / 2^6$, 333 km, across at the equator; at zoom 10,
 85.05° land in the top or bottom row.
 
 ## Terrain from an elevation grid
+
+<DocPhoto
+  src="maps/mars-mola.webp"
+  alt="A colour-coded elevation map of the whole of Mars, with the Tharsis volcanoes in red and Hellas basin in blue"
+  :width="1600"
+  :height="915"
+  credit="NASA"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Mars_topography_(MOLA_dataset)_HiRes.jpg">
+
+Mars from the MOLA laser altimeter: a global elevation grid, from the floor of
+Hellas basin, about 8 km below the datum, to Olympus Mons, about 22 km above it.
+
+</DocPhoto>
 
 A **digital elevation model** is a grid of heights. `createGrid` checks one and
 holds it: row 0 is the northernmost, columns run west to east, and every cell is
