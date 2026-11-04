@@ -1,0 +1,209 @@
+import type {
+  GeodeticCoordinatesInterface,
+  LookAnglesInterface,
+  MeanElementsInterface,
+  Radians,
+  SatellitePassInterface
+} from '@interstellar-tools/types';
+
+import { lookAngles } from './look-angles.js';
+
+// Golden-section ratio, for the search for the highest point
+const INV_PHI = (Math.sqrt(5) - 1) / 2;
+
+/** Options for {@link predictPasses}. */
+export interface PredictPassesOptionsInterface {
+  /** The elevation that counts as rising and setting, in **radians**: 0 by default, the horizon. */
+  minElevation?: Radians;
+  /** The coarse step in **s**: a 180th of the orbital period by default, 31 s for the ISS. */
+  step?: number;
+}
+
+const assertDate = (name: string, date: Date): number => {
+  if (!(date instanceof Date) || !Number.isFinite(date.getTime()))
+    throw new TypeError(
+      `${name} must be a valid Date. Received: ${String(date)}`
+    );
+
+  return date.getTime();
+};
+
+/**
+ * **Predict the passes** of a satellite over a ground observer between two
+ * moments: when it rises above the horizon, when it's highest, and when it
+ * sets. It's the first question a tracking app answers.
+ *
+ * Steps through the window in coarse steps, finds where the elevation from
+ * {@link lookAngles} crosses the minimum, and refines each crossing by
+ * bisection to the millisecond. The highest point is refined by a
+ * golden-section search around the highest step.
+ *
+ * ::: info Notes
+ *
+ * - **Accuracy**: no better than the elements. Rise and set times are good to
+ *   seconds with elements a day old, and drift by tens of seconds a day
+ *   after that, more for low orbits. Use fresh elements.
+ * - Only whole passes are returned: a pass already in progress at `from`, or
+ *   still in progress at `to`, is left out. A geostationary satellite never
+ *   rises or sets, so it has no passes, above the horizon or not.
+ * - A pass shorter than the step, grazing the minimum elevation, can be
+ *   missed. Pass a smaller `step` to catch those.
+ * - The elevation is geometric: refraction makes a satellite visible about
+ *   half a degree below the horizon, a few seconds earlier.
+ *
+ * :::
+ *
+ * @param elements - The mean elements, from {@link parseTle} or {@link parseOmm}.
+ * @param observer - The observer's geodetic latitude `phi` and longitude `lambda` in **radians**, and height `h` above the WGS 84 ellipsoid in **m**.
+ * @param from - Start of the window, as a `Date`.
+ * @param to - End of the window, as a `Date` after `from`.
+ * @param options - `minElevation` in **radians** (in (-π/2, π/2), default 0) and the coarse `step` in **s** (finite, > 0).
+ * @returns The passes in the window, in order: see {@link SatellitePassInterface}.
+ * @throws {TypeError} If `from` or `to` is not a valid `Date`, an option is not a finite number, or a value of `elements` or `observer` is not a finite number.
+ * @throws {RangeError} If `to` is not after `from`, `minElevation` is outside (-π/2, π/2), `step <= 0`, or SGP4 fails within the window, as in {@link propagate}.
+ * @group Satellites
+ *
+ * @example
+ * ```ts
+ * const oslo = { phi: toRad(59.91), lambda: toRad(10.75), h: 20 };
+ * const from = new Date('2026-11-04T12:00:00Z');
+ * const to = new Date('2026-11-05T12:00:00Z');
+ *
+ * for (const pass of predictPasses(iss, oslo, from, to, { minElevation: toRad(10) }))
+ *   console.log(pass.rise.toISOString(), toDeg(pass.maxElevation));
+ * ```
+ *
+ * @see {@link lookAngles}
+ */
+export const predictPasses = (
+  elements: MeanElementsInterface,
+  observer: GeodeticCoordinatesInterface,
+  from: Date,
+  to: Date,
+  options: PredictPassesOptionsInterface = {}
+): SatellitePassInterface[] => {
+  const start = assertDate('from', from);
+  const end = assertDate('to', to);
+  const min = options.minElevation ?? 0;
+  const { step } = options;
+
+  if (end <= start)
+    throw new RangeError(
+      `to must be after from. Received: ${to.toISOString()}, from ${from.toISOString()}`
+    );
+
+  for (const [name, value] of [
+    ['minElevation', min],
+    ['step', step ?? 1]
+  ] as const)
+    if (!Number.isFinite(value))
+      throw new TypeError(
+        `${name} must be a finite number. Received: ${value}`
+      );
+
+  if (Math.abs(min) >= Math.PI / 2)
+    throw new RangeError(
+      `minElevation must be in (-π/2, π/2). Received: ${min}`
+    );
+
+  if (step !== undefined && step <= 0)
+    throw new RangeError(`step must be > 0. Received: ${step}`);
+
+  const at = (ms: number): LookAnglesInterface =>
+    lookAngles(elements, observer, new Date(ms));
+  const above = (ms: number) => at(ms).elevation > min;
+  // The edge between two moments either side of the minimum elevation: the
+  // last millisecond on lo's side, and the first on hi's
+  const edge = (lo: number, hi: number): [number, number] => {
+    const loAbove = above(lo);
+
+    while (hi - lo > 1) {
+      const mid = Math.floor((lo + hi) / 2);
+
+      if (above(mid) === loAbove) lo = mid;
+      else hi = mid;
+    }
+
+    return [lo, hi];
+  };
+  // The highest point between a and b, to the millisecond
+  const highest = (a: number, b: number): number => {
+    let c = b - INV_PHI * (b - a);
+    let d = a + INV_PHI * (b - a);
+    let ec = at(c).elevation;
+    let ed = at(d).elevation;
+
+    while (b - a > 1) {
+      if (ec > ed) {
+        b = d;
+        d = c;
+        ed = ec;
+        c = b - INV_PHI * (b - a);
+        ec = at(c).elevation;
+      } else {
+        a = c;
+        c = d;
+        ec = ed;
+        d = a + INV_PHI * (b - a);
+        ed = at(d).elevation;
+      }
+    }
+
+    return Math.round((a + b) / 2);
+  };
+
+  // The first look also checks the elements and the observer
+  let up0 = above(start);
+
+  // A 180th of the period, within 5 s and 5 min
+  const period = (2 * Math.PI) / elements.meanMotion;
+  const stepMs = Math.max(
+    1,
+    Math.round(1000 * (step ?? Math.min(Math.max(period / 180, 5), 300)))
+  );
+  const passes: SatellitePassInterface[] = [];
+
+  let t0 = start;
+  // A pass in progress at `from` has no rise: skip it
+  let rise: number | undefined;
+  let best = 0;
+  let bestElevation = -Infinity;
+
+  while (t0 < end) {
+    const t1 = Math.min(t0 + stepMs, end);
+    const elevation = at(t1).elevation;
+    const up1 = elevation > min;
+
+    if (!up0 && up1) {
+      rise = edge(t0, t1)[1];
+      best = t1;
+      bestElevation = elevation;
+    } else if (up1 && rise !== undefined && elevation > bestElevation) {
+      best = t1;
+      bestElevation = elevation;
+    } else if (up0 && !up1 && rise !== undefined) {
+      const set = edge(t0, t1)[0];
+      const culmination = highest(
+        Math.max(rise, best - stepMs),
+        Math.min(set, best + stepMs)
+      );
+      const top = at(culmination);
+
+      passes.push({
+        rise: new Date(rise),
+        riseAzimuth: at(rise).azimuth,
+        culmination: new Date(culmination),
+        culminationAzimuth: top.azimuth,
+        maxElevation: top.elevation,
+        set: new Date(set),
+        setAzimuth: at(set).azimuth
+      });
+      rise = undefined;
+    }
+
+    t0 = t1;
+    up0 = up1;
+  }
+
+  return passes;
+};

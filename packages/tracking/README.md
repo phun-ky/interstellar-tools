@@ -72,6 +72,18 @@ const { azimuth, elevation, rangeRate } = lookAngles(iss, oslo, new Date());
 const shift = dopplerShift(145_800_000, rangeRate); // Hz
 ```
 
+And predict when it passes over, here for the next day, above 10°:
+
+```ts
+import { predictPasses } from '@interstellar-tools/tracking';
+
+const from = new Date();
+const to = new Date(from.getTime() + 86_400_000);
+
+for (const pass of predictPasses(iss, oslo, from, to, { minElevation: 0.1745 }))
+  console.log(pass.rise, pass.maxElevation, pass.set);
+```
+
 ## What's planned
 
 The
