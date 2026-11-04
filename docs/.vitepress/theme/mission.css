@@ -51,8 +51,16 @@ html.dark {
 html:root,
 html:root.theme--light,
 html:root.theme--dark {
-  --vp-font-family-base: 'IBM Plex Sans Condensed', system-ui, sans-serif;
-  --vp-font-family-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --vp-font-family-base:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --vp-font-family-mono:
+    'Menlo for Powerline', 'Menlo Regular for Powerline', 'DejaVu Sans Mono',
+    Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  /* Headings keep IBM Plex Sans Condensed, with serifs behind it */
+  --mc-font-heading:
+    'IBM Plex Sans Condensed', ui-serif, 'DejaVu Serif', 'Free Serif', Palatino,
+    'Times New Roman', Times, 'Noto Serif', serif;
 
   --vp-c-bg: var(--mc-bg);
   --vp-c-bg-alt: var(--mc-bg-2);
@@ -227,7 +235,57 @@ html.ph body {
   text-transform: uppercase;
 }
 
+/* The uppercase mono links are wide: tighten them, and then the search
+   button, as the bar narrows, so the menu and its icons still fit */
+@media (min-width: 768px) and (max-width: 1439px) {
+  .ph .VPNavBar .VPNavBarMenuLink,
+  .ph .VPNavBar .VPNavBarMenuGroup .button {
+    padding: 0 8px;
+  }
+
+  .ph .VPNavBar .VPNavBarMenuLink,
+  .ph .VPNavBar .VPNavBarMenuGroup .text {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .ph .VPNavBar .VPNavBarMenuLink,
+  .ph .VPNavBar .VPNavBarMenuGroup .button {
+    padding: 0 6px;
+  }
+
+  .ph .VPNavBar .VPNavBarMenuLink,
+  .ph .VPNavBar .VPNavBarMenuGroup .text {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+
+  .ph .VPNavBar .DocSearch-Button-Placeholder,
+  .ph .VPNavBar .DocSearch-Button-Keys {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 959px) {
+  .ph .VPNavBar .VPNavBarMenuLink,
+  .ph .VPNavBar .VPNavBarMenuGroup .button {
+    padding: 0 5px;
+  }
+
+  .ph .VPNavBar .VPNavBarMenuLink,
+  .ph .VPNavBar .VPNavBarMenuGroup .text {
+    letter-spacing: 0;
+  }
+
+  .ph .VPNavBarTitle .title {
+    font-size: 15px;
+  }
+}
+
 .VPNavBarTitle .title {
+  font-family: var(--mc-font-heading);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -263,6 +321,15 @@ html.ph body {
 }
 
 /* ---------- Doc pages ---------- */
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  font-family: var(--mc-font-heading);
+}
 
 .vp-doc h1 {
   font-size: clamp(32px, 4vw, 44px);

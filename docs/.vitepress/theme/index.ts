@@ -3,9 +3,6 @@ import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme-without-fonts';
 import { h, onMounted, watchEffect } from 'vue';
 
-import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/500.css';
-import '@fontsource/ibm-plex-mono/600.css';
 import '@fontsource/ibm-plex-sans-condensed/400.css';
 import '@fontsource/ibm-plex-sans-condensed/500.css';
 import '@fontsource/ibm-plex-sans-condensed/600.css';

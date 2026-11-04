@@ -67,6 +67,7 @@ const parts = computed(() => props.excerpt.split('*'));
 .excerpt {
   margin: 0;
   max-width: none;
+  font-family: var(--mc-font-heading);
   font-size: clamp(26px, 4vw, 38px);
   font-weight: 700;
   line-height: 1.08;
