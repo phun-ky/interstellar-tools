@@ -62,3 +62,13 @@ export * from './projections/orthographic.js';
 export * from './projections/sinusoidal.js';
 
 export * from './projections/stereographic.js';
+
+// tiles
+
+export * from './tiles/tile.js';
+
+export * from './tiles/tile-at.js';
+
+export * from './tiles/tile-bounds.js';
+
+export * from './tiles/quadkey.js';
