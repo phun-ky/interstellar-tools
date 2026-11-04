@@ -43,6 +43,39 @@ const [sameIss] = (await response.json()).map(parseOmm);
 A malformed TLE throws a `RangeError` naming the line, columns and field, and a
 wrong checksum is caught. Alpha-5 catalogue numbers, such as `A0001`, are read.
 
+Then propagate the elements with SGP4, the model they were fitted for, to get
+the satellite's position and velocity in the TEME frame, in m and m/s:
+
+```ts
+import { propagate } from '@interstellar-tools/tracking';
+
+const { r, v } = propagate(iss, new Date('2026-11-04T12:00:00Z'));
+```
+
+It matches the verification set of Vallado et al. (2006), _Revisiting Spacetrack
+Report [#3](https://github.com/phun-ky/interstellar-tools/issues/3)_, to a
+millimetre. For orbits of 225 minutes or more it runs as SDP4, with the pull of
+the Moon and Sun.
+
+And find the point on Earth under the satellite, on the WGS 84 ellipsoid:
+
+```ts
+import { subSatellitePoint } from '@interstellar-tools/tracking';
+
+const { phi, lambda, h } = subSatellitePoint(iss, new Date());
+```
+
+Or see it from the ground: where to point an antenna, and how far to retune the
+radio for the Doppler shift:
+
+```ts
+import { dopplerShift, lookAngles } from '@interstellar-tools/tracking';
+
+const oslo = { phi: 1.0456, lambda: 0.1876, h: 20 }; // radians, m
+const { azimuth, elevation, rangeRate } = lookAngles(iss, oslo, new Date());
+const shift = dopplerShift(145_800_000, rangeRate); // Hz
+```
+
 ## What's planned
 
 The
@@ -76,8 +109,15 @@ npm i --save @interstellar-tools/tracking
 
 ## Satellites
 
-| Function                                | Description                                                                                                                                                                                               |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [parseOmm](functions/parseOmm.md)       | Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE, it has room for catalogue numbers above 339 999. |
-| [parseTle](functions/parseTle.md)       | Parse a **two-line element set** (TLE): the format NORAD has published satellite orbits in since the 1960s, for SGP4.                                                                                     |
-| [tleChecksum](functions/tleChecksum.md) | The **checksum** of a TLE line: the sum of its digits, with 1 for each minus sign, modulo 10. It's the last column of each line, and catches most typos.                                                  |
+| Function                                                          | Description                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [dopplerShift](functions/dopplerShift.md)                         | The **Doppler shift** of a radio signal from a satellite: how far the received frequency is from the transmitted one, as the satellite approaches or leaves.                                                                                |
+| [lookAngles](functions/lookAngles.md)                             | The **look angles** to a satellite from a ground observer at a moment: where to point an antenna or a camera (azimuth and elevation), how far away the satellite is (range), and how fast that changes (range rate, for the Doppler shift). |
+| [lookAnglesFromEarthFixed](functions/lookAnglesFromEarthFixed.md) | The **look angles** to a satellite from an observer, given the satellite's Earth-fixed position and velocity: azimuth, elevation, range and range rate. [lookAngles](functions/lookAngles.md) does the same from orbital elements.          |
+| [parseOmm](functions/parseOmm.md)                                 | Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE, it has room for catalogue numbers above 339 999.                                   |
+| [parseTle](functions/parseTle.md)                                 | Parse a **two-line element set** (TLE): the format NORAD has published satellite orbits in since the 1960s, for SGP4.                                                                                                                       |
+| [propagate](functions/propagate.md)                               | Propagate a satellite's mean elements with **SGP4** to a moment: its position and velocity in the TEME frame. See [propagateMinutes](functions/propagateMinutes.md).                                                                        |
+| [propagateMinutes](functions/propagateMinutes.md)                 | Propagate a satellite's mean elements with **SGP4** to a number of minutes from their epoch: its position and velocity in the TEME frame.                                                                                                   |
+| [subSatellitePoint](functions/subSatellitePoint.md)               | Find the point on Earth **under a satellite** at a moment: the geodetic latitude, longitude and height on the WGS 84 ellipsoid.                                                                                                             |
+| [temeToEarthFixed](functions/temeToEarthFixed.md)                 | Turn a position and velocity in **TEME**, the frame SGP4 works in, into **Earth-fixed** coordinates, by turning them with Earth through Greenwich mean sidereal time.                                                                       |
+| [tleChecksum](functions/tleChecksum.md)                           | The **checksum** of a TLE line: the sum of its digits, with 1 for each minus sign, modulo 10. It's the last column of each line, and catches most typos.                                                                                    |

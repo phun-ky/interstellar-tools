@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.7.0...%40interstellar-tools%2Ftypes%401.8.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the look angles type for satellite tracking ([5076106](https://github.com/phun-ky/interstellar-tools/commit/50761066d63fccce9b235d4cb166c032449668fe))
+
 ## [1.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.6.0...%40interstellar-tools%2Ftypes%401.7.0) (2026-11-04)
 
 ### Feature
