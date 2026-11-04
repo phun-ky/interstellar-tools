@@ -58,6 +58,12 @@ describe('tileAt', () => {
   test('takes the longitude modulo a whole turn: 180° E is column 0', () => {
     assert.equal(tileAt(0 as Radians, Math.PI as Radians, 3).x, 0);
     assert.equal(tileAt(0 as Radians, -Math.PI as Radians, 3).x, 0);
+    // Just short of 180° E is the last column, though λ + π rounds to 2π
+    assert.equal(tileAt(0 as Radians, 3.1415926535897927 as Radians, 1).x, 1);
+    assert.equal(
+      tileAt(0 as Radians, 3.1415926535897927 as Radians, 30).x,
+      2 ** 30 - 1
+    );
     assert.deepEqual(
       tileAt(rad(18.65), rad(226.2), 6),
       tileAt(rad(18.65), rad(-133.8), 6)

@@ -1,6 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 
-import { assertLatitude } from '../projections/shared.js';
+import { assertLatitude, wrapLongitude } from '../projections/shared.js';
 import { assertFinite } from '../validate.js';
 
 import { assertZoom } from './shared.js';
@@ -62,12 +62,15 @@ export const tileAt = (
   assertZoom(zoom);
 
   const n = 2 ** zoom;
-  // Fractions of the way across, from the west edge, and down, from the top
-  const across = (lambda + Math.PI) / (2 * Math.PI);
+  // Fractions of the way across, from the west edge, and down, from the top.
+  // 180° E is the west edge; just short of it, rounding can give a whole
+  // width, which the clamp keeps in the last column
+  const wrapped = wrapLongitude(lambda);
+  const across = wrapped === Math.PI ? 0 : (wrapped + Math.PI) / (2 * Math.PI);
   const down = (1 - Math.asinh(Math.tan(phi)) / Math.PI) / 2;
 
   return {
-    x: Math.min(n - 1, Math.floor((across - Math.floor(across)) * n)),
+    x: Math.min(n - 1, Math.floor(across * n)),
     y: Math.min(n - 1, Math.max(0, Math.floor(down * n))),
     z: zoom
   };
