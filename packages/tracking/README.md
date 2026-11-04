@@ -61,6 +61,17 @@ import { subSatellitePoint } from '@interstellar-tools/tracking';
 const { phi, lambda, h } = subSatellitePoint(iss, new Date());
 ```
 
+Or see it from the ground: where to point an antenna, and how far to retune the
+radio for the Doppler shift:
+
+```ts
+import { dopplerShift, lookAngles } from '@interstellar-tools/tracking';
+
+const oslo = { phi: 1.0456, lambda: 0.1876, h: 20 }; // radians, m
+const { azimuth, elevation, rangeRate } = lookAngles(iss, oslo, new Date());
+const shift = dopplerShift(145_800_000, rangeRate); // Hz
+```
+
 ## What's planned
 
 The

@@ -1,4 +1,3 @@
-import { WGS84 } from '@interstellar-tools/constants';
 import {
   bodyFixedToGeodetic,
   greenwichMeanSiderealTime
@@ -10,23 +9,12 @@ import type {
 } from '@interstellar-tools/types';
 
 import { propagate } from './propagate.js';
+import { assertVector } from './validate.js';
+import { A, E_SQUARED } from './wgs84.js';
 
 // Earth's rotation rate in rad/s, as Vallado et al. (2006) use it to turn TEME
 // velocities into Earth-fixed ones
 const OMEGA_EARTH = 7.29211514670698e-5;
-const A = WGS84.equatorialRadius.value;
-const F = 1 / WGS84.inverseFlattening;
-const E_SQUARED = F * (2 - F);
-const assertVector = (name: string, vector: readonly number[]) => {
-  if (
-    !Array.isArray(vector) ||
-    vector.length !== 3 ||
-    !vector.every(Number.isFinite)
-  )
-    throw new TypeError(
-      `${name} must be three finite numbers. Received: ${String(vector)}`
-    );
-};
 
 /**
  * Turn a position and velocity in **TEME**, the frame SGP4 works in, into
