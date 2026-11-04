@@ -6,7 +6,12 @@ import type {
   GeographicCoordinatesInterface,
   ProjectedPointInterface
 } from './coordinates.js';
-import { assertLatitude, assertSphere, wrapLongitude } from './shared.js';
+import {
+  assertLatitude,
+  assertSphere,
+  latitudeOnMap,
+  wrapLongitude
+} from './shared.js';
 
 /**
  * Options for {@link equirectangular} and {@link inverseEquirectangular}.
@@ -156,15 +161,10 @@ export const inverseEquirectangular = (
   assertSphere(R, lambda0);
   assertOptions(phi0, phi1);
 
-  const phi = phi0 + y / R;
-
-  if (Math.abs(phi) > Math.PI / 2)
-    throw new RangeError(
-      `y must be on the map: it gives a latitude beyond a pole. Received: ${y}`
-    );
+  const phi = latitudeOnMap(phi0 + y / R, y);
 
   return {
-    phi: phi as Radians,
+    phi,
     lambda: wrapLongitude(lambda0 + x / (R * Math.cos(phi1)))
   };
 };

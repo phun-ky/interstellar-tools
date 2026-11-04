@@ -11,6 +11,7 @@ import {
   assertLatitude,
   assertOnMap,
   assertSphere,
+  latitudeOnMap,
   wrapLongitude
 } from './shared.js';
 
@@ -127,19 +128,14 @@ export const inverseSinusoidal = (
   ]);
   assertSphere(R, lambda0);
 
-  const phi = y / R;
-
-  if (Math.abs(phi) > Math.PI / 2)
-    throw new RangeError(
-      `y must be on the map: it gives a latitude beyond a pole. Received: ${y}`
-    );
+  const phi = latitudeOnMap(y / R, y);
 
   const width = R * Math.cos(phi);
 
   assertOnMap(x, width);
 
   return {
-    phi: phi as Radians,
+    phi,
     lambda: wrapLongitude(lambda0 + (x === 0 ? 0 : x / width))
   };
 };

@@ -150,6 +150,20 @@ describe('equirectangular', () => {
     );
   });
 
+  test('round-trips a pole, allowing for rounding', () => {
+    // Found by fast-check: φ0 + y/R came out an ulp past the south pole
+    const options = { phi0: 1.5551649591751822 as Radians };
+    const { x, y } = equirectangular(
+      (-Math.PI / 2) as Radians,
+      0 as Radians,
+      1,
+      options
+    );
+    const back = inverseEquirectangular(x, y, 1, options);
+
+    assert.equal(back.phi, -Math.PI / 2);
+  });
+
   test('spaces latitude and longitude evenly', () => {
     // 10° N, 20° E on Mars, true to scale at 45°
     const R = 3_389_500;

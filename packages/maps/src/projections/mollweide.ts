@@ -177,12 +177,13 @@ export const inverseMollweide = (
 
   const sinTheta = y / (Math.SQRT2 * R);
 
-  if (Math.abs(sinTheta) > 1)
+  // Allowing for rounding at the poles
+  if (Math.abs(sinTheta) > 1 + 1e-12)
     throw new RangeError(
       `y must be on the map: it is beyond a pole. Received: ${y}`
     );
 
-  const theta = Math.asin(sinTheta);
+  const theta = Math.asin(Math.min(1, Math.max(-1, sinTheta)));
   const perRadian = ((2 * Math.SQRT2) / Math.PI) * R * Math.cos(theta);
 
   assertOnMap(x, perRadian);

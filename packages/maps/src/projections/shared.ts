@@ -36,3 +36,16 @@ export const assertOnMap = (x: number, perRadian: number) => {
       `x must be on the map: it is beyond the edge meridians. Received: ${x}`
     );
 };
+
+/**
+ * The latitude `phi` that a map's `y` gives, clamped to the poles: throw if
+ * it is beyond a pole by more than rounding.
+ */
+export const latitudeOnMap = (phi: number, y: number): Radians => {
+  if (Math.abs(phi) > (Math.PI / 2) * (1 + 1e-12))
+    throw new RangeError(
+      `y must be on the map: it gives a latitude beyond a pole. Received: ${y}`
+    );
+
+  return Math.min(Math.PI / 2, Math.max(-Math.PI / 2, phi)) as Radians;
+};
