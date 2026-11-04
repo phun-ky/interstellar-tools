@@ -226,7 +226,10 @@ pull request, and a pull request that fails them can't be merged.
 - **Bug fixes must come with a regression test** that fails without the fix.
 - **Numbers in the documentation**, such as the "In practice" examples, are
   checked by tests too, so update the matching test when you change one.
-- Coverage should not drop. CI uploads a coverage report for every pull request.
+- Coverage must not drop. Each package's `test:ci` sets a floor for line, branch
+  and function coverage of its source, at the level measured when the floor was
+  set, and fails below it. Raise the floor when you add tests; the target is 99%
+  of lines, 100% of functions and 95% of branches.
 
 #### Developer Certificate of Origin
 
