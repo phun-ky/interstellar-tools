@@ -28,8 +28,8 @@ project:
     - name: interstellar-tools
       url: https://github.com/phun-ky/interstellar-tools
       comment: |
-        The monorepo for all six packages: types, constants, temporal,
-        equations, maps and mcp.
+        The monorepo for all seven packages: types, constants, temporal,
+        equations, maps, tracking and mcp.
   vulnerability-reporting:
     reports-accepted: true
     bug-bounty-available: false

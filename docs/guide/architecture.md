@@ -1,6 +1,6 @@
 # Architecture
 
-Interstellar Tools is a TypeScript monorepo of six npm packages, managed with
+Interstellar Tools is a TypeScript monorepo of seven npm packages, managed with
 npm workspaces. Each package is an ES module with its own version, changelog and
 release.
 
@@ -18,24 +18,27 @@ Dependencies only point one way, from the foundations up:
 @interstellar-tools/equations    orbital mechanics functions
         ↑
 @interstellar-tools/maps         maps, terrain and imaging (0.x)
+        ↑
+@interstellar-tools/tracking     satellites and probes (0.x)
 @interstellar-tools/mcp          MCP server (+ MCP SDK, Zod)
 ```
 
-Each package depends on the packages below it in this picture; `maps` and `mcp`
-sit side by side at the top and don't depend on each other. Nothing depends on a
-package above it, so there are no cycles.
+Each package depends on the packages below it in this picture; `tracking` and
+`mcp` sit side by side at the top and don't depend on each other. Nothing
+depends on a package above it, so there are no cycles.
 
-| Package     | Contains                                                                                                         | Runtime dependencies                  |
-| ----------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `types`     | Interfaces and branded types: units (`Radians`, `TemporalInterface`), vectors, celestial bodies                  | None                                  |
-| `constants` | Physical constants in SI units, and the celestial body datasets (`PLANETS`, `STARS`, …)                          | `types`                               |
-| `temporal`  | Converting and normalising time units                                                                            | `types`, `constants`                  |
-| `equations` | Pure functions, grouped by category: angles, anomalies, Kepler solvers, gravity, orbits, manoeuvres, cartography | `types`, `constants`, `temporal`      |
-| `maps`      | Map projections, web map tiles, terrain from elevation grids, imaging geometry and landing sites (0.x)           | `types`, `constants`, `equations`     |
-| `mcp`       | A Model Context Protocol server exposing the equations as tools and the datasets as resources                    | All of the above, the MCP SDK and Zod |
+| Package     | Contains                                                                                                         | Runtime dependencies                                    |
+| ----------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `types`     | Interfaces and branded types: units (`Radians`, `TemporalInterface`), vectors, celestial bodies                  | None                                                    |
+| `constants` | Physical constants in SI units, and the celestial body datasets (`PLANETS`, `STARS`, …)                          | `types`                                                 |
+| `temporal`  | Converting and normalising time units                                                                            | `types`, `constants`                                    |
+| `equations` | Pure functions, grouped by category: angles, anomalies, Kepler solvers, gravity, orbits, manoeuvres, cartography | `types`, `constants`, `temporal`                        |
+| `maps`      | Map projections, web map tiles, terrain from elevation grids, imaging geometry and landing sites (0.x)           | `types`, `constants`, `equations`                       |
+| `tracking`  | Satellites from orbital elements and probes from ephemerides (0.x)                                               | All of the above                                        |
+| `mcp`       | A Model Context Protocol server exposing the equations as tools and the datasets as resources                    | All of the above except `tracking`, the MCP SDK and Zod |
 
-The libraries (`types`, `constants`, `temporal`, `equations`, `maps`) have no
-runtime dependencies outside the monorepo.
+The libraries (`types`, `constants`, `temporal`, `equations`, `maps`,
+`tracking`) have no runtime dependencies outside the monorepo.
 
 ## Design
 
