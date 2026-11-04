@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.7.0...%40interstellar-tools%2Fmaps%400.8.0) (2026-11-03)
+
+### Feature
+
+* 🎸 Add the Mercator and equirectangular projections to maps ([7affab0](https://github.com/phun-ky/interstellar-tools/commit/7affab05635e7a69af8965cf91ce126d367f286e)), closes [#190](https://github.com/phun-ky/interstellar-tools/issues/190)
+
 ## [0.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.6.0...%40interstellar-tools%2Fmaps%400.7.0) (2026-11-03)
 
 ### Feature

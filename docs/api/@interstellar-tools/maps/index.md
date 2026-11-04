@@ -66,6 +66,19 @@ npm i --save @interstellar-tools/maps
 | [safeLandingGrid](functions/safeLandingGrid.md)                          | Map where a lander can **touch down safely** on an elevation grid: where it stays upright on the slope and the ground is smooth enough. |
 | [tipOverAngle](functions/tipOverAngle.md)                                | Compute the **tip-over angle** of a lander: the tilt at which its centre of mass passes over the edge of its footprint.                 |
 
+## Projections
+
+| Name                                                                             | Description                                                                                                                                 |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| [EquirectangularOptionsInterface](interfaces/EquirectangularOptionsInterface.md) | Options for [equirectangular](functions/equirectangular.md) and [inverseEquirectangular](functions/inverseEquirectangular.md).              |
+| [GeographicCoordinatesInterface](interfaces/GeographicCoordinatesInterface.md)   | A point on a sphere: latitude and longitude.                                                                                                |
+| [ProjectedPointInterface](interfaces/ProjectedPointInterface.md)                 | A point on a map, in metres from the projection's origin: `x` east, `y` north.                                                              |
+| [ProjectionOptionsInterface](interfaces/ProjectionOptionsInterface.md)           | Where a map is centred east–west, for the projections.                                                                                      |
+| [equirectangular](functions/equirectangular.md)                                  | Project a point on a sphere with the **equirectangular projection**: the simple cylindrical map, with latitude and longitude spaced evenly. |
+| [inverseEquirectangular](functions/inverseEquirectangular.md)                    | Find the point on a sphere for a point on an **equirectangular** map: the inverse of [equirectangular](functions/equirectangular.md).       |
+| [inverseMercator](functions/inverseMercator.md)                                  | Find the point on a sphere for a point on a **Mercator** map: the inverse of [mercator](functions/mercator.md).                             |
+| [mercator](functions/mercator.md)                                                | Project a point on a sphere with the **Mercator projection**: the conformal cylindrical map, which keeps angles and shapes locally true.    |
+
 ## Terrain
 
 | Name                                                                                             | Description                                                                                                                                                                        |
