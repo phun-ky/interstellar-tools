@@ -18,6 +18,9 @@
     },
     {
       "path": "packages/maps/tsconfig.build.json"
+    },
+    {
+      "path": "packages/tracking/tsconfig.build.json"
     }
   ],
   "extends": "./tsconfig.base.json"

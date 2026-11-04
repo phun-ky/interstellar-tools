@@ -137,14 +137,15 @@ orbital and mission software easier to build and easier to verify.
 
 ## Packages
 
-| Package                         | Description                                       | Status |
-| ------------------------------- | ------------------------------------------------- | ------ |
-| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Stable |
-| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Stable |
-| `@interstellar-tools/maps`      | Map projections, terrain and imaging geometry.    | 0.x    |
-| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | Stable |
-| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | Stable |
-| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Stable |
+| Package                         | Description                                       | Status                |
+| ------------------------------- | ------------------------------------------------- | --------------------- |
+| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Stable                |
+| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Stable                |
+| `@interstellar-tools/maps`      | Map projections, terrain and imaging geometry.    | 0.x                   |
+| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | Stable                |
+| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | Stable                |
+| `@interstellar-tools/tracking`  | Satellites and deep-space probes.                 | 0.x, not yet released |
+| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Stable                |
 
 ### Details
 
@@ -168,6 +169,11 @@ orbital and mission software easier to build and easier to verify.
 - **@interstellar-tools/maps** Map projections, web map tiles, terrain from
   elevation grids, imaging geometry and landing site analysis, for any planet or
   moon. New and versioned 0.x while its API settles.
+
+- **@interstellar-tools/tracking** Satellites from public orbital elements (TLE
+  and OMM, propagated with SGP4), with ground tracks, look angles and passes,
+  and deep-space probes from ephemeris files. New and versioned 0.x while its
+  API settles.
 
 - **@interstellar-tools/mcp** A Model Context Protocol server that exposes a
   curated set of the equations and the body datasets to AI assistants, with
