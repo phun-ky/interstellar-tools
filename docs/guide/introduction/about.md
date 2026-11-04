@@ -90,11 +90,13 @@ of them directly:
 
 | Package                         | Description                                       | Status |
 | ------------------------------- | ------------------------------------------------- | ------ |
-| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Alpha  |
-| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Alpha  |
-| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | WIP    |
-| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | WIP    |
-| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Alpha  |
+| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Stable |
+| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Stable |
+| `@interstellar-tools/maps`      | Map projections, terrain and imaging geometry.    | 0.x    |
+| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | Stable |
+| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | Stable |
+| `@interstellar-tools/tracking`  | Satellites and deep-space probes.                 | 0.x    |
+| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Stable |
 
 ### Details
 
