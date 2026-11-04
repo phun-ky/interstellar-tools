@@ -72,7 +72,7 @@
   "regression_tests_added50_status": "Met",
   "regression_tests_added50_justification": "In the last six months, 7 of the 10 bugs fixed in the published packages got a regression test, e.g. the planet angles (#145), the time step unit (#144) and the MCP DNS rebinding fix.",
   "test_statement_coverage80_status": "Met",
-  "test_statement_coverage80_justification": "Line coverage measured with Node built-in coverage: constants 100%, equations 99.98%, mcp about 90%, temporal 100%, types 100%; reports are uploaded to Codecov on every CI run.",
+  "test_statement_coverage80_justification": "Line coverage of each package's source, measured with Node built-in coverage: constants, maps, temporal and types 100%, equations 99.97%, mcp 98.9%. CI fails if a package drops below its floor, and reports are uploaded to Codecov on every run.",
   "test_policy_mandated_status": "Met",
   "test_policy_mandated_justification": "New functionality must come with tests and bug fixes with a regression test: https://github.com/phun-ky/interstellar-tools/blob/main/CONTRIBUTING.md#tests",
   "tests_documented_added_status": "Met",
