@@ -81,3 +81,42 @@ export interface MeanElementsInterface {
   /** The number of revolutions at the epoch. TLEs only hold five digits: it wraps at 100 000. */
   revolutionNumber: number;
 }
+
+/**
+ * Where a satellite is in an observer's sky: the direction to point an
+ * antenna or a camera, how far away it is and how fast that distance changes.
+ *
+ * Returned by `lookAngles` in `@interstellar-tools/tracking`.
+ *
+ * ::: info
+ *
+ * - `azimuth` runs clockwise from north: 0 north, π/2 east, π south, 3π/2 west.
+ * - `elevation` is above the plane tangent to the WGS 84 ellipsoid at the
+ *   observer: 0 on that horizon, π/2 straight overhead, negative below it.
+ * - `rangeRate` is negative while the satellite approaches, as during the
+ *   first half of a pass, and positive as it leaves.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // The ISS low in the south-west, approaching
+ * const angles: LookAnglesInterface = {
+ *   azimuth: 3.93 as Radians,
+ *   elevation: 0.17 as Radians,
+ *   range: 1_420_000,
+ *   rangeRate: -5_900
+ * };
+ * ```
+ * @group Tracking
+ */
+export interface LookAnglesInterface {
+  /** Azimuth in radians, clockwise from north, in [0, 2π). */
+  azimuth: Radians;
+  /** Elevation above the observer's horizon in radians, in [-π/2, π/2]. */
+  elevation: Radians;
+  /** Distance from the observer in m. */
+  range: number;
+  /** Rate of change of the distance in m/s: negative approaching, positive leaving. */
+  rangeRate: number;
+}
