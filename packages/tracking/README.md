@@ -192,6 +192,18 @@ const { position } = fit.rms; // how far SGP4 is from the fixes, in m
 formatTle({ ...fit.elements, catalogNumber: 99_999 }); // [line1, line2]
 ```
 
+For "what if" questions, propagate numerically with the forces you choose:
+Earth's zonal harmonics, drag, the Sun and the Moon, sunlight and manoeuvres:
+
+```ts
+import { propagateNumerically } from '@interstellar-tools/tracking';
+
+const ephemeris = propagateNumerically(state, from, to, {
+  forces: { drag: { ballisticCoefficient: 60 } },
+  manoeuvres: [{ epoch: burn, deltaV: [0, 1, 0], frame: 'rtn' }]
+});
+```
+
 ## What's planned
 
 The
@@ -200,8 +212,8 @@ tracks the work:
 
 - **satellites**: anything in Earth orbit with public orbital elements, crewed
   vehicles like the ISS included: TLE and OMM parsing, SGP4 and SDP4, ground
-  tracks, look angles, passes and eclipses, and fitting elements to a team's own
-  positions
+  tracks, look angles, passes and eclipses, fitting elements to a team's own
+  positions, and numerical propagation with a force model
 - **probes**: deep-space spacecraft without TLEs, such as Voyager, New Horizons
   and JWST, positioned from ephemeris files
 - Lagrange points, atmospheric density and orbit decay, and orbit design helpers

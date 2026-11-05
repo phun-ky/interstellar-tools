@@ -280,6 +280,62 @@ Give it a day or more of states, so drag has time to show: from a shorter arc,
 B*, SGP4's drag term, is poorly determined, and it's better to pass the last
 published one as `bstar`.
 
+## What if: numerical propagation
+
+SGP4 can only replay what its elements were fitted to. Mission analysis asks
+"what if": another mass or drag area, a busier Sun, a manoeuvre.
+`propagateNumerically` steps the equations of motion with the forces you choose:
+Earth's gravity with its zonal harmonics, J2 to J6 from EGM2008, the pulls of
+the Sun and the Moon, air drag, and sunlight's push, which stops in Earth's
+shadow.
+
+```ts
+import {
+  ballisticCoefficient,
+  nrlmsise00
+} from '@interstellar-tools/equations';
+import { propagate, propagateNumerically } from '@interstellar-tools/tracking';
+
+const from = new Date('2026-11-05T00:00:00Z');
+const quiet = { f107: 70, f107a: 70, ap: 4 }; // solar minimum
+const ephemeris = propagateNumerically(
+  propagate(cubesat, from), // m and m/s, in TEME
+  from,
+  new Date('2026-11-12T00:00:00Z'),
+  {
+    step: 60,
+    forces: {
+      drag: {
+        ballisticCoefficient: ballisticCoefficient(1.33, 2.2, 0.01),
+        density: ({ phi, lambda, h }, date) =>
+          nrlmsise00(date, h, phi, lambda, quiet).effectiveDensity
+      }
+    },
+    manoeuvres: [
+      // 1 m/s forward, on the along-track axis
+      {
+        epoch: new Date('2026-11-08T00:00:00Z'),
+        deltaV: [0, 1, 0],
+        frame: 'rtn'
+      }
+    ]
+  }
+);
+```
+
+It returns an ephemeris, like the probes': interpolate it with `stateAt`, or fit
+elements to it with `fitElements` to share the result as a TLE.
+
+A 1U CubeSat at 400 km loses 1.9 km of height in a week in the average
+atmosphere. With NRLMSISE-00, it loses 0.5 km at solar minimum and 2.6 km when
+the Sun is busier (F10.7 = 150). A 1 m/s push forward raises its orbit by 1.8
+km, about a week's decay.
+
+It isn't a high-fidelity tool such as GMAT or Orekit: it has no full gravity
+field, no Earth orientation data, and low-precision positions for the Sun and
+the Moon. Over days to months, the air density is usually the larger
+uncertainty.
+
 ## Next
 
 - [Probes](/guide/usage/tracking/probes): deep-space spacecraft, which have no
