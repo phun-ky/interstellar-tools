@@ -27,6 +27,7 @@ import MarsLandingGrid from './components/mars/MarsLandingGrid.vue';
 import NavStatus from './components/NavStatus.vue';
 import OrbitWidget from './components/OrbitWidget.vue';
 import PullQuote from './components/PullQuote.vue';
+import IssGroundTrack from './components/tracking/IssGroundTrack.vue';
 
 const GLOBAL_CLASS = 'ph';
 const THEME_DARK = 'theme--dark';
@@ -54,6 +55,7 @@ export default {
     ctx.app.component('ApolloEntryPlot', ApolloEntryPlot);
     ctx.app.component('ProjectionMap', ProjectionMap);
     ctx.app.component('MarsLandingGrid', MarsLandingGrid);
+    ctx.app.component('IssGroundTrack', IssGroundTrack);
 
     if (typeof window !== 'undefined') {
       document.documentElement.classList.add(GLOBAL_CLASS);
