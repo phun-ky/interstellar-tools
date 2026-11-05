@@ -28,8 +28,9 @@
  *   turn against the stars goes with the sidereal year, and the 23 h 56 m
  *   4.0905 s sidereal day, measured against the moving equinox, with the
  *   tropical year. Both give 86 400 s to within a millisecond.
- * - The `PLANETS` and `MOONS` datasets in `@interstellar-tools/constants`
- *   give the orbital periods, and the rotation periods.
+ * - The {@link "@interstellar-tools/constants"!PLANETS | PLANETS} and
+ *   {@link "@interstellar-tools/constants"!MOONS | MOONS} datasets give the
+ *   orbital periods, and the rotation periods.
  * - The same formula gives the **synodic month**, new Moon to new Moon, from
  *   the Moon's orbit and Earth's.
  *
