@@ -12,6 +12,7 @@ import {
   assertOnMap,
   assertSphere,
   latitudeOnMap,
+  mapLongitude,
   wrapLongitude
 } from './shared.js';
 
@@ -39,6 +40,8 @@ import {
  * - Every parallel is drawn at its true length, and so is the central meridian. The other meridians are sine curves, which meet at the poles: the map is $ 2\pi R $ wide and $ \pi R $ tall.
  * - Global planetary mosaics often use it, for example of Mars and the Moon.
  * - $ \lambda - \lambda_0 $ is wrapped to (−π, π], so the map is centred on the central meridian.
+ *   −π itself stays on the left edge, so a line that ends there, like a
+ *   ground track split at the antimeridian, isn't drawn across the map.
  *
  * :::
  *
@@ -73,7 +76,7 @@ export const sinusoidal = (
   assertSphere(R, lambda0);
 
   return {
-    x: R * wrapLongitude(lambda - lambda0) * Math.cos(phi),
+    x: R * mapLongitude(lambda - lambda0) * Math.cos(phi),
     y: R * phi
   };
 };

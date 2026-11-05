@@ -15,6 +15,16 @@ export const wrapLongitude = (lambda: number): Radians => {
   return (wrapped === -Math.PI ? Math.PI : wrapped) as Radians;
 };
 
+/**
+ * The longitude east of the central meridian, for placing a point on a map:
+ * {@link wrapLongitude}, except that -π stays -π. They're the same meridian,
+ * but on a map -π is the left edge and π the right: a line that ends at -π,
+ * such as a ground track's segment split at the antimeridian, stays on its
+ * side of the map instead of being drawn across it.
+ */
+export const mapLongitude = (lambda: number): Radians =>
+  (lambda === -Math.PI ? lambda : wrapLongitude(lambda)) as Radians;
+
 /** Throw unless `value` is a finite latitude in [-π/2, π/2]. */
 export const assertLatitude = (name: string, value: number) => {
   assertFinite([[name, value]]);
