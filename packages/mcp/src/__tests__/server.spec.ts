@@ -73,10 +73,15 @@ describe('tool listing', () => {
       'horizon_distance',
       'hyperbolic_departure',
       'kepler_period',
+      'lagrange_points',
+      'look_angles',
       'peri_apoapsis_radii',
       'plane_change_delta_v',
+      'probe_position',
       'project_point',
       'rocket_delta_v',
+      'satellite_passes',
+      'satellite_position',
       'solve_kepler',
       'solve_lambert',
       'sphere_of_influence_radius',
@@ -598,7 +603,8 @@ describe('bodies', () => {
     assert.ok(
       resources.some((r) => r.uri === 'interstellar://datasets/planets')
     );
-    assert.equal(resources.length, 8);
+    // The eight body datasets, the satellites and the probes
+    assert.equal(resources.length, 10);
   });
 
   test('reads a dataset resource', async () => {
@@ -642,5 +648,211 @@ describe('bodies', () => {
           m.dataset === 'planets' && m.body.name === 'Mars'
       )
     );
+  });
+});
+
+describe('tracking tools', () => {
+  const read = async (uri: string) => {
+    const [content] = (await client.readResource({ uri })).contents;
+
+    assert.ok(content && 'text' in content, `${uri} has no text content`);
+
+    return JSON.parse(content.text);
+  };
+  const nairobi = {
+    latitude: { value: -1.2864, unit: 'deg' },
+    longitude: { value: 36.8172, unit: 'deg' },
+    height_m: 1795
+  };
+  const oldTle = [
+    '1 25544U 98067A   26308.36953014  .00005228  00000+0  10236-3 0  9991',
+    '2 25544  51.6329 326.3987 0007186 346.7494  13.3304 15.49173979593483'
+  ];
+
+  test('satellite_position puts the ISS where the tracking guide does', async () => {
+    const res = await call('satellite_position', {
+      satellite: 'iss',
+      time: '2026-11-05T00:00:00Z'
+    });
+    const out = res.structuredContent!;
+
+    approx(out.latitude.deg, -51.01, 0.005);
+    approx(out.longitude.deg, -157.48, 0.005);
+    approx(out.height_m, 434_959, 1);
+    approx(out.speed_m_s, 7660, 20);
+    approx(out.elements_age_d, 0.1144, 0.0001);
+    assert.equal(out.epoch_utc, '2026-11-04T21:15:15.205Z');
+    assert.equal(out.name, 'ISS (ZARYA)');
+    assert.ok(['sunlit', 'penumbra', 'umbra'].includes(out.shadow));
+  });
+
+  test('satellite_position takes a TLE or an OMM record, and agrees', async () => {
+    const time = '2026-11-05T00:00:00Z';
+    const fromTle = (await call('satellite_position', { tle: oldTle, time }))
+      .structuredContent!;
+    const omm = (await read('interstellar://tracking/satellites')).find(
+      (entry: { id: string }) => entry.id === 'iss'
+    ).omm;
+    const fromOmm = (await call('satellite_position', { omm, time }))
+      .structuredContent!;
+    const fromId = (
+      await call('satellite_position', { satellite: 'iss', time })
+    ).structuredContent!;
+
+    assert.deepEqual(fromOmm.position_teme_m, fromId.position_teme_m);
+    // Two element sets 12 hours apart, within a kilometre of each other
+    const apart = Math.hypot(
+      ...fromTle.position_teme_m.map(
+        (x: number, k: number) => x - fromId.position_teme_m[k]
+      )
+    );
+
+    assert.ok(apart < 1000, `${apart} m`);
+  });
+
+  test('satellite_position rejects missing, doubled or unknown elements', async () => {
+    const time = '2026-11-05T00:00:00Z';
+
+    for (const [args, message] of [
+      [{ time }, /exactly one way/],
+      [{ satellite: 'iss', tle: oldTle, time }, /exactly one way/],
+      [{ satellite: 'mir', time }, /Unknown satellite: mir/],
+      [{ satellite: 'iss', time: 'yesterday' }, /ISO 8601/]
+    ] as const) {
+      const res = await call('satellite_position', args);
+
+      assert.equal(res.isError, true, JSON.stringify(args));
+      assert.match(res.content[0]!.text!, message);
+    }
+  });
+
+  test('look_angles from Nairobi as the ISS passes overhead', async () => {
+    const res = await call('look_angles', {
+      satellite: 'iss',
+      observer: nairobi,
+      time: '2026-11-05T15:49:32.177Z',
+      frequency_hz: 145_800_000
+    });
+    const out = res.structuredContent!;
+
+    approx(out.elevation.deg, 88.8, 0.05);
+    approx(out.range_m, 413_000, 1000);
+    assert.equal(out.above_horizon, true);
+    // At the top of the pass, neither approaching nor leaving
+    approx(out.range_rate_m_s, 0, 50);
+    approx(out.doppler_shift_hz, 0, 30);
+  });
+
+  test('satellite_passes finds three visible of eight over Nairobi', async () => {
+    const res = await call('satellite_passes', {
+      satellite: 'iss',
+      observer: nairobi,
+      from: '2026-11-04T21:15:15.205Z',
+      to: '2026-11-07T21:15:15.205Z',
+      min_elevation: { value: 10, unit: 'deg' }
+    });
+    const out = res.structuredContent!;
+    const best = out.passes.find((pass: { visible: boolean }) => pass.visible);
+
+    assert.equal(out.count, 8);
+    assert.equal(out.visible_count, 3);
+    assert.equal(best.rise_utc, '2026-11-05T15:46:12.996Z');
+    approx(best.max_elevation.deg, 88.8, 0.05);
+  });
+
+  test('satellite_passes rejects a window longer than 14 days', async () => {
+    const res = await call('satellite_passes', {
+      satellite: 'iss',
+      observer: nairobi,
+      from: '2026-11-04T00:00:00Z',
+      to: '2026-11-20T00:00:00Z'
+    });
+
+    assert.equal(res.isError, true);
+    assert.match(res.content[0]!.text!, /at most 14 days/);
+  });
+
+  test('probe_position puts Voyager 1 172 au out', async () => {
+    const res = await call('probe_position', {
+      probe: 'voyager-1',
+      time: '2026-11-05T00:00:00Z'
+    });
+    const out = res.structuredContent!;
+
+    approx(out.distance_au, 172.26, 0.005);
+    approx(out.light_time_s / 3600, 23.88, 0.005);
+    approx(out.speed_m_s, 16_920, 10);
+    assert.equal(out.horizons_id, '-31');
+    assert.equal(out.near, 'sun');
+  });
+
+  test('probe_position rejects a time outside the ephemeris', async () => {
+    const res = await call('probe_position', {
+      probe: 'jwst',
+      time: '2030-01-01T00:00:00Z'
+    });
+
+    assert.equal(res.isError, true);
+  });
+
+  test('lagrange_points from mu values, as the tracking guide gives them', async () => {
+    const res = await call('lagrange_points', {
+      primary_mu_m3_s2: 1.32712440041e20,
+      secondary_mu_m3_s2: 4.0350323e14,
+      separation_m: 1.495978707e11
+    });
+    const out = res.structuredContent!;
+
+    approx(out.l1_from_secondary_m / 1000, 1_497_621, 1);
+    approx(out.l2_from_secondary_m / 1000, 1_507_683, 1);
+    assert.equal(out.trojan_points_stable, true);
+    approx(out.l4_m[1], (Math.sqrt(3) / 2) * 1.495978707e11, 1);
+  });
+
+  test('lagrange_points from body ids, with the separation from the datasets', async () => {
+    const earthMoon = (
+      await call('lagrange_points', { primary: 'earth', secondary: 'moon' })
+    ).structuredContent!;
+    const sunJupiter = (
+      await call('lagrange_points', { primary: 'sun', secondary: 'jupiter' })
+    ).structuredContent!;
+
+    // The Moon's semi-major axis in the datasets, 0.00257 au
+    approx(earthMoon.separation_m, 0.00257 * 1.495978707e11, 1);
+    approx(earthMoon.l1_from_secondary_m / 1000, 58_100, 500);
+    approx(earthMoon.mass_ratio, 0.01215, 0.00001);
+    assert.equal(sunJupiter.trojan_points_stable, true);
+    approx(sunJupiter.hill_sphere_radius_m / 1.495978707e11, 0.338, 0.001);
+  });
+
+  test('lagrange_points rejects unknown bodies and a missing separation', async () => {
+    for (const [args, message] of [
+      [{ primary: 'vulcan', secondary: 'earth' }, /Unknown body: vulcan/],
+      [{ primary: 'sun', primary_mu_m3_s2: 1, secondary: 'earth' }, /not both/],
+      [{ primary: 'earth', secondary: 'jupiter' }, /Give separation_m/],
+      [
+        { primary_mu_m3_s2: 1, secondary_mu_m3_s2: 2, separation_m: 1 },
+        /smaller body/
+      ]
+    ] as const) {
+      const res = await call('lagrange_points', args);
+
+      assert.equal(res.isError, true, JSON.stringify(args));
+      assert.match(res.content[0]!.text!, message);
+    }
+  });
+
+  test('reads the satellites and probes resources', async () => {
+    const satellites = await read('interstellar://tracking/satellites');
+    const probes = await read('interstellar://tracking/probes');
+
+    assert.equal(satellites.length, 12);
+    assert.equal(probes.length, 11);
+    assert.equal(
+      probes.find((probe: { id: string }) => probe.id === 'jwst').near,
+      'sun-earth-l2'
+    );
+    assert.ok(!('ephemeris' in probes[0]));
+    assert.equal(probes[0].ephemeris_from_utc, '2026-10-31T23:58:50.817Z');
   });
 });

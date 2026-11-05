@@ -18,32 +18,37 @@ tested equations instead of recalling a number that looks plausible.
 
 ## What your assistant gets
 
-| Tool                         | What it computes                                                |
-| ---------------------------- | --------------------------------------------------------------- |
-| `gravitational_parameter`    | μ = G·(M + m) from masses                                       |
-| `circular_speed`             | Circular orbit speed at radius r                                |
-| `escape_speed`               | Escape speed at radius r                                        |
-| `vis_viva_speed`             | Speed at radius r on an orbit with semi-major axis a            |
-| `kepler_period`              | Orbital period from semi-major axis                             |
-| `peri_apoapsis_radii`        | Periapsis and apoapsis radii from a and e                       |
-| `sphere_of_influence_radius` | Laplace sphere of influence                                     |
-| `state_to_elements`          | Orbital elements from a position and velocity                   |
-| `elements_to_state`          | Position and velocity from orbital elements                     |
-| `hohmann_transfer`           | Both burns, total Δv and transfer time                          |
-| `rocket_delta_v`             | Tsiolkovsky rocket equation from Isp and masses                 |
-| `plane_change_delta_v`       | Δv for a pure inclination change                                |
-| `solve_lambert`              | Velocities for a transfer between two positions in a given time |
-| `hyperbolic_departure`       | Δv, C3 and eccentricity to leave or be captured with a given v∞ |
-| `solve_kepler`               | Eccentric anomaly from mean anomaly                             |
-| `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly                                 |
-| `convert_time`               | Durations from attoseconds to gigayears                         |
-| `convert_distance`           | Distances from metres to gigaparsecs                            |
-| `great_circle_distance`      | Distance and central angle between two points on a body         |
-| `horizon_distance`           | How far an observer at a height can see                         |
-| `geodetic_to_body_fixed`     | Body-fixed x, y, z from latitude, longitude and height          |
-| `body_fixed_to_geodetic`     | Latitude, longitude and height from body-fixed x, y, z          |
-| `project_point`              | Map x and y of a point in one of seven projections              |
-| `find_body`                  | Planets, moons, stars, comets and more, by name                 |
+| Tool                         | What it computes                                                    |
+| ---------------------------- | ------------------------------------------------------------------- |
+| `gravitational_parameter`    | μ = G·(M + m) from masses                                           |
+| `circular_speed`             | Circular orbit speed at radius r                                    |
+| `escape_speed`               | Escape speed at radius r                                            |
+| `vis_viva_speed`             | Speed at radius r on an orbit with semi-major axis a                |
+| `kepler_period`              | Orbital period from semi-major axis                                 |
+| `peri_apoapsis_radii`        | Periapsis and apoapsis radii from a and e                           |
+| `sphere_of_influence_radius` | Laplace sphere of influence                                         |
+| `state_to_elements`          | Orbital elements from a position and velocity                       |
+| `elements_to_state`          | Position and velocity from orbital elements                         |
+| `hohmann_transfer`           | Both burns, total Δv and transfer time                              |
+| `rocket_delta_v`             | Tsiolkovsky rocket equation from Isp and masses                     |
+| `plane_change_delta_v`       | Δv for a pure inclination change                                    |
+| `solve_lambert`              | Velocities for a transfer between two positions in a given time     |
+| `hyperbolic_departure`       | Δv, C3 and eccentricity to leave or be captured with a given v∞     |
+| `solve_kepler`               | Eccentric anomaly from mean anomaly                                 |
+| `convert_anomaly`            | Mean ↔ eccentric ↔ true anomaly                                     |
+| `convert_time`               | Durations from attoseconds to gigayears                             |
+| `convert_distance`           | Distances from metres to gigaparsecs                                |
+| `great_circle_distance`      | Distance and central angle between two points on a body             |
+| `horizon_distance`           | How far an observer at a height can see                             |
+| `geodetic_to_body_fixed`     | Body-fixed x, y, z from latitude, longitude and height              |
+| `body_fixed_to_geodetic`     | Latitude, longitude and height from body-fixed x, y, z              |
+| `project_point`              | Map x and y of a point in one of seven projections                  |
+| `satellite_position`         | Point below a satellite, its height and TEME state, from TLE or OMM |
+| `look_angles`                | Azimuth, elevation, range and Doppler shift from a ground observer  |
+| `satellite_passes`           | Rise, highest point and set over an observer, and visibility        |
+| `probe_position`             | Where a deep-space probe is, from the bundled ephemerides           |
+| `lagrange_points`            | L1 to L5 of two bodies, Trojan stability and the Hill sphere        |
+| `find_body`                  | Planets, moons, stars, comets and more, by name                     |
 
 The names follow a few rules, so there is no room for kilometre/metre or
 degree/radian mix-ups:
@@ -59,10 +64,17 @@ The geodesy and map tools take the shape of the body as a `body` id from
 `find_body`, such as `"mars"`, or as radii in metres. For GPS coordinates on
 Earth, the ellipsoid tools also take `"wgs84"`.
 
+The satellite tools take orbital elements as a two-line element set, an OMM
+record from CelesTrak or the id of a satellite in the bundled snapshot, and
+times as ISO 8601 UTC strings. The server fetches nothing, so for today's
+positions the assistant passes fresh elements in; each result says how old they
+are in `elements_age_d`.
+
 All tools are read-only and run offline. The celestial datasets are also
-available as MCP resources at `interstellar://datasets/{name}`. Their distances
-are in au or km, so the assistant converts them with `convert_distance` before
-using the orbit tools.
+available as MCP resources at `interstellar://datasets/{name}`, and the
+satellite and probe snapshots at `interstellar://tracking/satellites` and
+`interstellar://tracking/probes`. Their distances are in au or km, so the
+assistant converts them with `convert_distance` before using the orbit tools.
 
 ## Before you start
 
