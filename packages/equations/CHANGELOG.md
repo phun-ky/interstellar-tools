@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.19.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.18.0...%40interstellar-tools%2Fequations%401.19.0) (2026-11-05)
+
+### Documentation
+
+* ✏️ Link the PLANETS and MOONS datasets from solarDayLength ([5e50953](https://github.com/phun-ky/interstellar-tools/commit/5e50953640d4211914308d8e24f75206f055f8e5))
+
+### Feature
+
+* 🎸 Find the length of a solar day from rotation and orbit ([dbee3df](https://github.com/phun-ky/interstellar-tools/commit/dbee3df7b5f8f118ab1903ec3bb22cc3dc30342b)), closes [#349](https://github.com/phun-ky/interstellar-tools/issues/349)
+
 ## [1.18.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.17.0...%40interstellar-tools%2Fequations%401.18.0) (2026-11-05)
 
 ### Feature

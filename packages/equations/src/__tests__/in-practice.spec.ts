@@ -47,6 +47,7 @@ import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
 import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azimuth.js';
 import { specificMechanicalEnergy } from '../categories/orbits/specific-mechanical-energy.js';
 import { synodicPeriod } from '../categories/orbits/synodic-period.js';
+import { solarDayLength } from '../categories/orbits/solar-day-length.js';
 import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { hillSphereRadius } from '../categories/orbits/hill-sphere-radius.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
@@ -461,6 +462,29 @@ describe('In practice values: rendezvous', () => {
       `${Math.floor(flown / 3600)} h ${Math.round((flown % 3600) / 60)} min`,
       '3 h 41 min'
     );
+  });
+});
+
+// Mercury's sidereal rotation from the IAU (Archinal et al. 2018), and its
+// orbit from the dataset
+describe('In practice values: days', () => {
+  test('solarDayLength: 175.94 days on Mercury, two of its years, and the Sun turning back at perihelion', () => {
+    const mercury = PLANETS.find(({ id }) => id === 'mercury')!;
+    const { period, e } = mercury.orbit!;
+    const rotation = 58.6462;
+    const day = solarDayLength(rotation, period.value);
+
+    assert.equal(period.unit, 'd');
+    assert.equal(day.toFixed(2), '175.94');
+    assert.equal(Math.round(day / period.value), 2);
+    // Three turns for every two orbits
+    assert.equal(((2 * period.value) / rotation).toFixed(2), '3.00');
+
+    // At perihelion, the orbit sweeps faster than the planet spins
+    const meanRate = 360 / period.value;
+    const perihelionRate = (meanRate * (1 + e) ** 2) / (1 - e ** 2) ** 1.5;
+
+    assert.ok(perihelionRate > 360 / rotation);
   });
 });
 

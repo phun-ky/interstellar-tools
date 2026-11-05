@@ -201,6 +201,8 @@ export * from './categories/orbits/frozen-orbit-eccentricity.js';
 
 export * from './categories/orbits/hill-sphere-radius.js';
 
+export * from './categories/orbits/solar-day-length.js';
+
 export * from './categories/orbits/sphere-of-influence-radius.js';
 
 export * from './categories/orbits/state-to-elements.js';
