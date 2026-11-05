@@ -26,3 +26,5 @@ export * from './probes/oem.js';
 export * from './probes/horizons.js';
 
 export * from './probes/interpolate.js';
+
+export * from './probes/probes.js';

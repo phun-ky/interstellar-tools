@@ -62,6 +62,14 @@ Wikipedia text is licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Only factual
 values are taken from it, never text.
 
+The `PROBES` dataset in `@interstellar-tools/tracking` holds positions and
+velocities of eleven space probes, from 1 November 2026 to 31 December 2027,
+sampled from vector tables of
+[JPL Horizons](https://ssd.jpl.nasa.gov/horizons/), the Solar System Dynamics
+group's ephemeris service at the Jet Propulsion Laboratory, fetched on 5
+November 2026. The probes' names, agencies and launch dates are from the
+agencies that fly them: NASA, ESA and CSA.
+
 The `SATELLITES` dataset in `@interstellar-tools/tracking` holds the orbital
 elements of twelve satellites, dated 4 November 2026, from
 [CelesTrak](https://celestrak.org/) by Dr. T.S. Kelso, which republishes the US
