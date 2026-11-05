@@ -29,3 +29,5 @@ centre in the ICRF:
 - `horizons-psp-6h.txt` and `horizons-psp-1h.txt`: Parker Solar Probe (-96)
   every 6 hours and every hour, from 2025-06-18 to 2025-06-20, through its
   perihelion of 19 June 2025, about 10 solar radii from the Sun's centre.
+- `horizons-<id>-30d.txt`: each probe in the `PROBES` dataset, every 30 days
+  from 2026-11-01 to 2027-12-31, in km and km/s, to check the dataset against.

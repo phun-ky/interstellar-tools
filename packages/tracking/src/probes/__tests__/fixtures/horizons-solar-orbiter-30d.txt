@@ -1,0 +1,140 @@
+API VERSION: 1.2
+API SOURCE: NASA/JPL Horizons API
+
+
+
+*******************************************************************************
+Ephemeris / API_USER Thu Nov  5 01:25:52 2026 Pasadena, USA      / Horizons
+*******************************************************************************
+Target body name: Solar Orbiter (spacecraft) (-144) {source: SOLO_ESA}
+Center body name: Sun (10)                        {source: DE441}
+Center-site name: BODY CENTER
+*******************************************************************************
+Start time      : A.D. 2026-Nov-01 00:00:00.0000 TDB
+Stop  time      : A.D. 2027-Dec-31 00:00:00.0000 TDB
+Step-size       : 43200 minutes
+*******************************************************************************
+Center geodetic : 0.0, 0.0, 0.0                   {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}
+Center radii    : 695700.0, 695700.0, 695700.0 km {Equator_a, b, pole_c}
+Output units    : KM-S
+Calendar mode   : Mixed Julian/Gregorian
+Output type     : GEOMETRIC cartesian states
+Output format   : 2 (position and velocity)
+Reference frame : ICRF
+*******************************************************************************
+JDTDB
+   X     Y     Z
+   VX    VY    VZ
+*******************************************************************************
+$$SOE
+2461345.500000000 = A.D. 2026-Nov-01 00:00:00.0000 TDB 
+ X = 2.085838662868772E+07 Y = 1.080754369976716E+08 Z = 7.487226216953430E+07
+ VX=-2.128435929537768E+01 VY= 7.286198385506469E+00 VZ= 1.384208836814510E+00
+2461375.500000000 = A.D. 2026-Dec-01 00:00:00.0000 TDB 
+ X =-3.469556544275713E+07 Y = 1.063701956009303E+08 Z = 6.477443669625475E+07
+ VX=-2.018558618183513E+01 VY=-8.794788275475199E+00 VZ=-9.078031292047710E+00
+2461405.500000000 = A.D. 2026-Dec-31 00:00:00.0000 TDB 
+ X =-7.421544108137016E+07 Y = 6.219832080965021E+07 Z = 2.716870997201876E+07
+ VX=-7.580265663192330E+00 VY=-2.350577594179406E+01 VZ=-2.054484162174885E+01
+2461435.500000000 = A.D. 2027-Jan-30 00:00:00.0000 TDB 
+ X =-3.571116154203594E+07 Y =-2.119453019518775E+07 Z =-2.685283357028176E+07
+ VX= 5.191500601576154E+01 VY=-3.124264337654552E+01 VZ=-9.425142257662634E+00
+2461465.500000000 = A.D. 2027-Mar-01 00:00:00.0000 TDB 
+ X = 6.400235468246837E+07 Y = 2.147034151821771E+07 Z = 3.522849884032187E+07
+ VX=-9.970619777535112E-01 VY= 3.428965934861939E+01 VZ= 2.649152448830166E+01
+2461495.500000000 = A.D. 2027-Mar-31 00:00:00.0000 TDB 
+ X = 2.553705654498018E+07 Y = 8.444158422728315E+07 Z = 7.331194316748501E+07
+ VX=-2.193824253564955E+01 VY= 1.423530839174928E+01 VZ= 4.789376345810046E+00
+2461525.500000000 = A.D. 2027-Apr-30 00:00:00.0000 TDB 
+ X =-3.310118362098892E+07 Y = 9.724429471866503E+07 Z = 6.639667857816008E+07
+ VX=-2.136074853600569E+01 VY=-4.194082899030879E+00 VZ=-9.436770830402727E+00
+2461555.500000000 = A.D. 2027-May-30 00:00:00.0000 TDB 
+ X =-7.434562523872052E+07 Y = 6.179148995007040E+07 Z = 2.681258681171726E+07
+ VX=-7.413714298119275E+00 VY=-2.364562286139241E+01 VZ=-2.060485045025215E+01
+2461585.500000000 = A.D. 2027-Jun-29 00:00:00.0000 TDB 
+ X =-3.481372396751071E+07 Y =-2.172906495751233E+07 Z =-2.701137538124363E+07
+ VX= 5.258586647433989E+01 VY=-3.083302941260486E+01 VZ=-8.911519546721593E+00
+2461615.500000000 = A.D. 2027-Jul-29 00:00:00.0000 TDB 
+ X = 6.398281718306626E+07 Y = 2.205653989551637E+07 Z = 3.568064702687617E+07
+ VX=-1.324633577143609E+00 VY= 3.417853530786898E+01 VZ= 2.631007558322781E+01
+2461645.500000000 = A.D. 2027-Aug-28 00:00:00.0000 TDB 
+ X = 2.515999445898201E+07 Y = 8.468421690728453E+07 Z = 7.339237652606587E+07
+ VX=-2.197686188842690E+01 VY= 1.410803210610609E+01 VZ= 4.678786490729005E+00
+2461675.500000000 = A.D. 2027-Sep-27 00:00:00.0000 TDB 
+ X =-3.346857791652684E+07 Y = 9.717034979251201E+07 Z = 6.623261048813157E+07
+ VX=-2.131948781152964E+01 VY=-4.315490931743138E+00 VZ=-9.519679511151468E+00
+2461705.500000000 = A.D. 2027-Oct-27 00:00:00.0000 TDB 
+ X =-7.447213608518815E+07 Y = 6.138211734963873E+07 Z = 2.645621607963928E+07
+ VX=-7.244577514583542E+00 VY=-2.378578779133413E+01 VZ=-2.066541803633972E+01
+2461735.500000000 = A.D. 2027-Nov-26 00:00:00.0000 TDB 
+ X =-3.390164794933413E+07 Y =-2.225738226705247E+07 Z =-2.716072441644944E+07
+ VX= 5.325483273234705E+01 VY=-3.040425923685539E+01 VZ=-8.383595253475679E+00
+2461765.500000000 = A.D. 2027-Dec-26 00:00:00.0000 TDB 
+ X = 6.395718040271695E+07 Y = 2.264398951936296E+07 Z = 3.613186436780054E+07
+ VX=-1.648971104807750E+00 VY= 3.406540144040788E+01 VZ= 2.612799023524595E+01
+$$EOE
+*******************************************************************************
+ 
+TIME
+
+  Barycentric Dynamical Time ("TDB" or T_eph) output was requested. This
+continuous coordinate time is equivalent to the relativistic proper time
+of a clock at rest in a reference frame co-moving with the solar system
+barycenter but outside the system's gravity well. It is the independent
+variable in the solar system relativistic equations of motion.
+
+  TDB runs at a uniform rate of one SI second per second and is independent
+of irregularities in Earth's rotation.
+ 
+CALENDAR SYSTEM
+
+  Mixed calendar mode was active such that calendar dates after AD 1582-Oct-15
+(if any) are in the modern Gregorian system. Dates prior to 1582-Oct-5 (if any)
+are in the Julian calendar system, which is automatically extended for dates
+prior to its adoption on 45-Jan-1 BC.  The Julian calendar is useful for
+matching historical dates. The Gregorian calendar more accurately corresponds
+to the Earth's orbital motion and seasons. A "Gregorian-only" calendar mode is
+available if such physical events are the primary interest.
+
+REFERENCE FRAME AND COORDINATES
+
+  International Celestial Reference Frame (ICRF)
+
+    The ICRF is an adopted reference frame whose axes are defined relative to 
+    fixed extragalactic radio sources distributed across the sky.
+
+    The ICRF was aligned with the prior FK5/J2000 dynamical system at the ~0.02 
+    arcsecond level but is not identical and has no associated standard epoch.
+
+  Symbol meaning:
+
+    JDTDB    Julian Day Number, Barycentric Dynamical Time
+      X      X-component of position vector (km)
+      Y      Y-component of position vector (km)
+      Z      Z-component of position vector (km)
+      VX     X-component of velocity vector (km/sec)                           
+      VY     Y-component of velocity vector (km/sec)                           
+      VZ     Z-component of velocity vector (km/sec)                           
+
+ABERRATIONS AND CORRECTIONS
+
+ Geometric state vectors have NO corrections or aberrations applied.
+
+Computations by ...
+
+    Solar System Dynamics Group, Horizons On-Line Ephemeris System
+    4800 Oak Grove Drive, Jet Propulsion Laboratory
+    Pasadena, CA  91109   USA
+
+    General site: https://ssd.jpl.nasa.gov/
+    Mailing list: https://ssd.jpl.nasa.gov/email_list.html
+    System news : https://ssd.jpl.nasa.gov/horizons/news.html
+    User Guide  : https://ssd.jpl.nasa.gov/horizons/manual.html
+    Connect     : browser        https://ssd.jpl.nasa.gov/horizons/app.html#/x
+                  API            https://ssd-api.jpl.nasa.gov/doc/horizons.html
+                  command-line   telnet ssd.jpl.nasa.gov 6775
+                  e-mail/batch   https://ssd.jpl.nasa.gov/ftp/ssd/horizons_batch.txt
+                  scripts        https://ssd.jpl.nasa.gov/ftp/ssd/SCRIPTS
+    Inquiries   : Jon.D.Giorgini@jpl.nasa.gov
+*******************************************************************************
