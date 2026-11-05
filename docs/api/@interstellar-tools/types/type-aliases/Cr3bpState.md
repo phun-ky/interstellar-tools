@@ -15,7 +15,7 @@ type Cr3bpState = readonly [
 ```
 
 Defined in:
-[three-body.ts:18](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/three-body.ts#L18)
+[three-body.ts:20](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/three-body.ts#L20)
 
 A state in the **circular restricted three-body problem** (CR3BP), in the
 rotating, normalised frame.

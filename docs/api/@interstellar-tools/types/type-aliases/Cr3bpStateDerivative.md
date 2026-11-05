@@ -15,7 +15,7 @@ type Cr3bpStateDerivative = readonly [
 ```
 
 Defined in:
-[three-body.ts:38](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/three-body.ts#L38)
+[three-body.ts:40](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/three-body.ts#L40)
 
 The time derivative of a [Cr3bpState](Cr3bpState.md): velocities, then
 accelerations.

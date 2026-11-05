@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.15.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.14.0...%40interstellar-tools%2Ftypes%401.15.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the Lagrange points type ([ac7bf60](https://github.com/phun-ky/interstellar-tools/commit/ac7bf60afc821fcfc0cf2f075a43acb42c781d09)), references [#221](https://github.com/phun-ky/interstellar-tools/issues/221)
+
 ## [1.14.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.13.0...%40interstellar-tools%2Ftypes%401.14.0) (2026-11-05)
 
 ### Feature

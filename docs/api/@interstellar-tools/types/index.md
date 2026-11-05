@@ -122,11 +122,12 @@ npm i --save @interstellar-tools/types
 
 ## Three-body
 
-| Name                                                         | Description                                                                                           |
-| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| [Cr3bpUnitsInterface](interfaces/Cr3bpUnitsInterface.md)     | The units of the normalised CR3BP frame for a pair of bodies, in SI.                                  |
-| [Cr3bpState](type-aliases/Cr3bpState.md)                     | A state in the **circular restricted three-body problem** (CR3BP), in the rotating, normalised frame. |
-| [Cr3bpStateDerivative](type-aliases/Cr3bpStateDerivative.md) | The time derivative of a [Cr3bpState](type-aliases/Cr3bpState.md): velocities, then accelerations.    |
+| Name                                                             | Description                                                                                                              |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| [Cr3bpUnitsInterface](interfaces/Cr3bpUnitsInterface.md)         | The units of the normalised CR3BP frame for a pair of bodies, in SI.                                                     |
+| [LagrangePointsInterface](interfaces/LagrangePointsInterface.md) | The five **Lagrange points** of two bodies circling each other: where a third, small body can stay put relative to them. |
+| [Cr3bpState](type-aliases/Cr3bpState.md)                         | A state in the **circular restricted three-body problem** (CR3BP), in the rotating, normalised frame.                    |
+| [Cr3bpStateDerivative](type-aliases/Cr3bpStateDerivative.md)     | The time derivative of a [Cr3bpState](type-aliases/Cr3bpState.md): velocities, then accelerations.                       |
 
 ## Tracking
 
