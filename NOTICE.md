@@ -58,6 +58,11 @@ copyright. They're compiled from public references, credited here:
   true anomalies at J2000 from the osculating elements in
   [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/).
 
+The exponential atmosphere in `@interstellar-tools/equations`
+(`exponentialAtmosphereDensity`) uses the base densities and scale heights of
+table 8-4 in D. A. Vallado, _Fundamentals of Astrodynamics and Applications_
+(4th ed., 2013), from the CIRA-72 reference atmosphere.
+
 Wikipedia text is licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Only factual
 values are taken from it, never text.

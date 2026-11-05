@@ -147,6 +147,8 @@ export * from './categories/orbits/elements-to-state.js';
 
 export * from './categories/orbits/escape-speed.js';
 
+export * from './categories/orbits/exponential-atmosphere-density.js';
+
 export * from './categories/orbits/flight-path-angle-from-true-anomaly.js';
 
 export * from './categories/orbits/hyperbolic-eccentricity.js';
