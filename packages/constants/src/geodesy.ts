@@ -40,3 +40,57 @@ export const WGS84: Readonly<
   }),
   inverseFlattening: 298.257223563
 });
+
+// EGM2008's fully normalised zonal coefficients C̄(n,0), tide-free, for n = 2
+// to 6, from the model's coefficient file
+const C_BAR = [
+  -0.484165143790815e-3, 0.957161207093473e-6, 0.539965866638991e-6,
+  0.686702913736681e-7, -0.149953927978527e-6
+];
+
+/**
+ * **Earth's gravity field** from EGM2008, the Earth Gravitational Model of
+ * the US National Geospatial-Intelligence Agency, to the sixth zonal
+ * harmonic: what a numerical propagator needs beyond a point mass.
+ *
+ * $$
+ * J_n = -\sqrt{2n + 1}\;\bar C_{n,0}
+ * $$
+ *
+ * Where:
+ * - $ \bar C_{n,0} $ are the model's fully normalised zonal coefficients, tide-free
+ * - $ J_n $ are the unnormalised zonal harmonics, as `zonalHarmonicsAcceleration` in `@interstellar-tools/equations` takes them
+ *
+ * ::: info Notes
+ *
+ * - `J` holds $ J_2 $ to $ J_6 $, in order. $ J_2 $, the equatorial bulge,
+ *   is a thousand times the others: it turns orbit planes and perigees.
+ * - Use `mu` and `radius` with these $ J_n $: they were fitted together. The
+ *   radius is EGM2008's reference radius, 0.7 m less than WGS 84's.
+ * - Only the zonal terms, which don't vary with longitude. The full model
+ *   goes to degree 2190, for geodesy.
+ *
+ * :::
+ *
+ * @see https://icgem.gfz-potsdam.de/tom_longtime ICGEM, where the EGM2008 coefficients are served
+ * @see https://marees.obspm.fr/content/chapter6/icc6.pdf IERS Conventions (2010), chapter 6, on EGM2008's GM and radius
+ *
+ * @example
+ * ```ts
+ * import { zonalHarmonicsAcceleration } from '@interstellar-tools/equations';
+ *
+ * zonalHarmonicsAcceleration(r, EGM2008.mu, EGM2008.radius, EGM2008.J);
+ * ```
+ */
+export const EGM2008: Readonly<{
+  /** Earth's gravitational parameter $\mu$ in m³/s², with the atmosphere. */
+  mu: number;
+  /** The reference radius of the coefficients in m. */
+  radius: number;
+  /** The zonal harmonics $J_2$ to $J_6$, dimensionless. */
+  J: readonly number[];
+}> = Object.freeze({
+  mu: 3.986004415e14,
+  radius: 6_378_136.3,
+  J: Object.freeze(C_BAR.map((c, k) => -Math.sqrt(2 * (k + 2) + 1) * c))
+});
