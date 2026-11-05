@@ -29,6 +29,7 @@ import { solveLambert } from '../categories/manoeuvres/solve-lambert.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
+import { exponentialAtmosphereDensity } from '../categories/orbits/exponential-atmosphere-density.js';
 import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentricity.js';
 import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
 import { hyperbolicTimeOfFlight } from '../categories/orbits/hyperbolic-time-of-flight.js';
@@ -120,6 +121,17 @@ describe('In practice values', () => {
 
     assert.equal(Math.round(soi / 1000) * 1000, 925_000);
     assert.ok(384_400 < soi);
+  });
+
+  test('exponentialAtmosphereDensity: 2.6 × 10⁻¹² kg/m³ at the ISS, a trillionth of sea level', () => {
+    const rho = exponentialAtmosphereDensity(420_000);
+
+    assert.equal(rho.toExponential(1), '2.6e-12');
+    assert.equal(rho.toExponential(3), '2.647e-12');
+    assert.equal(
+      Math.round(Math.log10(exponentialAtmosphereDensity(0) / rho)),
+      12
+    );
   });
 
   test("hillSphereRadius: Earth's at 1.5 million km, the Moon a quarter of the way out", () => {
