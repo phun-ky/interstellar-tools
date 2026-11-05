@@ -54,6 +54,7 @@ npm i --save @interstellar-tools/types
 | [EllipsoidInterface](interfaces/EllipsoidInterface.md)                     | A body's **reference ellipsoid**: the smooth surface that latitudes, longitudes and heights are measured on.                                      |
 | [GeodeticCoordinatesInterface](interfaces/GeodeticCoordinatesInterface.md) | A point's **geodetic coordinates** on an oblate body: latitude, longitude and height above the reference ellipsoid, in SI units and radians.      |
 | [IlluminationAnglesInterface](interfaces/IlluminationAnglesInterface.md)   | The **illumination angles** at a point on a surface: where the light comes from and where it's seen from, relative to the surface and each other. |
+| [MoonPositionInterface](interfaces/MoonPositionInterface.md)               | The **Moon's position** seen from Earth's centre at a moment: its direction on the sky and its distance.                                          |
 | [SunPositionInterface](interfaces/SunPositionInterface.md)                 | The **Sun's position** seen from Earth's centre at a moment: its direction on the sky and its distance.                                           |
 
 ## Celestial Bodies
