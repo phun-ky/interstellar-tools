@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.16.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.15.0...%40interstellar-tools%2Ftypes%401.16.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the space weather and atmosphere types ([3b4cced](https://github.com/phun-ky/interstellar-tools/commit/3b4ccedc70a4cae007476249403403d383cd67e2)), references [#226](https://github.com/phun-ky/interstellar-tools/issues/226)
+
 ## [1.15.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.14.0...%40interstellar-tools%2Ftypes%401.15.0) (2026-11-05)
 
 ### Feature

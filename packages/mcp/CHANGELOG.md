@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.2.1...%40interstellar-tools%2Fmcp%401.3.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add MCP tools for satellite tracking and Lagrange points ([f54767c](https://github.com/phun-ky/interstellar-tools/commit/f54767c7b412f2bc8bee9d4828f606dc4164a423)), closes [#224](https://github.com/phun-ky/interstellar-tools/issues/224)
+
 ## [1.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.2.0...%40interstellar-tools%2Fmcp%401.2.1) (2026-11-04)
 
 ### Tasks
