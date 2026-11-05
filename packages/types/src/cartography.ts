@@ -149,3 +149,44 @@ export interface SunPositionInterface {
   /** Position in m, from Earth's centre: x toward the vernal equinox, z toward the north celestial pole. */
   r: Vector3DTupleType;
 }
+
+/**
+ * The **Moon's position** seen from Earth's centre at a moment: its direction
+ * on the sky and its distance.
+ *
+ * Returned by `moonPosition` in `@interstellar-tools/equations`.
+ *
+ * ::: info
+ *
+ * - Geocentric and equatorial, referred to the mean equator and equinox of
+ *   the date, like {@link SunPositionInterface}: close enough to TEME, the
+ *   frame SGP4 works in, for the Moon's pull on a satellite.
+ * - `declination` swings between about ±18° and ±29° over an 18.6-year cycle,
+ *   as the Moon's orbit, tilted 5.1° to the ecliptic, turns.
+ * - `distance` ranges from about 356 000 km at perigee to 407 000 km at
+ *   apogee.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // The Moon at its mean distance, 45° east of the equinox and 25° north
+ * const moon: MoonPositionInterface = {
+ *   rightAscension: 0.7854 as Radians,
+ *   declination: 0.4363 as Radians,
+ *   distance: 3.844e8,
+ *   r: [2.4635e8, 2.4635e8, 1.6244e8]
+ * };
+ * ```
+ * @group Cartography
+ */
+export interface MoonPositionInterface {
+  /** Right ascension $\alpha$ in radians, eastward from the vernal equinox, in [0, 2π). */
+  rightAscension: Radians;
+  /** Declination $\delta$ in radians, north of the celestial equator, in [-π/2, π/2]. */
+  declination: Radians;
+  /** Distance from Earth's centre in m. */
+  distance: number;
+  /** Position in m, from Earth's centre: x toward the vernal equinox, z toward the north celestial pole. */
+  r: Vector3DTupleType;
+}
