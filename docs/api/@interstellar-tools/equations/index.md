@@ -38,12 +38,13 @@ orbits, angles, solve for kelper or find true anomalies.
 
 ## Interfaces
 
-| Interface                                                                    | Description |
-| ---------------------------------------------------------------------------- | ----------- |
-| [CwTwoImpulseTransferInterface](interfaces/CwTwoImpulseTransferInterface.md) | -           |
-| [LambertSolutionInterface](interfaces/LambertSolutionInterface.md)           | -           |
-| [LaunchAzimuthsInterface](interfaces/LaunchAzimuthsInterface.md)             | -           |
-| [SolveLambertOptionsInterface](interfaces/SolveLambertOptionsInterface.md)   | -           |
+| Interface                                                                          | Description                                                    |
+| ---------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [CwTwoImpulseTransferInterface](interfaces/CwTwoImpulseTransferInterface.md)       | -                                                              |
+| [EstimateLifetimeOptionsInterface](interfaces/EstimateLifetimeOptionsInterface.md) | Options for [estimateLifetime](functions/estimateLifetime.md). |
+| [LambertSolutionInterface](interfaces/LambertSolutionInterface.md)                 | -                                                              |
+| [LaunchAzimuthsInterface](interfaces/LaunchAzimuthsInterface.md)                   | -                                                              |
+| [SolveLambertOptionsInterface](interfaces/SolveLambertOptionsInterface.md)         | -                                                              |
 
 ## Type Aliases
 
@@ -206,8 +207,10 @@ orbits, angles, solve for kelper or find true anomalies.
 | [cwHillDerivatives](functions/cwHillDerivatives.md)                                     | Compute the **time-derivative** of a Clohessy–Wiltshire / Hill relative-motion state (right-hand side for ODE integration).                                                                                                                                                                                        |
 | [cwPropagate](functions/cwPropagate.md)                                                 | **Propagate** a Clohessy–Wiltshire / Hill relative state in closed form.                                                                                                                                                                                                                                           |
 | [cwStateTransition](functions/cwStateTransition.md)                                     | Compute the **Clohessy–Wiltshire state transition matrix**: the closed-form solution of the CW / Hill equations.                                                                                                                                                                                                   |
+| [decayRate](functions/decayRate.md)                                                     | How much a near-circular orbit **sinks in one revolution** under atmospheric drag: the change in its semi-major axis per orbit.                                                                                                                                                                                    |
 | [elementsToState](functions/elementsToState.md)                                         | Convert the six **classical orbital elements** to a **state vector** (position and velocity).                                                                                                                                                                                                                      |
 | [escapeSpeed](functions/escapeSpeed.md)                                                 | **Escape speed** ($v_{\text{esc}}$) - minimum speed to escape a central body's gravity from radius ($r$) (ignoring drag/perturbations).                                                                                                                                                                            |
+| [estimateLifetime](functions/estimateLifetime.md)                                       | Estimate how long a satellite in a near-circular low orbit **stays up**: the time for atmospheric drag to bring it down to re-entry. For a student CubeSat, it sets the mission's length, and checks the guideline to deorbit within five years of the mission's end.                                              |
 | [exponentialAtmosphereDensity](functions/exponentialAtmosphereDensity.md)               | The **density of Earth's atmosphere** at a height, from the exponential model: within each band of heights, the density falls by a factor of $e$ every scale height. It's the quick estimate for drag on a satellite.                                                                                              |
 | [flightPathAngleFromTrueAnomaly](functions/flightPathAngleFromTrueAnomaly.md)           | **Flight-path angle** ($\gamma$) from **true anomaly** ($\nu$) and eccentricity ($e$).                                                                                                                                                                                                                             |
 | [frozenOrbitEccentricity](functions/frozenOrbitEccentricity.md)                         | The eccentricity of a **frozen orbit**: the small eccentricity at which the pear shape of the planet, J3, and its bulge, J2, balance, so the perigee stays put at 90° and the orbit's height over each latitude stays the same, orbit after orbit. Earth-observation missions fly them for steady imaging heights. |
