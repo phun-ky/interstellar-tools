@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.12.0...%40interstellar-tools%2Ftypes%401.13.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the probe dataset types ([38cf0e5](https://github.com/phun-ky/interstellar-tools/commit/38cf0e5918ab2cea0980c43c152b39a0281133d6)), references [#218](https://github.com/phun-ky/interstellar-tools/issues/218)
+
 ## [1.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.11.0...%40interstellar-tools%2Ftypes%401.12.0) (2026-11-05)
 
 ### Feature
