@@ -11,7 +11,7 @@ function subSatellitePoint(
 ```
 
 Defined in:
-[earth-fixed.ts:125](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/earth-fixed.ts#L125)
+[satellites/earth-fixed.ts:125](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/earth-fixed.ts#L125)
 
 Find the point on Earth **under a satellite** at a moment: the geodetic
 latitude, longitude and height on the WGS 84 ellipsoid.

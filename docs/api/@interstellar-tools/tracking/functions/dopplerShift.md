@@ -8,7 +8,7 @@ function dopplerShift(frequency: number, rangeRate: number): number;
 ```
 
 Defined in:
-[look-angles.ts:223](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/look-angles.ts#L223)
+[satellites/look-angles.ts:223](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/look-angles.ts#L223)
 
 The **Doppler shift** of a radio signal from a satellite: how far the received
 frequency is from the transmitted one, as the satellite approaches or leaves.

@@ -8,7 +8,7 @@ function isInEarthShadow(r: Vector3DTupleType, sun: Vector3DTupleType): boolean;
 ```
 
 Defined in:
-[shadow.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/shadow.ts#L62)
+[satellites/shadow.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/shadow.ts#L62)
 
 Whether a satellite is in **Earth's shadow**, taking the shadow as a cylinder as
 wide as Earth, straight back from the Sun. It's the usual quick test for whether

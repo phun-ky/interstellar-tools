@@ -11,7 +11,7 @@ function propagateMinutes(
 ```
 
 Defined in:
-[propagate.ts:108](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate.ts#L108)
+[satellites/propagate.ts:108](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate.ts#L108)
 
 Propagate a satellite's mean elements with **SGP4** to a number of minutes from
 their epoch: its position and velocity in the TEME frame.
