@@ -132,6 +132,10 @@ export default defineConfig({
             {
               text: 'Choose a landing site on Mars',
               link: '/learn/choose-a-landing-site-on-mars'
+            },
+            {
+              text: 'Where is the ISS?',
+              link: '/learn/where-is-the-iss'
             }
           ]
         },
