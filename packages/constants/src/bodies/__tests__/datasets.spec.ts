@@ -363,6 +363,123 @@ describe('moons', () => {
   });
 });
 
+// Sidereal rotation rates in degrees a day, the prime meridian's Ẇ from the
+// IAU (Archinal et al. 2018; the Moon from the 2009 report, Archinal et al.
+// 2011), and light-curve periods in hours where it gives none
+const IAU_ROTATION_RATE: Record<string, number> = {
+  mercury: 6.1385108,
+  venus: -1.4813688,
+  mars: 350.891982443297,
+  jupiter: 870.536,
+  saturn: 810.7939024,
+  uranus: -501.1600928,
+  neptune: 541.1397757,
+  ceres: 952.1532,
+  pluto: 56.3625225,
+  moon: 13.17635815,
+  phobos: 1128.84475928,
+  deimos: 285.16188899,
+  io: 203.4889538,
+  europa: 101.3747235,
+  ganymede: 50.3176081,
+  callisto: 21.5710715,
+  amalthea: 722.631456,
+  metis: 1221.2547301,
+  thebe: 533.70041,
+  titan: 22.5769768,
+  enceladus: 262.7318996,
+  rhea: 79.6900478,
+  iapetus: 4.5379572,
+  phoebe: 931.639,
+  titania: -41.3514316,
+  oberon: -26.7394932,
+  miranda: -254.6906892,
+  ariel: -142.8356681,
+  umbriel: -86.8688923,
+  triton: -61.2572637,
+  proteus: 320.7654228
+};
+const LIGHT_CURVE_HOURS: Record<string, number> = {
+  himalia: 7.7819,
+  nereid: 11.594
+};
+const SPINNING = [...PLANETS, ...MOONS];
+
+describe('rotation', () => {
+  test('every period is 360° over the IAU rate, or the light curve’s', () => {
+    for (const { id, name, rotation } of SPINNING) {
+      const rate = IAU_ROTATION_RATE[id];
+      const hours = LIGHT_CURVE_HOURS[id];
+
+      if (id === 'earth' || !rotation) continue;
+
+      assert.equal(rotation.period.unit, 'd', `${name}.rotation.period.unit`);
+
+      const expected = rate === undefined ? hours! / 24 : 360 / Math.abs(rate);
+
+      assert.ok(
+        Math.abs(rotation.period.value / expected - 1) <
+          (rate === undefined ? 1e-5 : 1e-9),
+        `${name}: ${rotation.period.value} d against ${expected} d`
+      );
+    }
+  });
+
+  test('Earth turns once in 23 h 56 m 4.0989 s, by the Earth rotation angle', () => {
+    const { rotation } = PLANETS.find(({ id }) => id === 'earth')!;
+
+    // The IERS: 1.00273781191135448 turns a day of UT1
+    assert.ok(
+      Math.abs(rotation!.period.value - 1 / 1.002_737_811_911_354_48) < 1e-10
+    );
+    assert.equal((rotation!.period.value * 86_400).toFixed(4), '86164.0989');
+  });
+
+  test('gives every planet, and every moon the IAU or a light curve covers, a rotation', () => {
+    const covered = new Set([
+      'earth',
+      ...Object.keys(IAU_ROTATION_RATE),
+      ...Object.keys(LIGHT_CURVE_HOURS)
+    ]);
+
+    for (const { id, name, rotation } of SPINNING)
+      assert.equal(rotation !== undefined, covered.has(id), name);
+  });
+
+  test('spins backwards for Venus, Uranus, Pluto and Triton only', () => {
+    const backwards = SPINNING.filter(({ rotation }) => rotation?.retrograde)
+      .map(({ id }) => id)
+      .sort();
+
+    assert.deepEqual(backwards, ['pluto', 'triton', 'uranus', 'venus']);
+  });
+
+  test('keeps a synchronous moon’s rotation equal to its orbit, in period and direction', () => {
+    for (const { name, orbit, rotation } of MOONS) {
+      if (!rotation?.synchronous) continue;
+
+      // The orbital periods are rounded, to 0.3 % at most (Miranda's 1.41 d)
+      assert.equal(orbit.period.unit, 'd');
+      assert.ok(
+        Math.abs(rotation.period.value / orbit.period.value - 1) < 3e-3,
+        `${name}: ${rotation.period.value} d against ${orbit.period.value} d`
+      );
+      assert.equal(rotation.retrograde, orbit.retrograde, name);
+    }
+  });
+
+  test('marks every moon that turns once an orbit as synchronous, and no other', () => {
+    for (const { name, orbit, rotation } of MOONS) {
+      if (!rotation) continue;
+
+      const once =
+        Math.abs(rotation.period.value / orbit.period.value - 1) < 0.01;
+
+      assert.equal(rotation.synchronous === true, once, name);
+    }
+  });
+});
+
 describe('stars', () => {
   test('orbiting the galaxy use ly and Myr, with a galactic position', () => {
     for (const star of STARS.filter((s) => GALAXY_IDS.has(s.parent ?? ''))) {

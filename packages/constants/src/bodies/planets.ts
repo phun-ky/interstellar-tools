@@ -12,6 +12,9 @@ import { PlanetsType, Radians } from '@interstellar-tools/types';
  * - Both are computed from the J2000 elements in JPL's "Approximate Positions of the Planets" (Table 1),
  *   and for Ceres and Pluto from the JPL Small-Body Database, using this dataset's `a` and `e`.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
+ * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
+ *   (Archinal et al. 2018), and for Earth the IERS's Earth rotation angle. Venus, Uranus and
+ *   Pluto spin backwards, `retrograde: true`.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -47,6 +50,8 @@ export const PLANETS: PlanetsType = [
       /** True anomaly at J2000 */
       angle: 3.080377 as Radians
     },
+    /** Sidereal rotation in days */
+    rotation: { period: { value: 58.6461459, unit: 'd' } },
     /** Radius in km */
     radius: { value: 2439.4, unit: 'km' },
     ellipsoid: {
@@ -76,6 +81,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 224.701, unit: 'd' },
       angle: 0.88977 as Radians
     },
+    /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
+    rotation: { period: { value: 243.018484, unit: 'd' }, retrograde: true },
     radius: { value: 6051.8, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 6051.8, unit: 'km' },
@@ -101,6 +108,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 365.256, unit: 'd' },
       angle: 6.238549 as Radians
     },
+    /** Sidereal rotation in days: IERS, from the Earth rotation angle, 23 h 56 m 4.0989 s */
+    rotation: { period: { value: 0.9972696632, unit: 'd' } },
     radius: { value: 6371.0084, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 6378.1366, unit: 'km' },
@@ -126,6 +135,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 686.98, unit: 'd' },
       angle: 0.408015 as Radians
     },
+    /** Sidereal rotation in days */
+    rotation: { period: { value: 1.025956756, unit: 'd' } },
     radius: { value: 3389.5, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 3396.19, unit: 'km' },
@@ -151,6 +162,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 1680.5, unit: 'd' },
       angle: 0.106686 as Radians
     },
+    /** Sidereal rotation in days */
+    rotation: { period: { value: 0.3780904165, unit: 'd' } },
     radius: { value: 469.7, unit: 'km' },
     mu: 6.26284e10,
     display: {
@@ -172,6 +185,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 4332.59, unit: 'd' },
       angle: 0.378185 as Radians
     },
+    /** Sidereal rotation in days */
+    rotation: { period: { value: 0.4135383258, unit: 'd' } },
     radius: { value: 69911, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 71492, unit: 'km' },
@@ -197,6 +212,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 10759.22, unit: 'd' },
       angle: 5.458247 as Radians
     },
+    /** Sidereal rotation in days: IAU System III, 10 h 39 m 22.4 s, from Voyager's radio signals; ring seismology gives 10 h 33 m 38 s */
+    rotation: { period: { value: 0.4440092592, unit: 'd' } },
     radius: { value: 58232, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 60268, unit: 'km' },
@@ -222,6 +239,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 30687.15, unit: 'd' },
       angle: 2.537459 as Radians
     },
+    /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
+    rotation: { period: { value: 0.7183333333, unit: 'd' }, retrograde: true },
     radius: { value: 25362, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 25559, unit: 'km' },
@@ -247,6 +266,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 60190.03, unit: 'd' },
       angle: 4.519475 as Radians
     },
+    /** Sidereal rotation in days: IAU, 15.9663 h, from Karkoschka (2011); Voyager's radio period was 16.11 h */
+    rotation: { period: { value: 0.6652625, unit: 'd' } },
     radius: { value: 24622, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 24764, unit: 'km' },
@@ -272,6 +293,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 90560.0, unit: 'd' },
       angle: 0.436892 as Radians
     },
+    /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
+    rotation: { period: { value: 6.387222999, unit: 'd' }, retrograde: true },
     radius: { value: 1188.3, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 1188.3, unit: 'km' },
