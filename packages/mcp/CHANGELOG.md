@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.3.0...%40interstellar-tools%2Fmcp%401.3.1) (2026-11-05)
+
+### Tasks
+
+* 🤖 @interstellar-tools/tracking@0.10.0 ([cf5c406](https://github.com/phun-ky/interstellar-tools/commit/cf5c4064888294c0de2d846009df2a3e531ae7d0))
+
 ## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.2.1...%40interstellar-tools%2Fmcp%401.3.0) (2026-11-05)
 
 ### Feature
