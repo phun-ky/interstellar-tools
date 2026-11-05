@@ -136,7 +136,11 @@ as mission-critical software (yet).
 Not a good fit (for now) if you need:
 
 - Flight-certified or safety-critical software.
-- High-fidelity N-body or perturbation modeling.
+- High-fidelity orbit modelling: full gravity fields, Earth orientation data and
+  precise ephemerides, as in GMAT or Orekit. `@interstellar-tools/tracking`
+  propagates a satellite with a force model, zonal harmonics, drag, the Sun, the
+  Moon and sunlight, but not to that precision, and not the planets as an N-body
+  system.
 
 ## Design principles
 

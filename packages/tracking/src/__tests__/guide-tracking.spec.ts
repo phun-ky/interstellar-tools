@@ -5,17 +5,21 @@ import {
 } from '@interstellar-tools/constants';
 import {
   areTrojanPointsStable,
+  ballisticCoefficient,
   eccentricToTrueAnomaly,
   elementsToState,
   greenwichMeanSiderealTime,
   hillSphereRadius,
   jacobiConstant,
   lagrangePoints,
+  nrlmsise00,
   solveKepler,
+  stateToElements,
   sunPosition
 } from '@interstellar-tools/equations';
 import { julianDate, taiMinusUtc } from '@interstellar-tools/temporal';
 import type {
+  ClassicalElementsInterface,
   Cr3bpState,
   EphemerisSampleInterface,
   GeodeticCoordinatesInterface,
@@ -43,6 +47,7 @@ import { dopplerShift, lookAngles } from '../satellites/look-angles.js';
 import { isVisiblePass, predictPasses } from '../satellites/passes.js';
 import { parseOmm } from '../satellites/omm.js';
 import { propagate } from '../satellites/propagate.js';
+import { propagateNumerically } from '../satellites/propagate-numerically.js';
 import { earthShadow } from '../satellites/shadow.js';
 import { parseTle } from '../satellites/tle.js';
 
@@ -269,6 +274,64 @@ describe('Tracking guide: satellites', () => {
     assert.equal(fit.converged, true);
     assert.equal(fit.rms.position.toFixed(0), '18');
     assert.equal(Math.ceil(farthest), 6);
+  });
+
+  test('propagates a 1U CubeSat a week, in three atmospheres, and boosts it', () => {
+    const mu = 3.986004415e14;
+    const from = new Date('2026-11-05T00:00:00Z');
+    const start = elementsToState(
+      {
+        a: 6_378_137 + 400_000,
+        e: 0,
+        i: (51.6 * Math.PI) / 180,
+        raan: 0,
+        argp: 0,
+        nu: 0
+      } as unknown as ClassicalElementsInterface,
+      mu
+    );
+    const perOrbit = Math.round(5554 / 60);
+    const meanA = (samples: readonly EphemerisSampleInterface[]) =>
+      samples.reduce((sum, { r, v }) => sum + stateToElements(r, v, mu).a, 0) /
+      samples.length;
+    const lost = (
+      density?: (point: GeodeticCoordinatesInterface, date: Date) => number
+    ) => {
+      const { samples } = propagateNumerically(
+        start,
+        from,
+        new Date('2026-11-12T00:00:00Z'),
+        {
+          step: 60,
+          forces: {
+            drag: {
+              ballisticCoefficient: ballisticCoefficient(1.33, 2.2, 0.01),
+              ...(density ? { density } : {})
+            }
+          }
+        }
+      );
+
+      return (
+        (meanA(samples.slice(0, perOrbit)) - meanA(samples.slice(-perOrbit))) /
+        1000
+      );
+    };
+    const msis =
+      (f107: number, ap: number) =>
+      ({ phi, lambda, h }: GeodeticCoordinatesInterface, date: Date) =>
+        nrlmsise00(date, h, phi, lambda, { f107, f107a: f107, ap })
+          .effectiveDensity;
+    const a = 6_378_137 + 400_000;
+
+    assert.equal(lost().toFixed(1), '1.9');
+    assert.equal(lost(msis(70, 4)).toFixed(1), '0.5');
+    assert.equal(lost(msis(150, 15)).toFixed(1), '2.6');
+    // A 1 m/s push forward: Δa = 2a²vΔv/μ
+    assert.equal(
+      ((2 * a ** 2 * Math.sqrt(mu / a)) / mu / 1000).toFixed(1),
+      '1.8'
+    );
   });
 });
 
