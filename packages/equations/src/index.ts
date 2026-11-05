@@ -237,6 +237,10 @@ export * from './categories/manoeuvres/solve-lambert.js';
 
 export * from './categories/manoeuvres/thrust-to-weight.js';
 
+// categories/atmosphere
+
+export * from './categories/atmosphere/nrlmsise00.js';
+
 // categories/three-body
 
 export * from './categories/three-body/cr3bp-derivatives.js';
