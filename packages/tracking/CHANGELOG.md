@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.7.0...%40interstellar-tools%2Ftracking%400.8.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Draw ground tracks and coverage footprints on a map ([8a35021](https://github.com/phun-ky/interstellar-tools/commit/8a350212ad006b652c25c7ce725c1337c92f915a)), closes [#219](https://github.com/phun-ky/interstellar-tools/issues/219)
+
 ## [0.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.6.0...%40interstellar-tools%2Ftracking%400.7.0) (2026-11-05)
 
 ### Feature

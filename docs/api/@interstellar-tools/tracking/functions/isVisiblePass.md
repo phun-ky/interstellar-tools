@@ -13,7 +13,7 @@ function isVisiblePass(
 ```
 
 Defined in:
-[satellites/passes.ts:267](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L267)
+[satellites/passes.ts:260](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L260)
 
 Whether a pass is a **visible pass**: the satellite lit by the Sun while the sky
 is dark for the observer, so it can be seen with the eye, a bright star moving

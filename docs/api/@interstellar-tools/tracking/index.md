@@ -80,6 +80,21 @@ import { subSatellitePoint } from '@interstellar-tools/tracking';
 const { phi, lambda, h } = subSatellitePoint(iss, new Date());
 ```
 
+Draw it on a flat map: its ground track, split where it crosses the
+antimeridian, and the footprint it can be seen from:
+
+```ts
+import {
+  coverageFootprint,
+  groundTrack,
+  subSatellitePoint
+} from '@interstellar-tools/tracking';
+
+const later = new Date(Date.now() + 92 * 60_000); // one ISS orbit
+const segments = groundTrack(iss, new Date(), later); // lines of { phi, lambda, h }
+const footprint = coverageFootprint(subSatellitePoint(iss, new Date()), 0.1745); // above 10°
+```
+
 Or see it from the ground: where to point an antenna, and how far to retune the
 radio for the Doppler shift:
 
@@ -207,8 +222,11 @@ npm i --save @interstellar-tools/tracking
 | Name                                                              | Description                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [SATELLITES](variables/SATELLITES.md)                             | A small **snapshot of well-known satellites**, with their elements as OMM records from CelesTrak, dated 4 November 2026. Examples, tests and demos work with it without the network.                                                        |
+| [coverageFootprint](functions/coverageFootprint.md)               | The **coverage footprint** of a satellite: the circle on the ground from which it's above a minimum elevation, as a polygon of latitudes and longitudes, ready to draw on a map.                                                            |
 | [dopplerShift](functions/dopplerShift.md)                         | The **Doppler shift** of a radio signal from a satellite: how far the received frequency is from the transmitted one, as the satellite approaches or leaves.                                                                                |
 | [earthShadow](functions/earthShadow.md)                           | Where a satellite is relative to **Earth's shadow**: in sunlight, in the penumbra where Earth covers part of the Sun, or in the umbra where it covers all of it.                                                                            |
+| [footprintRadius](functions/footprintRadius.md)                   | The **angular radius of a satellite's footprint**: how far from the point below it, as an angle at Earth's centre, the satellite is above the minimum elevation.                                                                            |
+| [groundTrack](functions/groundTrack.md)                           | The **ground track** of a satellite: the points on the ground directly below it over time, ready to draw on a flat map.                                                                                                                     |
 | [isInEarthShadow](functions/isInEarthShadow.md)                   | Whether a satellite is in **Earth's shadow**, taking the shadow as a cylinder as wide as Earth, straight back from the Sun. It's the usual quick test for whether a satellite is lit.                                                       |
 | [isVisiblePass](functions/isVisiblePass.md)                       | Whether a pass is a **visible pass**: the satellite lit by the Sun while the sky is dark for the observer, so it can be seen with the eye, a bright star moving steadily across the sky.                                                    |
 | [lookAngles](functions/lookAngles.md)                             | The **look angles** to a satellite from a ground observer at a moment: where to point an antenna or a camera (azimuth and elevation), how far away the satellite is (range), and how fast that changes (range rate, for the Doppler shift). |

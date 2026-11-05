@@ -4,7 +4,7 @@
 # Interface: PredictPassesOptionsInterface
 
 Defined in:
-[satellites/passes.ts:19](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L19)
+[satellites/passes.ts:20](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L20)
 
 Options for [predictPasses](../functions/predictPasses.md).
 
@@ -17,7 +17,7 @@ minElevation?: Radians;
 ```
 
 Defined in:
-[satellites/passes.ts:21](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L21)
+[satellites/passes.ts:22](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L22)
 
 The elevation that counts as rising and setting, in **radians**: 0 by default,
 the horizon.
@@ -31,7 +31,7 @@ step?: number;
 ```
 
 Defined in:
-[satellites/passes.ts:23](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L23)
+[satellites/passes.ts:24](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L24)
 
 The coarse step in **s**: a 180th of the orbital period by default, 31 s for the
 ISS.

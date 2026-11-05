@@ -14,7 +14,7 @@ function predictPasses(
 ```
 
 Defined in:
-[satellites/passes.ts:90](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L90)
+[satellites/passes.ts:83](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/passes.ts#L83)
 
 **Predict the passes** of a satellite over a ground observer between two
 moments: when it rises above the horizon, when it's highest, and when it sets.
