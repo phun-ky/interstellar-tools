@@ -43,6 +43,21 @@ const [sameIss] = (await response.json()).map(parseOmm);
 A malformed TLE throws a `RangeError` naming the line, columns and field, and a
 wrong checksum is caught. Alpha-5 catalogue numbers, such as `A0001`, are read.
 
+To try things out without the network, `SATELLITES` holds a snapshot of twelve
+well-known satellites, from the ISS to a Molniya orbit, dated 4 November 2026:
+
+```ts
+import { parseOmm, SATELLITES } from '@interstellar-tools/tracking';
+
+const hubble = parseOmm(SATELLITES.find(({ id }) => id === 'hubble')!.omm);
+```
+
+> [!WARNING]
+>
+> **Orbital elements go stale within days.** The snapshot is for examples and
+> tests; for tracking, fetch fresh elements from
+> [CelesTrak](https://celestrak.org/), at most once every 2 hours.
+
 Then propagate the elements with SGP4, the model they were fitted for, to get
 the satellite's position and velocity in the TEME frame, in m and m/s:
 
@@ -148,8 +163,9 @@ npm i --save @interstellar-tools/tracking
 
 ## Satellites
 
-| Function                                                          | Description                                                                                                                                                                                                                                 |
+| Name                                                              | Description                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [SATELLITES](variables/SATELLITES.md)                             | A small **snapshot of well-known satellites**, with their elements as OMM records from CelesTrak, dated 4 November 2026. Examples, tests and demos work with it without the network.                                                        |
 | [dopplerShift](functions/dopplerShift.md)                         | The **Doppler shift** of a radio signal from a satellite: how far the received frequency is from the transmitted one, as the satellite approaches or leaves.                                                                                |
 | [earthShadow](functions/earthShadow.md)                           | Where a satellite is relative to **Earth's shadow**: in sunlight, in the penumbra where Earth covers part of the Sun, or in the umbra where it covers all of it.                                                                            |
 | [isInEarthShadow](functions/isInEarthShadow.md)                   | Whether a satellite is in **Earth's shadow**, taking the shadow as a cylinder as wide as Earth, straight back from the Sun. It's the usual quick test for whether a satellite is lit.                                                       |

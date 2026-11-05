@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.4.0...%40interstellar-tools%2Ftracking%400.5.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Ship a snapshot of well-known satellites ([9748972](https://github.com/phun-ky/interstellar-tools/commit/9748972fe77207f46d9dfb4e87fb183f9335ffcb)), closes [#216](https://github.com/phun-ky/interstellar-tools/issues/216)
+
 ## [0.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.3.1...%40interstellar-tools%2Ftracking%400.4.0) (2026-11-05)
 
 ### Feature
