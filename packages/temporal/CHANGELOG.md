@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%401.2.0...%40interstellar-tools%2Ftemporal%401.3.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add Mars time: the Mars Sol Date, Coordinated Mars Time and mission sols ([3284173](https://github.com/phun-ky/interstellar-tools/commit/3284173ad0d1b9b9d10a13eb8874cad3dbd63fe3)), closes [#350](https://github.com/phun-ky/interstellar-tools/issues/350)
+
 ## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%401.1.1...%40interstellar-tools%2Ftemporal%401.2.0) (2026-11-05)
 
 ### Feature

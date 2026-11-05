@@ -40,6 +40,15 @@ npm i --save @interstellar-tools/temporal
 | [convertTemporalUnit](functions/convertTemporalUnit.md)     | Convert a temporal **duration** between any two canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md) units.     |
 | [normalizeTemporalUnit](functions/normalizeTemporalUnit.md) | Normalize a user-provided **temporal unit string** into a canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md). |
 
+## Mars time
+
+| Function                                                      | Description                                                                                                                              |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| [coordinatedMarsTime](functions/coordinatedMarsTime.md)       | **Coordinated Mars Time** (MTC): the mean solar time at Mars's prime meridian, Airy-0, in hours, like UTC is at Greenwich.               |
+| [marsLocalMeanSolarTime](functions/marsLocalMeanSolarTime.md) | The **local mean solar time on Mars** at a longitude, in hours: Coordinated Mars Time plus the east longitude in hours, 15° to the hour. |
+| [marsSolDate](functions/marsSolDate.md)                       | The **Mars Sol Date** of a moment: a continuous count of sols, Mars's mean solar days, like the Julian date for Earth.                   |
+| [missionSol](functions/missionSol.md)                         | The **mission sol** at a landing site: the number of the sol a rover is on, counted from its landing.                                    |
+
 ## Time scales
 
 | Function                                              | Description                                                                                                                                      |
