@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.10.0...%40interstellar-tools%2Ftypes%401.11.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the OMM record and satellite dataset types ([ef0222a](https://github.com/phun-ky/interstellar-tools/commit/ef0222acb1590dd497cf2224189946307569eb84)), references [#216](https://github.com/phun-ky/interstellar-tools/issues/216)
+
 ## [1.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.9.0...%40interstellar-tools%2Ftypes%401.10.0) (2026-11-04)
 
 ### Feature
