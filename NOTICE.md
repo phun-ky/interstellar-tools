@@ -57,6 +57,17 @@ copyright. They're compiled from public references, credited here:
   Group on Cartographic Coordinates and Rotational Elements (Archinal et al.
   2018, Celestial Mechanics and Dynamical Astronomy 130, 22), and WGS 84 from
   the US National Geospatial-Intelligence Agency.
+- **Rotation periods:** the sidereal rotation of the planets, Ceres, Pluto and
+  the moons from the rotation rates of the IAU Working Group on Cartographic
+  Coordinates and Rotational Elements (Archinal et al. 2018, Celestial Mechanics
+  and Dynamical Astronomy 130, 22, and for the Moon Archinal et al. 2011, 109,
+  101), Earth's from the IERS Conventions' Earth rotation angle, Himalia's from
+  Pilcher, Mottola and Denk (2012, Icarus 219, 741) and Nereid's from Kiss et
+  al. (2016, MNRAS 457, 2908).
+- **Days on Earth and Mars:** the Martian sol and sidereal day from Allison and
+  McEwen (2000, Planetary and Space Science 48, 215), and the ratio of a sol to
+  a day from NASA GISS's
+  [Mars24 algorithm](https://www.giss.nasa.gov/tools/mars24/help/algorithm.html).
 - **Moon orbits:** semi-major axes and eccentricities from JPL's
   [planetary satellite mean elements](https://ssd.jpl.nasa.gov/sats/elem/), and
   true anomalies at J2000 from the osculating elements in

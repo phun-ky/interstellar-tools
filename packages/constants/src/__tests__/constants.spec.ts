@@ -5,6 +5,7 @@ import {
   AU_METERS,
   EGM2008,
   AU_PER_LY,
+  EARTH_SIDEREAL_DAY_SECONDS,
   EPOCH_2000_UTC_MIDNIGHT,
   EPOCH_2000_UTC_MIDNIGHT_TIME_SCALE,
   G_SI,
@@ -15,6 +16,9 @@ import {
   JULIAN_YEAR_DAYS,
   JULIAN_YEAR_SECONDS,
   KM_PER_AU,
+  MARS_SIDEREAL_DAY_SECONDS,
+  MARS_SOL_DAYS,
+  MARS_SOL_SECONDS,
   LY_PER_AU,
   LY_PER_PC,
   METERS_PER_LY,
@@ -200,5 +204,54 @@ describe('EGM2008', () => {
   test('is frozen', () => {
     assert.ok(Object.isFrozen(EGM2008));
     assert.ok(Object.isFrozen(EGM2008.J));
+  });
+});
+
+describe('days on Earth and Mars', () => {
+  // The sun comes back a little later each turn: 1/S = 1/P − 1/T
+  const solarDay = (P: number, T: number) => 1 / (1 / P - 1 / T);
+
+  test('EARTH_SIDEREAL_DAY_SECONDS is 23 h 56 m 4.0905 s, the rate of sidereal time', () => {
+    // Mean sidereal time gains 1.002737909350795 turns a solar day (IAU 1982)
+    assert.ok(
+      Math.abs(
+        EARTH_SIDEREAL_DAY_SECONDS - SECONDS_PER_DAY / 1.002_737_909_350_795
+      ) < 1e-4
+    );
+    // With the tropical year, it gives the solar day
+    assert.ok(
+      Math.abs(
+        solarDay(EARTH_SIDEREAL_DAY_SECONDS, 365.242_19 * SECONDS_PER_DAY) -
+          SECONDS_PER_DAY
+      ) < 1e-3
+    );
+  });
+
+  test('MARS_SOL_SECONDS is 24 h 39 m 35.244 s, and MARS_SOL_DAYS days', () => {
+    assert.equal(MARS_SOL_SECONDS, 24 * 3600 + 39 * 60 + 35.244);
+    assert.ok(
+      Math.abs(MARS_SOL_SECONDS / SECONDS_PER_DAY / MARS_SOL_DAYS - 1) < 2e-9
+    );
+  });
+
+  test('MARS_SIDEREAL_DAY_SECONDS is 24 h 37 m 22.663 s, the IAU rate to a millisecond', () => {
+    assert.ok(
+      Math.abs(MARS_SIDEREAL_DAY_SECONDS - (24 * 3600 + 37 * 60 + 22.663)) <
+        1e-9
+    );
+    assert.ok(
+      Math.abs(
+        MARS_SIDEREAL_DAY_SECONDS - (360 / 350.891982443297) * SECONDS_PER_DAY
+      ) < 1e-3
+    );
+  });
+
+  test('a turn of Mars and its 686.971-day year give the sol', () => {
+    assert.ok(
+      Math.abs(
+        solarDay(MARS_SIDEREAL_DAY_SECONDS, 686.971 * SECONDS_PER_DAY) -
+          MARS_SOL_SECONDS
+      ) < 1e-2
+    );
   });
 });
