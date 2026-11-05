@@ -147,6 +147,8 @@ export * from './categories/orbits/elements-to-state.js';
 
 export * from './categories/orbits/escape-speed.js';
 
+export * from './categories/orbits/exponential-atmosphere-density.js';
+
 export * from './categories/orbits/flight-path-angle-from-true-anomaly.js';
 
 export * from './categories/orbits/hyperbolic-eccentricity.js';
@@ -171,6 +173,8 @@ export * from './categories/orbits/mean-motion.js';
 
 export * from './categories/orbits/peri-apoapsis-radii.js';
 
+export * from './categories/orbits/repeat-ground-track.js';
+
 export * from './categories/orbits/rotating-launch-azimuth.js';
 
 export * from './categories/orbits/specific-angular-momentum-from-elements.js';
@@ -179,6 +183,8 @@ export * from './categories/orbits/specific-angular-momentum.js';
 
 export * from './categories/orbits/specific-mechanical-energy.js';
 
+export * from './categories/orbits/frozen-orbit-eccentricity.js';
+
 export * from './categories/orbits/hill-sphere-radius.js';
 
 export * from './categories/orbits/sphere-of-influence-radius.js';
@@ -186,6 +192,8 @@ export * from './categories/orbits/sphere-of-influence-radius.js';
 export * from './categories/orbits/state-to-elements.js';
 
 export * from './categories/orbits/surface-rotation-speed.js';
+
+export * from './categories/orbits/sun-synchronous-inclination.js';
 
 export * from './categories/orbits/synodic-period.js';
 

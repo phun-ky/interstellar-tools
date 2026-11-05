@@ -58,6 +58,11 @@ copyright. They're compiled from public references, credited here:
   true anomalies at J2000 from the osculating elements in
   [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/).
 
+The exponential atmosphere in `@interstellar-tools/equations`
+(`exponentialAtmosphereDensity`) uses the base densities and scale heights of
+table 8-4 in D. A. Vallado, _Fundamentals of Astrodynamics and Applications_
+(4th ed., 2013), from the CIRA-72 reference atmosphere.
+
 The NRLMSISE-00 atmosphere model in `@interstellar-tools/equations`
 (`nrlmsise00`) is ported from the original Fortran by M. Picone, A. E. Hedin and
 D. Drob of the US Naval Research Laboratory (`nrlmsise00_sub.for`, MSISE-00

@@ -24,6 +24,9 @@
     },
     {
       "path": "../maps/tsconfig.build.json"
+    },
+    {
+      "path": "../tracking/tsconfig.build.json"
     }
   ]
 }
