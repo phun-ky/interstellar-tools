@@ -1,3 +1,4 @@
+import { sunPosition } from '@interstellar-tools/equations';
 import type {
   GeodeticCoordinatesInterface,
   LookAnglesInterface,
@@ -6,7 +7,10 @@ import type {
   SatellitePassInterface
 } from '@interstellar-tools/types';
 
-import { lookAngles } from './look-angles.js';
+import { temeToEarthFixed } from './earth-fixed.js';
+import { lookAngles, lookAnglesFromEarthFixed } from './look-angles.js';
+import { propagate } from './propagate.js';
+import { earthShadow } from './shadow.js';
 
 // Golden-section ratio, for the search for the highest point
 const INV_PHI = (Math.sqrt(5) - 1) / 2;
@@ -19,6 +23,14 @@ export interface PredictPassesOptionsInterface {
   step?: number;
 }
 
+/** Options for {@link isVisiblePass}. */
+export interface IsVisiblePassOptionsInterface {
+  /** The highest the Sun may be for the observer, in **radians**: -6° by default, the end of civil twilight. */
+  sunElevation?: Radians;
+}
+
+// The moments a visible pass is checked at: every 10 s at most
+const VISIBLE_STEP_MS = 10_000;
 const assertDate = (name: string, date: Date): number => {
   if (!(date instanceof Date) || !Number.isFinite(date.getTime()))
     throw new TypeError(
@@ -206,4 +218,93 @@ export const predictPasses = (
   }
 
   return passes;
+};
+
+/**
+ * Whether a pass is a **visible pass**: the satellite lit by the Sun while the
+ * sky is dark for the observer, so it can be seen with the eye, a bright star
+ * moving steadily across the sky.
+ *
+ * Checks the pass every 10 s from rise to set. It's visible if, at any of
+ * those moments, the Sun is below `sunElevation` for the observer and the
+ * satellite is not in Earth's umbra ({@link earthShadow}).
+ *
+ * ::: info Notes
+ *
+ * - The default -6°, the end of civil twilight, is when the brightest stars
+ *   come out. Pass -12° for a properly dark sky, or 0 to count any pass after
+ *   sunset.
+ * - A satellite is easiest to see shortly after sunset or before sunrise: high
+ *   up, it's still in sunlight while the ground is dark. Around midnight in
+ *   winter, it's usually in Earth's shadow.
+ * - Whether it's bright enough depends on its size and how the Sun catches it.
+ *   The ISS is among the brightest objects in the night sky.
+ *
+ * :::
+ *
+ * @param elements - The mean elements, from {@link parseTle} or {@link parseOmm}.
+ * @param observer - The observer's geodetic latitude `phi` and longitude `lambda` in **radians**, and height `h` above the WGS 84 ellipsoid in **m**.
+ * @param pass - A pass from {@link predictPasses}; only its `rise` and `set` are used.
+ * @param options - `sunElevation` in **radians** (in [-π/2, π/2], default -6°).
+ * @returns `true` if the satellite can be seen during the pass.
+ * @throws {TypeError} If `rise` or `set` is not a valid `Date`, `sunElevation` is not a finite number, or a value of `elements` or `observer` is not a finite number.
+ * @throws {RangeError} If `set` is before `rise`, `sunElevation` is outside [-π/2, π/2], or SGP4 fails during the pass, as in {@link propagate}.
+ * @group Satellites
+ *
+ * @example
+ * ```ts
+ * const oslo = { phi: toRad(59.91), lambda: toRad(10.75), h: 20 };
+ * const from = new Date('2026-11-04T12:00:00Z');
+ * const to = new Date('2026-11-11T12:00:00Z');
+ * const visible = predictPasses(iss, oslo, from, to).filter((pass) =>
+ *   isVisiblePass(iss, oslo, pass)
+ * );
+ * ```
+ *
+ * @see {@link predictPasses}
+ * @see {@link earthShadow}
+ */
+export const isVisiblePass = (
+  elements: MeanElementsInterface,
+  observer: GeodeticCoordinatesInterface,
+  pass: SatellitePassInterface,
+  options: IsVisiblePassOptionsInterface = {}
+): boolean => {
+  const rise = assertDate('rise', pass?.rise);
+  const set = assertDate('set', pass?.set);
+  const maxSun = options.sunElevation ?? -Math.PI / 30;
+
+  if (set < rise)
+    throw new RangeError(
+      `set must not be before rise. Received: ${pass.set.toISOString()}, rise ${pass.rise.toISOString()}`
+    );
+
+  if (!Number.isFinite(maxSun))
+    throw new TypeError(
+      `sunElevation must be a finite number. Received: ${maxSun}`
+    );
+
+  if (Math.abs(maxSun) > Math.PI / 2)
+    throw new RangeError(
+      `sunElevation must be in [-π/2, π/2]. Received: ${maxSun}`
+    );
+
+  const steps = Math.max(1, Math.ceil((set - rise) / VISIBLE_STEP_MS));
+
+  for (let k = 0; k <= steps; k++) {
+    const date = new Date(rise + Math.round(((set - rise) * k) / steps));
+    const sun = sunPosition(date).r;
+    const { elevation } = lookAnglesFromEarthFixed(
+      temeToEarthFixed({ r: sun, v: [0, 0, 0] }, date),
+      observer
+    );
+
+    if (
+      elevation <= maxSun &&
+      earthShadow(propagate(elements, date).r, sun) !== 'umbra'
+    )
+      return true;
+  }
+
+  return false;
 };

@@ -1,3 +1,4 @@
+import { sunPosition } from '@interstellar-tools/equations';
 import type {
   GeodeticCoordinatesInterface,
   MeanElementsInterface,
@@ -6,8 +7,11 @@ import type {
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { lookAngles } from '../look-angles.js';
-import { predictPasses } from '../passes.js';
+import { temeToEarthFixed } from '../earth-fixed.js';
+import { lookAngles, lookAnglesFromEarthFixed } from '../look-angles.js';
+import { isVisiblePass, predictPasses } from '../passes.js';
+import { propagate } from '../propagate.js';
+import { earthShadow } from '../shadow.js';
 import { parseTle } from '../tle.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
@@ -204,6 +208,112 @@ describe('predictPasses', () => {
         err instanceof TypeError &&
         err.message ===
           'elements.meanMotion must be a finite number. Received: NaN'
+    );
+  });
+});
+
+describe('isVisiblePass', () => {
+  // Two weeks on, the ISS passes over Oslo in the early evening
+  const from = new Date(iss.epoch.getTime() + 14 * 1440 * MINUTE);
+  const passes = predictPasses(
+    iss,
+    oslo,
+    from,
+    new Date(from.getTime() + 1440 * MINUTE)
+  );
+  const visible = (options?: { sunElevation?: Radians }) =>
+    passes.map((pass) => isVisiblePass(iss, oslo, pass, options));
+
+  test("sees the ISS after dusk, not in daylight or in Earth's shadow later on", () => {
+    assert.deepEqual(
+      passes.map(({ rise }) => rise.toISOString().slice(11, 16)),
+      ['15:14', '16:48', '18:24', '20:00', '21:37']
+    );
+    // In twilight, then two at dusk, then the ISS in Earth's shadow
+    assert.deepEqual(visible(), [false, true, true, false, false]);
+  });
+
+  test("takes the Sun's elevation from the options", () => {
+    // At any Sun elevation, only Earth's shadow hides it
+    assert.deepEqual(visible({ sunElevation: rad(90) }), [
+      true,
+      true,
+      true,
+      false,
+      false
+    ]);
+    // Only once the sky is fully dark
+    assert.deepEqual(visible({ sunElevation: rad(-18) }), [
+      false,
+      false,
+      true,
+      false,
+      false
+    ]);
+  });
+
+  test('agrees with checking every second of the pass', () => {
+    const madrid = { phi: rad(40.42), lambda: rad(-3.7), h: 650 };
+
+    for (const [observer, start] of [
+      [oslo, from],
+      [madrid, iss.epoch]
+    ] as const) {
+      const to = new Date(start.getTime() + 2 * 1440 * MINUTE);
+
+      for (const pass of predictPasses(iss, observer, start, to)) {
+        let seen = false;
+
+        for (let t = pass.rise.getTime(); t <= pass.set.getTime(); t += 1000) {
+          const date = new Date(t);
+          const sun = sunPosition(date).r;
+          const sunElevation = lookAnglesFromEarthFixed(
+            temeToEarthFixed({ r: sun, v: [0, 0, 0] }, date),
+            observer
+          ).elevation;
+
+          seen ||=
+            sunElevation <= rad(-6) &&
+            earthShadow(propagate(iss, date).r, sun) !== 'umbra';
+        }
+
+        assert.equal(
+          isVisiblePass(iss, observer, pass),
+          seen,
+          pass.rise.toISOString()
+        );
+      }
+    }
+  });
+
+  test('rejects invalid input', () => {
+    const [pass] = passes;
+
+    assert.ok(pass);
+    assert.throws(
+      () => isVisiblePass(iss, oslo, { ...pass, rise: new Date(Number.NaN) }),
+      (err) =>
+        err instanceof TypeError &&
+        err.message === 'rise must be a valid Date. Received: Invalid Date'
+    );
+    assert.throws(
+      () => isVisiblePass(iss, oslo, { ...pass, set: from }),
+      (err) =>
+        err instanceof RangeError &&
+        err.message.startsWith('set must not be before rise.')
+    );
+    assert.throws(
+      () =>
+        isVisiblePass(iss, oslo, pass, { sunElevation: Number.NaN as Radians }),
+      (err) =>
+        err instanceof TypeError &&
+        err.message === 'sunElevation must be a finite number. Received: NaN'
+    );
+    assert.throws(
+      () => isVisiblePass(iss, oslo, pass, { sunElevation: 2 as Radians }),
+      (err) =>
+        err instanceof RangeError &&
+        err.message === 'sunElevation must be in [-π/2, π/2]. Received: 2'
     );
   });
 });

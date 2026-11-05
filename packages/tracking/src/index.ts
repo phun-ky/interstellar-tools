@@ -14,3 +14,5 @@ export * from './satellites/earth-fixed.js';
 export * from './satellites/look-angles.js';
 
 export * from './satellites/passes.js';
+
+export * from './satellites/shadow.js';
