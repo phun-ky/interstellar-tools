@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.15.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.14.0...%40interstellar-tools%2Fequations%401.15.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Estimate the atmosphere's density with the exponential model ([79df918](https://github.com/phun-ky/interstellar-tools/commit/79df918dacae80fae41ca9e6630fdd2d51f96375)), references [#226](https://github.com/phun-ky/interstellar-tools/issues/226)
+
 ## [1.14.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.13.0...%40interstellar-tools%2Fequations%401.14.0) (2026-11-05)
 
 ### Feature
