@@ -197,7 +197,8 @@ export default defineConfig({
                 }
               ]
             },
-            { text: 'Maps', link: '/guide/usage/maps' }
+            { text: 'Maps', link: '/guide/usage/maps' },
+            { text: 'Tracking', link: '/guide/usage/tracking' }
           ]
         },
         {

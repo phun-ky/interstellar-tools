@@ -91,6 +91,12 @@ const segments = groundTrack(iss, new Date(), later); // lines of { phi, lambda,
 const footprint = coverageFootprint(subSatellitePoint(iss, new Date()), 0.1745); // above 10°
 ```
 
+For a globe, `orbitPath3D` gives the orbit in 3D, Earth-fixed or inertial, and
+`globeView` projects tracks and footprints onto a 2D globe, flagging the far
+side. The
+[tracking guide](https://phun-ky.net/interstellar-tools/guide/usage/tracking)
+explains which frame to choose.
+
 Or see it from the ground: where to point an antenna, and how far to retune the
 radio for the Doppler shift:
 
