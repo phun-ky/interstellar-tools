@@ -84,6 +84,26 @@ for (const pass of predictPasses(iss, oslo, from, to, { minElevation: 0.1745 }))
   console.log(pass.rise, pass.maxElevation, pass.set);
 ```
 
+Keep the passes you can see with the eye, the satellite in sunlight while the
+sky is dark, or check whether it's in Earth's shadow:
+
+```ts
+import { sunPosition } from '@interstellar-tools/equations';
+
+import {
+  earthShadow,
+  isVisiblePass,
+  propagate,
+  predictPasses
+} from '@interstellar-tools/tracking';
+
+const visible = predictPasses(iss, oslo, from, to).filter((pass) =>
+  isVisiblePass(iss, oslo, pass)
+);
+const now = new Date();
+const shadow = earthShadow(propagate(iss, now).r, sunPosition(now).r); // 'sunlit', 'penumbra' or 'umbra'
+```
+
 ## What's planned
 
 The
