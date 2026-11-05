@@ -165,6 +165,12 @@ export interface TimeStepInterface extends ValueInterface {
  *   such as the J2000 epoch: TT = TAI + 32.184 s.
  * - `UT1`: time by Earth's actual rotation angle. It drifts from UTC by up to
  *   0.9 s, and following it closely takes measurements published by the IERS.
+ * - `TDB`: Barycentric Dynamical Time, the time scale of the planetary
+ *   ephemerides and of JPL Horizons. It runs within 1.7 ms of TT, ahead and
+ *   behind over the year as Earth's orbit takes it nearer and farther from
+ *   the Sun.
+ * - `GPS`: the time kept by the GPS satellites, TAI − 19 s. It hasn't taken a
+ *   leap second since 1980.
  *
  * @example
  * ```ts
@@ -172,7 +178,7 @@ export interface TimeStepInterface extends ValueInterface {
  * ```
  * @group Temporal
  */
-export type TimeScaleType = 'UTC' | 'TAI' | 'TT' | 'UT1';
+export type TimeScaleType = 'UTC' | 'TAI' | 'TT' | 'UT1' | 'TDB' | 'GPS';
 
 /**
  * One step in the **leap second table**: the offset TAI − UTC from a given UTC
