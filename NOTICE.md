@@ -58,6 +58,14 @@ copyright. They're compiled from public references, credited here:
   true anomalies at J2000 from the osculating elements in
   [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/).
 
+The NRLMSISE-00 atmosphere model in `@interstellar-tools/equations`
+(`nrlmsise00`) is ported from the original Fortran by M. Picone, A. E. Hedin and
+D. Drob of the US Naval Research Laboratory (`nrlmsise00_sub.for`, MSISE-00
+01-FEB-02), a US government work, as archived by NASA's
+[Space Physics Data Facility](https://spdf.gsfc.nasa.gov/pub/models/old_nonpublic/old_models_from_nssdc/atmospheric/msis/nrlmsise00/);
+its tests reproduce the reference output distributed with it. Picone et al.
+(2002), _J. Geophys. Res._ 107(A12), 1468, doi:10.1029/2002JA009430.
+
 Wikipedia text is licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Only factual
 values are taken from it, never text.
