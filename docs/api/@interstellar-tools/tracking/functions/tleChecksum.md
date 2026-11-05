@@ -8,7 +8,7 @@ function tleChecksum(line: string): number;
 ```
 
 Defined in:
-[satellites/tle.ts:133](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/tle.ts#L133)
+[satellites/tle.ts:134](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/tle.ts#L134)
 
 The **checksum** of a TLE line: the sum of its digits, with 1 for each minus
 sign, modulo 10. It's the last column of each line, and catches most typos.

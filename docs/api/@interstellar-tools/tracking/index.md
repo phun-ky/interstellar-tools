@@ -175,6 +175,27 @@ const { near, ephemeris } = PROBES.find(({ id }) => id === 'jwst')!; // near: 's
 const { r, v } = stateAt(ephemeris, new Date()); // from the Sun, in m and m/s
 ```
 
+A team flying its own satellite can fit mean elements to its GPS fixes or orbit
+predictions, and publish them as a TLE or OMM:
+
+```ts
+import {
+  earthFixedToTeme,
+  fitElements,
+  formatTle
+} from '@interstellar-tools/tracking';
+
+// GPS fixes are Earth-fixed: turn them into TEME, the frame SGP4 works in
+const states = fixes.map(({ date, r, v }) => ({
+  epoch: date,
+  ...earthFixedToTeme({ r, v }, date)
+}));
+const fit = fitElements(states, states[states.length - 1].epoch);
+const { position } = fit.rms; // how far SGP4 is from the fixes, in m
+
+formatTle({ ...fit.elements, catalogNumber: 99_999 }); // [line1, line2]
+```
+
 ## What's planned
 
 The
@@ -183,7 +204,8 @@ tracks the work:
 
 - **satellites**: anything in Earth orbit with public orbital elements, crewed
   vehicles like the ISS included: TLE and OMM parsing, SGP4 and SDP4, ground
-  tracks, look angles, passes and eclipses
+  tracks, look angles, passes and eclipses, and fitting elements to a team's own
+  positions
 - **probes**: deep-space spacecraft without TLEs, such as Voyager, New Horizons
   and JWST, positioned from ephemeris files
 - Lagrange points, atmospheric density and orbit decay, and orbit design helpers
@@ -208,13 +230,16 @@ npm i --save @interstellar-tools/tracking
 
 ## Interfaces
 
-| Interface                                                                    | Description                                              |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------- |
-| [GlobeViewOptionsInterface](interfaces/GlobeViewOptionsInterface.md)         | Options for [globeView](functions/globeView.md).         |
-| [IsVisiblePassOptionsInterface](interfaces/IsVisiblePassOptionsInterface.md) | Options for [isVisiblePass](functions/isVisiblePass.md). |
-| [OrbitPath3DOptionsInterface](interfaces/OrbitPath3DOptionsInterface.md)     | Options for [orbitPath3D](functions/orbitPath3D.md).     |
-| [PredictPassesOptionsInterface](interfaces/PredictPassesOptionsInterface.md) | Options for [predictPasses](functions/predictPasses.md). |
-| [StateAtOptionsInterface](interfaces/StateAtOptionsInterface.md)             | Options for [stateAt](functions/stateAt.md).             |
+| Interface                                                                    | Description                                                              |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [ElementFitInterface](interfaces/ElementFitInterface.md)                     | The result of [fitElements](functions/fitElements.md).                   |
+| [ElementFitResidualInterface](interfaces/ElementFitResidualInterface.md)     | How far a fitted element set is from one of the states it was fitted to. |
+| [FitElementsOptionsInterface](interfaces/FitElementsOptionsInterface.md)     | Options for [fitElements](functions/fitElements.md).                     |
+| [GlobeViewOptionsInterface](interfaces/GlobeViewOptionsInterface.md)         | Options for [globeView](functions/globeView.md).                         |
+| [IsVisiblePassOptionsInterface](interfaces/IsVisiblePassOptionsInterface.md) | Options for [isVisiblePass](functions/isVisiblePass.md).                 |
+| [OrbitPath3DOptionsInterface](interfaces/OrbitPath3DOptionsInterface.md)     | Options for [orbitPath3D](functions/orbitPath3D.md).                     |
+| [PredictPassesOptionsInterface](interfaces/PredictPassesOptionsInterface.md) | Options for [predictPasses](functions/predictPasses.md).                 |
+| [StateAtOptionsInterface](interfaces/StateAtOptionsInterface.md)             | Options for [stateAt](functions/stateAt.md).                             |
 
 ## Probes
 
@@ -227,25 +252,29 @@ npm i --save @interstellar-tools/tracking
 
 ## Satellites
 
-| Name                                                              | Description                                                                                                                                                                                                                                 |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [SATELLITES](variables/SATELLITES.md)                             | A small **snapshot of well-known satellites**, with their elements as OMM records from CelesTrak, dated 4 November 2026. Examples, tests and demos work with it without the network.                                                        |
-| [coverageFootprint](functions/coverageFootprint.md)               | The **coverage footprint** of a satellite: the circle on the ground from which it's above a minimum elevation, as a polygon of latitudes and longitudes, ready to draw on a map.                                                            |
-| [dopplerShift](functions/dopplerShift.md)                         | The **Doppler shift** of a radio signal from a satellite: how far the received frequency is from the transmitted one, as the satellite approaches or leaves.                                                                                |
-| [earthShadow](functions/earthShadow.md)                           | Where a satellite is relative to **Earth's shadow**: in sunlight, in the penumbra where Earth covers part of the Sun, or in the umbra where it covers all of it.                                                                            |
-| [footprintRadius](functions/footprintRadius.md)                   | The **angular radius of a satellite's footprint**: how far from the point below it, as an angle at Earth's centre, the satellite is above the minimum elevation.                                                                            |
-| [globeView](functions/globeView.md)                               | Points on a **globe view**: the orthographic projection, a globe seen from far away, with the points on the far side marked hidden. It draws ground tracks and footprints on a 2D globe, without WebGL.                                     |
-| [groundTrack](functions/groundTrack.md)                           | The **ground track** of a satellite: the points on the ground directly below it over time, ready to draw on a flat map.                                                                                                                     |
-| [isInEarthShadow](functions/isInEarthShadow.md)                   | Whether a satellite is in **Earth's shadow**, taking the shadow as a cylinder as wide as Earth, straight back from the Sun. It's the usual quick test for whether a satellite is lit.                                                       |
-| [isVisiblePass](functions/isVisiblePass.md)                       | Whether a pass is a **visible pass**: the satellite lit by the Sun while the sky is dark for the observer, so it can be seen with the eye, a bright star moving steadily across the sky.                                                    |
-| [lookAngles](functions/lookAngles.md)                             | The **look angles** to a satellite from a ground observer at a moment: where to point an antenna or a camera (azimuth and elevation), how far away the satellite is (range), and how fast that changes (range rate, for the Doppler shift). |
-| [lookAnglesFromEarthFixed](functions/lookAnglesFromEarthFixed.md) | The **look angles** to a satellite from an observer, given the satellite's Earth-fixed position and velocity: azimuth, elevation, range and range rate. [lookAngles](functions/lookAngles.md) does the same from orbital elements.          |
-| [orbitPath3D](functions/orbitPath3D.md)                           | The **path of a satellite in 3D**, for drawing its orbit around a globe: positions from Earth's centre over time, in the frame and unit a renderer wants.                                                                                   |
-| [parseOmm](functions/parseOmm.md)                                 | Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE, it has room for catalogue numbers above 339 999.                                   |
-| [parseTle](functions/parseTle.md)                                 | Parse a **two-line element set** (TLE): the format NORAD has published satellite orbits in since the 1960s, for SGP4.                                                                                                                       |
-| [predictPasses](functions/predictPasses.md)                       | **Predict the passes** of a satellite over a ground observer between two moments: when it rises above the horizon, when it's highest, and when it sets. It's the first question a tracking app answers.                                     |
-| [propagate](functions/propagate.md)                               | Propagate a satellite's mean elements with **SGP4** to a moment: its position and velocity in the TEME frame. See [propagateMinutes](functions/propagateMinutes.md).                                                                        |
-| [propagateMinutes](functions/propagateMinutes.md)                 | Propagate a satellite's mean elements with **SGP4** to a number of minutes from their epoch: its position and velocity in the TEME frame.                                                                                                   |
-| [subSatellitePoint](functions/subSatellitePoint.md)               | Find the point on Earth **under a satellite** at a moment: the geodetic latitude, longitude and height on the WGS 84 ellipsoid.                                                                                                             |
-| [temeToEarthFixed](functions/temeToEarthFixed.md)                 | Turn a position and velocity in **TEME**, the frame SGP4 works in, into **Earth-fixed** coordinates, by turning them with Earth through Greenwich mean sidereal time.                                                                       |
-| [tleChecksum](functions/tleChecksum.md)                           | The **checksum** of a TLE line: the sum of its digits, with 1 for each minus sign, modulo 10. It's the last column of each line, and catches most typos.                                                                                    |
+| Name                                                              | Description                                                                                                                                                                                                                                                                               |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [SATELLITES](variables/SATELLITES.md)                             | A small **snapshot of well-known satellites**, with their elements as OMM records from CelesTrak, dated 4 November 2026. Examples, tests and demos work with it without the network.                                                                                                      |
+| [coverageFootprint](functions/coverageFootprint.md)               | The **coverage footprint** of a satellite: the circle on the ground from which it's above a minimum elevation, as a polygon of latitudes and longitudes, ready to draw on a map.                                                                                                          |
+| [dopplerShift](functions/dopplerShift.md)                         | The **Doppler shift** of a radio signal from a satellite: how far the received frequency is from the transmitted one, as the satellite approaches or leaves.                                                                                                                              |
+| [earthFixedToTeme](functions/earthFixedToTeme.md)                 | Turn an **Earth-fixed** position and velocity, such as a GPS receiver's fix, into **TEME**, the frame SGP4 works in: the reverse of [temeToEarthFixed](functions/temeToEarthFixed.md). It's the first step in fitting elements to GPS fixes with [fitElements](functions/fitElements.md). |
+| [earthShadow](functions/earthShadow.md)                           | Where a satellite is relative to **Earth's shadow**: in sunlight, in the penumbra where Earth covers part of the Sun, or in the umbra where it covers all of it.                                                                                                                          |
+| [fitElements](functions/fitElements.md)                           | **Fit SGP4 mean elements** to a satellite's positions and velocities: turn a team's own orbit predictions, or the GPS fixes from on board, into a TLE or OMM that standard tools and ground station networks can use.                                                                     |
+| [footprintRadius](functions/footprintRadius.md)                   | The **angular radius of a satellite's footprint**: how far from the point below it, as an angle at Earth's centre, the satellite is above the minimum elevation.                                                                                                                          |
+| [formatOmm](functions/formatOmm.md)                               | Write mean elements as an **Orbit Mean-elements Message** (OMM) record, in the JSON form CelesTrak publishes: the reverse of [parseOmm](functions/parseOmm.md). Unlike a TLE, it keeps every digit, and has room for any catalogue number.                                                |
+| [formatTle](functions/formatTle.md)                               | Write mean elements as a **two-line element set** (TLE), with checksums: the reverse of [parseTle](functions/parseTle.md), for tools and ground station networks that take TLEs, such as SatNOGS.                                                                                         |
+| [globeView](functions/globeView.md)                               | Points on a **globe view**: the orthographic projection, a globe seen from far away, with the points on the far side marked hidden. It draws ground tracks and footprints on a 2D globe, without WebGL.                                                                                   |
+| [groundTrack](functions/groundTrack.md)                           | The **ground track** of a satellite: the points on the ground directly below it over time, ready to draw on a flat map.                                                                                                                                                                   |
+| [isInEarthShadow](functions/isInEarthShadow.md)                   | Whether a satellite is in **Earth's shadow**, taking the shadow as a cylinder as wide as Earth, straight back from the Sun. It's the usual quick test for whether a satellite is lit.                                                                                                     |
+| [isVisiblePass](functions/isVisiblePass.md)                       | Whether a pass is a **visible pass**: the satellite lit by the Sun while the sky is dark for the observer, so it can be seen with the eye, a bright star moving steadily across the sky.                                                                                                  |
+| [lookAngles](functions/lookAngles.md)                             | The **look angles** to a satellite from a ground observer at a moment: where to point an antenna or a camera (azimuth and elevation), how far away the satellite is (range), and how fast that changes (range rate, for the Doppler shift).                                               |
+| [lookAnglesFromEarthFixed](functions/lookAnglesFromEarthFixed.md) | The **look angles** to a satellite from an observer, given the satellite's Earth-fixed position and velocity: azimuth, elevation, range and range rate. [lookAngles](functions/lookAngles.md) does the same from orbital elements.                                                        |
+| [orbitPath3D](functions/orbitPath3D.md)                           | The **path of a satellite in 3D**, for drawing its orbit around a globe: positions from Earth's centre over time, in the frame and unit a renderer wants.                                                                                                                                 |
+| [parseOmm](functions/parseOmm.md)                                 | Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE, it has room for catalogue numbers above 339 999.                                                                                 |
+| [parseTle](functions/parseTle.md)                                 | Parse a **two-line element set** (TLE): the format NORAD has published satellite orbits in since the 1960s, for SGP4.                                                                                                                                                                     |
+| [predictPasses](functions/predictPasses.md)                       | **Predict the passes** of a satellite over a ground observer between two moments: when it rises above the horizon, when it's highest, and when it sets. It's the first question a tracking app answers.                                                                                   |
+| [propagate](functions/propagate.md)                               | Propagate a satellite's mean elements with **SGP4** to a moment: its position and velocity in the TEME frame. See [propagateMinutes](functions/propagateMinutes.md).                                                                                                                      |
+| [propagateMinutes](functions/propagateMinutes.md)                 | Propagate a satellite's mean elements with **SGP4** to a number of minutes from their epoch: its position and velocity in the TEME frame.                                                                                                                                                 |
+| [subSatellitePoint](functions/subSatellitePoint.md)               | Find the point on Earth **under a satellite** at a moment: the geodetic latitude, longitude and height on the WGS 84 ellipsoid.                                                                                                                                                           |
+| [temeToEarthFixed](functions/temeToEarthFixed.md)                 | Turn a position and velocity in **TEME**, the frame SGP4 works in, into **Earth-fixed** coordinates, by turning them with Earth through Greenwich mean sidereal time.                                                                                                                     |
+| [tleChecksum](functions/tleChecksum.md)                           | The **checksum** of a TLE line: the sum of its digits, with 1 for each minus sign, modulo 10. It's the last column of each line, and catches most typos.                                                                                                                                  |
