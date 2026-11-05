@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.17.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.16.0...%40interstellar-tools%2Fequations%401.17.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Estimate orbit decay and satellite lifetime ([da90ecf](https://github.com/phun-ky/interstellar-tools/commit/da90ecfd7fbef708dcce39f59d0f30bea437e098)), closes [#227](https://github.com/phun-ky/interstellar-tools/issues/227)
+
 ## [1.16.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.15.0...%40interstellar-tools%2Fequations%401.16.0) (2026-11-05)
 
 ### Feature
