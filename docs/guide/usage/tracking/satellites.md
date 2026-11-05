@@ -241,6 +241,45 @@ Every point gets `x` and `y`, the hidden ones mirrored onto the disc, so a
 renderer can draw the far side faintly, or break the line where it goes behind.
 Footprints from `coverageFootprint` project the same way.
 
+## Your own elements
+
+A team flying its own satellite has better positions than anyone: GPS fixes from
+on board, or its own orbit predictions. `fitElements` turns them into mean
+elements, by least squares, the way published element sets are made, and
+`formatTle` and `formatOmm` write them for the tools and ground station
+networks, such as [SatNOGS](https://satnogs.org/), that take TLEs and OMMs.
+
+```ts
+import {
+  earthFixedToTeme,
+  fitElements,
+  formatOmm,
+  formatTle
+} from '@interstellar-tools/tracking';
+
+// GPS fixes from on board: Earth-fixed, in m and m/s, time-tagged in UTC
+const states = fixes.map(({ date, r, v }) => ({
+  epoch: date,
+  ...earthFixedToTeme({ r, v }, date)
+}));
+// Put the epoch at the end, where the next passes are
+const fit = fitElements(states, states[states.length - 1].epoch);
+const elements = { ...fit.elements, catalogNumber: 99_999, name: 'CUBESAT' };
+
+formatTle(elements); // [line1, line2]
+formatOmm(elements); // one OMM record, for JSON.stringify
+```
+
+Check `fit.converged` and the residuals, `fit.rms`: they tell how well SGP4
+matches the states. Fitted to two days of the ISS's positions, every 5 minutes,
+with 10 m of noise in each direction, the residuals come out at 18 m, the
+noise's size, and the fitted orbit stays within 6 m of the true one, a day past
+the last state too.
+
+Give it a day or more of states, so drag has time to show: from a shorter arc,
+B*, SGP4's drag term, is poorly determined, and it's better to pass the last
+published one as `bstar`.
+
 ## Next
 
 - [Probes](/guide/usage/tracking/probes): deep-space spacecraft, which have no

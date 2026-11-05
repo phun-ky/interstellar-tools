@@ -17,6 +17,7 @@ import {
 import { julianDate, taiMinusUtc } from '@interstellar-tools/temporal';
 import type {
   Cr3bpState,
+  EphemerisSampleInterface,
   GeodeticCoordinatesInterface,
   Radians,
   Vector3DTupleType
@@ -31,6 +32,7 @@ import { parseOem } from '../probes/oem.js';
 import { PROBES } from '../probes/probes.js';
 import { SATELLITES } from '../satellites/dataset.js';
 import { subSatellitePoint } from '../satellites/earth-fixed.js';
+import { fitElements } from '../satellites/fit.js';
 import { globeView, orbitPath3D } from '../satellites/globe.js';
 import {
   coverageFootprint,
@@ -222,6 +224,51 @@ describe('Tracking guide: satellites', () => {
 
     assert.equal(view.length, 94);
     assert.equal(view.filter(({ visible }) => visible).length, 48);
+  });
+
+  test('fits elements to noisy positions to their noise, metres from the truth', () => {
+    // Normally distributed noise, from a fixed seed
+    let seed = 1;
+    const uniform = () => {
+      seed = (seed * 16_807) % 2_147_483_647;
+
+      return seed / 2_147_483_647;
+    };
+    const gauss = () =>
+      Math.sqrt(-2 * Math.log(uniform())) * Math.cos(2 * Math.PI * uniform());
+    const states = Array.from(
+      { length: (2 * 24 * 60) / 5 + 1 },
+      (_, k): EphemerisSampleInterface => {
+        const epoch = after(iss.epoch, k / 12);
+        const { r, v } = propagate(iss, epoch);
+
+        return {
+          epoch,
+          r: [r[0] + 10 * gauss(), r[1] + 10 * gauss(), r[2] + 10 * gauss()],
+          v: [
+            v[0] + 0.01 * gauss(),
+            v[1] + 0.01 * gauss(),
+            v[2] + 0.01 * gauss()
+          ]
+        };
+      }
+    );
+    const fit = fitElements(states, states[states.length - 1]!.epoch);
+    let farthest = 0;
+
+    // Over the two days and the day after
+    for (let hours = 0; hours <= 72; hours += 0.25) {
+      const date = after(iss.epoch, hours);
+
+      farthest = Math.max(
+        farthest,
+        distance(propagate(fit.elements, date).r, propagate(iss, date).r)
+      );
+    }
+
+    assert.equal(fit.converged, true);
+    assert.equal(fit.rms.position.toFixed(0), '18');
+    assert.equal(Math.ceil(farthest), 6);
   });
 });
 

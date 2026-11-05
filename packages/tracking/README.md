@@ -171,6 +171,27 @@ const { near, ephemeris } = PROBES.find(({ id }) => id === 'jwst')!; // near: 's
 const { r, v } = stateAt(ephemeris, new Date()); // from the Sun, in m and m/s
 ```
 
+A team flying its own satellite can fit mean elements to its GPS fixes or orbit
+predictions, and publish them as a TLE or OMM:
+
+```ts
+import {
+  earthFixedToTeme,
+  fitElements,
+  formatTle
+} from '@interstellar-tools/tracking';
+
+// GPS fixes are Earth-fixed: turn them into TEME, the frame SGP4 works in
+const states = fixes.map(({ date, r, v }) => ({
+  epoch: date,
+  ...earthFixedToTeme({ r, v }, date)
+}));
+const fit = fitElements(states, states[states.length - 1].epoch);
+const { position } = fit.rms; // how far SGP4 is from the fixes, in m
+
+formatTle({ ...fit.elements, catalogNumber: 99_999 }); // [line1, line2]
+```
+
 ## What's planned
 
 The
@@ -179,7 +200,8 @@ tracks the work:
 
 - **satellites**: anything in Earth orbit with public orbital elements, crewed
   vehicles like the ISS included: TLE and OMM parsing, SGP4 and SDP4, ground
-  tracks, look angles, passes and eclipses
+  tracks, look angles, passes and eclipses, and fitting elements to a team's own
+  positions
 - **probes**: deep-space spacecraft without TLEs, such as Voyager, New Horizons
   and JWST, positioned from ephemeris files
 - Lagrange points, atmospheric density and orbit decay, and orbit design helpers

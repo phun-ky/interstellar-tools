@@ -1,29 +1,19 @@
-import { greenwichMeanSiderealTime } from '@interstellar-tools/equations';
 import type { StateVectorInterface } from '@interstellar-tools/types';
 import fc from 'fast-check';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { subSatellitePoint, temeToEarthFixed } from '../earth-fixed.js';
+import {
+  earthFixedToTeme,
+  subSatellitePoint,
+  temeToEarthFixed
+} from '../earth-fixed.js';
 import { propagate } from '../propagate.js';
 import { parseTle } from '../tle.js';
 
 const deg = (rad: number) => (rad * 180) / Math.PI;
 const distance = (a: readonly number[], b: readonly number[]) =>
   Math.hypot(...a.map((x, k) => x - b[k]!));
-// Turn an Earth-fixed position back into TEME
-const earthFixedToTeme = (
-  r: readonly number[],
-  date: Date
-): [number, number, number] => {
-  const theta = greenwichMeanSiderealTime(date);
-
-  return [
-    Math.cos(theta) * r[0]! - Math.sin(theta) * r[1]!,
-    Math.sin(theta) * r[0]! + Math.cos(theta) * r[1]!,
-    r[2]!
-  ];
-};
 const iss = parseTle(
   '1 25544U 98067A   26308.36953014  .00005228  00000+0  10236-3 0  9991',
   '2 25544  51.6329 326.3987 0007186 346.7494  13.3304 15.49173979593483'
@@ -79,7 +69,7 @@ describe('temeToEarthFixed', () => {
           const { r: fixed } = temeToEarthFixed({ r, v: [0, 0, 0] }, date);
 
           assert.ok(
-            distance(earthFixedToTeme(fixed, date), r) <=
+            distance(earthFixedToTeme({ r: fixed, v: [0, 0, 0] }, date).r, r) <=
               1e-8 * Math.max(1, Math.hypot(...r))
           );
           // Lengths and heights don't change
@@ -97,8 +87,8 @@ describe('temeToEarthFixed', () => {
     const date = new Date('2026-11-04T12:00:00Z');
     const lambda = (-85 * Math.PI) / 180;
     const R = 42_164_000;
-    const r = earthFixedToTeme(
-      [R * Math.cos(lambda), R * Math.sin(lambda), 0],
+    const { r } = earthFixedToTeme(
+      { r: [R * Math.cos(lambda), R * Math.sin(lambda), 0], v: [0, 0, 0] },
       date
     );
     const { r: fixed } = temeToEarthFixed({ r, v: [0, 0, 0] }, date);
@@ -127,6 +117,64 @@ describe('temeToEarthFixed', () => {
     );
     assert.throws(
       () => temeToEarthFixed({ r: [1, 2, 3], v: [0, 0, 0] }, new Date('nope')),
+      TypeError
+    );
+  });
+});
+
+describe('earthFixedToTeme', () => {
+  test('undoes temeToEarthFixed, velocity included', () => {
+    fc.assert(
+      fc.property(
+        fc.integer({ min: 0, max: 7 * 24 * 60 }),
+        fc.integer({ min: Date.UTC(1990, 0, 1), max: Date.UTC(2050, 0, 1) }),
+        (minutes, ms) => {
+          const date = new Date(ms);
+          const state = propagate(
+            iss,
+            new Date(iss.epoch.getTime() + minutes * 60_000)
+          );
+          const back = earthFixedToTeme(temeToEarthFixed(state, date), date);
+
+          assert.ok(distance(back.r, state.r) < 1e-8);
+          assert.ok(distance(back.v, state.v) < 1e-11);
+        }
+      )
+    );
+  });
+
+  test('gives a geostationary satellite the inertial speed of its slot', () => {
+    // At rest over the equator, it moves with Earth: ω × 42 164 km
+    const date = new Date('2026-11-04T12:00:00Z');
+    const { v } = earthFixedToTeme(
+      { r: [42_164_000, 0, 0], v: [0, 0, 0] },
+      date
+    );
+
+    assert.ok(Math.abs(Math.hypot(...v) - 3074.65) < 0.01);
+  });
+
+  test('rejects an invalid state or date', () => {
+    const date = new Date('2026-11-04T12:00:00Z');
+
+    assert.throws(
+      () => earthFixedToTeme({ r: [1, 2, Number.NaN], v: [0, 0, 0] }, date),
+      (err) =>
+        err instanceof TypeError &&
+        err.message === 'r must be three finite numbers. Received: 1,2,NaN'
+    );
+    assert.throws(
+      () =>
+        earthFixedToTeme(
+          { r: [1, 2, 3], v: [0, 0] } as unknown as StateVectorInterface,
+          date
+        ),
+      (err) =>
+        err instanceof TypeError &&
+        err.message === 'v must be three finite numbers. Received: 0,0'
+    );
+    assert.throws(
+      () => earthFixedToTeme({ r: [1, 2, 3], v: [0, 0, 0] }, new Date('nope')),
       TypeError
     );
   });

@@ -1,7 +1,15 @@
+import { JULIAN_DATE_UNIX_EPOCH } from '@interstellar-tools/constants';
 import { julianDate } from '@interstellar-tools/temporal';
-import type { MeanElementsInterface } from '@interstellar-tools/types';
+import type {
+  MeanElementsInterface,
+  OmmRecordInterface
+} from '@interstellar-tools/types';
 
-import { type NumericKey, toMeanElements } from './mean-elements.js';
+import {
+  type NumericKey,
+  toMeanElements,
+  toPublishedElements
+} from './mean-elements.js';
 
 // The OMM keyword of each value
 const KEYWORDS: Record<NumericKey, string> = {
@@ -189,4 +197,83 @@ export const parseOmm = (omm: string | object): MeanElementsInterface => {
     },
     (key) => `OMM ${KEYWORDS[key]}`
   );
+};
+
+/**
+ * Write mean elements as an **Orbit Mean-elements Message** (OMM) record, in
+ * the JSON form CelesTrak publishes: the reverse of {@link parseOmm}. Unlike
+ * a TLE, it keeps every digit, and has room for any catalogue number.
+ *
+ * ::: info Notes
+ *
+ * - `EPOCH` is in UTC, with six decimals of the second and no trailing `Z`,
+ *   as CelesTrak writes it. It comes from `epochJulianDate`, which holds the
+ *   epoch to about 40 µs, so the last digit or two can differ from a
+ *   published OMM's.
+ * - `JSON.stringify` the record for the text, or put several in an array for
+ *   a file of them, as CelesTrak serves them.
+ * - `OBJECT_NAME` and `OBJECT_ID` are left out when the elements have none.
+ *
+ * :::
+ *
+ * @param elements - The mean elements, from {@link parseTle}, {@link parseOmm} or {@link fitElements}.
+ * @returns One OMM record, with the keywords CelesTrak uses, in its order.
+ * @throws {TypeError} If a value of `elements` is not a finite number.
+ * @group Satellites
+ *
+ * @example
+ * ```ts
+ * const omm = formatOmm(iss);
+ *
+ * omm.EPOCH; // '2026-11-04T08:52:07.404092'
+ * JSON.stringify([omm]); // a file of one record
+ * ```
+ *
+ * @see {@link parseOmm}
+ * @see {@link formatTle}
+ * @see https://celestrak.org/NORAD/documentation/gp-data-formats.php CelesTrak, "A new way to obtain GP data"
+ */
+export const formatOmm = (
+  elements: MeanElementsInterface
+): OmmRecordInterface => {
+  if (typeof elements !== 'object' || elements === null)
+    throw new TypeError(
+      `elements must be mean elements. Received: ${String(elements)}`
+    );
+
+  const published = toPublishedElements(elements);
+
+  for (const [key, value] of Object.entries(published))
+    if (!Number.isFinite(value))
+      throw new TypeError(
+        `elements.${key} must be a finite number. Received: ${value}`
+      );
+
+  // The epoch to the microsecond, from the Julian date, which is finer than
+  // the Date's millisecond
+  const microseconds = Math.round(
+    (published.epochJulianDate - JULIAN_DATE_UNIX_EPOCH) * DAY_S * 1e6
+  );
+  const seconds = Math.floor(microseconds / 1e6);
+  const epoch = `${new Date(seconds * 1000).toISOString().slice(0, 19)}.${String(microseconds - seconds * 1e6).padStart(6, '0')}`;
+
+  return {
+    ...(elements.name ? { OBJECT_NAME: elements.name } : {}),
+    ...(elements.objectId ? { OBJECT_ID: elements.objectId } : {}),
+    EPOCH: epoch,
+    MEAN_MOTION: published.meanMotion,
+    ECCENTRICITY: published.eccentricity,
+    INCLINATION: published.inclination,
+    RA_OF_ASC_NODE: published.raan,
+    ARG_OF_PERICENTER: published.argp,
+    MEAN_ANOMALY: published.meanAnomaly,
+    EPHEMERIS_TYPE: 0,
+    CLASSIFICATION_TYPE: elements.classification ?? 'U',
+    NORAD_CAT_ID: published.catalogNumber,
+    ELEMENT_SET_NO: published.elementSetNumber,
+    REV_AT_EPOCH: published.revolutionNumber,
+    BSTAR: published.bstar,
+    MEAN_MOTION_DOT: published.meanMotionDot,
+    MEAN_MOTION_DDOT: published.meanMotionDdot
+  };
 };
