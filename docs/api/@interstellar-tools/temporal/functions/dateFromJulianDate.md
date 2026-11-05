@@ -8,7 +8,7 @@ function dateFromJulianDate(jd: number, scale?: TimeScaleType): Date;
 ```
 
 Defined in:
-[time-scales.ts:204](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/time-scales.ts#L204)
+[time-scales.ts:243](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/time-scales.ts#L243)
 
 The **UTC `Date`** of a Julian date in a time scale: the inverse of
 [julianDate](julianDate.md).
@@ -41,8 +41,8 @@ If `jd` is not a finite number.
 ## Throws
 
 If `scale` is not a [TimeScaleType](../../types/type-aliases/TimeScaleType.md),
-the moment is before 1972-01-01 for TAI and TT, or it's outside the range of a
-`Date`.
+the moment is before 1972-01-01 for TAI, TT, TDB and GPS, or it's outside the
+range of a `Date`.
 
 ## Example
 

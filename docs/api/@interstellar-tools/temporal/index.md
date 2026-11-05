@@ -5,7 +5,8 @@
 
 Time and epoch utilities for space applications, from attoseconds to gigayears,
 with unit normalisation and conversion that the rest of the stack builds on, and
-Julian dates on the UTC, TAI, TT and UT1 time scales, with leap seconds.
+Julian dates on the UTC, TAI, TT, UT1, TDB and GPS time scales, with leap
+seconds.
 
 ## Documentation
 

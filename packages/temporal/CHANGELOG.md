@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%401.1.1...%40interstellar-tools%2Ftemporal%401.2.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Count Julian dates in TDB and GPS time ([4f84dd9](https://github.com/phun-ky/interstellar-tools/commit/4f84dd90f8ffb58bcb25145a81bfedf3101b4bed)), references [#217](https://github.com/phun-ky/interstellar-tools/issues/217)
+
 ## [1.1.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%401.1.0...%40interstellar-tools%2Ftemporal%401.1.1) (2026-11-04)
 
 ### Bug

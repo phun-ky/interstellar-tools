@@ -8,7 +8,7 @@ function taiMinusUtc(date: Date): number;
 ```
 
 Defined in:
-[time-scales.ts:89](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/time-scales.ts#L89)
+[time-scales.ts:123](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/time-scales.ts#L123)
 
 **TAI − UTC**, in **s**, at a moment: the number of leap seconds so far, plus
 the 10 s UTC started with in 1972.
