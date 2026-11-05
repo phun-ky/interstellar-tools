@@ -198,7 +198,22 @@ export default defineConfig({
               ]
             },
             { text: 'Maps', link: '/guide/usage/maps' },
-            { text: 'Tracking', link: '/guide/usage/tracking' }
+            {
+              text: 'Tracking',
+              link: '/guide/usage/tracking',
+              collapsed: false,
+              items: [
+                {
+                  text: 'Satellites',
+                  link: '/guide/usage/tracking/satellites'
+                },
+                { text: 'Probes', link: '/guide/usage/tracking/probes' },
+                {
+                  text: 'Lagrange points',
+                  link: '/guide/usage/tracking/lagrange-points'
+                }
+              ]
+            }
           ]
         },
         {
