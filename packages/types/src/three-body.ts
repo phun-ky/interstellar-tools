@@ -1,3 +1,5 @@
+import type { Vector3DTupleType } from './math.js';
+
 /**
  * A state in the **circular restricted three-body problem** (CR3BP), in the
  * rotating, normalised frame.
@@ -61,4 +63,48 @@ export interface Cr3bpUnitsInterface {
   time: number;
   /** Speed unit: `length / time`, in m/s. */
   speed: number;
+}
+
+/**
+ * The five **Lagrange points** of two bodies circling each other: where a
+ * third, small body can stay put relative to them.
+ *
+ * Returned by `lagrangePoints` in `@interstellar-tools/equations`.
+ *
+ * ::: info
+ *
+ * - Positions in m, in the frame turning with the two bodies, from their
+ *   barycentre: x points from the larger body to the smaller, y ahead along
+ *   the smaller body's orbit, z out of the orbital plane.
+ * - L1 lies between the bodies, L2 beyond the smaller one, and L3 beyond the
+ *   larger one, all on the x axis. L4 leads the smaller body by 60° and L5
+ *   trails it, each at the corner of an equilateral triangle with the two
+ *   bodies.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // Earth and the Moon, 384 400 km apart
+ * const points: LagrangePointsInterface = {
+ *   L1: [321_710_000, 0, 0],
+ *   L2: [444_244_000, 0, 0],
+ *   L3: [-386_346_000, 0, 0],
+ *   L4: [187_529_000, 332_900_000, 0],
+ *   L5: [187_529_000, -332_900_000, 0]
+ * };
+ * ```
+ * @group Three-body
+ */
+export interface LagrangePointsInterface {
+  /** Between the two bodies, in m. */
+  L1: Vector3DTupleType;
+  /** Beyond the smaller body, in m. */
+  L2: Vector3DTupleType;
+  /** Beyond the larger body, opposite the smaller, in m. */
+  L3: Vector3DTupleType;
+  /** 60° ahead of the smaller body, in m. */
+  L4: Vector3DTupleType;
+  /** 60° behind the smaller body, in m. */
+  L5: Vector3DTupleType;
 }
