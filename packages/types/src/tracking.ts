@@ -1,4 +1,6 @@
+import type { Vector3DTupleType } from './math.js';
 import type { Radians } from './numeric.js';
+import type { TimeScaleType } from './temporal.js';
 
 /**
  * A satellite's **mean elements**, as published in a two-line element set
@@ -315,4 +317,74 @@ export interface SatelliteRecordInterface {
   regime: OrbitRegimeType;
   /** The elements, as an OMM record. */
   omm: OmmRecordInterface;
+}
+
+/**
+ * One **sample of an ephemeris**: a spacecraft's position and velocity at a
+ * moment.
+ *
+ * @example
+ * ```ts
+ * // Voyager 1 from the Sun, 169 au away, at 2026-01-01 00:00 TDB (JPL Horizons)
+ * const sample: EphemerisSampleInterface = {
+ *   epoch: new Date('2025-12-31T23:58:50.816Z'),
+ *   r: [-4.7627e12, -2.4284e13, 5.3604e12],
+ *   v: [-2072.8, -16400.0, 3609.0]
+ * };
+ * ```
+ * @group Tracking
+ */
+export interface EphemerisSampleInterface {
+  /** The moment, as a UTC `Date`. */
+  epoch: Date;
+  /** Position in m, from the ephemeris's centre, on its frame's axes. */
+  r: Vector3DTupleType;
+  /** Velocity in m/s. */
+  v: Vector3DTupleType;
+}
+
+/**
+ * An **ephemeris**: a table of a spacecraft's position and velocity over time,
+ * as JPL Horizons and the CCSDS Orbit Ephemeris Message (OEM) publish them.
+ * It's how deep-space probes, which have no TLEs, are tracked.
+ *
+ * Returned by `parseOem` and `parseHorizonsVectors`, and interpolated by
+ * `stateAt`, in `@interstellar-tools/tracking`.
+ *
+ * ::: info
+ *
+ * - The epochs are UTC `Date`s, converted from the file's time scale, which
+ *   `timeScale` keeps.
+ * - Positions and velocities are in m and m/s, whatever the file's units.
+ * - `center` and `frame` are as the file names them, such as `'SUN'` and
+ *   `'ICRF'`: positions from different centres or frames don't mix.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * const ephemeris: EphemerisInterface = {
+ *   objectName: 'Voyager 1',
+ *   objectId: '1977-084A',
+ *   center: 'SUN',
+ *   frame: 'ICRF',
+ *   timeScale: 'TDB',
+ *   samples: [sample, nextSample]
+ * };
+ * ```
+ * @group Tracking
+ */
+export interface EphemerisInterface {
+  /** The spacecraft's name, if the file gives one. */
+  objectName?: string;
+  /** The spacecraft's id, such as its international designator, if the file gives one. */
+  objectId?: string;
+  /** The body the positions are measured from, as the file names it: `'EARTH'`, `'SUN'`. */
+  center: string;
+  /** The reference frame, as the file names it: `'ICRF'`, `'EME2000'`. */
+  frame: string;
+  /** The time scale of the file's epochs. */
+  timeScale: TimeScaleType;
+  /** The samples, in time order. */
+  samples: readonly EphemerisSampleInterface[];
 }
