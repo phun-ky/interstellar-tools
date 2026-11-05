@@ -11,6 +11,7 @@ import {
   assertLatitude,
   assertOnMap,
   assertSphere,
+  mapLongitude,
   wrapLongitude
 } from './shared.js';
 
@@ -78,6 +79,8 @@ const auxiliaryAngle = (phi: number): number => {
  * - **Equal-area**: a region's area on the map is its area on the sphere. The whole sphere fills an ellipse $ 4\sqrt2 R $ wide and $ 2\sqrt2 R $ tall, with straight parallels and elliptical meridians, which distorts shapes less near the edges than {@link sinusoidal}. Sky surveys, such as maps of the cosmic microwave background, use it.
  * - Newton's method slows down near the poles, where $ 2\theta + \sin 2\theta $ flattens out; the solver starts closer there and falls back to bisection, so it always converges. The poles themselves are solved directly.
  * - $ \lambda - \lambda_0 $ is wrapped to (−π, π].
+ *   −π itself stays on the left edge, so a line that ends there, like a
+ *   ground track split at the antimeridian, isn't drawn across the map.
  *
  * :::
  *
@@ -117,7 +120,7 @@ export const mollweide = (
     x:
       ((2 * Math.SQRT2) / Math.PI) *
       R *
-      wrapLongitude(lambda - lambda0) *
+      mapLongitude(lambda - lambda0) *
       Math.cos(theta),
     y: Math.SQRT2 * R * Math.sin(theta)
   };

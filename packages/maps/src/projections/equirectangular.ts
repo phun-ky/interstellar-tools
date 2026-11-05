@@ -10,6 +10,7 @@ import {
   assertLatitude,
   assertSphere,
   latitudeOnMap,
+  mapLongitude,
   wrapLongitude
 } from './shared.js';
 
@@ -62,6 +63,8 @@ const assertOptions = (phi0: number, phi1: number) => {
  * - Distances are true along every meridian, and along the standard parallels $ \pm\varphi_1 $ east–west. Elsewhere east–west distances are stretched by $ \cos\varphi_1/\cos\varphi $, so it keeps neither angles nor areas.
  * - Choose $ \varphi_1 $ near the latitude of interest for a regional map: Mars mosaics of mid-latitude sites, for example.
  * - $ \lambda - \lambda_0 $ is wrapped to (−π, π].
+ *   −π itself stays on the left edge, so a line that ends there, like a
+ *   ground track split at the antimeridian, isn't drawn across the map.
  *
  * :::
  *
@@ -101,7 +104,7 @@ export const equirectangular = (
   assertOptions(phi0, phi1);
 
   return {
-    x: R * wrapLongitude(lambda - lambda0) * Math.cos(phi1),
+    x: R * mapLongitude(lambda - lambda0) * Math.cos(phi1),
     y: R * (phi - phi0)
   };
 };

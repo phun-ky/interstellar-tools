@@ -92,8 +92,12 @@ describe('mercator', () => {
   });
 
   test('wraps longitudes to (−π, π] around the central meridian', () => {
-    for (const lambda of [Math.PI, -Math.PI, 3 * Math.PI])
+    for (const lambda of [Math.PI, 3 * Math.PI])
       close(mercator(0 as Radians, lambda as Radians, 1).x, Math.PI);
+
+    // -π itself is the left edge, where a line split at the antimeridian
+    // starts again
+    close(mercator(0 as Radians, -Math.PI as Radians, 1).x, -Math.PI);
 
     close(
       mercator(0 as Radians, rad(-170), 1, { lambda0: rad(170) }).x,

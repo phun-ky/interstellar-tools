@@ -7,7 +7,12 @@ import type {
   ProjectedPointInterface,
   ProjectionOptionsInterface
 } from './coordinates.js';
-import { assertLatitude, assertSphere, wrapLongitude } from './shared.js';
+import {
+  assertLatitude,
+  assertSphere,
+  mapLongitude,
+  wrapLongitude
+} from './shared.js';
 
 /**
  * Project a point on a sphere with the **Mercator projection**: the conformal cylindrical map, which keeps angles and shapes locally true.
@@ -25,13 +30,15 @@ import { assertLatitude, assertSphere, wrapLongitude } from './shared.js';
  *
  * **Units**
  * - Inputs: angles in **radians**, `R` in **m**.
- * - Output: `{ x, y }` in **m**, with $ x $ in (−πR, πR].
+ * - Output: `{ x, y }` in **m**, with $ x $ in [−πR, πR].
  *
  * ::: info Notes
  *
  * - The scale is $ \sec\varphi $ in every direction: true on the equator, twice as large at 60°, and without bound towards the poles. That's why Greenland looks as large as Africa. Angles stay true, so a line of constant compass bearing (a rhumb line) is straight.
  * - $ y $ grows without bound towards the poles, so the poles themselves throw a `RangeError`. Maps clip the latitude: web maps (see {@link inverseMercator}) stop at $ \arctan\sinh\pi \approx 85.0511° $, where the map is as tall as it is wide.
  * - $ \lambda - \lambda_0 $ is wrapped to (−π, π], so the map is centred on the central meridian.
+ *   −π itself stays on the left edge, so a line that ends there, like a
+ *   ground track split at the antimeridian, isn't drawn across the map.
  * - A sphere only: on an oblate body this is the spherical Mercator web maps use, not the ellipsoidal one.
  *
  * :::
@@ -73,7 +80,7 @@ export const mercator = (
 
   // ln tan(π/4 + φ/2) = asinh(tan φ), which keeps its digits near the equator
   return {
-    x: R * wrapLongitude(lambda - lambda0),
+    x: R * mapLongitude(lambda - lambda0),
     y: R * Math.asinh(Math.tan(phi))
   };
 };
