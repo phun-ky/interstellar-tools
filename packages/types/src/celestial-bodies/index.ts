@@ -12,6 +12,8 @@ export * from './moons.js';
 
 export * from './planets.js';
 
+export * from './rotation.js';
+
 export * from './stars.js';
 
 export * from './systems.js';
