@@ -18,3 +18,11 @@ export * from './satellites/passes.js';
 export * from './satellites/shadow.js';
 
 export * from './satellites/dataset.js';
+
+// probes
+
+export * from './probes/oem.js';
+
+export * from './probes/horizons.js';
+
+export * from './probes/interpolate.js';

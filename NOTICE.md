@@ -68,7 +68,10 @@ elements of twelve satellites, dated 4 November 2026, from
 Space Force's public satellite catalogue. Like the constants, they're
 measurements: a small snapshot for examples and tests, not a copy of the
 catalogue. The SGP4 verification cases in the tests are credited in their own
-[README](./packages/tracking/src/satellites/__tests__/fixtures/README.md).
+[README](./packages/tracking/src/satellites/__tests__/fixtures/README.md), and
+so are the example ephemerides, from the CCSDS Orbit Data Messages standard and
+JPL Horizons, in
+[theirs](./packages/tracking/src/probes/__tests__/fixtures/README.md).
 
 ## Documentation site
 
