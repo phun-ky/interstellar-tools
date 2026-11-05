@@ -77,6 +77,12 @@ orbits, angles, solve for kelper or find true anomalies.
 | [trueToHyperbolicAnomaly](functions/trueToHyperbolicAnomaly.md) | Convert a **true anomaly** on a hyperbola to the **hyperbolic anomaly** $F$.                                            |
 | [trueToMeanAnomaly](functions/trueToMeanAnomaly.md)             | Converts **true anomaly** ($\nu$) to **mean anomaly** ($M$) using Kepler's equation.                                    |
 
+## Atmosphere
+
+| Function                              | Description                                                                                                                                                                                                                                                     |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [nrlmsise00](functions/nrlmsise00.md) | The **NRLMSISE-00** model of Earth's atmosphere: the density, temperature and make-up of the air at any height from the ground to the exosphere, at a place and a moment, for given solar and geomagnetic activity. It's the standard model for satellite drag. |
+
 ## Cartography
 
 | Function                                                                            | Description                                                                                                                                                                                                     |

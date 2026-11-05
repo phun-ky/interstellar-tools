@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.16.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.15.0...%40interstellar-tools%2Fequations%401.16.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Model the atmosphere with NRLMSISE-00 ([b3e5f3e](https://github.com/phun-ky/interstellar-tools/commit/b3e5f3e35c41a95c7d1f6024269ed71b6a7c0a70)), closes [#226](https://github.com/phun-ky/interstellar-tools/issues/226)
+
 ## [1.15.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.14.0...%40interstellar-tools%2Fequations%401.15.0) (2026-11-05)
 
 ### Feature
