@@ -4,7 +4,7 @@ OmmRecordInterface
 # Interface: OmmRecordInterface
 
 Defined in:
-[tracking.ts:230](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L230)
+[tracking.ts:232](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L232)
 
 One **Orbit Mean-elements Message** (OMM) record in JSON, as CelesTrak publishes
 it: a satellite's mean elements, with the keywords of the CCSDS standard.
@@ -59,7 +59,7 @@ ARG_OF_PERICENTER: number;
 ```
 
 Defined in:
-[tracking.ts:246](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L246)
+[tracking.ts:248](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L248)
 
 Argument of perigee in degrees.
 
@@ -72,7 +72,7 @@ BSTAR: number;
 ```
 
 Defined in:
-[tracking.ts:260](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L260)
+[tracking.ts:262](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L262)
 
 Drag term B\* in inverse Earth radii.
 
@@ -85,7 +85,7 @@ CLASSIFICATION_TYPE?: "U" | "C" | "S";
 ```
 
 Defined in:
-[tracking.ts:252](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L252)
+[tracking.ts:254](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L254)
 
 Classification: `U` unclassified, `C` classified or `S` secret.
 
@@ -98,7 +98,7 @@ ECCENTRICITY: number;
 ```
 
 Defined in:
-[tracking.ts:240](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L240)
+[tracking.ts:242](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L242)
 
 Eccentricity.
 
@@ -111,7 +111,7 @@ ELEMENT_SET_NO?: number;
 ```
 
 Defined in:
-[tracking.ts:256](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L256)
+[tracking.ts:258](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L258)
 
 Element set number.
 
@@ -124,7 +124,7 @@ EPHEMERIS_TYPE?: number;
 ```
 
 Defined in:
-[tracking.ts:250](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L250)
+[tracking.ts:252](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L252)
 
 Ephemeris type: 0 for SGP4 and SDP4.
 
@@ -137,7 +137,7 @@ EPOCH: string;
 ```
 
 Defined in:
-[tracking.ts:236](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L236)
+[tracking.ts:238](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L238)
 
 Epoch of the elements, in UTC: `YYYY-MM-DDTHH:MM:SS.ffffff`.
 
@@ -150,7 +150,7 @@ INCLINATION: number;
 ```
 
 Defined in:
-[tracking.ts:242](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L242)
+[tracking.ts:244](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L244)
 
 Inclination in degrees.
 
@@ -163,7 +163,7 @@ MEAN_ANOMALY: number;
 ```
 
 Defined in:
-[tracking.ts:248](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L248)
+[tracking.ts:250](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L250)
 
 Mean anomaly in degrees.
 
@@ -176,7 +176,7 @@ MEAN_MOTION: number;
 ```
 
 Defined in:
-[tracking.ts:238](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L238)
+[tracking.ts:240](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L240)
 
 Mean motion in revolutions per day.
 
@@ -189,7 +189,7 @@ MEAN_MOTION_DDOT: number;
 ```
 
 Defined in:
-[tracking.ts:264](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L264)
+[tracking.ts:266](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L266)
 
 A sixth of the second derivative of the mean motion, in revolutions per day³.
 
@@ -202,7 +202,7 @@ MEAN_MOTION_DOT: number;
 ```
 
 Defined in:
-[tracking.ts:262](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L262)
+[tracking.ts:264](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L264)
 
 Half the first derivative of the mean motion, in revolutions per day².
 
@@ -215,7 +215,7 @@ NORAD_CAT_ID: number;
 ```
 
 Defined in:
-[tracking.ts:254](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L254)
+[tracking.ts:256](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L256)
 
 NORAD catalogue number.
 
@@ -228,7 +228,7 @@ OBJECT_ID?: string;
 ```
 
 Defined in:
-[tracking.ts:234](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L234)
+[tracking.ts:236](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L236)
 
 International designator: launch year, launch number and piece, like
 `1998-067A`.
@@ -242,7 +242,7 @@ OBJECT_NAME?: string;
 ```
 
 Defined in:
-[tracking.ts:232](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L232)
+[tracking.ts:234](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L234)
 
 The object's name, as the catalogue gives it.
 
@@ -255,7 +255,7 @@ RA_OF_ASC_NODE: number;
 ```
 
 Defined in:
-[tracking.ts:244](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L244)
+[tracking.ts:246](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L246)
 
 Right ascension of the ascending node in degrees.
 
@@ -268,6 +268,6 @@ REV_AT_EPOCH?: number;
 ```
 
 Defined in:
-[tracking.ts:258](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L258)
+[tracking.ts:260](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L260)
 
 Revolution number at the epoch.

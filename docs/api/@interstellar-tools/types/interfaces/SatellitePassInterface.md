@@ -4,7 +4,7 @@ SatellitePassInterface
 # Interface: SatellitePassInterface
 
 Defined in:
-[tracking.ts:153](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L153)
+[tracking.ts:155](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L155)
 
 One **pass** of a satellite over an observer: when it rises above the horizon,
 when it's highest, and when it sets.
@@ -43,7 +43,7 @@ culmination: Date;
 ```
 
 Defined in:
-[tracking.ts:159](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L159)
+[tracking.ts:161](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L161)
 
 When the satellite is highest.
 
@@ -56,7 +56,7 @@ culminationAzimuth: Radians;
 ```
 
 Defined in:
-[tracking.ts:161](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L161)
+[tracking.ts:163](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L163)
 
 Azimuth at culmination in radians, clockwise from north.
 
@@ -69,7 +69,7 @@ maxElevation: Radians;
 ```
 
 Defined in:
-[tracking.ts:163](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L163)
+[tracking.ts:165](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L165)
 
 The highest elevation in radians, at culmination.
 
@@ -82,7 +82,7 @@ rise: Date;
 ```
 
 Defined in:
-[tracking.ts:155](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L155)
+[tracking.ts:157](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L157)
 
 When the satellite rises above the minimum elevation.
 
@@ -95,7 +95,7 @@ riseAzimuth: Radians;
 ```
 
 Defined in:
-[tracking.ts:157](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L157)
+[tracking.ts:159](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L159)
 
 Azimuth at rise in radians, clockwise from north.
 
@@ -108,7 +108,7 @@ set: Date;
 ```
 
 Defined in:
-[tracking.ts:165](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L165)
+[tracking.ts:167](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L167)
 
 When the satellite sets below the minimum elevation.
 
@@ -121,6 +121,6 @@ setAzimuth: Radians;
 ```
 
 Defined in:
-[tracking.ts:167](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L167)
+[tracking.ts:169](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L169)
 
 Azimuth at set in radians, clockwise from north.

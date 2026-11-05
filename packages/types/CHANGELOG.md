@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.11.0...%40interstellar-tools%2Ftypes%401.12.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the TDB and GPS time scales and the ephemeris types ([50e6542](https://github.com/phun-ky/interstellar-tools/commit/50e65428d6deeb86873cbebaa4bfa2763d3fe710)), references [#217](https://github.com/phun-ky/interstellar-tools/issues/217)
+
 ## [1.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.10.0...%40interstellar-tools%2Ftypes%401.11.0) (2026-11-05)
 
 ### Feature

@@ -8,7 +8,7 @@ type OrbitRegimeType = 'LEO' | 'MEO' | 'GEO' | 'HEO';
 ```
 
 Defined in:
-[tracking.ts:285](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L285)
+[tracking.ts:287](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L287)
 
 The **orbit regime** a satellite flies in.
 

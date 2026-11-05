@@ -4,7 +4,7 @@ SatelliteRecordInterface
 # Interface: SatelliteRecordInterface
 
 Defined in:
-[tracking.ts:309](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L309)
+[tracking.ts:311](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L311)
 
 A satellite in the `SATELLITES` dataset of `@interstellar-tools/tracking`: a
 stable id, a common name, its orbit regime and a dated OMM record.
@@ -36,7 +36,7 @@ id: string;
 ```
 
 Defined in:
-[tracking.ts:311](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L311)
+[tracking.ts:313](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L313)
 
 Stable id, in kebab case: `'iss'`, `'hubble'`.
 
@@ -49,7 +49,7 @@ name: string;
 ```
 
 Defined in:
-[tracking.ts:313](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L313)
+[tracking.ts:315](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L315)
 
 Common name: `'International Space Station'`.
 
@@ -62,7 +62,7 @@ omm: OmmRecordInterface;
 ```
 
 Defined in:
-[tracking.ts:317](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L317)
+[tracking.ts:319](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L319)
 
 The elements, as an OMM record.
 
@@ -75,6 +75,6 @@ regime: OrbitRegimeType;
 ```
 
 Defined in:
-[tracking.ts:315](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L315)
+[tracking.ts:317](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L317)
 
 The orbit regime.

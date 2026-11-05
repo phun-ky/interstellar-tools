@@ -4,7 +4,7 @@ MeanElementsInterface
 # Interface: MeanElementsInterface
 
 Defined in:
-[tracking.ts:48](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L48)
+[tracking.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L50)
 
 A satellite's **mean elements**, as published in a two-line element set (TLE) or
 an Orbit Mean-elements Message (OMM): the orbit SGP4 was fitted to at an epoch,
@@ -59,7 +59,7 @@ argp: Radians;
 ```
 
 Defined in:
-[tracking.ts:74](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L74)
+[tracking.ts:76](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L76)
 
 Argument of perigee (ω) in radians, in \[0, 2π].
 
@@ -72,7 +72,7 @@ bstar: number;
 ```
 
 Defined in:
-[tracking.ts:78](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L78)
+[tracking.ts:80](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L80)
 
 SGP4's drag term $B^*$, in inverse Earth radii (1/R⊕).
 
@@ -85,7 +85,7 @@ catalogNumber: number;
 ```
 
 Defined in:
-[tracking.ts:54](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L54)
+[tracking.ts:56](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L56)
 
 The NORAD catalogue number.
 
@@ -98,7 +98,7 @@ classification: 'U' | 'C' | 'S';
 ```
 
 Defined in:
-[tracking.ts:56](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L56)
+[tracking.ts:58](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L58)
 
 The security classification: `U` unclassified, `C` classified or `S` secret.
 Public element sets are `U`.
@@ -112,7 +112,7 @@ e: number;
 ```
 
 Defined in:
-[tracking.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L68)
+[tracking.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L70)
 
 Eccentricity, in \[0, 1).
 
@@ -125,7 +125,7 @@ elementSetNumber: number;
 ```
 
 Defined in:
-[tracking.ts:80](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L80)
+[tracking.ts:82](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L82)
 
 The element set number, counted up by the publisher for each new set.
 
@@ -138,7 +138,7 @@ epoch: Date;
 ```
 
 Defined in:
-[tracking.ts:58](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L58)
+[tracking.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L60)
 
 The epoch the elements hold at, in UTC, to the millisecond.
 
@@ -151,7 +151,7 @@ epochJulianDate: number;
 ```
 
 Defined in:
-[tracking.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L60)
+[tracking.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L62)
 
 The epoch as a Julian date in UTC (d), to about 40 µs: finer than `epoch`.
 
@@ -164,7 +164,7 @@ i: Radians;
 ```
 
 Defined in:
-[tracking.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L70)
+[tracking.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L72)
 
 Inclination in radians, in \[0, π].
 
@@ -177,7 +177,7 @@ meanAnomaly: Radians;
 ```
 
 Defined in:
-[tracking.ts:76](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L76)
+[tracking.ts:78](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L78)
 
 Mean anomaly (M) in radians, in \[0, 2π].
 
@@ -190,7 +190,7 @@ meanMotion: number;
 ```
 
 Defined in:
-[tracking.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L62)
+[tracking.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L64)
 
 Mean motion $n$ in rad/s.
 
@@ -203,7 +203,7 @@ meanMotionDdot: number;
 ```
 
 Defined in:
-[tracking.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L66)
+[tracking.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L68)
 
 Second time derivative of the mean motion $\ddot{n}$ in rad/s³.
 
@@ -216,7 +216,7 @@ meanMotionDot: number;
 ```
 
 Defined in:
-[tracking.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L64)
+[tracking.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L66)
 
 First time derivative of the mean motion $\dot{n}$ in rad/s².
 
@@ -229,7 +229,7 @@ name?: string;
 ```
 
 Defined in:
-[tracking.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L50)
+[tracking.ts:52](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L52)
 
 The satellite's name, such as `ISS (ZARYA)`. Omitted when not given.
 
@@ -242,7 +242,7 @@ objectId?: string;
 ```
 
 Defined in:
-[tracking.ts:52](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L52)
+[tracking.ts:54](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L54)
 
 The international designator (COSPAR ID), such as `1998-067A`: launch year,
 launch number and piece. Omitted when blank.
@@ -256,7 +256,7 @@ raan: Radians;
 ```
 
 Defined in:
-[tracking.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L72)
+[tracking.ts:74](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L74)
 
 Right ascension of the ascending node (Ω) in radians, in \[0, 2π].
 
@@ -269,7 +269,7 @@ revolutionNumber: number;
 ```
 
 Defined in:
-[tracking.ts:82](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L82)
+[tracking.ts:84](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L84)
 
 The number of revolutions at the epoch. TLEs only hold five digits: it wraps at
 100 000.

@@ -8,7 +8,7 @@ type ShadowType = 'sunlit' | 'penumbra' | 'umbra';
 ```
 
 Defined in:
-[tracking.ts:185](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L185)
+[tracking.ts:187](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L187)
 
 Where a satellite is relative to **Earth's shadow**.
 

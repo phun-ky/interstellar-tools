@@ -4,7 +4,7 @@ LookAnglesInterface
 # Interface: LookAnglesInterface
 
 Defined in:
-[tracking.ts:113](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L113)
+[tracking.ts:115](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L115)
 
 Where a satellite is in an observer's sky: the direction to point an antenna or
 a camera, how far away it is and how fast that distance changes.
@@ -42,7 +42,7 @@ azimuth: Radians;
 ```
 
 Defined in:
-[tracking.ts:115](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L115)
+[tracking.ts:117](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L117)
 
 Azimuth in radians, clockwise from north, in \[0, 2π).
 
@@ -55,7 +55,7 @@ elevation: Radians;
 ```
 
 Defined in:
-[tracking.ts:117](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L117)
+[tracking.ts:119](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L119)
 
 Elevation above the observer's horizon in radians, in \[-π/2, π/2].
 
@@ -68,7 +68,7 @@ range: number;
 ```
 
 Defined in:
-[tracking.ts:119](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L119)
+[tracking.ts:121](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L121)
 
 Distance from the observer in m.
 
@@ -81,6 +81,6 @@ rangeRate: number;
 ```
 
 Defined in:
-[tracking.ts:121](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L121)
+[tracking.ts:123](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/tracking.ts#L123)
 
 Rate of change of the distance in m/s: negative approaching, positive leaving.
