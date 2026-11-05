@@ -89,3 +89,29 @@ export const toMeanElements = (
     revolutionNumber: published.revolutionNumber
   };
 };
+
+/**
+ * Convert mean elements back to the units TLEs and OMMs carry: the reverse of
+ * {@link toMeanElements}.
+ */
+export const toPublishedElements = (
+  elements: MeanElementsInterface
+): Omit<
+  PublishedElements,
+  'name' | 'objectId' | 'classification' | 'epoch'
+> => ({
+  catalogNumber: elements.catalogNumber,
+  epochJulianDate: elements.epochJulianDate,
+  meanMotion: elements.meanMotion / REVOLUTIONS_PER_DAY,
+  meanMotionDot: (elements.meanMotionDot * DAY) / (2 * REVOLUTIONS_PER_DAY),
+  meanMotionDdot:
+    (elements.meanMotionDdot * DAY ** 2) / (6 * REVOLUTIONS_PER_DAY),
+  eccentricity: elements.e,
+  inclination: elements.i / DEGREES,
+  raan: elements.raan / DEGREES,
+  argp: elements.argp / DEGREES,
+  meanAnomaly: elements.meanAnomaly / DEGREES,
+  bstar: elements.bstar,
+  elementSetNumber: elements.elementSetNumber,
+  revolutionNumber: elements.revolutionNumber
+});

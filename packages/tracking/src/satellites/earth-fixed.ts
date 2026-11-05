@@ -88,6 +88,75 @@ export const temeToEarthFixed = (
 };
 
 /**
+ * Turn an **Earth-fixed** position and velocity, such as a GPS receiver's
+ * fix, into **TEME**, the frame SGP4 works in: the reverse of
+ * {@link temeToEarthFixed}. It's the first step in fitting elements to GPS
+ * fixes with {@link fitElements}.
+ *
+ * $$
+ * \mathbf{r}_{\mathrm{TEME}} = R_z(-\theta_{\mathrm{GMST}})\,\mathbf{r}_{\mathrm{EF}},
+ * \qquad
+ * \mathbf{v}_{\mathrm{TEME}} = R_z(-\theta_{\mathrm{GMST}})\,(\mathbf{v}_{\mathrm{EF}} + \boldsymbol{\omega}_\oplus \times \mathbf{r}_{\mathrm{EF}})
+ * $$
+ *
+ * **Units**
+ * - Inputs: `r` in **m**, `v` in **m/s**, Earth-fixed, and a `Date`.
+ * - Output: `r` in **m**, `v` in **m/s**, in TEME.
+ *
+ * ::: info Notes
+ *
+ * - As in {@link temeToEarthFixed}, polar motion is ignored and UT1 is taken
+ *   as UTC: GPS positions are in ITRF, which this treats as the pseudo
+ *   Earth-fixed frame. The difference, tens to hundreds of metres, is well
+ *   inside SGP4's own error.
+ * - The velocity is the one relative to the rotating Earth, as GPS receivers
+ *   give it.
+ * - GPS receivers usually time-tag fixes in GPS time, 18 s ahead of UTC since
+ *   2017: convert the time to UTC first, or the position lands 140 km along
+ *   the orbit from where it was.
+ *
+ * :::
+ *
+ * @param state - The Earth-fixed position `r` in **m** and velocity `v` in **m/s**.
+ * @param date - The moment of the position, as a UTC `Date`.
+ * @returns The position `r` in **m** and velocity `v` in **m/s** in TEME.
+ * @throws {TypeError} If `r` or `v` is not three finite numbers, or `date` is not a valid `Date`.
+ * @group Satellites
+ *
+ * @example
+ * ```ts
+ * const date = new Date('2026-11-04T12:00:00Z');
+ * const fix = { r: [4_190_000, -3_870_000, 3_960_000], v: [2_480, 5_560, 2_810] };
+ *
+ * earthFixedToTeme(fix, date); // { r: [...], v: [...] }, in TEME
+ * ```
+ *
+ * @see {@link temeToEarthFixed}
+ * @see {@link fitElements}
+ */
+export const earthFixedToTeme = (
+  state: StateVectorInterface,
+  date: Date
+): StateVectorInterface => {
+  assertVector('r', state?.r);
+  assertVector('v', state?.v);
+
+  const theta = greenwichMeanSiderealTime(date);
+  const cos = Math.cos(theta);
+  const sin = Math.sin(theta);
+  const [xe, ye, z] = state.r;
+  const [vxe, vye, vz] = state.v;
+  // Add back the velocity of the ground under the satellite
+  const vx = vxe - OMEGA_EARTH * ye;
+  const vy = vye + OMEGA_EARTH * xe;
+
+  return {
+    r: [cos * xe - sin * ye, sin * xe + cos * ye, z],
+    v: [cos * vx - sin * vy, sin * vx + cos * vy, vz]
+  };
+};
+
+/**
  * Find the point on Earth **under a satellite** at a moment: the geodetic
  * latitude, longitude and height on the WGS 84 ellipsoid.
  *
