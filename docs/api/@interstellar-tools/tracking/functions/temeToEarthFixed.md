@@ -11,7 +11,7 @@ function temeToEarthFixed(
 ```
 
 Defined in:
-[earth-fixed.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/earth-fixed.ts#L65)
+[satellites/earth-fixed.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/earth-fixed.ts#L65)
 
 Turn a position and velocity in **TEME**, the frame SGP4 works in, into
 **Earth-fixed** coordinates, by turning them with Earth through Greenwich mean

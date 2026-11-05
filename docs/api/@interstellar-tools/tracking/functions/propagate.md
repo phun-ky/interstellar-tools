@@ -11,7 +11,7 @@ function propagate(
 ```
 
 Defined in:
-[propagate.ts:154](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate.ts#L154)
+[satellites/propagate.ts:154](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate.ts#L154)
 
 Propagate a satellite's mean elements with **SGP4** to a moment: its position
 and velocity in the TEME frame. See [propagateMinutes](propagateMinutes.md).

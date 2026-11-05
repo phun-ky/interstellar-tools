@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.5.0...%40interstellar-tools%2Ftracking%400.6.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Position deep-space probes from ephemerides ([d857c22](https://github.com/phun-ky/interstellar-tools/commit/d857c22d15eaed3c286f7eb9e021249bbfa7e7dc)), closes [#217](https://github.com/phun-ky/interstellar-tools/issues/217)
+
+### Refactoring
+
+* 💡 Avoid backtracking in the OEM keyword pattern ([5becd90](https://github.com/phun-ky/interstellar-tools/commit/5becd90fe8322dff4a22642f9999e6ae05f33b35))
+
 ## [0.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.4.0...%40interstellar-tools%2Ftracking%400.5.0) (2026-11-05)
 
 ### Feature

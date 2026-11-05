@@ -12,7 +12,7 @@ function lookAngles(
 ```
 
 Defined in:
-[look-angles.ts:157](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/look-angles.ts#L157)
+[satellites/look-angles.ts:157](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/look-angles.ts#L157)
 
 The **look angles** to a satellite from a ground observer at a moment: where to
 point an antenna or a camera (azimuth and elevation), how far away the satellite

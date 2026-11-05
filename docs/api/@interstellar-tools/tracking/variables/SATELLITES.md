@@ -8,7 +8,7 @@ const SATELLITES: readonly SatelliteRecordInterface[];
 ```
 
 Defined in:
-[dataset.ts:49](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/dataset.ts#L49)
+[satellites/dataset.ts:49](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/dataset.ts#L49)
 
 A small **snapshot of well-known satellites**, with their elements as OMM
 records from CelesTrak, dated 4 November 2026. Examples, tests and demos work

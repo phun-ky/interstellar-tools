@@ -11,7 +11,7 @@ function lookAnglesFromEarthFixed(
 ```
 
 Defined in:
-[look-angles.ts:78](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/look-angles.ts#L78)
+[satellites/look-angles.ts:78](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/look-angles.ts#L78)
 
 The **look angles** to a satellite from an observer, given the satellite's
 Earth-fixed position and velocity: azimuth, elevation, range and range rate.

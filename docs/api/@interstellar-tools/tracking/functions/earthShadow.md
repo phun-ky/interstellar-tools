@@ -8,7 +8,7 @@ function earthShadow(r: Vector3DTupleType, sun: Vector3DTupleType): ShadowType;
 ```
 
 Defined in:
-[shadow.ts:135](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/shadow.ts#L135)
+[satellites/shadow.ts:135](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/shadow.ts#L135)
 
 Where a satellite is relative to **Earth's shadow**: in sunlight, in the
 penumbra where Earth covers part of the Sun, or in the umbra where it covers all

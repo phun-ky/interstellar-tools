@@ -12,7 +12,7 @@ function parseTle(
 ```
 
 Defined in:
-[tle.ts:199](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/tle.ts#L199)
+[satellites/tle.ts:199](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/tle.ts#L199)
 
 Parse a **two-line element set** (TLE): the format NORAD has published satellite
 orbits in since the 1960s, for SGP4.
