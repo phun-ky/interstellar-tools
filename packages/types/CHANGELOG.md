@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.18.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.17.0...%40interstellar-tools%2Ftypes%401.18.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add a rotation to planets and moons ([ca32e6f](https://github.com/phun-ky/interstellar-tools/commit/ca32e6fc6f844ccb8cb7fe94e8e97e21aa84fef3)), references [#348](https://github.com/phun-ky/interstellar-tools/issues/348)
+
 ## [1.17.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.16.0...%40interstellar-tools%2Ftypes%401.17.0) (2026-11-05)
 
 ### Feature

@@ -3,6 +3,7 @@ import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
 import type { DisplayInterface } from './display.js';
+import type { RotationInterface } from './rotation.js';
 
 /**
  * Represents a **moon** (natural satellite) orbiting a planet.
@@ -46,6 +47,11 @@ export interface MoonInterface {
   parent: string;
   /** Orbit around the parent planet. */
   orbit: OrbitInterface;
+  /**
+   * How the moon spins: its sidereal rotation period and direction. Given
+   * where the IAU, or a measurement, publishes one.
+   */
+  rotation?: RotationInterface;
   /** Mean radius of the moon in kilometres; the IAU's, where it gives one. */
   radius: DistanceInterface;
   /**

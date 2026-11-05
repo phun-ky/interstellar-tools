@@ -4,7 +4,7 @@ PlanetInterface
 # Interface: PlanetInterface
 
 Defined in:
-[celestial-bodies/planets.ts:43](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L43)
+[celestial-bodies/planets.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L44)
 
 Represents a **planet** or **planetoid**.
 
@@ -54,7 +54,7 @@ category: 'planet' | 'planetoid';
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:69](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L69)
+[celestial-bodies/planets.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L70)
 
 Defines whether the object is a planet or a planetoid.
 
@@ -67,7 +67,7 @@ display?: DisplayInterface;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:94](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L94)
+[celestial-bodies/planets.ts:100](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L100)
 
 How to draw the planet: its colour, and state a renderer computes.
 
@@ -80,7 +80,7 @@ ellipsoid?: EllipsoidInterface;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:81](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L81)
+[celestial-bodies/planets.ts:87](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L87)
 
 Reference ellipsoid, from the IAU Working Group on Cartographic Coordinates and
 Rotational Elements, where it gives one. `radius` is the mean radius.
@@ -94,7 +94,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:45](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L45)
+[celestial-bodies/planets.ts:46](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L46)
 
 Stable identifier, used by `parent` references. Never translated.
 
@@ -107,7 +107,7 @@ mu?: number;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:86](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L86)
+[celestial-bodies/planets.ts:92](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L92)
 
 Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s², as the
 orbit equations take it. Given where JPL publishes one.
@@ -121,7 +121,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:47](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L47)
+[celestial-bodies/planets.ts:48](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L48)
 
 Name of the planet (e.g., "Earth", "Mars").
 
@@ -134,7 +134,7 @@ orbit?: OrbitInterface;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:73](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L73)
+[celestial-bodies/planets.ts:74](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L74)
 
 Orbit around the parent.
 
@@ -147,7 +147,7 @@ parent?: string;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L71)
+[celestial-bodies/planets.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L72)
 
 Id of the star, system or galaxy the planet is bound to.
 
@@ -160,9 +160,23 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:75](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L75)
+[celestial-bodies/planets.ts:81](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L81)
 
 Mean radius of the planet in kilometres; the IAU's, where it gives one.
+
+---
+
+### rotation?
+
+```ts
+rotation?: RotationInterface;
+```
+
+Defined in:
+[celestial-bodies/planets.ts:79](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L79)
+
+How the planet spins: its sidereal rotation period and direction. Given where
+the IAU, or a measurement, publishes one.
 
 ---
 
@@ -191,7 +205,7 @@ type:
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:49](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L49)
+[celestial-bodies/planets.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L50)
 
 Type classification of the planet.
 
@@ -204,7 +218,7 @@ x?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:88](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L88)
+[celestial-bodies/planets.ts:94](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L94)
 
 X-coordinate in the parent's frame. Optional: a rogue planet or an exoplanet may
 have no known position.
@@ -218,7 +232,7 @@ y?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:90](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L90)
+[celestial-bodies/planets.ts:96](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L96)
 
 Y-coordinate in the parent's frame.
 
@@ -231,6 +245,6 @@ z?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/planets.ts:92](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L92)
+[celestial-bodies/planets.ts:98](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/planets.ts#L98)
 
 Z-coordinate in the parent's frame.
