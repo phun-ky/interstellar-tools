@@ -16,3 +16,5 @@ export * from './satellites/look-angles.js';
 export * from './satellites/passes.js';
 
 export * from './satellites/shadow.js';
+
+export * from './satellites/dataset.js';
