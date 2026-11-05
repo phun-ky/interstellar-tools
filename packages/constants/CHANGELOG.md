@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.3.0...%40interstellar-tools%2Fconstants%401.4.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add rotation periods and the Martian sol to the constants ([40792dc](https://github.com/phun-ky/interstellar-tools/commit/40792dca19dd29a57f20619cd71acda16ab3ea32)), closes [#348](https://github.com/phun-ky/interstellar-tools/issues/348)
+
 ## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.2.1...%40interstellar-tools%2Fconstants%401.3.0) (2026-11-05)
 
 ### Feature

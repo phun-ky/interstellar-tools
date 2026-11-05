@@ -105,10 +105,14 @@ npm i --save @interstellar-tools/constants
 
 ## Temporal
 
-| Variable                                                        | Description                                                |
-| --------------------------------------------------------------- | ---------------------------------------------------------- |
-| [JULIAN_YEAR_DAYS](variables/JULIAN_YEAR_DAYS.md)               | Length of the **Julian year** in SI days (exactly 365.25). |
-| [JULIAN_YEAR_SECONDS](variables/JULIAN_YEAR_SECONDS.md)         | Length of the **Julian year** in seconds.                  |
-| [MILLISECONDS_PER_DAY](variables/MILLISECONDS_PER_DAY.md)       | Milliseconds in one **SI day**.                            |
-| [MILLISECONDS_PER_SECOND](variables/MILLISECONDS_PER_SECOND.md) | Milliseconds in one second (exact).                        |
-| [SECONDS_PER_DAY](variables/SECONDS_PER_DAY.md)                 | Length of the **SI day** in seconds (exact).               |
+| Variable                                                              | Description                                                                                                                                    |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [EARTH_SIDEREAL_DAY_SECONDS](variables/EARTH_SIDEREAL_DAY_SECONDS.md) | Earth's **sidereal day** in seconds: one turn against the vernal equinox, 23 h 56 m 4.0905 s. Sidereal time runs at this rate.                 |
+| [JULIAN_YEAR_DAYS](variables/JULIAN_YEAR_DAYS.md)                     | Length of the **Julian year** in SI days (exactly 365.25).                                                                                     |
+| [JULIAN_YEAR_SECONDS](variables/JULIAN_YEAR_SECONDS.md)               | Length of the **Julian year** in seconds.                                                                                                      |
+| [MARS_SIDEREAL_DAY_SECONDS](variables/MARS_SIDEREAL_DAY_SECONDS.md)   | Mars's **sidereal day** in seconds: one turn against the stars, 24 h 37 m 22.663 s, the `rotation` of Mars in [PLANETS](variables/PLANETS.md). |
+| [MARS_SOL_DAYS](variables/MARS_SOL_DAYS.md)                           | The **Martian sol** in Earth days: the ratio of a sol to a day, 1.0274912517.                                                                  |
+| [MARS_SOL_SECONDS](variables/MARS_SOL_SECONDS.md)                     | The **Martian sol** in seconds: the mean solar day on Mars, sunrise to sunrise, 24 h 39 m 35.244 s.                                            |
+| [MILLISECONDS_PER_DAY](variables/MILLISECONDS_PER_DAY.md)             | Milliseconds in one **SI day**.                                                                                                                |
+| [MILLISECONDS_PER_SECOND](variables/MILLISECONDS_PER_SECOND.md)       | Milliseconds in one second (exact).                                                                                                            |
+| [SECONDS_PER_DAY](variables/SECONDS_PER_DAY.md)                       | Length of the **SI day** in seconds (exact).                                                                                                   |
