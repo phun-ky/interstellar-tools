@@ -6,7 +6,7 @@ import type {
 
 import { fromScale, SCALES } from './epoch.js';
 
-const KVN = /^([A-Z][A-Z0-9_]*)\s*=\s*(.*)$/;
+const KVN = /^([A-Z][A-Z0-9_]*)\s*=(.*)$/;
 const EPOCH =
   /^(\d{4})-(?:(\d{2})-(\d{2})|(\d{3}))T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)Z?$/;
 const REQUIRED = [
