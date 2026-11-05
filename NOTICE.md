@@ -67,6 +67,11 @@ The exponential atmosphere in `@interstellar-tools/equations`
 table 8-4 in D. A. Vallado, _Fundamentals of Astrodynamics and Applications_
 (4th ed., 2013), from the CIRA-72 reference atmosphere.
 
+The Moon's position in `@interstellar-tools/equations` (`moonPosition`) uses the
+low-precision lunar series of O. Montenbruck and E. Gill, _Satellite Orbits_
+(Springer, 2000), section 3.3.2; its tests compare it with
+[JPL Horizons](https://ssd.jpl.nasa.gov/horizons/).
+
 The NRLMSISE-00 atmosphere model in `@interstellar-tools/equations`
 (`nrlmsise00`) is ported from the original Fortran by M. Picone, A. E. Hedin and
 D. Drob of the US Naval Research Laboratory (`nrlmsise00_sub.for`, MSISE-00

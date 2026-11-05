@@ -27,8 +27,12 @@ import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-
 import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { solveLambert } from '../categories/manoeuvres/solve-lambert.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
+import { atmosphericDragAcceleration } from '../categories/orbits/atmospheric-drag-acceleration.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
+import { sunPosition } from '../categories/cartography/sun-position.js';
 import { estimateLifetime } from '../categories/orbits/estimate-lifetime.js';
+import { solarRadiationPressureAcceleration } from '../categories/orbits/solar-radiation-pressure-acceleration.js';
+import { zonalHarmonicsAcceleration } from '../categories/gravity/zonal-harmonics-acceleration.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { ballisticCoefficient } from '../categories/entry/ballistic-coefficient.js';
 import { exponentialAtmosphereDensity } from '../categories/orbits/exponential-atmosphere-density.js';
@@ -146,6 +150,52 @@ describe('In practice values', () => {
     assert.equal(Math.round(years(400_000) * 365.25), 187);
     assert.equal((years(400_000) * 2).toFixed(0), '1');
     assert.equal(Math.round(years(500_000)), 3);
+  });
+
+  test('zonalHarmonicsAcceleration: J2 on the ISS, 0.014 m/s² at 45°, 0.025 over the poles', () => {
+    const r = 6_798_000;
+    const mu = 3.986004418e14;
+    const j2 = (lat: number) =>
+      Math.hypot(
+        ...zonalHarmonicsAcceleration(
+          [r * Math.cos(lat), 0, r * Math.sin(lat)],
+          mu,
+          6_378_136.3,
+          [1.0826e-3]
+        )
+      );
+
+    assert.equal(j2(Math.PI / 4).toFixed(4), '0.0138');
+    assert.equal(j2(Math.PI / 4).toFixed(3), '0.014');
+    assert.equal(Math.round(mu / r ** 2 / j2(Math.PI / 4) / 100), 6);
+    assert.equal(j2(Math.PI / 2).toFixed(3), '0.025');
+    assert.equal((mu / r ** 2).toFixed(1), '8.6');
+  });
+
+  test('solarRadiationPressureAcceleration: a 1U CubeSat, 3.4e-8 m/s², a fiftieth of the drag at 400 km', () => {
+    const sun = sunPosition(new Date('2026-03-20T12:00:00Z')).r;
+    const srp = Math.hypot(
+      ...solarRadiationPressureAcceleration(
+        [R_WGS84 + 400_000, 0, 0],
+        sun,
+        1,
+        0.01 / 1.33
+      )
+    );
+    const drag = (height: number) =>
+      atmosphericDragAcceleration(
+        2.2,
+        0.01,
+        1.33,
+        exponentialAtmosphereDensity(height),
+        circularSpeed(R_WGS84 + height, MU_EARTH)
+      );
+
+    assert.equal(srp.toExponential(1), '3.4e-8');
+    assert.equal(Math.round(drag(400_000) / srp / 10) * 10, 50);
+    // The light pushes harder than the air from about 650 km up
+    assert.ok(drag(600_000) > srp);
+    assert.ok(drag(700_000) < srp);
   });
 
   test("hillSphereRadius: Earth's at 1.5 million km, the Moon a quarter of the way out", () => {

@@ -41,6 +41,8 @@ export * from './categories/cartography/is-on-triaxial-ellipsoid-surface.js';
 
 export * from './categories/cartography/meridional-radius-of-curvature.js';
 
+export * from './categories/cartography/moon-position.js';
+
 export * from './categories/cartography/planetocentric-latitude.js';
 
 export * from './categories/cartography/planetographic-latitude-oblate.js';
@@ -82,6 +84,8 @@ export * from './categories/helpers/normalize-distance-unit.js';
 export * from './categories/helpers/radians.js';
 
 export * from './categories/helpers/rk4.js';
+
+export * from './categories/helpers/rk45.js';
 
 export * from './categories/helpers/rot-1.js';
 
@@ -128,6 +132,10 @@ export * from './categories/gravity/force-on1-by2.js';
 export * from './categories/gravity/gravitational-force.js';
 
 export * from './categories/gravity/gravitational-parameter.js';
+
+export * from './categories/gravity/third-body-acceleration.js';
+
+export * from './categories/gravity/zonal-harmonics-acceleration.js';
 
 // categories/orbits
 
@@ -180,6 +188,8 @@ export * from './categories/orbits/peri-apoapsis-radii.js';
 export * from './categories/orbits/repeat-ground-track.js';
 
 export * from './categories/orbits/rotating-launch-azimuth.js';
+
+export * from './categories/orbits/solar-radiation-pressure-acceleration.js';
 
 export * from './categories/orbits/specific-angular-momentum-from-elements.js';
 
