@@ -13,7 +13,7 @@ function inverseMollweide(
 ```
 
 Defined in:
-[projections/mollweide.ts:166](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L166)
+[projections/mollweide.ts:169](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L169)
 
 Find the point on a sphere for a point on a **Mollweide** map: the inverse of
 [mollweide](mollweide.md).

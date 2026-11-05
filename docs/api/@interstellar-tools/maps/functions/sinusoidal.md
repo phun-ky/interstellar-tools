@@ -13,7 +13,7 @@ function sinusoidal(
 ```
 
 Defined in:
-[projections/sinusoidal.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L65)
+[projections/sinusoidal.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L68)
 
 Project a point on a sphere with the **sinusoidal projection**: an equal-area
 map, with every parallel at its true length.
@@ -45,7 +45,8 @@ Where:
   R$ wide and $\pi R$ tall.
 - Global planetary mosaics often use it, for example of Mars and the Moon.
 - $\lambda - \lambda_0$ is wrapped to (−π, π], so the map is centred on the
-  central meridian.
+  central meridian. −π itself stays on the left edge, so a line that ends there,
+  like a ground track split at the antimeridian, isn't drawn across the map.
 
 :::
 

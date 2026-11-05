@@ -13,7 +13,7 @@ function inverseMercator(
 ```
 
 Defined in:
-[projections/mercator.ts:120](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mercator.ts#L120)
+[projections/mercator.ts:127](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mercator.ts#L127)
 
 Find the point on a sphere for a point on a **Mercator** map: the inverse of
 [mercator](mercator.md).

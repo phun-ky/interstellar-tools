@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.11.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.11.0...%40interstellar-tools%2Fmaps%400.11.1) (2026-11-05)
+
+### Tasks
+
+* 🤖 Align with the shared repo brief decisions of 2026-10-23 ([645799b](https://github.com/phun-ky/interstellar-tools/commit/645799be19bebdb956ec6eca38269f037dd14cd1)), references [#237](https://github.com/phun-ky/interstellar-tools/issues/237)
+
+### Documentation
+
+* ✏️ Add a Learn tutorial: choose a landing site on Mars ([faada5f](https://github.com/phun-ky/interstellar-tools/commit/faada5ff0c6f62123b8af3cca01cd4c4d8069737)), closes [#202](https://github.com/phun-ky/interstellar-tools/issues/202)
+* ✏️ Add guide pages for geodesy and maps ([88bdf17](https://github.com/phun-ky/interstellar-tools/commit/88bdf17c1afca9965197985d3d531addc1fe218c)), closes [#201](https://github.com/phun-ky/interstellar-tools/issues/201)
+
+### Bug
+
+* 🐛 Keep -180° on the left edge of a map ([76fa564](https://github.com/phun-ky/interstellar-tools/commit/76fa564e140b04895bd677ba5b5881c87d8e6d8e))
+
 ## [0.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.10.1...%40interstellar-tools%2Fmaps%400.11.0) (2026-11-04)
 
 ### Feature
