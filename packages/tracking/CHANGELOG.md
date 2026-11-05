@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.8.0...%40interstellar-tools%2Ftracking%400.9.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Draw satellites on a globe ([b290619](https://github.com/phun-ky/interstellar-tools/commit/b290619aef6b210b028c6a66333faca6030fbe8b)), closes [#220](https://github.com/phun-ky/interstellar-tools/issues/220)
+
 ## [0.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.7.0...%40interstellar-tools%2Ftracking%400.8.0) (2026-11-05)
 
 ### Feature

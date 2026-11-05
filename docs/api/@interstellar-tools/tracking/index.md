@@ -95,6 +95,12 @@ const segments = groundTrack(iss, new Date(), later); // lines of { phi, lambda,
 const footprint = coverageFootprint(subSatellitePoint(iss, new Date()), 0.1745); // above 10°
 ```
 
+For a globe, `orbitPath3D` gives the orbit in 3D, Earth-fixed or inertial, and
+`globeView` projects tracks and footprints onto a 2D globe, flagging the far
+side. The
+[tracking guide](https://phun-ky.net/interstellar-tools/guide/usage/tracking)
+explains which frame to choose.
+
 Or see it from the ground: where to point an antenna, and how far to retune the
 radio for the Doppler shift:
 
@@ -204,7 +210,9 @@ npm i --save @interstellar-tools/tracking
 
 | Interface                                                                    | Description                                              |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [GlobeViewOptionsInterface](interfaces/GlobeViewOptionsInterface.md)         | Options for [globeView](functions/globeView.md).         |
 | [IsVisiblePassOptionsInterface](interfaces/IsVisiblePassOptionsInterface.md) | Options for [isVisiblePass](functions/isVisiblePass.md). |
+| [OrbitPath3DOptionsInterface](interfaces/OrbitPath3DOptionsInterface.md)     | Options for [orbitPath3D](functions/orbitPath3D.md).     |
 | [PredictPassesOptionsInterface](interfaces/PredictPassesOptionsInterface.md) | Options for [predictPasses](functions/predictPasses.md). |
 | [StateAtOptionsInterface](interfaces/StateAtOptionsInterface.md)             | Options for [stateAt](functions/stateAt.md).             |
 
@@ -226,11 +234,13 @@ npm i --save @interstellar-tools/tracking
 | [dopplerShift](functions/dopplerShift.md)                         | The **Doppler shift** of a radio signal from a satellite: how far the received frequency is from the transmitted one, as the satellite approaches or leaves.                                                                                |
 | [earthShadow](functions/earthShadow.md)                           | Where a satellite is relative to **Earth's shadow**: in sunlight, in the penumbra where Earth covers part of the Sun, or in the umbra where it covers all of it.                                                                            |
 | [footprintRadius](functions/footprintRadius.md)                   | The **angular radius of a satellite's footprint**: how far from the point below it, as an angle at Earth's centre, the satellite is above the minimum elevation.                                                                            |
+| [globeView](functions/globeView.md)                               | Points on a **globe view**: the orthographic projection, a globe seen from far away, with the points on the far side marked hidden. It draws ground tracks and footprints on a 2D globe, without WebGL.                                     |
 | [groundTrack](functions/groundTrack.md)                           | The **ground track** of a satellite: the points on the ground directly below it over time, ready to draw on a flat map.                                                                                                                     |
 | [isInEarthShadow](functions/isInEarthShadow.md)                   | Whether a satellite is in **Earth's shadow**, taking the shadow as a cylinder as wide as Earth, straight back from the Sun. It's the usual quick test for whether a satellite is lit.                                                       |
 | [isVisiblePass](functions/isVisiblePass.md)                       | Whether a pass is a **visible pass**: the satellite lit by the Sun while the sky is dark for the observer, so it can be seen with the eye, a bright star moving steadily across the sky.                                                    |
 | [lookAngles](functions/lookAngles.md)                             | The **look angles** to a satellite from a ground observer at a moment: where to point an antenna or a camera (azimuth and elevation), how far away the satellite is (range), and how fast that changes (range rate, for the Doppler shift). |
 | [lookAnglesFromEarthFixed](functions/lookAnglesFromEarthFixed.md) | The **look angles** to a satellite from an observer, given the satellite's Earth-fixed position and velocity: azimuth, elevation, range and range rate. [lookAngles](functions/lookAngles.md) does the same from orbital elements.          |
+| [orbitPath3D](functions/orbitPath3D.md)                           | The **path of a satellite in 3D**, for drawing its orbit around a globe: positions from Earth's centre over time, in the frame and unit a renderer wants.                                                                                   |
 | [parseOmm](functions/parseOmm.md)                                 | Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE, it has room for catalogue numbers above 339 999.                                   |
 | [parseTle](functions/parseTle.md)                                 | Parse a **two-line element set** (TLE): the format NORAD has published satellite orbits in since the 1960s, for SGP4.                                                                                                                       |
 | [predictPasses](functions/predictPasses.md)                       | **Predict the passes** of a satellite over a ground observer between two moments: when it rises above the horizon, when it's highest, and when it sets. It's the first question a tracking app answers.                                     |
