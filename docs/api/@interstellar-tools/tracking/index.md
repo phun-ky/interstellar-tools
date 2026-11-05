@@ -196,6 +196,18 @@ const { position } = fit.rms; // how far SGP4 is from the fixes, in m
 formatTle({ ...fit.elements, catalogNumber: 99_999 }); // [line1, line2]
 ```
 
+For "what if" questions, propagate numerically with the forces you choose:
+Earth's zonal harmonics, drag, the Sun and the Moon, sunlight and manoeuvres:
+
+```ts
+import { propagateNumerically } from '@interstellar-tools/tracking';
+
+const ephemeris = propagateNumerically(state, from, to, {
+  forces: { drag: { ballisticCoefficient: 60 } },
+  manoeuvres: [{ epoch: burn, deltaV: [0, 1, 0], frame: 'rtn' }]
+});
+```
+
 ## What's planned
 
 The
@@ -204,8 +216,8 @@ tracks the work:
 
 - **satellites**: anything in Earth orbit with public orbital elements, crewed
   vehicles like the ISS included: TLE and OMM parsing, SGP4 and SDP4, ground
-  tracks, look angles, passes and eclipses, and fitting elements to a team's own
-  positions
+  tracks, look angles, passes and eclipses, fitting elements to a team's own
+  positions, and numerical propagation with a force model
 - **probes**: deep-space spacecraft without TLEs, such as Voyager, New Horizons
   and JWST, positioned from ephemeris files
 - Lagrange points, atmospheric density and orbit decay, and orbit design helpers
@@ -230,16 +242,19 @@ npm i --save @interstellar-tools/tracking
 
 ## Interfaces
 
-| Interface                                                                    | Description                                                              |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [ElementFitInterface](interfaces/ElementFitInterface.md)                     | The result of [fitElements](functions/fitElements.md).                   |
-| [ElementFitResidualInterface](interfaces/ElementFitResidualInterface.md)     | How far a fitted element set is from one of the states it was fitted to. |
-| [FitElementsOptionsInterface](interfaces/FitElementsOptionsInterface.md)     | Options for [fitElements](functions/fitElements.md).                     |
-| [GlobeViewOptionsInterface](interfaces/GlobeViewOptionsInterface.md)         | Options for [globeView](functions/globeView.md).                         |
-| [IsVisiblePassOptionsInterface](interfaces/IsVisiblePassOptionsInterface.md) | Options for [isVisiblePass](functions/isVisiblePass.md).                 |
-| [OrbitPath3DOptionsInterface](interfaces/OrbitPath3DOptionsInterface.md)     | Options for [orbitPath3D](functions/orbitPath3D.md).                     |
-| [PredictPassesOptionsInterface](interfaces/PredictPassesOptionsInterface.md) | Options for [predictPasses](functions/predictPasses.md).                 |
-| [StateAtOptionsInterface](interfaces/StateAtOptionsInterface.md)             | Options for [stateAt](functions/stateAt.md).                             |
+| Interface                                                                                  | Description                                                                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| [ElementFitInterface](interfaces/ElementFitInterface.md)                                   | The result of [fitElements](functions/fitElements.md).                                                                  |
+| [ElementFitResidualInterface](interfaces/ElementFitResidualInterface.md)                   | How far a fitted element set is from one of the states it was fitted to.                                                |
+| [FitElementsOptionsInterface](interfaces/FitElementsOptionsInterface.md)                   | Options for [fitElements](functions/fitElements.md).                                                                    |
+| [GlobeViewOptionsInterface](interfaces/GlobeViewOptionsInterface.md)                       | Options for [globeView](functions/globeView.md).                                                                        |
+| [IsVisiblePassOptionsInterface](interfaces/IsVisiblePassOptionsInterface.md)               | Options for [isVisiblePass](functions/isVisiblePass.md).                                                                |
+| [ManoeuvreInterface](interfaces/ManoeuvreInterface.md)                                     | An impulsive manoeuvre for [propagateNumerically](functions/propagateNumerically.md): a change of velocity at a moment. |
+| [NumericalForcesInterface](interfaces/NumericalForcesInterface.md)                         | The forces for [propagateNumerically](functions/propagateNumerically.md), on top of Earth's central pull.               |
+| [OrbitPath3DOptionsInterface](interfaces/OrbitPath3DOptionsInterface.md)                   | Options for [orbitPath3D](functions/orbitPath3D.md).                                                                    |
+| [PredictPassesOptionsInterface](interfaces/PredictPassesOptionsInterface.md)               | Options for [predictPasses](functions/predictPasses.md).                                                                |
+| [PropagateNumericallyOptionsInterface](interfaces/PropagateNumericallyOptionsInterface.md) | Options for [propagateNumerically](functions/propagateNumerically.md).                                                  |
+| [StateAtOptionsInterface](interfaces/StateAtOptionsInterface.md)                           | Options for [stateAt](functions/stateAt.md).                                                                            |
 
 ## Probes
 
@@ -275,6 +290,7 @@ npm i --save @interstellar-tools/tracking
 | [predictPasses](functions/predictPasses.md)                       | **Predict the passes** of a satellite over a ground observer between two moments: when it rises above the horizon, when it's highest, and when it sets. It's the first question a tracking app answers.                                                                                   |
 | [propagate](functions/propagate.md)                               | Propagate a satellite's mean elements with **SGP4** to a moment: its position and velocity in the TEME frame. See [propagateMinutes](functions/propagateMinutes.md).                                                                                                                      |
 | [propagateMinutes](functions/propagateMinutes.md)                 | Propagate a satellite's mean elements with **SGP4** to a number of minutes from their epoch: its position and velocity in the TEME frame.                                                                                                                                                 |
+| [propagateNumerically](functions/propagateNumerically.md)         | **Propagate a satellite numerically** with a force model: Cowell's method, stepping the equations of motion with the forces you choose, for the "what if" questions SGP4 can't answer: a different mass or drag area, higher solar activity, or a manoeuvre.                              |
 | [subSatellitePoint](functions/subSatellitePoint.md)               | Find the point on Earth **under a satellite** at a moment: the geodetic latitude, longitude and height on the WGS 84 ellipsoid.                                                                                                                                                           |
 | [temeToEarthFixed](functions/temeToEarthFixed.md)                 | Turn a position and velocity in **TEME**, the frame SGP4 works in, into **Earth-fixed** coordinates, by turning them with Earth through Greenwich mean sidereal time.                                                                                                                     |
 | [tleChecksum](functions/tleChecksum.md)                           | The **checksum** of a TLE line: the sum of its digits, with 1 for each minus sign, modulo 10. It's the last column of each line, and catches most typos.                                                                                                                                  |

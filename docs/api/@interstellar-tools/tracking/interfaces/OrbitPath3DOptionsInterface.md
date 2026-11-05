@@ -13,7 +13,7 @@ Options for [orbitPath3D](../functions/orbitPath3D.md).
 ### frame?
 
 ```ts
-frame?: "earth-fixed" | "inertial";
+frame?: "inertial" | "earth-fixed";
 ```
 
 Defined in:

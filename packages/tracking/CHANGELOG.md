@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.10.0...%40interstellar-tools%2Ftracking%400.11.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Propagate satellite orbits numerically with a force model ([02e3e83](https://github.com/phun-ky/interstellar-tools/commit/02e3e83ceff3038c9f1a05daff7cfc17dee7e069)), closes [#228](https://github.com/phun-ky/interstellar-tools/issues/228)
+
 ## [0.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.9.0...%40interstellar-tools%2Ftracking%400.10.0) (2026-11-05)
 
 ### Documentation
