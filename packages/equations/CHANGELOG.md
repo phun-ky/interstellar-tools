@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.18.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.17.0...%40interstellar-tools%2Fequations%401.18.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the forces and integrator for numerical propagation ([51fb140](https://github.com/phun-ky/interstellar-tools/commit/51fb140323ce5efe858a179534dbe66816648fe9)), references [#228](https://github.com/phun-ky/interstellar-tools/issues/228)
+
 ## [1.17.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.16.0...%40interstellar-tools%2Fequations%401.17.0) (2026-11-05)
 
 ### Feature
