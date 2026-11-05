@@ -453,3 +453,35 @@ export interface ProbeRecordInterface {
   /** Positions and velocities from the Sun's centre, in the ICRF. */
   ephemeris: EphemerisInterface;
 }
+
+/**
+ * A point on an **orthographic globe view**: where it falls on the disc, and
+ * whether it's on the side facing the viewer.
+ *
+ * Returned by `globeView` in `@interstellar-tools/tracking`.
+ *
+ * ::: info
+ *
+ * - `x` and `y` are given for every point, so a renderer can fade the far
+ *   side rather than leave it out; points with `visible` false sit behind the
+ *   globe.
+ * - Points on the edge of the disc, the horizon seen from the viewer, are
+ *   visible.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // The point at the centre of the view, on a globe of radius 1
+ * const centre: GlobePointInterface = { x: 0, y: 0, visible: true };
+ * ```
+ * @group Tracking
+ */
+export interface GlobePointInterface {
+  /** Distance right of the disc's centre, in the unit of the globe's radius. */
+  x: number;
+  /** Distance up from the disc's centre, in the unit of the globe's radius. */
+  y: number;
+  /** Whether the point is on the near side of the globe. */
+  visible: boolean;
+}
