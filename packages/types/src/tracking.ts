@@ -183,3 +183,136 @@ export interface SatellitePassInterface {
  * @group Tracking
  */
 export type ShadowType = 'sunlit' | 'penumbra' | 'umbra';
+
+/**
+ * One **Orbit Mean-elements Message** (OMM) record in JSON, as CelesTrak
+ * publishes it: a satellite's mean elements, with the keywords of the CCSDS
+ * standard.
+ *
+ * Read by `parseOmm`, and carried by the `SATELLITES` dataset, in
+ * `@interstellar-tools/tracking`.
+ *
+ * ::: info
+ *
+ * - The angles are in degrees and the mean motion in revolutions per day, as
+ *   in a TLE. `parseOmm` turns them into radians and rad/s.
+ * - `MEAN_MOTION_DOT` and `MEAN_MOTION_DDOT` are half the first and a sixth of
+ *   the second derivative of the mean motion, also as in a TLE.
+ * - Space-Track sends the numbers as strings; `parseOmm` reads both.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * const omm: OmmRecordInterface = {
+ *   OBJECT_NAME: 'ISS (ZARYA)',
+ *   OBJECT_ID: '1998-067A',
+ *   EPOCH: '2026-11-04T21:15:15.204960',
+ *   MEAN_MOTION: 15.49180468,
+ *   ECCENTRICITY: 0.00072122,
+ *   INCLINATION: 51.6327,
+ *   RA_OF_ASC_NODE: 323.8448,
+ *   ARG_OF_PERICENTER: 348.649,
+ *   MEAN_ANOMALY: 11.4335,
+ *   EPHEMERIS_TYPE: 0,
+ *   CLASSIFICATION_TYPE: 'U',
+ *   NORAD_CAT_ID: 25544,
+ *   ELEMENT_SET_NO: 999,
+ *   REV_AT_EPOCH: 59356,
+ *   BSTAR: 0.00010456704,
+ *   MEAN_MOTION_DOT: 0.00005352,
+ *   MEAN_MOTION_DDOT: 0
+ * };
+ * ```
+ * @see https://public.ccsds.org/Pubs/502x0b3e1.pdf CCSDS 502.0-B-3, Orbit Data Messages
+ * @group Tracking
+ */
+export interface OmmRecordInterface {
+  /** The object's name, as the catalogue gives it. */
+  OBJECT_NAME?: string;
+  /** International designator: launch year, launch number and piece, like `1998-067A`. */
+  OBJECT_ID?: string;
+  /** Epoch of the elements, in UTC: `YYYY-MM-DDTHH:MM:SS.ffffff`. */
+  EPOCH: string;
+  /** Mean motion in revolutions per day. */
+  MEAN_MOTION: number;
+  /** Eccentricity. */
+  ECCENTRICITY: number;
+  /** Inclination in degrees. */
+  INCLINATION: number;
+  /** Right ascension of the ascending node in degrees. */
+  RA_OF_ASC_NODE: number;
+  /** Argument of perigee in degrees. */
+  ARG_OF_PERICENTER: number;
+  /** Mean anomaly in degrees. */
+  MEAN_ANOMALY: number;
+  /** Ephemeris type: 0 for SGP4 and SDP4. */
+  EPHEMERIS_TYPE?: number;
+  /** Classification: `U` unclassified, `C` classified or `S` secret. */
+  CLASSIFICATION_TYPE?: 'U' | 'C' | 'S';
+  /** NORAD catalogue number. */
+  NORAD_CAT_ID: number;
+  /** Element set number. */
+  ELEMENT_SET_NO?: number;
+  /** Revolution number at the epoch. */
+  REV_AT_EPOCH?: number;
+  /** Drag term B* in inverse Earth radii. */
+  BSTAR: number;
+  /** Half the first derivative of the mean motion, in revolutions per day². */
+  MEAN_MOTION_DOT: number;
+  /** A sixth of the second derivative of the mean motion, in revolutions per day³. */
+  MEAN_MOTION_DDOT: number;
+}
+
+/**
+ * The **orbit regime** a satellite flies in.
+ *
+ * - `'LEO'`: low Earth orbit, below about 2 000 km, an orbit in under about
+ *   2 hours: the ISS, Starlink, Earth observation.
+ * - `'MEO'`: medium Earth orbit, between LEO and geostationary: navigation
+ *   satellites such as GPS and Galileo.
+ * - `'GEO'`: geostationary orbit, 35 786 km above the equator, turning with
+ *   Earth: weather and communications satellites.
+ * - `'HEO'`: highly elliptical orbit, such as Molniya, lingering high over
+ *   one hemisphere.
+ *
+ * @example
+ * ```ts
+ * const regime: OrbitRegimeType = 'MEO'; // a GPS satellite
+ * ```
+ * @group Tracking
+ */
+export type OrbitRegimeType = 'LEO' | 'MEO' | 'GEO' | 'HEO';
+
+/**
+ * A satellite in the `SATELLITES` dataset of `@interstellar-tools/tracking`: a
+ * stable id, a common name, its orbit regime and a dated OMM record.
+ *
+ * ::: info
+ *
+ * - **The elements go stale within days.** They're a snapshot, for examples
+ *   and tests; for tracking, fetch fresh elements from CelesTrak.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * const hubble: SatelliteRecordInterface = {
+ *   id: 'hubble',
+ *   name: 'Hubble Space Telescope',
+ *   regime: 'LEO',
+ *   omm: { OBJECT_NAME: 'HST', NORAD_CAT_ID: 20580, ... }
+ * };
+ * ```
+ * @group Tracking
+ */
+export interface SatelliteRecordInterface {
+  /** Stable id, in kebab case: `'iss'`, `'hubble'`. */
+  id: string;
+  /** Common name: `'International Space Station'`. */
+  name: string;
+  /** The orbit regime. */
+  regime: OrbitRegimeType;
+  /** The elements, as an OMM record. */
+  omm: OmmRecordInterface;
+}
