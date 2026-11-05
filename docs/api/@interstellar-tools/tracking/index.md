@@ -88,6 +88,26 @@ for (const pass of predictPasses(iss, oslo, from, to, { minElevation: 0.1745 }))
   console.log(pass.rise, pass.maxElevation, pass.set);
 ```
 
+Keep the passes you can see with the eye, the satellite in sunlight while the
+sky is dark, or check whether it's in Earth's shadow:
+
+```ts
+import { sunPosition } from '@interstellar-tools/equations';
+
+import {
+  earthShadow,
+  isVisiblePass,
+  propagate,
+  predictPasses
+} from '@interstellar-tools/tracking';
+
+const visible = predictPasses(iss, oslo, from, to).filter((pass) =>
+  isVisiblePass(iss, oslo, pass)
+);
+const now = new Date();
+const shadow = earthShadow(propagate(iss, now).r, sunPosition(now).r); // 'sunlit', 'penumbra' or 'umbra'
+```
+
 ## What's planned
 
 The
@@ -123,6 +143,7 @@ npm i --save @interstellar-tools/tracking
 
 | Interface                                                                    | Description                                              |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [IsVisiblePassOptionsInterface](interfaces/IsVisiblePassOptionsInterface.md) | Options for [isVisiblePass](functions/isVisiblePass.md). |
 | [PredictPassesOptionsInterface](interfaces/PredictPassesOptionsInterface.md) | Options for [predictPasses](functions/predictPasses.md). |
 
 ## Satellites
@@ -130,6 +151,9 @@ npm i --save @interstellar-tools/tracking
 | Function                                                          | Description                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [dopplerShift](functions/dopplerShift.md)                         | The **Doppler shift** of a radio signal from a satellite: how far the received frequency is from the transmitted one, as the satellite approaches or leaves.                                                                                |
+| [earthShadow](functions/earthShadow.md)                           | Where a satellite is relative to **Earth's shadow**: in sunlight, in the penumbra where Earth covers part of the Sun, or in the umbra where it covers all of it.                                                                            |
+| [isInEarthShadow](functions/isInEarthShadow.md)                   | Whether a satellite is in **Earth's shadow**, taking the shadow as a cylinder as wide as Earth, straight back from the Sun. It's the usual quick test for whether a satellite is lit.                                                       |
+| [isVisiblePass](functions/isVisiblePass.md)                       | Whether a pass is a **visible pass**: the satellite lit by the Sun while the sky is dark for the observer, so it can be seen with the eye, a bright star moving steadily across the sky.                                                    |
 | [lookAngles](functions/lookAngles.md)                             | The **look angles** to a satellite from a ground observer at a moment: where to point an antenna or a camera (azimuth and elevation), how far away the satellite is (range), and how fast that changes (range rate, for the Doppler shift). |
 | [lookAnglesFromEarthFixed](functions/lookAnglesFromEarthFixed.md) | The **look angles** to a satellite from an observer, given the satellite's Earth-fixed position and velocity: azimuth, elevation, range and range rate. [lookAngles](functions/lookAngles.md) does the same from orbital elements.          |
 | [parseOmm](functions/parseOmm.md)                                 | Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE, it has room for catalogue numbers above 339 999.                                   |
