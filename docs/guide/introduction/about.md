@@ -118,8 +118,8 @@ as mission-critical software (yet).
 :::
 
 - **@interstellar-tools/temporal** Time and epoch utilities for space
-  applications: time unit conversion, and Julian dates on the UTC, TAI, TT and
-  UT1 time scales, with leap seconds.
+  applications: time unit conversion, and Julian dates on the UTC, TAI, TT, UT1,
+  TDB and GPS time scales, with leap seconds.
 
 - **@interstellar-tools/types** Shared TypeScript types (e.g., 3D tuples,
   equation result interfaces) used across the monorepo to keep APIs predictable

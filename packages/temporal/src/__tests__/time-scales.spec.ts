@@ -33,6 +33,57 @@ describe('julianDate', () => {
     );
   });
 
+  test('keeps GPS time 19 s behind TAI', () => {
+    // 13 s ahead of UTC in 2000, 18 s since the leap second of 2017
+    close(
+      julianDate(J2000_UTC, 'GPS'),
+      J2000_TT - 51.184 * SECOND_IN_DAYS,
+      1e-9
+    );
+
+    const date = new Date('2026-11-04T12:00:00Z');
+
+    close(
+      (modifiedJulianDate(date, 'GPS') - modifiedJulianDate(date)) * 86_400,
+      18,
+      1e-6
+    );
+    close(
+      (modifiedJulianDate(date, 'TAI') - modifiedJulianDate(date, 'GPS')) *
+        86_400,
+      19,
+      1e-6
+    );
+  });
+
+  test('runs TDB within 1.7 ms of TT, as JPL Horizons does', () => {
+    // TDB − TT in µs, from Earth's position in Horizons at the same TT and
+    // TDB readings: the series is good to 10 µs, the comparison to 25 µs
+    const horizons = [
+      ['2026-01-01', -80],
+      ['2026-04-01', 1655],
+      ['2026-06-30', 151],
+      ['2026-10-28', -1536]
+    ] as const;
+    const tdbMinusTt = (date: Date) =>
+      (modifiedJulianDate(date, 'TDB') - modifiedJulianDate(date, 'TT')) *
+      86_400e6;
+
+    for (const [day, microseconds] of horizons)
+      close(tdbMinusTt(new Date(`${day}T00:00:00Z`)), microseconds, 25);
+
+    fc.assert(
+      fc.property(
+        fc.date({
+          min: new Date('1972-01-01T00:00:00Z'),
+          max: new Date('2100-01-01T00:00:00Z'),
+          noInvalidDate: true
+        }),
+        (date) => assert.ok(Math.abs(tdbMinusTt(date)) < 1700)
+      )
+    );
+  });
+
   test('puts the Unix epoch at JD 2440587.5 UTC', () => {
     assert.equal(julianDate(new Date(0)), 2440587.5);
   });
@@ -59,7 +110,7 @@ describe('julianDate', () => {
   test('rejects an invalid date or scale, and TT before 1972', () => {
     assert.throws(() => julianDate(new Date('nope')), TypeError);
     assert.throws(
-      () => julianDate(new Date(0), 'GPS' as TimeScaleType),
+      () => julianDate(new Date(0), 'TCB' as TimeScaleType),
       RangeError
     );
     assert.throws(
@@ -77,7 +128,7 @@ describe('modifiedJulianDate', () => {
     assert.equal(modifiedJulianDate(new Date('1858-11-17T00:00:00Z')), 0);
     assert.equal(modifiedJulianDate(new Date('2000-01-01T00:00:00Z')), 51544);
 
-    for (const scale of ['UTC', 'TAI', 'TT', 'UT1'] as const)
+    for (const scale of ['UTC', 'TAI', 'TT', 'UT1', 'TDB', 'GPS'] as const)
       close(
         modifiedJulianDate(date, scale),
         julianDate(date, scale) - 2400000.5,
@@ -116,6 +167,18 @@ describe('dateFromJulianDate', () => {
     );
   });
 
+  test("turns Horizons' TDB epochs and GPS time into UTC", () => {
+    // 2026-01-01 00:00 TDB, a Horizons sample time: 69.184 s, less TDB − TT
+    assert.equal(
+      dateFromJulianDate(2461041.5, 'TDB').toISOString(),
+      '2025-12-31T23:58:50.816Z'
+    );
+    assert.equal(
+      dateFromJulianDate(2461041.5, 'GPS').toISOString(),
+      '2025-12-31T23:59:42.000Z'
+    );
+  });
+
   test('turns a moment inside a leap second into the next day', () => {
     // 2016-12-31T23:59:60.5 UTC, on the TAI clock
     const tai =
@@ -142,7 +205,7 @@ describe('dateFromJulianDate', () => {
           max: new Date('2100-01-01T00:00:00Z'),
           noInvalidDate: true
         }),
-        fc.constantFrom<TimeScaleType>('UTC', 'TAI', 'TT', 'UT1'),
+        fc.constantFrom<TimeScaleType>('UTC', 'TAI', 'TT', 'UT1', 'TDB', 'GPS'),
         (date, scale) => {
           assert.equal(
             dateFromJulianDate(julianDate(date, scale), scale).getTime(),
