@@ -1,0 +1,128 @@
+API VERSION: 1.2
+API SOURCE: NASA/JPL Horizons API
+
+
+
+*******************************************************************************
+Ephemeris / API_USER Thu Nov  5 00:43:09 2026 Pasadena, USA      / Horizons
+*******************************************************************************
+Target body name: Voyager 1 (spacecraft) (-31)    {source: Voyager_1_ST+refit2022_m}
+Center body name: Sun (10)                        {source: Voyager_1_ST+refit2022_m}
+Center-site name: BODY CENTER
+*******************************************************************************
+Start time      : A.D. 2026-Jan-01 00:00:00.0000 TDB
+Stop  time      : A.D. 2026-Jan-11 00:00:00.0000 TDB
+Step-size       : 1440 minutes
+*******************************************************************************
+Center geodetic : 0.0, 0.0, 0.0                   {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}
+Center radii    : 695700.0, 695700.0, 695700.0 km {Equator_a, b, pole_c}
+Output units    : KM-S
+Calendar mode   : Mixed Julian/Gregorian
+Output type     : GEOMETRIC cartesian states
+Output format   : 2 (position and velocity)
+Reference frame : ICRF
+*******************************************************************************
+JDTDB
+   X     Y     Z
+   VX    VY    VZ
+*******************************************************************************
+$$SOE
+2461041.500000000 = A.D. 2026-Jan-01 00:00:00.0000 TDB 
+ X =-4.762659739242758E+09 Y =-2.428368558102490E+10 Z = 5.360366524995458E+09
+ VX=-2.072816913981589E+00 VY=-1.639996880555899E+01 VZ= 3.608955582432917E+00
+2461042.500000000 = A.D. 2026-Jan-02 00:00:00.0000 TDB 
+ X =-4.762838830281438E+09 Y =-2.428510253822050E+10 Z = 5.360678338332521E+09
+ VX=-2.072808986790222E+00 VY=-1.639996627651569E+01 VZ= 3.608945740172644E+00
+2461043.500000000 = A.D. 2026-Jan-03 00:00:00.0000 TDB 
+ X =-4.763017920636607E+09 Y =-2.428651949519731E+10 Z = 5.360990150819636E+09
+ VX=-2.072801091952236E+00 VY=-1.639996374132296E+01 VZ= 3.608935907531419E+00
+2461044.500000000 = A.D. 2026-Jan-04 00:00:00.0000 TDB 
+ X =-4.763197010311050E+09 Y =-2.428793645195486E+10 Z = 5.361301962457598E+09
+ VX=-2.072793229195252E+00 VY=-1.639996120153887E+01 VZ= 3.608926083733500E+00
+2461045.500000000 = A.D. 2026-Jan-05 00:00:00.0000 TDB 
+ X =-4.763376099307528E+09 Y =-2.428935340849284E+10 Z = 5.361613773247138E+09
+ VX=-2.072785398249648E+00 VY=-1.639995865868473E+01 VZ= 3.608916268023215E+00
+2461046.500000000 = A.D. 2026-Jan-06 00:00:00.0000 TDB 
+ X =-4.763555187628777E+09 Y =-2.429077036481104E+10 Z = 5.361925583188924E+09
+ VX=-2.072777598850786E+00 VY=-1.639995611425038E+01 VZ= 3.608906459662260E+00
+2461047.500000000 = A.D. 2026-Jan-07 00:00:00.0000 TDB 
+ X =-4.763734275277511E+09 Y =-2.429218732090938E+10 Z = 5.362237392283559E+09
+ VX=-2.072769830741062E+00 VY=-1.639995356969938E+01 VZ= 3.608896657927076E+00
+2461048.500000000 = A.D. 2026-Jan-08 00:00:00.0000 TDB 
+ X =-4.763913362256423E+09 Y =-2.429360427678792E+10 Z = 5.362549200531584E+09
+ VX=-2.072762093671849E+00 VY=-1.639995102647412E+01 VZ= 3.608886862106258E+00
+2461049.500000000 = A.D. 2026-Jan-09 00:00:00.0000 TDB 
+ X =-4.764092448568185E+09 Y =-2.429502123244684E+10 Z = 5.362861007933481E+09
+ VX=-2.072754387405344E+00 VY=-1.639994848600081E+01 VZ= 3.608877071497979E+00
+2461050.500000000 = A.D. 2026-Jan-10 00:00:00.0000 TDB 
+ X =-4.764271534215447E+09 Y =-2.429643818788643E+10 Z = 5.363172814489669E+09
+ VX=-2.072746711716346E+00 VY=-1.639994594969465E+01 VZ= 3.608867285407349E+00
+2461051.500000000 = A.D. 2026-Jan-11 00:00:00.0000 TDB 
+ X =-4.764450619200844E+09 Y =-2.429785514310711E+10 Z = 5.363484620200509E+09
+ VX=-2.072739066393990E+00 VY=-1.639994341896510E+01 VZ= 3.608857503143705E+00
+$$EOE
+*******************************************************************************
+ 
+TIME
+
+  Barycentric Dynamical Time ("TDB" or T_eph) output was requested. This
+continuous coordinate time is equivalent to the relativistic proper time
+of a clock at rest in a reference frame co-moving with the solar system
+barycenter but outside the system's gravity well. It is the independent
+variable in the solar system relativistic equations of motion.
+
+  TDB runs at a uniform rate of one SI second per second and is independent
+of irregularities in Earth's rotation.
+ 
+CALENDAR SYSTEM
+
+  Mixed calendar mode was active such that calendar dates after AD 1582-Oct-15
+(if any) are in the modern Gregorian system. Dates prior to 1582-Oct-5 (if any)
+are in the Julian calendar system, which is automatically extended for dates
+prior to its adoption on 45-Jan-1 BC.  The Julian calendar is useful for
+matching historical dates. The Gregorian calendar more accurately corresponds
+to the Earth's orbital motion and seasons. A "Gregorian-only" calendar mode is
+available if such physical events are the primary interest.
+
+REFERENCE FRAME AND COORDINATES
+
+  International Celestial Reference Frame (ICRF)
+
+    The ICRF is an adopted reference frame whose axes are defined relative to 
+    fixed extragalactic radio sources distributed across the sky.
+
+    The ICRF was aligned with the prior FK5/J2000 dynamical system at the ~0.02 
+    arcsecond level but is not identical and has no associated standard epoch.
+
+  Symbol meaning:
+
+    JDTDB    Julian Day Number, Barycentric Dynamical Time
+      X      X-component of position vector (km)
+      Y      Y-component of position vector (km)
+      Z      Z-component of position vector (km)
+      VX     X-component of velocity vector (km/sec)                           
+      VY     Y-component of velocity vector (km/sec)                           
+      VZ     Z-component of velocity vector (km/sec)                           
+
+ABERRATIONS AND CORRECTIONS
+
+ Geometric state vectors have NO corrections or aberrations applied.
+
+Computations by ...
+
+    Solar System Dynamics Group, Horizons On-Line Ephemeris System
+    4800 Oak Grove Drive, Jet Propulsion Laboratory
+    Pasadena, CA  91109   USA
+
+    General site: https://ssd.jpl.nasa.gov/
+    Mailing list: https://ssd.jpl.nasa.gov/email_list.html
+    System news : https://ssd.jpl.nasa.gov/horizons/news.html
+    User Guide  : https://ssd.jpl.nasa.gov/horizons/manual.html
+    Connect     : browser        https://ssd.jpl.nasa.gov/horizons/app.html#/x
+                  API            https://ssd-api.jpl.nasa.gov/doc/horizons.html
+                  command-line   telnet ssd.jpl.nasa.gov 6775
+                  e-mail/batch   https://ssd.jpl.nasa.gov/ftp/ssd/horizons_batch.txt
+                  scripts        https://ssd.jpl.nasa.gov/ftp/ssd/SCRIPTS
+    Inquiries   : Jon.D.Giorgini@jpl.nasa.gov
+*******************************************************************************

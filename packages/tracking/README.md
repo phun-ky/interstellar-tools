@@ -119,6 +119,27 @@ const now = new Date();
 const shadow = earthShadow(propagate(iss, now).r, sunPosition(now).r); // 'sunlit', 'penumbra' or 'umbra'
 ```
 
+Deep-space probes have no TLEs: their positions come as ephemerides, tables of
+positions and velocities over time. Read one from JPL Horizons, or a CCSDS Orbit
+Ephemeris Message (OEM), and interpolate it to any moment:
+
+```ts
+import {
+  parseHorizonsVectors,
+  parseOem,
+  stateAt
+} from '@interstellar-tools/tracking';
+
+// Voyager 1 from the Sun, daily, on the ICRF's equatorial axes
+const horizons = await fetch(
+  'https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND=-31&EPHEM_TYPE=VECTORS&VEC_TABLE=2&REF_PLANE=FRAME&CENTER=500@10&START_TIME=2026-01-01&STOP_TIME=2026-01-11&STEP_SIZE=1d'
+);
+const voyager1 = parseHorizonsVectors(await horizons.text());
+const { r, v } = stateAt(voyager1, new Date('2026-01-05T06:00:00Z')); // m and m/s
+// One ephemeris per OEM segment: don't interpolate across them
+const [segment] = parseOem(oemText);
+```
+
 ## What's planned
 
 The
