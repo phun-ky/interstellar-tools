@@ -11,6 +11,7 @@ import { temeToEarthFixed } from './earth-fixed.js';
 import { lookAngles, lookAnglesFromEarthFixed } from './look-angles.js';
 import { propagate } from './propagate.js';
 import { earthShadow } from './shadow.js';
+import { assertDate } from './validate.js';
 
 // Golden-section ratio, for the search for the highest point
 const INV_PHI = (Math.sqrt(5) - 1) / 2;
@@ -31,14 +32,6 @@ export interface IsVisiblePassOptionsInterface {
 
 // The moments a visible pass is checked at: every 10 s at most
 const VISIBLE_STEP_MS = 10_000;
-const assertDate = (name: string, date: Date): number => {
-  if (!(date instanceof Date) || !Number.isFinite(date.getTime()))
-    throw new TypeError(
-      `${name} must be a valid Date. Received: ${String(date)}`
-    );
-
-  return date.getTime();
-};
 
 /**
  * **Predict the passes** of a satellite over a ground observer between two
