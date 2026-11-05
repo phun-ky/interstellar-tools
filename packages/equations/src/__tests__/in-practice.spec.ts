@@ -41,12 +41,14 @@ import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azim
 import { specificMechanicalEnergy } from '../categories/orbits/specific-mechanical-energy.js';
 import { synodicPeriod } from '../categories/orbits/synodic-period.js';
 import { stateToElements } from '../categories/orbits/state-to-elements.js';
+import { hillSphereRadius } from '../categories/orbits/hill-sphere-radius.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
 import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
 import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
 import { cr3bpDerivatives } from '../categories/three-body/cr3bp-derivatives.js';
 import { cr3bpUnits } from '../categories/three-body/cr3bp-units.js';
 import { jacobiConstant } from '../categories/three-body/jacobi-constant.js';
+import { lagrangePoints } from '../categories/three-body/lagrange-points.js';
 
 // Every number shown in an "In practice" box, so the docs can't drift from the
 // code. Each expected string is the readout exactly as the box prints it.
@@ -118,6 +120,22 @@ describe('In practice values', () => {
 
     assert.equal(Math.round(soi / 1000) * 1000, 925_000);
     assert.ok(384_400 < soi);
+  });
+
+  test("hillSphereRadius: Earth's at 1.5 million km, the Moon a quarter of the way out", () => {
+    const hill = km(hillSphereRadius(AU, 0.0167, MU_EARTH, 1.32712440041e20));
+
+    assert.equal((hill / 1e6).toFixed(1), '1.5');
+    assert.equal(Math.round((4 * 384_400) / hill), 1);
+  });
+
+  test('lagrangePoints: Sun-Earth L2, 1.5 million km beyond Earth', () => {
+    const { L2 } = lagrangePoints(1.32712440041e20, 4.0350323e14, AU);
+    const beyond = km(L2[0] - (1 - 3.04e-6) * AU);
+
+    assert.equal((beyond / 1e6).toFixed(1), '1.5');
+    // Four times the Moon's distance
+    assert.equal(Math.round(beyond / 384_400), 4);
   });
 });
 
