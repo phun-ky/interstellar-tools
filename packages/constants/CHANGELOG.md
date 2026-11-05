@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.2.1...%40interstellar-tools%2Fconstants%401.3.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add EGM2008's zonal harmonics ([2d95050](https://github.com/phun-ky/interstellar-tools/commit/2d950501afb9f704e26aeafe3b86734be6fc4813)), references [#228](https://github.com/phun-ky/interstellar-tools/issues/228)
+
 ## [1.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.2.0...%40interstellar-tools%2Fconstants%401.2.1) (2026-11-04)
 
 ### Bug

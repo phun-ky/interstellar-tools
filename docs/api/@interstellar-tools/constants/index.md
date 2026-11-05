@@ -27,10 +27,11 @@ npm i --save @interstellar-tools/constants
 
 ## Variables
 
-| Variable                    | Description                                                       |
-| --------------------------- | ----------------------------------------------------------------- |
-| [G_SI](variables/G_SI.md)   | Gravitational constant **G** in SI units.                         |
-| [WGS84](variables/WGS84.md) | The **WGS 84** reference ellipsoid: Earth's shape as GPS uses it. |
+| Variable                        | Description                                                                                                                                                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [EGM2008](variables/EGM2008.md) | **Earth's gravity field** from EGM2008, the Earth Gravitational Model of the US National Geospatial-Intelligence Agency, to the sixth zonal harmonic: what a numerical propagator needs beyond a point mass. |
+| [G_SI](variables/G_SI.md)       | Gravitational constant **G** in SI units.                                                                                                                                                                    |
+| [WGS84](variables/WGS84.md)     | The **WGS 84** reference ellipsoid: Earth's shape as GPS uses it.                                                                                                                                            |
 
 ## Datasets
 
