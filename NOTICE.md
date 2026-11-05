@@ -62,6 +62,14 @@ Wikipedia text is licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Only factual
 values are taken from it, never text.
 
+The `SATELLITES` dataset in `@interstellar-tools/tracking` holds the orbital
+elements of twelve satellites, dated 4 November 2026, from
+[CelesTrak](https://celestrak.org/) by Dr. T.S. Kelso, which republishes the US
+Space Force's public satellite catalogue. Like the constants, they're
+measurements: a small snapshot for examples and tests, not a copy of the
+catalogue. The SGP4 verification cases in the tests are credited in their own
+[README](./packages/tracking/src/satellites/__tests__/fixtures/README.md).
+
 ## Documentation site
 
 - **Mars terrain:** the elevation grid in the tutorial
