@@ -28,7 +28,9 @@ import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { solveLambert } from '../categories/manoeuvres/solve-lambert.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
+import { estimateLifetime } from '../categories/orbits/estimate-lifetime.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
+import { ballisticCoefficient } from '../categories/entry/ballistic-coefficient.js';
 import { exponentialAtmosphereDensity } from '../categories/orbits/exponential-atmosphere-density.js';
 import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentricity.js';
 import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
@@ -59,6 +61,7 @@ const MU_SUN = 1.32712440018e20; // m³/s²
 const R_EARTH = 6.371e6; // m, mean radius
 const ISS = R_EARTH + 420e3; // m
 const AU = 1.495978707e11; // m
+const R_WGS84 = 6_378_137; // m, equatorial
 
 const km = (m: number) => m / 1e3;
 const group = (n: number) =>
@@ -132,6 +135,17 @@ describe('In practice values', () => {
       Math.round(Math.log10(exponentialAtmosphereDensity(0) / rho)),
       12
     );
+  });
+
+  test('estimateLifetime: a 1U CubeSat lasts half a year from 400 km, three years from 500', () => {
+    const beta = ballisticCoefficient(1.33, 2.2, 0.01);
+    const years = (height: number) =>
+      estimateLifetime(R_WGS84 + height, beta, MU_EARTH, R_WGS84) /
+      (365.25 * 86_400);
+
+    assert.equal(Math.round(years(400_000) * 365.25), 187);
+    assert.equal((years(400_000) * 2).toFixed(0), '1');
+    assert.equal(Math.round(years(500_000)), 3);
   });
 
   test("hillSphereRadius: Earth's at 1.5 million km, the Moon a quarter of the way out", () => {

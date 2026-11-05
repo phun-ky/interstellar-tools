@@ -143,9 +143,13 @@ export * from './categories/orbits/cw-propagate.js';
 
 export * from './categories/orbits/cw-state-transition.js';
 
+export * from './categories/orbits/decay-rate.js';
+
 export * from './categories/orbits/elements-to-state.js';
 
 export * from './categories/orbits/escape-speed.js';
+
+export * from './categories/orbits/estimate-lifetime.js';
 
 export * from './categories/orbits/exponential-atmosphere-density.js';
 
