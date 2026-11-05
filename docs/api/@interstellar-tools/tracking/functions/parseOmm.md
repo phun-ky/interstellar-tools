@@ -8,7 +8,7 @@ function parseOmm(omm: string | object): MeanElementsInterface;
 ```
 
 Defined in:
-[satellites/omm.ts:88](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L88)
+[satellites/omm.ts:96](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L96)
 
 Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format
 CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE,

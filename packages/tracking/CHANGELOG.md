@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.9.0...%40interstellar-tools%2Ftracking%400.10.0) (2026-11-05)
+
+### Documentation
+
+* ✏️ Add a Learn tutorial: where is the ISS, and when can I see it? ([3a4733d](https://github.com/phun-ky/interstellar-tools/commit/3a4733df8f679f5af7f347ccdcf408703ca086de)), closes [#223](https://github.com/phun-ky/interstellar-tools/issues/223)
+* ✏️ Add guide pages for tracking satellites and probes ([ee79d33](https://github.com/phun-ky/interstellar-tools/commit/ee79d339f21e59b67ce73481d1a8096e9a67701a)), closes [#222](https://github.com/phun-ky/interstellar-tools/issues/222)
+
+### Feature
+
+* 🎸 Fit TLE elements to a satellite's own states ([ca78896](https://github.com/phun-ky/interstellar-tools/commit/ca7889602256232ceb8b6a7acd34db19f05cc08e)), closes [#230](https://github.com/phun-ky/interstellar-tools/issues/230)
+
 ## [0.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.8.0...%40interstellar-tools%2Ftracking%400.9.0) (2026-11-05)
 
 ### Feature
