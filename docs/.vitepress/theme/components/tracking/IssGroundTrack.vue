@@ -32,13 +32,9 @@ const HEIGHT = 320;
 const ORBITS = 3;
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 const deg = (radians: number) => (radians * 180) / Math.PI;
-// The map in the SVG's pixels: R = 1 puts x and y in radians. The projection
-// wraps -180° to 180°, the same meridian; a track segment that starts at the
-// antimeridian, coming from the east, starts at the left edge
+// The map in the SVG's pixels: R = 1 puts x and y in radians
 const at = (phi: number, lambda: number) => {
-  const projected = equirectangular(phi as Radians, lambda as Radians, 1);
-  const x = lambda === -Math.PI ? -Math.PI : projected.x;
-  const { y } = projected;
+  const { x, y } = equirectangular(phi as Radians, lambda as Radians, 1);
 
   return {
     x: ((x + Math.PI) / (2 * Math.PI)) * WIDTH,
