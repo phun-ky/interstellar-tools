@@ -76,6 +76,21 @@ import { subSatellitePoint } from '@interstellar-tools/tracking';
 const { phi, lambda, h } = subSatellitePoint(iss, new Date());
 ```
 
+Draw it on a flat map: its ground track, split where it crosses the
+antimeridian, and the footprint it can be seen from:
+
+```ts
+import {
+  coverageFootprint,
+  groundTrack,
+  subSatellitePoint
+} from '@interstellar-tools/tracking';
+
+const later = new Date(Date.now() + 92 * 60_000); // one ISS orbit
+const segments = groundTrack(iss, new Date(), later); // lines of { phi, lambda, h }
+const footprint = coverageFootprint(subSatellitePoint(iss, new Date()), 0.1745); // above 10°
+```
+
 Or see it from the ground: where to point an antenna, and how far to retune the
 radio for the Doppler shift:
 
