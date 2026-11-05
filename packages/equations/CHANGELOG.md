@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.14.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.13.0...%40interstellar-tools%2Fequations%401.14.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Design sun-synchronous, repeat ground track and frozen orbits ([34bae1d](https://github.com/phun-ky/interstellar-tools/commit/34bae1d99e20355059747a8f5e1c4119d8b9bc0f)), closes [#229](https://github.com/phun-ky/interstellar-tools/issues/229)
+
 ## [1.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.12.0...%40interstellar-tools%2Fequations%401.13.0) (2026-11-05)
 
 ### Feature
