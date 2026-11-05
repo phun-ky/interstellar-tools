@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.6.0...%40interstellar-tools%2Ftracking%400.7.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Ship a dataset of notable space probes ([f1fcd27](https://github.com/phun-ky/interstellar-tools/commit/f1fcd27ba47e04c67285b37cf16c7936fbcb8e36)), closes [#218](https://github.com/phun-ky/interstellar-tools/issues/218)
+
 ## [0.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.5.0...%40interstellar-tools%2Ftracking%400.6.0) (2026-11-05)
 
 ### Feature

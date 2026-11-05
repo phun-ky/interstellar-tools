@@ -1,6 +1,6 @@
 {
   "name": "@interstellar-tools/tracking",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Satellite and space probe tracking: orbital elements, SGP4 propagation, ground tracks, look angles and passes, and positions of deep-space probes.",
   "keywords": [
     "satellite-tracking",

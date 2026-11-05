@@ -144,6 +144,16 @@ const { r, v } = stateAt(voyager1, new Date('2026-01-05T06:00:00Z')); // m and m
 const [segment] = parseOem(oemText);
 ```
 
+Or use `PROBES`: eleven notable probes, from Voyager 1 to JWST and Parker Solar
+Probe, with ephemerides from Horizons from November 2026 to the end of 2027:
+
+```ts
+import { PROBES, stateAt } from '@interstellar-tools/tracking';
+
+const { near, ephemeris } = PROBES.find(({ id }) => id === 'jwst')!; // near: 'sun-earth-l2'
+const { r, v } = stateAt(ephemeris, new Date()); // from the Sun, in m and m/s
+```
+
 ## What's planned
 
 The
@@ -185,11 +195,12 @@ npm i --save @interstellar-tools/tracking
 
 ## Probes
 
-| Function                                                  | Description                                                                                                                                                                                                                                     |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [parseHorizonsVectors](functions/parseHorizonsVectors.md) | Parse a **JPL Horizons vector table**: the positions and velocities Horizons gives for a spacecraft, planet or small body, as text or CSV. It's the easiest way to an ephemeris of a deep-space probe, such as Voyager 1 or Parker Solar Probe. |
-| [parseOem](functions/parseOem.md)                         | Parse a CCSDS **Orbit Ephemeris Message** (OEM) in its key-value (KVN) form: the standard space agencies exchange spacecraft ephemerides in, a table of positions and velocities over time.                                                     |
-| [stateAt](functions/stateAt.md)                           | The **state of a spacecraft at any moment** of an ephemeris: its position and velocity, interpolated between the samples.                                                                                                                       |
+| Name                                                      | Description                                                                                                                                                                                                                                                                         |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [PROBES](variables/PROBES.md)                             | **Notable space probes**, with a dated ephemeris for each from JPL Horizons: where Voyager 1 is, how far New Horizons has gone, where JWST sits. With [stateAt](functions/stateAt.md), they answer "where is it now" without the network, from 1 November 2026 to 31 December 2027. |
+| [parseHorizonsVectors](functions/parseHorizonsVectors.md) | Parse a **JPL Horizons vector table**: the positions and velocities Horizons gives for a spacecraft, planet or small body, as text or CSV. It's the easiest way to an ephemeris of a deep-space probe, such as Voyager 1 or Parker Solar Probe.                                     |
+| [parseOem](functions/parseOem.md)                         | Parse a CCSDS **Orbit Ephemeris Message** (OEM) in its key-value (KVN) form: the standard space agencies exchange spacecraft ephemerides in, a table of positions and velocities over time.                                                                                         |
+| [stateAt](functions/stateAt.md)                           | The **state of a spacecraft at any moment** of an ephemeris: its position and velocity, interpolated between the samples.                                                                                                                                                           |
 
 ## Satellites
 
