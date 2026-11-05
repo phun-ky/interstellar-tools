@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.17.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.16.0...%40interstellar-tools%2Ftypes%401.17.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the Moon position type ([a9f8dd8](https://github.com/phun-ky/interstellar-tools/commit/a9f8dd89f187f7f9ad96c0e8ac039ae34b9c4dfd)), references [#228](https://github.com/phun-ky/interstellar-tools/issues/228)
+
 ## [1.16.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.15.0...%40interstellar-tools%2Ftypes%401.16.0) (2026-11-05)
 
 ### Feature
