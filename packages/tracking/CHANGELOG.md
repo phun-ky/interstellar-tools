@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.3.1...%40interstellar-tools%2Ftracking%400.4.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Find satellite eclipses and visible passes ([fac4ef9](https://github.com/phun-ky/interstellar-tools/commit/fac4ef91a3aa574dd94a699869172c9299c77264)), closes [#215](https://github.com/phun-ky/interstellar-tools/issues/215)
+
 ## [0.3.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.3.0...%40interstellar-tools%2Ftracking%400.3.1) (2026-11-04)
 
 ### Bug
