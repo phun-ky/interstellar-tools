@@ -22,6 +22,10 @@ copyright. They're compiled from public references, credited here:
 - **Physical constants:**
   [CODATA recommended values](https://physics.nist.gov/cuu/Constants/), via the
   US National Institute of Standards and Technology (NIST).
+- **Earth's gravity field:** the zonal coefficients, gravitational parameter and
+  reference radius of EGM2008, the Earth Gravitational Model of the US National
+  Geospatial-Intelligence Agency (Pavlis et al. 2012, JGR 117, B04406), from the
+  coefficient file served by [ICGEM](https://icgem.gfz-potsdam.de/).
 - **Units and defined constants:** the
   [SI Brochure](https://www.bipm.org/en/publications/si-brochure) (BIPM) and
   resolutions of the [International Astronomical Union](https://www.iau.org/)

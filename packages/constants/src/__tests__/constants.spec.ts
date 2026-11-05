@@ -3,6 +3,7 @@ import test, { describe } from 'node:test';
 
 import {
   AU_METERS,
+  EGM2008,
   AU_PER_LY,
   EPOCH_2000_UTC_MIDNIGHT,
   EPOCH_2000_UTC_MIDNIGHT_TIME_SCALE,
@@ -177,5 +178,27 @@ describe('derived constants match their definitions', () => {
   test('EPOCH_2000_UTC_MIDNIGHT is 2000-01-01 00:00 UTC', () => {
     assert.ok(EPOCH_2000_UTC_MIDNIGHT instanceof Date);
     assert.equal(EPOCH_2000_UTC_MIDNIGHT.getTime(), Date.UTC(2000, 0, 1));
+  });
+});
+
+describe('EGM2008', () => {
+  test('holds J2 to J6 from the normalised coefficients', () => {
+    // −√(2n + 1) C̄(n,0), from the coefficient file's tide-free values
+    const expected = [
+      1.0826261738522226e-3, -2.5324105185677223e-6, -1.619897599916973e-6,
+      -2.2775359073083618e-7, 5.4066657628381321e-7
+    ];
+
+    assert.equal(EGM2008.J.length, 5);
+    EGM2008.J.forEach((J, k) =>
+      assert.ok(Math.abs(J - expected[k]!) <= 1e-15 * Math.abs(expected[k]!))
+    );
+    assert.equal(EGM2008.mu, 3.986004415e14);
+    assert.equal(EGM2008.radius, 6_378_136.3);
+  });
+
+  test('is frozen', () => {
+    assert.ok(Object.isFrozen(EGM2008));
+    assert.ok(Object.isFrozen(EGM2008.J));
   });
 });
