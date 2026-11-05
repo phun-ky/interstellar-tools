@@ -13,7 +13,7 @@ function mercator(
 ```
 
 Defined in:
-[projections/mercator.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mercator.ts#L59)
+[projections/mercator.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mercator.ts#L66)
 
 Project a point on a sphere with the **Mercator projection**: the conformal
 cylindrical map, which keeps angles and shapes locally true.
@@ -33,7 +33,7 @@ Where:
 **Units**
 
 - Inputs: angles in **radians**, `R` in **m**.
-- Output: `{ x, y }` in **m**, with $x$ in (−πR, πR].
+- Output: `{ x, y }` in **m**, with $x$ in \[−πR, πR].
 
 ::: info Notes
 
@@ -46,7 +46,8 @@ Where:
   [inverseMercator](inverseMercator.md)) stop at $\arctan\sinh\pi \approx
   85.0511°$, where the map is as tall as it is wide.
 - $\lambda - \lambda_0$ is wrapped to (−π, π], so the map is centred on the
-  central meridian.
+  central meridian. −π itself stays on the left edge, so a line that ends there,
+  like a ground track split at the antimeridian, isn't drawn across the map.
 - A sphere only: on an oblate body this is the spherical Mercator web maps use,
   not the ellipsoidal one.
 

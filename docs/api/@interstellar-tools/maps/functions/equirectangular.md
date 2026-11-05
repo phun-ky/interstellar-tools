@@ -13,7 +13,7 @@ function equirectangular(
 ```
 
 Defined in:
-[projections/equirectangular.ts:88](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/equirectangular.ts#L88)
+[projections/equirectangular.ts:91](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/equirectangular.ts#L91)
 
 Project a point on a sphere with the **equirectangular projection**: the simple
 cylindrical map, with latitude and longitude spaced evenly.
@@ -47,7 +47,9 @@ Where:
   $\cos\varphi_1/\cos\varphi$, so it keeps neither angles nor areas.
 - Choose $\varphi_1$ near the latitude of interest for a regional map: Mars
   mosaics of mid-latitude sites, for example.
-- $\lambda - \lambda_0$ is wrapped to (−π, π].
+- $\lambda - \lambda_0$ is wrapped to (−π, π]. −π itself stays on the left edge,
+  so a line that ends there, like a ground track split at the antimeridian,
+  isn't drawn across the map.
 
 :::
 

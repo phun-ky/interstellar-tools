@@ -13,7 +13,7 @@ function mollweide(
 ```
 
 Defined in:
-[projections/mollweide.ts:104](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L104)
+[projections/mollweide.ts:107](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L107)
 
 Project a point on a sphere with the **Mollweide projection**: an equal-area map
 of the whole sphere inside an ellipse twice as wide as tall.
@@ -48,7 +48,9 @@ Where:
 - Newton's method slows down near the poles, where $2\theta + \sin 2\theta$
   flattens out; the solver starts closer there and falls back to bisection, so
   it always converges. The poles themselves are solved directly.
-- $\lambda - \lambda_0$ is wrapped to (−π, π].
+- $\lambda - \lambda_0$ is wrapped to (−π, π]. −π itself stays on the left edge,
+  so a line that ends there, like a ground track split at the antimeridian,
+  isn't drawn across the map.
 
 :::
 
