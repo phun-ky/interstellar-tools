@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.12.0...%40interstellar-tools%2Fequations%401.13.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Find the Lagrange points of two bodies ([a42794f](https://github.com/phun-ky/interstellar-tools/commit/a42794f44ad8cae8875dd4980d997d8b511c6799)), closes [#221](https://github.com/phun-ky/interstellar-tools/issues/221)
+
 ## [1.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.11.1...%40interstellar-tools%2Fequations%401.12.0) (2026-11-04)
 
 ### Feature
