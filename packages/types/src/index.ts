@@ -17,3 +17,5 @@ export * from './three-body.js';
 export * from './celestial-bodies/index.js';
 
 export * from './tracking.js';
+
+export * from './atmosphere.js';
