@@ -21,6 +21,7 @@ npm i @interstellar-tools/equations
 npm i @interstellar-tools/types
 npm i @interstellar-tools/temporal
 npm i @interstellar-tools/maps
+npm i @interstellar-tools/tracking
 npm i @interstellar-tools/mcp
 
 # or add the core packages at once

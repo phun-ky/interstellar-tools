@@ -196,6 +196,20 @@ After 17 minutes of station keeping, Eagle and Columbia docked. Armstrong and
 Aldrin moved back into the command module with their samples, and the ascent
 stage was cast off.
 
+<DocPhoto
+  src="apollo-11/ascent-stage-earth-moon.webp"
+  alt="Eagle's ascent stage approaching, with the Moon below and Earth above the horizon"
+  :width="1600"
+  :height="1538"
+  credit="NASA"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Earth,_Moon_and_Lunar_Module,_AS11-44-6643.jpg">
+
+Eagle's ascent stage closes in on Columbia on 21 July, with Earth above the
+lunar horizon.
+
+</DocPhoto>
+
 ## 7. Try it yourself
 
 - Lift off one minute late. How many degrees further behind does the LM start,

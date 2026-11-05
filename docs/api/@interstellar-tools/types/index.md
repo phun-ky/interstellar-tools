@@ -47,6 +47,7 @@ npm i --save @interstellar-tools/types
 | [EllipsoidInterface](interfaces/EllipsoidInterface.md)                     | A body's **reference ellipsoid**: the smooth surface that latitudes, longitudes and heights are measured on.                                      |
 | [GeodeticCoordinatesInterface](interfaces/GeodeticCoordinatesInterface.md) | A point's **geodetic coordinates** on an oblate body: latitude, longitude and height above the reference ellipsoid, in SI units and radians.      |
 | [IlluminationAnglesInterface](interfaces/IlluminationAnglesInterface.md)   | The **illumination angles** at a point on a surface: where the light comes from and where it's seen from, relative to the surface and each other. |
+| [SunPositionInterface](interfaces/SunPositionInterface.md)                 | The **Sun's position** seen from Earth's centre at a moment: its direction on the sky and its distance.                                           |
 
 ## Celestial Bodies
 
@@ -112,10 +113,12 @@ npm i --save @interstellar-tools/types
 
 | Name                                                           | Description                                                                                                                                                                                                |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [LeapSecondInterface](interfaces/LeapSecondInterface.md)       | One step in the **leap second table**: the offset TAI − UTC from a given UTC day on.                                                                                                                       |
 | [TemporalInterface](interfaces/TemporalInterface.md)           | Typed container for a scalar **duration**, combining a numeric `value` (from [ValueInterface](interfaces/ValueInterface.md)) with a canonical [TemporalUnitType](type-aliases/TemporalUnitType.md) `unit`. |
 | [TimeStepInterface](interfaces/TimeStepInterface.md)           | Represents a **time step measurement** in simulation, restricted to days.                                                                                                                                  |
 | [TemporalUnitAliasType](type-aliases/TemporalUnitAliasType.md) | Human-friendly **temporal unit aliases** accepted at input time.                                                                                                                                           |
 | [TemporalUnitType](type-aliases/TemporalUnitType.md)           | Canonical **temporal unit symbols** for spacetime/physics **durations**.                                                                                                                                   |
+| [TimeScaleType](type-aliases/TimeScaleType.md)                 | A **time scale**: the clock a moment is read on.                                                                                                                                                           |
 
 ## Three-body
 
@@ -124,3 +127,12 @@ npm i --save @interstellar-tools/types
 | [Cr3bpUnitsInterface](interfaces/Cr3bpUnitsInterface.md)     | The units of the normalised CR3BP frame for a pair of bodies, in SI.                                  |
 | [Cr3bpState](type-aliases/Cr3bpState.md)                     | A state in the **circular restricted three-body problem** (CR3BP), in the rotating, normalised frame. |
 | [Cr3bpStateDerivative](type-aliases/Cr3bpStateDerivative.md) | The time derivative of a [Cr3bpState](type-aliases/Cr3bpState.md): velocities, then accelerations.    |
+
+## Tracking
+
+| Name                                                           | Description                                                                                                                                                                                    |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [LookAnglesInterface](interfaces/LookAnglesInterface.md)       | Where a satellite is in an observer's sky: the direction to point an antenna or a camera, how far away it is and how fast that distance changes.                                               |
+| [MeanElementsInterface](interfaces/MeanElementsInterface.md)   | A satellite's **mean elements**, as published in a two-line element set (TLE) or an Orbit Mean-elements Message (OMM): the orbit SGP4 was fitted to at an epoch, with the drag terms it needs. |
+| [SatellitePassInterface](interfaces/SatellitePassInterface.md) | One **pass** of a satellite over an observer: when it rises above the horizon, when it's highest, and when it sets.                                                                            |
+| [ShadowType](type-aliases/ShadowType.md)                       | Where a satellite is relative to **Earth's shadow**.                                                                                                                                           |

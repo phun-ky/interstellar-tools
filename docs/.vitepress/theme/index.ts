@@ -20,6 +20,7 @@ import ApolloLatitudePlot from './components/apollo/ApolloLatitudePlot.vue';
 import ApolloMissionMap from './components/apollo/ApolloMissionMap.vue';
 import ApolloRendezvousPlot from './components/apollo/ApolloRendezvousPlot.vue';
 import ApolloSunPlot from './components/apollo/ApolloSunPlot.vue';
+import DocPhoto from './components/DocPhoto.vue';
 import MissionHome from './components/home/MissionHome.vue';
 import ProjectionMap from './components/maps/ProjectionMap.vue';
 import MarsLandingGrid from './components/mars/MarsLandingGrid.vue';
@@ -42,6 +43,7 @@ export default {
     DefaultTheme.enhanceApp?.(ctx);
     ctx.app.component('MissionHome', MissionHome);
     ctx.app.component('PullQuote', PullQuote);
+    ctx.app.component('DocPhoto', DocPhoto);
     ctx.app.component('OrbitWidget', OrbitWidget);
     ctx.app.component('ApolloMissionMap', ApolloMissionMap);
     ctx.app.component('ApolloAimPlot', ApolloAimPlot);

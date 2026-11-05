@@ -6,6 +6,20 @@
 
 Example usage of `combineBurnsDeltaV`.
 
+<DocPhoto
+  src="manoeuvres/gemini-7-from-gemini-6.webp"
+  alt="The Gemini 7 spacecraft above Earth, seen from Gemini 6A a few metres away"
+  :width="1600"
+  :height="1594"
+  credit="NASA"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Gemini_6_Views_Gemini_7.jpg">
+
+Gemini 7 seen from Gemini 6A in December 1965, the first rendezvous of two
+crewed spacecraft. Getting there took burns in several directions.
+
+</DocPhoto>
+
 ```ts
 import { combineBurnsDeltaV } from '@interstellar-tools/equations';
 import type { Radians } from '@interstellar-tools/types';
@@ -326,6 +340,20 @@ console.log(`Approx. semi-major axis change Δa ≈ ${deltaA.toFixed(0)} m`);
 
 Example usage of: `rocketDeltaVFromIsp`, `initialMassForDeltaV`,
 `massFlowRate`, `burnTime`, `thrustToWeight`, `rocketThrust`, `gravityLoss`.
+
+<DocPhoto
+  src="manoeuvres/rs-25-test.webp"
+  alt="An RS-25 engine firing on a test stand at sunset, with a white plume of steam"
+  :width="1600"
+  :height="1064"
+  credit="NASA Stennis / Danny Nowlin"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:An_RS-25_engine_is_fired_at_sunset_on_Nov_15_on_the_A-1_test_stand_at_Stennis_Space_Center_(SSC-20181115-s00980).jpg">
+
+An RS-25, the engine of the Space Shuttle and SLS, test-fired at Stennis Space
+Center in 2018.
+
+</DocPhoto>
 
 ### From a Δv to a burn plan
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.2.0...%40interstellar-tools%2Fmcp%401.2.1) (2026-11-04)
+
+### Tasks
+
+* 🤖 Align with the shared repo brief decisions of 2026-10-23 ([645799b](https://github.com/phun-ky/interstellar-tools/commit/645799be19bebdb956ec6eca38269f037dd14cd1)), references [#237](https://github.com/phun-ky/interstellar-tools/issues/237)
+
+### Bug
+
+* 🐛 Use caret ranges for the runtime dependencies of @interstellar-tools/mcp ([87c4fad](https://github.com/phun-ky/interstellar-tools/commit/87c4fade9666f2286c2a0db82d0c5aecbc212642)), closes [#236](https://github.com/phun-ky/interstellar-tools/issues/236)
+
 ## [1.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.1.0...%40interstellar-tools%2Fmcp%401.2.0) (2026-11-04)
 
 ### Feature

@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.9.0...%40interstellar-tools%2Ftypes%401.10.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the Sun position and shadow types ([cf6cc2e](https://github.com/phun-ky/interstellar-tools/commit/cf6cc2efa93a8687f3e8f59844191518244056dc)), references [#215](https://github.com/phun-ky/interstellar-tools/issues/215)
+
+## [1.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.8.0...%40interstellar-tools%2Ftypes%401.9.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the satellite pass type ([10edb91](https://github.com/phun-ky/interstellar-tools/commit/10edb919df15a8394d7b33635beec292cab6b1a9))
+
+## [1.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.7.0...%40interstellar-tools%2Ftypes%401.8.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the look angles type for satellite tracking ([5076106](https://github.com/phun-ky/interstellar-tools/commit/50761066d63fccce9b235d4cb166c032449668fe))
+
+## [1.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.6.0...%40interstellar-tools%2Ftypes%401.7.0) (2026-11-04)
+
+### Feature
+
+* 🎸 Add the mean elements type for TLEs and OMMs ([f45704f](https://github.com/phun-ky/interstellar-tools/commit/f45704fac2cff855e8fdee6374592974ec776fec))
+
+## [1.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.5.1...%40interstellar-tools%2Ftypes%401.6.0) (2026-11-04)
+
+### Tasks
+
+* 🤖 Align with the shared repo brief decisions of 2026-10-23 ([645799b](https://github.com/phun-ky/interstellar-tools/commit/645799be19bebdb956ec6eca38269f037dd14cd1)), references [#237](https://github.com/phun-ky/interstellar-tools/issues/237)
+
+### Feature
+
+* 🎸 Add Julian dates and time scales to temporal ([f423242](https://github.com/phun-ky/interstellar-tools/commit/f423242db15227a8ba9f3e349b241f8623aa0ea8)), closes [#208](https://github.com/phun-ky/interstellar-tools/issues/208)
+
 ## [1.5.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.5.0...%40interstellar-tools%2Ftypes%401.5.1) (2026-11-03)
 
 ### Bug

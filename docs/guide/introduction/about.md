@@ -44,6 +44,21 @@ science, education, and industry need trustworthy, well-typed primitives.
 accelerate that shift: precise functions, clear docs, and strong types that make
 orbital and mission software easier to build and easier to verify.
 
+<DocPhoto
+  src="about/pale-blue-dot-revisited.webp"
+  alt="A dark blue field crossed by pale bands of scattered sunlight, with Earth a single faint point beside the brightest one"
+  :width="1600"
+  :height="1583"
+  credit="NASA/JPL-Caltech"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Pale_Blue_Dot_from_Voyager_1_-_PIA23645.png">
+
+Pale Blue Dot Revisited: Voyager 1's 1990 photo of Earth from 6 billion km,
+reprocessed in 2020. Earth is the faint dot just right of the bright band,
+halfway down.
+
+</DocPhoto>
+
 ## Sustainable Development Goals
 
 Space is part of how the world works towards the United Nations'
@@ -75,11 +90,13 @@ of them directly:
 
 | Package                         | Description                                       | Status |
 | ------------------------------- | ------------------------------------------------- | ------ |
-| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Alpha  |
-| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Alpha  |
-| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | WIP    |
-| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | WIP    |
-| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Alpha  |
+| `@interstellar-tools/constants` | Physical & astronomical constants in SI units.    | Stable |
+| `@interstellar-tools/equations` | Orbital mechanics & dynamics utilities.           | Stable |
+| `@interstellar-tools/maps`      | Map projections, terrain and imaging geometry.    | 0.x    |
+| `@interstellar-tools/mcp`       | MCP server for AI assistants.                     | Stable |
+| `@interstellar-tools/temporal`  | Time/epoch helpers for space applications.        | Stable |
+| `@interstellar-tools/tracking`  | Satellites and deep-space probes.                 | 0.x    |
+| `@interstellar-tools/types`     | Shared TypeScript types (vectors, results, etc.). | Stable |
 
 ### Details
 
@@ -101,8 +118,8 @@ as mission-critical software (yet).
 :::
 
 - **@interstellar-tools/temporal** Time and epoch utilities for space
-  applications (e.g., building blocks toward Julian dates, conversions, and
-  ephemeris-friendly time handling).
+  applications: time unit conversion, and Julian dates on the UTC, TAI, TT and
+  UT1 time scales, with leap seconds.
 
 - **@interstellar-tools/types** Shared TypeScript types (e.g., 3D tuples,
   equation result interfaces) used across the monorepo to keep APIs predictable

@@ -11,6 +11,19 @@ the mission actually flew.
   `@interstellar-tools/maps`, one step at a time
 - **Time:** about 10 minutes per chapter
 
+<DocPhoto
+  src="apollo-11/earthrise.webp"
+  alt="Earth, half lit, rising above the grey lunar horizon"
+  :width="1600"
+  :height="1600"
+  credit="NASA"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:AS11-44-6552.jpg">
+
+Earthrise, photographed by the Apollo 11 crew from lunar orbit.
+
+</DocPhoto>
+
 ## The mission at a glance
 
 Step through the mission's main events. The map turns with the Moon, and the
@@ -21,6 +34,20 @@ the Moon and back to Earth, the way home if the service module's engine had
 failed; the real return, after lunar orbit, followed a similar path.
 
 <ApolloMissionMap />
+
+<DocPhoto
+  src="apollo-11/mission-control.webp"
+  alt="Flight controllers at their consoles in Mission Control, with the moonwalk on the large screen at the front"
+  :width="1600"
+  :height="1055"
+  credit="NASA Johnson Space Center"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:View_of_Mission_Control_during_lunar_surface_Apollo_11_EVA_(S69-39593).jpg">
+
+Mission Control in Houston during the moonwalk, with the television from the
+Moon on the big screen.
+
+</DocPhoto>
 
 ## Chapters
 
