@@ -136,6 +136,10 @@ export default defineConfig({
             {
               text: 'Where is the ISS?',
               link: '/learn/where-is-the-iss'
+            },
+            {
+              text: 'How long is a day on Mars?',
+              link: '/learn/days-on-other-worlds'
             }
           ]
         },
