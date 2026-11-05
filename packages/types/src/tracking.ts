@@ -388,3 +388,68 @@ export interface EphemerisInterface {
   /** The samples, in time order. */
   samples: readonly EphemerisSampleInterface[];
 }
+
+/**
+ * Whether a space probe is still at work: `'active'` while its mission
+ * operates it, `'ended'` once contact is lost or the mission is over. An ended
+ * probe keeps flying: Pioneer 10 still coasts out of the Solar System.
+ *
+ * @example
+ * ```ts
+ * const status: ProbeStatusType = 'ended'; // Pioneer 10, last heard from in 2003
+ * ```
+ * @group Tracking
+ */
+export type ProbeStatusType = 'active' | 'ended';
+
+/**
+ * A probe in the `PROBES` dataset of `@interstellar-tools/tracking`: a
+ * deep-space spacecraft, with what it is, where it's headed and a dated
+ * ephemeris.
+ *
+ * ::: info
+ *
+ * - `near` and `destination` are ids from the body datasets of
+ *   `@interstellar-tools/constants`, such as `'sun'` or `'europa'`, or a
+ *   Lagrange point as the two bodies and the point, such as `'sun-earth-l2'`.
+ * - `status` is as of the ephemeris's start.
+ * - The ephemeris covers a limited span: outside it, fetch one from JPL
+ *   Horizons with `horizonsId`.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * const jwst: ProbeRecordInterface = {
+ *   id: 'jwst',
+ *   name: 'James Webb Space Telescope',
+ *   agencies: ['NASA', 'ESA', 'CSA'],
+ *   launch: '2021-12-25',
+ *   status: 'active',
+ *   near: 'sun-earth-l2',
+ *   horizonsId: '-170',
+ *   ephemeris
+ * };
+ * ```
+ * @group Tracking
+ */
+export interface ProbeRecordInterface {
+  /** Stable id, in kebab case: `'voyager-1'`, `'jwst'`. */
+  id: string;
+  /** Common name: `'Voyager 1'`. */
+  name: string;
+  /** The agencies that built and fly it, leading agency first. */
+  agencies: readonly string[];
+  /** Launch date, in UTC: `YYYY-MM-DD`. */
+  launch: string;
+  /** Whether its mission still operates it. */
+  status: ProbeStatusType;
+  /** The body or Lagrange point it's near, or orbits: `'sun'` for a probe in interplanetary space. */
+  near: string;
+  /** The body or Lagrange point it's on its way to, if it's still travelling there. */
+  destination?: string;
+  /** Its id in JPL Horizons, for fetching a fresh ephemeris: `'-31'`. */
+  horizonsId: string;
+  /** Positions and velocities from the Sun's centre, in the ICRF. */
+  ephemeris: EphemerisInterface;
+}
