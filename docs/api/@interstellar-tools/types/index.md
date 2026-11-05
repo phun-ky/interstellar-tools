@@ -70,6 +70,7 @@ npm i --save @interstellar-tools/types
 | [GalaxyInterface](interfaces/GalaxyInterface.md)                             | Represents a **galaxy** in the universe simulation.                                                     |
 | [MoonInterface](interfaces/MoonInterface.md)                                 | Represents a **moon** (natural satellite) orbiting a planet.                                            |
 | [PlanetInterface](interfaces/PlanetInterface.md)                             | Represents a **planet** or **planetoid**.                                                               |
+| [RotationInterface](interfaces/RotationInterface.md)                         | How a planet or moon **spins**: its sidereal rotation period, one turn against the stars.               |
 | [StarInterface](interfaces/StarInterface.md)                                 | Represents a **star**.                                                                                  |
 | [SystemInterface](interfaces/SystemInterface.md)                             | Represents a **system**: the barycenter (centre of mass) that its members orbit.                        |
 | [AsteroidBeltsType](type-aliases/AsteroidBeltsType.md)                       | Type alias for a collection of asteroid belts.                                                          |
