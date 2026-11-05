@@ -17,6 +17,8 @@ export * from './satellites/passes.js';
 
 export * from './satellites/ground-track.js';
 
+export * from './satellites/globe.js';
+
 export * from './satellites/shadow.js';
 
 export * from './satellites/dataset.js';
