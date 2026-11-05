@@ -3,6 +3,7 @@ import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
 import type { DisplayInterface } from './display.js';
+import type { RotationInterface } from './rotation.js';
 
 /**
  * Represents a **planet** or **planetoid**.
@@ -71,6 +72,11 @@ export interface PlanetInterface {
   parent?: string;
   /** Orbit around the parent. */
   orbit?: OrbitInterface;
+  /**
+   * How the planet spins: its sidereal rotation period and direction. Given
+   * where the IAU, or a measurement, publishes one.
+   */
+  rotation?: RotationInterface;
   /** Mean radius of the planet in kilometres; the IAU's, where it gives one. */
   radius: DistanceInterface;
   /**
