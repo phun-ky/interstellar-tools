@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.14.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.13.0...%40interstellar-tools%2Ftypes%401.14.0) (2026-11-05)
+
+### Feature
+
+* 🎸 Add the globe point type ([8a34d61](https://github.com/phun-ky/interstellar-tools/commit/8a34d6192488ea0a77f4ee8c7e7e8cb687ceb4d5)), references [#220](https://github.com/phun-ky/interstellar-tools/issues/220)
+
 ## [1.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.12.0...%40interstellar-tools%2Ftypes%401.13.0) (2026-11-05)
 
 ### Feature
