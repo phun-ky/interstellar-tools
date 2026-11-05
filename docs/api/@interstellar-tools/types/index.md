@@ -40,6 +40,13 @@ npm i --save @interstellar-tools/types
 | [OdeRightHandSideType](type-aliases/OdeRightHandSideType.md) | The right-hand side of a system of first-order ODEs, $\dot{\mathbf y} = f(t, \mathbf y)$. |
 | [Vector3DTupleType](type-aliases/Vector3DTupleType.md)       | A read-only 3D vector tuple `[x, y, z]`.                                                  |
 
+## Atmosphere
+
+| Interface                                                    | Description                                                                                                                                                                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [AtmosphereInterface](interfaces/AtmosphereInterface.md)     | The **state of the atmosphere** at a place and a moment: its density, temperature and make-up.                                                                                                          |
+| [SpaceWeatherInterface](interfaces/SpaceWeatherInterface.md) | The **space weather** an atmosphere model needs: how strongly the Sun heats the upper atmosphere, and how stirred up Earth's magnetic field is. Above about 200 km they change the air density tenfold. |
+
 ## Cartography
 
 | Interface                                                                  | Description                                                                                                                                       |
