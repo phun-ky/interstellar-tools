@@ -179,6 +179,8 @@ export * from './categories/orbits/specific-angular-momentum.js';
 
 export * from './categories/orbits/specific-mechanical-energy.js';
 
+export * from './categories/orbits/hill-sphere-radius.js';
+
 export * from './categories/orbits/sphere-of-influence-radius.js';
 
 export * from './categories/orbits/state-to-elements.js';
@@ -232,3 +234,5 @@ export * from './categories/three-body/cr3bp-mass-ratio.js';
 export * from './categories/three-body/cr3bp-units.js';
 
 export * from './categories/three-body/jacobi-constant.js';
+
+export * from './categories/three-body/lagrange-points.js';
