@@ -10,6 +10,9 @@ import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
  *   Orbits within a system: `a` in au, `period` in yr or kyr. `angle` in radians. `mass` in M☉.
  * - `color` is for visualization only.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
+ * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
+ *   published: none for Deneb. The Sun's is the IAU's Carrington period, with its faster equator
+ *   and slower poles in `equatorialPeriod` and `polarPeriod`. A star's spin direction is unknown.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -37,6 +40,16 @@ export const STARS: StarsType = [
     // No orbit: the Sun's wobble around the barycenter is the sum of the planets' pulls, not a Kepler orbit
     /** Mass in solar masses */
     mass: 1,
+    /**
+     * Sidereal rotation in days: the IAU's, the Carrington period its
+     * coordinates turn with. Its gas turns faster at the equator than at the
+     * poles (Snodgrass & Ulrich 1990), and the pole's is extrapolated
+     */
+    rotation: {
+      period: { value: 25.379995, unit: 'd' },
+      equatorialPeriod: { value: 24.47, unit: 'd' },
+      polarPeriod: { value: 34.16, unit: 'd' }
+    },
     /** Radius in km */
     radius: { value: 696340, unit: 'km' },
     mu: 1.3271244004127942e20, // DE440: 1.32712440041279419e20, to double precision
@@ -63,6 +76,8 @@ export const STARS: StarsType = [
       /** Initial angle in orbit */
       angle: 1.569867205171707 as Radians
     },
+    /** Equatorial rotation in days: Monnier et al. 2012, from interferometry. Seen nearly pole-on */
+    rotation: { period: { value: 0.71, unit: 'd' } },
     /** Radius in km */
     mass: 2.135, // Yoon et al. 2010
     radius: { value: 2600000, unit: 'km' },
@@ -88,6 +103,8 @@ export const STARS: StarsType = [
       period: { value: 410, unit: 'Myr' },
       angle: 1.5701789517599378 as Radians
     },
+    /** Equatorial rotation in hours, 7 h 46 m: Bouchaud et al. 2020, from interferometry */
+    rotation: { period: { value: 7.766667, unit: 'h' } },
     mass: 1.791, // Peterson et al. 2006
     radius: { value: 1700000, unit: 'km' },
     display: {
@@ -137,6 +154,8 @@ export const STARS: StarsType = [
       i: 63.1 as DegreesType,
       w: 233.9 as DegreesType
     },
+    /** Rotation in days: two turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
+    rotation: { period: { value: 2.007, unit: 'd' } },
     mass: 11.43,
     radius: { value: 5196879, unit: 'km' }, // 7.47 R☉
     display: {
@@ -157,6 +176,8 @@ export const STARS: StarsType = [
       i: 63.1 as DegreesType,
       w: 53.9 as DegreesType // opposite A's periapsis
     },
+    /** Rotation in days: 1.5 turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
+    rotation: { period: { value: 2.676, unit: 'd' } },
     mass: 7.21,
     radius: { value: 2601918, unit: 'km' }, // 3.74 R☉
     display: {
@@ -188,6 +209,8 @@ export const STARS: StarsType = [
       w: 51.519 as DegreesType,
       om: 205.073 as DegreesType
     },
+    /** Rotation in days: Hallam et al. 1991, from its ultraviolet activity. Uncertain: Bazot et al. 2007 find 22.5 ± 5.9 d */
+    rotation: { period: { value: 28.8, unit: 'd' } },
     mass: 1.0788,
     radius: { value: 847015, unit: 'km' }, // 1.2175 R☉
     display: {
@@ -209,6 +232,8 @@ export const STARS: StarsType = [
       w: 231.519 as DegreesType,
       om: 205.073 as DegreesType
     },
+    /** Rotation in days: DeWarf et al. 2010, from its activity */
+    rotation: { period: { value: 36.2, unit: 'd' } },
     mass: 0.9092,
     radius: { value: 597676, unit: 'km' }, // 0.8591 R☉
     display: {
@@ -227,6 +252,8 @@ export const STARS: StarsType = [
       period: { value: 547, unit: 'kyr' },
       angle: 3.099566485428788 as Radians // near apastron, 13.0 kau from AB
     },
+    /** Rotation in days: Benedict et al. 1998, from its starspots. Suárez Mascareño et al. 2020: 87 ± 12 d */
+    rotation: { period: { value: 83, unit: 'd' } },
     mass: 0.1221,
     radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
     display: {

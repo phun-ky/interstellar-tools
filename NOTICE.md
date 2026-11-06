@@ -64,6 +64,27 @@ copyright. They're compiled from public references, credited here:
   101), Earth's from the IERS Conventions' Earth rotation angle, Himalia's from
   Pilcher, Mottola and Denk (2012, Icarus 219, 741) and Nereid's from Kiss et
   al. (2016, MNRAS 457, 2908).
+- **Rotation of the Sun, stars, asteroids and comets:**
+  - **The Sun:** the IAU's rotation rate (Archinal et al. 2018), and its
+    equatorial and polar periods from the differential rotation of Snodgrass and
+    Ulrich (1990, ApJ 351, 309).
+  - **Stars:** Vega from Monnier et al. (2012, ApJL 761, L3), Altair from
+    Bouchaud et al. (2020, A&A 633, A78), Spica A and B from Tkachenko et al.
+    (2016, MNRAS 458, 1964), Alpha Centauri A from Hallam et al. (1991) and B
+    from DeWarf et al. (2010, ApJ 722, 343), and Proxima Centauri from Benedict
+    et al. (1998, AJ 116, 429).
+  - **Asteroids:** Vesta, Eros, Pallas, Davida and 52 Europa from the IAU's
+    rotation rates (Archinal et al. 2018). Hygiea from Vernazza et al. (2020,
+    Nature Astronomy 4, 136), Interamnia from Hanuš et al. (2020, A&A 633, A65),
+    Euphrosyne from Yang et al. (2020, A&A 641, A80), Psyche from Viikinkoski et
+    al. (2018, A&A 619, L3), Juno from Viikinkoski et al. (2015, A&A 581, L3)
+    and Eunomia from Viikinkoski et al. (2017, A&A 607, A117). Their spin
+    directions from the poles in those papers, and Pallas's from Carry et al.
+    (2010, Icarus 205, 460).
+  - **Comets:** 67P/Churyumov–Gerasimenko from the IAU's rotation rate (Archinal
+    et al. 2018), Hale-Bopp from Licandro et al. (1998, ApJL 501, L221), Halley
+    from Belton et al. (1991, Icarus 93, 183) and Encke from Lowry and Weissman
+    (2007, Icarus 188, 212).
 - **Days on Earth and Mars:** the Martian sol and sidereal day from Allison and
   McEwen (2000, Planetary and Space Science 48, 215), and the ratio of a sol to
   a day from NASA GISS's

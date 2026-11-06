@@ -9,6 +9,8 @@ import { CometsType, DegreesType, Radians } from '@interstellar-tools/types';
  * - `orbit.angle` is the true anomaly at J2000, from the mean anomaly in JPL Horizons' osculating
  *   elements at J2000, converted with this dataset's `e`.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
+ * - `rotation.period` is the nucleus's rotation when it was measured: comets change their spin
+ *   as they outgas. 67P's is the IAU's, from Rosetta. Halley tumbles, `tumbling: true`.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -54,6 +56,11 @@ export const COMETS: CometsType = [
       /** Perihelion distance */
       q: { value: 0.586, unit: 'au' }
     },
+    /**
+     * Rotation in days: Halley tumbles. Its spin axis circles every 3.69 d,
+     * and its orientation repeats every 7.4 d (Belton et al. 1991)
+     */
+    rotation: { period: { value: 7.4, unit: 'd' }, tumbling: true },
     display: {
       /** Visual representation color */
       color: '#FFFFFF', // Bright white (reflective comet dust)
@@ -79,6 +86,8 @@ export const COMETS: CometsType = [
       period: { value: 926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au),
       q: { value: 0.914, unit: 'au' }
     },
+    /** Rotation in hours: Licandro et al. 1998 */
+    rotation: { period: { value: 11.34, unit: 'h' } },
     display: {
       color: '#00A6FF', // Electric blue (ionized tail appearance)
       size: 4
@@ -101,6 +110,11 @@ export const COMETS: CometsType = [
       period: { value: 2355, unit: 'd' }, // ~6.45 years
       q: { value: 1.243, unit: 'au' } // Perihelion distance
     },
+    /**
+     * Sidereal rotation in hours: IAU, from Rosetta in 2014. Outgassing
+     * sped it up to 12.055 h through its 2015 perihelion passage
+     */
+    rotation: { period: { value: 12.4041, unit: 'h' } },
     display: {
       color: '#AAAAAA', // Greyish surface color
       size: 4 // Visualization size
@@ -124,6 +138,8 @@ export const COMETS: CometsType = [
       period: { value: 1204, unit: 'd' }, // ~3.3 years
       q: { value: 0.34, unit: 'au' }
     },
+    /** Rotation in hours: Lowry & Weissman 2007. It slows by minutes each orbit, and may tumble */
+    rotation: { period: { value: 11.083, unit: 'h' } },
     display: {
       color: '#FFD700', // Golden yellow (dusty tail, lower albedo)
       size: 3
