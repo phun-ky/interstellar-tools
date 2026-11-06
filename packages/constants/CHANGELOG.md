@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.5.0...%40interstellar-tools%2Fconstants%402.0.0) (2026-11-06)
+
+### ⚠ BREAKING CHANGES
+
+* GalaxyInterface's blackHole is optional. Check that it's
+  there before reading it. See the migration guide.
+* Triangulum has no blackHole. Every galaxy has new values:
+  distance, diameter and type, and each black hole's x and y are 0, its
+  galaxy's centre, so they no longer give a galaxy's position. See the
+  migration guide.
+
+### Tasks
+
+* 🤖 @interstellar-tools/types@2.0.0 ([cc37776](https://github.com/phun-ky/interstellar-tools/commit/cc37776a8197c18bc99838172c4565abf60a7ee0))
+
+### Bug
+
+* 🐛 Correct the galaxy data ([6c5f731](https://github.com/phun-ky/interstellar-tools/commit/6c5f7317878cdeaa51b90ec2d207e9ff2c7deaf0)), closes [#369](https://github.com/phun-ky/interstellar-tools/issues/369)
+* 🐛 Make a galaxy's black hole optional ([b504c27](https://github.com/phun-ky/interstellar-tools/commit/b504c2769e945284c9c2d8c04e32d0cd102ee828)), references [#369](https://github.com/phun-ky/interstellar-tools/issues/369)
+
 ## [1.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.4.0...%40interstellar-tools%2Fconstants%401.5.0) (2026-11-06)
 
 ### Feature
