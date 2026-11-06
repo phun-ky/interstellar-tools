@@ -23,7 +23,9 @@ import ApolloSunPlot from './components/apollo/ApolloSunPlot.vue';
 import DocPhoto from './components/DocPhoto.vue';
 import MissionHome from './components/home/MissionHome.vue';
 import ProjectionMap from './components/maps/ProjectionMap.vue';
+import MarsClock from './components/mars/MarsClock.vue';
 import MarsLandingGrid from './components/mars/MarsLandingGrid.vue';
+import SolarDayFigure from './components/mars/SolarDayFigure.vue';
 import NavStatus from './components/NavStatus.vue';
 import OrbitWidget from './components/OrbitWidget.vue';
 import PullQuote from './components/PullQuote.vue';
@@ -54,7 +56,9 @@ export default {
     ctx.app.component('ApolloRendezvousPlot', ApolloRendezvousPlot);
     ctx.app.component('ApolloEntryPlot', ApolloEntryPlot);
     ctx.app.component('ProjectionMap', ProjectionMap);
+    ctx.app.component('MarsClock', MarsClock);
     ctx.app.component('MarsLandingGrid', MarsLandingGrid);
+    ctx.app.component('SolarDayFigure', SolarDayFigure);
     ctx.app.component('IssGroundTrack', IssGroundTrack);
 
     if (typeof window !== 'undefined') {

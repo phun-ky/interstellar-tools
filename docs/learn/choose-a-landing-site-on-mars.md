@@ -265,3 +265,6 @@ them.
   then, and where is the nearest one?
 - Light the grid from the east (azimuth 90°). Which cell ends up darkest, and
   which way does it face?
+- Once a rover is down, its team plans by the local time at the site. What time
+  is it in Jezero crater now? Work it out with `marsLocalMeanSolarTime`, as in
+  [How long is a day on Mars?](/learn/days-on-other-worlds)
