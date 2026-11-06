@@ -64,6 +64,15 @@ copyright. They're compiled from public references, credited here:
   101), Earth's from the IERS Conventions' Earth rotation angle, Himalia's from
   Pilcher, Mottola and Denk (2012, Icarus 219, 741) and Nereid's from Kiss et
   al. (2016, MNRAS 457, 2908).
+- **Galaxies:** Andromeda's distance from Li et al. (2021, ApJ 920, 84) and
+  Triangulum's from Breuval et al. (2023, ApJ 951, 118), both from Cepheids.
+  Andromeda's and Triangulum's D25 diameters and morphological types from the
+  Third Reference Catalogue of Bright Galaxies (RC3, de Vaucouleurs et al.
+  1991), and the Milky Way's diameter from Goodwin, Gribbin and Hendry (1998,
+  The Observatory 118, 201) and its type from McConnachie (2012, AJ 144, 4). The
+  mass of Sagittarius A\* from the GRAVITY Collaboration (2024, A&A 692, A242),
+  of M31\* from Bender et al. (2005, ApJ 631, 280), and the upper limit for a
+  black hole in Triangulum from Gebhardt et al. (2001, AJ 122, 2469).
 - **Rotation of the Sun, stars, asteroids and comets:**
   - **The Sun:** the IAU's rotation rate (Archinal et al. 2018), and its
     equatorial and polar periods from the differential rotation of Snodgrass and

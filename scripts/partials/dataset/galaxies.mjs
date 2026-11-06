@@ -8,7 +8,7 @@ const header =
   '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
 const rows = GALAXIES.map(
   (galaxy) =>
-    `| ${galaxy.id} | ${galaxy.name} | ${galaxy.type} | ${m(galaxy.diameter)} | ${m(galaxy.distance)} | ${galaxy.blackHole.name} | ${galaxy.blackHole.mass} | ${m(galaxy.blackHole.radius)} | ${m(galaxy.blackHole.x)} | ${m(galaxy.blackHole.y)} |`
+    `| ${galaxy.id} | ${galaxy.name} | ${galaxy.type} | ${m(galaxy.diameter)} | ${m(galaxy.distance)} | ${galaxy.blackHole?.name ?? ''} | ${galaxy.blackHole?.mass ?? ''} | ${m(galaxy.blackHole?.radius)} | ${m(galaxy.blackHole?.x)} | ${m(galaxy.blackHole?.y)} |`
 ).join('\n');
 const out = `## Full list of galaxies in the dataset
 

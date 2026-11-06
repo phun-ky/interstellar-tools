@@ -16,8 +16,10 @@ import {
   COMETS,
   G_SI,
   GALAXIES,
+  LY_PER_PC,
   MOONS,
   PLANETS,
+  SPEED_OF_LIGHT_M_PER_S,
   STARS,
   SYSTEMS,
   WGS84
@@ -790,12 +792,85 @@ describe('GALAXIES', () => {
     );
 
     for (const galaxy of GALAXIES) {
+      assert.equal(galaxy.diameter.unit, 'ly', `${galaxy.name}.diameter`);
+      assert.equal(galaxy.distance.unit, 'ly', `${galaxy.name}.distance`);
       assert.ok(galaxy.diameter.value > 0, `${galaxy.name}.diameter`);
       assert.ok(galaxy.distance.value >= 0, `${galaxy.name}.distance`);
-      assert.ok(galaxy.blackHole.mass > 0, `${galaxy.name}.blackHole.mass`);
+    }
+  });
+
+  test('are at their Cepheid distances, in kpc', () => {
+    // Li et al. 2021 for Andromeda, Breuval et al. 2023 for Triangulum
+    const kpc: Record<string, number> = {
+      'milky-way': 0,
+      andromeda: 761,
+      triangulum: 840
+    };
+
+    for (const { id, name, distance } of GALAXIES)
       assert.ok(
-        galaxy.blackHole.radius.value > 0,
-        `${galaxy.name}.blackHole.radius`
+        Math.abs(distance.value - kpc[id]! * 1000 * LY_PER_PC) < 1,
+        `${name}: ${distance.value} ly`
+      );
+  });
+
+  test('have their D25 diameters, from RC3 and their distances', () => {
+    // log D25 in 0.1′ (RC3): 3.28 for Andromeda, 2.85 for Triangulum
+    const logD25: Record<string, number> = {
+      andromeda: 3.28,
+      triangulum: 2.85
+    };
+
+    for (const { id, name, diameter, distance } of GALAXIES) {
+      const log = logD25[id];
+
+      if (log === undefined) continue;
+
+      const radians = (10 ** log / 10 / 60) * (Math.PI / 180);
+
+      assert.ok(
+        Math.abs(diameter.value / (distance.value * radians) - 1) < 1e-3,
+        `${name}: ${diameter.value} ly`
+      );
+    }
+
+    // The Milky Way's, 26.8 kpc, from a model of its disk (Goodwin et al. 1998)
+    const milkyWay = GALAXIES.find(({ id }) => id === 'milky-way')!;
+
+    assert.ok(
+      Math.abs(milkyWay.diameter.value - 26_800 * LY_PER_PC) < 10,
+      `Milky Way: ${milkyWay.diameter.value} ly`
+    );
+  });
+
+  test('have a black hole of their measured mass, its radius 2GM/c², at the centre', () => {
+    // GRAVITY Collaboration 2024 for Sagittarius A*, Bender et al. 2005 for M31*
+    const masses: Record<string, number> = {
+      'milky-way': 4.2996e6,
+      andromeda: 1.4e8
+    };
+    const GM_SUN = STARS.find(({ id }) => id === 'sun')!.mu!;
+
+    for (const { id, name, blackHole } of GALAXIES) {
+      assert.equal(blackHole?.mass, masses[id], name);
+
+      if (!blackHole) continue;
+
+      const radius =
+        (2 * GM_SUN * blackHole.mass) / SPEED_OF_LIGHT_M_PER_S ** 2 / AU_METERS;
+
+      assert.equal(blackHole.radius.unit, 'au', name);
+      assert.ok(
+        Math.abs(blackHole.radius.value / radius - 1) < 1e-3,
+        `${name}: ${blackHole.radius.value} au against ${radius} au`
+      );
+      assert.deepEqual(
+        [blackHole.x, blackHole.y],
+        [
+          { value: 0, unit: 'au' },
+          { value: 0, unit: 'au' }
+        ],
+        name
       );
     }
   });

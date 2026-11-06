@@ -5,15 +5,15 @@ import { DistanceInterface } from '../distance.js';
  *
  * **Black Hole Properties:**
  * - **Mass (`mass`)**: Measured in **solar masses** ($M_\odot$).
- * - **Schwarzschild radius (`radius`)**: Defined in **Astronomical Units (AU)**.
+ * - **Schwarzschild radius (`radius`)**: $r_s = 2GM/c^2$, from its mass, in **Astronomical Units (AU)**.
  * - **Position (`x`, `y`)**: Coordinates relative to the galaxy center in **AU**.
  *
  * @example
  * ```ts
  * const sagittariusA: BlackHoleInterface = {
  *   name: 'Sagittarius A*',
- *   mass: 4.154e6,
- *   radius: { value: 0.08, unit: 'au' },
+ *   mass: 4.2996e6,
+ *   radius: { value: 0.08488, unit: 'au' },
  *   x: { value: 0, unit: 'au' },
  *   y: { value: 0, unit: 'au' }
  * };
@@ -40,17 +40,18 @@ export interface BlackHoleInterface {
  * - **Name (`name`)**: The galaxy's official designation.
  * - **Type (`type`)**: The morphological classification (e.g., Spiral, Elliptical).
  * - **Diameter (`diameter`)**: Measured in **light-years**.
- * - **Distance (`distance`)**: The distance from the **Milky Way**, also in **light-years**.
- * - **Black Hole (`blackHole`)**: The central supermassive black hole.
+ * - **Distance (`distance`)**: The distance from the Sun, also in **light-years**: 0 for the Milky Way itself.
+ * - **Black Hole (`blackHole`)**: The central supermassive black hole, where one is detected.
+ *   Triangulum (M33) has none: observations only limit its mass to a few thousand $M_\odot$.
  *
  * @example
  * ```ts
  * const milkyWay: GalaxyInterface = {
  *   id: 'milky-way',
  *   name: 'Milky Way',
- *   type: 'Spiral',
- *   diameter: { value: 105700, unit: 'lightyears' },
- *   distance: { value: 0, unit: 'lightyears' },
+ *   type: 'SBbc',
+ *   diameter: { value: 87410, unit: 'ly' },
+ *   distance: { value: 0, unit: 'ly' },
  *   blackHole: sagittariusA
  * };
  * ```
@@ -65,10 +66,10 @@ export interface GalaxyInterface {
   type: string;
   /** Diameter of the galaxy in light-years. */
   diameter: DistanceInterface;
-  /** Distance from the Milky Way in light-years. */
+  /** Distance from the Sun in light-years: 0 for the Milky Way itself. */
   distance: DistanceInterface;
-  /** Central black hole of the galaxy. */
-  blackHole: BlackHoleInterface;
+  /** Central supermassive black hole of the galaxy. Omitted where none is detected. */
+  blackHole?: BlackHoleInterface;
 }
 
 /**
