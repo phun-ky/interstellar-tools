@@ -19,6 +19,22 @@ Ephemeris Messages.
 Horizons, from 1 November 2026 to 31 December 2027: where Voyager 1 is, how far
 New Horizons has gone, where JWST sits.
 
+<DocPhoto
+  src="probes/voyager.webp"
+  alt="A Voyager spacecraft in flight against the stars: a large white dish antenna on a gold-wrapped body, a boom of instruments above it, and a long thin boom reaching away to the right"
+  :width="1600"
+  :height="1323"
+  credit="NASA/JPL"
+  licence="Public domain"
+  source="https://commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg">
+
+Voyager, in an artist's concept. The twin probes, launched sixteen days apart in
+1977, are the same: a 3.7 m dish to talk to Earth, a boom of science
+instruments, and a 13 m boom that holds the magnetometer away from the
+spacecraft. Both are still sending data, from beyond the heliopause.
+
+</DocPhoto>
+
 ```ts
 import {
   AU_METERS,

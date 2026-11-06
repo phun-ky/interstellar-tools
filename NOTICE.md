@@ -124,6 +124,14 @@ JPL Horizons, in
   [HiRISE PDS archive](https://hirise-pds.lpl.arizona.edu/PDS/). The coordinates
   of Perseverance's landing site are from NASA GISS's
   [Mars24 list of landers](https://www.giss.nasa.gov/tools/mars24/help/landers.html).
+- **Photos in the tutorials and guides:** from
+  [Wikimedia Commons](https://commons.wikimedia.org/), mostly public domain from
+  NASA, in `docs/public/images/docs/`. Each is credited on its page, with its
+  licence and a link to its Commons page. The Voyager artist's concept in the
+  [probes guide](https://phun-ky.net/interstellar-tools/guide/usage/tracking/probes)
+  (`docs/public/images/docs/probes/voyager.webp`) is by NASA/JPL, in the public
+  domain, from
+  [File:Voyager spacecraft.jpg](https://commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg).
 - **Background photo:**
   [photo by Jonny Gios](https://unsplash.com/photos/bxDJ12Kv9Rk) on Unsplash,
   used under the [Unsplash License](https://unsplash.com/license)
