@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.19.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.19.0...%40interstellar-tools%2Fequations%401.19.1) (2026-11-06)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@2.0.0 ([af86987](https://github.com/phun-ky/interstellar-tools/commit/af869875bd0c3bae6f830617e7d18a00e8de59ea))
+* 🤖 @interstellar-tools/types@2.0.0 ([cc37776](https://github.com/phun-ky/interstellar-tools/commit/cc37776a8197c18bc99838172c4565abf60a7ee0))
+
+### Documentation
+
+* ✏️ Add a Learn page on days on other worlds and Mars time ([b5412d0](https://github.com/phun-ky/interstellar-tools/commit/b5412d09cd4c73d1ad5b73ab53b20b542e2d1b15)), closes [#351](https://github.com/phun-ky/interstellar-tools/issues/351)
+
+### Adding missing tests
+
+* 💍 Escape every regex character in the Learn page's table rows ([a05a1ab](https://github.com/phun-ky/interstellar-tools/commit/a05a1ab7179d6bb478a6697fb2a0e7fff62b126a))
+
 ## [1.19.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.18.0...%40interstellar-tools%2Fequations%401.19.0) (2026-11-05)
 
 ### Documentation
