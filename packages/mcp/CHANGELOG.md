@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.3.2...%40interstellar-tools%2Fmcp%401.3.3) (2026-11-06)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@2.0.0 ([af86987](https://github.com/phun-ky/interstellar-tools/commit/af869875bd0c3bae6f830617e7d18a00e8de59ea))
+* 🤖 @interstellar-tools/types@2.0.0 ([cc37776](https://github.com/phun-ky/interstellar-tools/commit/cc37776a8197c18bc99838172c4565abf60a7ee0))
+
 ## [1.3.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.3.1...%40interstellar-tools%2Fmcp%401.3.2) (2026-11-05)
 
 ### Tasks
