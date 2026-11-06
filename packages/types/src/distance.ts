@@ -139,24 +139,6 @@ export type DistanceUnitAliasType =
   | 'Gpc';
 
 /**
- * Represents a measurement with an associated unit.
- *
- * @deprecated Use {@link DistanceInterface}, which is identical. `MeasureInterface` will be
- * removed in 2.0.
- * @extends ValueInterface
- * @property {DistanceUnitType} unit - The unit of measurement.
- *
- * @example
- * ```ts
- * const planetRadius: MeasureInterface = { value: 6371, unit: 'km' };
- * ```
- * @group Distance
- */
-export interface MeasureInterface extends ValueInterface {
-  unit: DistanceUnitType;
-}
-
-/**
  * Represents a distance measurement with an associated unit.
  *
  * @extends ValueInterface
