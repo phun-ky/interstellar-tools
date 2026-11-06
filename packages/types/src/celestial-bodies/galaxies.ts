@@ -1,4 +1,5 @@
 import { DistanceInterface } from '../distance.js';
+import type { Radians } from '../numeric.js';
 
 /**
  * Represents a **black hole** at the center of a galaxy.
@@ -7,13 +8,21 @@ import { DistanceInterface } from '../distance.js';
  * - **Mass (`mass`)**: Measured in **solar masses** ($M_\odot$).
  * - **Schwarzschild radius (`radius`)**: $r_s = 2GM/c^2$, from its mass, in **Astronomical Units (AU)**.
  * - **Position (`x`, `y`)**: Coordinates relative to the galaxy center in **AU**.
+ * - **Id (`id`)**: given where stars orbit it, so they can name it as their `parent`,
+ *   like the S-stars around Sagittarius A*. Their orbits take its `mu`.
+ * - **Ring (`ringDiameter`)**: the angular diameter of the bright ring around its
+ *   shadow, where the Event Horizon Telescope has imaged it.
  *
  * @example
  * ```ts
  * const sagittariusA: BlackHoleInterface = {
+ *   id: 'sagittarius-a-star',
  *   name: 'Sagittarius A*',
  *   mass: 4.2996e6,
+ *   mu: 5.706e26,
  *   radius: { value: 0.08488, unit: 'au' },
+ *   distance: { value: 26992, unit: 'ly' },
+ *   ringDiameter: 2.511e-10 as Radians, // 51.8 μas
  *   x: { value: 0, unit: 'au' },
  *   y: { value: 0, unit: 'au' }
  * };
@@ -21,10 +30,21 @@ import { DistanceInterface } from '../distance.js';
  * @group Celestial Bodies
  */
 export interface BlackHoleInterface {
+  /** Stable identifier, used by `parent` references. Given where something orbits it. */
+  id?: string;
   /** Name of the central black hole. */
   name: string;
   /** Mass of the black hole in solar masses. */
   mass: number;
+  /**
+   * Standard gravitational parameter $\mu = G M$, in m³/s², as the orbit
+   * equations take it. Given where something orbits it.
+   */
+  mu?: number;
+  /** Distance from the Sun, where it's measured apart from its galaxy's. */
+  distance?: DistanceInterface;
+  /** Angular diameter of the ring the Event Horizon Telescope imaged around its shadow. */
+  ringDiameter?: Radians;
   /** Schwarzschild radius of the black hole in AU. */
   radius: DistanceInterface;
   /** X-coordinate relative to the galaxy center in AU. */
