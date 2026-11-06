@@ -98,7 +98,7 @@ describe('Learn: How long is a day on Mars?', () => {
 
     for (const cells of rows) {
       const row = new RegExp(
-        `\\| ${cells.map((cell) => cell.replace(/[.()]/g, '\\$&')).join(' +\\| ')} +\\|`
+        `\\| ${cells.map((cell) => cell.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join(' +\\| ')} +\\|`
       );
 
       assert.ok(row.test(PAGE), `the table should have: ${cells.join(' | ')}`);
