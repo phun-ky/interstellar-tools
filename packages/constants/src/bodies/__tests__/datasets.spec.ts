@@ -480,6 +480,109 @@ describe('rotation', () => {
   });
 });
 
+// Sidereal rotation of the Sun, stars, asteroids and comets, in hours: 24 ×
+// 360° over the IAU rate (Archinal et al. 2018) where it gives one, else the
+// paper's period
+const SMALL_BODY_IAU_RATE: Record<string, number> = {
+  sun: 14.1844,
+  '4-vesta': 1617.3329428,
+  '433-eros': 1639.38864745,
+  '2-pallas': 1105.8036,
+  '511-davida': 1684.4193549,
+  '52-europa': 1534.6472187,
+  '67p-churyumov-gerasimenko': 696.543884683
+};
+const SMALL_BODY_HOURS: Record<string, number> = {
+  vega: 0.71 * 24,
+  altair: 7 + 46 / 60,
+  'spica-a': (4.0145 / 2) * 24,
+  'spica-b': (4.0145 / 1.5) * 24,
+  'alpha-centauri-a': 28.8 * 24,
+  'alpha-centauri-b': 36.2 * 24,
+  'proxima-centauri': 83 * 24,
+  '10-hygiea': 13.82559,
+  '704-interamnia': 8.71234,
+  '31-euphrosyne': 5.529595,
+  '16-psyche': 4.195948,
+  '3-juno': 7.20953091,
+  '15-eunomia': 6.082753,
+  '1p-halley': 7.4 * 24,
+  'c-1995-o1-hale-bopp': 11.34,
+  '2p-encke': 11.083
+};
+const HOURS_IN: Record<string, number> = { h: 1, d: 24 };
+const SMALL_BODIES: (StarInterface | AsteroidInterface | CometInterface)[] = [
+  ...STARS,
+  ...ASTEROIDS,
+  ...COMETS
+];
+
+describe('rotation of the Sun, stars, asteroids and comets', () => {
+  test('every period is the IAU rate’s, or the paper’s', () => {
+    for (const { id, name, rotation } of SMALL_BODIES) {
+      const rate = SMALL_BODY_IAU_RATE[id];
+      const expected =
+        rate === undefined ? SMALL_BODY_HOURS[id] : (360 / rate) * 24;
+
+      assert.equal(rotation !== undefined, expected !== undefined, name);
+
+      if (!rotation || expected === undefined) continue;
+
+      const hours = rotation.period.value * HOURS_IN[rotation.period.unit]!;
+
+      // The stars' periods are rounded to their sources' 3 or 4 digits
+      assert.ok(
+        Math.abs(hours / expected - 1) < 2e-4,
+        `${name}: ${hours} h against ${expected} h`
+      );
+    }
+  });
+
+  test('turns the Sun faster at its equator than at its poles, by Snodgrass & Ulrich', () => {
+    const { rotation } = STARS.find(({ id }) => id === 'sun')!;
+    const { period, equatorialPeriod, polarPeriod } = rotation!;
+    // 14.71 − 2.39 sin²φ − 1.78 sin⁴φ degrees a day
+    const equator = 360 / 14.71;
+    const pole = 360 / (14.71 - 2.39 - 1.78);
+
+    assert.ok(Math.abs(equatorialPeriod!.value - equator) < 5e-3);
+    assert.ok(Math.abs(polarPeriod!.value - pole) < 5e-3);
+    assert.ok(equatorialPeriod!.value < period.value);
+    assert.ok(period.value < polarPeriod!.value);
+  });
+
+  test('spins every asteroid slower than the 2.2 h spin barrier', () => {
+    for (const { name, rotation } of ASTEROIDS) {
+      assert.equal(rotation?.period.unit, 'h', name);
+      assert.ok(rotation!.period.value > 2.2, name);
+    }
+  });
+
+  test('spins backwards against the Sun for Pallas, Hygiea, Psyche and Eunomia only', () => {
+    const backwards = SMALL_BODIES.filter(
+      ({ rotation }) => rotation?.retrograde
+    )
+      .map(({ id }) => id)
+      .sort();
+
+    assert.deepEqual(backwards, [
+      '10-hygiea',
+      '15-eunomia',
+      '16-psyche',
+      '2-pallas'
+    ]);
+  });
+
+  test('tumbles for Halley’s comet only', () => {
+    const tumbling = SMALL_BODIES.filter(({ rotation }) => rotation?.tumbling);
+
+    assert.deepEqual(
+      tumbling.map(({ id }) => id),
+      ['1p-halley']
+    );
+  });
+});
+
 describe('stars', () => {
   test('orbiting the galaxy use ly and Myr, with a galactic position', () => {
     for (const star of STARS.filter((s) => GALAXY_IDS.has(s.parent ?? ''))) {

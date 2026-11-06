@@ -8,6 +8,10 @@ import { AsteroidsType, DegreesType, Radians } from '@interstellar-tools/types';
  * - Units: `a` in astronomical units (au); `period` in days (d); `radius` in km.
  * - Orbital angles `i`, `w`, and `om` are in degrees.
  * - `display.color` and `display.size` are rendering hints only.
+ * - `rotation.period` is the sidereal rotation in hours: 360° over the IAU's rotation rate
+ *   (Archinal et al. 2018) where it gives one, else from the shape and pole models of each
+ *   asteroid's light curves. Pallas, Hygiea, Psyche and Eunomia spin backwards against the
+ *   Sun's spin, `retrograde: true`.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -43,6 +47,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 1325.2, unit: 'd' },
       q: { value: 2.151, unit: 'au' }
     },
+    /** Sidereal rotation in hours: IAU */
+    rotation: { period: { value: 5.342128248, unit: 'h' } },
     radius: { value: 262.7, unit: 'km' },
     display: {
       color: '#999999',
@@ -67,6 +73,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 643.2, unit: 'd' },
       q: { value: 1.134, unit: 'au' }
     },
+    /** Sidereal rotation in hours: IAU. It spins on its side */
+    rotation: { period: { value: 5.270257308, unit: 'h' } },
     radius: { value: 8.4, unit: 'km' },
     display: {
       color: '#aaaaaa',
@@ -90,6 +98,12 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 1684.9, unit: 'd' },
       q: { value: 2.13, unit: 'au' }
     },
+    /**
+     * Sidereal rotation in hours: IAU. Its pole (Carry et al. 2010) is 100°
+     * from the Sun's, so against the Sun's spin, though forwards around its
+     * own steeply tilted orbit
+     */
+    rotation: { period: { value: 7.813322366, unit: 'h' }, retrograde: true },
     radius: { value: 256, unit: 'km' },
     display: {
       color: '#888888',
@@ -113,6 +127,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 2033.8, unit: 'd' },
       q: { value: 2.788, unit: 'au' }
     },
+    /** Sidereal rotation in hours: Vernazza et al. 2020, backwards against the Sun's spin */
+    rotation: { period: { value: 13.82559, unit: 'h' }, retrograde: true },
     radius: { value: 216.5, unit: 'km' },
     display: {
       color: '#666666',
@@ -136,6 +152,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 1960.9, unit: 'd' },
       q: { value: 2.671, unit: 'au' }
     },
+    /** Sidereal rotation in hours: Hanuš et al. 2020 */
+    rotation: { period: { value: 8.71234, unit: 'h' } },
     radius: { value: 166, unit: 'km' },
     display: {
       color: '#777777',
@@ -159,6 +177,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 2045.5, unit: 'd' },
       q: { value: 2.451, unit: 'au' }
     },
+    /** Sidereal rotation in hours: Yang et al. 2020 */
+    rotation: { period: { value: 5.529595, unit: 'h' } },
     radius: { value: 134, unit: 'km' },
     display: {
       color: '#555555',
@@ -182,6 +202,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 1820.1, unit: 'd' },
       q: { value: 2.515, unit: 'au' }
     },
+    /** Sidereal rotation in hours: Viikinkoski et al. 2018. On its side, just past backwards: its pole is 94° from the Sun's */
+    rotation: { period: { value: 4.195948, unit: 'h' }, retrograde: true },
     radius: { value: 111, unit: 'km' },
     display: {
       color: '#999999',
@@ -205,6 +227,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 2059.6, unit: 'd' },
       q: { value: 2.549, unit: 'au' }
     },
+    /** Sidereal rotation in hours: IAU */
+    rotation: { period: { value: 5.129364, unit: 'h' } },
     radius: { value: 149, unit: 'km' },
     display: {
       color: '#444444',
@@ -228,6 +252,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 1977.9, unit: 'd' },
       q: { value: 2.788, unit: 'au' }
     },
+    /** Sidereal rotation in hours: IAU */
+    rotation: { period: { value: 5.6299584, unit: 'h' } },
     radius: { value: 156.5, unit: 'km' },
     display: {
       color: '#555555',
@@ -251,6 +277,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 1594.4, unit: 'd' },
       q: { value: 1.986, unit: 'au' }
     },
+    /** Sidereal rotation in hours: Viikinkoski et al. 2015 */
+    rotation: { period: { value: 7.20953091, unit: 'h' } },
     radius: { value: 117, unit: 'km' },
     display: {
       color: '#aaaaaa',
@@ -274,6 +302,8 @@ export const ASTEROIDS: AsteroidsType = [
       period: { value: 1567.6, unit: 'd' },
       q: { value: 2.153, unit: 'au' }
     },
+    /** Sidereal rotation in hours: Viikinkoski et al. 2017, backwards against the Sun's spin */
+    rotation: { period: { value: 6.082753, unit: 'h' }, retrograde: true },
     radius: { value: 136, unit: 'km' },
     display: {
       color: '#bbbbbb',
