@@ -7,9 +7,9 @@ upgrading within your major is the way to get them, and never breaks your code
 This page explains how versions work and how to migrate your code.
 
 **Every major release has a migration guide** here, covering every breaking
-change since the previous major, with before-and-after code. The guide from 0.x
-to 1.0 is below. For the story behind the changes, and whether to upgrade now,
-read the [release notes](./releases/index.md).
+change since the previous major, with before-and-after code. The guides from 1.x
+to 2.0 and from 0.x to 1.0 are below. For the story behind the changes, and
+whether to upgrade now, read the [release notes](./releases/index.md).
 
 ## How versions work
 
@@ -50,6 +50,68 @@ anything:
   change or remove it before its grace period ends, as the
   [security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#supported-versions)
   describes.
+
+## Migrating from 1.x to 2.0
+
+Only `types` and `constants` go to 2.0. The other packages get a patch release
+that moves their range to `^2.0.0`, with no change to their API: upgrade them
+together, so you have one copy of `types`.
+
+See the [2.0 release notes](./releases/2.0.md) for why.
+
+### Checklist
+
+- [ ] Check that a galaxy has a `blackHole` before reading it.
+- [ ] Don't place galaxies by their black hole's `x` and `y`: they're 0 now, the
+      galaxy's centre.
+- [ ] Expect new galaxy values: distances, diameters, types and black hole
+      masses and radii.
+- [ ] Replace `MeasureInterface` with `DistanceInterface`.
+
+### A galaxy's black hole is optional
+
+`GalaxyInterface`'s `blackHole` is optional, for a galaxy without a detected
+supermassive black hole. Triangulum (M33) has none: observations limit any black
+hole at its centre to about 1500 solar masses.
+
+```ts
+// 1.x
+const mass = galaxy.blackHole.mass;
+// 2.0
+const mass = galaxy.blackHole?.mass; // undefined for Triangulum
+```
+
+### The galaxy data is corrected
+
+Every value in `GALAXIES` has changed, and each has its source in the dataset's
+docs and in `NOTICE.md`:
+
+| Value                   | 1.x                                         | 2.0                                        |
+| ----------------------- | ------------------------------------------- | ------------------------------------------ |
+| Andromeda's `distance`  | 2 537 002 537 000 ly                        | 2 482 050 ly (761 kpc)                     |
+| Triangulum's `distance` | 3 000 003 000 000 ly                        | 2 739 714 ly (840 kpc)                     |
+| `diameter`              | 105 700, 220 000 and 60 000 ly              | 87 410, 137 570 and 56 420 ly (D25)        |
+| `type`                  | `'Barred Spiral'`, `'Spiral'`               | `'SBbc'`, `'SA(s)b'`, `'SA(s)cd'`          |
+| Black holes             | Sgr A\* 4.154 × 10⁶ M☉, Andromeda 1.1 × 10⁸ | Sgr A\* 4.2996 × 10⁶ M☉, M31\* 1.4 × 10⁸   |
+| Black hole `radius`     | 0.08 and 5 au                               | 0.08488 and 2.764 au, 2GM/c² from the mass |
+| Black hole `x`, `y`     | `y` was the galaxy's distance, in au        | 0 and 0, the galaxy's centre               |
+| Triangulum's black hole | 1.5 × 10⁶ M☉                                | none                                       |
+
+**The distances were a million times too large.** If you placed galaxies by
+their black hole's `y`, which held the right distance in au, use `distance`
+instead. Galaxy positions in 3D are planned
+([#373](https://github.com/phun-ky/interstellar-tools/issues/373)).
+
+### `MeasureInterface` is removed
+
+It was deprecated in 0.63, and is identical to `DistanceInterface`:
+
+```ts
+import type { DistanceInterface } from '@interstellar-tools/types';
+
+// 1.x: const radius: MeasureInterface = { value: 6371, unit: 'km' };
+const radius: DistanceInterface = { value: 6371, unit: 'km' };
+```
 
 ## Migrating from 0.x to 1.0
 
