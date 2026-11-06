@@ -8,6 +8,6 @@ type AsteroidsType = AsteroidInterface[];
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:164](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/asteroids.ts#L164)
+[celestial-bodies/asteroids.ts:171](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/asteroids.ts#L171)
 
 Convenience alias for a list of asteroids.

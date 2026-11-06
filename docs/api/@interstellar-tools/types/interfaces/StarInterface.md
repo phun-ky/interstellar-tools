@@ -4,7 +4,7 @@ StarInterface
 # Interface: StarInterface
 
 Defined in:
-[celestial-bodies/stars.ts:39](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L39)
+[celestial-bodies/stars.ts:40](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L40)
 
 Represents a **star**.
 
@@ -49,7 +49,7 @@ category: 'star';
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:47](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L47)
+[celestial-bodies/stars.ts:48](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L48)
 
 Defines the category as a star.
 
@@ -62,7 +62,7 @@ display?: DisplayInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L68)
+[celestial-bodies/stars.ts:74](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L74)
 
 How to draw the star: its colour, and state a renderer computes.
 
@@ -75,7 +75,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:41](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L41)
+[celestial-bodies/stars.ts:42](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L42)
 
 Stable identifier, used by `parent` references. Never translated.
 
@@ -88,7 +88,7 @@ mass?: number;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L53)
+[celestial-bodies/stars.ts:54](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L54)
 
 Mass in solar masses ($M_\odot$).
 
@@ -101,7 +101,7 @@ mu?: number;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:58](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L58)
+[celestial-bodies/stars.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L59)
 
 Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s², as the
 orbit equations take it. Given where JPL publishes one.
@@ -115,7 +115,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:43](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L43)
+[celestial-bodies/stars.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L44)
 
 Name of the star.
 
@@ -128,7 +128,7 @@ orbit?: OrbitInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:51](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L51)
+[celestial-bodies/stars.ts:52](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L52)
 
 Orbit around the parent.
 
@@ -141,7 +141,7 @@ parent?: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:49](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L49)
+[celestial-bodies/stars.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L50)
 
 Id of the galaxy or system the star is bound to.
 
@@ -154,9 +154,23 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L60)
+[celestial-bodies/stars.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L66)
 
 Physical radius of the star.
+
+---
+
+### rotation?
+
+```ts
+rotation?: RotationInterface;
+```
+
+Defined in:
+[celestial-bodies/stars.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L64)
+
+How the star spins: its sidereal rotation period, from interferometry or
+spectroscopy. Given where one is published.
 
 ---
 
@@ -167,7 +181,7 @@ type: string;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:45](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L45)
+[celestial-bodies/stars.ts:46](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L46)
 
 Spectral classification of the star (e.g., `'G2V'`).
 
@@ -180,7 +194,7 @@ x?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L62)
+[celestial-bodies/stars.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L68)
 
 X-coordinate in the parent's frame.
 
@@ -193,7 +207,7 @@ y?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L64)
+[celestial-bodies/stars.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L70)
 
 Y-coordinate in the parent's frame.
 
@@ -206,6 +220,6 @@ z?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/stars.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L66)
+[celestial-bodies/stars.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/stars.ts#L72)
 
 Z-coordinate in the parent's frame.

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.19.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.18.0...%40interstellar-tools%2Ftypes%401.19.0) (2026-11-06)
+
+### Feature
+
+* 🎸 Add a rotation to stars, asteroids and comets ([b50a408](https://github.com/phun-ky/interstellar-tools/commit/b50a408dc4cfc020e1cce60fc3ca51ed26d41adc)), closes [#361](https://github.com/phun-ky/interstellar-tools/issues/361)
+
 ## [1.18.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.17.0...%40interstellar-tools%2Ftypes%401.18.0) (2026-11-05)
 
 ### Feature
