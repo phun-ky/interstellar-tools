@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.4.0...%40interstellar-tools%2Fconstants%401.5.0) (2026-11-06)
+
+### Feature
+
+* 🎸 Add rotation to the Sun, stars, asteroids and comets ([ec2a8e6](https://github.com/phun-ky/interstellar-tools/commit/ec2a8e6ac6435c730b1db8c058931dcb6dcc8a94)), closes [#361](https://github.com/phun-ky/interstellar-tools/issues/361)
+
 ## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.3.0...%40interstellar-tools%2Fconstants%401.4.0) (2026-11-05)
 
 ### Feature
