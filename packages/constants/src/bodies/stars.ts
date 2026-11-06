@@ -5,9 +5,10 @@ import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
  *
  * ::: info
  *
- * - Each star names its `parent` (a galaxy or a system barycenter) and its `orbit` around it.
+ * - Each star names its `parent` (a galaxy, a system barycenter, or Sagittarius A* for the S-stars)
+ *   and its `orbit` around it.
  * - Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly, `period` in Myr.
- *   Orbits within a system: `a` in au, `period` in yr or kyr. `angle` in radians. `mass` in M☉.
+ *   Orbits within a system or around Sagittarius A*: `a` in au, `period` in d, yr or kyr. `angle` in radians. `mass` in M☉.
  * - `color` is for visualization only.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
  * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
@@ -258,6 +259,161 @@ export const STARS: StarsType = [
     radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
     display: {
       color: '#ffcc6f' // M-type
+    }
+  },
+  // The S-stars: young B stars on Kepler orbits around Sagittarius A*, which name it
+  // as their parent. Orbits on the sky (i to the plane of the sky, Ω the position angle
+  // of the ascending node, ω in the orbital plane): S2's from GRAVITY Collaboration 2024,
+  // Table B.1, and its period from GRAVITY Collaboration 2022; the others' from
+  // Gillessen et al. 2017, Table 3. a in au is the angular a × R₀, 8275.9 pc (GRAVITY 2024),
+  // and `angle` the true anomaly at J2000 from the time of periapsis. i > 90° is a
+  // clockwise orbit on the sky, not a retrograde one. Masses and radii: Habibi et al. 2017,
+  // from their spectra. R☉ = 695 700 km.
+  {
+    id: 's1',
+    name: 'S1',
+    type: 'B0-B3V', // Early B, main sequence
+    category: 'star',
+    parent: 'sagittarius-a-star',
+    orbit: {
+      a: { value: 4924.2, unit: 'au' },
+      e: 0.556,
+      period: { value: 166.0, unit: 'yr' }, // Gillessen et al. 2017
+      angle: 5.998693 as Radians, // Periapsis in 2001.8
+      i: 119.14 as DegreesType,
+      w: 122.3 as DegreesType,
+      om: 342.04 as DegreesType
+    },
+    mass: 12.4,
+    radius: { value: 3610683, unit: 'km' },
+    display: {
+      color: '#cad7ff' // B-type
+    }
+  },
+  {
+    id: 's2',
+    name: 'S2',
+    type: 'B0V', // Most probably B0 (Habibi et al. 2017)
+    category: 'star',
+    parent: 'sagittarius-a-star',
+    orbit: {
+      a: { value: 1034.7, unit: 'au' },
+      e: 0.88444,
+      period: { value: 16.046, unit: 'yr' }, // GRAVITY Collaboration 2024
+      angle: 3.537946 as Radians, // Periapsis in 2018.3789
+      i: 134.67 as DegreesType,
+      w: 66.279 as DegreesType,
+      om: 228.21 as DegreesType
+    },
+    mass: 13.6,
+    radius: { value: 3847221, unit: 'km' },
+    display: {
+      color: '#cad7ff' // B-type
+    }
+  },
+  {
+    id: 's4',
+    name: 'S4',
+    type: 'B0-B3V', // Early B, main sequence
+    category: 'star',
+    parent: 'sagittarius-a-star',
+    orbit: {
+      a: { value: 2954.5, unit: 'au' },
+      e: 0.3905,
+      period: { value: 77.0, unit: 'yr' }, // Gillessen et al. 2017
+      angle: 3.301758 as Radians, // Periapsis in 1957.4
+      i: 80.33 as DegreesType,
+      w: 290.8 as DegreesType,
+      om: 258.84 as DegreesType
+    },
+    mass: 12.2,
+    radius: { value: 3638511, unit: 'km' },
+    display: {
+      color: '#cad7ff' // B-type
+    }
+  },
+  {
+    id: 's6',
+    name: 'S6',
+    type: 'B0-B3V', // Early B, main sequence
+    category: 'star',
+    parent: 'sagittarius-a-star',
+    orbit: {
+      a: { value: 5440.6, unit: 'au' },
+      e: 0.84,
+      period: { value: 192.0, unit: 'yr' }, // Gillessen et al. 2017
+      angle: 3.074946 as Radians, // Periapsis in 2108.61
+      i: 87.24 as DegreesType,
+      w: 116.23 as DegreesType,
+      om: 85.07 as DegreesType
+    },
+    mass: 9.2,
+    radius: { value: 3137607, unit: 'km' },
+    display: {
+      color: '#cad7ff' // B-type
+    }
+  },
+  {
+    id: 's8',
+    name: 'S8',
+    type: 'B0-B3V', // Early B, main sequence
+    category: 'star',
+    parent: 'sagittarius-a-star',
+    orbit: {
+      a: { value: 3349.3, unit: 'au' },
+      e: 0.8031,
+      period: { value: 92.9, unit: 'yr' }, // Gillessen et al. 2017
+      angle: 2.66468 as Radians, // Periapsis in 1983.64
+      i: 74.37 as DegreesType,
+      w: 346.7 as DegreesType,
+      om: 315.43 as DegreesType
+    },
+    mass: 13.2,
+    radius: { value: 3555027, unit: 'km' },
+    display: {
+      color: '#cad7ff' // B-type
+    }
+  },
+  {
+    id: 's9',
+    name: 'S9',
+    type: 'B0-B3V', // Early B, main sequence
+    category: 'star',
+    parent: 'sagittarius-a-star',
+    orbit: {
+      a: { value: 2254.4, unit: 'au' },
+      e: 0.644,
+      period: { value: 51.3, unit: 'yr' }, // Gillessen et al. 2017
+      angle: 3.059443 as Radians, // Periapsis in 1976.71
+      i: 82.41 as DegreesType,
+      w: 150.6 as DegreesType,
+      om: 156.6 as DegreesType
+    },
+    mass: 8.2,
+    radius: { value: 2706273, unit: 'km' },
+    display: {
+      color: '#cad7ff' // B-type
+    }
+  },
+  {
+    id: 's12',
+    name: 'S12',
+    type: 'B0-B3V', // Early B, main sequence
+    category: 'star',
+    parent: 'sagittarius-a-star',
+    orbit: {
+      a: { value: 2472.0, unit: 'au' },
+      e: 0.8883,
+      period: { value: 58.9, unit: 'yr' }, // Gillessen et al. 2017
+      angle: 2.542369 as Radians, // Periapsis in 1995.59
+      i: 33.56 as DegreesType,
+      w: 317.9 as DegreesType,
+      om: 230.1 as DegreesType
+    },
+    mass: 7.6,
+    radius: { value: 2831499, unit: 'km' },
+    display: {
+      color: '#cad7ff' // B-type
     }
   }
 ] as const satisfies StarsType;

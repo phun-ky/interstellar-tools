@@ -73,6 +73,13 @@ copyright. They're compiled from public references, credited here:
   mass of Sagittarius A\* from the GRAVITY Collaboration (2024, A&A 692, A242),
   of M31\* from Bender et al. (2005, ApJ 631, 280), and the upper limit for a
   black hole in Triangulum from Gebhardt et al. (2001, AJ 122, 2469).
+- **Sagittarius A\* and the S-stars:** Sagittarius A\*'s distance from the
+  GRAVITY Collaboration (2024, A&A 692, A242), fitted with its mass, and the
+  diameter of its ring from the Event Horizon Telescope Collaboration (2022,
+  ApJL 930, L12). S2's orbit from the GRAVITY Collaboration (2024) and its
+  period from the GRAVITY Collaboration (2022, A&A 657, L12). The orbits of S1,
+  S4, S6, S8, S9 and S12 from Gillessen et al. (2017, ApJ 837, 30), and every
+  S-star's mass and radius from Habibi et al. (2017, ApJ 847, 120).
 - **Rotation of the Sun, stars, asteroids and comets:**
   - **The Sun:** the IAU's rotation rate (Archinal et al. 2018), and its
     equatorial and polar periods from the differential rotation of Snodgrass and
