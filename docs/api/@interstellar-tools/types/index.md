@@ -94,7 +94,6 @@ npm i --save @interstellar-tools/types
 | Name                                                           | Description                                                            |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | [DistanceInterface](interfaces/DistanceInterface.md)           | Represents a distance measurement with an associated unit.             |
-| [~~MeasureInterface~~](interfaces/MeasureInterface.md)         | Represents a measurement with an associated unit.                      |
 | [DistanceUnitAliasType](type-aliases/DistanceUnitAliasType.md) | Human-friendly **distance unit aliases** accepted at input time.       |
 | [DistanceUnitType](type-aliases/DistanceUnitType.md)           | Canonical **distance unit symbols** for astronomy/space visualization. |
 

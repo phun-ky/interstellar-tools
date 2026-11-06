@@ -4,7 +4,7 @@ GalaxyInterface
 # Interface: GalaxyInterface
 
 Defined in:
-[celestial-bodies/galaxies.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L59)
+[celestial-bodies/galaxies.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L60)
 
 Represents a **galaxy** in the universe simulation.
 
@@ -14,9 +14,11 @@ Represents a **galaxy** in the universe simulation.
 - **Type (`type`)**: The morphological classification (e.g., Spiral,
   Elliptical).
 - **Diameter (`diameter`)**: Measured in **light-years**.
-- **Distance (`distance`)**: The distance from the **Milky Way**, also in
-  **light-years**.
-- **Black Hole (`blackHole`)**: The central supermassive black hole.
+- **Distance (`distance`)**: The distance from the Sun, also in **light-years**:
+  0 for the Milky Way itself.
+- **Black Hole (`blackHole`)**: The central supermassive black hole, where one
+  is detected. Triangulum (M33) has none: observations only limit its mass to a
+  few thousand $M_\odot$.
 
 ## Example
 
@@ -24,25 +26,25 @@ Represents a **galaxy** in the universe simulation.
 const milkyWay: GalaxyInterface = {
   id: 'milky-way',
   name: 'Milky Way',
-  type: 'Spiral',
-  diameter: { value: 105700, unit: 'lightyears' },
-  distance: { value: 0, unit: 'lightyears' },
+  type: 'SBbc',
+  diameter: { value: 87410, unit: 'ly' },
+  distance: { value: 0, unit: 'ly' },
   blackHole: sagittariusA
 };
 ```
 
 ## Properties
 
-### blackHole
+### blackHole?
 
 ```ts
-blackHole: BlackHoleInterface;
+blackHole?: BlackHoleInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L71)
+[celestial-bodies/galaxies.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L72)
 
-Central black hole of the galaxy.
+Central supermassive black hole of the galaxy. Omitted where none is detected.
 
 ---
 
@@ -53,7 +55,7 @@ diameter: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:67](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L67)
+[celestial-bodies/galaxies.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L68)
 
 Diameter of the galaxy in light-years.
 
@@ -66,9 +68,9 @@ distance: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:69](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L69)
+[celestial-bodies/galaxies.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L70)
 
-Distance from the Milky Way in light-years.
+Distance from the Sun in light-years: 0 for the Milky Way itself.
 
 ---
 
@@ -79,7 +81,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:61](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L61)
+[celestial-bodies/galaxies.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L62)
 
 Stable identifier, used by `parent` references. Never translated.
 
@@ -92,7 +94,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L63)
+[celestial-bodies/galaxies.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L64)
 
 Name of the galaxy.
 
@@ -105,6 +107,6 @@ type: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L65)
+[celestial-bodies/galaxies.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L66)
 
 Morphological classification of the galaxy.

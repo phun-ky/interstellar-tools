@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.19.0...%40interstellar-tools%2Ftypes%402.0.0) (2026-11-06)
+
+### ⚠ BREAKING CHANGES
+
+* GalaxyInterface's blackHole is optional. Check that it's
+  there before reading it. See the migration guide.
+* MeasureInterface is removed. Use DistanceInterface, which is
+  identical.
+
+### Bug
+
+* 🐛 Make a galaxy's black hole optional ([b504c27](https://github.com/phun-ky/interstellar-tools/commit/b504c2769e945284c9c2d8c04e32d0cd102ee828)), references [#369](https://github.com/phun-ky/interstellar-tools/issues/369)
+
+### Refactoring
+
+* 💡 Remove MeasureInterface ([07a1ff2](https://github.com/phun-ky/interstellar-tools/commit/07a1ff2cf858f8379ce493d331687ac287764169))
+
 ## [1.19.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.18.0...%40interstellar-tools%2Ftypes%401.19.0) (2026-11-06)
 
 ### Feature

@@ -4,7 +4,7 @@ DistanceInterface
 # Interface: DistanceInterface
 
 Defined in:
-[distance.ts:171](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/distance.ts#L171)
+[distance.ts:153](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/distance.ts#L153)
 
 Represents a distance measurement with an associated unit.
 
@@ -27,7 +27,7 @@ unit: DistanceUnitType;
 ```
 
 Defined in:
-[distance.ts:172](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/distance.ts#L172)
+[distance.ts:154](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/distance.ts#L154)
 
 The unit of distance measurement.
 

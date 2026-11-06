@@ -16,7 +16,6 @@ const distance: ValueInterface = { value: 100 };
 
 ## Extended by
 
-- [`MeasureInterface`](MeasureInterface.md)
 - [`DistanceInterface`](DistanceInterface.md)
 - [`TemporalInterface`](TemporalInterface.md)
 - [`TimeStepInterface`](TimeStepInterface.md)

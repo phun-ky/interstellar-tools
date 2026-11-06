@@ -11,7 +11,8 @@ Represents a **black hole** at the center of a galaxy.
 **Black Hole Properties:**
 
 - **Mass (`mass`)**: Measured in **solar masses** ($M_\odot$).
-- **Schwarzschild radius (`radius`)**: Defined in **Astronomical Units (AU)**.
+- **Schwarzschild radius (`radius`)**: $r_s = 2GM/c^2$, from its mass, in
+  **Astronomical Units (AU)**.
 - **Position (`x`, `y`)**: Coordinates relative to the galaxy center in **AU**.
 
 ## Example
@@ -19,8 +20,8 @@ Represents a **black hole** at the center of a galaxy.
 ```ts
 const sagittariusA: BlackHoleInterface = {
   name: 'Sagittarius A*',
-  mass: 4.154e6,
-  radius: { value: 0.08, unit: 'au' },
+  mass: 4.2996e6,
+  radius: { value: 0.08488, unit: 'au' },
   x: { value: 0, unit: 'au' },
   y: { value: 0, unit: 'au' }
 };

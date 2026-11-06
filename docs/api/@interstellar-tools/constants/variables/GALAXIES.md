@@ -8,7 +8,7 @@ const GALAXIES: GalaxiesType;
 ```
 
 Defined in:
-[bodies/galaxies.ts:28](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/galaxies.ts#L28)
+[bodies/galaxies.ts:33](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/galaxies.ts#L33)
 
 Represents a collection of galaxies within the space visualization.
 
@@ -17,9 +17,19 @@ Represents a collection of galaxies within the space visualization.
 - Units: `diameter` and `distance` in light-years (ly); black hole `radius`,
   `x`, `y` in astronomical units (au).
 
-- Black hole `mass` is in solar masses ($M_\odot$).
+- `distance` is from the Sun: Cepheids for Andromeda (Li et al. 2021) and
+  Triangulum (Breuval et al. 2023).
 
-- Values are mainly for visualization; not all are observationally exact.
+- `diameter` is the D25 isophotal diameter, where the disk fades to 25
+  B-magnitudes per square arcsecond: from RC3 (de Vaucouleurs et al. 1991) and
+  the distance for Andromeda and Triangulum, and an estimate from a model of its
+  disk for the Milky Way (Goodwin, Gribbin & Hendry 1998). The stars reach
+  further out.
+
+- Black hole `mass` is in solar masses ($M_\odot$), and `radius` is its
+  Schwarzschild radius, $2GM/c^2$. Each black hole sits at its galaxy's centre,
+  `x` and `y` 0. Triangulum has none: observations limit its mass to 1500
+  $M_\odot$ (Gebhardt et al. 2001).
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See
@@ -33,11 +43,11 @@ time.
 
 <div class="ph table-overflow">
 
-| id         | name       | type          | diameter  | distance                                                                           | blackHole.name                | blackHole.mass                                                              | blackHole.radius | blackHole.x | blackHole.y                                                                       |
-| ---------- | ---------- | ------------- | --------- | ---------------------------------------------------------------------------------- | ----------------------------- | --------------------------------------------------------------------------- | ---------------- | ----------- | --------------------------------------------------------------------------------- |
-| milky-way  | Milky Way  | Barred Spiral | 105700 ly | 0 ly                                                                               | Sagittarius A\*               | [`4154000`](https://github.com/phun-ky/interstellar-tools/commit/4154000)   | 0.08 au          | 0 au        | 0 au                                                                              |
-| andromeda  | Andromeda  | Barred Spiral | 220000 ly | [`2537002`](https://github.com/phun-ky/interstellar-tools/commit/2537002537000) ly | Andromeda Central Black Hole  | [`1100000`](https://github.com/phun-ky/interstellar-tools/commit/110000000) | 5 au             | 0 au        | [`1604424`](https://github.com/phun-ky/interstellar-tools/commit/160442417000) au |
-| triangulum | Triangulum | Spiral        | 60000 ly  | [`3000003`](https://github.com/phun-ky/interstellar-tools/commit/3000003000000) ly | Triangulum Central Black Hole | [`1500000`](https://github.com/phun-ky/interstellar-tools/commit/1500000)   | 0.1 au           | 0 au        | [`1897230`](https://github.com/phun-ky/interstellar-tools/commit/189723000000) au |
+| id         | name       | type    | diameter  | distance                                                                     | blackHole.name  | blackHole.mass                                                              | blackHole.radius | blackHole.x | blackHole.y |
+| ---------- | ---------- | ------- | --------- | ---------------------------------------------------------------------------- | --------------- | --------------------------------------------------------------------------- | ---------------- | ----------- | ----------- |
+| milky-way  | Milky Way  | SBbc    | 87410 ly  | 0 ly                                                                         | Sagittarius A\* | [`4299600`](https://github.com/phun-ky/interstellar-tools/commit/4299600)   | 0.08488 au       | 0 au        | 0 au        |
+| andromeda  | Andromeda  | SA(s)b  | 137570 ly | [`2482050`](https://github.com/phun-ky/interstellar-tools/commit/2482050) ly | M31\*           | [`1400000`](https://github.com/phun-ky/interstellar-tools/commit/140000000) | 2.764 au         | 0 au        | 0 au        |
+| triangulum | Triangulum | SA(s)cd | 56420 ly  | [`2739714`](https://github.com/phun-ky/interstellar-tools/commit/2739714) ly |                 |                                                                             |                  |             |             |
 
 </div>
 
@@ -47,19 +57,18 @@ time.
 {
   id: 'milky-way',
   name: 'Milky Way',
-  type: 'Barred Spiral',
-  /** Diameter of the galaxy in light-years. */
-  diameter: { value: 105700, unit: 'ly' },
-  /** Distance from the reference point (Milky Way itself). */
+  type: 'SBbc', // Barred spiral (McConnachie 2012)
+  /** D25 diameter in light-years: 26.8 kpc, an estimate from a model of its disk */
+  diameter: { value: 87410, unit: 'ly' },
+  /** Distance from the Sun: 0, the Sun is in it */
   distance: { value: 0, unit: 'ly' },
   /** Supermassive black hole at the center. */
   blackHole: {
     name: 'Sagittarius A*',
-    /** Mass of the black hole in Solar Masses ($ M_\odot $). */
-    mass: 4.154e6,
-    /** Schwarzschild radius (approximate) in AU. */
-    radius: { value: 0.08, unit: 'au' },
-    /** Positional reference within the galaxy in AU. */
+    /** Mass in solar masses: GRAVITY Collaboration 2024 */
+    mass: 4.2996e6,
+    /** Schwarzschild radius in au */
+    radius: { value: 0.08488, unit: 'au' },
     x: { value: 0, unit: 'au' },
     y: { value: 0, unit: 'au' }
   }
