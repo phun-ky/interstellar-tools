@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.11.0...%40interstellar-tools%2Ftracking%400.11.1) (2026-11-06)
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@2.0.0 ([af86987](https://github.com/phun-ky/interstellar-tools/commit/af869875bd0c3bae6f830617e7d18a00e8de59ea))
+* 🤖 @interstellar-tools/types@2.0.0 ([cc37776](https://github.com/phun-ky/interstellar-tools/commit/cc37776a8197c18bc99838172c4565abf60a7ee0))
+
 ## [0.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.10.0...%40interstellar-tools%2Ftracking%400.11.0) (2026-11-05)
 
 ### Feature
