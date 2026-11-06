@@ -6,8 +6,8 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 
 | id | name | type | diameter | distance | blackHole.name | blackHole.mass | blackHole.radius | blackHole.x | blackHole.y |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| milky-way | Milky Way | Barred Spiral | 105700 ly | 0 ly | Sagittarius A* | 4154000 | 0.08 au | 0 au | 0 au |
-| andromeda | Andromeda | Barred Spiral | 220000 ly | 2537002537000 ly | Andromeda Central Black Hole | 110000000 | 5 au | 0 au | 160442417000 au |
-| triangulum | Triangulum | Spiral | 60000 ly | 3000003000000 ly | Triangulum Central Black Hole | 1500000 | 0.1 au | 0 au | 189723000000 au |
+| milky-way | Milky Way | SBbc | 87410 ly | 0 ly | Sagittarius A* | 4299600 | 0.08488 au | 0 au | 0 au |
+| andromeda | Andromeda | SA(s)b | 137570 ly | 2482050 ly | M31* | 140000000 | 2.764 au | 0 au | 0 au |
+| triangulum | Triangulum | SA(s)cd | 56420 ly | 2739714 ly |  |  |  |  |  |
 
 </div>

@@ -7,8 +7,13 @@ import { GalaxiesType } from '@interstellar-tools/types';
  * ::: info
  *
  * - Units: `diameter` and `distance` in light-years (ly); black hole `radius`, `x`, `y` in astronomical units (au).
- * - Black hole `mass` is in solar masses ($ M_\odot $).
- * - Values are mainly for visualization; not all are observationally exact.
+ * - `distance` is from the Sun: Cepheids for Andromeda (Li et al. 2021) and Triangulum (Breuval et al. 2023).
+ * - `diameter` is the D25 isophotal diameter, where the disk fades to 25 B-magnitudes per square arcsecond:
+ *   from RC3 (de Vaucouleurs et al. 1991) and the distance for Andromeda and Triangulum, and an estimate from a
+ *   model of its disk for the Milky Way (Goodwin, Gribbin & Hendry 1998). The stars reach further out.
+ * - Black hole `mass` is in solar masses ($ M_\odot $), and `radius` is its Schwarzschild radius, $2GM/c^2$.
+ *   Each black hole sits at its galaxy's centre, `x` and `y` 0. Triangulum has none: observations limit its mass
+ *   to 1500 $ M_\odot $ (Gebhardt et al. 2001).
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -30,19 +35,18 @@ export const GALAXIES: GalaxiesType = [
   {
     id: 'milky-way',
     name: 'Milky Way',
-    type: 'Barred Spiral',
-    /** Diameter of the galaxy in light-years. */
-    diameter: { value: 105700, unit: 'ly' },
-    /** Distance from the reference point (Milky Way itself). */
+    type: 'SBbc', // Barred spiral (McConnachie 2012)
+    /** D25 diameter in light-years: 26.8 kpc, an estimate from a model of its disk */
+    diameter: { value: 87410, unit: 'ly' },
+    /** Distance from the Sun: 0, the Sun is in it */
     distance: { value: 0, unit: 'ly' },
     /** Supermassive black hole at the center. */
     blackHole: {
       name: 'Sagittarius A*',
-      /** Mass of the black hole in Solar Masses ($ M_\odot $). */
-      mass: 4.154e6,
-      /** Schwarzschild radius (approximate) in AU. */
-      radius: { value: 0.08, unit: 'au' },
-      /** Positional reference within the galaxy in AU. */
+      /** Mass in solar masses: GRAVITY Collaboration 2024 */
+      mass: 4.2996e6,
+      /** Schwarzschild radius in au */
+      radius: { value: 0.08488, unit: 'au' },
       x: { value: 0, unit: 'au' },
       y: { value: 0, unit: 'au' }
     }
@@ -51,29 +55,29 @@ export const GALAXIES: GalaxiesType = [
   {
     id: 'andromeda',
     name: 'Andromeda',
-    type: 'Barred Spiral',
-    diameter: { value: 220000, unit: 'ly' },
-    distance: { value: 2537002537000, unit: 'ly' }, // Distance from the Milky Way in light-years
+    type: 'SA(s)b', // Spiral, unbarred (RC3)
+    /** D25 diameter in light-years: 190.5′ at 761 kpc, 42.2 kpc */
+    diameter: { value: 137570, unit: 'ly' },
+    /** Distance from the Sun in light-years: 761 ± 11 kpc (Li et al. 2021) */
+    distance: { value: 2482050, unit: 'ly' },
     blackHole: {
-      name: 'Andromeda Central Black Hole',
-      mass: 1.1e8,
-      radius: { value: 5, unit: 'au' },
+      name: 'M31*',
+      /** Mass in solar masses: Bender et al. 2005, 1.1 to 2.3 × 10⁸ */
+      mass: 1.4e8,
+      /** Schwarzschild radius in au */
+      radius: { value: 2.764, unit: 'au' },
       x: { value: 0, unit: 'au' },
-      y: { value: 160442417000, unit: 'au' }
+      y: { value: 0, unit: 'au' }
     }
   },
   {
     id: 'triangulum',
     name: 'Triangulum',
-    type: 'Spiral',
-    diameter: { value: 60000, unit: 'ly' },
-    distance: { value: 3000003000000, unit: 'ly' }, // Distance in light-years
-    blackHole: {
-      name: 'Triangulum Central Black Hole',
-      mass: 1.5e6,
-      radius: { value: 0.1, unit: 'au' },
-      x: { value: 0, unit: 'au' },
-      y: { value: 189723000000, unit: 'au' }
-    }
+    type: 'SA(s)cd', // Spiral, unbarred (RC3)
+    /** D25 diameter in light-years: 70.8′ at 840 kpc, 17.3 kpc */
+    diameter: { value: 56420, unit: 'ly' },
+    /** Distance from the Sun in light-years: 840 ± 11 kpc (Breuval et al. 2023). Other methods give up to 880 kpc */
+    distance: { value: 2739714, unit: 'ly' }
+    // No supermassive black hole: at most 1500 M☉ (Gebhardt et al. 2001)
   }
 ] as const satisfies GalaxiesType;
