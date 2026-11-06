@@ -2,6 +2,7 @@ import { DistanceInterface } from '../distance.js';
 import type { FullOrbitInterface } from '../orbits.js';
 
 import type { DisplayInterface } from './display.js';
+import type { RotationInterface } from './rotation.js';
 
 /**
  * Represents a **comet** in the solar system simulation.
@@ -34,6 +35,11 @@ export interface CometInterface {
   parent: string;
   /** Orbit around the parent, with all elements including `i`, `w`, `om` and `q`. */
   orbit: FullOrbitInterface;
+  /**
+   * How the nucleus spins: its sidereal rotation period and direction, at the
+   * time it was measured. Given where one is published.
+   */
+  rotation?: RotationInterface;
   /** X-coordinate in a distance-based system (optional). */
   x?: DistanceInterface;
   /** Y-coordinate in a distance-based system (optional). */

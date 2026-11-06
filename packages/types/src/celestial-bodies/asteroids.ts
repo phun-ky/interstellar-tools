@@ -2,6 +2,7 @@ import { DistanceInterface } from '../distance.js';
 import type { FullOrbitInterface } from '../orbits.js';
 
 import type { DisplayInterface } from './display.js';
+import type { RotationInterface } from './rotation.js';
 
 /**
  * High-level **orbital class** of an asteroid (by dynamical region).
@@ -135,6 +136,12 @@ export interface AsteroidInterface {
 
   /** Orbit around the parent, with all elements including `i`, `w`, `om` and `q`. */
   orbit: FullOrbitInterface;
+
+  /**
+   * How the asteroid spins: its sidereal rotation period and direction, from
+   * the IAU or its light curve. Given where one is published.
+   */
+  rotation?: RotationInterface;
 
   /**
    * Optional **Cartesian coordinates** (distance values) in a specified frame.

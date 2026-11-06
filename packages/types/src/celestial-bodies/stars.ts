@@ -2,6 +2,7 @@ import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
 import type { DisplayInterface } from './display.js';
+import type { RotationInterface } from './rotation.js';
 
 /**
  * Represents a **star**.
@@ -56,6 +57,11 @@ export interface StarInterface {
    * as the orbit equations take it. Given where JPL publishes one.
    */
   mu?: number;
+  /**
+   * How the star spins: its sidereal rotation period, from interferometry or
+   * spectroscopy. Given where one is published.
+   */
+  rotation?: RotationInterface;
   /** Physical radius of the star. */
   radius: DistanceInterface;
   /** X-coordinate in the parent's frame. */
