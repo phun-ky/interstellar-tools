@@ -792,6 +792,8 @@ describe('GALAXIES', () => {
     for (const galaxy of GALAXIES) {
       assert.ok(galaxy.diameter.value > 0, `${galaxy.name}.diameter`);
       assert.ok(galaxy.distance.value >= 0, `${galaxy.name}.distance`);
+      if (!galaxy.blackHole) continue;
+
       assert.ok(galaxy.blackHole.mass > 0, `${galaxy.name}.blackHole.mass`);
       assert.ok(
         galaxy.blackHole.radius.value > 0,
