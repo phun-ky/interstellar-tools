@@ -1,4 +1,4 @@
-import { GalaxiesType } from '@interstellar-tools/types';
+import { GalaxiesType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a collection of galaxies within the space visualization.
@@ -12,7 +12,9 @@ import { GalaxiesType } from '@interstellar-tools/types';
  *   from RC3 (de Vaucouleurs et al. 1991) and the distance for Andromeda and Triangulum, and an estimate from a
  *   model of its disk for the Milky Way (Goodwin, Gribbin & Hendry 1998). The stars reach further out.
  * - Black hole `mass` is in solar masses ($ M_\odot $), and `radius` is its Schwarzschild radius, $2GM/c^2$.
- *   Each black hole sits at its galaxy's centre, `x` and `y` 0. Triangulum has none: observations limit its mass
+ *   Each black hole sits at its galaxy's centre, `x` and `y` 0. Sagittarius A* has an `id`, so the S-stars
+ *   in `STARS` can orbit it, its `mu`, its distance from the Sun (GRAVITY Collaboration 2024), and the
+ *   diameter of the ring the Event Horizon Telescope imaged (EHT 2022). Triangulum has none: observations limit its mass
  *   to 1500 $ M_\odot $ (Gebhardt et al. 2001).
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
@@ -42,11 +44,18 @@ export const GALAXIES: GalaxiesType = [
     distance: { value: 0, unit: 'ly' },
     /** Supermassive black hole at the center. */
     blackHole: {
+      id: 'sagittarius-a-star',
       name: 'Sagittarius A*',
       /** Mass in solar masses: GRAVITY Collaboration 2024 */
       mass: 4.2996e6,
+      /** G·M in m³/s², from its mass and the Sun's GM */
+      mu: 5.70610407201485e26,
       /** Schwarzschild radius in au */
       radius: { value: 0.08488, unit: 'au' },
+      /** Distance from the Sun in light-years: R₀ = 8275.9 ± 8.6 pc, fitted with its mass */
+      distance: { value: 26992.38, unit: 'ly' },
+      /** The ring the Event Horizon Telescope imaged: 51.8 ± 2.3 μas (EHT 2022) */
+      ringDiameter: 2.511334868e-10 as Radians,
       x: { value: 0, unit: 'au' },
       y: { value: 0, unit: 'au' }
     }

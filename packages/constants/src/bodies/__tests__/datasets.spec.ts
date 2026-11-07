@@ -67,7 +67,27 @@ const GALAXY_IDS = new Set(GALAXIES.map((galaxy) => galaxy.id));
 const SYSTEM_IDS = new Set(SYSTEMS.map((system) => system.id));
 const STAR_IDS = new Set(STARS.map((star) => star.id));
 const PLANET_IDS = new Set(PLANETS.map((planet) => planet.id));
-const NODES: OrbitingType[] = [...SYSTEMS, ...STARS, ...PLANETS, ...MOONS];
+// A black hole that stars orbit is a node too, bound to its galaxy
+const BLACK_HOLES: OrbitingType[] = GALAXIES.flatMap(({ id, blackHole }) =>
+  blackHole?.id
+    ? [
+        {
+          id: blackHole.id,
+          name: blackHole.name,
+          parent: id,
+          mass: blackHole.mass
+        }
+      ]
+    : []
+);
+const BLACK_HOLE_IDS = new Set(BLACK_HOLES.map(({ id }) => id));
+const NODES: OrbitingType[] = [
+  ...BLACK_HOLES,
+  ...SYSTEMS,
+  ...STARS,
+  ...PLANETS,
+  ...MOONS
+];
 const NODE_BY_ID = new Map(NODES.map((node) => [node.id, node]));
 
 // Orbit fields live in `orbit`; everything else on the body itself
@@ -207,11 +227,11 @@ describe('parents', () => {
     );
   });
 
-  test('stars and systems are bound to a system or a galaxy', () => {
+  test('stars and systems are bound to a system, a galaxy or its black hole', () => {
     assertParentIn(
       [...STARS, ...SYSTEMS],
-      new Set([...SYSTEM_IDS, ...GALAXY_IDS]),
-      'system or galaxy'
+      new Set([...SYSTEM_IDS, ...GALAXY_IDS, ...BLACK_HOLE_IDS]),
+      'system, galaxy or black hole'
     );
   });
 
@@ -597,6 +617,15 @@ describe('stars', () => {
     }
   });
 
+  test('orbiting a black hole use au and yr', () => {
+    for (const star of STARS.filter((s) =>
+      BLACK_HOLE_IDS.has(s.parent ?? '')
+    )) {
+      assert.equal(star.orbit?.a.unit, 'au', `${star.name}.orbit.a`);
+      assert.equal(star.orbit?.period.unit, 'yr', `${star.name}.orbit.period`);
+    }
+  });
+
   // Days for close binaries such as Spica, years for wide ones
   test('orbiting within a system use au and d, yr or kyr', () => {
     for (const star of STARS.filter((s) => SYSTEM_IDS.has(s.parent ?? ''))) {
@@ -608,6 +637,105 @@ describe('stars', () => {
         `${star.name}.orbit.period`
       );
     }
+  });
+});
+
+// The S-stars' orbits on the sky: a in arcseconds, e, i, Ω, ω and the time of
+// periapsis. S2's from GRAVITY Collaboration 2024, the others' from Gillessen
+// et al. 2017. Masses and radii in M☉ and R☉ from Habibi et al. 2017
+const S_STARS: Record<
+  string,
+  [number, number, number, number, number, number, number, number]
+> = {
+  s1: [0.595, 0.556, 119.14, 342.04, 122.3, 2001.8, 12.4, 5.19],
+  s2: [0.12502, 0.88444, 134.67, 228.21, 66.279, 2018.3789, 13.6, 5.53],
+  s4: [0.357, 0.3905, 80.33, 258.84, 290.8, 1957.4, 12.2, 5.23],
+  s6: [0.6574, 0.84, 87.24, 85.07, 116.23, 2108.61, 9.2, 4.51],
+  s8: [0.4047, 0.8031, 74.37, 315.43, 346.7, 1983.64, 13.2, 5.11],
+  s9: [0.2724, 0.644, 82.41, 156.6, 150.6, 1976.71, 8.2, 3.89],
+  s12: [0.2987, 0.8883, 33.56, 230.1, 317.9, 1995.59, 7.6, 4.07]
+};
+
+describe('Sagittarius A* and the S-stars', () => {
+  const milkyWay = GALAXIES.find(({ id }) => id === 'milky-way')!;
+  const sgrA = milkyWay.blackHole!;
+  const sStars = STARS.filter(({ parent }) => parent === sgrA.id);
+
+  test('gives Sagittarius A* its μ, its distance R₀ and the ring the EHT imaged', () => {
+    const GM_SUN = STARS.find(({ id }) => id === 'sun')!.mu!;
+
+    assert.equal(sgrA.id, 'sagittarius-a-star');
+    assert.ok(Math.abs(sgrA.mu! / (GM_SUN * sgrA.mass) - 1) < 1e-12);
+    assert.equal(sgrA.distance!.unit, 'ly');
+    assert.ok(Math.abs(sgrA.distance!.value - 8275.9 * LY_PER_PC) < 0.01);
+    // 51.8 μas (EHT 2022)
+    assert.ok(
+      Math.abs(sgrA.ringDiameter! - (51.8e-6 / 3600) * (Math.PI / 180)) < 1e-18
+    );
+  });
+
+  test('has the S-stars with both a published orbit and a radius', () => {
+    assert.deepEqual(
+      sStars.map(({ id }) => id),
+      Object.keys(S_STARS)
+    );
+  });
+
+  test('matches each orbit, mass and radius to its source', () => {
+    for (const { id, name, orbit, mass, radius } of sStars) {
+      const [a, e, i, om, w, , m, r] = S_STARS[id]!;
+
+      // The angular a at R₀, in au: 1″ at 1 pc is 1 au
+      assert.ok(Math.abs(orbit!.a.value - a * 8275.9) < 0.1, `${name}.orbit.a`);
+      assert.equal(orbit!.e, e, `${name}.orbit.e`);
+      assert.deepEqual([orbit!.i, orbit!.om, orbit!.w], [i, om, w], name);
+      assert.equal(mass, m, `${name}.mass`);
+      assert.ok(Math.abs(radius.value - r * 695_700) < 1, `${name}.radius`);
+    }
+  });
+
+  test('puts each star at its true anomaly at J2000, from its time of periapsis', () => {
+    for (const { id, name, orbit } of sStars) {
+      const { e, period, angle } = orbit!;
+      const tP = S_STARS[id]![5];
+      const M =
+        ((((2 * Math.PI * (2000 - tP)) / period.value) % (2 * Math.PI)) +
+          2 * Math.PI) %
+        (2 * Math.PI);
+      let E = e < 0.8 ? M : Math.PI;
+
+      for (let k = 0; k < 100; k++)
+        E -= (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E));
+
+      const nu =
+        (2 *
+          Math.atan2(
+            Math.sqrt(1 + e) * Math.sin(E / 2),
+            Math.sqrt(1 - e) * Math.cos(E / 2)
+          ) +
+          2 * Math.PI) %
+        (2 * Math.PI);
+
+      assert.ok(Math.abs(angle - nu) < 1e-5, `${name}: ${angle} against ${nu}`);
+    }
+  });
+
+  test('gives each period within 1 % of Kepler’s third law around Sagittarius A*', () => {
+    for (const { name, orbit } of sStars) {
+      const kepler = Math.sqrt(orbit!.a.value ** 3 / sgrA.mass);
+
+      assert.ok(
+        Math.abs(orbit!.period.value / kepler - 1) < 0.01,
+        `${name}: ${orbit!.period.value} yr against ${kepler} yr`
+      );
+    }
+  });
+
+  test('brings S2 within 120 au of Sagittarius A*', () => {
+    const { orbit } = sStars.find(({ id }) => id === 's2')!;
+    const periapsis = orbit!.a.value * (1 - orbit!.e);
+
+    assert.ok(Math.abs(periapsis - 119.6) < 0.1, `${periapsis} au`);
   });
 });
 

@@ -15,5 +15,12 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 | alpha-centauri-a | Alpha Centauri A | G2V | star | alpha-centauri-ab | 10.66 au | 0.51947 | 79.762 yr |  | 3.275243601437025 | 28.8 d | 1.0788 | 847015 km |  | #fff4ea |  |  |  |
 | alpha-centauri-b | Alpha Centauri B | K1V | star | alpha-centauri-ab | 12.64 au | 0.51947 | 79.762 yr |  | 3.275243601437025 | 36.2 d | 0.9092 | 597676 km |  | #ffd2a1 |  |  |  |
 | proxima-centauri | Proxima Centauri | M5.5Ve | star | alpha-centauri | 8197 au | 0.5 | 547 kyr |  | 3.099566485428788 | 83 d | 0.1221 | 107277 km |  | #ffcc6f |  |  |  |
+| s1 | S1 | B0-B3V | star | sagittarius-a-star | 4924.2 au | 0.556 | 166 yr |  | 5.998693 |  | 12.4 | 3610683 km |  | #cad7ff |  |  |  |
+| s2 | S2 | B0V | star | sagittarius-a-star | 1034.7 au | 0.88444 | 16.046 yr |  | 3.537946 |  | 13.6 | 3847221 km |  | #cad7ff |  |  |  |
+| s4 | S4 | B0-B3V | star | sagittarius-a-star | 2954.5 au | 0.3905 | 77 yr |  | 3.301758 |  | 12.2 | 3638511 km |  | #cad7ff |  |  |  |
+| s6 | S6 | B0-B3V | star | sagittarius-a-star | 5440.6 au | 0.84 | 192 yr |  | 3.074946 |  | 9.2 | 3137607 km |  | #cad7ff |  |  |  |
+| s8 | S8 | B0-B3V | star | sagittarius-a-star | 3349.3 au | 0.8031 | 92.9 yr |  | 2.66468 |  | 13.2 | 3555027 km |  | #cad7ff |  |  |  |
+| s9 | S9 | B0-B3V | star | sagittarius-a-star | 2254.4 au | 0.644 | 51.3 yr |  | 3.059443 |  | 8.2 | 2706273 km |  | #cad7ff |  |  |  |
+| s12 | S12 | B0-B3V | star | sagittarius-a-star | 2472 au | 0.8883 | 58.9 yr |  | 2.542369 |  | 7.6 | 2831499 km |  | #cad7ff |  |  |  |
 
 </div>
