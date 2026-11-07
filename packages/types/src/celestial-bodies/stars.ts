@@ -8,8 +8,9 @@ import type { RotationInterface } from './rotation.js';
  * Represents a **star**.
  *
  * A star is bound to one `parent`: a galaxy for a single star like Vega, or a
- * system barycenter for a star in a planetary, binary or multiple system. Its
- * `orbit` describes the motion around that parent. A star without a `parent`
+ * system barycenter for a star in a planetary, binary or multiple system, or a
+ * galaxy's central black hole for a star that orbits it, like S2 around
+ * Sagittarius A*. Its `orbit` describes the motion around that parent. A star without a `parent`
  * is unbound, like a hypervelocity star leaving its galaxy.
  *
  * **Classification & Visualization:**
@@ -46,7 +47,7 @@ export interface StarInterface {
   type: string;
   /** Defines the category as a star. */
   category: 'star';
-  /** Id of the galaxy or system the star is bound to. */
+  /** Id of the galaxy, system or black hole the star is bound to. */
   parent?: string;
   /** Orbit around the parent. */
   orbit?: OrbitInterface;
