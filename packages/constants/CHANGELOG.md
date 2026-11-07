@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.0.0...%40interstellar-tools%2Fconstants%402.1.0) (2026-11-07)
+
+### Feature
+
+* 🎸 Add Sagittarius A* and the S-stars that orbit it ([56ee8fc](https://github.com/phun-ky/interstellar-tools/commit/56ee8fc0db5e81a044ddb8c2042a8bd1856036d6)), closes [#370](https://github.com/phun-ky/interstellar-tools/issues/370)
+
 ## [2.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%401.5.0...%40interstellar-tools%2Fconstants%402.0.0) (2026-11-06)
 
 ### ⚠ BREAKING CHANGES

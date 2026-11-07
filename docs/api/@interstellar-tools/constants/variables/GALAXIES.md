@@ -8,7 +8,7 @@ const GALAXIES: GalaxiesType;
 ```
 
 Defined in:
-[bodies/galaxies.ts:33](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/galaxies.ts#L33)
+[bodies/galaxies.ts:35](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/galaxies.ts#L35)
 
 Represents a collection of galaxies within the space visualization.
 
@@ -28,8 +28,11 @@ Represents a collection of galaxies within the space visualization.
 
 - Black hole `mass` is in solar masses ($M_\odot$), and `radius` is its
   Schwarzschild radius, $2GM/c^2$. Each black hole sits at its galaxy's centre,
-  `x` and `y` 0. Triangulum has none: observations limit its mass to 1500
-  $M_\odot$ (Gebhardt et al. 2001).
+  `x` and `y` 0. Sagittarius A\* has an `id`, so the S-stars in `STARS` can
+  orbit it, its `mu`, its distance from the Sun (GRAVITY Collaboration 2024),
+  and the diameter of the ring the Event Horizon Telescope imaged (EHT 2022).
+  Triangulum has none: observations limit its mass to 1500 $M_\odot$ (Gebhardt
+  et al. 2001).
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See
@@ -64,11 +67,18 @@ time.
   distance: { value: 0, unit: 'ly' },
   /** Supermassive black hole at the center. */
   blackHole: {
+    id: 'sagittarius-a-star',
     name: 'Sagittarius A*',
     /** Mass in solar masses: GRAVITY Collaboration 2024 */
     mass: 4.2996e6,
+    /** G·M in m³/s², from its mass and the Sun's GM */
+    mu: 5.70610407201485e26,
     /** Schwarzschild radius in au */
     radius: { value: 0.08488, unit: 'au' },
+    /** Distance from the Sun in light-years: R₀ = 8275.9 ± 8.6 pc, fitted with its mass */
+    distance: { value: 26992.38, unit: 'ly' },
+    /** The ring the Event Horizon Telescope imaged: 51.8 ± 2.3 μas (EHT 2022) */
+    ringDiameter: 2.511334868e-10 as Radians,
     x: { value: 0, unit: 'au' },
     y: { value: 0, unit: 'au' }
   }
