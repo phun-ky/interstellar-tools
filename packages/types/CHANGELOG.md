@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.0.0...%40interstellar-tools%2Ftypes%402.1.0) (2026-11-07)
+
+### Feature
+
+* 🎸 Let stars orbit a galaxy's black hole ([f642395](https://github.com/phun-ky/interstellar-tools/commit/f642395c8c9d43a81d219dabccb7cbe94a5d971d)), references [#370](https://github.com/phun-ky/interstellar-tools/issues/370)
+
 ## [2.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%401.19.0...%40interstellar-tools%2Ftypes%402.0.0) (2026-11-06)
 
 ### ⚠ BREAKING CHANGES
