@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.1.0...%40interstellar-tools%2Fconstants%402.2.0) (2026-11-08)
+
+### Feature
+
+* 🎸 Add dwarf planets, moons, visited asteroids and comets, bright stars, TRAPPIST-1 and more galaxies ([3774349](https://github.com/phun-ky/interstellar-tools/commit/3774349c6b04726e1ea0ccfe588ee2155c0d3167)), closes [#371](https://github.com/phun-ky/interstellar-tools/issues/371)
+
 ## [2.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.0.0...%40interstellar-tools%2Fconstants%402.1.0) (2026-11-07)
 
 ### Feature
