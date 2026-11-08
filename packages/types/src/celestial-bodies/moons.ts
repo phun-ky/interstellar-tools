@@ -6,9 +6,11 @@ import type { DisplayInterface } from './display.js';
 import type { RotationInterface } from './rotation.js';
 
 /**
- * Represents a **moon** (natural satellite) orbiting a planet.
+ * Represents a **moon** (natural satellite) orbiting a planet, a dwarf planet or an
+ * asteroid.
  *
- * A moon always has a `parent` (its planet) and an `orbit` around it; see
+ * A moon always has a `parent` (its planet, or an asteroid like Dimorphos's Didymos)
+ * and an `orbit` around it; see
  * {@link OrbitInterface}.
  *
  * **Physical and drawing properties:**
@@ -43,9 +45,9 @@ export interface MoonInterface {
   /** Classification of the moon. */
   category:
     'natural satellite' | 'irregular satellite' | 'retrograde satellite';
-  /** Id of the planet the moon orbits (e.g., `'jupiter'`). */
+  /** Id of the planet, or asteroid, the moon orbits (e.g., `'jupiter'`, `'65803-didymos'`). */
   parent: string;
-  /** Orbit around the parent planet. */
+  /** Orbit around the parent. */
   orbit: OrbitInterface;
   /**
    * How the moon spins: its sidereal rotation period and direction. Given

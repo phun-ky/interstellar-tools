@@ -34,6 +34,7 @@ export type AsteroidType =
  *
  * ::: info
  *
+ * Main-belt asteroids are *large* or *small*, about 100 km across telling them apart.
  * Common near-Earth subgroups: Amor / Apollo / Aten / Atira.
  * Outer main-belt families: Cybele / Hilda. TNOs: Plutinos (2:3 resonance),
  * "classical" Kuiper belt objects (*cubewanos*), and *scattered disk* objects.
@@ -45,6 +46,7 @@ export type AsteroidType =
 export type AsteroidCategory =
   | 'dwarf planet'
   | 'large asteroid'
+  | 'small asteroid'
   | 'amor group'
   | 'apollo group'
   | 'aten group'
@@ -159,6 +161,13 @@ export interface AsteroidInterface {
 
   /** Mean/characteristic **radius** (e.g., in **km**) as a distance value. */
   radius: DistanceInterface;
+
+  /**
+   * Standard gravitational parameter $\mu = G M$ of the asteroid alone, in m³/s²,
+   * as the orbit equations take it. Given where a moon or a spacecraft has
+   * weighed it, like Ida by Dactyl, or Didymos by Dimorphos.
+   */
+  mu?: number;
 
   /** How to draw the asteroid: its colour and drawn size, and state a renderer computes. */
   display?: DisplayInterface;
