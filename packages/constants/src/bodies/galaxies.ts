@@ -6,7 +6,7 @@ import { GalaxiesType, Radians } from '@interstellar-tools/types';
  *
  * ::: info
  *
- * - Units: `diameter` and `distance` in light-years (ly); black hole `radius`, `x`, `y` in astronomical units (au).
+ * - Units: `diameter` and `distance` in light-years (ly); black hole `radius`, `x`, `y`, `z` in astronomical units (au).
  * - `distance` is from the Sun: Cepheids for Andromeda (Li et al. 2021) and Triangulum (Breuval et al. 2023),
  *   eclipsing binaries for the Large and Small Magellanic Clouds (Pietrzyński et al. 2019, Graczyk et al. 2020),
  *   Vasiliev & Belokurov 2020 for the Sagittarius dwarf, the EHT's 16.8 Mpc for M87, and red giants for
@@ -16,7 +16,7 @@ import { GalaxiesType, Radians } from '@interstellar-tools/types';
  *   Milky Way (Goodwin, Gribbin & Hendry 1998). The stars reach further out. The Sagittarius dwarf, which
  *   the Milky Way is tearing apart, has no such edge: its diameter is its half-light diameter (McConnachie 2012).
  * - Black hole `mass` is in solar masses ($ M_\odot $), and `radius` is its Schwarzschild radius, $2GM/c^2$.
- *   Each black hole sits at its galaxy's centre, `x` and `y` 0. Sagittarius A* has an `id`, so the S-stars
+ *   Each black hole sits at its galaxy's centre, `x`, `y` and `z` 0. Sagittarius A* has an `id`, so the S-stars
  *   in `STARS` can orbit it, its `mu`, its distance from the Sun (GRAVITY Collaboration 2024), and the
  *   diameter of the ring the Event Horizon Telescope imaged (EHT 2022). M87*, the first black hole it imaged,
  *   has its ring's diameter too (EHT 2019). Triangulum has none: observations limit its mass to 1500 $ M_\odot $ (Gebhardt et al.
@@ -62,7 +62,8 @@ export const GALAXIES: GalaxiesType = [
       /** The ring the Event Horizon Telescope imaged: 51.8 ± 2.3 μas (EHT 2022) */
       ringDiameter: 2.511334868e-10 as Radians,
       x: { value: 0, unit: 'au' },
-      y: { value: 0, unit: 'au' }
+      y: { value: 0, unit: 'au' },
+      z: { value: 0, unit: 'au' }
     }
   },
   // #endregion datasetGalaxies
@@ -81,7 +82,8 @@ export const GALAXIES: GalaxiesType = [
       /** Schwarzschild radius in au */
       radius: { value: 2.764, unit: 'au' },
       x: { value: 0, unit: 'au' },
-      y: { value: 0, unit: 'au' }
+      y: { value: 0, unit: 'au' },
+      z: { value: 0, unit: 'au' }
     }
   },
   {
@@ -142,7 +144,8 @@ export const GALAXIES: GalaxiesType = [
       /** The first black hole imaged: a ring of 42 μas (EHT Collaboration 2019) */
       ringDiameter: 2.03622e-10 as Radians,
       x: { value: 0, unit: 'au' },
-      y: { value: 0, unit: 'au' }
+      y: { value: 0, unit: 'au' },
+      z: { value: 0, unit: 'au' }
     }
   },
   {
@@ -160,7 +163,8 @@ export const GALAXIES: GalaxiesType = [
       /** Schwarzschild radius in au */
       radius: { value: 1.08577, unit: 'au' },
       x: { value: 0, unit: 'au' },
-      y: { value: 0, unit: 'au' }
+      y: { value: 0, unit: 'au' },
+      z: { value: 0, unit: 'au' }
     }
   }
 ] as const satisfies GalaxiesType;

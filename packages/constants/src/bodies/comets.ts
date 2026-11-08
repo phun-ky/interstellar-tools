@@ -5,7 +5,8 @@ import { CometsType, DegreesType, Radians } from '@interstellar-tools/types';
  *
  * ::: info
  *
- * - Units: `a` (au), `period` (days), `radius` (km); angles `i`, `w`, `om` in degrees.
+ * - Units: `a` (au), `period` (days), `radius` (km); angles `i`, `w`, `om` in degrees, against the
+ *   J2000 ecliptic, `frame`.
  * - `orbit.angle` is the true anomaly at J2000, from the mean anomaly in JPL Horizons' osculating
  *   elements at J2000, converted with this dataset's `e`.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
@@ -49,6 +50,7 @@ export const COMETS: CometsType = [
       w: 111.33 as DegreesType,
       /** Longitude of the ascending node in degrees */
       om: 58.42 as DegreesType,
+      frame: { plane: 'ecliptic' },
       /** True anomaly at J2000 */
       angle: 2.97966 as Radians,
       /** Orbital period in days */
@@ -83,6 +85,7 @@ export const COMETS: CometsType = [
       i: 89.4 as DegreesType,
       w: 130.6 as DegreesType,
       om: 282.5 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 2.550719 as Radians,
       period: { value: 926530, unit: 'd' }, // ~2,537 years (Kepler's third law with a = 186 au),
       q: { value: 0.914, unit: 'au' }
@@ -106,7 +109,8 @@ export const COMETS: CometsType = [
       e: 0.641, // Eccentricity
       i: 7.04 as DegreesType, // Inclination in degrees
       w: 12.78 as DegreesType, // Argument of perihelion in degrees
-      om: 50.14 as DegreesType, // Longitude of ascending node in degrees
+      om: 50.14 as DegreesType,
+      frame: { plane: 'ecliptic' }, // Longitude of ascending node in degrees
       angle: 3.32542 as Radians,
       period: { value: 2355, unit: 'd' }, // ~6.45 years
       q: { value: 1.243, unit: 'au' } // Perihelion distance
@@ -135,6 +139,7 @@ export const COMETS: CometsType = [
       i: 11.8 as DegreesType,
       w: 186.5 as DegreesType,
       om: 334.6 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 3.479299 as Radians,
       period: { value: 1204, unit: 'd' }, // ~3.3 years
       q: { value: 0.34, unit: 'au' }
@@ -160,6 +165,7 @@ export const COMETS: CometsType = [
       i: 10.541 as DegreesType,
       w: 178.911 as DegreesType,
       om: 68.967 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 6.270289 as Radians,
       period: { value: 2011.3, unit: 'd' },
       q: { value: 1.5, unit: 'au' }
@@ -184,6 +190,7 @@ export const COMETS: CometsType = [
       i: 30.321 as DegreesType,
       w: 353.33 as DegreesType,
       om: 75.419 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 3.681708 as Radians,
       period: { value: 2507.9, unit: 'd' },
       q: { value: 1.3596, unit: 'au' }
@@ -208,6 +215,7 @@ export const COMETS: CometsType = [
       i: 3.2402 as DegreesType,
       w: 41.885 as DegreesType,
       om: 136.146 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 2.950501 as Radians,
       period: { value: 2335.8, unit: 'd' },
       q: { value: 1.5896, unit: 'au' }
@@ -232,6 +240,7 @@ export const COMETS: CometsType = [
       i: 13.624 as DegreesType,
       w: 180.781 as DegreesType,
       om: 219.933 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 2.837671 as Radians,
       period: { value: 2336.8, unit: 'd' },
       q: { value: 1.032, unit: 'au' }
@@ -256,6 +265,7 @@ export const COMETS: CometsType = [
       i: 129.784 as DegreesType,
       w: 37.876 as DegreesType,
       om: 62.264 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 3.308662 as Radians,
       period: { value: 1663874, unit: 'd' }, // ~4555 years, heliocentric at J2000
       retrograde: true,

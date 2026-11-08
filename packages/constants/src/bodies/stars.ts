@@ -9,6 +9,9 @@ import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
  *   and its `orbit` around it.
  * - Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly, `period` in Myr.
  *   Orbits within a system or around Sagittarius A*: `a` in au, `period` in d, yr or kyr. `angle` in radians. `mass` in M☉.
+ * - Orbits within a system or around Sagittarius A* that have an `i` are on the sky,
+ *   `frame: { plane: 'sky' }`: `i` to
+ *   the plane of the sky, `om` the position angle of the node from north through east.
  * - `color` is for visualization only.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
  * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
@@ -153,7 +156,8 @@ export const STARS: StarsType = [
       period: { value: 4.0145, unit: 'd' },
       angle: 2.3899 as Radians,
       i: 63.1 as DegreesType,
-      w: 233.9 as DegreesType
+      w: 233.9 as DegreesType,
+      frame: { plane: 'sky' }
     },
     /** Rotation in days: two turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
     rotation: { period: { value: 2.007, unit: 'd' } },
@@ -175,7 +179,8 @@ export const STARS: StarsType = [
       period: { value: 4.0145, unit: 'd' },
       angle: 2.3899 as Radians,
       i: 63.1 as DegreesType,
-      w: 53.9 as DegreesType // opposite A's periapsis
+      w: 53.9 as DegreesType, // opposite A's periapsis
+      frame: { plane: 'sky' }
     },
     /** Rotation in days: 1.5 turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
     rotation: { period: { value: 2.676, unit: 'd' } },
@@ -208,7 +213,8 @@ export const STARS: StarsType = [
       angle: 3.275243601437025 as Radians, // true anomaly at J2000
       i: 79.243 as DegreesType,
       w: 51.519 as DegreesType,
-      om: 205.073 as DegreesType
+      om: 205.073 as DegreesType,
+      frame: { plane: 'sky' }
     },
     /** Rotation in days: Hallam et al. 1991, from its ultraviolet activity. Uncertain: Bazot et al. 2007 find 22.5 ± 5.9 d */
     rotation: { period: { value: 28.8, unit: 'd' } },
@@ -231,7 +237,8 @@ export const STARS: StarsType = [
       angle: 3.275243601437025 as Radians,
       i: 79.243 as DegreesType,
       w: 231.519 as DegreesType,
-      om: 205.073 as DegreesType
+      om: 205.073 as DegreesType,
+      frame: { plane: 'sky' }
     },
     /** Rotation in days: DeWarf et al. 2010, from its activity */
     rotation: { period: { value: 36.2, unit: 'd' } },
@@ -279,7 +286,8 @@ export const STARS: StarsType = [
       angle: 1.906838 as Radians, // true anomaly at J2000
       i: 136.336 as DegreesType,
       w: 329.161 as DegreesType,
-      om: 45.4 as DegreesType
+      om: 45.4 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 2.063,
     radius: { value: 1192708, unit: 'km' }, // 1.7144 R☉
@@ -300,7 +308,8 @@ export const STARS: StarsType = [
       angle: 1.906838 as Radians,
       i: 136.336 as DegreesType,
       w: 149.161 as DegreesType,
-      om: 45.4 as DegreesType
+      om: 45.4 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 1.018,
     radius: { value: 5634, unit: 'km' }, // 0.008098 R☉: Earth-sized
@@ -488,7 +497,8 @@ export const STARS: StarsType = [
       angle: 5.998693 as Radians, // Periapsis in 2001.8
       i: 119.14 as DegreesType,
       w: 122.3 as DegreesType,
-      om: 342.04 as DegreesType
+      om: 342.04 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 12.4,
     radius: { value: 3610683, unit: 'km' },
@@ -509,7 +519,8 @@ export const STARS: StarsType = [
       angle: 3.537946 as Radians, // Periapsis in 2018.3789
       i: 134.67 as DegreesType,
       w: 66.279 as DegreesType,
-      om: 228.21 as DegreesType
+      om: 228.21 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 13.6,
     radius: { value: 3847221, unit: 'km' },
@@ -530,7 +541,8 @@ export const STARS: StarsType = [
       angle: 3.301758 as Radians, // Periapsis in 1957.4
       i: 80.33 as DegreesType,
       w: 290.8 as DegreesType,
-      om: 258.84 as DegreesType
+      om: 258.84 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 12.2,
     radius: { value: 3638511, unit: 'km' },
@@ -551,7 +563,8 @@ export const STARS: StarsType = [
       angle: 3.074946 as Radians, // Periapsis in 2108.61
       i: 87.24 as DegreesType,
       w: 116.23 as DegreesType,
-      om: 85.07 as DegreesType
+      om: 85.07 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 9.2,
     radius: { value: 3137607, unit: 'km' },
@@ -572,7 +585,8 @@ export const STARS: StarsType = [
       angle: 2.66468 as Radians, // Periapsis in 1983.64
       i: 74.37 as DegreesType,
       w: 346.7 as DegreesType,
-      om: 315.43 as DegreesType
+      om: 315.43 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 13.2,
     radius: { value: 3555027, unit: 'km' },
@@ -593,7 +607,8 @@ export const STARS: StarsType = [
       angle: 3.059443 as Radians, // Periapsis in 1976.71
       i: 82.41 as DegreesType,
       w: 150.6 as DegreesType,
-      om: 156.6 as DegreesType
+      om: 156.6 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 8.2,
     radius: { value: 2706273, unit: 'km' },
@@ -614,7 +629,8 @@ export const STARS: StarsType = [
       angle: 2.542369 as Radians, // Periapsis in 1995.59
       i: 33.56 as DegreesType,
       w: 317.9 as DegreesType,
-      om: 230.1 as DegreesType
+      om: 230.1 as DegreesType,
+      frame: { plane: 'sky' }
     },
     mass: 7.6,
     radius: { value: 2831499, unit: 'km' },

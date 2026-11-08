@@ -6,7 +6,7 @@ import { AsteroidsType, DegreesType, Radians } from '@interstellar-tools/types';
  * ::: info
  *
  * - Units: `a` in astronomical units (au); `period` in days (d); `radius` in km.
- * - Orbital angles `i`, `w`, and `om` are in degrees.
+ * - Orbital angles `i`, `w`, and `om` are in degrees, against the J2000 ecliptic, `frame`.
  * - `display.color` and `display.size` are rendering hints only.
  * - `rotation.period` is the sidereal rotation in hours: 360° over the IAU's rotation rate
  *   (Archinal et al. 2018) where it gives one, else from the shape and pole models of each
@@ -46,6 +46,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 7.1 as DegreesType,
       w: 151.2 as DegreesType,
       om: 103.8 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 5.527458 as Radians,
       period: { value: 1325.2, unit: 'd' },
       q: { value: 2.151, unit: 'au' }
@@ -72,6 +73,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 10.8 as DegreesType,
       w: 178.9 as DegreesType,
       om: 304.3 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 1.553343 as Radians,
       period: { value: 643.2, unit: 'd' },
       q: { value: 1.134, unit: 'au' }
@@ -97,6 +99,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 34.8 as DegreesType,
       w: 310.2 as DegreesType,
       om: 173.1 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 0.579449 as Radians,
       period: { value: 1684.9, unit: 'd' },
       q: { value: 2.13, unit: 'au' }
@@ -126,6 +129,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 3.8 as DegreesType,
       w: 312.3 as DegreesType,
       om: 283.2 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 2.656391 as Radians,
       period: { value: 2033.8, unit: 'd' },
       q: { value: 2.788, unit: 'au' }
@@ -151,6 +155,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 17.3 as DegreesType,
       w: 339.4 as DegreesType,
       om: 73.1 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 0.788889 as Radians,
       period: { value: 1960.9, unit: 'd' },
       q: { value: 2.671, unit: 'au' }
@@ -176,6 +181,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 26.3 as DegreesType,
       w: 34.8 as DegreesType,
       om: 359.2 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 3.150319 as Radians,
       period: { value: 2045.5, unit: 'd' },
       q: { value: 2.451, unit: 'au' }
@@ -201,6 +207,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 3.1 as DegreesType,
       w: 228.0 as DegreesType,
       om: 150.2 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 1.520182 as Radians,
       period: { value: 1820.1, unit: 'd' },
       q: { value: 2.515, unit: 'au' }
@@ -226,6 +233,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 15.9 as DegreesType,
       w: 308.2 as DegreesType,
       om: 296.1 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 2.099631 as Radians,
       period: { value: 2059.6, unit: 'd' },
       q: { value: 2.549, unit: 'au' }
@@ -251,6 +259,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 7.5 as DegreesType,
       w: 87.7 as DegreesType,
       om: 304.4 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 3.675663 as Radians,
       period: { value: 1977.9, unit: 'd' },
       q: { value: 2.788, unit: 'au' }
@@ -276,6 +285,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 12.9 as DegreesType,
       w: 248.3 as DegreesType,
       om: 169.8 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 1.74882 as Radians,
       period: { value: 1594.4, unit: 'd' },
       q: { value: 1.986, unit: 'au' }
@@ -301,6 +311,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 11.7 as DegreesType,
       w: 97.5 as DegreesType,
       om: 293.3 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 1.054179 as Radians,
       period: { value: 1567.6, unit: 'd' },
       q: { value: 2.153, unit: 'au' }
@@ -326,6 +337,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 6.026 as DegreesType,
       w: 65.672 as DegreesType,
       om: 2.179 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 0.912594 as Radians,
       period: { value: 438.1, unit: 'd' },
       q: { value: 0.8979, unit: 'au' }
@@ -352,6 +364,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 5.884 as DegreesType,
       w: 211.272 as DegreesType,
       om: 251.727 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 4.657822 as Radians,
       period: { value: 473.6, unit: 'd' },
       q: { value: 0.9631, unit: 'au' }
@@ -378,6 +391,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 1.717 as DegreesType,
       w: 160.138 as DegreesType,
       om: 71.614 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 1.267064 as Radians,
       period: { value: 557.1, unit: 'd' },
       q: { value: 0.9533, unit: 'au' }
@@ -404,6 +418,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 3.066 as DegreesType,
       w: 250.117 as DegreesType,
       om: 80.947 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 5.222118 as Radians,
       period: { value: 1388.5, unit: 'd' },
       q: { value: 2.0418, unit: 'au' }
@@ -430,6 +445,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 1.137 as DegreesType,
       w: 112.291 as DegreesType,
       om: 324.38 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 4.183909 as Radians,
       period: { value: 1766.4, unit: 'd' },
       q: { value: 2.7288, unit: 'au' }
@@ -456,6 +472,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 4.103 as DegreesType,
       w: 129.307 as DegreesType,
       om: 253.322 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 2.014811 as Radians,
       period: { value: 1199.5, unit: 'd' },
       q: { value: 1.8259, unit: 'au' }
@@ -481,6 +498,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 9.945 as DegreesType,
       w: 250.154 as DegreesType,
       om: 55.642 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 3.113031 as Radians,
       period: { value: 1326.3, unit: 'd' },
       q: { value: 2.0152, unit: 'au' }
@@ -506,6 +524,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 2.448 as DegreesType,
       w: 189.443 as DegreesType,
       om: 159.203 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 4.774426 as Radians,
       period: { value: 106873, unit: 'd' },
       q: { value: 42.3232, unit: 'au' }
@@ -531,6 +550,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 3.397 as DegreesType,
       w: 318.886 as DegreesType,
       om: 73.448 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 1.926507 as Radians,
       period: { value: 768.6, unit: 'd' },
       q: { value: 1.0129, unit: 'au' }
@@ -557,6 +577,7 @@ export const ASTEROIDS: AsteroidsType = [
       i: 3.331 as DegreesType,
       w: 126.065 as DegreesType,
       om: 204.657 as DegreesType,
+      frame: { plane: 'ecliptic' },
       angle: 3.791688 as Radians,
       period: { value: 323.5, unit: 'd' },
       q: { value: 0.7458, unit: 'au' }
