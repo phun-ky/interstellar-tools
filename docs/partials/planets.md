@@ -10,12 +10,12 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 | venus | Venus | silicate planet | planet | sun | 0.723 au | 0.0068 | 224.701 d |  | 0.88977 | 243.018484 d | yes | 6051.8 km | 3.24858592e+14 | #E49B0F | -0.718 au | -0.0327 au | 0.041 au |
 | earth | Earth | silicate planet | planet | sun | 1 au | 0.0167 | 365.256 d |  | 6.238549 | 0.9972696632 d |  | 6371.0084 km | 3.98600435507e+14 | #1E90FF | -0.1772 au | 0.9672 au | 0 au |
 | mars | Mars | desert planet | planet | sun | 1.524 au | 0.0934 | 686.98 d |  | 0.408015 | 1.025956756 d |  | 3389.5 km | 4.282837362e+13 | #D14A28 | 1.3909 au | -0.0134 au | -0.0345 au |
-| ceres | Ceres | ice planet | planetoid | sun | 2.766 au | 0.079 | 1680.5 d |  | 0.106686 | 0.3780904165 d |  | 469.7 km | 6.26284e+10 | #C0C0C0 | -2.3475 au | 0.8788 au | 0.4603 au |
+| ceres | Ceres | ice planet | planetoid | sun | 2.7665 au | 0.07838 | 1680.7 d |  | 0.126478 | 0.3780904165 d |  | 469.7 km | 6.26284e+10 | #C0C0C0 | -2.3793 au | 0.7955 au | 0.463 au |
 | jupiter | Jupiter | gas giant | planet | sun | 5.203 au | 0.0489 | 4332.59 d |  | 0.378185 | 0.4135383258 d |  | 69911 km | 1.266865319e+17 | #C08850 | 3.9953 au | 2.9459 au | -0.1016 au |
 | saturn | Saturn | gas giant | planet | sun | 9.537 au | 0.0565 | 10759.22 d |  | 5.458247 | 0.4440092592 d |  | 58232 km | 3.793120623e+16 | #D2B48C | 6.4288 au | 6.5083 au | -0.3691 au |
 | uranus | Uranus | ice giant | planet | sun | 19.191 au | 0.0463 | 30687.15 d |  | 2.537459 | 0.7183333333 d | yes | 25362 km | 5.7939513e+15 | #78D6FF | 14.4012 au | -13.7439 au | -0.2377 au |
 | neptune | Neptune | ice giant | planet | sun | 30.069 au | 0.0086 | 60190.03 d |  | 4.519475 | 0.6652625 d |  | 24622 km | 6.83509997e+15 | #0053D6 | 16.8038 au | -24.9923 au | 0.1274 au |
-| pluto | Pluto | ice planet | planetoid | sun | 39.482 au | 0.2488 | 90560 d |  | 0.436892 | 6.387222999 d | yes | 1188.3 km | 8.693e+11 | #B0A99F | -9.984 au | -27.916 au | 5.8767 au |
+| pluto | Pluto | ice planet | planetoid | sun | 39.2643 au | 0.24467 | 89866.1 d |  | 0.440001 | 6.387222999 d | yes | 1188.3 km | 8.693e+11 | #B0A99F | -9.8754 au | -27.9588 au | 5.8504 au |
 | eris | Eris | ice planet | planetoid | sun | 68.1399 au | 0.432505 | 205447.3 d |  | 3.251515 | 15.771 d |  | 1163 km | 1.0935e+12 | #F2F0EC | 88.3933 au | 30.7652 au | -26.0944 au |
 | haumea | Haumea | ice planet | planetoid | sun | 42.9093 au | 0.199921 | 102665.6 d |  | 3.255681 | 0.163139208 d |  | 797.6 km | 2.63798e+11 | #F4F5F7 | -45.9898 au | -5.1205 au | 22.3856 au |
 | makemake | Makemake | ice planet | planetoid | sun | 45.3721 au | 0.164523 | 111630.1 d |  | 2.621343 | 0.9511083333 d |  | 714 km |  | #D9B48F | -43.5785 au | 11.4783 au | 24.9182 au |

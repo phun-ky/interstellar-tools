@@ -9,10 +9,10 @@ import { DegreesType, PlanetsType, Radians } from '@interstellar-tools/types';
  * - Units: `a` (au), `period` (days), `radius` (km); coordinates `x`,`y`,`z` in au.
  * - `orbit.angle` is the true anomaly at J2000 (2000-01-01 12:00 TT). `x`,`y`,`z` are the heliocentric
  *   position at J2000 in the J2000 ecliptic frame, x towards the equinox.
- * - Both are computed from the J2000 elements in JPL's "Approximate Positions of the Planets" (Table 1),
- *   and for Ceres and Pluto from the JPL Small-Body Database, using this dataset's `a` and `e`.
- *   For Eris, Haumea, Makemake, Gonggong, Quaoar and Sedna, the orbit and position are JPL Horizons'
- *   osculating heliocentric elements and state at J2000. Sedna's orbit around the Solar System's
+ * - For the planets, both are computed from the J2000 elements in JPL's "Approximate Positions of the
+ *   Planets" (Table 1), using this dataset's `a` and `e`. For the dwarf planets, the orbit and position
+ *   are JPL Horizons' osculating heliocentric elements and state at J2000; Pluto's are its system
+ *   barycenter's, which Charon also circles. Sedna's orbit around the Solar System's
  *   barycenter is longer, about 506 au and 11 400 years.
  * - TRAPPIST-1's seven planets orbit their star, `trappist-1a`, with `i` and `w` on the sky, and
  *   have no `x`,`y`,`z`, which are heliocentric.
@@ -163,10 +163,10 @@ export const PLANETS: PlanetsType = [
     category: 'planetoid',
     parent: 'sun',
     orbit: {
-      a: { value: 2.766, unit: 'au' },
-      e: 0.079,
-      period: { value: 1680.5, unit: 'd' },
-      angle: 0.106686 as Radians
+      a: { value: 2.7665, unit: 'au' },
+      e: 0.07838,
+      period: { value: 1680.7, unit: 'd' },
+      angle: 0.126478 as Radians
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 0.3780904165, unit: 'd' } },
@@ -175,9 +175,9 @@ export const PLANETS: PlanetsType = [
     display: {
       color: '#C0C0C0'
     },
-    x: { value: -2.3475, unit: 'au' },
-    y: { value: 0.8788, unit: 'au' },
-    z: { value: 0.4603, unit: 'au' }
+    x: { value: -2.3793, unit: 'au' },
+    y: { value: 0.7955, unit: 'au' },
+    z: { value: 0.463, unit: 'au' }
   },
   {
     id: 'jupiter',
@@ -294,10 +294,10 @@ export const PLANETS: PlanetsType = [
     category: 'planetoid',
     parent: 'sun',
     orbit: {
-      a: { value: 39.482, unit: 'au' },
-      e: 0.2488,
-      period: { value: 90560.0, unit: 'd' },
-      angle: 0.436892 as Radians
+      a: { value: 39.2643, unit: 'au' },
+      e: 0.24467,
+      period: { value: 89866.1, unit: 'd' },
+      angle: 0.440001 as Radians
     },
     /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
     rotation: { period: { value: 6.387222999, unit: 'd' }, retrograde: true },
@@ -310,9 +310,9 @@ export const PLANETS: PlanetsType = [
     display: {
       color: '#B0A99F'
     },
-    x: { value: -9.984, unit: 'au' },
-    y: { value: -27.916, unit: 'au' },
-    z: { value: 5.8767, unit: 'au' }
+    x: { value: -9.8754, unit: 'au' },
+    y: { value: -27.9588, unit: 'au' },
+    z: { value: 5.8504, unit: 'au' }
   },
   {
     id: 'eris',
