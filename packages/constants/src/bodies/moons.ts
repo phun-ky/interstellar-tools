@@ -12,12 +12,14 @@ import { MoonsType, Radians } from '@interstellar-tools/types';
  *   mean anomaly in JPL Horizons' osculating elements at J2000, converted with this dataset's `e`.
  *   For near-circular orbits (e < 0.001) it is close to the mean anomaly, since the periapsis
  *   is barely defined. Irregular moons are strongly perturbed by the Sun, so their elements
- *   describe J2000 only.
+ *   describe J2000 only. Dysnomia's are Holler et al. 2021's, Pluto's moons' Brozović & Jacobson
+ *   2024's, and Dimorphos's Naidu et al. 2024's, before DART hit it.
+ * - Moons orbit a planet, a dwarf planet, or an asteroid: Dimorphos orbits Didymos.
  * - `mu` is the moon's G·M from JPL's satellite physical parameters, where JPL publishes one.
  * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
- *   (Archinal et al. 2018), or a light curve's period for Himalia and Nereid. Most moons keep one
- *   face to their planet, `synchronous: true`. Hyperion tumbles, and Pasiphae's and Halimede's
- *   spins aren't known, so they have none.
+ *   (Archinal et al. 2018), or a light curve's period for Himalia, Nereid and Pluto's small moons,
+ *   which spin chaotically. Most moons keep one face to their planet, `synchronous: true`. Hyperion
+ *   tumbles, and Pasiphae's, Halimede's and Dysnomia's spins aren't known, so they have none.
  * - Colors are hex strings used only for visual representation.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
@@ -432,6 +434,78 @@ export const MOONS: MoonsType = [
       color: '#483D8B'
     }
   },
+  {
+    id: 'mimas',
+    name: 'Mimas',
+    category: 'natural satellite',
+    parent: 'saturn',
+    orbit: {
+      a: { value: 0.00124333, unit: 'au' },
+      e: 0.02,
+      period: { value: 0.942422, unit: 'd' },
+      angle: 0.677503 as Radians
+    },
+    /** Sidereal rotation in days: IAU */
+    rotation: { period: { value: 0.9424218102, unit: 'd' }, synchronous: true },
+    radius: { value: 198.2, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 207.8, unit: 'km' },
+      polarRadius: { value: 190.6, unit: 'km' },
+      alongOrbitRadius: { value: 196.7, unit: 'km' }
+    },
+    mu: 2.50349e9,
+    display: {
+      color: '#C9C9C6' // Grey, with the great crater Herschel
+    }
+  },
+  {
+    id: 'tethys',
+    name: 'Tethys',
+    category: 'natural satellite',
+    parent: 'saturn',
+    orbit: {
+      a: { value: 0.00197195, unit: 'au' },
+      e: 0.001,
+      period: { value: 1.887802, unit: 'd' },
+      angle: 6.114999 as Radians
+    },
+    /** Sidereal rotation in days: IAU */
+    rotation: { period: { value: 1.887802561, unit: 'd' }, synchronous: true },
+    radius: { value: 531.1, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 538.4, unit: 'km' },
+      polarRadius: { value: 526.3, unit: 'km' },
+      alongOrbitRadius: { value: 528.3, unit: 'km' }
+    },
+    mu: 4.121353e10,
+    display: {
+      color: '#E8E8E6' // Bright icy white
+    }
+  },
+  {
+    id: 'dione',
+    name: 'Dione',
+    category: 'natural satellite',
+    parent: 'saturn',
+    orbit: {
+      a: { value: 0.00252477, unit: 'au' },
+      e: 0.002,
+      period: { value: 2.736916, unit: 'd' },
+      angle: 5.793602 as Radians
+    },
+    /** Sidereal rotation in days: IAU */
+    rotation: { period: { value: 2.736915553, unit: 'd' }, synchronous: true },
+    radius: { value: 561.4, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 563.4, unit: 'km' },
+      polarRadius: { value: 559.6, unit: 'km' },
+      alongOrbitRadius: { value: 561.3, unit: 'km' }
+    },
+    mu: 7.311607e10,
+    display: {
+      color: '#D5D3CF' // Icy grey, with bright wispy cliffs
+    }
+  },
 
   // **Uranus (Major Moons)**
   {
@@ -607,6 +681,150 @@ export const MOONS: MoonsType = [
     radius: { value: 62, unit: 'km' },
     display: {
       color: '#A9A9A9'
+    }
+  },
+
+  // **Pluto**: Charon's elements are Plutocentric, the small moons' are around
+  // the Pluto–Charon barycenter (Brozović & Jacobson 2024). The small moons' `a`
+  // is the paper's Table 11, which matches their period; the JPL page's comes
+  // from its Table 10. Their spins are chaotic (Showalter & Hamilton 2015), so
+  // they have a light curve's period and no direction (Weaver et al. 2016).
+  {
+    id: 'charon',
+    name: 'Charon',
+    category: 'natural satellite',
+    parent: 'pluto',
+    orbit: {
+      a: { value: 0.000131018, unit: 'au' },
+      e: 0,
+      period: { value: 6.387222, unit: 'd' },
+      angle: 2.594696 as Radians
+    },
+    /** Sidereal rotation in days: IAU. Pluto and Charon face each other */
+    rotation: { period: { value: 6.387222999, unit: 'd' }, synchronous: true },
+    radius: { value: 606, unit: 'km' },
+    ellipsoid: {
+      equatorialRadius: { value: 606, unit: 'km' },
+      polarRadius: { value: 606, unit: 'km' }
+    },
+    mu: 1.061e11,
+    display: {
+      color: '#9A9590' // Grey, with a reddish north pole
+    }
+  },
+  {
+    id: 'styx',
+    name: 'Styx',
+    category: 'natural satellite',
+    parent: 'pluto',
+    orbit: {
+      a: { value: 0.000283493, unit: 'au' },
+      e: 0.025,
+      period: { value: 20.16, unit: 'd' },
+      angle: 0.213702 as Radians
+    },
+    /** Rotation in days: a light curve's, 3.24 d */
+    rotation: { period: { value: 3.24, unit: 'd' } },
+    radius: { value: 5.2, unit: 'km' },
+    display: {
+      color: '#D4D4D2'
+    }
+  },
+  {
+    id: 'nix',
+    name: 'Nix',
+    category: 'natural satellite',
+    parent: 'pluto',
+    orbit: {
+      a: { value: 0.000325466, unit: 'au' },
+      e: 0.015,
+      period: { value: 24.85, unit: 'd' },
+      angle: 5.830826 as Radians
+    },
+    /** Rotation in days: a light curve's, 43.9 h */
+    rotation: { period: { value: 1.829, unit: 'd' } },
+    radius: { value: 18, unit: 'km' },
+    mu: 1.5e8,
+    display: {
+      color: '#D2CFCB'
+    }
+  },
+  {
+    id: 'kerberos',
+    name: 'Kerberos',
+    category: 'natural satellite',
+    parent: 'pluto',
+    orbit: {
+      a: { value: 0.000386028, unit: 'au' },
+      e: 0.01,
+      period: { value: 32.17, unit: 'd' },
+      angle: 5.498861 as Radians
+    },
+    /** Rotation in days: a light curve's, 5.31 d */
+    rotation: { period: { value: 5.31, unit: 'd' } },
+    radius: { value: 6, unit: 'km' },
+    display: {
+      color: '#CCCCCA'
+    }
+  },
+  {
+    id: 'hydra',
+    name: 'Hydra',
+    category: 'natural satellite',
+    parent: 'pluto',
+    orbit: {
+      a: { value: 0.00043262, unit: 'au' },
+      e: 0.009,
+      period: { value: 38.2, unit: 'd' },
+      angle: 6.004734 as Radians
+    },
+    /** Rotation in days: a light curve's, 10.3 h */
+    rotation: { period: { value: 0.4295, unit: 'd' } },
+    radius: { value: 18.5, unit: 'km' },
+    mu: 2.01e8,
+    display: {
+      color: '#E4E4E2'
+    }
+  },
+
+  // **Eris**
+  {
+    id: 'dysnomia',
+    name: 'Dysnomia',
+    category: 'natural satellite',
+    parent: 'eris',
+    orbit: {
+      a: { value: 0.000249155, unit: 'au' },
+      e: 0.0062,
+      period: { value: 15.785899, unit: 'd' },
+      angle: 2.010563 as Radians
+    },
+    radius: { value: 307.5, unit: 'km' },
+    display: {
+      color: '#4A4542' // Very dark
+    }
+  },
+
+  // **Didymos**: Dimorphos's orbit before DART hit it in 2022 (Naidu et al. 2024), the
+  // one at J2000. It's circular, so `angle` is its argument of latitude at J2000, from
+  // JPL's ephemeris back to 2000. DART shortened its period to 11.367 h
+  {
+    id: 'dimorphos',
+    name: 'Dimorphos',
+    category: 'natural satellite',
+    parent: '65803-didymos',
+    orbit: {
+      a: { value: 7.948e-9, unit: 'au' },
+      e: 0,
+      period: { value: 0.4967289, unit: 'd' },
+      angle: 2.3087 as Radians
+    },
+    /** Sidereal rotation in days: it keeps one face to Didymos (Naidu et al. 2024) */
+    rotation: { period: { value: 0.4967289, unit: 'd' }, synchronous: true },
+    radius: { value: 0.0755, unit: 'km' },
+    mu: 0.287, // Daly et al. 2023, from an assumed density
+    display: {
+      color: '#8A8279'
     }
   }
 ] as const satisfies MoonsType;

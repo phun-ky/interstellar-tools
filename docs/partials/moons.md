@@ -24,6 +24,9 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 | iapetus | Iapetus | natural satellite | saturn | 0.0238 au | 0.0283 | 79.33 d |  | 3.604813 | 79.33084957 d |  | yes | 735 km | 1.2051511e+11 | #2F4F4F |
 | hyperion | Hyperion | irregular satellite | saturn | 0.00990322 au | 0.105 | 21.3 d |  | 1.437895 |  |  |  | 135 km | 3.7049e+8 | #CDAA7D |
 | phoebe | Phoebe | retrograde satellite | saturn | 0.0865 au | 0.1634 | 550 d | yes | 1.330749 | 0.3864157683 d |  |  | 106 km | 5.5479e+8 | #483D8B |
+| mimas | Mimas | natural satellite | saturn | 0.00124333 au | 0.02 | 0.942422 d |  | 0.677503 | 0.9424218102 d |  | yes | 198.2 km | 2.50349e+9 | #C9C9C6 |
+| tethys | Tethys | natural satellite | saturn | 0.00197195 au | 0.001 | 1.887802 d |  | 6.114999 | 1.887802561 d |  | yes | 531.1 km | 4.121353e+10 | #E8E8E6 |
+| dione | Dione | natural satellite | saturn | 0.00252477 au | 0.002 | 2.736916 d |  | 5.793602 | 2.736915553 d |  | yes | 561.4 km | 7.311607e+10 | #D5D3CF |
 | titania | Titania | natural satellite | uranus | 0.00292 au | 0.0011 | 8.706 d |  | 1.300938 | 8.705865458 d |  | yes | 788 km | 2.269e+11 | #8B8886 |
 | oberon | Oberon | natural satellite | uranus | 0.00390053 au | 0.0014 | 13.46 d |  | 1.634613 | 13.46323198 d |  | yes | 761 km | 2.053e+11 | #6E6E6E |
 | miranda | Miranda | natural satellite | uranus | 0.000867967 au | 0.0013 | 1.41 d |  | 1.085483 | 1.413479233 d |  | yes | 235 km | 4.3e+9 | #CCCCCC |
@@ -33,5 +36,12 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 | nereid | Nereid | natural satellite | neptune | 0.0369 au | 0.75 | 360.14 d |  | 3.278379 | 0.483083 d |  |  | 170 km |  | #87CEFA |
 | proteus | Proteus | natural satellite | neptune | 0.000786107 au | 0.0005 | 1.12 d |  | 4.949202 | 1.122315482 d |  | yes | 210 km | 2.58342e+9 | #708090 |
 | halimede | Halimede | irregular satellite | neptune | 0.110901 au | 0.521 | 1879 d | yes | 3.476227 |  |  |  | 62 km |  | #A9A9A9 |
+| charon | Charon | natural satellite | pluto | 0.000131018 au | 0 | 6.387222 d |  | 2.594696 | 6.387222999 d |  | yes | 606 km | 1.061e+11 | #9A9590 |
+| styx | Styx | natural satellite | pluto | 0.000283493 au | 0.025 | 20.16 d |  | 0.213702 | 3.24 d |  |  | 5.2 km |  | #D4D4D2 |
+| nix | Nix | natural satellite | pluto | 0.000325466 au | 0.015 | 24.85 d |  | 5.830826 | 1.829 d |  |  | 18 km | 1.5e+8 | #D2CFCB |
+| kerberos | Kerberos | natural satellite | pluto | 0.000386028 au | 0.01 | 32.17 d |  | 5.498861 | 5.31 d |  |  | 6 km |  | #CCCCCA |
+| hydra | Hydra | natural satellite | pluto | 0.00043262 au | 0.009 | 38.2 d |  | 6.004734 | 0.4295 d |  |  | 18.5 km | 2.01e+8 | #E4E4E2 |
+| dysnomia | Dysnomia | natural satellite | eris | 0.000249155 au | 0.0062 | 15.785899 d |  | 2.010563 |  |  |  | 307.5 km |  | #4A4542 |
+| dimorphos | Dimorphos | natural satellite | 65803-didymos | 7.948e-9 au | 0 | 0.4967289 d |  | 2.3087 | 0.4967289 d |  | yes | 0.0755 km | 2.87e-1 | #8A8279 |
 
 </div>

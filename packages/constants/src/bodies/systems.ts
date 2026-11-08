@@ -81,6 +81,42 @@ export const SYSTEMS: SystemsType = [
     z: { value: 0, unit: 'ly' }
   },
   {
+    // TRAPPIST-1's star and seven planets; 40.662 ly away (Gaia DR3). Placed like Alpha
+    // Centauri, at its distance along x with the Sun's galactic orbit
+    id: 'trappist-1',
+    name: 'TRAPPIST-1',
+    kind: 'planetary',
+    parent: 'milky-way',
+    orbit: {
+      a: { value: 27000.030618468638, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.5692903279334491 as Radians
+    },
+    distance: { value: 40.662, unit: 'ly' },
+    x: { value: 40.662, unit: 'ly' },
+    y: { value: 27000.030618468638, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
+    // Sirius's two stars orbit this barycenter; 8.608 ly away (Bond et al. 2017). Placed
+    // like Alpha Centauri, at its distance along x with the Sun's galactic orbit
+    id: 'sirius',
+    name: 'Sirius',
+    kind: 'binary',
+    parent: 'milky-way',
+    orbit: {
+      a: { value: 27000.001372178926, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.5704775119908836 as Radians
+    },
+    distance: { value: 8.608, unit: 'ly' },
+    x: { value: 8.608, unit: 'ly' },
+    y: { value: 27000.001372178926, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
     // The A-B pair, orbiting the system barycenter opposite Proxima (Kervella et al. 2017)
     id: 'alpha-centauri-ab',
     name: 'Alpha Centauri AB',

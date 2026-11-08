@@ -10,8 +10,11 @@ import { AsteroidsType, DegreesType, Radians } from '@interstellar-tools/types';
  * - `display.color` and `display.size` are rendering hints only.
  * - `rotation.period` is the sidereal rotation in hours: 360° over the IAU's rotation rate
  *   (Archinal et al. 2018) where it gives one, else from the shape and pole models of each
- *   asteroid's light curves. Pallas, Hygiea, Psyche and Eunomia spin backwards against the
- *   Sun's spin, `retrograde: true`.
+ *   asteroid's light curves. Pallas, Hygiea, Psyche, Eunomia, Bennu, Ryugu, Itokawa, Ida, Šteins,
+ *   Didymos and Apophis spin backwards against the Sun's spin, `retrograde: true`. Apophis tumbles,
+ *   `tumbling: true`. Lutetia's and Arrokoth's poles lie too near 90° from the Sun's to tell.
+ * - The asteroids spacecraft visited, from Bennu to Apophis, have JPL Horizons' osculating
+ *   elements at J2000, and `mu` where a spacecraft or a moon weighed them.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -307,6 +310,266 @@ export const ASTEROIDS: AsteroidsType = [
     radius: { value: 136, unit: 'km' },
     display: {
       color: '#bbbbbb',
+      size: 1
+    }
+  },
+  {
+    id: '101955-bennu',
+    name: 'Bennu',
+    type: 'near-earth asteroid',
+    category: 'apollo group',
+    spectralType: 'b-type', // OSIRIS-REx sampled it
+    parent: 'sun',
+    orbit: {
+      a: { value: 1.128923, unit: 'au' },
+      e: 0.204652,
+      i: 6.026 as DegreesType,
+      w: 65.672 as DegreesType,
+      om: 2.179 as DegreesType,
+      angle: 0.912594 as Radians,
+      period: { value: 438.1, unit: 'd' },
+      q: { value: 0.8979, unit: 'au' }
+    },
+    /** Sidereal rotation in hours: Hergenrother et al. 2019, at J2000. Sunlight speeds it up. Backwards against the Sun's spin */
+    rotation: { period: { value: 4.296061, unit: 'h' }, retrograde: true },
+    radius: { value: 0.24467, unit: 'km' },
+    mu: 4.89045, // OSIRIS-REx, Scheeres et al. 2020
+    display: {
+      color: '#46484C',
+      size: 1
+    }
+  },
+  {
+    id: '162173-ryugu',
+    name: 'Ryugu',
+    type: 'near-earth asteroid',
+    category: 'apollo group',
+    spectralType: 'c-type', // Cb; Hayabusa2 sampled it
+    parent: 'sun',
+    orbit: {
+      a: { value: 1.189054, unit: 'au' },
+      e: 0.190016,
+      i: 5.884 as DegreesType,
+      w: 211.272 as DegreesType,
+      om: 251.727 as DegreesType,
+      angle: 4.657822 as Radians,
+      period: { value: 473.6, unit: 'd' },
+      q: { value: 0.9631, unit: 'au' }
+    },
+    /** Sidereal rotation in hours: Watanabe et al. 2019. Backwards against the Sun's spin */
+    rotation: { period: { value: 7.63262, unit: 'h' }, retrograde: true },
+    radius: { value: 0.4481, unit: 'km' },
+    mu: 30.0, // Hayabusa2, Watanabe et al. 2019
+    display: {
+      color: '#3B3936',
+      size: 1
+    }
+  },
+  {
+    id: '25143-itokawa',
+    name: 'Itokawa',
+    type: 'near-earth asteroid',
+    category: 'apollo group',
+    spectralType: 's-type', // Hayabusa sampled it
+    parent: 'sun',
+    orbit: {
+      a: { value: 1.324946, unit: 'au' },
+      e: 0.280528,
+      i: 1.717 as DegreesType,
+      w: 160.138 as DegreesType,
+      om: 71.614 as DegreesType,
+      angle: 1.267064 as Radians,
+      period: { value: 557.1, unit: 'd' },
+      q: { value: 0.9533, unit: 'au' }
+    },
+    /** Sidereal rotation in hours: IAU. Backwards against the Sun's spin */
+    rotation: { period: { value: 12.132395, unit: 'h' }, retrograde: true },
+    radius: { value: 0.1638, unit: 'km' },
+    mu: 2.343, // Hayabusa, Fujiwara et al. 2006
+    display: {
+      color: '#8A7D69',
+      size: 1
+    }
+  },
+  {
+    id: '21-lutetia',
+    name: 'Lutetia',
+    type: 'main-belt asteroid',
+    category: 'small asteroid',
+    spectralType: 'm-type', // Xc
+    parent: 'sun',
+    orbit: {
+      a: { value: 2.435733, unit: 'au' },
+      e: 0.161713,
+      i: 3.066 as DegreesType,
+      w: 250.117 as DegreesType,
+      om: 80.947 as DegreesType,
+      angle: 5.222118 as Radians,
+      period: { value: 1388.5, unit: 'd' },
+      q: { value: 2.0418, unit: 'au' }
+    },
+    /** Sidereal rotation in hours: IAU. Its pole lies within the error of 90° from the Sun's, so the spin direction is unknown */
+    rotation: { period: { value: 8.1682701, unit: 'h' } },
+    radius: { value: 49, unit: 'km' },
+    mu: 113460000.0, // Rosetta, Pätzold et al. 2011
+    display: {
+      color: '#8A8781',
+      size: 1
+    }
+  },
+  {
+    id: '243-ida',
+    name: 'Ida',
+    type: 'main-belt asteroid',
+    category: 'small asteroid',
+    spectralType: 's-type', // Galileo found its moon, Dactyl
+    parent: 'sun',
+    orbit: {
+      a: { value: 2.85969, unit: 'au' },
+      e: 0.045755,
+      i: 1.137 as DegreesType,
+      w: 112.291 as DegreesType,
+      om: 324.38 as DegreesType,
+      angle: 4.183909 as Radians,
+      period: { value: 1766.4, unit: 'd' },
+      q: { value: 2.7288, unit: 'au' }
+    },
+    /** Sidereal rotation in hours: IAU. Backwards against the Sun's spin */
+    rotation: { period: { value: 4.633632, unit: 'h' }, retrograde: true },
+    radius: { value: 15.7, unit: 'km' },
+    mu: 2800000.0, // from its moon Dactyl's orbit (Belton et al. 1995), ±14 %
+    display: {
+      color: '#8E8575',
+      size: 1
+    }
+  },
+  {
+    id: '951-gaspra',
+    name: 'Gaspra',
+    type: 'main-belt asteroid',
+    category: 'small asteroid',
+    spectralType: 's-type', // The first asteroid a spacecraft flew past, Galileo in 1991
+    parent: 'sun',
+    orbit: {
+      a: { value: 2.209421, unit: 'au' },
+      e: 0.173562,
+      i: 4.103 as DegreesType,
+      w: 129.307 as DegreesType,
+      om: 253.322 as DegreesType,
+      angle: 2.014811 as Radians,
+      period: { value: 1199.5, unit: 'd' },
+      q: { value: 1.8259, unit: 'au' }
+    },
+    /** Sidereal rotation in hours: IAU */
+    rotation: { period: { value: 7.0420728, unit: 'h' } },
+    radius: { value: 6.1, unit: 'km' },
+    display: {
+      color: '#93806B',
+      size: 1
+    }
+  },
+  {
+    id: '2867-steins',
+    name: 'Šteins',
+    type: 'main-belt asteroid',
+    category: 'small asteroid',
+    spectralType: 'e-type',
+    parent: 'sun',
+    orbit: {
+      a: { value: 2.362505, unit: 'au' },
+      e: 0.146995,
+      i: 9.945 as DegreesType,
+      w: 250.154 as DegreesType,
+      om: 55.642 as DegreesType,
+      angle: 3.113031 as Radians,
+      period: { value: 1326.3, unit: 'd' },
+      q: { value: 2.0152, unit: 'au' }
+    },
+    /** Sidereal rotation in hours: Lamy et al. 2008. The IAU's 2015 rate rounds it to 6.05 h. Backwards against the Sun's spin */
+    rotation: { period: { value: 6.04681, unit: 'h' }, retrograde: true },
+    radius: { value: 2.65, unit: 'km' },
+    display: {
+      color: '#A7A5A1',
+      size: 1
+    }
+  },
+  {
+    id: '486958-arrokoth',
+    name: 'Arrokoth',
+    type: 'trans-neptunian object',
+    category: 'cubewano',
+    spectralType: 'other', // Ultra-red; New Horizons flew past it in 2019
+    parent: 'sun',
+    orbit: {
+      a: { value: 44.073713, unit: 'au' },
+      e: 0.039717,
+      i: 2.448 as DegreesType,
+      w: 189.443 as DegreesType,
+      om: 159.203 as DegreesType,
+      angle: 4.774426 as Radians,
+      period: { value: 106873, unit: 'd' },
+      q: { value: 42.3232, unit: 'au' }
+    },
+    /** Rotation in hours: Buie et al. 2020. Its pole lies within the error of 90° from the Sun's, so the spin direction is unknown */
+    rotation: { period: { value: 15.938, unit: 'h' } },
+    radius: { value: 9.15, unit: 'km' },
+    display: {
+      color: '#9A5A3E',
+      size: 1
+    }
+  },
+  {
+    id: '65803-didymos',
+    name: 'Didymos',
+    type: 'near-earth asteroid',
+    category: 'apollo group',
+    spectralType: 's-type', // DART hit its moon, Dimorphos
+    parent: 'sun',
+    orbit: {
+      a: { value: 1.642078, unit: 'au' },
+      e: 0.383188,
+      i: 3.397 as DegreesType,
+      w: 318.886 as DegreesType,
+      om: 73.448 as DegreesType,
+      angle: 1.926507 as Radians,
+      period: { value: 768.6, unit: 'd' },
+      q: { value: 1.0129, unit: 'au' }
+    },
+    /** Rotation in hours: Pravec et al. 2022. Backwards against the Sun's spin */
+    rotation: { period: { value: 2.26, unit: 'h' }, retrograde: true },
+    radius: { value: 0.3805, unit: 'km' },
+    mu: 35.13, // Naidu et al. 2024: the system, less Dimorphos
+    display: {
+      color: '#8A8279',
+      size: 1
+    }
+  },
+  {
+    id: '99942-apophis',
+    name: 'Apophis',
+    type: 'near-earth asteroid',
+    category: 'aten group',
+    spectralType: 's-type', // Sq; passes Earth in 2029
+    parent: 'sun',
+    orbit: {
+      a: { value: 0.922342, unit: 'au' },
+      e: 0.191393,
+      i: 3.331 as DegreesType,
+      w: 126.065 as DegreesType,
+      om: 204.657 as DegreesType,
+      angle: 3.791688 as Radians,
+      period: { value: 323.5, unit: 'd' },
+      q: { value: 0.7458, unit: 'au' }
+    },
+    /** Rotation in hours: Apophis tumbles. It precesses every 27.38 h and rotates every 263 h, and its light curve repeats every 30.56 h (Pravec et al. 2014). Backwards against the Sun's spin */
+    rotation: {
+      period: { value: 30.56, unit: 'h' },
+      retrograde: true,
+      tumbling: true
+    },
+    radius: { value: 0.17, unit: 'km' },
+    display: {
+      color: '#9A9184',
       size: 1
     }
   }
