@@ -59,8 +59,11 @@ The same subtraction, with each world's turn and year, gives a day on each of
 them. A world that spins backwards, against its orbit, takes a negative $P$:
 
 ```ts
-// Each world's solar day, in days
-const days = PLANETS.map(({ name, rotation, orbit }) => {
+// Each of the Sun's planets' solar day, in days
+const planets = PLANETS.filter(
+  ({ parent, category }) => parent === 'sun' && category === 'planet'
+);
+const days = planets.map(({ name, rotation, orbit }) => {
   const sign = rotation!.retrograde ? -1 : 1;
   const P = sign * rotation!.period.value;
 

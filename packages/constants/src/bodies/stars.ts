@@ -12,7 +12,7 @@ import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
  * - `color` is for visualization only.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
  * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
- *   published: none for Deneb. The Sun's is the IAU's Carrington period, with its faster equator
+ *   published: none for Deneb, Sirius, Rigel and Canopus. The Sun's is the IAU's Carrington period, with its faster equator
  *   and slower poles in `equatorialPeriod` and `polarPeriod`. A star's spin direction is unknown.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
@@ -259,6 +259,212 @@ export const STARS: StarsType = [
     radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
     display: {
       color: '#ffcc6f' // M-type
+    }
+  },
+  // Sirius: A and its white dwarf B orbit the sirius barycenter (see SYSTEMS). Orbit of B
+  // around A, masses and parallax: Bond et al. 2017, Tables 4 to 6 (P 50.1284 yr, a 7.4957″,
+  // e 0.59142, i 136.336°, Ω 45.400°, ω 149.161° for B, periastron 1994.5715, parallax
+  // 378.9 mas = 19.7828 au). Each star's a splits it by mass, as for Alpha Centauri. A's
+  // radius: Davis et al. 2011, at Bond's parallax; B's: Bond et al. 2017.
+  {
+    id: 'sirius-a',
+    name: 'Sirius A',
+    type: 'A1V', // White Main Sequence, the brightest star in the night sky
+    category: 'star',
+    parent: 'sirius',
+    orbit: {
+      a: { value: 6.5365, unit: 'au' }, // 19.7828 au × m_B / (m_A + m_B)
+      e: 0.59142,
+      period: { value: 50.1284, unit: 'yr' },
+      angle: 1.906838 as Radians, // true anomaly at J2000
+      i: 136.336 as DegreesType,
+      w: 329.161 as DegreesType,
+      om: 45.4 as DegreesType
+    },
+    mass: 2.063,
+    radius: { value: 1192708, unit: 'km' }, // 1.7144 R☉
+    display: {
+      color: '#b5c7ff' // A-type
+    }
+  },
+  {
+    id: 'sirius-b',
+    name: 'Sirius B',
+    type: 'DA2', // White dwarf, hydrogen atmosphere
+    category: 'star',
+    parent: 'sirius',
+    orbit: {
+      a: { value: 13.2463, unit: 'au' }, // 19.7828 au × m_A / (m_A + m_B)
+      e: 0.59142,
+      period: { value: 50.1284, unit: 'yr' },
+      angle: 1.906838 as Radians,
+      i: 136.336 as DegreesType,
+      w: 149.161 as DegreesType,
+      om: 45.4 as DegreesType
+    },
+    mass: 1.018,
+    radius: { value: 5634, unit: 'km' }, // 0.008098 R☉: Earth-sized
+    display: {
+      color: '#a8bdff' // White dwarf, 25 200 K
+    }
+  },
+  // Single stars, like Alpha Centauri, are placed at their distance along x, with the
+  // Sun's galactic orbit. R☉ = 695 700 km. 1 pc = 3.261563777 ly
+  {
+    id: 'betelgeuse',
+    name: 'Betelgeuse',
+    type: 'M1-M2Ia-Iab', // Red Supergiant
+    category: 'star',
+    parent: 'milky-way',
+    // 168 pc, from its pulsations (Joyce et al. 2020): Hipparcos's parallax is unreliable for a star this big
+    orbit: {
+      a: { value: 27005.560612584955, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.5505028167596557 as Radians
+    },
+    /** Rotation in years: Kervella et al. 2018, from ALMA, for an inclination of 60° */
+    rotation: { period: { value: 31, unit: 'yr' } },
+    mass: 18, // 16.5 to 19 M☉, Joyce et al. 2020
+    radius: { value: 531514800, unit: 'km' }, // 764 R☉, Joyce et al. 2020
+    display: {
+      color: '#ffca8a' // M-type supergiant
+    },
+    x: { value: 548, unit: 'ly' },
+    y: { value: 27230.011753394454, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
+    id: 'polaris',
+    name: 'Polaris',
+    type: 'F7Ib', // Yellow Supergiant, a Cepheid; Polaris Aa
+    category: 'star',
+    parent: 'milky-way',
+    // 136.90 pc, Gaia DR3 for its companion Polaris B, as Evans et al. 2024 adopt
+    orbit: {
+      a: { value: 27003.691641144178, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.554260796991538 as Radians
+    },
+    /** Rotation in days: Lee et al. 2008 */
+    rotation: { period: { value: 119, unit: 'd' } },
+    mass: 5.13, // Evans et al. 2024
+    radius: { value: 32190039, unit: 'km' }, // 46.27 R☉, Evans et al. 2024
+    display: {
+      color: '#fffcf7' // F-type supergiant
+    },
+    x: { value: 446.5, unit: 'ly' },
+    y: { value: 27003.691641144178, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
+    id: 'arcturus',
+    name: 'Arcturus',
+    type: 'K1.5III', // Orange Giant
+    category: 'star',
+    parent: 'milky-way',
+    // 88.83 mas (Hipparcos, van Leeuwen 2007)
+    orbit: {
+      a: { value: 27000.024969588456, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.569436327633381 as Radians
+    },
+    /** Rotation in years: Gray & Brown 2006, from its magnetic activity */
+    rotation: { period: { value: 2, unit: 'yr' } },
+    mass: 1.08, // Ramírez & Allende Prieto 2011
+    radius: { value: 17670780, unit: 'km' }, // 25.4 R☉, Ramírez & Allende Prieto 2011
+    display: {
+      color: '#ffdfb5' // K-type giant
+    },
+    x: { value: 36.72, unit: 'ly' },
+    y: { value: 27000.024969588456, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
+    id: 'rigel',
+    name: 'Rigel',
+    type: 'B8Ia', // Blue Supergiant; Rigel A
+    category: 'star',
+    parent: 'milky-way',
+    // 3.78 mas (Hipparcos, van Leeuwen 2007)
+    orbit: {
+      a: { value: 27013.782109138294, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.538851641798522 as Radians
+    },
+    mass: 23, // Przybilla et al. 2010, from evolutionary tracks
+    radius: { value: 54890730, unit: 'km' }, // 78.9 R☉, Moravveji et al. 2012
+    display: {
+      color: '#b6ceff' // B-type supergiant
+    },
+    x: { value: 862.8, unit: 'ly' },
+    y: { value: 27013.782109138294, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
+    id: 'canopus',
+    name: 'Canopus',
+    type: 'A9II', // White Bright Giant
+    category: 'star',
+    parent: 'milky-way',
+    // 10.55 mas (Hipparcos, van Leeuwen 2007)
+    orbit: {
+      a: { value: 27001.77039825352, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.5593449755210198 as Radians
+    },
+    mass: 9.81, // Domiciano de Souza et al. 2021
+    radius: { value: 50994810, unit: 'km' }, // 73.3 R☉, Domiciano de Souza et al. 2021
+    display: {
+      color: '#cbd9ff' // A/F-type giant
+    },
+    x: { value: 309.2, unit: 'ly' },
+    y: { value: 27001.77039825352, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
+    id: 'barnards-star',
+    // eslint-disable-next-line @stylistic/quotes
+    name: "Barnard's Star",
+    type: 'M4V', // Red Dwarf, the fastest-moving star in our sky
+    category: 'star',
+    parent: 'milky-way',
+    // 546.98 mas (Gaia DR3)
+    orbit: {
+      a: { value: 27000.00065846979, unit: 'ly' },
+      e: 0.07,
+      period: { value: 230, unit: 'Myr' },
+      angle: 1.5705754749466354 as Radians
+    },
+    /** Rotation in days: González Hernández et al. 2024, from its activity */
+    rotation: { period: { value: 142, unit: 'd' } },
+    mass: 0.162, // Schweitzer et al. 2019
+    radius: { value: 128705, unit: 'km' }, // 0.185 R☉, Schweitzer et al. 2019
+    display: {
+      color: '#ffc97f' // M-type
+    },
+    x: { value: 5.963, unit: 'ly' },
+    y: { value: 27000.00065846979, unit: 'ly' },
+    z: { value: 0, unit: 'ly' }
+  },
+  {
+    id: 'trappist-1a',
+    name: 'TRAPPIST-1',
+    type: 'M8V', // Ultracool Red Dwarf, with seven Earth-sized planets
+    category: 'star',
+    /** Bound to the TRAPPIST-1 barycenter, which carries the galactic orbit */
+    parent: 'trappist-1',
+    /** Rotation in days: Vida et al. 2017, from its starspots */
+    rotation: { period: { value: 3.295, unit: 'd' } },
+    mass: 0.0898, // Mann et al. 2019, as Agol et al. 2021 adopt
+    radius: { value: 82927, unit: 'km' }, // 0.1192 R☉, Agol et al. 2021
+    mu: 1.19176e19, // its mass × the Sun's GM
+    display: {
+      color: '#ffa24c' // 2566 K
     }
   },
   // The S-stars: young B stars on Kepler orbits around Sagittarius A*, which name it

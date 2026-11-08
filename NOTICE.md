@@ -63,7 +63,12 @@ copyright. They're compiled from public references, credited here:
   and Dynamical Astronomy 130, 22, and for the Moon Archinal et al. 2011, 109,
   101), Earth's from the IERS Conventions' Earth rotation angle, Himalia's from
   Pilcher, Mottola and Denk (2012, Icarus 219, 741) and Nereid's from Kiss et
-  al. (2016, MNRAS 457, 2908).
+  al. (2016, MNRAS 457, 2908). Pluto's small moons' from Weaver et al. (2016,
+  Science 351, aae0030), and the dwarf planets' from Bernstein et al. (2023, PSJ
+  4, 115) for Eris, Lellouch et al. (2010, A&A 518, L147) for Haumea, Hromakina
+  et al. (2019, A&A 625, A46) for Makemake, Pál et al. (2016, AJ 151, 117) for
+  Gonggong, Ortiz et al. (2003, A&A 409, L13) for Quaoar and Gaudi et al. (2005,
+  ApJ 629, L49) for Sedna.
 - **Galaxies:** Andromeda's distance from Li et al. (2021, ApJ 920, 84) and
   Triangulum's from Breuval et al. (2023, ApJ 951, 118), both from Cepheids.
   Andromeda's and Triangulum's D25 diameters and morphological types from the
@@ -73,6 +78,16 @@ copyright. They're compiled from public references, credited here:
   mass of Sagittarius A\* from the GRAVITY Collaboration (2024, A&A 692, A242),
   of M31\* from Bender et al. (2005, ApJ 631, 280), and the upper limit for a
   black hole in Triangulum from Gebhardt et al. (2001, AJ 122, 2469).
+- **More galaxies:** the distances of the Large Magellanic Cloud from
+  Pietrzyński et al. (2019, Nature 567, 200), the Small Magellanic Cloud from
+  Graczyk et al. (2020, ApJ 904, 13), the Sagittarius dwarf from Vasiliev and
+  Belokurov (2020, MNRAS 497, 4162) and Centaurus A from Harris et al. (2010,
+  PASA 27, 457). M87's distance, the mass of M87\* and the diameter of its ring
+  from the Event Horizon Telescope Collaboration (2019, ApJL 875, L1 and L6).
+  Their D25 diameters and types from RC3, the Sagittarius dwarf's half-light
+  diameter from McConnachie (2012, AJ 144, 4) and its type from
+  [NED](https://ned.ipac.caltech.edu/). The mass of Centaurus A's black hole
+  from Cappellari et al. (2009, MNRAS 394, 660).
 - **Sagittarius A\* and the S-stars:** Sagittarius A\*'s distance from the
   GRAVITY Collaboration (2024, A&A 692, A242), fitted with its mass, and the
   diameter of its ring from the Event Horizon Telescope Collaboration (2022,
@@ -80,6 +95,53 @@ copyright. They're compiled from public references, credited here:
   period from the GRAVITY Collaboration (2022, A&A 657, L12). The orbits of S1,
   S4, S6, S8, S9 and S12 from Gillessen et al. (2017, ApJ 837, 30), and every
   S-star's mass and radius from Habibi et al. (2017, ApJ 847, 120).
+- **Dwarf planets:** orbits and positions at J2000 from
+  [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/). Radii from Sicardy et al.
+  (2011, Nature 478, 493) for Eris, Ortiz et al. (2017, Nature 550, 219) for
+  Haumea, Brown (2013, ApJL 767, L7) for Makemake, Kiss et al. (2019, Icarus
+  334, 3) for Gonggong, Kiss et al. (2024, A&A 684, A50) for Quaoar and Pál et
+  al. (2012, A&A 541, L6) for Sedna. Masses from their moons: Eris from Holler
+  et al. (2021, Icarus 355, 114130) less Dysnomia's share from Brown and Butler
+  (2023, PSJ 4, 193), Haumea from Proudfoot et al. (2024, PSJ 5, 69), Gonggong
+  from Kiss et al. (2019) and Quaoar from Braga-Ribas et al. (2025, Phil. Trans.
+  R. Soc. A 383, 20240200). Dysnomia's orbit from Holler et al. (2021) and its
+  radius from Brown and Butler (2023).
+- **Pluto's and Saturn's moons:** Pluto's moons' orbits and masses from Brozović
+  and Jacobson (2024, AJ 167, 256), Charon's radius from Nimmo et al. (2017,
+  Icarus 287, 12), and the small moons' radii from Stern et al. (2018, ARA&A 56,
+  357).
+- **Asteroids spacecraft visited:** orbits from JPL Horizons. Bennu's radius
+  from Daly et al. (2020, Science Advances 6, eabd3649) and mass from Scheeres
+  et al. (2020, Science Advances 6, eabc3350); Ryugu's from Watanabe et al.
+  (2019, Science 364, 268); Itokawa's from Fujiwara et al. (2006, Science 312,
+  1330); Lutetia's from Sierks et al. (2011, Science 334, 487) and Pätzold et
+  al. (2011, Science 334, 491); Ida's radius from Thomas et al. (1996, Icarus
+  120, 20) and mass from Belton et al. (1995, Nature 374, 785); Gaspra's from
+  Thomas et al. (1994, Icarus 107, 23); Šteins's from Keller et al. (2010,
+  Science 327, 190); Arrokoth's from Spencer et al. (2020, Science 367,
+  eaay3999); Apophis's from Brozović et al. (2018, Icarus 300, 115). Didymos's
+  mass and Dimorphos's orbit from Naidu et al. (2024, PSJ 5, 74), and their
+  radii and Dimorphos's mass from Daly et al. (2023, Nature 616, 443).
+- **Comets spacecraft visited:** orbits and perihelion dates from JPL Horizons.
+  Nucleus radii from Thomas et al. (2013, Icarus 222, 453) for Tempel 1, Buratti
+  et al. (2004, Icarus 167, 16) for Borrelly, Sekanina et al. (2004, Science
+  304, 1769) for Wild 2, Thomas et al. (2013, Icarus 222, 550) for Hartley 2,
+  and Bauer et al. (2020, DPS 52) for NEOWISE.
+- **More stars:** Sirius's orbit, masses, parallax and Sirius B's radius from
+  Bond et al. (2017, ApJ 840, 70), and Sirius A's radius from Davis et al.
+  (2011, PASA 28, 58). Betelgeuse's mass, radius and distance from Joyce et al.
+  (2020, ApJ 902, 63); Polaris's from Evans et al. (2024, ApJ 971, 190), at its
+  companion's Gaia DR3 distance; Arcturus's from Ramírez and Allende Prieto
+  (2011, ApJ 743, 135); Rigel's mass from Przybilla et al. (2010, A&A 517, A38)
+  and radius from Moravveji et al. (2012, ApJ 747, 108); Canopus's from
+  Domiciano de Souza et al. (2021, A&A 654, A19); Barnard's Star's from
+  Schweitzer et al. (2019, A&A 625, A68). Parallaxes from the Hipparcos new
+  reduction (van Leeuwen 2007, A&A 474, 653) and Gaia DR3 (Vallenari et al.
+  2023, A&A 674, A1).
+- **TRAPPIST-1:** the planets' orbits, inclinations, radii and masses, and the
+  star's mass and radius, from Agol et al. (2021, PSJ 2, 1); the planets' mean
+  periods and transit times from Ducrot et al. (2020, A&A 640, A112); the star's
+  distance from Gaia DR3.
 - **Rotation of the Sun, stars, asteroids and comets:**
   - **The Sun:** the IAU's rotation rate (Archinal et al. 2018), and its
     equatorial and polar periods from the differential rotation of Snodgrass and
@@ -88,7 +150,10 @@ copyright. They're compiled from public references, credited here:
     Bouchaud et al. (2020, A&A 633, A78), Spica A and B from Tkachenko et al.
     (2016, MNRAS 458, 1964), Alpha Centauri A from Hallam et al. (1991) and B
     from DeWarf et al. (2010, ApJ 722, 343), and Proxima Centauri from Benedict
-    et al. (1998, AJ 116, 429).
+    et al. (1998, AJ 116, 429). Betelgeuse from Kervella et al. (2018, A&A 609,
+    A67), Polaris from Lee et al. (2008, AJ 135, 2240), Arcturus from Gray and
+    Brown (2006, PASP 118, 1112), Barnard's Star from González Hernández et al.
+    (2024, A&A 690, A79) and TRAPPIST-1 from Vida et al. (2017, ApJ 841, 124).
   - **Asteroids:** Vesta, Eros, Pallas, Davida and 52 Europa from the IAU's
     rotation rates (Archinal et al. 2018). Hygiea from Vernazza et al. (2020,
     Nature Astronomy 4, 136), Interamnia from Hanuš et al. (2020, A&A 633, A65),
@@ -96,11 +161,20 @@ copyright. They're compiled from public references, credited here:
     al. (2018, A&A 619, L3), Juno from Viikinkoski et al. (2015, A&A 581, L3)
     and Eunomia from Viikinkoski et al. (2017, A&A 607, A117). Their spin
     directions from the poles in those papers, and Pallas's from Carry et al.
-    (2010, Icarus 205, 460).
+    (2010, Icarus 205, 460). Itokawa, Lutetia, Ida and Gaspra from the IAU's
+    rates. Bennu from Hergenrother et al. (2019, Nature Communications 10,
+    1291), Ryugu from Watanabe et al. (2019), Šteins from Lamy et al. (2008, A&A
+    487, 1179), Arrokoth from Buie et al. (2020, AJ 159, 130), Didymos from
+    Pravec et al. (2022, PSJ 3, 175) and Apophis from Pravec et al. (2014,
+    Icarus 233, 48), with their spin directions from the poles in the same
+    papers.
   - **Comets:** 67P/Churyumov–Gerasimenko from the IAU's rotation rate (Archinal
     et al. 2018), Hale-Bopp from Licandro et al. (1998, ApJL 501, L221), Halley
     from Belton et al. (1991, Icarus 93, 183) and Encke from Lowry and Weissman
-    (2007, Icarus 188, 212).
+    (2007, Icarus 188, 212). Tempel 1 and Borrelly from the IAU's rates, Wild 2
+    from Farnham, Samarasinha and Mueller (2010, IAU Circular 9138), Hartley 2
+    from Belton et al. (2013, Icarus 222, 595) and NEOWISE from Manzini et al.
+    (2021, MNRAS 506, 6195).
 - **Days on Earth and Mars:** the Martian sol and sidereal day from Allison and
   McEwen (2000, Planetary and Space Science 48, 215), and the ratio of a sol to
   a day from NASA GISS's

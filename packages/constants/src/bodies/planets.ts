@@ -1,4 +1,4 @@
-import { PlanetsType, Radians } from '@interstellar-tools/types';
+import { DegreesType, PlanetsType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a dataset of planets and planetoids in the solar system.
@@ -11,10 +11,16 @@ import { PlanetsType, Radians } from '@interstellar-tools/types';
  *   position at J2000 in the J2000 ecliptic frame, x towards the equinox.
  * - Both are computed from the J2000 elements in JPL's "Approximate Positions of the Planets" (Table 1),
  *   and for Ceres and Pluto from the JPL Small-Body Database, using this dataset's `a` and `e`.
+ *   For Eris, Haumea, Makemake, Gonggong, Quaoar and Sedna, the orbit and position are JPL Horizons'
+ *   osculating heliocentric elements and state at J2000. Sedna's orbit around the Solar System's
+ *   barycenter is longer, about 506 au and 11 400 years.
+ * - TRAPPIST-1's seven planets orbit their star, `trappist-1a`, with `i` and `w` on the sky, and
+ *   have no `x`,`y`,`z`, which are heliocentric.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
  * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
- *   (Archinal et al. 2018), and for Earth the IERS's Earth rotation angle. Venus, Uranus and
- *   Pluto spin backwards, `retrograde: true`.
+ *   (Archinal et al. 2018), and for Earth the IERS's Earth rotation angle. The IAU gives no rate
+ *   for the other dwarf planets, so theirs is a light curve's. Venus, Uranus and Pluto spin
+ *   backwards, `retrograde: true`. TRAPPIST-1's planets' spins aren't measured.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -307,5 +313,286 @@ export const PLANETS: PlanetsType = [
     x: { value: -9.984, unit: 'au' },
     y: { value: -27.916, unit: 'au' },
     z: { value: 5.8767, unit: 'au' }
+  },
+  {
+    id: 'eris',
+    name: 'Eris',
+    type: 'ice planet',
+    category: 'planetoid',
+    parent: 'sun',
+    orbit: {
+      a: { value: 68.1399, unit: 'au' },
+      e: 0.432505,
+      period: { value: 205447.3, unit: 'd' },
+      angle: 3.251515 as Radians
+    },
+    /** Rotation in days: Bernstein et al. 2023. It turns once each orbit of Dysnomia, which keeps one face to it */
+    rotation: { period: { value: 15.771, unit: 'd' } },
+    radius: { value: 1163, unit: 'km' },
+    mu: 1.0935e12, // Holler et al. 2021's system, less Dysnomia's 0.5 %
+    display: {
+      color: '#F2F0EC' // Nearly white, one of the most reflective bodies known
+    },
+    x: { value: 88.3933, unit: 'au' },
+    y: { value: 30.7652, unit: 'au' },
+    z: { value: -26.0944, unit: 'au' }
+  },
+  {
+    id: 'haumea',
+    name: 'Haumea',
+    type: 'ice planet',
+    category: 'planetoid',
+    parent: 'sun',
+    orbit: {
+      a: { value: 42.9093, unit: 'au' },
+      e: 0.199921,
+      period: { value: 102665.6, unit: 'd' },
+      angle: 3.255681 as Radians
+    },
+    /** Rotation in days: 3.915341 h (Lellouch et al. 2010). The spin stretches it to 1161 × 852 × 513 km */
+    rotation: { period: { value: 0.163139208, unit: 'd' } },
+    radius: { value: 797.6, unit: 'km' },
+    mu: 2.63798e11,
+    display: {
+      color: '#F4F5F7' // White, crystalline water ice
+    },
+    x: { value: -45.9898, unit: 'au' },
+    y: { value: -5.1205, unit: 'au' },
+    z: { value: 22.3856, unit: 'au' }
+  },
+  {
+    id: 'makemake',
+    name: 'Makemake',
+    type: 'ice planet',
+    category: 'planetoid',
+    parent: 'sun',
+    orbit: {
+      a: { value: 45.3721, unit: 'au' },
+      e: 0.164523,
+      period: { value: 111630.1, unit: 'd' },
+      angle: 2.621343 as Radians
+    },
+    /** Rotation in days: 22.8266 h (Hromakina et al. 2019) */
+    rotation: { period: { value: 0.9511083333, unit: 'd' } },
+    radius: { value: 714, unit: 'km' },
+    display: {
+      color: '#D9B48F' // Reddish-brown
+    },
+    x: { value: -43.5785, unit: 'au' },
+    y: { value: 11.4783, unit: 'au' },
+    z: { value: 24.9182, unit: 'au' }
+  },
+  {
+    id: 'gonggong',
+    name: 'Gonggong',
+    type: 'ice planet',
+    category: 'planetoid',
+    parent: 'sun',
+    orbit: {
+      a: { value: 67.0513, unit: 'au' },
+      e: 0.499574,
+      period: { value: 200543.7, unit: 'd' },
+      angle: 2.487949 as Radians
+    },
+    /** Rotation in days: 44.81 h (Pál et al. 2016); half of it, 22.40 h, is not ruled out */
+    rotation: { period: { value: 1.867083333, unit: 'd' } },
+    radius: { value: 615, unit: 'km' },
+    mu: 1.168e11,
+    display: {
+      color: '#B5553A' // Red
+    },
+    x: { value: 70.2665, unit: 'au' },
+    y: { value: -44.2264, unit: 'au' },
+    z: { value: -7.7691, unit: 'au' }
+  },
+  {
+    id: 'quaoar',
+    name: 'Quaoar',
+    type: 'ice planet',
+    category: 'planetoid',
+    parent: 'sun',
+    orbit: {
+      a: { value: 43.133, unit: 'au' },
+      e: 0.03951,
+      period: { value: 103469.7, unit: 'd' },
+      angle: 4.442872 as Radians
+    },
+    /** Rotation in days: 17.6788 h (Ortiz et al. 2003) */
+    rotation: { period: { value: 0.7366166667, unit: 'd' } },
+    radius: { value: 545, unit: 'km' },
+    mu: 8.0626e10,
+    display: {
+      color: '#A86E52' // Reddish
+    },
+    x: { value: -16.7665, unit: 'au' },
+    y: { value: -39.8317, unit: 'au' },
+    z: { value: 5.1593, unit: 'au' }
+  },
+  {
+    id: 'sedna',
+    name: 'Sedna',
+    type: 'ice planet',
+    category: 'planetoid',
+    parent: 'sun',
+    orbit: {
+      a: { value: 549.8733, unit: 'au' },
+      e: 0.86098,
+      period: { value: 4709690.2, unit: 'd' },
+      angle: 5.428088 as Radians
+    },
+    /** Rotation in days: 10.273 h (Gaudi et al. 2005) */
+    rotation: { period: { value: 0.4280416667, unit: 'd' } },
+    radius: { value: 497.5, unit: 'km' },
+    display: {
+      color: '#B0472F' // Deep red, one of the reddest bodies known
+    },
+    x: { value: 61.9508, unit: 'au' },
+    y: { value: 63.8763, unit: 'au' },
+    z: { value: -18.5892, unit: 'au' }
+  },
+  // TRAPPIST-1's seven planets, around its star. Agol et al. 2021: a (Table 6), e and ω from
+  // e cos ω and e sin ω (Table 2), i on the sky (Table 5), radii and masses (Table 6, with
+  // the equatorial Earth radius). Periods are the mean ones of Ducrot et al. 2020 (Table 4):
+  // their transit times put each at its true anomaly at J2000, to a few degrees. The orbits
+  // are nearly circular, so ω is uncertain, ±111° for c: ν and ω together give the position.
+  {
+    id: 'trappist-1b',
+    name: 'TRAPPIST-1b',
+    type: 'terrestrial planet',
+    category: 'planet',
+    parent: 'trappist-1a',
+    orbit: {
+      a: { value: 0.01154, unit: 'au' },
+      e: 0.0031,
+      period: { value: 1.51088432, unit: 'd' },
+      angle: 5.951573 as Radians,
+      i: 89.728 as DegreesType,
+      w: 134.7 as DegreesType
+    },
+    radius: { value: 7119, unit: 'km' },
+    mu: 547680000000000.0,
+    display: {
+      color: '#8A7566'
+    }
+  },
+  {
+    id: 'trappist-1c',
+    name: 'TRAPPIST-1c',
+    type: 'terrestrial planet',
+    category: 'planet',
+    parent: 'trappist-1a',
+    orbit: {
+      a: { value: 0.0158, unit: 'au' },
+      e: 0.0006,
+      period: { value: 2.42179346, unit: 'd' },
+      angle: 0.039794 as Radians,
+      i: 89.778 as DegreesType,
+      w: 1.0 as DegreesType
+    },
+    radius: { value: 6995, unit: 'km' },
+    mu: 521370000000000.0,
+    display: {
+      color: '#968779'
+    }
+  },
+  {
+    id: 'trappist-1d',
+    name: 'TRAPPIST-1d',
+    type: 'terrestrial planet',
+    category: 'planet',
+    parent: 'trappist-1a',
+    orbit: {
+      a: { value: 0.02227, unit: 'au' },
+      e: 0.0056,
+      period: { value: 4.04978035, unit: 'd' },
+      angle: 2.310118 as Radians,
+      i: 89.896 as DegreesType,
+      w: 151.7 as DegreesType
+    },
+    radius: { value: 5026, unit: 'km' },
+    mu: 154660000000000.0,
+    display: {
+      color: '#8F9190'
+    }
+  },
+  {
+    id: 'trappist-1e',
+    name: 'TRAPPIST-1e',
+    type: 'terrestrial planet',
+    category: 'planet',
+    parent: 'trappist-1a',
+    orbit: {
+      a: { value: 0.02925, unit: 'au' },
+      e: 0.0063,
+      period: { value: 6.09956479, unit: 'd' },
+      angle: 4.937536 as Radians,
+      i: 89.793 as DegreesType,
+      w: 313.2 as DegreesType
+    },
+    radius: { value: 5868, unit: 'km' },
+    mu: 275830000000000.0,
+    display: {
+      color: '#7F8F99'
+    }
+  },
+  {
+    id: 'trappist-1f',
+    name: 'TRAPPIST-1f',
+    type: 'terrestrial planet',
+    category: 'planet',
+    parent: 'trappist-1a',
+    orbit: {
+      a: { value: 0.03849, unit: 'au' },
+      e: 0.0084,
+      period: { value: 9.20659399, unit: 'd' },
+      angle: 1.961925 as Radians,
+      i: 89.74 as DegreesType,
+      w: 183.5 as DegreesType
+    },
+    radius: { value: 6664, unit: 'km' },
+    mu: 414150000000000.0,
+    display: {
+      color: '#8C9BA6'
+    }
+  },
+  {
+    id: 'trappist-1g',
+    name: 'TRAPPIST-1g',
+    type: 'terrestrial planet',
+    category: 'planet',
+    parent: 'trappist-1a',
+    orbit: {
+      a: { value: 0.04683, unit: 'au' },
+      e: 0.004,
+      period: { value: 12.3535557, unit: 'd' },
+      angle: 4.790929 as Radians,
+      i: 89.742 as DegreesType,
+      w: 18.6 as DegreesType
+    },
+    radius: { value: 7204, unit: 'km' },
+    mu: 526550000000000.0,
+    display: {
+      color: '#A1AEB8'
+    }
+  },
+  {
+    id: 'trappist-1h',
+    name: 'TRAPPIST-1h',
+    type: 'terrestrial planet',
+    category: 'planet',
+    parent: 'trappist-1a',
+    orbit: {
+      a: { value: 0.06189, unit: 'au' },
+      e: 0.0037,
+      period: { value: 18.7672745, unit: 'd' },
+      angle: 4.893554 as Radians,
+      i: 89.805 as DegreesType,
+      w: 180.3 as DegreesType
+    },
+    radius: { value: 4817, unit: 'km' },
+    mu: 129940000000000.0,
+    display: {
+      color: '#B8C1C7'
+    }
   }
 ] as const satisfies PlanetsType;

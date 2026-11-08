@@ -16,5 +16,18 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 | uranus | Uranus | ice giant | planet | sun | 19.191 au | 0.0463 | 30687.15 d |  | 2.537459 | 0.7183333333 d | yes | 25362 km | 5.7939513e+15 | #78D6FF | 14.4012 au | -13.7439 au | -0.2377 au |
 | neptune | Neptune | ice giant | planet | sun | 30.069 au | 0.0086 | 60190.03 d |  | 4.519475 | 0.6652625 d |  | 24622 km | 6.83509997e+15 | #0053D6 | 16.8038 au | -24.9923 au | 0.1274 au |
 | pluto | Pluto | ice planet | planetoid | sun | 39.482 au | 0.2488 | 90560 d |  | 0.436892 | 6.387222999 d | yes | 1188.3 km | 8.693e+11 | #B0A99F | -9.984 au | -27.916 au | 5.8767 au |
+| eris | Eris | ice planet | planetoid | sun | 68.1399 au | 0.432505 | 205447.3 d |  | 3.251515 | 15.771 d |  | 1163 km | 1.0935e+12 | #F2F0EC | 88.3933 au | 30.7652 au | -26.0944 au |
+| haumea | Haumea | ice planet | planetoid | sun | 42.9093 au | 0.199921 | 102665.6 d |  | 3.255681 | 0.163139208 d |  | 797.6 km | 2.63798e+11 | #F4F5F7 | -45.9898 au | -5.1205 au | 22.3856 au |
+| makemake | Makemake | ice planet | planetoid | sun | 45.3721 au | 0.164523 | 111630.1 d |  | 2.621343 | 0.9511083333 d |  | 714 km |  | #D9B48F | -43.5785 au | 11.4783 au | 24.9182 au |
+| gonggong | Gonggong | ice planet | planetoid | sun | 67.0513 au | 0.499574 | 200543.7 d |  | 2.487949 | 1.867083333 d |  | 615 km | 1.168e+11 | #B5553A | 70.2665 au | -44.2264 au | -7.7691 au |
+| quaoar | Quaoar | ice planet | planetoid | sun | 43.133 au | 0.03951 | 103469.7 d |  | 4.442872 | 0.7366166667 d |  | 545 km | 8.0626e+10 | #A86E52 | -16.7665 au | -39.8317 au | 5.1593 au |
+| sedna | Sedna | ice planet | planetoid | sun | 549.8733 au | 0.86098 | 4709690.2 d |  | 5.428088 | 0.4280416667 d |  | 497.5 km |  | #B0472F | 61.9508 au | 63.8763 au | -18.5892 au |
+| trappist-1b | TRAPPIST-1b | terrestrial planet | planet | trappist-1a | 0.01154 au | 0.0031 | 1.51088432 d |  | 5.951573 |  |  | 7119 km | 5.4768e+14 | #8A7566 |  |  |  |
+| trappist-1c | TRAPPIST-1c | terrestrial planet | planet | trappist-1a | 0.0158 au | 0.0006 | 2.42179346 d |  | 0.039794 |  |  | 6995 km | 5.2137e+14 | #968779 |  |  |  |
+| trappist-1d | TRAPPIST-1d | terrestrial planet | planet | trappist-1a | 0.02227 au | 0.0056 | 4.04978035 d |  | 2.310118 |  |  | 5026 km | 1.5466e+14 | #8F9190 |  |  |  |
+| trappist-1e | TRAPPIST-1e | terrestrial planet | planet | trappist-1a | 0.02925 au | 0.0063 | 6.09956479 d |  | 4.937536 |  |  | 5868 km | 2.7583e+14 | #7F8F99 |  |  |  |
+| trappist-1f | TRAPPIST-1f | terrestrial planet | planet | trappist-1a | 0.03849 au | 0.0084 | 9.20659399 d |  | 1.961925 |  |  | 6664 km | 4.1415e+14 | #8C9BA6 |  |  |  |
+| trappist-1g | TRAPPIST-1g | terrestrial planet | planet | trappist-1a | 0.04683 au | 0.004 | 12.3535557 d |  | 4.790929 |  |  | 7204 km | 5.2655e+14 | #A1AEB8 |  |  |  |
+| trappist-1h | TRAPPIST-1h | terrestrial planet | planet | trappist-1a | 0.06189 au | 0.0037 | 18.7672745 d |  | 4.893554 |  |  | 4817 km | 1.2994e+14 | #B8C1C7 |  |  |  |
 
 </div>

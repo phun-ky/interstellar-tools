@@ -67,6 +67,7 @@ const GALAXY_IDS = new Set(GALAXIES.map((galaxy) => galaxy.id));
 const SYSTEM_IDS = new Set(SYSTEMS.map((system) => system.id));
 const STAR_IDS = new Set(STARS.map((star) => star.id));
 const PLANET_IDS = new Set(PLANETS.map((planet) => planet.id));
+const ASTEROID_IDS = new Set(ASTEROIDS.map((asteroid) => asteroid.id));
 // A black hole that stars orbit is a node too, bound to its galaxy
 const BLACK_HOLES: OrbitingType[] = GALAXIES.flatMap(({ id, blackHole }) =>
   blackHole?.id
@@ -86,6 +87,7 @@ const NODES: OrbitingType[] = [
   ...SYSTEMS,
   ...STARS,
   ...PLANETS,
+  ...ASTEROIDS,
   ...MOONS
 ];
 const NODE_BY_ID = new Map(NODES.map((node) => [node.id, node]));
@@ -150,6 +152,9 @@ for (const [label, { bodies, units }] of Object.entries(ORBITING)) {
     test('uses the documented unit for every measured field', () => {
       for (const body of bodies) {
         for (const [field, unit] of Object.entries(units)) {
+          // Only the Sun's planets have a position: heliocentric, at J2000
+          if (/^[xyz]$/.test(field) && body.parent !== 'sun') continue;
+
           const { value, unit: actual } = measure(body, field);
 
           assert.equal(actual, unit, `${body.name}.${field}`);
@@ -195,8 +200,7 @@ describe('ids', () => {
       ...GALAXIES.map((galaxy) => galaxy.id),
       ...ASTEROID_BELTS.map((belt) => belt.id),
       ...NODES.map((node) => node.id),
-      ...COMETS.map((comet) => comet.id),
-      ...ASTEROIDS.map((asteroid) => asteroid.id)
+      ...COMETS.map((comet) => comet.id)
     ]);
   });
 });
@@ -215,8 +219,12 @@ describe('parents', () => {
     }
   };
 
-  test('moons orbit a planet', () => {
-    assertParentIn(MOONS, PLANET_IDS, 'planet in PLANETS');
+  test('moons orbit a planet or an asteroid', () => {
+    assertParentIn(
+      MOONS,
+      new Set([...PLANET_IDS, ...ASTEROID_IDS]),
+      'planet in PLANETS or asteroid in ASTEROIDS'
+    );
   });
 
   test('planets, comets, asteroids and belts orbit a star', () => {
@@ -299,7 +307,9 @@ describe('planet positions at J2000', () => {
   // r = a(1 − e²) / (1 + e cos ν): the position and the angle describe the same
   // point on the same orbit
   test('x, y, z lie on the orbit at orbit.angle (conic equation, within 0.1 %)', () => {
-    for (const { name, orbit, x, y, z } of PLANETS) {
+    for (const { name, orbit, x, y, z } of PLANETS.filter(
+      ({ parent }) => parent === 'sun'
+    )) {
       const { a, e, angle } = orbit!;
       const expected = (a.value * (1 - e ** 2)) / (1 + e * Math.cos(angle));
       const r = Math.hypot(x!.value, y!.value, z!.value);
@@ -332,7 +342,12 @@ describe('comet positions at J2000', () => {
     '1p-halley': 5068.81, // 1986-02-14
     'c-1995-o1-hale-bopp': 1005.5, // 1997-04-01
     '67p-churyumov-gerasimenko': -959.63, // 2002-08-18
-    '2p-encke': -252.14 // 2000-09-09
+    '2p-encke': -252.14, // 2000-09-09
+    '9p-tempel-1': -1.12, // 2000-01-02
+    '19p-borrelly': -622.26, // 2001-09-14
+    '81p-wild-2': 971.07, // 1997-05-05
+    '103p-hartley-2': 740.3, // 1997-12-22
+    'c-2020-f3-neowise': -7489.18 // 2020-07-03
   };
 
   test('orbit.angle puts each comet at its perihelion time (within 2 % of its period)', () => {
@@ -419,11 +434,29 @@ const IAU_ROTATION_RATE: Record<string, number> = {
   ariel: -142.8356681,
   umbriel: -86.8688923,
   triton: -61.2572637,
-  proteus: 320.7654228
+  proteus: 320.7654228,
+  mimas: 381.994555,
+  tethys: 190.6979085,
+  dione: 131.5349316,
+  charon: 56.3625225
 };
 const LIGHT_CURVE_HOURS: Record<string, number> = {
   himalia: 7.7819,
-  nereid: 11.594
+  nereid: 11.594,
+  // Pluto's small moons, which spin chaotically (Weaver et al. 2016)
+  styx: 3.24 * 24,
+  nix: 1.829 * 24,
+  kerberos: 5.31 * 24,
+  hydra: 0.4295 * 24,
+  // The dwarf planets the IAU gives no rate for
+  eris: 15.771 * 24,
+  haumea: 3.915341,
+  makemake: 22.8266,
+  gonggong: 44.81,
+  quaoar: 17.6788,
+  sedna: 10.273,
+  // Synchronous with its orbit before DART (Naidu et al. 2024)
+  dimorphos: 0.4967289 * 24
 };
 const SPINNING = [...PLANETS, ...MOONS];
 
@@ -512,7 +545,13 @@ const SMALL_BODY_IAU_RATE: Record<string, number> = {
   '2-pallas': 1105.8036,
   '511-davida': 1684.4193549,
   '52-europa': 1534.6472187,
-  '67p-churyumov-gerasimenko': 696.543884683
+  '67p-churyumov-gerasimenko': 696.543884683,
+  '9p-tempel-1': 211.849,
+  '25143-itokawa': 712.143,
+  '21-lutetia': 1057.7515,
+  '243-ida': 1864.628007,
+  '951-gaspra': 1226.911485,
+  '19p-borrelly': 324.3
 };
 const SMALL_BODY_HOURS: Record<string, number> = {
   vega: 0.71 * 24,
@@ -522,17 +561,31 @@ const SMALL_BODY_HOURS: Record<string, number> = {
   'alpha-centauri-a': 28.8 * 24,
   'alpha-centauri-b': 36.2 * 24,
   'proxima-centauri': 83 * 24,
+  betelgeuse: 31 * 365.25 * 24,
+  polaris: 119 * 24,
+  arcturus: 2 * 365.25 * 24,
+  'barnards-star': 142 * 24,
+  'trappist-1a': 3.295 * 24,
   '10-hygiea': 13.82559,
   '704-interamnia': 8.71234,
   '31-euphrosyne': 5.529595,
   '16-psyche': 4.195948,
   '3-juno': 7.20953091,
   '15-eunomia': 6.082753,
+  '101955-bennu': 4.296061,
+  '162173-ryugu': 7.63262,
+  '2867-steins': 6.04681,
+  '486958-arrokoth': 15.938,
+  '65803-didymos': 2.26,
+  '99942-apophis': 30.56,
   '1p-halley': 7.4 * 24,
   'c-1995-o1-hale-bopp': 11.34,
-  '2p-encke': 11.083
+  '2p-encke': 11.083,
+  '81p-wild-2': 13.5,
+  '103p-hartley-2': 18.4,
+  'c-2020-f3-neowise': 7.8
 };
-const HOURS_IN: Record<string, number> = { h: 1, d: 24 };
+const HOURS_IN: Record<string, number> = { h: 1, d: 24, yr: 365.25 * 24 };
 const SMALL_BODIES: (StarInterface | AsteroidInterface | CometInterface)[] = [
   ...STARS,
   ...ASTEROIDS,
@@ -580,7 +633,7 @@ describe('rotation of the Sun, stars, asteroids and comets', () => {
     }
   });
 
-  test('spins backwards against the Sun for Pallas, Hygiea, Psyche and Eunomia only', () => {
+  test('spins backwards against the Sun only where a measured pole says so', () => {
     const backwards = SMALL_BODIES.filter(
       ({ rotation }) => rotation?.retrograde
     )
@@ -589,19 +642,27 @@ describe('rotation of the Sun, stars, asteroids and comets', () => {
 
     assert.deepEqual(backwards, [
       '10-hygiea',
+      '101955-bennu',
       '15-eunomia',
       '16-psyche',
-      '2-pallas'
+      '162173-ryugu',
+      '2-pallas',
+      '243-ida',
+      '25143-itokawa',
+      '2867-steins',
+      '65803-didymos',
+      '99942-apophis'
     ]);
   });
 
-  test('tumbles for Halley’s comet only', () => {
+  test('tumbles for Halley’s comet, Hartley 2 and Apophis only', () => {
     const tumbling = SMALL_BODIES.filter(({ rotation }) => rotation?.tumbling);
 
-    assert.deepEqual(
-      tumbling.map(({ id }) => id),
-      ['1p-halley']
-    );
+    assert.deepEqual(tumbling.map(({ id }) => id).sort(), [
+      '103p-hartley-2',
+      '1p-halley',
+      '99942-apophis'
+    ]);
   });
 });
 
@@ -856,7 +917,7 @@ describe('pair orientation', () => {
 });
 
 describe('mu', () => {
-  const withMu = [...STARS, ...PLANETS, ...MOONS].filter(
+  const withMu = [...STARS, ...PLANETS, ...ASTEROIDS, ...MOONS].filter(
     (body) => body.mu !== undefined
   );
   const MU_BY_ID = new Map(withMu.map((body) => [body.id, body.mu!]));
@@ -876,15 +937,21 @@ describe('mu', () => {
     assert.ok(Math.abs(sun.mu! / (G_SI * SOLAR_MASS_KG) - 1) < 0.001);
   });
 
-  // T = 2π √(a³ / μ) with the parent's μ: catches a wrong a or period
+  // T = 2π √(a³ / μ), with μ the parent's, the moon's own and that of the
+  // moons inside its orbit: Charon is an eighth of Pluto's mass, and Pluto's
+  // small moons circle both. Catches a wrong a or period
   test('moon periods match Kepler III around their planet (within 2 %)', () => {
     for (const { name, parent, orbit } of MOONS) {
       const mu = MU_BY_ID.get(parent);
 
       assert.ok(mu, `${name}: parent ${parent} has a mu`);
 
+      const inside = MOONS.filter(
+        (moon) => moon.parent === parent && moon.orbit.a.value <= orbit.a.value
+      ).reduce((sum, moon) => sum + (moon.mu ?? 0), 0);
       const a = orbit.a.value * AU_METERS;
-      const expected = (2 * Math.PI * Math.sqrt(a ** 3 / mu!)) / 86_400;
+      const expected =
+        (2 * Math.PI * Math.sqrt(a ** 3 / (mu! + inside))) / 86_400;
 
       assert.ok(
         Math.abs(orbit.period.value / expected - 1) < 0.02,
@@ -893,12 +960,14 @@ describe('mu', () => {
     }
   });
 
-  test('planet periods match Kepler III around the Sun (within 1 %)', () => {
-    const muSun = MU_BY_ID.get('sun')!;
+  test('planet periods match Kepler III around their star (within 1 %)', () => {
+    for (const { name, parent, orbit } of PLANETS) {
+      const mu = MU_BY_ID.get(parent!);
 
-    for (const { name, orbit } of PLANETS) {
+      assert.ok(mu, `${name}: parent ${parent} has a mu`);
+
       const a = orbit!.a.value * AU_METERS;
-      const expected = (2 * Math.PI * Math.sqrt(a ** 3 / muSun)) / 86_400;
+      const expected = (2 * Math.PI * Math.sqrt(a ** 3 / mu!)) / 86_400;
 
       assert.ok(
         Math.abs(orbit!.period.value / expected - 1) < 0.01,
@@ -927,12 +996,21 @@ describe('GALAXIES', () => {
     }
   });
 
-  test('are at their Cepheid distances, in kpc', () => {
-    // Li et al. 2021 for Andromeda, Breuval et al. 2023 for Triangulum
+  test('are at their measured distances, in kpc', () => {
+    // Cepheids for Andromeda (Li et al. 2021) and Triangulum (Breuval et al.
+    // 2023), eclipsing binaries for the Magellanic Clouds (Pietrzyński et al.
+    // 2019, Graczyk et al. 2020), Vasiliev & Belokurov 2020 for Sagittarius,
+    // the EHT's 16.8 Mpc for M87 and red giants for Centaurus A (Harris et al.
+    // 2010)
     const kpc: Record<string, number> = {
       'milky-way': 0,
       andromeda: 761,
-      triangulum: 840
+      triangulum: 840,
+      'large-magellanic-cloud': 49.59,
+      'small-magellanic-cloud': 62.44,
+      'sagittarius-dwarf': 26.5,
+      m87: 16_800,
+      'centaurus-a': 3800
     };
 
     for (const { id, name, distance } of GALAXIES)
@@ -943,10 +1021,14 @@ describe('GALAXIES', () => {
   });
 
   test('have their D25 diameters, from RC3 and their distances', () => {
-    // log D25 in 0.1′ (RC3): 3.28 for Andromeda, 2.85 for Triangulum
+    // log D25 in 0.1′ (RC3)
     const logD25: Record<string, number> = {
       andromeda: 3.28,
-      triangulum: 2.85
+      triangulum: 2.85,
+      'large-magellanic-cloud': 3.81,
+      'small-magellanic-cloud': 3.5,
+      m87: 1.92,
+      'centaurus-a': 2.41
     };
 
     for (const { id, name, diameter, distance } of GALAXIES) {
@@ -969,13 +1051,29 @@ describe('GALAXIES', () => {
       Math.abs(milkyWay.diameter.value - 26_800 * LY_PER_PC) < 10,
       `Milky Way: ${milkyWay.diameter.value} ly`
     );
+
+    // Sagittarius has no D25 edge: its half-light diameter, 2 × 342′
+    // (McConnachie 2012)
+    const sagittarius = GALAXIES.find(({ id }) => id === 'sagittarius-dwarf')!;
+    const halfLight = ((2 * 342) / 60) * (Math.PI / 180);
+
+    assert.ok(
+      Math.abs(
+        sagittarius.diameter.value / (sagittarius.distance.value * halfLight) -
+          1
+      ) < 1e-3,
+      `Sagittarius: ${sagittarius.diameter.value} ly`
+    );
   });
 
   test('have a black hole of their measured mass, its radius 2GM/c², at the centre', () => {
-    // GRAVITY Collaboration 2024 for Sagittarius A*, Bender et al. 2005 for M31*
+    // GRAVITY Collaboration 2024 for Sagittarius A*, Bender et al. 2005 for
+    // M31*, the EHT 2019 for M87* and Cappellari et al. 2009 for Centaurus A
     const masses: Record<string, number> = {
       'milky-way': 4.2996e6,
-      andromeda: 1.4e8
+      andromeda: 1.4e8,
+      m87: 6.5e9,
+      'centaurus-a': 5.5e7
     };
     const GM_SUN = STARS.find(({ id }) => id === 'sun')!.mu!;
 
@@ -1001,6 +1099,16 @@ describe('GALAXIES', () => {
         name
       );
     }
+  });
+
+  test('gives M87* the 42 μas ring the EHT imaged, the first black hole seen', () => {
+    const m87 = GALAXIES.find(({ id }) => id === 'm87')!;
+
+    assert.ok(
+      Math.abs(
+        m87.blackHole!.ringDiameter! - (42e-6 / 3600) * (Math.PI / 180)
+      ) < 1e-15
+    );
   });
 });
 
@@ -1034,7 +1142,9 @@ describe('reference ellipsoids', () => {
   test('cover the planets, Pluto and the IAU’s large moons', () => {
     assert.deepEqual(withEllipsoid.map((body) => body.id).sort(), [
       'callisto',
+      'charon',
       'deimos',
+      'dione',
       'earth',
       'enceladus',
       'europa',
@@ -1043,11 +1153,13 @@ describe('reference ellipsoids', () => {
       'jupiter',
       'mars',
       'mercury',
+      'mimas',
       'moon',
       'neptune',
       'phobos',
       'pluto',
       'saturn',
+      'tethys',
       'titan',
       'uranus',
       'venus'
@@ -1098,7 +1210,11 @@ describe('reference ellipsoids', () => {
       callisto: 2410.3,
       enceladus: 252.1,
       titan: 2575,
-      triton: 1352.6
+      triton: 1352.6,
+      mimas: 198.2,
+      tethys: 531.1,
+      dione: 561.4,
+      charon: 606
     };
 
     for (const body of [...PLANETS, ...MOONS])

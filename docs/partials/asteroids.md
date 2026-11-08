@@ -17,5 +17,15 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 | 52-europa | Europa | main-belt asteroid | large asteroid | c-type | sun | 3.101 au | 0.101 | 7.5 | 87.7 | 304.4 | 3.675663 | 1977.9 d |  | 2.788 au | 5.6299584 h |  | 156.5 km | #555555 | 1 |
 | 3-juno | Juno | main-belt asteroid | large asteroid | s-type | sun | 2.67 au | 0.257 | 12.9 | 248.3 | 169.8 | 1.74882 | 1594.4 d |  | 1.986 au | 7.20953091 h |  | 117 km | #aaaaaa | 1 |
 | 15-eunomia | Eunomia | main-belt asteroid | large asteroid | s-type | sun | 2.643 au | 0.186 | 11.7 | 97.5 | 293.3 | 1.054179 | 1567.6 d |  | 2.153 au | 6.082753 h | yes | 136 km | #bbbbbb | 1 |
+| 101955-bennu | Bennu | near-earth asteroid | apollo group | b-type | sun | 1.128923 au | 0.204652 | 6.026 | 65.672 | 2.179 | 0.912594 | 438.1 d |  | 0.8979 au | 4.296061 h | yes | 0.24467 km | #46484C | 1 |
+| 162173-ryugu | Ryugu | near-earth asteroid | apollo group | c-type | sun | 1.189054 au | 0.190016 | 5.884 | 211.272 | 251.727 | 4.657822 | 473.6 d |  | 0.9631 au | 7.63262 h | yes | 0.4481 km | #3B3936 | 1 |
+| 25143-itokawa | Itokawa | near-earth asteroid | apollo group | s-type | sun | 1.324946 au | 0.280528 | 1.717 | 160.138 | 71.614 | 1.267064 | 557.1 d |  | 0.9533 au | 12.132395 h | yes | 0.1638 km | #8A7D69 | 1 |
+| 21-lutetia | Lutetia | main-belt asteroid | small asteroid | m-type | sun | 2.435733 au | 0.161713 | 3.066 | 250.117 | 80.947 | 5.222118 | 1388.5 d |  | 2.0418 au | 8.1682701 h |  | 49 km | #8A8781 | 1 |
+| 243-ida | Ida | main-belt asteroid | small asteroid | s-type | sun | 2.85969 au | 0.045755 | 1.137 | 112.291 | 324.38 | 4.183909 | 1766.4 d |  | 2.7288 au | 4.633632 h | yes | 15.7 km | #8E8575 | 1 |
+| 951-gaspra | Gaspra | main-belt asteroid | small asteroid | s-type | sun | 2.209421 au | 0.173562 | 4.103 | 129.307 | 253.322 | 2.014811 | 1199.5 d |  | 1.8259 au | 7.0420728 h |  | 6.1 km | #93806B | 1 |
+| 2867-steins | Šteins | main-belt asteroid | small asteroid | e-type | sun | 2.362505 au | 0.146995 | 9.945 | 250.154 | 55.642 | 3.113031 | 1326.3 d |  | 2.0152 au | 6.04681 h | yes | 2.65 km | #A7A5A1 | 1 |
+| 486958-arrokoth | Arrokoth | trans-neptunian object | cubewano | other | sun | 44.073713 au | 0.039717 | 2.448 | 189.443 | 159.203 | 4.774426 | 106873 d |  | 42.3232 au | 15.938 h |  | 9.15 km | #9A5A3E | 1 |
+| 65803-didymos | Didymos | near-earth asteroid | apollo group | s-type | sun | 1.642078 au | 0.383188 | 3.397 | 318.886 | 73.448 | 1.926507 | 768.6 d |  | 1.0129 au | 2.26 h | yes | 0.3805 km | #8A8279 | 1 |
+| 99942-apophis | Apophis | near-earth asteroid | aten group | s-type | sun | 0.922342 au | 0.191393 | 3.331 | 126.065 | 204.657 | 3.791688 | 323.5 d |  | 0.7458 au | 30.56 h | yes | 0.17 km | #9A9184 | 1 |
 
 </div>
