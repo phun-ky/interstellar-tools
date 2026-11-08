@@ -7,6 +7,7 @@ AsteroidCategory
 type AsteroidCategory =
   | 'dwarf planet'
   | 'large asteroid'
+  | 'small asteroid'
   | 'amor group'
   | 'apollo group'
   | 'aten group'
@@ -20,14 +21,15 @@ type AsteroidCategory =
 ```
 
 Defined in:
-[celestial-bodies/asteroids.ts:45](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/asteroids.ts#L45)
+[celestial-bodies/asteroids.ts:46](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/asteroids.ts#L46)
 
 More specific **group/category** for dynamical families or special bodies.
 
 ::: info
 
-Common near-Earth subgroups: Amor / Apollo / Aten / Atira. Outer main-belt
-families: Cybele / Hilda. TNOs: Plutinos (2:3 resonance), "classical" Kuiper
-belt objects (_cubewanos_), and _scattered disk_ objects.
+Main-belt asteroids are _large_ or _small_, about 100 km across telling them
+apart. Common near-Earth subgroups: Amor / Apollo / Aten / Atira. Outer
+main-belt families: Cybele / Hilda. TNOs: Plutinos (2:3 resonance), "classical"
+Kuiper belt objects (_cubewanos_), and _scattered disk_ objects.
 
 :::

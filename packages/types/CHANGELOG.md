@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.1.0...%40interstellar-tools%2Ftypes%402.2.0) (2026-11-08)
+
+### Feature
+
+* 🎸 Let moons orbit an asteroid, and weigh asteroids ([ffa6073](https://github.com/phun-ky/interstellar-tools/commit/ffa6073c4b19af90604c30894bb5882adbdbc5b1)), references [#371](https://github.com/phun-ky/interstellar-tools/issues/371)
+
 ## [2.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.0.0...%40interstellar-tools%2Ftypes%402.1.0) (2026-11-07)
 
 ### Feature

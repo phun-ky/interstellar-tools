@@ -68,7 +68,7 @@ npm i --save @interstellar-tools/types
 | [CometInterface](interfaces/CometInterface.md)                               | Represents a **comet** in the solar system simulation.                                                           |
 | [DisplayInterface](interfaces/DisplayInterface.md)                           | How a body is **drawn**: everything about rendering, kept apart from its physical data and its `orbit`.          |
 | [GalaxyInterface](interfaces/GalaxyInterface.md)                             | Represents a **galaxy** in the universe simulation.                                                              |
-| [MoonInterface](interfaces/MoonInterface.md)                                 | Represents a **moon** (natural satellite) orbiting a planet.                                                     |
+| [MoonInterface](interfaces/MoonInterface.md)                                 | Represents a **moon** (natural satellite) orbiting a planet, a dwarf planet or an asteroid.                      |
 | [PlanetInterface](interfaces/PlanetInterface.md)                             | Represents a **planet** or **planetoid**.                                                                        |
 | [RotationInterface](interfaces/RotationInterface.md)                         | How a star, planet, moon, asteroid or comet **spins**: its sidereal rotation period, one turn against the stars. |
 | [StarInterface](interfaces/StarInterface.md)                                 | Represents a **star**.                                                                                           |
