@@ -4,7 +4,7 @@ GalaxyInterface
 # Interface: GalaxyInterface
 
 Defined in:
-[celestial-bodies/galaxies.ts:80](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L80)
+[celestial-bodies/galaxies.ts:83](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L83)
 
 Represents a **galaxy** in the universe simulation.
 
@@ -42,7 +42,7 @@ blackHole?: BlackHoleInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:92](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L92)
+[celestial-bodies/galaxies.ts:95](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L95)
 
 Central supermassive black hole of the galaxy. Omitted where none is detected.
 
@@ -55,7 +55,7 @@ diameter: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:88](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L88)
+[celestial-bodies/galaxies.ts:91](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L91)
 
 Diameter of the galaxy in light-years.
 
@@ -68,7 +68,7 @@ distance: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:90](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L90)
+[celestial-bodies/galaxies.ts:93](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L93)
 
 Distance from the Sun in light-years: 0 for the Milky Way itself.
 
@@ -81,7 +81,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:82](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L82)
+[celestial-bodies/galaxies.ts:85](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L85)
 
 Stable identifier, used by `parent` references. Never translated.
 
@@ -94,7 +94,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:84](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L84)
+[celestial-bodies/galaxies.ts:87](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L87)
 
 Name of the galaxy.
 
@@ -107,6 +107,6 @@ type: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:86](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L86)
+[celestial-bodies/galaxies.ts:89](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L89)
 
 Morphological classification of the galaxy.

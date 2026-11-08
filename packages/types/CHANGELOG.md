@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.2.0...%40interstellar-tools%2Ftypes%402.3.0) (2026-11-08)
+
+### Feature
+
+* 🎸 Say which plane an orbit is measured from, and give black holes a z ([b8e5e6e](https://github.com/phun-ky/interstellar-tools/commit/b8e5e6e5c83b7a110e2c4b0e4b676fa15a6b29b0)), references [#372](https://github.com/phun-ky/interstellar-tools/issues/372)
+
 ## [2.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.1.0...%40interstellar-tools%2Ftypes%402.2.0) (2026-11-08)
 
 ### Feature

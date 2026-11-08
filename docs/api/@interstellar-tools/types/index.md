@@ -107,15 +107,18 @@ npm i --save @interstellar-tools/types
 
 ## Orbits
 
-| Name                                                                   | Description                                                                                                                                       |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ClassicalElementsInterface](interfaces/ClassicalElementsInterface.md) | The six **classical orbital elements** of a two-body orbit, in SI units and radians.                                                              |
-| [FullOrbitInterface](interfaces/FullOrbitInterface.md)                 | An [OrbitInterface](interfaces/OrbitInterface.md) with every orientation element given: `i`, `w`, `om` and `q`. Comets and asteroids carry these. |
-| [OrbitInterface](interfaces/OrbitInterface.md)                         | Kepler **orbital elements** of one body around its parent.                                                                                        |
-| [StateVectorInterface](interfaces/StateVectorInterface.md)             | A body's **state vector**: its position and velocity in an inertial frame centred on the body it orbits.                                          |
-| [CwState](type-aliases/CwState.md)                                     | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame.                                                                     |
-| [CwStateDerivative](type-aliases/CwStateDerivative.md)                 | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.                                                                       |
-| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)                   | **Peri/apoapsis radii pair**.                                                                                                                     |
+| Name                                                                     | Description                                                                                                                                            |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [CelestialDirectionInterface](interfaces/CelestialDirectionInterface.md) | A **direction on the sky**, in the ICRF (the J2000 equator and equinox), in degrees as catalogues give it: the pole of a reference plane, for example. |
+| [ClassicalElementsInterface](interfaces/ClassicalElementsInterface.md)   | The six **classical orbital elements** of a two-body orbit, in SI units and radians.                                                                   |
+| [FullOrbitInterface](interfaces/FullOrbitInterface.md)                   | An [OrbitInterface](interfaces/OrbitInterface.md) with every orientation element given: `i`, `w`, `om` and `q`. Comets and asteroids carry these.      |
+| [OrbitFrameInterface](interfaces/OrbitFrameInterface.md)                 | The **frame** of an orbit's orientation elements: the plane `i`, `om` and `w` are measured from, and that plane's pole where it isn't a standard one.  |
+| [OrbitInterface](interfaces/OrbitInterface.md)                           | Kepler **orbital elements** of one body around its parent.                                                                                             |
+| [StateVectorInterface](interfaces/StateVectorInterface.md)               | A body's **state vector**: its position and velocity in an inertial frame centred on the body it orbits.                                               |
+| [CwState](type-aliases/CwState.md)                                       | Clohessy–Wiltshire / Hill relative-motion **state vector** in the LVLH frame.                                                                          |
+| [CwStateDerivative](type-aliases/CwStateDerivative.md)                   | Time derivative of [CwState](type-aliases/CwState.md) for CW/Hill dynamics.                                                                            |
+| [OrbitReferencePlaneType](type-aliases/OrbitReferencePlaneType.md)       | The **reference plane** an orbit's `i`, `om` and `w` are measured from.                                                                                |
+| [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)                     | **Peri/apoapsis radii pair**.                                                                                                                          |
 
 ## Temporal
 
