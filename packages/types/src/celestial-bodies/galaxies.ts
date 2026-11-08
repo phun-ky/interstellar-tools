@@ -7,7 +7,7 @@ import type { Radians } from '../numeric.js';
  * **Black Hole Properties:**
  * - **Mass (`mass`)**: Measured in **solar masses** ($M_\odot$).
  * - **Schwarzschild radius (`radius`)**: $r_s = 2GM/c^2$, from its mass, in **Astronomical Units (AU)**.
- * - **Position (`x`, `y`)**: Coordinates relative to the galaxy center in **AU**.
+ * - **Position (`x`, `y`, `z`)**: Coordinates relative to the galaxy center in **AU**, `z` out of its disk.
  * - **Id (`id`)**: given where stars orbit it, so they can name it as their `parent`,
  *   like the S-stars around Sagittarius A*. Their orbits take its `mu`.
  * - **Ring (`ringDiameter`)**: the angular diameter of the bright ring around its
@@ -24,7 +24,8 @@ import type { Radians } from '../numeric.js';
  *   distance: { value: 26992, unit: 'ly' },
  *   ringDiameter: 2.511e-10 as Radians, // 51.8 μas
  *   x: { value: 0, unit: 'au' },
- *   y: { value: 0, unit: 'au' }
+ *   y: { value: 0, unit: 'au' },
+ *   z: { value: 0, unit: 'au' }
  * };
  * ```
  * @group Celestial Bodies
@@ -51,6 +52,8 @@ export interface BlackHoleInterface {
   x: DistanceInterface;
   /** Y-coordinate relative to the galaxy center in AU. */
   y: DistanceInterface;
+  /** Z-coordinate relative to the galaxy center in AU, out of its disk. */
+  z?: DistanceInterface;
 }
 
 /**

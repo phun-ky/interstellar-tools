@@ -93,6 +93,78 @@ export type CwStateDerivative = readonly [
 ];
 
 /**
+ * A **direction on the sky**, in the ICRF (the J2000 equator and equinox), in
+ * degrees as catalogues give it: the pole of a reference plane, for example.
+ *
+ * @example
+ * ```ts
+ * // Saturn's north pole (Archinal et al. 2018)
+ * const pole: CelestialDirectionInterface = {
+ *   rightAscension: 40.589 as DegreesType,
+ *   declination: 83.537 as DegreesType
+ * };
+ * ```
+ * @group Orbits
+ */
+export interface CelestialDirectionInterface {
+  /** Right ascension, eastwards from the equinox along the equator, in degrees. */
+  rightAscension: DegreesType;
+  /** Declination, north of the equator, in degrees. */
+  declination: DegreesType;
+}
+
+/**
+ * The **reference plane** an orbit's `i`, `om` and `w` are measured from.
+ *
+ * ::: info
+ *
+ * - `'ecliptic'`: the J2000 ecliptic, `om` from the J2000 equinox. Planets,
+ *   asteroids, comets and Earth's Moon.
+ * - `'equator'`: the ICRF equator, `om` from the J2000 equinox.
+ * - `'laplace'`: a moon's local Laplace plane, the plane its orbit precesses
+ *   around, with its pole in the frame's `pole`. As in JPL's satellite mean
+ *   elements, `om` is measured from the ICRF equinox along the ICRF equator to
+ *   the Laplace plane's ascending node, then along the Laplace plane.
+ * - `'parent-equator'`: the equator of the body the orbit is around.
+ * - `'sky'`: the plane of the sky, as binary stars and the S-stars are
+ *   measured: `i` to the sky (above 90° is clockwise on the sky, not
+ *   retrograde), `om` the position angle of the ascending node, from north
+ *   through east, and the node the one where the body moves away from us.
+ * - `'galactic'`: the galaxy's disk, for a galactic orbit.
+ *
+ * :::
+ *
+ * @group Orbits
+ */
+export type OrbitReferencePlaneType =
+  'ecliptic' | 'equator' | 'laplace' | 'parent-equator' | 'sky' | 'galactic';
+
+/**
+ * The **frame** of an orbit's orientation elements: the plane `i`, `om` and
+ * `w` are measured from, and that plane's pole where it isn't a standard one.
+ *
+ * @example
+ * ```ts
+ * const earthFrame: OrbitFrameInterface = { plane: 'ecliptic' };
+ * // A Laplace plane close to Saturn's equator
+ * const moonFrame: OrbitFrameInterface = {
+ *   plane: 'laplace',
+ *   pole: {
+ *     rightAscension: 40.6 as DegreesType,
+ *     declination: 83.5 as DegreesType
+ *   }
+ * };
+ * ```
+ * @group Orbits
+ */
+export interface OrbitFrameInterface {
+  /** The reference plane. */
+  plane: OrbitReferencePlaneType;
+  /** The plane's pole in the ICRF, for a `'laplace'` plane. */
+  pole?: CelestialDirectionInterface;
+}
+
+/**
  * Kepler **orbital elements** of one body around its parent.
  *
  * The parent is whatever the body is gravitationally bound to: a star, a
@@ -109,8 +181,13 @@ export type CwStateDerivative = readonly [
  * - **Direction**: `period` is always a positive duration. A retrograde orbit,
  *   moving against its parent's rotation, has `retrograde: true`; a renderer
  *   can use `retrograde ? -1 : 1` as the direction of travel.
- * - `i`, `w`, `om` and `q` are only given where the dataset has them (comets and
- *   asteroids). Where `i` is given, `retrograde` is set exactly when `i > 90°`.
+ * - `i`, `w`, `om` and `q` are only given where the dataset has them. `frame`
+ *   says which plane they're measured from: without it, an orbit can only be
+ *   drawn flat, in its own plane.
+ * - Where `i` is given against the ecliptic, for a body around the Sun, or
+ *   against its parent's equator or Laplace plane, `retrograde` is set exactly
+ *   when `i > 90°`. On the sky, `i > 90°` only
+ *   means the orbit turns clockwise as we see it.
  *
  * :::
  *
@@ -144,6 +221,8 @@ export interface OrbitInterface {
   om?: DegreesType;
   /** Periapsis distance $q = a(1 - e)$. */
   q?: DistanceInterface;
+  /** The plane `i`, `om` and `w` are measured from. Given with them. */
+  frame?: OrbitFrameInterface;
 }
 
 /**
