@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.3.0...%40interstellar-tools%2Ftypes%402.3.1) (2026-11-09)
+
+### Bug
+
+* 🐛 Measure a Laplace plane's node as JPL does ([e7429e9](https://github.com/phun-ky/interstellar-tools/commit/e7429e907d1692d8bd26677197ad5763a19ba7fa)), references [#372](https://github.com/phun-ky/interstellar-tools/issues/372)
+
 ## [2.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.2.0...%40interstellar-tools%2Ftypes%402.3.0) (2026-11-08)
 
 ### Feature
