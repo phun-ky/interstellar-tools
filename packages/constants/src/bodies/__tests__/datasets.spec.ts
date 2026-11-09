@@ -303,6 +303,85 @@ describe('heliocentric orbits', () => {
   });
 });
 
+describe('orbits in 3D', () => {
+  const ORBITS: { name: string; orbit: OrbitInterface }[] = [
+    ...PLANETS,
+    ...MOONS,
+    ...STARS,
+    ...SYSTEMS,
+    ...COMETS,
+    ...ASTEROIDS
+  ].flatMap(({ name, orbit }) => (orbit ? [{ name, orbit }] : []));
+  const WITH_POLE = new Set(['laplace', 'parent-equator']);
+
+  test('name the plane their i, om and w are measured from', () => {
+    for (const { name, orbit } of ORBITS) {
+      assert.equal(
+        orbit.frame !== undefined,
+        orbit.i !== undefined,
+        `${name}: a frame exactly when there's an i`
+      );
+
+      if (!orbit.frame) continue;
+
+      assert.equal(
+        orbit.frame.pole !== undefined,
+        WITH_POLE.has(orbit.frame.plane),
+        `${name}: a pole exactly for a Laplace plane or the parent's equator`
+      );
+    }
+  });
+
+  test("give the Sun's planets and every moon their i, om and w", () => {
+    const bodies = [
+      ...PLANETS.filter(({ parent }) => parent === 'sun'),
+      ...MOONS
+    ];
+
+    for (const { name, orbit } of bodies)
+      for (const field of ['i', 'w', 'om'] as const)
+        assert.ok(Number.isFinite(orbit![field]), `${name}.orbit.${field}`);
+  });
+
+  // Against the planet's equator or Laplace plane, or the ecliptic for the
+  // irregular moons, whose plane the Sun sets
+  test('make a moon retrograde exactly when i > 90°', () => {
+    for (const { name, orbit } of MOONS)
+      assert.equal(orbit.retrograde === true, orbit.i! > 90, name);
+  });
+
+  // R3(−Ω) R1(−i) R3(−ω) applied to the position in the orbit's plane
+  test("put the Sun's planets at their x, y, z from their elements (within 0.02 %)", () => {
+    const rad = Math.PI / 180;
+
+    for (const { name, orbit, x, y, z } of PLANETS.filter(
+      ({ parent }) => parent === 'sun'
+    )) {
+      const { a, e, angle, i, w, om, frame } = orbit!;
+
+      assert.equal(frame?.plane, 'ecliptic', name);
+
+      const r = (a.value * (1 - e ** 2)) / (1 + e * Math.cos(angle));
+      const u = w! * rad + angle;
+      const [O, I] = [om! * rad, i! * rad];
+      const position = [
+        r *
+          (Math.cos(O) * Math.cos(u) - Math.sin(O) * Math.sin(u) * Math.cos(I)),
+        r *
+          (Math.sin(O) * Math.cos(u) + Math.cos(O) * Math.sin(u) * Math.cos(I)),
+        r * Math.sin(u) * Math.sin(I)
+      ];
+      const miss = Math.hypot(
+        position[0]! - x!.value,
+        position[1]! - y!.value,
+        position[2]! - z!.value
+      );
+
+      assert.ok(miss / r < 2e-4, `${name}: ${miss.toExponential(2)} au off`);
+    }
+  });
+});
+
 describe('planet positions at J2000', () => {
   // r = a(1 − e²) / (1 + e cos ν): the position and the angle describe the same
   // point on the same orbit
@@ -1091,8 +1170,9 @@ describe('GALAXIES', () => {
         `${name}: ${blackHole.radius.value} au against ${radius} au`
       );
       assert.deepEqual(
-        [blackHole.x, blackHole.y],
+        [blackHole.x, blackHole.y, blackHole.z],
         [
+          { value: 0, unit: 'au' },
           { value: 0, unit: 'au' },
           { value: 0, unit: 'au' }
         ],

@@ -1,4 +1,4 @@
-import { MoonsType, Radians } from '@interstellar-tools/types';
+import { DegreesType, MoonsType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a dataset of natural satellites (moons) in the solar system.
@@ -8,12 +8,16 @@ import { MoonsType, Radians } from '@interstellar-tools/types';
  *
  * - Units: `a` in astronomical units (au), `period` in days (d), `radius` in kilometers (km),
  *   `mu` in m³/s².
- * - `a` and `e` are JPL's mean elements; `orbit.angle` is the true anomaly at J2000, from the
- *   mean anomaly in JPL Horizons' osculating elements at J2000, converted with this dataset's `e`.
- *   For near-circular orbits (e < 0.001) it is close to the mean anomaly, since the periapsis
- *   is barely defined. Irregular moons are strongly perturbed by the Sun, so their elements
- *   describe J2000 only. Dysnomia's are Holler et al. 2021's, Pluto's moons' Brozović & Jacobson
- *   2024's, and Dimorphos's Naidu et al. 2024's, before DART hit it.
+ * - `a`, `e`, `i`, `w` and `om` are JPL's mean elements, in the plane JPL gives them in, `frame`:
+ *   the ecliptic for the Moon and the irregular moons Himalia, Pasiphae, Nereid and Halimede, a
+ *   Laplace plane for Mars's, Jupiter's and Saturn's regular moons, and the planet's equator for
+ *   Uranus's, Neptune's and Pluto's, with each plane's pole. Dysnomia's are Holler et al. 2021's,
+ *   against the ICRF equator, and Dimorphos's from JPL Horizons, against Didymos's equator, before
+ *   DART hit it.
+ * - `orbit.angle` is the true anomaly at J2000 that, with `w`, puts the moon where JPL Horizons has
+ *   it at J2000, within its plane. For a near-circular orbit the periapsis is barely defined, so
+ *   only `w + angle` matters. Irregular moons are strongly perturbed by the Sun, so their elements
+ *   describe J2000 only.
  * - Moons orbit a planet, a dwarf planet, or an asteroid: Dimorphos orbits Didymos.
  * - `mu` is the moon's G·M from JPL's satellite physical parameters, where JPL publishes one.
  * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
@@ -54,7 +58,11 @@ export const MOONS: MoonsType = [
       /** Orbital period in days */
       period: { value: 27.322, unit: 'd' },
       /** Initial angle in orbit at J2000 */
-      angle: 2.41 as Radians
+      angle: 2.4345 as Radians,
+      i: 5.16 as DegreesType,
+      w: 318.15 as DegreesType,
+      om: 125.08 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: the IAU's 2009 rate, 13.17635815° a day */
     rotation: { period: { value: 27.32166171, unit: 'd' }, synchronous: true },
@@ -81,7 +89,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.000062668, unit: 'au' },
       e: 0.0151,
       period: { value: 0.3189, unit: 'd' },
-      angle: 3.307969 as Radians
+      angle: 3.307969 as Radians,
+      i: 1.1 as DegreesType,
+      w: 216.3 as DegreesType,
+      om: 169.2 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 317.7 as DegreesType,
+          declination: 52.9 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 0.3189101044, unit: 'd' }, synchronous: true },
@@ -105,7 +123,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.0001568, unit: 'au' },
       e: 0.0002,
       period: { value: 1.2624, unit: 'd' },
-      angle: 0.088942 as Radians
+      angle: 3.5778 as Radians,
+      i: 1.8 as DegreesType,
+      w: 0 as DegreesType,
+      om: 54.3 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 316.6 as DegreesType,
+          declination: 53.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 1.262440789, unit: 'd' }, synchronous: true },
@@ -131,7 +159,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00282, unit: 'au' },
       e: 0.0041,
       period: { value: 1.769, unit: 'd' },
-      angle: 5.846065 as Radians
+      angle: 5.7713 as Radians,
+      i: 0 as DegreesType,
+      w: 49.1 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 268.1 as DegreesType,
+          declination: 64.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 1.7691378, unit: 'd' }, synchronous: true },
@@ -155,7 +193,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00448, unit: 'au' },
       e: 0.0094,
       period: { value: 3.551, unit: 'd' },
-      angle: 6.02377 as Radians
+      angle: 6.02377 as Radians,
+      i: 0.5 as DegreesType,
+      w: 45 as DegreesType,
+      om: 184 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 268.1 as DegreesType,
+          declination: 64.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 3.551181079, unit: 'd' }, synchronous: true },
@@ -179,7 +227,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00715, unit: 'au' },
       e: 0.0013,
       period: { value: 7.155, unit: 'd' },
-      angle: 4.832832 as Radians
+      angle: 5.6673 as Radians,
+      i: 0.2 as DegreesType,
+      w: 198.3 as DegreesType,
+      om: 58.5 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 268.2 as DegreesType,
+          declination: 64.6 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 7.15455312, unit: 'd' }, synchronous: true },
@@ -202,7 +260,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.01258, unit: 'au' },
       e: 0.0074,
       period: { value: 16.689, unit: 'd' },
-      angle: 1.500362 as Radians
+      angle: 1.5402 as Radians,
+      i: 0.3 as DegreesType,
+      w: 43.8 as DegreesType,
+      om: 309.1 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 268.7 as DegreesType,
+          declination: 64.8 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 16.68901797, unit: 'd' }, synchronous: true },
@@ -225,7 +293,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00121258, unit: 'au' },
       e: 0.003,
       period: { value: 0.498, unit: 'd' },
-      angle: 5.866533 as Radians
+      angle: 5.4164 as Radians,
+      i: 0.4 as DegreesType,
+      w: 180.1 as DegreesType,
+      om: 282.9 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 268.1 as DegreesType,
+          declination: 64.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 0.4981792545, unit: 'd' }, synchronous: true },
@@ -244,7 +322,11 @@ export const MOONS: MoonsType = [
       a: { value: 0.076465, unit: 'au' },
       e: 0.16,
       period: { value: 250.2, unit: 'd' },
-      angle: 1.686531 as Radians
+      angle: 1.6994 as Radians,
+      i: 28.4 as DegreesType,
+      w: 321.1 as DegreesType,
+      om: 64.2 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: 7.7819 h, from its light curve (Pilcher et al. 2012); its direction isn't known */
     rotation: { period: { value: 0.324246, unit: 'd' } },
@@ -263,7 +345,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.000855627, unit: 'au' },
       e: 0.0002,
       period: { value: 0.295, unit: 'd' },
-      angle: 6.248627 as Radians
+      angle: 2.8973 as Radians,
+      i: 0 as DegreesType,
+      w: 0 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 268.1 as DegreesType,
+          declination: 64.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 0.2947787969, unit: 'd' }, synchronous: true },
@@ -282,7 +374,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00148331, unit: 'au' },
       e: 0.0176,
       period: { value: 0.675, unit: 'd' },
-      angle: 3.183597 as Radians
+      angle: 3.183597 as Radians,
+      i: 1.1 as DegreesType,
+      w: 26.6 as DegreesType,
+      om: 340.4 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 268.1 as DegreesType,
+          declination: 64.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 0.6745357381, unit: 'd' }, synchronous: true },
@@ -302,7 +404,11 @@ export const MOONS: MoonsType = [
       e: 0.407,
       period: { value: 735, unit: 'd' },
       retrograde: true,
-      angle: 4.08832 as Radians
+      angle: 4.1307 as Radians,
+      i: 148.3 as DegreesType,
+      w: 172.8 as DegreesType,
+      om: 315.7 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     radius: { value: 30, unit: 'km' },
     display: {
@@ -320,7 +426,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00817, unit: 'au' },
       e: 0.0288,
       period: { value: 15.945, unit: 'd' },
-      angle: 2.868371 as Radians
+      angle: 3.7651 as Radians,
+      i: 0.3 as DegreesType,
+      w: 78.3 as DegreesType,
+      om: 78.6 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 36.4 as DegreesType,
+          declination: 84.0 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 15.94544758, unit: 'd' }, synchronous: true },
@@ -344,7 +460,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00159, unit: 'au' },
       e: 0.0047,
       period: { value: 1.37, unit: 'd' },
-      angle: 0.122504 as Radians
+      angle: 1.0989 as Radians,
+      i: 0 as DegreesType,
+      w: 119.5 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 40.6 as DegreesType,
+          declination: 83.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 1.370218084, unit: 'd' }, synchronous: true },
@@ -368,7 +494,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00352411, unit: 'au' },
       e: 0.0012,
       period: { value: 4.518, unit: 'd' },
-      angle: 3.610039 as Radians
+      angle: 4.0861 as Radians,
+      i: 0.3 as DegreesType,
+      w: 44.3 as DegreesType,
+      om: 133.7 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 40.6 as DegreesType,
+          declination: 83.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 4.517502623, unit: 'd' }, synchronous: true },
@@ -387,7 +523,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.0238, unit: 'au' },
       e: 0.0283,
       period: { value: 79.33, unit: 'd' },
-      angle: 3.604813 as Radians
+      angle: 3.8026 as Radians,
+      i: 7.6 as DegreesType,
+      w: 254.5 as DegreesType,
+      om: 86.5 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 288.7 as DegreesType,
+          declination: 78.9 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 79.33084957, unit: 'd' }, synchronous: true },
@@ -406,7 +552,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00990322, unit: 'au' },
       e: 0.105,
       period: { value: 21.3, unit: 'd' },
-      angle: 1.437895 as Radians
+      angle: 0.2053 as Radians,
+      i: 0.6 as DegreesType,
+      w: 214 as DegreesType,
+      om: 87.1 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 40.2 as DegreesType,
+          declination: 83.6 as DegreesType
+        }
+      }
     },
     radius: { value: 135, unit: 'km' },
     mu: 3.7049e8,
@@ -424,7 +580,17 @@ export const MOONS: MoonsType = [
       e: 0.1634,
       period: { value: 550, unit: 'd' },
       retrograde: true,
-      angle: 1.330749 as Radians
+      angle: 2.1829 as Radians,
+      i: 175.2 as DegreesType,
+      w: 240.3 as DegreesType,
+      om: 192.7 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 276.0 as DegreesType,
+          declination: 67.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days: IAU, 9.274 h, not synchronous */
     rotation: { period: { value: 0.3864157683, unit: 'd' } },
@@ -443,7 +609,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00124333, unit: 'au' },
       e: 0.02,
       period: { value: 0.942422, unit: 'd' },
-      angle: 0.677503 as Radians
+      angle: 5.642 as Radians,
+      i: 1.6 as DegreesType,
+      w: 160.4 as DegreesType,
+      om: 66.2 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 40.6 as DegreesType,
+          declination: 83.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days: IAU */
     rotation: { period: { value: 0.9424218102, unit: 'd' }, synchronous: true },
@@ -467,7 +643,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00197195, unit: 'au' },
       e: 0.001,
       period: { value: 1.887802, unit: 'd' },
-      angle: 6.114999 as Radians
+      angle: 5.2137 as Radians,
+      i: 1.1 as DegreesType,
+      w: 335.3 as DegreesType,
+      om: 273 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 40.6 as DegreesType,
+          declination: 83.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days: IAU */
     rotation: { period: { value: 1.887802561, unit: 'd' }, synchronous: true },
@@ -491,7 +677,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00252477, unit: 'au' },
       e: 0.002,
       period: { value: 2.736916, unit: 'd' },
-      angle: 5.793602 as Radians
+      angle: 1.0601 as Radians,
+      i: 0 as DegreesType,
+      w: 116 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'laplace',
+        pole: {
+          rightAscension: 40.6 as DegreesType,
+          declination: 83.5 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days: IAU */
     rotation: { period: { value: 2.736915553, unit: 'd' }, synchronous: true },
@@ -517,7 +713,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00292, unit: 'au' },
       e: 0.0011,
       period: { value: 8.706, unit: 'd' },
-      angle: 1.300938 as Radians
+      angle: 1.1906 as Radians,
+      i: 0.1 as DegreesType,
+      w: 184 as DegreesType,
+      om: 29.5 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 77.311 as DegreesType,
+          declination: 15.175 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 8.705865458, unit: 'd' }, synchronous: true },
@@ -536,7 +742,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00390053, unit: 'au' },
       e: 0.0014,
       period: { value: 13.46, unit: 'd' },
-      angle: 1.634613 as Radians
+      angle: 2.508 as Radians,
+      i: 0.1 as DegreesType,
+      w: 132.2 as DegreesType,
+      om: 76.8 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 77.311 as DegreesType,
+          declination: 15.175 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 13.46323198, unit: 'd' }, synchronous: true },
@@ -555,7 +771,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.000867967, unit: 'au' },
       e: 0.0013,
       period: { value: 1.41, unit: 'd' },
-      angle: 1.085483 as Radians
+      angle: 1.2569 as Radians,
+      i: 4.4 as DegreesType,
+      w: 154.8 as DegreesType,
+      om: 100.9 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 77.311 as DegreesType,
+          declination: 15.175 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 1.413479233, unit: 'd' }, synchronous: true },
@@ -574,7 +800,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00127628, unit: 'au' },
       e: 0.0012,
       period: { value: 2.52, unit: 'd' },
-      angle: 2.667861 as Radians
+      angle: 3.3767 as Radians,
+      i: 0 as DegreesType,
+      w: 9.6 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 77.311 as DegreesType,
+          declination: 15.175 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 2.520378872, unit: 'd' }, synchronous: true },
@@ -593,7 +829,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.00177801, unit: 'au' },
       e: 0.0039,
       period: { value: 4.14, unit: 'd' },
-      angle: 4.725942 as Radians
+      angle: 4.4082 as Radians,
+      i: 0.1 as DegreesType,
+      w: 183.4 as DegreesType,
+      om: 174.8 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 77.311 as DegreesType,
+          declination: 15.175 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 4.144176246, unit: 'd' }, synchronous: true },
@@ -615,7 +861,17 @@ export const MOONS: MoonsType = [
       e: 0.000016,
       period: { value: 5.87685, unit: 'd' },
       retrograde: true,
-      angle: 5.99451 as Radians // Consider updating based on actual epoch
+      angle: 1.0196 as Radians,
+      i: 157.3 as DegreesType,
+      w: 0 as DegreesType,
+      om: 177.7 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 299.334 as DegreesType,
+          declination: 42.95 as DegreesType
+        }
+      } // Consider updating based on actual epoch
     },
     /** Sidereal rotation in days: IAU, synchronous on its backwards orbit */
     rotation: {
@@ -638,7 +894,11 @@ export const MOONS: MoonsType = [
       a: { value: 0.0369, unit: 'au' },
       e: 0.75,
       period: { value: 360.14, unit: 'd' },
-      angle: 3.278379 as Radians
+      angle: 3.278379 as Radians,
+      i: 5.1 as DegreesType,
+      w: 296.8 as DegreesType,
+      om: 319.5 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: 11.594 h, from its light curve (Kiss et al. 2016); its direction isn't known */
     rotation: { period: { value: 0.483083, unit: 'd' } },
@@ -656,7 +916,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.000786107, unit: 'au' },
       e: 0.0005,
       period: { value: 1.12, unit: 'd' },
-      angle: 4.949202 as Radians
+      angle: 4.9109 as Radians,
+      i: 0.6 as DegreesType,
+      w: 357.2 as DegreesType,
+      om: 355.5 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 299.334 as DegreesType,
+          declination: 42.95 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 1.122315482, unit: 'd' }, synchronous: true },
@@ -676,7 +946,11 @@ export const MOONS: MoonsType = [
       e: 0.521,
       period: { value: 1879, unit: 'd' }, // Retrograde orbit (i ≈ 120° to the ecliptic)
       retrograde: true,
-      angle: 3.476227 as Radians
+      angle: 3.5101 as Radians,
+      i: 119.6 as DegreesType,
+      w: 157.9 as DegreesType,
+      om: 198.5 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     radius: { value: 62, unit: 'km' },
     display: {
@@ -685,9 +959,10 @@ export const MOONS: MoonsType = [
   },
 
   // **Pluto**: Charon's elements are Plutocentric, the small moons' are around
-  // the Pluto–Charon barycenter (Brozović & Jacobson 2024). The small moons' `a`
-  // is the paper's Table 11, which matches their period; the JPL page's comes
-  // from its Table 10. Their spins are chaotic (Showalter & Hamilton 2015), so
+  // the Pluto–Charon barycenter (Brozović & Jacobson 2024), in Charon's orbit
+  // plane. The small moons' `a` and `e` are the paper's Table 11, which matches
+  // their period; the JPL page's come from its Table 10. Styx, Nix and Kerberos
+  // move on circles, so their `angle` is measured from the plane's node. Their spins are chaotic (Showalter & Hamilton 2015), so
   // they have a light curve's period and no direction (Weaver et al. 2016).
   {
     id: 'charon',
@@ -698,7 +973,17 @@ export const MOONS: MoonsType = [
       a: { value: 0.000131018, unit: 'au' },
       e: 0,
       period: { value: 6.387222, unit: 'd' },
-      angle: 2.594696 as Radians
+      angle: 5.3075 as Radians,
+      i: 0 as DegreesType,
+      w: 0 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 132.993 as DegreesType,
+          declination: -6.163 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days: IAU. Pluto and Charon face each other */
     rotation: { period: { value: 6.387222999, unit: 'd' }, synchronous: true },
@@ -719,9 +1004,19 @@ export const MOONS: MoonsType = [
     parent: 'pluto',
     orbit: {
       a: { value: 0.000283493, unit: 'au' },
-      e: 0.025,
+      e: 0,
       period: { value: 20.16, unit: 'd' },
-      angle: 0.213702 as Radians
+      angle: 3.3313 as Radians,
+      i: 0 as DegreesType,
+      w: 0 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 132.993 as DegreesType,
+          declination: -6.163 as DegreesType
+        }
+      }
     },
     /** Rotation in days: a light curve's, 3.24 d */
     rotation: { period: { value: 3.24, unit: 'd' } },
@@ -737,9 +1032,19 @@ export const MOONS: MoonsType = [
     parent: 'pluto',
     orbit: {
       a: { value: 0.000325466, unit: 'au' },
-      e: 0.015,
+      e: 0,
       period: { value: 24.85, unit: 'd' },
-      angle: 5.830826 as Radians
+      angle: 1.6034 as Radians,
+      i: 0 as DegreesType,
+      w: 0 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 132.993 as DegreesType,
+          declination: -6.163 as DegreesType
+        }
+      }
     },
     /** Rotation in days: a light curve's, 43.9 h */
     rotation: { period: { value: 1.829, unit: 'd' } },
@@ -756,9 +1061,19 @@ export const MOONS: MoonsType = [
     parent: 'pluto',
     orbit: {
       a: { value: 0.000386028, unit: 'au' },
-      e: 0.01,
+      e: 0,
       period: { value: 32.17, unit: 'd' },
-      angle: 5.498861 as Radians
+      angle: 5.4723 as Radians,
+      i: 0.4 as DegreesType,
+      w: 0 as DegreesType,
+      om: 314.3 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 132.993 as DegreesType,
+          declination: -6.163 as DegreesType
+        }
+      }
     },
     /** Rotation in days: a light curve's, 5.31 d */
     rotation: { period: { value: 5.31, unit: 'd' } },
@@ -774,9 +1089,19 @@ export const MOONS: MoonsType = [
     parent: 'pluto',
     orbit: {
       a: { value: 0.00043262, unit: 'au' },
-      e: 0.009,
+      e: 0.006,
       period: { value: 38.2, unit: 'd' },
-      angle: 6.004734 as Radians
+      angle: 5.9181 as Radians,
+      i: 0.3 as DegreesType,
+      w: 139.3 as DegreesType,
+      om: 114.3 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 132.993 as DegreesType,
+          declination: -6.163 as DegreesType
+        }
+      }
     },
     /** Rotation in days: a light curve's, 10.3 h */
     rotation: { period: { value: 0.4295, unit: 'd' } },
@@ -797,7 +1122,11 @@ export const MOONS: MoonsType = [
       a: { value: 0.000249155, unit: 'au' },
       e: 0.0062,
       period: { value: 15.785899, unit: 'd' },
-      angle: 2.010563 as Radians
+      angle: 1.9488 as Radians,
+      i: 45.49 as DegreesType,
+      w: 180.8 as DegreesType,
+      om: 126.17 as DegreesType,
+      frame: { plane: 'equator' }
     },
     radius: { value: 307.5, unit: 'km' },
     display: {
@@ -817,7 +1146,17 @@ export const MOONS: MoonsType = [
       a: { value: 7.948e-9, unit: 'au' },
       e: 0,
       period: { value: 0.4967289, unit: 'd' },
-      angle: 2.3087 as Radians
+      angle: 4.4223 as Radians,
+      i: 0 as DegreesType,
+      w: 0 as DegreesType,
+      om: 0 as DegreesType,
+      frame: {
+        plane: 'parent-equator',
+        pole: {
+          rightAscension: 69.7 as DegreesType,
+          declination: -72.7 as DegreesType
+        }
+      }
     },
     /** Sidereal rotation in days: it keeps one face to Didymos (Naidu et al. 2024) */
     rotation: { period: { value: 0.4967289, unit: 'd' }, synchronous: true },

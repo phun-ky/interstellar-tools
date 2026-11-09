@@ -9,13 +9,16 @@ import { DegreesType, PlanetsType, Radians } from '@interstellar-tools/types';
  * - Units: `a` (au), `period` (days), `radius` (km); coordinates `x`,`y`,`z` in au.
  * - `orbit.angle` is the true anomaly at J2000 (2000-01-01 12:00 TT). `x`,`y`,`z` are the heliocentric
  *   position at J2000 in the J2000 ecliptic frame, x towards the equinox.
- * - Both are computed from the J2000 elements in JPL's "Approximate Positions of the Planets" (Table 1),
- *   and for Ceres and Pluto from the JPL Small-Body Database, using this dataset's `a` and `e`.
- *   For Eris, Haumea, Makemake, Gonggong, Quaoar and Sedna, the orbit and position are JPL Horizons'
- *   osculating heliocentric elements and state at J2000. Sedna's orbit around the Solar System's
- *   barycenter is longer, about 506 au and 11 400 years.
- * - TRAPPIST-1's seven planets orbit their star, `trappist-1a`, with `i` and `w` on the sky, and
- *   have no `x`,`y`,`z`, which are heliocentric.
+ * - For the planets, both are computed from the J2000 elements in JPL's "Approximate Positions of the
+ *   Planets" (Table 1), using this dataset's `a` and `e`. For the dwarf planets, the orbit and position
+ *   are JPL Horizons' osculating heliocentric elements and state at J2000; Pluto's are its system
+ *   barycenter's, which Charon also circles. Sedna's orbit around the Solar System's barycenter is
+ *   longer, about 506 au and 11 400 years.
+ * - `i`, `w` and `om`, in degrees, are against the J2000 ecliptic, `frame`, from the same sources.
+ *   Earth's orbit defines the ecliptic, so its `i` and `om` are 0, and `w` is its longitude of
+ *   perihelion.
+ * - TRAPPIST-1's seven planets orbit their star, `trappist-1a`, with `i` and `w` on the sky,
+ *   `frame: { plane: 'sky' }`, and have no `x`,`y`,`z`, which are heliocentric.
  * - `period` is always positive; retrograde orbits have `retrograde: true`.
  * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
  *   (Archinal et al. 2018), and for Earth the IERS's Earth rotation angle. The IAU gives no rate
@@ -54,7 +57,11 @@ export const PLANETS: PlanetsType = [
       /** Orbital period in days */
       period: { value: 87.969, unit: 'd' },
       /** True anomaly at J2000 */
-      angle: 3.080377 as Radians
+      angle: 3.080377 as Radians,
+      i: 7.00497902 as DegreesType,
+      w: 29.12703035 as DegreesType,
+      om: 48.33076593 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 58.6461459, unit: 'd' } },
@@ -85,7 +92,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 0.723, unit: 'au' },
       e: 0.0068,
       period: { value: 224.701, unit: 'd' },
-      angle: 0.88977 as Radians
+      angle: 0.88977 as Radians,
+      i: 3.39467605 as DegreesType,
+      w: 54.92262463 as DegreesType,
+      om: 76.67984255 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
     rotation: { period: { value: 243.018484, unit: 'd' }, retrograde: true },
@@ -112,7 +123,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 1.0, unit: 'au' },
       e: 0.0167,
       period: { value: 365.256, unit: 'd' },
-      angle: 6.238549 as Radians
+      angle: 6.238549 as Radians,
+      i: 0 as DegreesType,
+      w: 102.93768193 as DegreesType,
+      om: 0 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IERS, from the Earth rotation angle, 23 h 56 m 4.0989 s */
     rotation: { period: { value: 0.9972696632, unit: 'd' } },
@@ -139,7 +154,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 1.524, unit: 'au' },
       e: 0.0934,
       period: { value: 686.98, unit: 'd' },
-      angle: 0.408015 as Radians
+      angle: 0.408015 as Radians,
+      i: 1.84969142 as DegreesType,
+      w: 286.4968315 as DegreesType,
+      om: 49.55953891 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 1.025956756, unit: 'd' } },
@@ -163,10 +182,14 @@ export const PLANETS: PlanetsType = [
     category: 'planetoid',
     parent: 'sun',
     orbit: {
-      a: { value: 2.766, unit: 'au' },
-      e: 0.079,
-      period: { value: 1680.5, unit: 'd' },
-      angle: 0.106686 as Radians
+      a: { value: 2.7665, unit: 'au' },
+      e: 0.07838,
+      period: { value: 1680.7, unit: 'd' },
+      angle: 0.126478 as Radians,
+      i: 10.58336046 as DegreesType,
+      w: 73.92286274 as DegreesType,
+      om: 80.49435747 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 0.3780904165, unit: 'd' } },
@@ -175,9 +198,9 @@ export const PLANETS: PlanetsType = [
     display: {
       color: '#C0C0C0'
     },
-    x: { value: -2.3475, unit: 'au' },
-    y: { value: 0.8788, unit: 'au' },
-    z: { value: 0.4603, unit: 'au' }
+    x: { value: -2.3793, unit: 'au' },
+    y: { value: 0.7955, unit: 'au' },
+    z: { value: 0.463, unit: 'au' }
   },
   {
     id: 'jupiter',
@@ -189,7 +212,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 5.203, unit: 'au' },
       e: 0.0489,
       period: { value: 4332.59, unit: 'd' },
-      angle: 0.378185 as Radians
+      angle: 0.378185 as Radians,
+      i: 1.30439695 as DegreesType,
+      w: 274.25457074 as DegreesType,
+      om: 100.47390909 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
     rotation: { period: { value: 0.4135383258, unit: 'd' } },
@@ -216,7 +243,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 9.537, unit: 'au' },
       e: 0.0565,
       period: { value: 10759.22, unit: 'd' },
-      angle: 5.458247 as Radians
+      angle: 5.458247 as Radians,
+      i: 2.48599187 as DegreesType,
+      w: 338.93645383 as DegreesType,
+      om: 113.66242448 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU System III, 10 h 39 m 22.4 s, from Voyager's radio signals; ring seismology gives 10 h 33 m 38 s */
     rotation: { period: { value: 0.4440092592, unit: 'd' } },
@@ -243,7 +274,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 19.191, unit: 'au' },
       e: 0.0463,
       period: { value: 30687.15, unit: 'd' },
-      angle: 2.537459 as Radians
+      angle: 2.537459 as Radians,
+      i: 0.77263783 as DegreesType,
+      w: 96.93735127 as DegreesType,
+      om: 74.01692503 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
     rotation: { period: { value: 0.7183333333, unit: 'd' }, retrograde: true },
@@ -270,7 +305,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 30.069, unit: 'au' },
       e: 0.0086,
       period: { value: 60190.03, unit: 'd' },
-      angle: 4.519475 as Radians
+      angle: 4.519475 as Radians,
+      i: 1.77004347 as DegreesType,
+      w: 273.18053653 as DegreesType,
+      om: 131.78422574 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, 15.9663 h, from Karkoschka (2011); Voyager's radio period was 16.11 h */
     rotation: { period: { value: 0.6652625, unit: 'd' } },
@@ -294,10 +333,14 @@ export const PLANETS: PlanetsType = [
     category: 'planetoid',
     parent: 'sun',
     orbit: {
-      a: { value: 39.482, unit: 'au' },
-      e: 0.2488,
-      period: { value: 90560.0, unit: 'd' },
-      angle: 0.436892 as Radians
+      a: { value: 39.2643, unit: 'au' },
+      e: 0.24467,
+      period: { value: 89866.1, unit: 'd' },
+      angle: 0.440001 as Radians,
+      i: 17.1513644 as DegreesType,
+      w: 113.76290249 as DegreesType,
+      om: 110.28692974 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
     rotation: { period: { value: 6.387222999, unit: 'd' }, retrograde: true },
@@ -310,9 +353,9 @@ export const PLANETS: PlanetsType = [
     display: {
       color: '#B0A99F'
     },
-    x: { value: -9.984, unit: 'au' },
-    y: { value: -27.916, unit: 'au' },
-    z: { value: 5.8767, unit: 'au' }
+    x: { value: -9.8754, unit: 'au' },
+    y: { value: -27.9588, unit: 'au' },
+    z: { value: 5.8504, unit: 'au' }
   },
   {
     id: 'eris',
@@ -324,7 +367,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 68.1399, unit: 'au' },
       e: 0.432505,
       period: { value: 205447.3, unit: 'd' },
-      angle: 3.251515 as Radians
+      angle: 3.251515 as Radians,
+      i: 43.74050564 as DegreesType,
+      w: 150.84480964 as DegreesType,
+      om: 36.12852074 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Rotation in days: Bernstein et al. 2023. It turns once each orbit of Dysnomia, which keeps one face to it */
     rotation: { period: { value: 15.771, unit: 'd' } },
@@ -347,7 +394,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 42.9093, unit: 'au' },
       e: 0.199921,
       period: { value: 102665.6, unit: 'd' },
-      angle: 3.255681 as Radians
+      angle: 3.255681 as Radians,
+      i: 28.20614177 as DegreesType,
+      w: 240.59077767 as DegreesType,
+      om: 121.93323859 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Rotation in days: 3.915341 h (Lellouch et al. 2010). The spin stretches it to 1161 × 852 × 513 km */
     rotation: { period: { value: 0.163139208, unit: 'd' } },
@@ -370,7 +421,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 45.3721, unit: 'au' },
       e: 0.164523,
       period: { value: 111630.1, unit: 'd' },
-      angle: 2.621343 as Radians
+      angle: 2.621343 as Radians,
+      i: 29.00018554 as DegreesType,
+      w: 296.28099919 as DegreesType,
+      om: 79.27490607 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Rotation in days: 22.8266 h (Hromakina et al. 2019) */
     rotation: { period: { value: 0.9511083333, unit: 'd' } },
@@ -392,7 +447,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 67.0513, unit: 'au' },
       e: 0.499574,
       period: { value: 200543.7, unit: 'd' },
-      angle: 2.487949 as Radians
+      angle: 2.487949 as Radians,
+      i: 30.71461209 as DegreesType,
+      w: 206.94098704 as DegreesType,
+      om: 336.87541406 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Rotation in days: 44.81 h (Pál et al. 2016); half of it, 22.40 h, is not ruled out */
     rotation: { period: { value: 1.867083333, unit: 'd' } },
@@ -415,7 +474,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 43.133, unit: 'au' },
       e: 0.03951,
       period: { value: 103469.7, unit: 'd' },
-      angle: 4.442872 as Radians
+      angle: 4.442872 as Radians,
+      i: 8.00508947 as DegreesType,
+      w: 163.78548728 as DegreesType,
+      om: 189.07999041 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Rotation in days: 17.6788 h (Ortiz et al. 2003) */
     rotation: { period: { value: 0.7366166667, unit: 'd' } },
@@ -438,7 +501,11 @@ export const PLANETS: PlanetsType = [
       a: { value: 549.8733, unit: 'au' },
       e: 0.86098,
       period: { value: 4709690.2, unit: 'd' },
-      angle: 5.428088 as Radians
+      angle: 5.428088 as Radians,
+      i: 11.92524942 as DegreesType,
+      w: 310.73286356 as DegreesType,
+      om: 144.31692861 as DegreesType,
+      frame: { plane: 'ecliptic' }
     },
     /** Rotation in days: 10.273 h (Gaudi et al. 2005) */
     rotation: { period: { value: 0.4280416667, unit: 'd' } },
@@ -467,7 +534,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 1.51088432, unit: 'd' },
       angle: 5.951573 as Radians,
       i: 89.728 as DegreesType,
-      w: 134.7 as DegreesType
+      w: 134.7 as DegreesType,
+      frame: { plane: 'sky' }
     },
     radius: { value: 7119, unit: 'km' },
     mu: 547680000000000.0,
@@ -487,7 +555,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 2.42179346, unit: 'd' },
       angle: 0.039794 as Radians,
       i: 89.778 as DegreesType,
-      w: 1.0 as DegreesType
+      w: 1.0 as DegreesType,
+      frame: { plane: 'sky' }
     },
     radius: { value: 6995, unit: 'km' },
     mu: 521370000000000.0,
@@ -507,7 +576,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 4.04978035, unit: 'd' },
       angle: 2.310118 as Radians,
       i: 89.896 as DegreesType,
-      w: 151.7 as DegreesType
+      w: 151.7 as DegreesType,
+      frame: { plane: 'sky' }
     },
     radius: { value: 5026, unit: 'km' },
     mu: 154660000000000.0,
@@ -527,7 +597,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 6.09956479, unit: 'd' },
       angle: 4.937536 as Radians,
       i: 89.793 as DegreesType,
-      w: 313.2 as DegreesType
+      w: 313.2 as DegreesType,
+      frame: { plane: 'sky' }
     },
     radius: { value: 5868, unit: 'km' },
     mu: 275830000000000.0,
@@ -547,7 +618,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 9.20659399, unit: 'd' },
       angle: 1.961925 as Radians,
       i: 89.74 as DegreesType,
-      w: 183.5 as DegreesType
+      w: 183.5 as DegreesType,
+      frame: { plane: 'sky' }
     },
     radius: { value: 6664, unit: 'km' },
     mu: 414150000000000.0,
@@ -567,7 +639,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 12.3535557, unit: 'd' },
       angle: 4.790929 as Radians,
       i: 89.742 as DegreesType,
-      w: 18.6 as DegreesType
+      w: 18.6 as DegreesType,
+      frame: { plane: 'sky' }
     },
     radius: { value: 7204, unit: 'km' },
     mu: 526550000000000.0,
@@ -587,7 +660,8 @@ export const PLANETS: PlanetsType = [
       period: { value: 18.7672745, unit: 'd' },
       angle: 4.893554 as Radians,
       i: 89.805 as DegreesType,
-      w: 180.3 as DegreesType
+      w: 180.3 as DegreesType,
+      frame: { plane: 'sky' }
     },
     radius: { value: 4817, unit: 'km' },
     mu: 129940000000000.0,

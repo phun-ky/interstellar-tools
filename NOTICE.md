@@ -179,10 +179,17 @@ copyright. They're compiled from public references, credited here:
   McEwen (2000, Planetary and Space Science 48, 215), and the ratio of a sol to
   a day from NASA GISS's
   [Mars24 algorithm](https://www.giss.nasa.gov/tools/mars24/help/algorithm.html).
-- **Moon orbits:** semi-major axes and eccentricities from JPL's
+- **Moon orbits:** semi-major axes, eccentricities, inclinations, nodes,
+  arguments of periapsis and the poles of their reference planes from JPL's
   [planetary satellite mean elements](https://ssd.jpl.nasa.gov/sats/elem/), and
-  true anomalies at J2000 from the osculating elements in
-  [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/).
+  true anomalies at J2000 that put each moon where
+  [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/) has it. Dysnomia's
+  orientation from Holler et al. (2021), and Dimorphos's from JPL Horizons.
+- **Planet orbit orientations:** inclinations, nodes and arguments of perihelion
+  from JPL's
+  [Approximate Positions of the Planets](https://ssd.jpl.nasa.gov/planets/approx_pos.html)
+  (Table 1) for the planets, and from JPL Horizons at J2000 for the dwarf
+  planets.
 
 The exponential atmosphere in `@interstellar-tools/equations`
 (`exponentialAtmosphereDensity`) uses the base densities and scale heights of
