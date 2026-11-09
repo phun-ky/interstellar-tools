@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:33](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L33)
+[bodies/stars.ts:36](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L36)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -20,6 +20,10 @@ Represents a dataset of well-known stars within the Milky Way.
 - Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly,
   `period` in Myr. Orbits within a system or around Sagittarius A\*: `a` in au,
   `period` in d, yr or kyr. `angle` in radians. `mass` in M☉.
+
+- Orbits within a system or around Sagittarius A\* that have an `i` are on the
+  sky, `frame: { plane: 'sky' }`: `i` to the plane of the sky, `om` the position
+  angle of the node from north through east.
 
 - `color` is for visualization only.
 

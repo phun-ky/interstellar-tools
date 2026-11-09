@@ -8,14 +8,14 @@ const COMETS: CometsType;
 ```
 
 Defined in:
-[bodies/comets.ts:33](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/comets.ts#L33)
+[bodies/comets.ts:34](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/comets.ts#L34)
 
 Represents a collection of well-known comets within the solar system simulation.
 
 ::: info
 
 - Units: `a` (au), `period` (days), `radius` (km); angles `i`, `w`, `om` in
-  degrees.
+  degrees, against the J2000 ecliptic, `frame`.
 
 - `orbit.angle` is the true anomaly at J2000, from the mean anomaly in JPL
   Horizons' osculating elements at J2000, converted with this dataset's `e`.
@@ -68,6 +68,7 @@ time.
     i: 11.8 as DegreesType,
     w: 186.5 as DegreesType,
     om: 334.6 as DegreesType,
+    frame: { plane: 'ecliptic' },
     angle: 3.479299 as Radians,
     period: { value: 1204, unit: 'd' }, // ~3.3 years
     q: { value: 0.34, unit: 'au' }

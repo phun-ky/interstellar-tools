@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.2.0...%40interstellar-tools%2Fconstants%402.3.0) (2026-11-09)
+
+### Feature
+
+* 🎸 Give the planets' and moons' orbits their orientation, and say which plane every orbit is in ([7970a18](https://github.com/phun-ky/interstellar-tools/commit/7970a1812827623058c04e3670eaac940686bb43)), references [#372](https://github.com/phun-ky/interstellar-tools/issues/372)
+
+### Bug
+
+* 🐛 Put Ceres and Pluto where they were at J2000 ([e8b7dba](https://github.com/phun-ky/interstellar-tools/commit/e8b7dbaf92b94749f90116f6d24cc83caf57a1ac)), references [#372](https://github.com/phun-ky/interstellar-tools/issues/372)
+
 ## [2.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.1.0...%40interstellar-tools%2Fconstants%402.2.0) (2026-11-08)
 
 ### Feature

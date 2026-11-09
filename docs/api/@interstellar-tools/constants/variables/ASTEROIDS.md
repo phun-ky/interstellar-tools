@@ -17,7 +17,8 @@ simulation.
 
 - Units: `a` in astronomical units (au); `period` in days (d); `radius` in km.
 
-- Orbital angles `i`, `w`, and `om` are in degrees.
+- Orbital angles `i`, `w`, and `om` are in degrees, against the J2000 ecliptic,
+  `frame`.
 
 - `display.color` and `display.size` are rendering hints only.
 
@@ -87,6 +88,7 @@ time.
     i: 7.1 as DegreesType,
     w: 151.2 as DegreesType,
     om: 103.8 as DegreesType,
+    frame: { plane: 'ecliptic' },
     angle: 5.527458 as Radians,
     period: { value: 1325.2, unit: 'd' },
     q: { value: 2.151, unit: 'au' }

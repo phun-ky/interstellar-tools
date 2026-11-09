@@ -15,7 +15,7 @@ Represents a collection of galaxies within the space visualization.
 ::: info
 
 - Units: `diameter` and `distance` in light-years (ly); black hole `radius`,
-  `x`, `y` in astronomical units (au).
+  `x`, `y`, `z` in astronomical units (au).
 
 - `distance` is from the Sun: Cepheids for Andromeda (Li et al. 2021) and
   Triangulum (Breuval et al. 2023), eclipsing binaries for the Large and Small
@@ -32,7 +32,7 @@ Represents a collection of galaxies within the space visualization.
 
 - Black hole `mass` is in solar masses ($M_\odot$), and `radius` is its
   Schwarzschild radius, $2GM/c^2$. Each black hole sits at its galaxy's centre,
-  `x` and `y` 0. Sagittarius A\* has an `id`, so the S-stars in `STARS` can
+  `x`, `y` and `z` 0. Sagittarius A\* has an `id`, so the S-stars in `STARS` can
   orbit it, its `mu`, its distance from the Sun (GRAVITY Collaboration 2024),
   and the diameter of the ring the Event Horizon Telescope imaged (EHT 2022).
   M87\*, the first black hole it imaged, has its ring's diameter too (EHT 2019).
@@ -91,7 +91,8 @@ time.
     /** The ring the Event Horizon Telescope imaged: 51.8 ± 2.3 μas (EHT 2022) */
     ringDiameter: 2.511334868e-10 as Radians,
     x: { value: 0, unit: 'au' },
-    y: { value: 0, unit: 'au' }
+    y: { value: 0, unit: 'au' },
+    z: { value: 0, unit: 'au' }
   }
 },
 ```
