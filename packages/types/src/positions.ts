@@ -36,11 +36,15 @@ export interface GalacticDirectionInterface {
  *
  * ::: info
  *
- * - `'galactocentric'`: centred on Sagittarius A*, the Milky Way's central
- *   black hole. `x` points from the Sun towards it, `y` in the direction the
- *   Sun moves around it (galactic longitude 90°), and `z` to the galaxy's north
- *   pole, out of its disk. The Sun sits at $(-R_0, 0, z_\odot)$: $R_0$ from
- *   the centre, and $z_\odot$ above the plane.
+ * - `'galactocentric'`: centred on the Milky Way's centre, as Astropy's
+ *   `Galactocentric` frame is: the IAU's galactic centre, at galactic
+ *   longitude and latitude 0°, as far from the Sun as Sagittarius A*, $R_0$.
+ *   Sagittarius A*, its central black hole, is 4.3′ from it, 10.5 pc at $R_0$.
+ *   `x` points from the Sun towards the centre, `y` in the direction the Sun
+ *   moves around it (galactic longitude 90°), and `z` to the galaxy's north
+ *   pole, out of its disk. The Sun is $z_\odot$ above the plane, so the plane
+ *   is tilted by $\arcsin(z_\odot / R_0)$ from the galactic equator, and the
+ *   Sun sits at $(-\sqrt{R_0^2 - z_\odot^2}, 0, z_\odot)$.
  *
  * :::
  *
@@ -55,12 +59,12 @@ export type PositionFrameType = 'galactocentric';
  *
  * @example
  * ```ts
- * // Andromeda, 765 kpc from Sagittarius A*
+ * // Andromeda, 765 kpc from the Milky Way's centre
  * const andromeda: PositionInterface = {
  *   frame: 'galactocentric',
- *   x: { value: -1_221_800, unit: 'ly' },
+ *   x: { value: -1_224_100, unit: 'ly' },
  *   y: { value: 1_974_900, unit: 'ly' },
- *   z: { value: -912_600, unit: 'ly' }
+ *   z: { value: -909_500, unit: 'ly' }
  * };
  * ```
  * @group Positions
