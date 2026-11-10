@@ -49,7 +49,9 @@ export interface GalacticDirectionInterface {
 export type PositionFrameType = 'galactocentric';
 
 /**
- * A **position in 3D**, in a named frame.
+ * A **position in 3D**, in a named frame: what a conversion such as
+ * `galactocentricPosition` in `@interstellar-tools/equations` returns, from a
+ * direction and distance measured from the Sun.
  *
  * @example
  * ```ts
