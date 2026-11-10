@@ -1,5 +1,9 @@
 import { DistanceInterface } from '../distance.js';
 import type { Radians } from '../numeric.js';
+import type {
+  GalacticDirectionInterface,
+  PositionInterface
+} from '../positions.js';
 
 /**
  * Represents a **black hole** at the center of a galaxy.
@@ -66,6 +70,9 @@ export interface BlackHoleInterface {
  * - **Distance (`distance`)**: The distance from the Sun, also in **light-years**: 0 for the Milky Way itself.
  * - **Black Hole (`blackHole`)**: The central supermassive black hole, where one is detected.
  *   Triangulum (M33) has none: observations only limit its mass to a few thousand $M_\odot$.
+ * - **Direction (`direction`)**: Where it is on the sky, in galactic coordinates from the Sun.
+ * - **Position (`position`)**: Where it is in 3D, centred on Sagittarius A*: from its `direction`
+ *   and `distance`, and the Sun's place in the Milky Way. The Milky Way's is (0, 0, 0).
  *
  * @example
  * ```ts
@@ -75,7 +82,13 @@ export interface BlackHoleInterface {
  *   type: 'SBbc',
  *   diameter: { value: 87410, unit: 'ly' },
  *   distance: { value: 0, unit: 'ly' },
- *   blackHole: sagittariusA
+ *   blackHole: sagittariusA,
+ *   position: {
+ *     frame: 'galactocentric',
+ *     x: { value: 0, unit: 'ly' },
+ *     y: { value: 0, unit: 'ly' },
+ *     z: { value: 0, unit: 'ly' }
+ *   }
  * };
  * ```
  * @group Celestial Bodies
@@ -93,6 +106,10 @@ export interface GalaxyInterface {
   distance: DistanceInterface;
   /** Central supermassive black hole of the galaxy. Omitted where none is detected. */
   blackHole?: BlackHoleInterface;
+  /** Direction from the Sun, in galactic coordinates. Omitted for the Milky Way itself. */
+  direction?: GalacticDirectionInterface;
+  /** Position in 3D, in a named frame such as `'galactocentric'`. */
+  position?: PositionInterface;
 }
 
 /**
