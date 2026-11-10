@@ -183,6 +183,8 @@ export * from './categories/orbits/launch-azimuth-for-inclination.js';
 
 export * from './categories/orbits/mean-motion.js';
 
+export * from './categories/orbits/orbit-frame-to-icrf.js';
+
 export * from './categories/orbits/peri-apoapsis-radii.js';
 
 export * from './categories/orbits/repeat-ground-track.js';
@@ -204,6 +206,8 @@ export * from './categories/orbits/hill-sphere-radius.js';
 export * from './categories/orbits/solar-day-length.js';
 
 export * from './categories/orbits/sphere-of-influence-radius.js';
+
+export * from './categories/orbits/state-at.js';
 
 export * from './categories/orbits/state-to-elements.js';
 

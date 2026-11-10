@@ -202,6 +202,10 @@ export default defineConfig({
                 {
                   text: 'Geodesy',
                   link: '/guide/usage/equations/geodesy'
+                },
+                {
+                  text: 'Orbits in 3D',
+                  link: '/guide/usage/equations/orbits-in-3d'
                 }
               ]
             },
