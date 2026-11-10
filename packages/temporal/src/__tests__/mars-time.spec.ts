@@ -10,6 +10,7 @@ import {
   marsSolDate,
   missionSol
 } from '../mars-time.js';
+import { taiMinusUtc } from '../time-scales.js';
 
 const DEG = Math.PI / 180;
 const east = (degrees: number) => (degrees * DEG) as Radians;
@@ -79,13 +80,31 @@ describe('Mars24 worked examples', () => {
 });
 
 describe('marsSolDate', () => {
-  test('counts one sol in 88 775.244 s', () => {
+  // A Date skips leap seconds, so a sol that spans one is a second longer
+  // than 88 775.244 s of Date time
+  test('counts one sol in 88 775.244 s, and the leap seconds between', () => {
     fc.assert(
       fc.property(moment, (date) => {
         const later = new Date(date.getTime() + MARS_SOL_SECONDS * 1000);
+        const leap = taiMinusUtc(later) - taiMinusUtc(date);
 
-        close(marsSolDate(later) - marsSolDate(date), 1, 1e-8);
+        close(
+          marsSolDate(later) - marsSolDate(date),
+          1 + leap / MARS_SOL_SECONDS,
+          1e-8
+        );
       })
+    );
+  });
+
+  test('counts the leap second at the end of June 2015', () => {
+    const date = new Date('2015-06-29T23:20:24.756Z');
+    const later = new Date(date.getTime() + MARS_SOL_SECONDS * 1000);
+
+    close(
+      marsSolDate(later) - marsSolDate(date),
+      1 + 1 / MARS_SOL_SECONDS,
+      1e-8
     );
   });
 
@@ -224,11 +243,13 @@ describe('missionSol', () => {
     fc.assert(
       fc.property(moment, fc.integer({ min: 1, max: 5000 }), (date, sols) => {
         const time = marsLocalMeanSolarTime(date, longitude);
-
-        // Not within a second of local midnight, where rounding decides
-        fc.pre(time > 1e-3 && time < 24 - 1e-3);
-
         const later = new Date(date.getTime() + sols * MARS_SOL_SECONDS * 1000);
+        // The leap seconds between move the later time on: in Earth hours, a
+        // little more than in Mars hours
+        const leap = (taiMinusUtc(later) - taiMinusUtc(date)) / 3600;
+
+        // Not within a few seconds of local midnight, where rounding decides
+        fc.pre(time > 1e-3 && time + leap < 24 - 1e-3);
 
         assert.equal(
           missionSol(later, landing, longitude) -
