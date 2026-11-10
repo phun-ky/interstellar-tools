@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.20.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.19.1...%40interstellar-tools%2Fequations%401.20.0) (2026-11-10)
+
+### Feature
+
+* 🎸 Place any dataset orbit in 3D on a date, with stateAt ([3f5c2dc](https://github.com/phun-ky/interstellar-tools/commit/3f5c2dc71f71be5a23c91409b48e2a6fefdb1b93)), closes [#372](https://github.com/phun-ky/interstellar-tools/issues/372), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [1.19.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.19.0...%40interstellar-tools%2Fequations%401.19.1) (2026-11-06)
 
 ### Tasks
