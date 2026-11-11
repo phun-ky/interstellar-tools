@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.24.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.23.1...%40interstellar-tools%2Fequations%401.24.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Orient a body, tilt its axis and find its subsolar point ([ea19c76](https://github.com/phun-ky/interstellar-tools/commit/ea19c762c37679f8c548108ddb4794cb515da643)), closes [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
 ## [1.23.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.23.0...%40interstellar-tools%2Fequations%401.23.1) (2026-11-11)
 
 ### Bug
