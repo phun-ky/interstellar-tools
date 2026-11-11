@@ -12,6 +12,8 @@ export * from './orbits.js';
 
 export * from './positions.js';
 
+export * from './quantities.js';
+
 export * from './cartography.js';
 
 export * from './three-body.js';
