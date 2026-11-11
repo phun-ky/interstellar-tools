@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.6.0...%40interstellar-tools%2Fconstants%402.7.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Add the interstellar objects ʻOumuamua, Borisov and 3I/ATLAS ([eaaeb2c](https://github.com/phun-ky/interstellar-tools/commit/eaaeb2cf649dd3cce258a7cbfab90cd0c33a0aa5)), references [#380](https://github.com/phun-ky/interstellar-tools/issues/380)
+
 ## [2.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.5.0...%40interstellar-tools%2Fconstants%402.6.0) (2026-11-11)
 
 ### Feature
