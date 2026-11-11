@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.4.0...%40interstellar-tools%2Ftypes%402.5.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give galaxies a disk and a motion, and add velocity and supergalactic types ([d5fd9e3](https://github.com/phun-ky/interstellar-tools/commit/d5fd9e3b54b46d40ddd27986ddec87968747f084)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [2.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.3.1...%40interstellar-tools%2Ftypes%402.4.0) (2026-11-11)
 
 ### Documentation

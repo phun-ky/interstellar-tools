@@ -4,7 +4,7 @@ GalaxyInterface
 # Interface: GalaxyInterface
 
 Defined in:
-[celestial-bodies/galaxies.ts:89](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L89)
+[celestial-bodies/galaxies.ts:133](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L133)
 
 Represents a **galaxy** in the universe simulation.
 
@@ -24,6 +24,10 @@ Represents a **galaxy** in the universe simulation.
   from the Sun. With `distance`, it places the galaxy from the Sun; to draw it
   around the Milky Way's centre instead, shift it by the Sun's place there, as
   `galactocentricPosition` in `@interstellar-tools/equations` does.
+- **Disk (`disk`)**: How its disk is turned on the sky, where it has a disk
+  that's measured. Elliptical and disrupted galaxies have none.
+- **Motion (`motion`)**: Its velocity along the line of sight and, where
+  measured, across the sky, from the Sun.
 
 ## Example
 
@@ -47,7 +51,7 @@ blackHole?: BlackHoleInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:101](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L101)
+[celestial-bodies/galaxies.ts:145](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L145)
 
 Central supermassive black hole of the galaxy. Omitted where none is detected.
 
@@ -60,7 +64,7 @@ diameter: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:97](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L97)
+[celestial-bodies/galaxies.ts:141](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L141)
 
 Diameter of the galaxy in light-years.
 
@@ -73,10 +77,23 @@ direction?: GalacticDirectionInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:103](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L103)
+[celestial-bodies/galaxies.ts:147](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L147)
 
 Direction from the Sun, in galactic coordinates. Omitted for the Milky Way
 itself.
+
+---
+
+### disk?
+
+```ts
+disk?: GalaxyDiskInterface;
+```
+
+Defined in:
+[celestial-bodies/galaxies.ts:149](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L149)
+
+How its disk is turned on the sky. Omitted where it has no measured disk.
 
 ---
 
@@ -87,7 +104,7 @@ distance: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:99](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L99)
+[celestial-bodies/galaxies.ts:143](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L143)
 
 Distance from the Sun in light-years: 0 for the Milky Way itself.
 
@@ -100,9 +117,22 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:91](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L91)
+[celestial-bodies/galaxies.ts:135](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L135)
 
 Stable identifier, used by `parent` references. Never translated.
+
+---
+
+### motion?
+
+```ts
+motion?: ObservedMotionInterface;
+```
+
+Defined in:
+[celestial-bodies/galaxies.ts:151](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L151)
+
+Its motion seen from the Sun. Omitted for the Milky Way itself.
 
 ---
 
@@ -113,7 +143,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:93](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L93)
+[celestial-bodies/galaxies.ts:137](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L137)
 
 Name of the galaxy.
 
@@ -126,6 +156,6 @@ type: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:95](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L95)
+[celestial-bodies/galaxies.ts:139](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L139)
 
 Morphological classification of the galaxy.

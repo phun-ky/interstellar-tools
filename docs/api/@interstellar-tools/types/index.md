@@ -67,6 +67,7 @@ npm i --save @interstellar-tools/types
 | [CartesianCoordinatesInterface](interfaces/CartesianCoordinatesInterface.md) | Represents **2D coordinates**, for example a point on a drawn orbit.                                             |
 | [CometInterface](interfaces/CometInterface.md)                               | Represents a **comet** in the solar system simulation.                                                           |
 | [DisplayInterface](interfaces/DisplayInterface.md)                           | How a body is **drawn**: everything about rendering, kept apart from its physical data and its `orbit`.          |
+| [GalaxyDiskInterface](interfaces/GalaxyDiskInterface.md)                     | How a **galaxy's disk** is turned, as seen from the Sun.                                                         |
 | [GalaxyInterface](interfaces/GalaxyInterface.md)                             | Represents a **galaxy** in the universe simulation.                                                              |
 | [MoonInterface](interfaces/MoonInterface.md)                                 | Represents a **moon** (natural satellite) orbiting a planet, a dwarf planet or an asteroid.                      |
 | [PlanetInterface](interfaces/PlanetInterface.md)                             | Represents a **planet** or **planetoid**.                                                                        |
@@ -122,11 +123,15 @@ npm i --save @interstellar-tools/types
 
 ## Positions
 
-| Name                                                                   | Description                                                                                                                                                                                 |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [GalacticDirectionInterface](interfaces/GalacticDirectionInterface.md) | A **direction in galactic coordinates**, from the Sun, in degrees as catalogues give it.                                                                                                    |
-| [PositionInterface](interfaces/PositionInterface.md)                   | A **position in 3D**, in a named frame: what a conversion such as `galactocentricPosition` in `@interstellar-tools/equations` returns, from a direction and distance measured from the Sun. |
-| [PositionFrameType](type-aliases/PositionFrameType.md)                 | The **frame** of a [PositionInterface](interfaces/PositionInterface.md).                                                                                                                    |
+| Name                                                                             | Description                                                                                                                                                                                             |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [GalacticDirectionInterface](interfaces/GalacticDirectionInterface.md)           | A **direction in galactic coordinates**, from the Sun, in degrees as catalogues give it.                                                                                                                |
+| [ObservedMotionInterface](interfaces/ObservedMotionInterface.md)                 | The **motion of something as seen from the Sun**, as it's measured: its velocity along the line of sight, and where measured, its proper motion across the sky.                                         |
+| [PositionInterface](interfaces/PositionInterface.md)                             | A **position in 3D**, in a named frame: what a conversion such as `galactocentricPosition` in `@interstellar-tools/equations` returns, from a direction and distance measured from the Sun.             |
+| [ProperMotionInterface](interfaces/ProperMotionInterface.md)                     | A **proper motion**: how fast something moves across the sky, in milliarcseconds per year, as catalogues give it.                                                                                       |
+| [SupergalacticDirectionInterface](interfaces/SupergalacticDirectionInterface.md) | A **direction in supergalactic coordinates**, from the Sun, in degrees.                                                                                                                                 |
+| [VelocityInterface](interfaces/VelocityInterface.md)                             | A **velocity in 3D**, in a named frame, in km/s: the Sun's motion around the Milky Way's centre, for example, or a galaxy's, from its [ObservedMotionInterface](interfaces/ObservedMotionInterface.md). |
+| [PositionFrameType](type-aliases/PositionFrameType.md)                           | The **frame** of a [PositionInterface](interfaces/PositionInterface.md).                                                                                                                                |
 
 ## Temporal
 
