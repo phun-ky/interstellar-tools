@@ -3,6 +3,7 @@ import {
   ASTEROIDS,
   COMETS,
   GALAXIES,
+  INTERSTELLAR_OBJECTS,
   MOONS,
   PLANETS,
   STARS,
@@ -26,6 +27,11 @@ export const DATASETS = {
   comets: { description: 'Comets.', data: COMETS },
   asteroids: { description: 'Asteroids.', data: ASTEROIDS },
   'asteroid-belts': { description: 'Asteroid belts.', data: ASTEROID_BELTS },
+  'interstellar-objects': {
+    description:
+      'Interstellar objects passing the Sun once on open orbits: 1I/ʻOumuamua, 2I/Borisov and 3I/ATLAS.',
+    data: INTERSTELLAR_OBJECTS
+  },
   galaxies: { description: 'Galaxies.', data: GALAXIES },
   systems: {
     description:
@@ -42,7 +48,7 @@ const DATASET_NAMES = Object.keys(DATASETS) as [
 ];
 const uriFor = (name: DatasetNameType) => `interstellar://datasets/${name}`;
 const UNITS_NOTE =
-  'Each body has a stable `id` and names the body, system or galaxy it is bound to in `parent`; `orbit` holds its elements around that parent. Values carry their own units ({ value, unit }); `orbit.a` is usually in au, `orbit.period` in days (always positive; `orbit.retrograde: true` marks a retrograde orbit), `radius` in km, `orbit.angle` in radians at J2000.';
+  'Each body has a stable `id` and names the body, system or galaxy it is bound to in `parent`; `orbit` holds its elements around that parent. Values carry their own units ({ value, unit }); `orbit.a` is usually in au, `orbit.period` in days (always positive; `orbit.retrograde: true` marks a retrograde orbit), `radius` in km, `orbit.angle` in radians at J2000. Interstellar objects have open orbits instead: `orbit.e` above 1, a negative `orbit.a`, no `orbit.period`, the perihelion time in `orbit.periapsisTime` and the incoming speed in km/s in `orbit.excessSpeed`.';
 
 export const registerBodies = (server: McpServer) => {
   server.registerResource(
