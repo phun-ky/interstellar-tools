@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.23.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.23.0...%40interstellar-tools%2Fequations%401.23.1) (2026-11-11)
+
+### Bug
+
+* 🐛 Turn bodyFixedFromInertialDcmIAU the IAU's way ([c2dc5d8](https://github.com/phun-ky/interstellar-tools/commit/c2dc5d8f792502fc29ece89d23ae198bfde35aab)), references [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
 ## [1.23.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.22.0...%40interstellar-tools%2Fequations%401.23.0) (2026-11-11)
 
 ### Feature

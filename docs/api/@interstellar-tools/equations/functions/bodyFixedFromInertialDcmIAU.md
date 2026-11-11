@@ -12,7 +12,7 @@ function bodyFixedFromInertialDcmIAU(
 ```
 
 Defined in:
-[cartography/body-fixed-from-inertial-dcm-iau.ts:54](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/cartography/body-fixed-from-inertial-dcm-iau.ts#L54)
+[cartography/body-fixed-from-inertial-dcm-iau.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/cartography/body-fixed-from-inertial-dcm-iau.ts#L60)
 
 Build the **IAU-style inertial → body-fixed** direction cosine matrix (DCM).
 
@@ -33,6 +33,12 @@ $$
 
 ::: info Notes:
 
+- $\mathbf R_1$ and $\mathbf R_3$ are frame rotations, as the IAU and SPICE
+  write them: $\mathbf R_3(\theta)$ turns the axes by $\theta$ about `z`, so a
+  fixed vector's coordinates turn by $-\theta$.
+- The pole $(\alpha_p, \delta_p)$ becomes the body's `z` axis, and its `x` axis,
+  the prime meridian, is $W$ east of the node where the body's equator crosses
+  the ICRF equator northwards, at right ascension $\alpha_p + 90°$.
 - All angles are in **radians**.
 - Matrices are **row-major** (`M[row][col]`).
 - The returned matrix can be applied to inertial vectors via
