@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.3.1...%40interstellar-tools%2Ftypes%402.4.0) (2026-11-11)
+
+### Documentation
+
+* ✏️ Centre the galactocentric frame where Astropy does ([125f74a](https://github.com/phun-ky/interstellar-tools/commit/125f74a92dc6c04144c5828b73d548d982739278)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+### Feature
+
+* 🎸 Give galaxies a direction and a 3D position, centred on Sagittarius A* ([88aa641](https://github.com/phun-ky/interstellar-tools/commit/88aa641a8cf8cccb630461e40a6f2a44a1b601f3)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+### Refactoring
+
+* 💡 Keep galaxies from the Sun, without a stored position ([ee84dcb](https://github.com/phun-ky/interstellar-tools/commit/ee84dcb66e433764bbbe6c8a1c4ebaf3819a6b07)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [2.3.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.3.0...%40interstellar-tools%2Ftypes%402.3.1) (2026-11-09)
 
 ### Bug

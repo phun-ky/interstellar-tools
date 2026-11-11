@@ -120,6 +120,14 @@ npm i --save @interstellar-tools/types
 | [OrbitReferencePlaneType](type-aliases/OrbitReferencePlaneType.md)       | The **reference plane** an orbit's `i`, `om` and `w` are measured from.                                                                                |
 | [PeriApoRadiiType](type-aliases/PeriApoRadiiType.md)                     | **Peri/apoapsis radii pair**.                                                                                                                          |
 
+## Positions
+
+| Name                                                                   | Description                                                                                                                                                                                 |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [GalacticDirectionInterface](interfaces/GalacticDirectionInterface.md) | A **direction in galactic coordinates**, from the Sun, in degrees as catalogues give it.                                                                                                    |
+| [PositionInterface](interfaces/PositionInterface.md)                   | A **position in 3D**, in a named frame: what a conversion such as `galactocentricPosition` in `@interstellar-tools/equations` returns, from a direction and distance measured from the Sun. |
+| [PositionFrameType](type-aliases/PositionFrameType.md)                 | The **frame** of a [PositionInterface](interfaces/PositionInterface.md).                                                                                                                    |
+
 ## Temporal
 
 | Name                                                           | Description                                                                                                                                                                                                |
