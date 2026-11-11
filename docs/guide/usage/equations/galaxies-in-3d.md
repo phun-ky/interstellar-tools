@@ -10,7 +10,8 @@ description:
 `GALAXIES` in `@interstellar-tools/constants` gives each galaxy's distance and
 direction as they're measured: from the Sun. To draw them around the Milky Way's
 centre, `galactocentricPosition` in `@interstellar-tools/equations` moves them
-there. Every number on this page is checked by a test.
+there, `galactocentricVelocity` sets them moving, and `galaxyDiskAxis` turns
+their disks. Every number on this page is checked by a test.
 
 [[toc]]
 
@@ -20,6 +21,10 @@ there. Every number on this page is checked by a test.
 - `direction`, from the Sun, in galactic coordinates, in degrees: the longitude
   `l` along the Milky Way's plane, from 0° towards its centre, and the latitude
   `b` above it. The Milky Way has none, since the Sun is in it.
+- `motion`, from the Sun: the velocity along the line of sight in km/s, positive
+  moving away, and for the Local Group, the proper motion across the sky in
+  mas/yr.
+- `disk`, for the disk galaxies: how the disk is turned on the sky.
 
 Both stay measured from the Sun, because that's where every observation is made
 from. The Sun's own place in the Milky Way is in two constants:
@@ -28,6 +33,9 @@ from. The Sun's own place in the Milky Way is in two constants:
   Collaboration 2024), the same as Sagittarius A\*'s distance.
 - `SUN_HEIGHT_ABOVE_GALACTIC_PLANE`, $z_\odot$: 20.8 pc above the plane (Bennett
   & Bovy 2019).
+- `SUN_GALACTOCENTRIC_VELOCITY`: (12.9, 251.51, 8.56) km/s, from the motion of
+  Sagittarius A\* across the sky (Reid & Brunthaler 2020), which is the Sun's,
+  reflected.
 
 ## Where Andromeda is
 
@@ -145,6 +153,77 @@ const { direction, distance } = galactocentricToGalactic({
 });
 const seen = [direction.l, direction.b, distance.value]; // [0, 0, 8275.9] pc
 ```
+
+## How they move
+
+`galactocentricVelocity` adds a galaxy's motion to its direction and distance,
+and the Sun's own velocity, for its velocity around the centre in km/s:
+
+```ts
+import { GALAXIES } from '@interstellar-tools/constants';
+import {
+  galactocentricPosition,
+  galactocentricVelocity
+} from '@interstellar-tools/equations';
+
+const andromeda = GALAXIES.find(({ id }) => id === 'andromeda')!;
+const { x, y, z } = galactocentricVelocity(
+  andromeda.direction!,
+  andromeda.distance,
+  andromeda.motion!
+);
+const velocity = [x, y, z]; // [37.11, -119.81, -10.86] km/s
+const at = galactocentricPosition(andromeda.direction!, andromeda.distance);
+const out = [at.x.value, at.y.value, at.z.value];
+const towardsCentre =
+  (out[0]! * x + out[1]! * y + out[2]! * z) / Math.hypot(...out); // -109.07 km/s
+```
+
+Andromeda comes towards us at 300 km/s, but most of that is the Sun's own orbit:
+it comes towards the Milky Way's centre at 109.07 km/s. Its sideways speed is
+uncertain by about 40 km/s. For M87 and Centaurus A, only the motion along the
+line of sight is measured, so the motion across the sky is taken as 0.
+
+## Turning their disks
+
+`galaxyDiskAxis` gives the axis a galaxy's disk spins around, as a unit vector
+in the same frame. Draw the disk at right angles to it:
+
+```ts
+import { GALAXIES } from '@interstellar-tools/constants';
+import { galaxyDiskAxis } from '@interstellar-tools/equations';
+
+const andromeda = GALAXIES.find(({ id }) => id === 'andromeda')!;
+const axis = galaxyDiskAxis(andromeda.direction!, andromeda.disk!); // [-0.4186, -0.7544, -0.5056]
+```
+
+It needs the disk's `nearSide`, so that it tilts the right way: Andromeda and
+the Large Magellanic Cloud have one. Seen from the Sun, Andromeda turns
+counter-clockwise, and the Large Magellanic Cloud clockwise.
+
+## Supergalactic coordinates
+
+Beyond the Local Group, the galaxies gather around a plane, the Local
+Supercluster's. `galacticToSupergalactic` gives a direction's longitude and
+latitude from it, and `supergalacticToGalactic` turns them back:
+
+```ts
+import { GALAXIES } from '@interstellar-tools/constants';
+import { galacticToSupergalactic } from '@interstellar-tools/equations';
+
+const m87 = GALAXIES.find(({ id }) => id === 'm87')!;
+const { sgl, sgb } = galacticToSupergalactic(m87.direction!);
+const sky = [sgl, sgb]; // [102.8805, -2.3479]
+```
+
+M87, at the heart of the Virgo Cluster, lies almost in the plane.
+
+## No centre to the universe
+
+The frames here are centred on the Milky Way, or on the Sun. That's a choice:
+the universe has no centre to measure from. The cosmic microwave background
+gives a frame to measure motion against, the Sun moving at about 370 km/s
+through it, but not a place.
 
 ## Drawing them
 

@@ -1,4 +1,6 @@
 import {
+  JULIAN_YEAR_SECONDS,
+  KM_PER_AU,
   SUN_GALACTOCENTRIC_DISTANCE,
   SUN_HEIGHT_ABOVE_GALACTIC_PLANE
 } from '@interstellar-tools/constants';
@@ -6,7 +8,8 @@ import type {
   DistanceInterface,
   DistanceUnitType,
   Matrix3x3Type,
-  Radians
+  Radians,
+  Vector3DTupleType
 } from '@interstellar-tools/types';
 
 import { convertDistanceUnit } from '../helpers/convert-distance-unit.js';
@@ -81,3 +84,69 @@ export const sunPlacement = (
 
   return { r0, cos: Math.cos(theta), sin: Math.sin(theta) };
 };
+
+/**
+ * km/s for a proper motion of 1 mas/yr at 1 kpc: 1 au a year, $4.74047$.
+ */
+export const KM_S_PER_KPC_MAS_YR = KM_PER_AU / JULIAN_YEAR_SECONDS;
+
+/**
+ * The sky's directions at a point, in the frame its angles are measured in:
+ * `r` away from the Sun, `east` and `north` across the sky, with longitude
+ * and latitude in degrees.
+ */
+export const skyBasis = (longitude: number, latitude: number) => {
+  const lon = longitude * DEG;
+  const lat = latitude * DEG;
+  const r: Vector3DTupleType = [
+    Math.cos(lat) * Math.cos(lon),
+    Math.cos(lat) * Math.sin(lon),
+    Math.sin(lat)
+  ];
+  const east: Vector3DTupleType = [-Math.sin(lon), Math.cos(lon), 0];
+  const north: Vector3DTupleType = [
+    -Math.sin(lat) * Math.cos(lon),
+    -Math.sin(lat) * Math.sin(lon),
+    Math.cos(lat)
+  ];
+
+  return { r, east, north };
+};
+
+/**
+ * Tilts a vector in galactic coordinates into the galactocentric frame's axes,
+ * by $\theta = \arcsin(z_\odot / R_0)$ about `y`, given its cosine and sine.
+ */
+export const tilt = (
+  [x, y, z]: Vector3DTupleType,
+  cos: number,
+  sin: number
+): Vector3DTupleType => [x * cos + z * sin, y, -x * sin + z * cos];
+
+/**
+ * From galactic to supergalactic coordinates (de Vaucouleurs et al. 1991, as
+ * Lahav et al. 2000 give it): the rows are the supergalactic axes, the origin
+ * at galactic longitude 137.37°, latitude 0°, and the north pole at 47.37°,
+ * 6.32°, with `y` completing them.
+ */
+const SUPERGALACTIC_X = skyBasis(137.37, 0).r;
+const SUPERGALACTIC_Z = skyBasis(47.37, 6.32).r;
+
+export const GALACTIC_TO_SUPERGALACTIC: Matrix3x3Type = [
+  SUPERGALACTIC_X,
+  [
+    SUPERGALACTIC_Z[1] * SUPERGALACTIC_X[2] -
+      SUPERGALACTIC_Z[2] * SUPERGALACTIC_X[1],
+    SUPERGALACTIC_Z[2] * SUPERGALACTIC_X[0] -
+      SUPERGALACTIC_Z[0] * SUPERGALACTIC_X[2],
+    SUPERGALACTIC_Z[0] * SUPERGALACTIC_X[1] -
+      SUPERGALACTIC_Z[1] * SUPERGALACTIC_X[0]
+  ],
+  SUPERGALACTIC_Z
+];
+
+/** Longitude and latitude in degrees of a unit vector. */
+export const angles = ([x, y, z]: Vector3DTupleType): [number, number] => [
+  wrapDegrees(Math.atan2(y, x) / DEG),
+  Math.atan2(z, Math.hypot(x, y)) / DEG
+];
