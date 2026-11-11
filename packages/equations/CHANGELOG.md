@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.21.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.20.0...%40interstellar-tools%2Fequations%401.21.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Place galaxies around the Milky Way's centre with galactocentricPosition ([9e31400](https://github.com/phun-ky/interstellar-tools/commit/9e31400561220dcb6b730983eeacabc72104b38b)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [1.20.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.19.1...%40interstellar-tools%2Fequations%401.20.0) (2026-11-10)
 
 ### Feature
