@@ -119,7 +119,8 @@ All tools are pure and offline: no network access, no side effects.
 
 Each dataset in `@interstellar-tools/constants` is available as a JSON resource
 at `interstellar://datasets/{name}`, where `name` is one of `planets`, `moons`,
-`stars`, `comets`, `asteroids`, `asteroid-belts`, `galaxies` or `systems`.
+`stars`, `comets`, `asteroids`, `asteroid-belts`, `interstellar-objects`,
+`galaxies` or `systems`.
 
 The snapshots in `@interstellar-tools/tracking` are resources too:
 `interstellar://tracking/satellites`, twelve satellites' OMM records dated 4

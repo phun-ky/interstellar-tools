@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.3.3...%40interstellar-tools%2Fmcp%401.4.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Serve the interstellar objects from the MCP server ([74b9ecd](https://github.com/phun-ky/interstellar-tools/commit/74b9ecd5d7625590a210ff7d931a3338f237a031)), closes [#380](https://github.com/phun-ky/interstellar-tools/issues/380)
+
 ## [1.3.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.3.2...%40interstellar-tools%2Fmcp%401.3.3) (2026-11-06)
 
 ### Tasks
