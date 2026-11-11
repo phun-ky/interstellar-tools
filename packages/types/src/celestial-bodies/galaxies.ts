@@ -1,6 +1,9 @@
 import { DistanceInterface } from '../distance.js';
-import type { Radians } from '../numeric.js';
-import type { GalacticDirectionInterface } from '../positions.js';
+import type { DegreesType, Radians } from '../numeric.js';
+import type {
+  GalacticDirectionInterface,
+  ObservedMotionInterface
+} from '../positions.js';
 
 /**
  * Represents a **black hole** at the center of a galaxy.
@@ -58,6 +61,43 @@ export interface BlackHoleInterface {
 }
 
 /**
+ * How a **galaxy's disk** is turned, as seen from the Sun.
+ *
+ * ::: info
+ *
+ * - `inclination` is the angle between the disk and the sky: 0° face-on,
+ *   90° edge-on.
+ * - `positionAngle` is the direction on the sky, east of north, of the
+ *   receding half of the disk's major axis, where the disk crosses the sky's
+ *   plane: from its rotation, 0° up to 360°.
+ * - `nearSide` is the direction of the half of the minor axis that's nearer to
+ *   us, `positionAngle` plus or minus 90°. Without it, the disk could tilt
+ *   either way.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // Andromeda (Corbelli et al. 2010): its north-east half recedes, and its
+ * // north-west side is nearer
+ * const andromeda: GalaxyDiskInterface = {
+ *   inclination: 77.7 as DegreesType,
+ *   positionAngle: 38 as DegreesType,
+ *   nearSide: 308 as DegreesType
+ * };
+ * ```
+ * @group Celestial Bodies
+ */
+export interface GalaxyDiskInterface {
+  /** Angle between the disk and the sky, 0° face-on to 90° edge-on. */
+  inclination: DegreesType;
+  /** Position angle of the receding half of the major axis, east of north, in degrees. */
+  positionAngle: DegreesType;
+  /** Position angle of the nearer half of the minor axis, in degrees. Omitted where it isn't known. */
+  nearSide?: DegreesType;
+}
+
+/**
  * Represents a **galaxy** in the universe simulation.
  *
  * **Galaxy Properties:**
@@ -72,6 +112,10 @@ export interface BlackHoleInterface {
  *   With `distance`, it places the galaxy from the Sun; to draw it around the Milky Way's
  *   centre instead, shift it by the Sun's place there, as `galactocentricPosition` in
  *   `@interstellar-tools/equations` does.
+ * - **Disk (`disk`)**: How its disk is turned on the sky, where it has a disk
+ *   that's measured. Elliptical and disrupted galaxies have none.
+ * - **Motion (`motion`)**: Its velocity along the line of sight and, where
+ *   measured, across the sky, from the Sun.
  *
  * @example
  * ```ts
@@ -101,6 +145,10 @@ export interface GalaxyInterface {
   blackHole?: BlackHoleInterface;
   /** Direction from the Sun, in galactic coordinates. Omitted for the Milky Way itself. */
   direction?: GalacticDirectionInterface;
+  /** How its disk is turned on the sky. Omitted where it has no measured disk. */
+  disk?: GalaxyDiskInterface;
+  /** Its motion seen from the Sun. Omitted for the Milky Way itself. */
+  motion?: ObservedMotionInterface;
 }
 
 /**
