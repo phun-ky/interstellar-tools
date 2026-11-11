@@ -1,4 +1,4 @@
-import { GalaxiesType, Radians } from '@interstellar-tools/types';
+import { DegreesType, GalaxiesType, Radians } from '@interstellar-tools/types';
 
 /**
  * Represents a collection of galaxies within the space visualization.
@@ -11,6 +11,13 @@ import { GalaxiesType, Radians } from '@interstellar-tools/types';
  *   eclipsing binaries for the Large and Small Magellanic Clouds (Pietrzyński et al. 2019, Graczyk et al. 2020),
  *   Vasiliev & Belokurov 2020 for the Sagittarius dwarf, the EHT's 16.8 Mpc for M87, and red giants for
  *   Centaurus A (Harris et al. 2010).
+ * - `direction` is the galactic longitude `l` and latitude `b` of its centre, seen from the Sun, from
+ *   [NED](https://ned.ipac.caltech.edu/). The Milky Way has none: the Sun is in it. For the Large Magellanic
+ *   Cloud it's the optical centre of its bar, 0.9° from the centre its stars and gas turn about. For the
+ *   Sagittarius dwarf it's the centre of Ibata, Gilmore & Irwin (1994), 5.3′ from M54, the cluster at its heart.
+ * - Both `distance` and `direction` are from the Sun, where they're measured. To draw the galaxies around the
+ *   Milky Way's centre, convert them with `galactocentricPosition` in `@interstellar-tools/equations`, which uses
+ *   {@link SUN_GALACTOCENTRIC_DISTANCE} and {@link SUN_HEIGHT_ABOVE_GALACTIC_PLANE}.
  * - `diameter` is the D25 isophotal diameter, where the disk fades to 25 B-magnitudes per square arcsecond:
  *   from RC3 (de Vaucouleurs et al. 1991) and the distance, and an estimate from a model of its disk for the
  *   Milky Way (Goodwin, Gribbin & Hendry 1998). The stars reach further out. The Sagittarius dwarf, which
@@ -75,6 +82,8 @@ export const GALAXIES: GalaxiesType = [
     diameter: { value: 137570, unit: 'ly' },
     /** Distance from the Sun in light-years: 761 ± 11 kpc (Li et al. 2021) */
     distance: { value: 2482050, unit: 'ly' },
+    /** Direction from the Sun, galactic longitude and latitude in degrees (NED, from 2MASS: its nucleus) */
+    direction: { l: 121.1744 as DegreesType, b: -21.573 as DegreesType },
     blackHole: {
       name: 'M31*',
       /** Mass in solar masses: Bender et al. 2005, 1.1 to 2.3 × 10⁸ */
@@ -93,7 +102,9 @@ export const GALAXIES: GalaxiesType = [
     /** D25 diameter in light-years: 70.8′ at 840 kpc, 17.3 kpc */
     diameter: { value: 56420, unit: 'ly' },
     /** Distance from the Sun in light-years: 840 ± 11 kpc (Breuval et al. 2023). Other methods give up to 880 kpc */
-    distance: { value: 2739714, unit: 'ly' }
+    distance: { value: 2739714, unit: 'ly' },
+    /** Direction from the Sun, galactic longitude and latitude in degrees (NED) */
+    direction: { l: 133.6101 as DegreesType, b: -31.3306 as DegreesType }
     // No supermassive black hole: at most 1500 M☉ (Gebhardt et al. 2001)
   },
   {
@@ -103,7 +114,9 @@ export const GALAXIES: GalaxiesType = [
     /** D25 diameter in light-years: 645.65′ at 49.59 kpc, 9.3 kpc */
     diameter: { value: 30377.1, unit: 'ly' },
     /** Distance from the Sun in light-years: 49.59 ± 0.55 kpc, from eclipsing binaries (Pietrzyński et al. 2019) */
-    distance: { value: 161740.95, unit: 'ly' }
+    distance: { value: 161740.95, unit: 'ly' },
+    /** Direction from the Sun, galactic longitude and latitude in degrees (NED: the optical centre of its bar. Its stars and gas turn about a centre 0.9° away) */
+    direction: { l: 280.4652 as DegreesType, b: -32.8884 as DegreesType }
     // No black hole detected: hypervelocity stars hint at one of about 6 × 10⁵ M☉ (Han et al. 2025), unconfirmed
   },
   {
@@ -113,7 +126,9 @@ export const GALAXIES: GalaxiesType = [
     /** D25 diameter in light-years: 316.23′ at 62.44 kpc, 5.7 kpc */
     diameter: { value: 18733.3, unit: 'ly' },
     /** Distance from the Sun in light-years: 62.44 ± 0.94 kpc, from eclipsing binaries (Graczyk et al. 2020) */
-    distance: { value: 203652.04, unit: 'ly' }
+    distance: { value: 203652.04, unit: 'ly' },
+    /** Direction from the Sun, galactic longitude and latitude in degrees (NED) */
+    direction: { l: 302.797 as DegreesType, b: -44.2993 as DegreesType }
   },
   {
     id: 'sagittarius-dwarf',
@@ -125,7 +140,9 @@ export const GALAXIES: GalaxiesType = [
      */
     diameter: { value: 17197.1, unit: 'ly' },
     /** Distance from the Sun in light-years: 26.5 kpc (Vasiliev & Belokurov 2020) */
-    distance: { value: 86431.44, unit: 'ly' }
+    distance: { value: 86431.44, unit: 'ly' },
+    /** Direction from the Sun, galactic longitude and latitude in degrees (NED and McConnachie 2012, from Ibata et al. 1994. M54, the cluster at its heart, is 5.3′ away) */
+    direction: { l: 5.5689 as DegreesType, b: -14.1664 as DegreesType }
   },
   {
     id: 'm87',
@@ -135,6 +152,8 @@ export const GALAXIES: GalaxiesType = [
     diameter: { value: 132574.9, unit: 'ly' },
     /** Distance from the Sun in light-years: 16.8 Mpc (Event Horizon Telescope Collaboration 2019, from SBF and TRGB) */
     distance: { value: 54794271.45, unit: 'ly' },
+    /** Direction from the Sun, galactic longitude and latitude in degrees (NED: its radio nucleus) */
+    direction: { l: 283.7777 as DegreesType, b: 74.4912 as DegreesType },
     blackHole: {
       name: 'M87*',
       /** Mass in solar masses: EHT Collaboration 2019, from the ring at 16.8 Mpc. Stars give 5.4 × 10⁹ (Liepold et al. 2023) */
@@ -156,6 +175,8 @@ export const GALAXIES: GalaxiesType = [
     diameter: { value: 92669.2, unit: 'ly' },
     /** Distance from the Sun in light-years: 3.8 ± 0.1 Mpc, from its red giants (Harris et al. 2010) */
     distance: { value: 12393942.35, unit: 'ly' },
+    /** Direction from the Sun, galactic longitude and latitude in degrees (NED) */
+    direction: { l: 309.5159 as DegreesType, b: 19.4173 as DegreesType },
     blackHole: {
       name: 'Centaurus A*',
       /** Mass in solar masses: Cappellari et al. 2009, from its stars, ± 3.0 × 10⁷ */
