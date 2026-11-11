@@ -8,7 +8,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';
 
+import { equatorialToGalactic } from '../categories/galactic/equatorial-to-galactic.js';
+import { galacticToEquatorial } from '../categories/galactic/galactic-to-equatorial.js';
 import { galactocentricPosition } from '../categories/galactic/galactocentric-position.js';
+import { galactocentricToGalactic } from '../categories/galactic/galactocentric-to-galactic.js';
 import { convertDistanceUnit } from '../categories/helpers/convert-distance-unit.js';
 
 // Every number in the galaxies-in-3D guide
@@ -86,6 +89,33 @@ describe('Galaxies in 3D guide', () => {
 
     assert.equal(Math.hypot(x.value, y.value, z.value).toFixed(1), '10.5');
     onPage('10.5 pc from the origin');
+  });
+
+  test('from a catalogue, and back to the sky', () => {
+    const andromeda = equatorialToGalactic({
+      rightAscension: 10.68479292 as DegreesType,
+      declination: 41.269065 as DegreesType
+    });
+    const stored = GALAXIES.find(({ id }) => id === 'andromeda')!.direction!;
+    const centre = galacticToEquatorial(here);
+
+    assert.equal(andromeda.l.toFixed(4), stored.l.toFixed(4));
+    assert.equal(andromeda.b.toFixed(4), stored.b.toFixed(4));
+    onPage(`[${andromeda.l.toFixed(4)}, ${andromeda.b.toFixed(4)}]`);
+    onPage(
+      `[${centre.rightAscension.toFixed(4)}, ${centre.declination.toFixed(4)}]`
+    );
+  });
+
+  test('back from a position', () => {
+    const { direction, distance } = galactocentricToGalactic({
+      frame: 'galactocentric',
+      x: { value: 0, unit: 'pc' },
+      y: { value: 0, unit: 'pc' },
+      z: { value: 0, unit: 'pc' }
+    });
+
+    onPage(`[${direction.l}, ${direction.b}, ${distance.value}] pc`);
   });
 
   test('every galaxy’s row in the table', () => {

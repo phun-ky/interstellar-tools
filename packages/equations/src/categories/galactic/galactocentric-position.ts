@@ -1,7 +1,3 @@
-import {
-  SUN_GALACTOCENTRIC_DISTANCE,
-  SUN_HEIGHT_ABOVE_GALACTIC_PLANE
-} from '@interstellar-tools/constants';
 import type {
   DistanceInterface,
   DistanceUnitAliasType,
@@ -12,7 +8,7 @@ import type {
 
 import { convertDistanceUnit } from '../helpers/convert-distance-unit.js';
 
-const DEG = Math.PI / 180;
+import { DEG, sunPlacement } from './galactic-frame.js';
 
 /**
  * Options for {@link galactocentricPosition}.
@@ -96,19 +92,12 @@ export const galactocentricPosition = (
   distance: DistanceInterface,
   options: GalactocentricPositionOptionsInterface = {}
 ): PositionInterface => {
-  const {
-    unit = distance.unit,
-    sunDistance = SUN_GALACTOCENTRIC_DISTANCE,
-    sunHeight = SUN_HEIGHT_ABOVE_GALACTIC_PLANE
-  } = options;
-  const d = convertDistanceUnit(distance, unit);
-  const r0 = convertDistanceUnit(sunDistance, d.unit).value;
-  const z0 = convertDistanceUnit(sunHeight, d.unit).value;
+  const d = convertDistanceUnit(distance, options.unit ?? distance.unit);
   const { l, b } = direction;
 
-  if (![l, b, d.value, r0, z0].every(Number.isFinite))
+  if (![l, b, d.value].every(Number.isFinite))
     throw new RangeError(
-      `Angles and distances must be finite. Received: l ${l}, b ${b}, distance ${d.value}, R0 ${r0}, z ${z0}`
+      `The direction and distance must be finite. Received: l ${l}, b ${b}, distance ${d.value}`
     );
 
   if (b < -90 || b > 90)
@@ -119,18 +108,11 @@ export const galactocentricPosition = (
       `distance must not be negative. Received: ${distance.value}`
     );
 
-  if (Math.abs(z0) >= r0)
-    throw new RangeError(
-      `The Sun's height must be less than its distance from the centre. Received: R0 ${r0}, z ${z0}`
-    );
-
+  const { r0, cos, sin } = sunPlacement(options, d.unit);
   const cosB = Math.cos(b * DEG);
   const X = d.value * cosB * Math.cos(l * DEG) - r0;
   const Y = d.value * cosB * Math.sin(l * DEG);
   const Z = d.value * Math.sin(b * DEG);
-  const theta = Math.asin(z0 / r0);
-  const cos = Math.cos(theta);
-  const sin = Math.sin(theta);
 
   return {
     frame: 'galactocentric',
