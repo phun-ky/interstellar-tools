@@ -96,6 +96,24 @@ copyright. They're compiled from public references, credited here:
   144, 4) give it. The Sun's distance from the Milky Way's centre from the
   GRAVITY Collaboration (2024, A&A 692, A242), and its height above the plane
   from Bennett and Bovy (2019, MNRAS 482, 1417).
+- **Galaxies' disks and motions:** Andromeda's disk from Corbelli et al. (2010,
+  A&A 511, A89), with Chemin, Carignan and Foster (2009, ApJ 705, 1395) for the
+  alternative inclination and its radial velocity, and its proper motion from
+  Salomon et al. (2021, MNRAS 507, 2592). Triangulum's disk and radial velocity
+  from Kam et al. (2017, AJ 154, 41), and its proper motion from van der Marel
+  et al. (2019, ApJ 872, 24). The Large Magellanic Cloud's disk and proper
+  motion from the Gaia Collaboration, Luri et al. (2021, A&A 649, A7), its near
+  side from van der Marel and Kallivayalil (2014, ApJ 781, 121) and its radial
+  velocity from van der Marel et al. (2002, AJ 124, 2639). The Small Magellanic
+  Cloud's disk from Di Teodoro et al. (2019, MNRAS 483, 392), its proper motion
+  from Zivick et al. (2018, ApJ 864, 55) and its radial velocity from Harris and
+  Zaritsky (2006, AJ 131, 2514). The Sagittarius dwarf's motion from Vasiliev
+  and Belokurov (2020, MNRAS 497, 4162), and M87's and Centaurus A's radial
+  velocities from [NED](https://ned.ipac.caltech.edu/). The Sun's velocity
+  around the Milky Way's centre from the proper motion of Sagittarius A\* by
+  Reid and Brunthaler (2020, ApJ 892, 39), following Astropy's recipe, with
+  Schönrich, Binney and Dehnen (2010, MNRAS 403, 1829) and Drimmel and Poggio
+  (2018, RNAAS 2, 210).
 - **Sagittarius A\* and the S-stars:** Sagittarius A\*'s distance from the
   GRAVITY Collaboration (2024, A&A 692, A242), fitted with its mass, and the
   diameter of its ring from the Event Horizon Telescope Collaboration (2022,

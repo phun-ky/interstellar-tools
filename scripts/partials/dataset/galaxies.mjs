@@ -4,11 +4,11 @@ import { GALAXIES } from '../../../packages/constants/dist/bodies/galaxies.js';
 
 const m = (measure) => (measure ? `${measure.value} ${measure.unit}` : '');
 const header =
-  '| id | name | type | diameter | distance | direction.l | direction.b | blackHole.name | blackHole.mass | blackHole.radius | blackHole.x | blackHole.y |\n' +
-  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
+  '| id | name | type | diameter | distance | direction.l | direction.b | disk.inclination | disk.positionAngle | motion.radialVelocity | blackHole.name | blackHole.mass | blackHole.radius | blackHole.x | blackHole.y |\n' +
+  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
 const rows = GALAXIES.map(
   (galaxy) =>
-    `| ${galaxy.id} | ${galaxy.name} | ${galaxy.type} | ${m(galaxy.diameter)} | ${m(galaxy.distance)} | ${galaxy.direction?.l ?? ''} | ${galaxy.direction?.b ?? ''} | ${galaxy.blackHole?.name ?? ''} | ${galaxy.blackHole?.mass ?? ''} | ${m(galaxy.blackHole?.radius)} | ${m(galaxy.blackHole?.x)} | ${m(galaxy.blackHole?.y)} |`
+    `| ${galaxy.id} | ${galaxy.name} | ${galaxy.type} | ${m(galaxy.diameter)} | ${m(galaxy.distance)} | ${galaxy.direction?.l ?? ''} | ${galaxy.direction?.b ?? ''} | ${galaxy.disk?.inclination ?? ''} | ${galaxy.disk?.positionAngle ?? ''} | ${galaxy.motion?.radialVelocity ?? ''} | ${galaxy.blackHole?.name ?? ''} | ${galaxy.blackHole?.mass ?? ''} | ${m(galaxy.blackHole?.radius)} | ${m(galaxy.blackHole?.x)} | ${m(galaxy.blackHole?.y)} |`
 ).join('\n');
 const out = `## Full list of galaxies in the dataset
 
