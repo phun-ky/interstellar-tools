@@ -99,6 +99,53 @@ In kpc, from the Milky Way's centre:
 The Sagittarius dwarf, at positive `x`, is on the far side of the centre from
 the Sun, and below the plane.
 
+## From a catalogue
+
+Catalogues such as NED give a galaxy's right ascension and declination.
+`equatorialToGalactic` turns them into its galactic direction, with the IAU's
+definition of galactic coordinates, and `galacticToEquatorial` turns them back:
+
+```ts
+import {
+  equatorialToGalactic,
+  galacticToEquatorial
+} from '@interstellar-tools/equations';
+import type { DegreesType } from '@interstellar-tools/types';
+
+// Andromeda's position in NED
+const andromeda = equatorialToGalactic({
+  rightAscension: 10.68479292 as DegreesType,
+  declination: 41.269065 as DegreesType
+});
+const direction = [andromeda.l, andromeda.b]; // [121.1744, -21.5730]
+const centre = galacticToEquatorial({
+  l: 0 as DegreesType,
+  b: 0 as DegreesType
+});
+const sky = [centre.rightAscension, centre.declination]; // [266.4050, -28.9362]
+```
+
+That's the direction `GALAXIES` gives Andromeda. The galactic centre, at
+longitude and latitude 0°, is in Sagittarius.
+
+## Back from a position
+
+`galactocentricToGalactic` is the inverse of `galactocentricPosition`: from a
+position around the centre, it gives the direction and distance from the Sun.
+The centre itself is $R_0$ away, towards longitude and latitude 0°:
+
+```ts
+import { galactocentricToGalactic } from '@interstellar-tools/equations';
+
+const { direction, distance } = galactocentricToGalactic({
+  frame: 'galactocentric',
+  x: { value: 0, unit: 'pc' },
+  y: { value: 0, unit: 'pc' },
+  z: { value: 0, unit: 'pc' }
+});
+const seen = [direction.l, direction.b, distance.value]; // [0, 0, 8275.9] pc
+```
+
 ## Drawing them
 
 The distances from the centre span nearly three powers of ten, from the

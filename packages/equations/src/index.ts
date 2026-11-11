@@ -69,7 +69,13 @@ export * from './categories/entry/terminal-velocity.js';
 
 // categories/galactic
 
+export * from './categories/galactic/equatorial-to-galactic.js';
+
+export * from './categories/galactic/galactic-to-equatorial.js';
+
 export * from './categories/galactic/galactocentric-position.js';
+
+export * from './categories/galactic/galactocentric-to-galactic.js';
 
 // categories/helpers
 
