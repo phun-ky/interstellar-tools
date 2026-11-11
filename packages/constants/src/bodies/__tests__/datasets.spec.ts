@@ -18,6 +18,8 @@ import {
   COMETS,
   G_SI,
   GALAXIES,
+  INTERSTELLAR_OBJECTS,
+  J2000_UTC,
   LY_PER_PC,
   MOONS,
   PLANETS,
@@ -205,7 +207,8 @@ describe('ids', () => {
       ...GALAXIES.map((galaxy) => galaxy.id),
       ...ASTEROID_BELTS.map((belt) => belt.id),
       ...NODES.map((node) => node.id),
-      ...COMETS.map((comet) => comet.id)
+      ...COMETS.map((comet) => comet.id),
+      ...INTERSTELLAR_OBJECTS.map((object) => object.id)
     ]);
   });
 });
@@ -232,9 +235,15 @@ describe('parents', () => {
     );
   });
 
-  test('planets, comets, asteroids and belts orbit a star', () => {
+  test('planets, comets, asteroids, belts and interstellar objects orbit a star', () => {
     assertParentIn(
-      [...PLANETS, ...COMETS, ...ASTEROIDS, ...ASTEROID_BELTS],
+      [
+        ...PLANETS,
+        ...COMETS,
+        ...ASTEROIDS,
+        ...ASTEROID_BELTS,
+        ...INTERSTELLAR_OBJECTS
+      ],
       STAR_IDS,
       'star in STARS'
     );
@@ -1803,5 +1812,115 @@ describe('IAU rotation models', () => {
       ),
       [['moon', 6.68]]
     );
+  });
+});
+
+// The Sun's G·M in au³/d², as JPL Horizons uses for heliocentric elements
+const SUN_GM_AU3_PER_D2 = 2.9591220828411951e-4;
+const KM_PER_AU = AU_METERS / 1000;
+
+describe('INTERSTELLAR_OBJECTS', () => {
+  test('hold 1I, 2I and 3I, with the Minor Planet Center’s designations', () => {
+    assert.deepEqual(
+      INTERSTELLAR_OBJECTS.map(({ id, designation }) => [id, designation]),
+      [
+        ['1i-oumuamua', '1I/2017 U1'],
+        ['2i-borisov', '2I/2019 Q4'],
+        ['3i-atlas', '3I/2025 N1']
+      ]
+    );
+  });
+
+  test('call the ones with a coma interstellar comets', () => {
+    for (const { id, type, category } of INTERSTELLAR_OBJECTS) {
+      assert.equal(category, 'interstellar object', id);
+      assert.equal(
+        type,
+        id === '1i-oumuamua' ? 'interstellar object' : 'interstellar comet',
+        id
+      );
+    }
+  });
+
+  test('give every orbit e > 1, a negative a, and q = a(1 − e)', () => {
+    for (const { name, orbit } of INTERSTELLAR_OBJECTS) {
+      assert.ok(orbit.e > 1, name);
+      assert.equal(orbit.a.unit, 'au', name);
+      assert.ok(orbit.a.value < 0, name);
+      assert.ok(
+        Math.abs(orbit.q.value - orbit.a.value * (1 - orbit.e)) < 1e-9,
+        `${name}: q ${orbit.q.value} against ${orbit.a.value * (1 - orbit.e)}`
+      );
+      assert.deepEqual(orbit.frame, { plane: 'ecliptic' }, name);
+      assert.equal(orbit.retrograde === true, orbit.i > 90, name);
+    }
+  });
+
+  test('put J2000 on the way in, within the asymptotes', () => {
+    for (const { name, orbit } of INTERSTELLAR_OBJECTS) {
+      const asymptote = Math.acos(-1 / orbit.e);
+
+      assert.ok(orbit.angle < 0 && orbit.angle > -asymptote, name);
+    }
+  });
+
+  test('pass perihelion when the J2000 true anomaly says, by M = e sinh F − F', () => {
+    for (const { name, orbit } of INTERSTELLAR_OBJECTS) {
+      const { e, angle } = orbit;
+      const F =
+        2 * Math.atanh(Math.sqrt((e - 1) / (e + 1)) * Math.tan(angle / 2));
+      const M = e * Math.sinh(F) - F;
+      const n = Math.sqrt(SUN_GM_AU3_PER_D2 / (-orbit.a.value) ** 3);
+      // Days from perihelion to J2000 in TT, negative: the UTC clock added
+      // five leap seconds in between, from the end of 2005 to the end of 2016
+      const days = (+J2000_UTC - +orbit.periapsisTime - 5000) / 86_400_000;
+
+      assert.ok(
+        Math.abs(M / n - days) * 86_400 < 1,
+        `${name}: ${M / n} d against ${days} d`
+      );
+    }
+  });
+
+  test('come in at about the speed the orbit gives, √(−μ/a)', () => {
+    // excessSpeed is from the orbit around the barycentre, before the planets
+    // and outgassing pulled: ʻOumuamua's differs most, by 0.1 km/s
+    for (const { name, orbit } of INTERSTELLAR_OBJECTS) {
+      const speed =
+        (Math.sqrt(SUN_GM_AU3_PER_D2 / -orbit.a.value) * KM_PER_AU) / 86_400;
+
+      assert.ok(
+        Math.abs(speed - orbit.excessSpeed) < 0.15,
+        `${name}: ${orbit.excessSpeed} km/s against ${speed} km/s`
+      );
+    }
+  });
+
+  test('match the published speeds and sizes', () => {
+    const [oumuamua, borisov, atlas] = INTERSTELLAR_OBJECTS;
+
+    // Bailer-Jones et al. 2018 and 2020, Seligman et al. 2025
+    assert.equal(oumuamua!.orbit.excessSpeed, 26.39);
+    assert.equal(borisov!.orbit.excessSpeed, 32.28);
+    assert.ok(Math.abs(atlas!.orbit.excessSpeed - 57.942) < 0.049);
+    // Trilling et al. 2018, Jewitt et al. 2020, Hui et al. 2026
+    assert.deepEqual(
+      INTERSTELLAR_OBJECTS.map(({ radius }) => radius),
+      [
+        { value: 0.07, unit: 'km' },
+        { value: 0.4, unit: 'km' },
+        { value: 1.3, unit: 'km' }
+      ]
+    );
+    assert.deepEqual(oumuamua!.rotation, {
+      period: { value: 8.67, unit: 'h' },
+      tumbling: true
+    });
+    assert.ok(!borisov!.rotation && !atlas!.rotation);
+  });
+
+  test('have a positive drawing size', () => {
+    for (const { name, display } of INTERSTELLAR_OBJECTS)
+      assert.ok((display?.size ?? 0) > 0, name);
   });
 });
