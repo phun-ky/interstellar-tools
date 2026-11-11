@@ -22,6 +22,7 @@ import {
   SPEED_OF_LIGHT_M_PER_S,
   STARS,
   SUN_GALACTOCENTRIC_DISTANCE,
+  SUN_GALACTOCENTRIC_VELOCITY,
   SUN_HEIGHT_ABOVE_GALACTIC_PLANE,
   SYSTEMS,
   WGS84
@@ -1231,6 +1232,81 @@ describe('GALAXIES', () => {
     }
   });
 
+  test('have their disks as measured, turned one way where the near side is known', () => {
+    // inclination, receding position angle and near side, in degrees:
+    // Corbelli et al. 2010, Kam et al. 2017, Luri et al. 2021 with van der
+    // Marel & Kallivayalil 2014, and Di Teodoro et al. 2019
+    const disks: Record<string, [number, number, number | undefined]> = {
+      andromeda: [77.7, 38, 308],
+      triangulum: [54, 201.3, undefined],
+      'large-magellanic-cloud': [34.1, 309.9, 39.9],
+      'small-magellanic-cloud': [51, 66, undefined]
+    };
+
+    for (const { id, name, disk } of GALAXIES) {
+      const expected = disks[id];
+
+      if (!expected) {
+        assert.equal(disk, undefined, `${name} has no disk to turn`);
+        continue;
+      }
+
+      const [inclination, positionAngle, nearSide] = expected;
+
+      assert.deepEqual(
+        [disk?.inclination, disk?.positionAngle, disk?.nearSide],
+        [inclination, positionAngle, nearSide],
+        name
+      );
+      assert.ok(inclination >= 0 && inclination <= 90, name);
+      assert.ok(positionAngle >= 0 && positionAngle < 360, name);
+
+      if (nearSide === undefined) continue;
+
+      // The near side is across the minor axis, 90° from the major axis
+      const apart = (((nearSide - positionAngle) % 360) + 360) % 360;
+
+      assert.ok(
+        Math.abs(apart - 90) < 1e-9 || Math.abs(apart - 270) < 1e-9,
+        `${name}: ${apart}°`
+      );
+    }
+  });
+
+  test('have their motion from the Sun, and the Local Group’s across the sky', () => {
+    // radial velocity in km/s, and proper motion in mas/yr
+    const motions: Record<string, [number, [number, number] | undefined]> = {
+      andromeda: [-300, [0.0489, -0.0369]],
+      triangulum: [-180, [0.024, 0.003]],
+      'large-magellanic-cloud': [262.2, [1.858, 0.385]],
+      'small-magellanic-cloud': [145.6, [0.82, -1.21]],
+      'sagittarius-dwarf': [142, [-2.69, -1.35]],
+      m87: [1284, undefined],
+      'centaurus-a': [547, undefined]
+    };
+
+    for (const { id, name, motion } of GALAXIES) {
+      const expected = motions[id];
+
+      if (!expected) {
+        assert.equal(motion, undefined, `${name}: the Sun is in it`);
+        continue;
+      }
+
+      const [radialVelocity, properMotion] = expected;
+
+      assert.equal(motion?.radialVelocity, radialVelocity, name);
+      assert.deepEqual(
+        motion?.properMotion,
+        properMotion && {
+          rightAscension: properMotion[0],
+          declination: properMotion[1]
+        },
+        name
+      );
+    }
+  });
+
   test('gives M87* the 42 μas ring the EHT imaged, the first black hole seen', () => {
     const m87 = GALAXIES.find(({ id }) => id === 'm87')!;
 
@@ -1268,9 +1344,29 @@ describe('the Sun in the Milky Way', () => {
     });
   });
 
+  test('moves as Sagittarius A* seems to, reflected (Reid & Brunthaler 2020)', () => {
+    // km/s per kpc·mas/yr
+    const K = 4.740470463533348;
+    const R0 = SUN_GALACTOCENTRIC_DISTANCE.value / 1000;
+
+    assert.deepEqual(SUN_GALACTOCENTRIC_VELOCITY, {
+      frame: 'galactocentric',
+      x: 12.9,
+      y: 251.51,
+      z: 8.56
+    });
+    // Sagittarius A*: μl = −6.411, μb = −0.219 mas/yr. z differs a little,
+    // from the plane's tilt
+    assert.ok(Math.abs(SUN_GALACTOCENTRIC_VELOCITY.y - K * 6.411 * R0) < 0.01);
+    assert.ok(Math.abs(SUN_GALACTOCENTRIC_VELOCITY.z - K * 0.219 * R0) < 0.05);
+    // Its angular speed, 30.32 ± 0.27 km/s/kpc (Reid et al. 2019)
+    assert.ok(Math.abs(SUN_GALACTOCENTRIC_VELOCITY.y / R0 - 30.32) < 0.27);
+  });
+
   test('can’t be changed', () => {
     assert.ok(Object.isFrozen(SUN_GALACTOCENTRIC_DISTANCE));
     assert.ok(Object.isFrozen(SUN_HEIGHT_ABOVE_GALACTIC_PLANE));
+    assert.ok(Object.isFrozen(SUN_GALACTOCENTRIC_VELOCITY));
   });
 });
 

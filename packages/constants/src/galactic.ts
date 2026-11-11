@@ -1,4 +1,7 @@
-import type { DistanceInterface } from '@interstellar-tools/types';
+import type {
+  DistanceInterface,
+  VelocityInterface
+} from '@interstellar-tools/types';
 
 /**
  * The **Sun's distance from the Milky Way's centre**, $R_0$: 8275.9 ± 8.6 pc.
@@ -56,3 +59,43 @@ export const SUN_GALACTOCENTRIC_DISTANCE: Readonly<DistanceInterface> =
  */
 export const SUN_HEIGHT_ABOVE_GALACTIC_PLANE: Readonly<DistanceInterface> =
   Object.freeze({ value: 20.8, unit: 'pc' as const });
+
+/**
+ * The **Sun's velocity around the Milky Way's centre**, in km/s, in the
+ * `'galactocentric'` frame: $(12.9, 251.51, 8.56)$.
+ *
+ * ::: info Notes
+ *
+ * - `x` points towards the centre, `y` the way the Milky Way turns, and `z` to
+ *   its north pole. Most of the motion, `y`, is the Sun's orbit around the
+ *   centre, about 200 million years a turn.
+ * - Sagittarius A* sits still at the centre, so its motion across the sky,
+ *   $\mu_l = -6.411$ and $\mu_b = -0.219$ mas/yr (Reid & Brunthaler 2020), is
+ *   the Sun's, reflected. `y` and `z` are solved so that it does, at
+ *   {@link SUN_GALACTOCENTRIC_DISTANCE}: about the proper motion times the
+ *   distance.
+ * - `x`, 12.9 km/s, is Astropy's: the Sun's motion towards the centre
+ *   relative to the stars around it, 11.1 km/s (Schönrich, Binney & Dehnen
+ *   2010), plus 1.9 km/s (Drimmel & Poggio 2018).
+ * - Astropy's `Galactocentric` frame uses $(12.9, 245.6, 7.78)$ by default,
+ *   from the same recipe with its 8.122 kpc and Reid & Brunthaler's 2004
+ *   proper motion. With 8275.9 pc, that would make Sagittarius A* drift by
+ *   about 6 km/s.
+ *
+ * :::
+ *
+ * @see https://arxiv.org/abs/2001.04386 Reid & Brunthaler 2020, ApJ 892, 39
+ *
+ * @example
+ * ```ts
+ * console.log(SUN_GALACTOCENTRIC_VELOCITY.y); // 251.51 km/s
+ * ```
+ * @group Galactic
+ */
+export const SUN_GALACTOCENTRIC_VELOCITY: Readonly<VelocityInterface> =
+  Object.freeze({
+    frame: 'galactocentric' as const,
+    x: 12.9,
+    y: 251.51,
+    z: 8.56
+  });
