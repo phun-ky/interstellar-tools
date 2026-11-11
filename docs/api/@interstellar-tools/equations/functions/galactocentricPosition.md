@@ -12,7 +12,7 @@ function galactocentricPosition(
 ```
 
 Defined in:
-[galactic/galactocentric-position.ts:94](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L94)
+[galactic/galactocentric-position.ts:90](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L90)
 
 The **position around the Milky Way's centre** of something seen from the Sun:
 turns a direction in galactic coordinates and a distance, as `GALAXIES` in

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.22.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.21.0...%40interstellar-tools%2Fequations%401.22.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Convert between equatorial and galactic coordinates, and back from galactocentric ([0d62a14](https://github.com/phun-ky/interstellar-tools/commit/0d62a14372577e8dbd7cd7994ec1b0944edda704)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [1.21.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.20.0...%40interstellar-tools%2Fequations%401.21.0) (2026-11-11)
 
 ### Feature

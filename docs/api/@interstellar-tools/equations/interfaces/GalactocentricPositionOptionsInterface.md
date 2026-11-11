@@ -5,7 +5,7 @@ GalactocentricPositionOptionsInterface
 # Interface: GalactocentricPositionOptionsInterface
 
 Defined in:
-[galactic/galactocentric-position.ts:22](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L22)
+[galactic/galactocentric-position.ts:18](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L18)
 
 Options for [galactocentricPosition](../functions/galactocentricPosition.md).
 
@@ -18,7 +18,7 @@ sunDistance?: DistanceInterface;
 ```
 
 Defined in:
-[galactic/galactocentric-position.ts:29](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L29)
+[galactic/galactocentric-position.ts:25](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L25)
 
 The Sun's distance from the Milky Way's centre, $R_0$. Defaults to
 `SUN_GALACTOCENTRIC_DISTANCE`, 8275.9 pc.
@@ -32,7 +32,7 @@ sunHeight?: DistanceInterface;
 ```
 
 Defined in:
-[galactic/galactocentric-position.ts:34](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L34)
+[galactic/galactocentric-position.ts:30](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L30)
 
 The Sun's height above the Milky Way's plane, $z_\odot$. Defaults to
 `SUN_HEIGHT_ABOVE_GALACTIC_PLANE`, 20.8 pc.
@@ -89,6 +89,6 @@ unit?:
 ```
 
 Defined in:
-[galactic/galactocentric-position.ts:24](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L24)
+[galactic/galactocentric-position.ts:20](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/galactic/galactocentric-position.ts#L20)
 
 The unit of the position. Defaults to the unit of `distance`.
