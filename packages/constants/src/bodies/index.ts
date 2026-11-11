@@ -6,6 +6,8 @@ export * from './comets.js';
 
 export * from './galaxies.js';
 
+export * from './interstellar-objects.js';
+
 export * from './moons.js';
 
 export * from './planets.js';

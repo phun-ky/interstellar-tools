@@ -81,6 +81,18 @@ copyright. They're compiled from public references, credited here:
   Pluto's from the page's earlier version, which listed it, and the Moon's from
   NASA's
   [Moon fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html).
+- **Interstellar objects:** the designations from the IAU's Minor Planet Center
+  (MPECs 2017-V17, 2019-S72 and 2025-N12). The orbits from
+  [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/): its heliocentric elements
+  osculating at perihelion, from JPL's solutions #16 for ʻOumuamua (Micheli et
+  al. 2018, Nature 559, 223), #54 for Borisov and #55, a temporary one, for
+  3I/ATLAS. The speeds coming in from Bailer-Jones et al. (2018, AJ 156, 205)
+  for ʻOumuamua and (2020, A&A 634, A14) for Borisov, and for 3I/ATLAS from
+  JPL's barycentric elements, checked against Seligman et al. (2025, ApJL 989,
+  L36). ʻOumuamua's effective radius from Trilling et al. (2018, AJ 156, 261)
+  and its tumbling from Belton et al. (2018, ApJL 856, L21); Borisov's nucleus
+  from Jewitt et al. (2020, ApJL 888, L23) and Hui et al. (2020, AJ 160, 92);
+  3I/ATLAS's from Hui et al. (2026, ApJL 999, L37).
 - **Galaxies:** Andromeda's distance from Li et al. (2021, ApJ 920, 84) and
   Triangulum's from Breuval et al. (2023, ApJ 951, 118), both from Cepheids.
   Andromeda's and Triangulum's D25 diameters and morphological types from the
