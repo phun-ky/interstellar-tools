@@ -1,6 +1,8 @@
 import type {
   AsteroidInterface,
   CometInterface,
+  IauPeriodicTermInterface,
+  IauRotationModelInterface,
   MoonInterface,
   OrbitInterface,
   PlanetInterface,
@@ -1503,6 +1505,303 @@ describe('reference ellipsoids', () => {
     );
     assert.ok(
       Math.abs(earth.polarRadius.value * 1000 - WGS84.polarRadius.value) < 1
+    );
+  });
+});
+
+// The bodies the IAU gives a rotation model for, from the 2015 report and, for
+// Earth and the Moon, the 2009 one. Ceres, Pluto, Charon and the asteroids use
+// the right-hand rule's positive pole, the others the north one
+const IAU_POSITIVE_POLE = [
+  'ceres',
+  'pluto',
+  'charon',
+  '4-vesta',
+  '433-eros',
+  '2-pallas',
+  '511-davida',
+  '52-europa',
+  '25143-itokawa',
+  '21-lutetia',
+  '243-ida',
+  '951-gaspra',
+  '2867-steins'
+];
+const IAU_NORTH_POLE = [
+  'sun',
+  'mercury',
+  'venus',
+  'earth',
+  'mars',
+  'jupiter',
+  'saturn',
+  'uranus',
+  'neptune',
+  ...Object.keys(IAU_ROTATION_RATE).filter(
+    (id) =>
+      ![
+        'mercury',
+        'venus',
+        'mars',
+        'jupiter',
+        'saturn',
+        'uranus',
+        'neptune',
+        'ceres',
+        'pluto',
+        'charon'
+      ].includes(id)
+  )
+];
+const ROTATING = [...PLANETS, ...MOONS, ...STARS, ...ASTEROIDS, ...COMETS];
+const MODELLED = ROTATING.filter(({ rotation }) => rotation?.iau);
+const RAD = Math.PI / 180;
+
+// The pole's right ascension and declination, and the prime meridian, in
+// degrees, `d` days from J2000
+const orient = (model: IauRotationModelInterface, d: number) => {
+  const T = d / 36_525;
+  const sum = (
+    terms: readonly IauPeriodicTermInterface[] | undefined,
+    f: (angle: number) => number
+  ) =>
+    (terms ?? []).reduce(
+      (total, { amplitude, phase, rate, acceleration = 0 }) =>
+        total + amplitude * f((phase + rate * T + acceleration * T * T) * RAD),
+      0
+    );
+
+  return [
+    model.rightAscension +
+      model.rightAscensionRate * T +
+      sum(model.rightAscensionTerms, Math.sin),
+    model.declination +
+      model.declinationRate * T +
+      sum(model.declinationTerms, Math.cos),
+    model.primeMeridian +
+      model.primeMeridianRate * d +
+      (model.primeMeridianAcceleration ?? 0) * d * d +
+      sum(model.primeMeridianTerms, Math.sin)
+  ] as const;
+};
+const unit = (rightAscension: number, declination: number) => [
+  Math.cos(declination * RAD) * Math.cos(rightAscension * RAD),
+  Math.cos(declination * RAD) * Math.sin(rightAscension * RAD),
+  Math.sin(declination * RAD)
+];
+const angleBetween = (a: number[], b: number[]) =>
+  Math.acos(
+    Math.max(-1, Math.min(1, a[0]! * b[0]! + a[1]! * b[1]! + a[2]! * b[2]!))
+  ) / RAD;
+const degreesApart = (a: number, b: number) =>
+  Math.abs(((((a - b) % 360) + 540) % 360) - 180);
+
+describe('IAU rotation models', () => {
+  test('give a model to every body the IAU covers, and to no other', () => {
+    assert.deepEqual(
+      MODELLED.map(({ id }) => id).sort(),
+      [...IAU_POSITIVE_POLE, ...IAU_NORTH_POLE].sort()
+    );
+  });
+
+  test('use the positive pole for the dwarf planets, Charon and the asteroids, and the north pole for the rest', () => {
+    for (const { id, name, rotation } of MODELLED)
+      assert.equal(
+        rotation!.iau!.pole,
+        IAU_POSITIVE_POLE.includes(id) ? 'positive' : 'north',
+        name
+      );
+  });
+
+  test('turn the prime meridian at the rate the period comes from', () => {
+    const rates: Record<string, number> = {
+      ...IAU_ROTATION_RATE,
+      ...SMALL_BODY_IAU_RATE,
+      earth: 360.9856235,
+      // Its period is Lamy et al.'s 6.04681 h, the IAU's rate a rounded 6.05 h
+      '2867-steins': 1428.09917
+    };
+
+    for (const { id, name, rotation } of MODELLED)
+      assert.equal(rotation!.iau!.primeMeridianRate, rates[id], name);
+  });
+
+  test('turn backwards under the north pole only for Venus, Uranus, its moons and Triton, and never under the positive pole', () => {
+    const backwards = MODELLED.filter(
+      ({ rotation }) => rotation!.iau!.primeMeridianRate < 0
+    ).map(({ id }) => id);
+    const uranian = MOONS.filter(({ parent }) => parent === 'uranus').map(
+      ({ id }) => id
+    );
+
+    assert.deepEqual(
+      backwards.sort(),
+      ['venus', 'uranus', 'triton', ...uranian].sort()
+    );
+
+    for (const { name, rotation } of MODELLED)
+      if (rotation!.iau!.primeMeridianRate < 0)
+        assert.equal(rotation!.iau!.pole, 'north', name);
+  });
+
+  test('keep every periodic term non-zero, and an acceleration only on Phobos’s M5', () => {
+    for (const { id, name, rotation } of MODELLED) {
+      const { rightAscensionTerms, declinationTerms, primeMeridianTerms } =
+        rotation!.iau!;
+
+      for (const term of [
+        ...(rightAscensionTerms ?? []),
+        ...(declinationTerms ?? []),
+        ...(primeMeridianTerms ?? [])
+      ]) {
+        assert.ok(term.amplitude !== 0, name);
+        assert.ok(
+          [term.amplitude, term.phase, term.rate].every(Number.isFinite),
+          name
+        );
+        assert.equal(
+          term.acceleration !== undefined,
+          id === 'phobos' && term.phase === 189.6327156,
+          name
+        );
+      }
+    }
+  });
+
+  test('match the reports, with the 2019 correction for Phobos', () => {
+    const iau = (id: string) =>
+      MODELLED.find((body) => body.id === id)!.rotation!.iau!;
+
+    assert.deepEqual(iau('saturn'), {
+      pole: 'north',
+      rightAscension: 40.589,
+      rightAscensionRate: -0.036,
+      declination: 83.537,
+      declinationRate: -0.004,
+      primeMeridian: 38.9,
+      primeMeridianRate: 810.7939024
+    });
+    // W0 35.18774440 and −1.143 sin M5, not the 2015 report's 34.9964842535 and +1.143
+    assert.equal(iau('phobos').primeMeridian, 35.1877444);
+    assert.deepEqual(iau('phobos').primeMeridianTerms![4], {
+      amplitude: -1.143,
+      phase: 189.6327156,
+      rate: 41_215_158.1842005,
+      acceleration: 12.711923222
+    });
+    // W0 = 180° − the 2009 report's, for the positive pole (the 2011 erratum)
+    assert.equal(iau('pluto').primeMeridian, 302.695);
+    assert.equal(iau('charon').primeMeridian, 122.695);
+    // 90° off in the reports before 2015
+    assert.equal(iau('243-ida').declination, -87.12);
+    // The 2009 report's, which the 2015 report dropped
+    assert.equal(iau('moon').primeMeridianAcceleration, -1.4e-12);
+    assert.equal(iau('earth').declinationRate, -0.557);
+  });
+
+  test('point the pole and prime meridian where NASA NAIF’s SPICE puts them', () => {
+    // bodeul with pck00011.tpc: right ascension, declination and W in degrees,
+    // at J2000 and 9500 days later
+    const spice: Record<string, [number, number, number, number][]> = {
+      mars: [
+        [0, 317.680854, 52.886439, 176.63206],
+        [9500, 317.653188, 52.870358, 50.464849]
+      ],
+      neptune: [
+        [0, 299.333739, 42.950359, 249.996008],
+        [9500, 299.499045, 42.960163, 277.751805]
+      ],
+      moon: [
+        [0, 266.857733, 65.641103, 41.195264],
+        [9500, 271.332793, 67.996641, 292.489009]
+      ],
+      phobos: [
+        [0, 318.012874, 53.945409, 35.107352],
+        [9500, 317.334354, 51.820027, 21.486211]
+      ],
+      triton: [
+        [0, 298.450983, 20.302361, 297.017804],
+        [9500, 304.176011, 20.639677, 109.926912]
+      ],
+      mimas: [
+        [0, 41.275122, 85.048425, 3.749588],
+        [9500, 49.80673, 82.390418, 67.804811]
+      ],
+      jupiter: [
+        [0, 268.057204, 64.49581, 284.95],
+        [9500, 268.057703, 64.49669, 96.95]
+      ]
+    };
+
+    for (const [id, epochs] of Object.entries(spice)) {
+      const model = MODELLED.find((body) => body.id === id)!.rotation!.iau!;
+
+      for (const [d, rightAscension, declination, W] of epochs) {
+        const [a, delta, w] = orient(model, d);
+
+        assert.ok(degreesApart(a, rightAscension) < 1e-6, `${id} α at ${d}`);
+        assert.ok(Math.abs(delta - declination) < 1e-6, `${id} δ at ${d}`);
+        assert.ok(degreesApart(w, W) < 1e-6, `${id} W at ${d}`);
+      }
+    }
+  });
+
+  test('tilt the planets and Pluto as their IAU pole and orbit do, to 0.01°', () => {
+    // The J2000 ecliptic's obliquity, from the ecliptic to the ICRF
+    const epsilon = 23.43928 * RAD;
+    const tilted = PLANETS.filter(({ rotation }) => rotation?.obliquity);
+
+    assert.deepEqual(
+      tilted.map(({ id }) => id),
+      [
+        'mercury',
+        'venus',
+        'earth',
+        'mars',
+        'jupiter',
+        'saturn',
+        'uranus',
+        'neptune',
+        'pluto'
+      ]
+    );
+
+    for (const { name, orbit, rotation } of tilted) {
+      const { i, om } = orbit!;
+      const [a, delta] = orient(rotation!.iau!, 0);
+      const spin = unit(a, delta).map(
+        (value) => Math.sign(rotation!.iau!.primeMeridianRate) * value
+      );
+      const [x, y, z] = [
+        Math.sin(i! * RAD) * Math.sin(om! * RAD),
+        -Math.sin(i! * RAD) * Math.cos(om! * RAD),
+        Math.cos(i! * RAD)
+      ];
+      const pole = [
+        x,
+        y * Math.cos(epsilon) - z * Math.sin(epsilon),
+        y * Math.sin(epsilon) + z * Math.cos(epsilon)
+      ];
+      const obliquity = angleBetween(spin, pole);
+
+      assert.ok(
+        Math.abs(obliquity - rotation!.obliquity!) < 0.01,
+        `${name}: ${rotation!.obliquity}° against ${obliquity}°`
+      );
+      assert.equal(
+        rotation!.obliquity! > 90,
+        rotation!.retrograde === true,
+        name
+      );
+    }
+  });
+
+  test('tilt the Moon by NASA’s mean 6.68°, and no other moon', () => {
+    assert.deepEqual(
+      MOONS.filter(({ rotation }) => rotation?.obliquity !== undefined).map(
+        ({ id, rotation }) => [id, rotation!.obliquity]
+      ),
+      [['moon', 6.68]]
     );
   });
 });

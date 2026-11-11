@@ -69,6 +69,18 @@ copyright. They're compiled from public references, credited here:
   et al. (2019, A&A 625, A46) for Makemake, Pál et al. (2016, AJ 151, 117) for
   Gonggong, Ortiz et al. (2003, A&A 409, L13) for Quaoar and Gaudi et al. (2005,
   ApJ 629, L49) for Sedna.
+- **Rotation models and axial tilts:** the IAU rotation models of the Sun, the
+  planets, Ceres, Pluto, the moons and ten asteroids from the IAU Working Group
+  on Cartographic Coordinates and Rotational Elements (Archinal et al. 2018,
+  Celestial Mechanics and Dynamical Astronomy 130, 22), with its correction for
+  Phobos (Archinal et al. 2019, 131, 61), and Earth's and the Moon's from its
+  2009 report (Archinal et al. 2011, 109, 101). Every value checked against NASA
+  NAIF's `pck00011.tpc`. The planets' and Pluto's axial tilts from those poles
+  and the J2000 orbits of JPL's
+  [Keplerian elements for approximate positions of the major planets](https://ssd.jpl.nasa.gov/planets/approx_pos.html),
+  Pluto's from the page's earlier version, which listed it, and the Moon's from
+  NASA's
+  [Moon fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html).
 - **Galaxies:** Andromeda's distance from Li et al. (2021, ApJ 920, 84) and
   Triangulum's from Breuval et al. (2023, ApJ 951, 118), both from Cepheids.
   Andromeda's and Triangulum's D25 diameters and morphological types from the
