@@ -11,9 +11,13 @@ export * from './categories/angle/wrap-angle.js';
 
 // categories/cartography
 
+export * from './categories/cartography/axial-tilt.js';
+
 export * from './categories/cartography/body-fixed-from-inertial-dcm-iau.js';
 
 export * from './categories/cartography/body-fixed-to-geodetic.js';
+
+export * from './categories/cartography/body-orientation.js';
 
 export * from './categories/cartography/central-angle.js';
 
@@ -50,6 +54,8 @@ export * from './categories/cartography/planetographic-latitude-oblate.js';
 export * from './categories/cartography/prime-vertical-radius-of-curvature.js';
 
 export * from './categories/cartography/spherical-polygon-area.js';
+
+export * from './categories/cartography/subsolar-point.js';
 
 export * from './categories/cartography/sun-position.js';
 
