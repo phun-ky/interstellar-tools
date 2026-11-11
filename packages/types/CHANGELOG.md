@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.7.0...%40interstellar-tools%2Ftypes%402.8.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Type unit-carrying quantities beyond distance and time ([4fb30e1](https://github.com/phun-ky/interstellar-tools/commit/4fb30e109dbb7abd7492f3399a4b3b96181a3446))
+
 ## [2.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.6.0...%40interstellar-tools%2Ftypes%402.7.0) (2026-11-11)
 
 ### Feature
