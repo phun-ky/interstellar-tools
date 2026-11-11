@@ -206,6 +206,10 @@ export default defineConfig({
                 {
                   text: 'Orbits in 3D',
                   link: '/guide/usage/equations/orbits-in-3d'
+                },
+                {
+                  text: 'Galaxies in 3D',
+                  link: '/guide/usage/equations/galaxies-in-3d'
                 }
               ]
             },
