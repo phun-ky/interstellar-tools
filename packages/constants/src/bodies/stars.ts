@@ -17,6 +17,8 @@ import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
  * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
  *   published: none for Deneb, Sirius, Rigel and Canopus. The Sun's is the IAU's Carrington period, with its faster equator
  *   and slower poles in `equatorialPeriod` and `polarPeriod`. A star's spin direction is unknown.
+ * - The Sun's `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), turning with the
+ *   Carrington period.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -52,7 +54,16 @@ export const STARS: StarsType = [
     rotation: {
       period: { value: 25.379995, unit: 'd' },
       equatorialPeriod: { value: 24.47, unit: 'd' },
-      polarPeriod: { value: 34.16, unit: 'd' }
+      polarPeriod: { value: 34.16, unit: 'd' },
+      iau: {
+        pole: 'north',
+        rightAscension: 286.13 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 63.87 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 84.176 as DegreesType,
+        primeMeridianRate: 14.1844
+      }
     },
     /** Radius in km */
     radius: { value: 696340, unit: 'km' },

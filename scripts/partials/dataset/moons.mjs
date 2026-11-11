@@ -10,11 +10,11 @@ const frame = (orbit) =>
       : orbit.frame.plane
     : '';
 const header =
-  '| id | name | category | parent | orbit.a | orbit.e | orbit.period | orbit.retrograde | orbit.angle | orbit.i | orbit.w | orbit.om | orbit.frame | rotation.period | rotation.retrograde | rotation.synchronous | radius | mu (m³/s²) | display.color |\n' +
-  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
+  '| id | name | category | parent | orbit.a | orbit.e | orbit.period | orbit.retrograde | orbit.angle | orbit.i | orbit.w | orbit.om | orbit.frame | rotation.period | rotation.retrograde | rotation.synchronous | rotation.obliquity | rotation.iau | radius | mu (m³/s²) | display.color |\n' +
+  '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
 const rows = MOONS.map(
   (moon) =>
-    `| ${moon.id} | ${moon.name} | ${moon.category} | ${moon.parent} | ${m(moon.orbit.a)} | ${moon.orbit.e} | ${m(moon.orbit.period)} | ${moon.orbit?.retrograde ? 'yes' : ''} | ${moon.orbit.angle} | ${moon.orbit.i ?? ''} | ${moon.orbit.w ?? ''} | ${moon.orbit.om ?? ''} | ${frame(moon.orbit)} | ${m(moon.rotation?.period)} | ${moon.rotation?.retrograde ? 'yes' : ''} | ${moon.rotation?.synchronous ? 'yes' : ''} | ${m(moon.radius)} | ${moon.mu?.toExponential() ?? ''} | ${moon.display?.color ?? ''} |`
+    `| ${moon.id} | ${moon.name} | ${moon.category} | ${moon.parent} | ${m(moon.orbit.a)} | ${moon.orbit.e} | ${m(moon.orbit.period)} | ${moon.orbit?.retrograde ? 'yes' : ''} | ${moon.orbit.angle} | ${moon.orbit.i ?? ''} | ${moon.orbit.w ?? ''} | ${moon.orbit.om ?? ''} | ${frame(moon.orbit)} | ${m(moon.rotation?.period)} | ${moon.rotation?.retrograde ? 'yes' : ''} | ${moon.rotation?.synchronous ? 'yes' : ''} | ${moon.rotation?.obliquity ?? ''} | ${moon.rotation?.iau ? `${moon.rotation.iau.pole} (${moon.rotation.iau.rightAscension}°, ${moon.rotation.iau.declination}°)` : ''} | ${m(moon.radius)} | ${moon.mu?.toExponential() ?? ''} | ${moon.display?.color ?? ''} |`
 ).join('\n');
 const out = `## Full list of moons in the dataset
 

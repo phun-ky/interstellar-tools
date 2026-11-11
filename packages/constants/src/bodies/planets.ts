@@ -1,5 +1,7 @@
 import { DegreesType, PlanetsType, Radians } from '@interstellar-tools/types';
 
+import { iauTerm } from './iau.js';
+
 /**
  * Represents a dataset of planets and planetoids in the solar system.
  *
@@ -24,6 +26,17 @@ import { DegreesType, PlanetsType, Radians } from '@interstellar-tools/types';
  *   (Archinal et al. 2018), and for Earth the IERS's Earth rotation angle. The IAU gives no rate
  *   for the other dwarf planets, so theirs is a light curve's. Venus, Uranus and Pluto spin
  *   backwards, `retrograde: true`. TRAPPIST-1's planets' spins aren't measured.
+ * - `rotation.obliquity` is the axial tilt in degrees, the angle between the spin axis, by the
+ *   right-hand rule, and the orbit's pole: from the IAU pole at J2000 and JPL's mean orbit, to
+ *   0.01°. Over 90°, as for Venus, Uranus and Pluto, the body spins backwards. Pluto's is 119.61°:
+ *   the 122.53° often quoted comes from the IAU's pole before 2009.
+ * - `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), with every periodic term:
+ *   without them Mars's pole would be 1.6° off, and its tilt 23.9°. Earth's is the 2009 report's
+ *   (Archinal et al. 2011), which the 2015 report dropped: its prime meridian can be 150″ or more off,
+ *   so use the IERS's Earth rotation angle for precise work. The planets' poles are the IAU's
+ *   `'north'`, on the north side of the solar system's invariable plane, so Venus's and Uranus's
+ *   prime meridians turn backwards; Ceres's and Pluto's are `'positive'`, by the right-hand rule.
+ *   The IAU has none for the other dwarf planets.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -64,7 +77,26 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 58.6461459, unit: 'd' } },
+    rotation: {
+      period: { value: 58.6461459, unit: 'd' },
+      obliquity: 0.034 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 281.0103 as DegreesType,
+        rightAscensionRate: -0.0328,
+        declination: 61.4155 as DegreesType,
+        declinationRate: -0.0049,
+        primeMeridian: 329.5988 as DegreesType,
+        primeMeridianRate: 6.1385108,
+        primeMeridianTerms: [
+          iauTerm(0.01067257, 174.7910857, 149472.535875),
+          iauTerm(-0.00112309, 349.5821714, 298945.07175),
+          iauTerm(-0.0001104, 164.3732571, 448417.607625),
+          iauTerm(-0.00002539, 339.1643429, 597890.1435),
+          iauTerm(-0.00000571, 153.9554286, 747362.679375)
+        ]
+      }
+    },
     /** Radius in km */
     radius: { value: 2439.4, unit: 'km' },
     ellipsoid: {
@@ -99,7 +131,20 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
-    rotation: { period: { value: 243.018484, unit: 'd' }, retrograde: true },
+    rotation: {
+      period: { value: 243.018484, unit: 'd' },
+      retrograde: true,
+      obliquity: 177.362 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 272.76 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 67.16 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 160.2 as DegreesType,
+        primeMeridianRate: -1.4813688
+      }
+    },
     radius: { value: 6051.8, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 6051.8, unit: 'km' },
@@ -130,7 +175,19 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IERS, from the Earth rotation angle, 23 h 56 m 4.0989 s */
-    rotation: { period: { value: 0.9972696632, unit: 'd' } },
+    rotation: {
+      period: { value: 0.9972696632, unit: 'd' },
+      obliquity: 23.439 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 0 as DegreesType,
+        rightAscensionRate: -0.641,
+        declination: 90 as DegreesType,
+        declinationRate: -0.557,
+        primeMeridian: 190.147 as DegreesType,
+        primeMeridianRate: 360.9856235
+      }
+    },
     radius: { value: 6371.0084, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 6378.1366, unit: 'km' },
@@ -161,7 +218,41 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 1.025956756, unit: 'd' } },
+    rotation: {
+      period: { value: 1.025956756, unit: 'd' },
+      obliquity: 25.192 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 317.269202 as DegreesType,
+        rightAscensionRate: -0.10927547,
+        declination: 54.432516 as DegreesType,
+        declinationRate: -0.05827105,
+        primeMeridian: 176.049863 as DegreesType,
+        primeMeridianRate: 350.891982443297,
+        rightAscensionTerms: [
+          iauTerm(0.000068, 198.991226, 19139.4819985),
+          iauTerm(0.000238, 226.292679, 38280.8511281),
+          iauTerm(0.000052, 249.663391, 57420.7251593),
+          iauTerm(0.000009, 266.18351, 76560.636795),
+          iauTerm(0.419057, 79.398797, 0.5042615)
+        ],
+        declinationTerms: [
+          iauTerm(0.000051, 122.433576, 19139.9407476),
+          iauTerm(0.000141, 43.058401, 38280.8753272),
+          iauTerm(0.000031, 57.663379, 57420.7517205),
+          iauTerm(0.000005, 79.476401, 76560.6495004),
+          iauTerm(1.591274, 166.325722, 0.5042615)
+        ],
+        primeMeridianTerms: [
+          iauTerm(0.000145, 129.071773, 19140.0328244),
+          iauTerm(0.000157, 36.352167, 38281.0473591),
+          iauTerm(0.00004, 56.668646, 57420.929536),
+          iauTerm(0.000001, 67.364003, 76560.2552215),
+          iauTerm(0.000001, 104.79268, 95700.4387578),
+          iauTerm(0.584542, 95.391654, 0.5042615)
+        ]
+      }
+    },
     radius: { value: 3389.5, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 3396.19, unit: 'km' },
@@ -192,7 +283,18 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 0.3780904165, unit: 'd' } },
+    rotation: {
+      period: { value: 0.3780904165, unit: 'd' },
+      iau: {
+        pole: 'positive',
+        rightAscension: 291.418 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 66.764 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 170.65 as DegreesType,
+        primeMeridianRate: 952.1532
+      }
+    },
     radius: { value: 469.7, unit: 'km' },
     mu: 6.26284e10,
     display: {
@@ -219,7 +321,33 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 0.4135383258, unit: 'd' } },
+    rotation: {
+      period: { value: 0.4135383258, unit: 'd' },
+      obliquity: 3.119 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.056595 as DegreesType,
+        rightAscensionRate: -0.006499,
+        declination: 64.495303 as DegreesType,
+        declinationRate: 0.002413,
+        primeMeridian: 284.95 as DegreesType,
+        primeMeridianRate: 870.536,
+        rightAscensionTerms: [
+          iauTerm(0.000117, 99.360714, 4850.4046),
+          iauTerm(0.000938, 175.895369, 1191.9605),
+          iauTerm(0.001432, 300.323162, 262.5475),
+          iauTerm(0.00003, 114.012305, 6070.2476),
+          iauTerm(0.00215, 49.511251, 64.3)
+        ],
+        declinationTerms: [
+          iauTerm(0.00005, 99.360714, 4850.4046),
+          iauTerm(0.000404, 175.895369, 1191.9605),
+          iauTerm(0.000617, 300.323162, 262.5475),
+          iauTerm(-0.000013, 114.012305, 6070.2476),
+          iauTerm(0.000926, 49.511251, 64.3)
+        ]
+      }
+    },
     radius: { value: 69911, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 71492, unit: 'km' },
@@ -250,7 +378,19 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU System III, 10 h 39 m 22.4 s, from Voyager's radio signals; ring seismology gives 10 h 33 m 38 s */
-    rotation: { period: { value: 0.4440092592, unit: 'd' } },
+    rotation: {
+      period: { value: 0.4440092592, unit: 'd' },
+      obliquity: 26.73 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 40.589 as DegreesType,
+        rightAscensionRate: -0.036,
+        declination: 83.537 as DegreesType,
+        declinationRate: -0.004,
+        primeMeridian: 38.9 as DegreesType,
+        primeMeridianRate: 810.7939024
+      }
+    },
     radius: { value: 58232, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 60268, unit: 'km' },
@@ -281,7 +421,20 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
-    rotation: { period: { value: 0.7183333333, unit: 'd' }, retrograde: true },
+    rotation: {
+      period: { value: 0.7183333333, unit: 'd' },
+      retrograde: true,
+      obliquity: 97.77 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 257.311 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -15.175 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 203.81 as DegreesType,
+        primeMeridianRate: -501.1600928
+      }
+    },
     radius: { value: 25362, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 25559, unit: 'km' },
@@ -312,7 +465,22 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, 15.9663 h, from Karkoschka (2011); Voyager's radio period was 16.11 h */
-    rotation: { period: { value: 0.6652625, unit: 'd' } },
+    rotation: {
+      period: { value: 0.6652625, unit: 'd' },
+      obliquity: 28.318 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 299.36 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 43.46 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 249.978 as DegreesType,
+        primeMeridianRate: 541.1397757,
+        rightAscensionTerms: [iauTerm(0.7, 357.85, 52.316)],
+        declinationTerms: [iauTerm(-0.51, 357.85, 52.316)],
+        primeMeridianTerms: [iauTerm(-0.48, 357.85, 52.316)]
+      }
+    },
     radius: { value: 24622, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 24764, unit: 'km' },
@@ -343,7 +511,20 @@ export const PLANETS: PlanetsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: IAU, backwards against the Sun's spin */
-    rotation: { period: { value: 6.387222999, unit: 'd' }, retrograde: true },
+    rotation: {
+      period: { value: 6.387222999, unit: 'd' },
+      retrograde: true,
+      obliquity: 119.608 as DegreesType,
+      iau: {
+        pole: 'positive',
+        rightAscension: 132.993 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -6.163 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 302.695 as DegreesType,
+        primeMeridianRate: 56.3625225
+      }
+    },
     radius: { value: 1188.3, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 1188.3, unit: 'km' },
