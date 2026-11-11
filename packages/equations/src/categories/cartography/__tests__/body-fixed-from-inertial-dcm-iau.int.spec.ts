@@ -1,10 +1,8 @@
 import { Matrix3x3Type, Radians } from '@interstellar-tools/types';
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import {
-  absClose,
-  matAbsClose
-} from '../../../__tests__/helpers/index.js';
+import { absClose, matAbsClose } from '../../../__tests__/helpers/index.js';
+import { applyMatrix3 } from '../../helpers/apply-matrix-3.js';
 import { bodyFixedFromInertialDcmIAU } from '../body-fixed-from-inertial-dcm-iau.js';
 import { transpose3 } from '../../helpers/transpose-3.js';
 import { matMul3 } from '../../helpers/mat-mul3.js';
@@ -23,6 +21,69 @@ describe('bodyFixedFromInertialDcmIAU', () => {
     const W = 0 as Radians;
 
     const R = bodyFixedFromInertialDcmIAU(alphaP, deltaP, W);
+    matAbsClose(R, I3, 1e-12);
+  });
+
+  // A unit vector toward a right ascension and declination, in radians
+  const toward = (ra: number, dec: number) =>
+    [
+      Math.cos(dec) * Math.cos(ra),
+      Math.cos(dec) * Math.sin(ra),
+      Math.sin(dec)
+    ] as const;
+  const DEG = Math.PI / 180;
+
+  test('turns the pole into the body’s z axis', () => {
+    // Saturn's pole (Archinal et al. 2018), and others around the sky
+    for (const [ra, dec] of [
+      [40.589, 83.537],
+      [317.68, 52.89],
+      [257.3, -15.1],
+      [0, -60]
+    ] as const) {
+      const R = bodyFixedFromInertialDcmIAU(
+        (ra * DEG) as Radians,
+        (dec * DEG) as Radians,
+        (123 * DEG) as Radians
+      );
+      const pole = applyMatrix3(R, toward(ra * DEG, dec * DEG));
+
+      [0, 0, 1].forEach((value, k) =>
+        absClose(pole[k]!, value, 1e-12, `${ra}, ${dec}: ${pole}`)
+      );
+    }
+  });
+
+  test('puts the prime meridian W east of the node, at α + 90° on the equator', () => {
+    const alphaP = (40.589 * DEG) as Radians;
+    const deltaP = (83.537 * DEG) as Radians;
+    const node = toward(alphaP + Math.PI / 2, 0);
+
+    for (const w of [0, 30, 90, 200]) {
+      const R = bodyFixedFromInertialDcmIAU(
+        alphaP,
+        deltaP,
+        (w * DEG) as Radians
+      );
+      const inBody = applyMatrix3(R, node);
+
+      // The node is W west of the prime meridian, in the body's equator
+      [Math.cos(w * DEG), -Math.sin(w * DEG), 0].forEach((value, k) =>
+        absClose(inBody[k]!, value, 1e-12, `W ${w}: ${inBody}`)
+      );
+    }
+  });
+
+  test('lines up with the ICRF for its pole and W = 270°', () => {
+    // With the pole at the ICRF's, the node is at α = 90°: W = 270° puts the
+    // prime meridian on the equinox, at α = 360°, and the body frame on the
+    // ICRF
+    const R = bodyFixedFromInertialDcmIAU(
+      0 as Radians,
+      (Math.PI / 2) as Radians,
+      ((3 * Math.PI) / 2) as Radians
+    );
+
     matAbsClose(R, I3, 1e-12);
   });
 
