@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.3.0...%40interstellar-tools%2Fconstants%402.4.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give galaxies their direction from the Sun, and the Sun its place in the Milky Way ([b3c0f9a](https://github.com/phun-ky/interstellar-tools/commit/b3c0f9aaf033e6063b09db75362963cbac02ef15)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [2.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.2.0...%40interstellar-tools%2Fconstants%402.3.0) (2026-11-09)
 
 ### Feature

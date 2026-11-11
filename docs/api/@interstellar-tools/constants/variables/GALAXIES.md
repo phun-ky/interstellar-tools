@@ -8,7 +8,7 @@ const GALAXIES: GalaxiesType;
 ```
 
 Defined in:
-[bodies/galaxies.ts:40](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/galaxies.ts#L40)
+[bodies/galaxies.ts:47](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/galaxies.ts#L47)
 
 Represents a collection of galaxies within the space visualization.
 
@@ -22,6 +22,19 @@ Represents a collection of galaxies within the space visualization.
   Magellanic Clouds (Pietrzyński et al. 2019, Graczyk et al. 2020), Vasiliev &
   Belokurov 2020 for the Sagittarius dwarf, the EHT's 16.8 Mpc for M87, and red
   giants for Centaurus A (Harris et al. 2010).
+
+- `direction` is the galactic longitude `l` and latitude `b` of its centre, seen
+  from the Sun, from [NED](https://ned.ipac.caltech.edu/). The Milky Way has
+  none: the Sun is in it. For the Large Magellanic Cloud it's the optical centre
+  of its bar, 0.9° from the centre its stars and gas turn about. For the
+  Sagittarius dwarf it's the centre of Ibata, Gilmore & Irwin (1994), 5.3′ from
+  M54, the cluster at its heart.
+
+- Both `distance` and `direction` are from the Sun, where they're measured. To
+  draw the galaxies around the Milky Way's centre, convert them with
+  `galactocentricPosition` in `@interstellar-tools/equations`, which uses
+  [SUN_GALACTOCENTRIC_DISTANCE](SUN_GALACTOCENTRIC_DISTANCE.md) and
+  [SUN_HEIGHT_ABOVE_GALACTIC_PLANE](SUN_HEIGHT_ABOVE_GALACTIC_PLANE.md).
 
 - `diameter` is the D25 isophotal diameter, where the disk fades to 25
   B-magnitudes per square arcsecond: from RC3 (de Vaucouleurs et al. 1991) and
@@ -52,16 +65,16 @@ time.
 
 <div class="ph table-overflow">
 
-| id                     | name                                | type       | diameter    | distance                                                                         | blackHole.name  | blackHole.mass                                                               | blackHole.radius | blackHole.x | blackHole.y |
-| ---------------------- | ----------------------------------- | ---------- | ----------- | -------------------------------------------------------------------------------- | --------------- | ---------------------------------------------------------------------------- | ---------------- | ----------- | ----------- |
-| milky-way              | Milky Way                           | SBbc       | 87410 ly    | 0 ly                                                                             | Sagittarius A\* | [`4299600`](https://github.com/phun-ky/interstellar-tools/commit/4299600)    | 0.08488 au       | 0 au        | 0 au        |
-| andromeda              | Andromeda                           | SA(s)b     | 137570 ly   | [`2482050`](https://github.com/phun-ky/interstellar-tools/commit/2482050) ly     | M31\*           | [`1400000`](https://github.com/phun-ky/interstellar-tools/commit/140000000)  | 2.764 au         | 0 au        | 0 au        |
-| triangulum             | Triangulum                          | SA(s)cd    | 56420 ly    | [`2739714`](https://github.com/phun-ky/interstellar-tools/commit/2739714) ly     |                 |                                                                              |                  |             |             |
-| large-magellanic-cloud | Large Magellanic Cloud              | SB(s)m     | 30377.1 ly  | 161740.95 ly                                                                     |                 |                                                                              |                  |             |             |
-| small-magellanic-cloud | Small Magellanic Cloud              | SB(s)m pec | 18733.3 ly  | 203652.04 ly                                                                     |                 |                                                                              |                  |             |             |
-| sagittarius-dwarf      | Sagittarius Dwarf Spheroidal Galaxy | dSph(t)    | 17197.1 ly  | 86431.44 ly                                                                      |                 |                                                                              |                  |             |             |
-| m87                    | Messier 87                          | E+0-1 pec  | 132574.9 ly | [`5479427`](https://github.com/phun-ky/interstellar-tools/commit/54794271).45 ly | M87\*           | [`6500000`](https://github.com/phun-ky/interstellar-tools/commit/6500000000) | 128.318 au       | 0 au        | 0 au        |
-| centaurus-a            | Centaurus A                         | S0 pec     | 92669.2 ly  | [`1239394`](https://github.com/phun-ky/interstellar-tools/commit/12393942).35 ly | Centaurus A\*   | [`5500000`](https://github.com/phun-ky/interstellar-tools/commit/55000000)   | 1.08577 au       | 0 au        | 0 au        |
+| id                     | name                                | type       | diameter    | distance                                                                         | direction.l | direction.b | blackHole.name  | blackHole.mass                                                               | blackHole.radius | blackHole.x | blackHole.y |
+| ---------------------- | ----------------------------------- | ---------- | ----------- | -------------------------------------------------------------------------------- | ----------- | ----------- | --------------- | ---------------------------------------------------------------------------- | ---------------- | ----------- | ----------- |
+| milky-way              | Milky Way                           | SBbc       | 87410 ly    | 0 ly                                                                             |             |             | Sagittarius A\* | [`4299600`](https://github.com/phun-ky/interstellar-tools/commit/4299600)    | 0.08488 au       | 0 au        | 0 au        |
+| andromeda              | Andromeda                           | SA(s)b     | 137570 ly   | [`2482050`](https://github.com/phun-ky/interstellar-tools/commit/2482050) ly     | 121.1744    | -21.573     | M31\*           | [`1400000`](https://github.com/phun-ky/interstellar-tools/commit/140000000)  | 2.764 au         | 0 au        | 0 au        |
+| triangulum             | Triangulum                          | SA(s)cd    | 56420 ly    | [`2739714`](https://github.com/phun-ky/interstellar-tools/commit/2739714) ly     | 133.6101    | -31.3306    |                 |                                                                              |                  |             |             |
+| large-magellanic-cloud | Large Magellanic Cloud              | SB(s)m     | 30377.1 ly  | 161740.95 ly                                                                     | 280.4652    | -32.8884    |                 |                                                                              |                  |             |             |
+| small-magellanic-cloud | Small Magellanic Cloud              | SB(s)m pec | 18733.3 ly  | 203652.04 ly                                                                     | 302.797     | -44.2993    |                 |                                                                              |                  |             |             |
+| sagittarius-dwarf      | Sagittarius Dwarf Spheroidal Galaxy | dSph(t)    | 17197.1 ly  | 86431.44 ly                                                                      | 5.5689      | -14.1664    |                 |                                                                              |                  |             |             |
+| m87                    | Messier 87                          | E+0-1 pec  | 132574.9 ly | [`5479427`](https://github.com/phun-ky/interstellar-tools/commit/54794271).45 ly | 283.7777    | 74.4912     | M87\*           | [`6500000`](https://github.com/phun-ky/interstellar-tools/commit/6500000000) | 128.318 au       | 0 au        | 0 au        |
+| centaurus-a            | Centaurus A                         | S0 pec     | 92669.2 ly  | [`1239394`](https://github.com/phun-ky/interstellar-tools/commit/12393942).35 ly | 309.5159    | 19.4173     | Centaurus A\*   | [`5500000`](https://github.com/phun-ky/interstellar-tools/commit/55000000)   | 1.08577 au       | 0 au        | 0 au        |
 
 </div>
 

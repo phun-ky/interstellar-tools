@@ -82,6 +82,13 @@ npm i --save @interstellar-tools/constants
 | [RADIANS_PER_ARCSECOND](variables/RADIANS_PER_ARCSECOND.md)   | Radians in one arcsecond: `π / 648 000`.                                                             |
 | [SPEED_OF_LIGHT_M_PER_S](variables/SPEED_OF_LIGHT_M_PER_S.md) | Speed of light in vacuum, **exact** per SI (m·s⁻¹).                                                  |
 
+## Galactic
+
+| Variable                                                                        | Description                                                                                        |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| [SUN_GALACTOCENTRIC_DISTANCE](variables/SUN_GALACTOCENTRIC_DISTANCE.md)         | The **Sun's distance from the Milky Way's centre**, $R_0$: 8275.9 ± 8.6 pc.                        |
+| [SUN_HEIGHT_ABOVE_GALACTIC_PLANE](variables/SUN_HEIGHT_ABOVE_GALACTIC_PLANE.md) | The **Sun's height above the Milky Way's plane**, $z_\odot$: 20.8 ± 0.3 pc, to the galactic north. |
+
 ## Math
 
 | Variable                      | Description                                                                                                                                                                                                       |
