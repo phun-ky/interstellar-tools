@@ -123,6 +123,13 @@ orbits, angles, solve for kelper or find true anomalies.
 | [stagnationHeatFlux](functions/stagnationHeatFlux.md)                               | Compute the **convective heat flux at the stagnation point** of an entry vehicle, with the Sutton–Graves relation. |
 | [terminalVelocity](functions/terminalVelocity.md)                                   | Compute the **terminal speed** of a falling body: where drag balances its weight.                                  |
 
+## Galactic
+
+| Name                                                                                           | Description                                                                                                                                                                                                                                               |
+| ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [GalactocentricPositionOptionsInterface](interfaces/GalactocentricPositionOptionsInterface.md) | Options for [galactocentricPosition](functions/galactocentricPosition.md).                                                                                                                                                                                |
+| [galactocentricPosition](functions/galactocentricPosition.md)                                  | The **position around the Milky Way's centre** of something seen from the Sun: turns a direction in galactic coordinates and a distance, as `GALAXIES` in `@interstellar-tools/constants` gives them, into $x$, $y$, $z$ in the `'galactocentric'` frame. |
+
 ## Gravity
 
 | Function                                                              | Description                                                                                                                                                                                                                                                |
