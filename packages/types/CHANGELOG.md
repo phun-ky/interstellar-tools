@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.6.0...%40interstellar-tools%2Ftypes%402.7.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Type open orbits and interstellar objects ([b376bf6](https://github.com/phun-ky/interstellar-tools/commit/b376bf6a852d65cbeb5d44aeedcb33d1e78b587c)), references [#380](https://github.com/phun-ky/interstellar-tools/issues/380)
+
 ## [2.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.5.0...%40interstellar-tools%2Ftypes%402.6.0) (2026-11-11)
 
 ### Feature

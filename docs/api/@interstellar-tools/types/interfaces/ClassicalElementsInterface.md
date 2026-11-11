@@ -4,7 +4,7 @@ ClassicalElementsInterface
 # Interface: ClassicalElementsInterface
 
 Defined in:
-[orbits.ts:279](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L279)
+[orbits.ts:347](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L347)
 
 The six **classical orbital elements** of a two-body orbit, in SI units and
 radians.
@@ -46,7 +46,7 @@ a: number;
 ```
 
 Defined in:
-[orbits.ts:281](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L281)
+[orbits.ts:349](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L349)
 
 Semi-major axis in m; negative for hyperbolic orbits.
 
@@ -59,7 +59,7 @@ argp: Radians;
 ```
 
 Defined in:
-[orbits.ts:289](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L289)
+[orbits.ts:357](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L357)
 
 Argument of periapsis (ω) in radians, in \[0, 2π).
 
@@ -72,7 +72,7 @@ e: number;
 ```
 
 Defined in:
-[orbits.ts:283](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L283)
+[orbits.ts:351](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L351)
 
 Eccentricity: 0 circular, below 1 elliptic, above 1 hyperbolic.
 
@@ -85,7 +85,7 @@ i: Radians;
 ```
 
 Defined in:
-[orbits.ts:285](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L285)
+[orbits.ts:353](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L353)
 
 Inclination in radians, in \[0, π].
 
@@ -98,7 +98,7 @@ nu: Radians;
 ```
 
 Defined in:
-[orbits.ts:291](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L291)
+[orbits.ts:359](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L359)
 
 True anomaly (ν) in radians, in \[0, 2π).
 
@@ -111,6 +111,6 @@ raan: Radians;
 ```
 
 Defined in:
-[orbits.ts:287](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L287)
+[orbits.ts:355](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L355)
 
 Right ascension of the ascending node (Ω) in radians, in \[0, 2π).
