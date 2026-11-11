@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.5.0...%40interstellar-tools%2Fconstants%402.6.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give the bodies the IAU's rotation models and axial tilts ([c478630](https://github.com/phun-ky/interstellar-tools/commit/c478630938cfd3fc3b6cb5dad63fd4ce4d62c600)), references [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
 ## [2.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.4.0...%40interstellar-tools%2Fconstants%402.5.0) (2026-11-11)
 
 ### Feature
