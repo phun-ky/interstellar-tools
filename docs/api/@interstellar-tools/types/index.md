@@ -59,36 +59,38 @@ npm i --save @interstellar-tools/types
 
 ## Celestial Bodies
 
-| Name                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [AsteroidBeltInterface](interfaces/AsteroidBeltInterface.md)                 | Represents an asteroid belt within the solar system simulation.                                                  |
-| [AsteroidInterface](interfaces/AsteroidInterface.md)                         | Canonical shape for an **asteroid record**: identity, dynamics, and optional visualization aides.                |
-| [BlackHoleInterface](interfaces/BlackHoleInterface.md)                       | Represents a **black hole** at the center of a galaxy.                                                           |
-| [CartesianCoordinatesInterface](interfaces/CartesianCoordinatesInterface.md) | Represents **2D coordinates**, for example a point on a drawn orbit.                                             |
-| [CometInterface](interfaces/CometInterface.md)                               | Represents a **comet** in the solar system simulation.                                                           |
-| [DisplayInterface](interfaces/DisplayInterface.md)                           | How a body is **drawn**: everything about rendering, kept apart from its physical data and its `orbit`.          |
-| [GalaxyDiskInterface](interfaces/GalaxyDiskInterface.md)                     | How a **galaxy's disk** is turned, as seen from the Sun.                                                         |
-| [GalaxyInterface](interfaces/GalaxyInterface.md)                             | Represents a **galaxy** in the universe simulation.                                                              |
-| [MoonInterface](interfaces/MoonInterface.md)                                 | Represents a **moon** (natural satellite) orbiting a planet, a dwarf planet or an asteroid.                      |
-| [PlanetInterface](interfaces/PlanetInterface.md)                             | Represents a **planet** or **planetoid**.                                                                        |
-| [RotationInterface](interfaces/RotationInterface.md)                         | How a star, planet, moon, asteroid or comet **spins**: its sidereal rotation period, one turn against the stars. |
-| [StarInterface](interfaces/StarInterface.md)                                 | Represents a **star**.                                                                                           |
-| [SystemInterface](interfaces/SystemInterface.md)                             | Represents a **system**: the barycenter (centre of mass) that its members orbit.                                 |
-| [AsteroidBeltsType](type-aliases/AsteroidBeltsType.md)                       | Type alias for a collection of asteroid belts.                                                                   |
-| [AsteroidCategory](type-aliases/AsteroidCategory.md)                         | More specific **group/category** for dynamical families or special bodies.                                       |
-| [AsteroidSpectralType](type-aliases/AsteroidSpectralType.md)                 | **Spectral (taxonomic) class** based on reflectance spectra & albedo.                                            |
-| [AsteroidsType](type-aliases/AsteroidsType.md)                               | Convenience alias for a list of asteroids.                                                                       |
-| [AsteroidType](type-aliases/AsteroidType.md)                                 | High-level **orbital class** of an asteroid (by dynamical region).                                               |
-| [BlackHolesType](type-aliases/BlackHolesType.md)                             | Type alias for a collection of **black holes**.                                                                  |
-| [CelestialBodiesType](type-aliases/CelestialBodiesType.md)                   | A list of celestial bodies of any kind: stars, planets, moons, comets and asteroids, mixed.                      |
-| [CelestialBodyType](type-aliases/CelestialBodyType.md)                       | Type alias representing a single celestial body.                                                                 |
-| [CometsType](type-aliases/CometsType.md)                                     | Type alias for an array of **comets**.                                                                           |
-| [GalaxiesType](type-aliases/GalaxiesType.md)                                 | Type alias for a collection of **galaxies**.                                                                     |
-| [MoonsType](type-aliases/MoonsType.md)                                       | Type alias for a collection of **moons**.                                                                        |
-| [PlanetsType](type-aliases/PlanetsType.md)                                   | Type alias for a collection of **planets**.                                                                      |
-| [StarsType](type-aliases/StarsType.md)                                       | Type alias for a collection of **stars**.                                                                        |
-| [SystemKindType](type-aliases/SystemKindType.md)                             | Kind of system a barycenter holds together.                                                                      |
-| [SystemsType](type-aliases/SystemsType.md)                                   | Type alias for a collection of systems.                                                                          |
+| Name                                                                         | Description                                                                                                                       |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| [AsteroidBeltInterface](interfaces/AsteroidBeltInterface.md)                 | Represents an asteroid belt within the solar system simulation.                                                                   |
+| [AsteroidInterface](interfaces/AsteroidInterface.md)                         | Canonical shape for an **asteroid record**: identity, dynamics, and optional visualization aides.                                 |
+| [BlackHoleInterface](interfaces/BlackHoleInterface.md)                       | Represents a **black hole** at the center of a galaxy.                                                                            |
+| [CartesianCoordinatesInterface](interfaces/CartesianCoordinatesInterface.md) | Represents **2D coordinates**, for example a point on a drawn orbit.                                                              |
+| [CometInterface](interfaces/CometInterface.md)                               | Represents a **comet** in the solar system simulation.                                                                            |
+| [DisplayInterface](interfaces/DisplayInterface.md)                           | How a body is **drawn**: everything about rendering, kept apart from its physical data and its `orbit`.                           |
+| [GalaxyDiskInterface](interfaces/GalaxyDiskInterface.md)                     | How a **galaxy's disk** is turned, as seen from the Sun.                                                                          |
+| [GalaxyInterface](interfaces/GalaxyInterface.md)                             | Represents a **galaxy** in the universe simulation.                                                                               |
+| [IauPeriodicTermInterface](interfaces/IauPeriodicTermInterface.md)           | A **periodic term** in an IAU rotation model: an amplitude times the sine or cosine of an angle that grows with time.             |
+| [IauRotationModelInterface](interfaces/IauRotationModelInterface.md)         | A body's **IAU rotation model**: which way its spin axis points, and how far it has turned, at any moment (Archinal et al. 2018). |
+| [MoonInterface](interfaces/MoonInterface.md)                                 | Represents a **moon** (natural satellite) orbiting a planet, a dwarf planet or an asteroid.                                       |
+| [PlanetInterface](interfaces/PlanetInterface.md)                             | Represents a **planet** or **planetoid**.                                                                                         |
+| [RotationInterface](interfaces/RotationInterface.md)                         | How a star, planet, moon, asteroid or comet **spins**: its sidereal rotation period, one turn against the stars.                  |
+| [StarInterface](interfaces/StarInterface.md)                                 | Represents a **star**.                                                                                                            |
+| [SystemInterface](interfaces/SystemInterface.md)                             | Represents a **system**: the barycenter (centre of mass) that its members orbit.                                                  |
+| [AsteroidBeltsType](type-aliases/AsteroidBeltsType.md)                       | Type alias for a collection of asteroid belts.                                                                                    |
+| [AsteroidCategory](type-aliases/AsteroidCategory.md)                         | More specific **group/category** for dynamical families or special bodies.                                                        |
+| [AsteroidSpectralType](type-aliases/AsteroidSpectralType.md)                 | **Spectral (taxonomic) class** based on reflectance spectra & albedo.                                                             |
+| [AsteroidsType](type-aliases/AsteroidsType.md)                               | Convenience alias for a list of asteroids.                                                                                        |
+| [AsteroidType](type-aliases/AsteroidType.md)                                 | High-level **orbital class** of an asteroid (by dynamical region).                                                                |
+| [BlackHolesType](type-aliases/BlackHolesType.md)                             | Type alias for a collection of **black holes**.                                                                                   |
+| [CelestialBodiesType](type-aliases/CelestialBodiesType.md)                   | A list of celestial bodies of any kind: stars, planets, moons, comets and asteroids, mixed.                                       |
+| [CelestialBodyType](type-aliases/CelestialBodyType.md)                       | Type alias representing a single celestial body.                                                                                  |
+| [CometsType](type-aliases/CometsType.md)                                     | Type alias for an array of **comets**.                                                                                            |
+| [GalaxiesType](type-aliases/GalaxiesType.md)                                 | Type alias for a collection of **galaxies**.                                                                                      |
+| [MoonsType](type-aliases/MoonsType.md)                                       | Type alias for a collection of **moons**.                                                                                         |
+| [PlanetsType](type-aliases/PlanetsType.md)                                   | Type alias for a collection of **planets**.                                                                                       |
+| [StarsType](type-aliases/StarsType.md)                                       | Type alias for a collection of **stars**.                                                                                         |
+| [SystemKindType](type-aliases/SystemKindType.md)                             | Kind of system a barycenter holds together.                                                                                       |
+| [SystemsType](type-aliases/SystemsType.md)                                   | Type alias for a collection of systems.                                                                                           |
 
 ## Distance
 

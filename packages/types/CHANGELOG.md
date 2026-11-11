@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.5.0...%40interstellar-tools%2Ftypes%402.6.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give rotations an axial tilt and an IAU rotation model ([6ace491](https://github.com/phun-ky/interstellar-tools/commit/6ace4911e39c9aea9c998c9e6510a40ff8c51687)), references [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
 ## [2.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.4.0...%40interstellar-tools%2Ftypes%402.5.0) (2026-11-11)
 
 ### Feature
