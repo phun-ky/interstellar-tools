@@ -603,8 +603,8 @@ describe('bodies', () => {
     assert.ok(
       resources.some((r) => r.uri === 'interstellar://datasets/planets')
     );
-    // The eight body datasets, the satellites and the probes
-    assert.equal(resources.length, 10);
+    // The nine body datasets, the satellites and the probes
+    assert.equal(resources.length, 11);
   });
 
   test('reads a dataset resource', async () => {
@@ -635,6 +635,41 @@ describe('bodies', () => {
         (m: { dataset: string; body: { id: string } }) =>
           m.dataset === 'systems' && m.body.id === 'alpha-centauri-ab'
       )
+    );
+  });
+
+  test('reads the interstellar objects, on open orbits', async () => {
+    const objects = (await readJson(
+      'interstellar://datasets/interstellar-objects'
+    )) as {
+      name: string;
+      designation: string;
+      orbit: { e: number; period?: unknown; periapsisTime: string };
+    }[];
+
+    assert.deepEqual(
+      objects.map(({ designation }) => designation),
+      ['1I/2017 U1', '2I/2019 Q4', '3I/2025 N1']
+    );
+
+    for (const { orbit } of objects) {
+      assert.ok(orbit.e > 1);
+      assert.equal(orbit.period, undefined);
+    }
+
+    assert.equal(objects[0]!.orbit.periapsisTime, '2017-09-09T11:51:02.065Z');
+  });
+
+  test('find_body finds ʻOumuamua without its ʻokina', async () => {
+    const res = await call('find_body', { query: 'oumuamua' });
+    const { matches } = res.structuredContent!;
+
+    assert.deepEqual(
+      matches.map(
+        (m: { dataset: string; body: { id: string } }) =>
+          `${m.dataset}/${m.body.id}`
+      ),
+      ['interstellar-objects/1i-oumuamua']
     );
   });
 
