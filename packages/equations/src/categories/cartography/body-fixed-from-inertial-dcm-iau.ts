@@ -22,6 +22,12 @@ import { rot3 } from '../helpers/rot-3.js';
  *
  * ::: info Notes:
  *
+ * - $\mathbf R_1$ and $\mathbf R_3$ are frame rotations, as the IAU and SPICE
+ *   write them: $\mathbf R_3(\theta)$ turns the axes by $\theta$ about `z`, so
+ *   a fixed vector's coordinates turn by $-\theta$.
+ * - The pole $(\alpha_p, \delta_p)$ becomes the body's `z` axis, and its `x`
+ *   axis, the prime meridian, is $W$ east of the node where the body's equator
+ *   crosses the ICRF equator northwards, at right ascension $\alpha_p + 90°$.
  * - All angles are in **radians**.
  * - Matrices are **row-major** (`M[row][col]`).
  * - The returned matrix can be applied to inertial vectors via `applyMatrix3(R, v)`.
@@ -67,9 +73,10 @@ export const bodyFixedFromInertialDcmIAU = (
 
   const halfPi = (Math.PI / 2) as Radians;
 
-  // R3(W) * R1(π/2 - δp) * R3(π/2 + αp)
+  // R3(W) R1(π/2 − δp) R3(π/2 + αp), with the IAU's frame rotations. rot1 and
+  // rot3 turn vectors, the other way, so each angle is negated
   return matMul3(
-    matMul3(rot3(W), rot1((halfPi - deltaP) as Radians)),
-    rot3((halfPi + alphaP) as Radians)
+    matMul3(rot3(-W as Radians), rot1((deltaP - halfPi) as Radians)),
+    rot3((-halfPi - alphaP) as Radians)
   );
 };
