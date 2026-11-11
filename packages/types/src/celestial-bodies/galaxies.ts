@@ -1,5 +1,6 @@
 import { DistanceInterface } from '../distance.js';
 import type { Radians } from '../numeric.js';
+import type { GalacticDirectionInterface } from '../positions.js';
 
 /**
  * Represents a **black hole** at the center of a galaxy.
@@ -64,8 +65,13 @@ export interface BlackHoleInterface {
  * - **Type (`type`)**: The morphological classification (e.g., Spiral, Elliptical).
  * - **Diameter (`diameter`)**: Measured in **light-years**.
  * - **Distance (`distance`)**: The distance from the Sun, also in **light-years**: 0 for the Milky Way itself.
+ *   Like `direction`, it's measured from the Sun, where every observation is made from.
  * - **Black Hole (`blackHole`)**: The central supermassive black hole, where one is detected.
  *   Triangulum (M33) has none: observations only limit its mass to a few thousand $M_\odot$.
+ * - **Direction (`direction`)**: Where it is on the sky, in galactic coordinates from the Sun.
+ *   With `distance`, it places the galaxy from the Sun; to draw it around the Milky Way's
+ *   centre instead, shift it by the Sun's place there, as `galactocentricPosition` in
+ *   `@interstellar-tools/equations` does.
  *
  * @example
  * ```ts
@@ -93,6 +99,8 @@ export interface GalaxyInterface {
   distance: DistanceInterface;
   /** Central supermassive black hole of the galaxy. Omitted where none is detected. */
   blackHole?: BlackHoleInterface;
+  /** Direction from the Sun, in galactic coordinates. Omitted for the Milky Way itself. */
+  direction?: GalacticDirectionInterface;
 }
 
 /**
