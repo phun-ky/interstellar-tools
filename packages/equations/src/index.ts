@@ -67,6 +67,10 @@ export * from './categories/entry/stagnation-heat-flux.js';
 
 export * from './categories/entry/terminal-velocity.js';
 
+// categories/galactic
+
+export * from './categories/galactic/galactocentric-position.js';
+
 // categories/helpers
 
 export * from './categories/helpers/apply-matrix-3.js';
