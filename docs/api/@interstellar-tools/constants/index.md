@@ -84,10 +84,11 @@ npm i --save @interstellar-tools/constants
 
 ## Galactic
 
-| Variable                                                                        | Description                                                                                        |
-| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| [SUN_GALACTOCENTRIC_DISTANCE](variables/SUN_GALACTOCENTRIC_DISTANCE.md)         | The **Sun's distance from the Milky Way's centre**, $R_0$: 8275.9 ± 8.6 pc.                        |
-| [SUN_HEIGHT_ABOVE_GALACTIC_PLANE](variables/SUN_HEIGHT_ABOVE_GALACTIC_PLANE.md) | The **Sun's height above the Milky Way's plane**, $z_\odot$: 20.8 ± 0.3 pc, to the galactic north. |
+| Variable                                                                        | Description                                                                                                             |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [SUN_GALACTOCENTRIC_DISTANCE](variables/SUN_GALACTOCENTRIC_DISTANCE.md)         | The **Sun's distance from the Milky Way's centre**, $R_0$: 8275.9 ± 8.6 pc.                                             |
+| [SUN_GALACTOCENTRIC_VELOCITY](variables/SUN_GALACTOCENTRIC_VELOCITY.md)         | The **Sun's velocity around the Milky Way's centre**, in km/s, in the `'galactocentric'` frame: $(12.9, 251.51, 8.56)$. |
+| [SUN_HEIGHT_ABOVE_GALACTIC_PLANE](variables/SUN_HEIGHT_ABOVE_GALACTIC_PLANE.md) | The **Sun's height above the Milky Way's plane**, $z_\odot$: 20.8 ± 0.3 pc, to the galactic north.                      |
 
 ## Math
 

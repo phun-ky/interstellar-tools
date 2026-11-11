@@ -8,7 +8,7 @@ const SUN_GALACTOCENTRIC_DISTANCE: Readonly<DistanceInterface>;
 ```
 
 Defined in:
-[galactic.ts:30](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/galactic.ts#L30)
+[galactic.ts:33](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/galactic.ts#L33)
 
 The **Sun's distance from the Milky Way's centre**, $R_0$: 8275.9 ± 8.6 pc.
 

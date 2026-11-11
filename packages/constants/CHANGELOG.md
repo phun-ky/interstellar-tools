@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.4.0...%40interstellar-tools%2Fconstants%402.5.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give galaxies their disks and motions, and the Sun its velocity ([1b317cd](https://github.com/phun-ky/interstellar-tools/commit/1b317cdd8cc1d41fca6ae4a412ab6ebf91d3412b)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [2.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.3.0...%40interstellar-tools%2Fconstants%402.4.0) (2026-11-11)
 
 ### Feature

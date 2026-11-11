@@ -8,7 +8,7 @@ const SUN_HEIGHT_ABOVE_GALACTIC_PLANE: Readonly<DistanceInterface>;
 ```
 
 Defined in:
-[galactic.ts:57](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/galactic.ts#L57)
+[galactic.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/galactic.ts#L60)
 
 The **Sun's height above the Milky Way's plane**, $z_\odot$: 20.8 ± 0.3 pc, to
 the galactic north.
