@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.23.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.22.0...%40interstellar-tools%2Fequations%401.23.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Set galaxies moving, turn their disks, and add supergalactic coordinates ([577cfa8](https://github.com/phun-ky/interstellar-tools/commit/577cfa8889d273eba86bf2e4593d9c4212f354e4)), closes [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [1.22.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.21.0...%40interstellar-tools%2Fequations%401.22.0) (2026-11-11)
 
 ### Feature
