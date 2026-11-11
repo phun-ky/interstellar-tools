@@ -88,6 +88,14 @@ copyright. They're compiled from public references, credited here:
   diameter from McConnachie (2012, AJ 144, 4) and its type from
   [NED](https://ned.ipac.caltech.edu/). The mass of Centaurus A's black hole
   from Cappellari et al. (2009, MNRAS 394, 660).
+- **Galaxies' directions and the Sun's place:** the galaxies' galactic
+  longitudes and latitudes from the J2000 positions in
+  [NED](https://ned.ipac.caltech.edu/), converted with the Hipparcos matrix (ESA
+  1997, ESA SP-1200, Vol. 1, §1.5.3). The Sagittarius dwarf's centre from Ibata,
+  Gilmore and Irwin (1994, Nature 370, 194), as NED and McConnachie (2012, AJ
+  144, 4) give it. The Sun's distance from the Milky Way's centre from the
+  GRAVITY Collaboration (2024, A&A 692, A242), and its height above the plane
+  from Bennett and Bovy (2019, MNRAS 482, 1417).
 - **Sagittarius A\* and the S-stars:** Sagittarius A\*'s distance from the
   GRAVITY Collaboration (2024, A&A 692, A242), fitted with its mass, and the
   diameter of its ring from the Event Horizon Telescope Collaboration (2022,

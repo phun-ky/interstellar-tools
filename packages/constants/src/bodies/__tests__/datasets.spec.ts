@@ -21,6 +21,8 @@ import {
   PLANETS,
   SPEED_OF_LIGHT_M_PER_S,
   STARS,
+  SUN_GALACTOCENTRIC_DISTANCE,
+  SUN_HEIGHT_ABOVE_GALACTIC_PLANE,
   SYSTEMS,
   WGS84
 } from '../../index.js';
@@ -1181,6 +1183,54 @@ describe('GALAXIES', () => {
     }
   });
 
+  test('have their direction from the Sun, from NED’s right ascension and declination', () => {
+    // NED’s J2000 positions, in degrees
+    const radec: Record<string, [number, number]> = {
+      andromeda: [10.68479292, 41.269065],
+      triangulum: [23.46204167, 30.66022222],
+      'large-magellanic-cloud': [80.89416667, -69.75611111],
+      'small-magellanic-cloud': [13.18666667, -72.82861111],
+      'sagittarius-dwarf': [283.83125, -30.545278],
+      m87: [187.7059308, 12.39112326],
+      'centaurus-a': [201.3650625, -43.01911278]
+    };
+    // ICRS to galactic (Hipparcos, ESA 1997, Vol. 1, §1.5.3)
+    const AG = [
+      [-0.0548755604, -0.8734370902, -0.4838350155],
+      [0.4941094279, -0.44482963, 0.7469822445],
+      [-0.867666149, -0.1980763734, 0.4559837762]
+    ];
+    const DEG = Math.PI / 180;
+
+    for (const { id, name, direction } of GALAXIES) {
+      const position = radec[id];
+
+      if (!position) {
+        assert.equal(direction, undefined, `${name}: the Sun is in it`);
+        continue;
+      }
+
+      const [ra, dec] = position.map((angle) => angle * DEG) as [
+        number,
+        number
+      ];
+      const icrs = [
+        Math.cos(dec) * Math.cos(ra),
+        Math.cos(dec) * Math.sin(ra),
+        Math.sin(dec)
+      ];
+      const [x, y, z] = AG.map((row) =>
+        row.reduce((sum, value, index) => sum + value * icrs[index]!, 0)
+      ) as [number, number, number];
+      const l = (((Math.atan2(y, x) / DEG) % 360) + 360) % 360;
+      const b = Math.asin(z) / DEG;
+
+      assert.ok(direction, name);
+      assert.ok(Math.abs(direction.l - l) < 1e-4, `${name}: l ${direction.l}`);
+      assert.ok(Math.abs(direction.b - b) < 1e-4, `${name}: b ${direction.b}`);
+    }
+  });
+
   test('gives M87* the 42 μas ring the EHT imaged, the first black hole seen', () => {
     const m87 = GALAXIES.find(({ id }) => id === 'm87')!;
 
@@ -1189,6 +1239,38 @@ describe('GALAXIES', () => {
         m87.blackHole!.ringDiameter! - (42e-6 / 3600) * (Math.PI / 180)
       ) < 1e-15
     );
+  });
+});
+
+describe('the Sun in the Milky Way', () => {
+  test('is as far from the centre as Sagittarius A*, 8275.9 pc (GRAVITY 2024)', () => {
+    const sagittariusA = GALAXIES.find(
+      ({ id }) => id === 'milky-way'
+    )!.blackHole!;
+
+    assert.deepEqual(SUN_GALACTOCENTRIC_DISTANCE, {
+      value: 8275.9,
+      unit: 'pc'
+    });
+    assert.ok(
+      Math.abs(
+        sagittariusA.distance!.value -
+          SUN_GALACTOCENTRIC_DISTANCE.value * LY_PER_PC
+      ) < 0.01,
+      `${sagittariusA.distance!.value} ly`
+    );
+  });
+
+  test('is 20.8 pc above its plane (Bennett & Bovy 2019)', () => {
+    assert.deepEqual(SUN_HEIGHT_ABOVE_GALACTIC_PLANE, {
+      value: 20.8,
+      unit: 'pc'
+    });
+  });
+
+  test('can’t be changed', () => {
+    assert.ok(Object.isFrozen(SUN_GALACTOCENTRIC_DISTANCE));
+    assert.ok(Object.isFrozen(SUN_HEIGHT_ABOVE_GALACTIC_PLANE));
   });
 });
 
