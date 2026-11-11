@@ -77,6 +77,14 @@ export * from './categories/galactic/galactocentric-position.js';
 
 export * from './categories/galactic/galactocentric-to-galactic.js';
 
+export * from './categories/galactic/galactocentric-velocity.js';
+
+export * from './categories/galactic/galactic-to-supergalactic.js';
+
+export * from './categories/galactic/galaxy-disk-axis.js';
+
+export * from './categories/galactic/supergalactic-to-galactic.js';
+
 // categories/helpers
 
 export * from './categories/helpers/apply-matrix-3.js';

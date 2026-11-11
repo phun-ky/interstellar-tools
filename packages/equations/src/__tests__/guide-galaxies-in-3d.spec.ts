@@ -11,7 +11,10 @@ import test, { describe } from 'node:test';
 import { equatorialToGalactic } from '../categories/galactic/equatorial-to-galactic.js';
 import { galacticToEquatorial } from '../categories/galactic/galactic-to-equatorial.js';
 import { galactocentricPosition } from '../categories/galactic/galactocentric-position.js';
+import { galacticToSupergalactic } from '../categories/galactic/galactic-to-supergalactic.js';
 import { galactocentricToGalactic } from '../categories/galactic/galactocentric-to-galactic.js';
+import { galactocentricVelocity } from '../categories/galactic/galactocentric-velocity.js';
+import { galaxyDiskAxis } from '../categories/galactic/galaxy-disk-axis.js';
 import { convertDistanceUnit } from '../categories/helpers/convert-distance-unit.js';
 
 // Every number in the galaxies-in-3D guide
@@ -116,6 +119,38 @@ describe('Galaxies in 3D guide', () => {
     });
 
     onPage(`[${direction.l}, ${direction.b}, ${distance.value}] pc`);
+  });
+
+  test('how Andromeda moves', () => {
+    const andromeda = GALAXIES.find(({ id }) => id === 'andromeda')!;
+    const { x, y, z } = galactocentricVelocity(
+      andromeda.direction!,
+      andromeda.distance,
+      andromeda.motion!
+    );
+    const at = galactocentricPosition(andromeda.direction!, andromeda.distance);
+    const out = [at.x.value, at.y.value, at.z.value];
+    const towardsCentre =
+      (out[0]! * x + out[1]! * y + out[2]! * z) / Math.hypot(...out);
+
+    onPage(`[${[x, y, z].map((value) => value.toFixed(2)).join(', ')}] km/s`);
+    onPage(`// ${towardsCentre.toFixed(2)} km/s`);
+    onPage(`centre at ${(-towardsCentre).toFixed(2)} km/s`);
+    onPage(`towards us at ${-andromeda.motion!.radialVelocity} km/s`);
+  });
+
+  test('turning Andromeda’s disk', () => {
+    const andromeda = GALAXIES.find(({ id }) => id === 'andromeda')!;
+    const axis = galaxyDiskAxis(andromeda.direction!, andromeda.disk!);
+
+    onPage(`[${axis.map((value) => value.toFixed(4)).join(', ')}]`);
+  });
+
+  test('M87 in supergalactic coordinates', () => {
+    const m87 = GALAXIES.find(({ id }) => id === 'm87')!;
+    const { sgl, sgb } = galacticToSupergalactic(m87.direction!);
+
+    onPage(`[${sgl.toFixed(4)}, ${sgb.toFixed(4)}]`);
   });
 
   test('every galaxy’s row in the table', () => {
