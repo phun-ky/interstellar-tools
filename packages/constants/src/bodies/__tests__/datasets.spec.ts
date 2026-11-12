@@ -1924,3 +1924,100 @@ describe('INTERSTELLAR_OBJECTS', () => {
       assert.ok((display?.size ?? 0) > 0, name);
   });
 });
+
+describe('rings', () => {
+  const RINGED = PLANETS.filter(({ observations }) => observations?.rings);
+  const ringsOf = (id: string) =>
+    PLANETS.find((planet) => planet.id === id)!.observations!.rings!;
+
+  test('belong to Jupiter, Saturn, Uranus and Neptune', () => {
+    assert.deepEqual(
+      RINGED.map(({ id }) => id),
+      ['jupiter', 'saturn', 'uranus', 'neptune']
+    );
+  });
+
+  test('run from the inside out, outside the planet, in km', () => {
+    for (const { name, ellipsoid, observations } of RINGED) {
+      const { rings, gaps = [] } = observations!.rings!;
+      const equator = ellipsoid!.equatorialRadius.value;
+      const outermost = Math.max(...rings.map((r) => r.outerRadius.value));
+
+      assert.ok(rings.length > 0, name);
+      assertUnique(`${name}'s rings`, [
+        ...rings.map((r) => r.name),
+        ...gaps.map((g) => g.name)
+      ]);
+
+      for (const list of [rings, gaps])
+        for (const [i, { name: ring, innerRadius, outerRadius }] of [
+          ...list.entries()
+        ]) {
+          assert.equal(innerRadius.unit, 'km', `${name} ${ring}`);
+          assert.equal(outerRadius.unit, 'km', `${name} ${ring}`);
+          assert.ok(innerRadius.value > equator, `${name} ${ring}`);
+          assert.ok(innerRadius.value < outerRadius.value, `${name} ${ring}`);
+          assert.ok(outerRadius.value <= outermost, `${name} ${ring}`);
+          assert.ok(
+            i === 0 || list[i - 1].innerRadius.value <= innerRadius.value,
+            `${name} ${ring} is in order`
+          );
+        }
+    }
+  });
+
+  test('credit every value to the PDS Rings Node or NASA NSSDCA', () => {
+    for (const { name, observations } of RINGED) {
+      const { rings, gaps = [] } = observations!.rings!;
+
+      for (const feature of [...rings, ...gaps])
+        for (const value of Object.values(feature))
+          if (typeof value === 'object') {
+            assert.match(value.source.catalog, /^(PDS|NSSDCA)$/, name);
+            assert.match(value.source.url, /^https:\/\//, name);
+          }
+    }
+  });
+
+  test('give a range’s middle, and the range in its note', () => {
+    const c = ringsOf('saturn').rings.find((r) => r.name === 'C')!;
+    const epsilon = ringsOf('uranus').rings.find((r) => r.name === 'ε')!;
+
+    assert.equal(c.normalOpticalDepth?.value, 0.2);
+    assert.equal(c.normalOpticalDepth?.provenance, 'derived');
+    assert.match(c.normalOpticalDepth?.note ?? '', /0\.05 to 0\.35/);
+    assert.deepEqual(c.thickness, {
+      value: 5,
+      unit: 'm',
+      source: {
+        catalog: 'NSSDCA',
+        url: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/satringfact.html'
+      }
+    });
+    // 51 149 km across, 20 to 96 km wide: 29 km either side
+    assert.equal(epsilon.innerRadius.value, 51_120);
+    assert.equal(epsilon.outerRadius.value, 51_178);
+    assert.equal(epsilon.innerRadius.provenance, 'derived');
+  });
+
+  test('name only shepherds that orbit the planet, and every moon that feeds a ring', () => {
+    for (const { id, observations } of RINGED)
+      for (const shepherd of observations!.rings!.shepherdIds ?? [])
+        assert.equal(NODE_BY_ID.get(shepherd)?.parent, id, shepherd);
+
+    const sources = MOONS.filter(
+      ({ observations }) => observations?.ringInteraction === 'source'
+    );
+
+    assert.deepEqual(sources.map(({ id }) => id).sort(), [
+      'amalthea',
+      'enceladus',
+      'metis',
+      'phoebe',
+      'thebe'
+    ]);
+
+    for (const moon of sources)
+      assert.ok(ringsOf(moon.parent).shepherdIds?.includes(moon.id), moon.id);
+  });
+});

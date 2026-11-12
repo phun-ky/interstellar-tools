@@ -1,6 +1,12 @@
 import { DegreesType, PlanetsType, Radians } from '@interstellar-tools/types';
 
 import { iauTerm } from './iau.js';
+import {
+  JUPITER_RINGS,
+  NEPTUNE_RINGS,
+  SATURN_RINGS,
+  URANUS_RINGS
+} from './rings.js';
 
 /**
  * Represents a dataset of planets and planetoids in the solar system.
@@ -37,6 +43,14 @@ import { iauTerm } from './iau.js';
  *   `'north'`, on the north side of the solar system's invariable plane, so Venus's and Uranus's
  *   prime meridians turn backwards; Ceres's and Pluto's are `'positive'`, by the right-hand rule.
  *   The IAU has none for the other dwarf planets.
+ * - `observations.rings` are Jupiter's, Saturn's, Uranus's and Neptune's rings, and Saturn's named
+ *   gaps, from the inside out: their edges in km from the planet's centre and their normal optical
+ *   depth, from the PDS Ring-Moon Systems Node's vital statistics and the papers they cite, and
+ *   Saturn's rings' thicknesses from NASA NSSDCA. Uranus's and Neptune's edges are half the ring's
+ *   width either side of its middle, the way the sources give them. A value given as a range, such
+ *   as the C ring's optical depth of 0.05 to 0.35, is the range's middle, with the range in its
+ *   `note`. Saturn's ringlets, Neptune's Adams ring arcs and its Arago ring are left out, and
+ *   `shepherdIds` names only the moons in `MOONS`.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -354,6 +368,7 @@ export const PLANETS: PlanetsType = [
       polarRadius: { value: 66854, unit: 'km' }
     },
     mu: 1.266865319e17,
+    observations: { rings: JUPITER_RINGS },
     display: {
       color: '#C08850'
     },
@@ -397,6 +412,7 @@ export const PLANETS: PlanetsType = [
       polarRadius: { value: 54364, unit: 'km' }
     },
     mu: 3.793120623e16,
+    observations: { rings: SATURN_RINGS },
     display: {
       color: '#D2B48C'
     },
@@ -441,6 +457,7 @@ export const PLANETS: PlanetsType = [
       polarRadius: { value: 24973, unit: 'km' }
     },
     mu: 5.7939513e15,
+    observations: { rings: URANUS_RINGS },
     display: {
       color: '#78D6FF'
     },
@@ -487,6 +504,7 @@ export const PLANETS: PlanetsType = [
       polarRadius: { value: 24341, unit: 'km' }
     },
     mu: 6.83509997e15,
+    observations: { rings: NEPTUNE_RINGS },
     display: {
       color: '#0053D6'
     },
