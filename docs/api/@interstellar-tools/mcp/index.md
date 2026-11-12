@@ -124,8 +124,8 @@ at `interstellar://datasets/{name}`, where `name` is one of `planets`, `moons`,
 
 The snapshots in `@interstellar-tools/tracking` are resources too:
 `interstellar://tracking/satellites`, twelve satellites' OMM records dated 4
-November 2026, and `interstellar://tracking/probes`, eleven space probes and the
-span of their ephemerides.
+November 2026, and `interstellar://tracking/probes`, thirteen space probes and
+the span of their ephemerides.
 
 ## Programmatic use
 
