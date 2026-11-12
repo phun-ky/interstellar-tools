@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.10.0...%40interstellar-tools%2Fconstants%402.11.0) (2026-11-12)
+
+### Documentation
+
+* ✏️ Drop "temporary" from 3I/ATLAS's orbit solution ([04af784](https://github.com/phun-ky/interstellar-tools/commit/04af7845012cacebf9b5d1fba99f1056a316f08c)), references [#55](https://github.com/phun-ky/interstellar-tools/issues/55)
+
+### Feature
+
+* 🎸 Add the stars' identifiers, positions, motions and spectral classes ([54f856e](https://github.com/phun-ky/interstellar-tools/commit/54f856eb36b60729c06a2cebbac1a1ce2549200b))
+
 ## [2.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.9.0...%40interstellar-tools%2Fconstants%402.10.0) (2026-11-12)
 
 ### Feature

@@ -8,7 +8,7 @@ const INTERSTELLAR_OBJECTS: InterstellarObjectsType;
 ```
 
 Defined in:
-[bodies/interstellar-objects.ts:76](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L76)
+[bodies/interstellar-objects.ts:77](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L77)
 
 Represents the **interstellar objects** seen so far: bodies from other stars'
 systems, passing the Sun once on open orbits.
@@ -38,8 +38,9 @@ systems, passing the Sun once on open orbits.
 
 - ʻOumuamua and 3I/ATLAS go round the Sun backwards, `retrograde: true`.
 
-- 3I/ATLAS's orbit is from JPL's temporary solution, on observations from
-  October 2025 on.
+- 3I/ATLAS's orbit is from JPL's solution
+  [#55](https://github.com/phun-ky/interstellar-tools/issues/55), on
+  observations from 3 October 2025 to 16 October 2026.
 
 - `radius`: ʻOumuamua's is an effective one, for a body perhaps 6 to 10 times
   longer than wide, from Spitzer's limit (Trilling et al. 2018); Borisov's
