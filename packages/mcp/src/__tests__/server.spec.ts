@@ -882,7 +882,7 @@ describe('tracking tools', () => {
     const probes = await read('interstellar://tracking/probes');
 
     assert.equal(satellites.length, 12);
-    assert.equal(probes.length, 11);
+    assert.equal(probes.length, 13);
     assert.equal(
       probes.find((probe: { id: string }) => probe.id === 'jwst').near,
       'sun-earth-l2'

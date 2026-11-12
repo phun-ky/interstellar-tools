@@ -4,7 +4,7 @@ CloudLayerInterface
 # Interface: CloudLayerInterface
 
 Defined in:
-[observations.ts:427](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L427)
+[observations.ts:430](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L430)
 
 An observed **cloud or haze layer**.
 
@@ -17,7 +17,7 @@ basePressure?: ObservedType<PressureInterface>;
 ```
 
 Defined in:
-[observations.ts:433](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L433)
+[observations.ts:436](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L436)
 
 The pressure at its base.
 
@@ -30,7 +30,7 @@ composition?: string;
 ```
 
 Defined in:
-[observations.ts:429](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L429)
+[observations.ts:432](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L432)
 
 What it's made of, such as `'NH3 ice'` or `'H2SO4'`.
 
@@ -43,7 +43,7 @@ coverage?: ObservedType<FractionInterface>;
 ```
 
 Defined in:
-[observations.ts:435](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L435)
+[observations.ts:438](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L438)
 
 The share of the globe it covers.
 
@@ -56,6 +56,6 @@ topPressure?: ObservedType<PressureInterface>;
 ```
 
 Defined in:
-[observations.ts:431](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L431)
+[observations.ts:434](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L434)
 
 The pressure at its top.

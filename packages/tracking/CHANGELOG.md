@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.11.1...%40interstellar-tools%2Ftracking%400.12.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add Juno and Pioneer 11 to the probes ([41d7933](https://github.com/phun-ky/interstellar-tools/commit/41d79338882b16281c7e078c382a10cd4831745c))
+
 ## [0.11.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.11.0...%40interstellar-tools%2Ftracking%400.11.1) (2026-11-06)
 
 ### Tasks

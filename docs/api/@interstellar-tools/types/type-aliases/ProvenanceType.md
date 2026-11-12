@@ -9,7 +9,7 @@ type ProvenanceType =
 ```
 
 Defined in:
-[observations.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L53)
+[observations.ts:56](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L56)
 
 How a value was obtained.
 

@@ -32,7 +32,7 @@ type PhotometricBandType =
 ```
 
 Defined in:
-[observations.ts:239](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L239)
+[observations.ts:242](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L242)
 
 **Photometric bands**: Johnson–Cousins, 2MASS, Gaia, SDSS, WISE and GALEX. Any
 other band is accepted too.

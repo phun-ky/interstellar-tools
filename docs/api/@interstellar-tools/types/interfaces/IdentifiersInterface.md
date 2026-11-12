@@ -4,7 +4,7 @@ IdentifiersInterface
 # Interface: IdentifiersInterface
 
 Defined in:
-[observations.ts:194](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L194)
+[observations.ts:197](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L197)
 
 **Catalogue identifiers**, besides the body's own `id` and `name`.
 
@@ -17,7 +17,7 @@ aliases?: string[];
 ```
 
 Defined in:
-[observations.ts:212](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L212)
+[observations.ts:215](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L215)
 
 Other names the body goes by.
 
@@ -30,7 +30,7 @@ catalogs?: Record<string, string>;
 ```
 
 Defined in:
-[observations.ts:210](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L210)
+[observations.ts:213](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L213)
 
 Other catalogue IDs, such as `{ NGC: '224', PGC: '2557' }`.
 
@@ -43,7 +43,7 @@ gaiaDr3?: string;
 ```
 
 Defined in:
-[observations.ts:202](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L202)
+[observations.ts:205](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L205)
 
 The Gaia DR3 source ID.
 
@@ -56,7 +56,7 @@ hd?: number;
 ```
 
 Defined in:
-[observations.ts:206](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L206)
+[observations.ts:209](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L209)
 
 The Henry Draper catalogue number.
 
@@ -69,7 +69,7 @@ hip?: number;
 ```
 
 Defined in:
-[observations.ts:204](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L204)
+[observations.ts:207](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L207)
 
 The Hipparcos catalogue number.
 
@@ -82,7 +82,7 @@ minorPlanetNumber?: number;
 ```
 
 Defined in:
-[observations.ts:200](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L200)
+[observations.ts:203](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L203)
 
 The minor planet number, such as `433` for Eros.
 
@@ -95,7 +95,7 @@ mpcDesignation?: string;
 ```
 
 Defined in:
-[observations.ts:198](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L198)
+[observations.ts:201](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L201)
 
 The Minor Planet Center's designation, packed or unpacked.
 
@@ -108,7 +108,7 @@ spkId?: number;
 ```
 
 Defined in:
-[observations.ts:196](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L196)
+[observations.ts:199](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L199)
 
 JPL's SPK ID, as Horizons and SPICE use.
 
@@ -121,6 +121,6 @@ tic?: number;
 ```
 
 Defined in:
-[observations.ts:208](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L208)
+[observations.ts:211](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L211)
 
 The TESS Input Catalog ID.

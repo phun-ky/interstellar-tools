@@ -4,7 +4,7 @@ DisplayComaInterface
 # Interface: DisplayComaInterface
 
 Defined in:
-[celestial-bodies/display.ts:348](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L348)
+[celestial-bodies/display.ts:373](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L373)
 
 How to draw a comet's **coma and tails**.
 
@@ -17,7 +17,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:350](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L350)
+[celestial-bodies/display.ts:375](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L375)
 
 The coma's colour.
 
@@ -30,7 +30,7 @@ intensity?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:354](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L354)
+[celestial-bodies/display.ts:379](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L379)
 
 How bright it is, 0–1.
 
@@ -43,7 +43,7 @@ radius: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:352](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L352)
+[celestial-bodies/display.ts:377](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L377)
 
 Its radius, in multiples of the drawn nucleus's radius.
 
@@ -56,6 +56,6 @@ tails?: DisplayTailInterface[];
 ```
 
 Defined in:
-[celestial-bodies/display.ts:356](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L356)
+[celestial-bodies/display.ts:381](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L381)
 
 Its tails.

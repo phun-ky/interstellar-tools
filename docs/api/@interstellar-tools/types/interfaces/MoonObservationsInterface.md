@@ -4,7 +4,7 @@ MoonObservationsInterface
 # Interface: MoonObservationsInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:183](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L183)
+[celestial-bodies/body-observations.ts:186](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L186)
 
 What is measured about a **moon**.
 
@@ -29,15 +29,15 @@ activity?: {
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:193](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L193)
+[celestial-bodies/body-observations.ts:196](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L196)
 
 Activity seen: plumes, volcanism, geysers.
 
 | Name             | Type                                                                                      | Defined in                                                                                                                                                         |
 | ---------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `facility?`      | `string`                                                                                  | [celestial-bodies/body-observations.ts:196](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L196) |
-| `firstObserved?` | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) | [celestial-bodies/body-observations.ts:195](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L195) |
-| `kind`           |                                                                                           | `string` & { }                                                                                                                                                     | `"plumes"` | `"volcanism"` | `"geysers"` | [celestial-bodies/body-observations.ts:194](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L194) |
+| `facility?`      | `string`                                                                                  | [celestial-bodies/body-observations.ts:199](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L199) |
+| `firstObserved?` | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) | [celestial-bodies/body-observations.ts:198](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L198) |
+| `kind`           |                                                                                           | `string` & { }                                                                                                                                                     | `"plumes"` | `"volcanism"` | `"geysers"` | [celestial-bodies/body-observations.ts:197](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L197) |
 
 ---
 
@@ -48,7 +48,7 @@ atmosphere?: PlanetaryAtmosphereInterface;
 ```
 
 Defined in:
-[observations.ts:672](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L672)
+[observations.ts:673](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L673)
 
 Its atmosphere.
 
@@ -65,7 +65,7 @@ discovery?: DiscoveryInterface;
 ```
 
 Defined in:
-[observations.ts:658](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L658)
+[observations.ts:659](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L659)
 
 How it was discovered.
 
@@ -82,7 +82,7 @@ group?: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:185](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L185)
+[celestial-bodies/body-observations.ts:188](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L188)
 
 Such as `'Galilean'`, `'Himalia group'` or `'co-orbital'`.
 
@@ -95,7 +95,7 @@ identifiers?: IdentifiersInterface;
 ```
 
 Defined in:
-[observations.ts:656](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L656)
+[observations.ts:657](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L657)
 
 Catalogue identifiers.
 
@@ -112,7 +112,7 @@ impactExperiment?: ImpactExperimentInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:199](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L199)
+[celestial-bodies/body-observations.ts:202](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L202)
 
 A kinetic impact's results, for an asteroid's moon.
 
@@ -125,7 +125,7 @@ magnetosphere?: MagnetosphereInterface;
 ```
 
 Defined in:
-[observations.ts:676](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L676)
+[observations.ts:677](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L677)
 
 Its magnetic field.
 
@@ -142,7 +142,7 @@ massProperties?: MassPropertiesInterface;
 ```
 
 Defined in:
-[observations.ts:666](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L666)
+[observations.ts:667](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L667)
 
 Its measured mass and gravity.
 
@@ -159,7 +159,7 @@ orbitSolution?: OrbitSolutionInterface;
 ```
 
 Defined in:
-[observations.ts:660](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L660)
+[observations.ts:661](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L661)
 
 How well its orbit is known.
 
@@ -176,7 +176,7 @@ reflectance?: ReflectanceInterface;
 ```
 
 Defined in:
-[observations.ts:668](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L668)
+[observations.ts:669](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L669)
 
 Its brightness and reflectance.
 
@@ -193,7 +193,7 @@ resonances?: string[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:187](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L187)
+[celestial-bodies/body-observations.ts:190](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L190)
 
 Its mean-motion resonances, such as
 `['Laplace 1:2:4 with Europa and Ganymede']`.
@@ -207,7 +207,7 @@ ringInteraction?: "source" | "shepherd" | "embedded";
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:189](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L189)
+[celestial-bodies/body-observations.ts:192](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L192)
 
 Its part in a ring system.
 
@@ -220,7 +220,7 @@ rotation?: RotationObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:662](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L662)
+[observations.ts:663](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L663)
 
 Its measured spin.
 
@@ -237,7 +237,7 @@ size?: SizeObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:664](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L664)
+[observations.ts:665](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L665)
 
 Its measured size and shape.
 
@@ -254,7 +254,7 @@ sources?: ObservationSourceInterface[];
 ```
 
 Defined in:
-[observations.ts:678](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L678)
+[observations.ts:679](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L679)
 
 Sources for the record as a whole.
 
@@ -271,7 +271,7 @@ subsurfaceOcean?: "none" | "confirmed" | "likely" | "possible";
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:191](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L191)
+[celestial-bodies/body-observations.ts:194](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L194)
 
 The evidence for an ocean under its surface.
 
@@ -284,7 +284,7 @@ surface?: SurfaceObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:674](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L674)
+[observations.ts:675](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L675)
 
 Its surface.
 
@@ -301,7 +301,7 @@ thermal?: ThermalObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:670](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L670)
+[observations.ts:671](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L671)
 
 Its temperatures and heat.
 

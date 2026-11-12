@@ -4,7 +4,7 @@ ObservedProperMotionInterface
 # Interface: ObservedProperMotionInterface
 
 Defined in:
-[observations.ts:279](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L279)
+[observations.ts:282](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L282)
 
 A **proper motion** with an uncertainty for each component, in mas/yr.
 
@@ -40,7 +40,7 @@ epoch?: EpochInterface;
 ```
 
 Defined in:
-[observations.ts:148](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L148)
+[observations.ts:151](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L151)
 
 When the value holds, for one that changes.
 
@@ -57,7 +57,7 @@ limit?: "upper" | "lower";
 ```
 
 Defined in:
-[observations.ts:142](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L142)
+[observations.ts:145](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L145)
 
 Set when the value is only a bound, not a detection.
 
@@ -74,7 +74,7 @@ method?: string;
 ```
 
 Defined in:
-[observations.ts:150](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L150)
+[observations.ts:153](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L153)
 
 How it was measured, such as `'stellar occultation'` or `'radar'`.
 
@@ -91,7 +91,7 @@ note?: string;
 ```
 
 Defined in:
-[observations.ts:152](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L152)
+[observations.ts:155](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L155)
 
 A remark.
 
@@ -108,7 +108,7 @@ provenance?: ProvenanceType;
 ```
 
 Defined in:
-[observations.ts:144](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L144)
+[observations.ts:147](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L147)
 
 How the value was obtained.
 
@@ -142,7 +142,7 @@ source?: ObservationSourceInterface;
 ```
 
 Defined in:
-[observations.ts:146](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L146)
+[observations.ts:149](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L149)
 
 Where the value came from.
 
@@ -162,11 +162,11 @@ uncertainty?: {
 ```
 
 Defined in:
-[observations.ts:282](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L282)
+[observations.ts:285](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L285)
 
 The error bars of each component, in mas/yr.
 
 | Name             | Type                                              | Defined in                                                                                                             |
 | ---------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `declination`    | [`UncertaintyInterface`](UncertaintyInterface.md) | [observations.ts:284](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L284) |
-| `rightAscension` | [`UncertaintyInterface`](UncertaintyInterface.md) | [observations.ts:283](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L283) |
+| `declination`    | [`UncertaintyInterface`](UncertaintyInterface.md) | [observations.ts:287](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L287) |
+| `rightAscension` | [`UncertaintyInterface`](UncertaintyInterface.md) | [observations.ts:286](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L286) |

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.25.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.24.0...%40interstellar-tools%2Fequations%401.25.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Convert any quantity between units of its kind ([4309431](https://github.com/phun-ky/interstellar-tools/commit/4309431bbce57ff0f08963eb4514960a01751a9f))
+
 ## [1.24.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.23.1...%40interstellar-tools%2Fequations%401.24.0) (2026-11-11)
 
 ### Feature

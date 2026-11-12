@@ -9,7 +9,7 @@ type OrbitReferencePlaneType =
 ```
 
 Defined in:
-[orbits.ts:142](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L142)
+[orbits.ts:164](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L164)
 
 The **reference plane** an orbit's `i`, `om` and `w` are measured from.
 

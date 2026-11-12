@@ -4,7 +4,7 @@ DisplayAtmosphereInterface
 # Interface: DisplayAtmosphereInterface
 
 Defined in:
-[celestial-bodies/display.ts:257](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L257)
+[celestial-bodies/display.ts:260](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L260)
 
 How to draw the **glow of an atmosphere** at the limb.
 
@@ -17,7 +17,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:259](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L259)
+[celestial-bodies/display.ts:262](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L262)
 
 The glow's colour, such as Rayleigh blue.
 
@@ -30,7 +30,7 @@ haloExtent?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:263](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L263)
+[celestial-bodies/display.ts:266](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L266)
 
 How far it reaches past the limb, in body radii.
 
@@ -43,6 +43,6 @@ intensity: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:261](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L261)
+[celestial-bodies/display.ts:264](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L264)
 
 How strong it is, 0 (airless) to 1 (thick).

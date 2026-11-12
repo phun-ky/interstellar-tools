@@ -4,7 +4,7 @@ OrbitFrameInterface
 # Interface: OrbitFrameInterface
 
 Defined in:
-[orbits.ts:163](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L163)
+[orbits.ts:185](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L185)
 
 The **frame** of an orbit's orientation elements: the plane `i`, `om` and `w`
 are measured from, and that plane's pole where it isn't a standard one.
@@ -32,7 +32,7 @@ plane: OrbitReferencePlaneType;
 ```
 
 Defined in:
-[orbits.ts:165](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L165)
+[orbits.ts:187](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L187)
 
 The reference plane.
 
@@ -45,6 +45,6 @@ pole?: CelestialDirectionInterface;
 ```
 
 Defined in:
-[orbits.ts:167](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L167)
+[orbits.ts:189](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L189)
 
 The plane's pole in the ICRF, for a `'laplace'` or `'parent-equator'` plane.

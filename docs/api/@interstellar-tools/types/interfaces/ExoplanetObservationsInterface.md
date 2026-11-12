@@ -4,7 +4,7 @@ ExoplanetObservationsInterface
 # Interface: ExoplanetObservationsInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:107](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L107)
+[celestial-bodies/body-observations.ts:110](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L110)
 
 What is measured about a planet **outside the Solar System**.
 
@@ -26,7 +26,7 @@ detectionMethod: ExoplanetDetectionMethodType;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:109](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L109)
+[celestial-bodies/body-observations.ts:112](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L112)
 
 How it was found.
 
@@ -39,7 +39,7 @@ eclipseDepths?: Partial<Record<PhotometricBandType, ObservedType<FractionInterfa
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:117](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L117)
+[celestial-bodies/body-observations.ts:120](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L120)
 
 Secondary-eclipse depths, by band.
 
@@ -52,7 +52,7 @@ insolation?: ObservedType<IrradianceInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:121](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L121)
+[celestial-bodies/body-observations.ts:124](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L124)
 
 The light it gets from its star.
 
@@ -65,7 +65,7 @@ massKind?: "true" | "minimum" | "mass-radius relation";
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:111](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L111)
+[celestial-bodies/body-observations.ts:114](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L114)
 
 Whether `massProperties.mass` is a true mass, a minimum mass or an estimate.
 
@@ -78,7 +78,7 @@ radialVelocitySemiAmplitude?: ObservedType<SpeedInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:113](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L113)
+[celestial-bodies/body-observations.ts:116](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L116)
 
 The radial-velocity semi-amplitude, K.
 
@@ -91,7 +91,7 @@ rotationBasis?: "measured" | "assumed tidally locked";
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:127](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L127)
+[celestial-bodies/body-observations.ts:130](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L130)
 
 Whether `rotation` is measured, or assumed tidally locked.
 
@@ -104,7 +104,7 @@ spectroscopicDetections?: SpeciesAbundanceInterface[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:125](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L125)
+[celestial-bodies/body-observations.ts:128](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L128)
 
 Species found by spectroscopy.
 
@@ -117,7 +117,7 @@ spinOrbitAngle?: ObservedType<AngleInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:123](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L123)
+[celestial-bodies/body-observations.ts:126](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L126)
 
 The projected spin–orbit angle λ, from the Rossiter–McLaughlin effect.
 
@@ -130,6 +130,6 @@ transit?: TransitObservationsInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:115](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L115)
+[celestial-bodies/body-observations.ts:118](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L118)
 
 Its transits.

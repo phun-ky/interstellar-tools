@@ -4,7 +4,7 @@ RotationObservationsInterface
 # Interface: RotationObservationsInterface
 
 Defined in:
-[observations.ts:582](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L582)
+[observations.ts:585](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L585)
 
 **Light-curve results** that [RotationInterface](RotationInterface.md) has no
 room for.
@@ -18,7 +18,7 @@ lightcurveAmplitude?: ObservedType<MagnitudeInterface>;
 ```
 
 Defined in:
-[observations.ts:586](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L586)
+[observations.ts:589](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L589)
 
 The light curve's peak-to-peak amplitude.
 
@@ -31,7 +31,7 @@ period?: ObservedType<TemporalInterface>;
 ```
 
 Defined in:
-[observations.ts:584](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L584)
+[observations.ts:587](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L587)
 
 `rotation.period` with its uncertainty.
 
@@ -44,7 +44,7 @@ periodChange?: ObservedType<PeriodChangeInterface>;
 ```
 
 Defined in:
-[observations.ts:590](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L590)
+[observations.ts:593](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L593)
 
 How fast the period lengthens.
 
@@ -55,14 +55,11 @@ How fast the period lengthens.
 ```ts
 pole?:
   | CelestialDirectionInterface
-  | {
-  eclipticLatitude: DegreesType;
-  eclipticLongitude: DegreesType;
-};
+  | EclipticDirectionInterface;
 ```
 
 Defined in:
-[observations.ts:592](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L592)
+[observations.ts:595](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L595)
 
 The spin pole of a small body that has no IAU rotation model.
 
@@ -75,6 +72,6 @@ spinAcceleration?: ObservedType<SpinAccelerationInterface>;
 ```
 
 Defined in:
-[observations.ts:588](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L588)
+[observations.ts:591](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L591)
 
 How fast the spin speeds up, as YORP is given.

@@ -4,7 +4,7 @@ StateVectorInterface
 # Interface: StateVectorInterface
 
 Defined in:
-[orbits.ts:368](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L368)
+[orbits.ts:390](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L390)
 
 A body's **state vector**: its position and velocity in an inertial frame
 centred on the body it orbits.
@@ -18,7 +18,7 @@ r: Vector3DTupleType;
 ```
 
 Defined in:
-[orbits.ts:370](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L370)
+[orbits.ts:392](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L392)
 
 Position in m.
 
@@ -31,6 +31,6 @@ v: Vector3DTupleType;
 ```
 
 Defined in:
-[orbits.ts:372](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L372)
+[orbits.ts:394](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L394)
 
 Velocity in m/s.

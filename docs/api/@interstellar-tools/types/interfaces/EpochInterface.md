@@ -4,7 +4,7 @@ EpochInterface
 # Interface: EpochInterface
 
 Defined in:
-[observations.ts:111](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L111)
+[observations.ts:114](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L114)
 
 A moment as a **Julian date on a named time scale**, as catalogues give
 osculating epochs and transit times.
@@ -25,7 +25,7 @@ jd: number;
 ```
 
 Defined in:
-[observations.ts:113](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L113)
+[observations.ts:116](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L116)
 
 The Julian date.
 
@@ -38,6 +38,6 @@ timeScale: TimeScaleType;
 ```
 
 Defined in:
-[observations.ts:115](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L115)
+[observations.ts:118](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L118)
 
 The time scale it counts in, `'TDB'` for JPL's elements.

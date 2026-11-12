@@ -4,7 +4,7 @@ ObservedRangeInterface
 # Interface: ObservedRangeInterface\<T _extends_ [`ValueInterface`](ValueInterface.md)>
 
 Defined in:
-[observations.ts:180](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L180)
+[observations.ts:183](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L183)
 
 A quantity given as a **range**, such as a surface's day and night temperatures.
 
@@ -23,7 +23,7 @@ max: ObservedType<T>;
 ```
 
 Defined in:
-[observations.ts:184](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L184)
+[observations.ts:187](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L187)
 
 The highest value.
 
@@ -36,7 +36,7 @@ mean?: ObservedType<T>;
 ```
 
 Defined in:
-[observations.ts:186](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L186)
+[observations.ts:189](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L189)
 
 The mean, where one is given.
 
@@ -49,6 +49,6 @@ min: ObservedType<T>;
 ```
 
 Defined in:
-[observations.ts:182](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L182)
+[observations.ts:185](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L185)
 
 The lowest value.

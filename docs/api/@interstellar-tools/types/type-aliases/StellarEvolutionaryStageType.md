@@ -18,6 +18,6 @@ type StellarEvolutionaryStageType =
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:467](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L467)
+[celestial-bodies/body-observations.ts:470](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L470)
 
 Where a star is in its **life**.

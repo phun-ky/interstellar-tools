@@ -114,6 +114,28 @@ export interface CelestialDirectionInterface {
 }
 
 /**
+ * A **direction in ecliptic coordinates**, against the J2000 ecliptic and
+ * equinox, in degrees: how a small body's spin pole or the interstellar wind's
+ * direction is often given.
+ *
+ * @example
+ * ```ts
+ * // Where the interstellar wind comes from (McComas et al. 2015)
+ * const upwind: EclipticDirectionInterface = {
+ *   eclipticLongitude: 255.7 as DegreesType,
+ *   eclipticLatitude: 5.1 as DegreesType
+ * };
+ * ```
+ * @group Orbits
+ */
+export interface EclipticDirectionInterface {
+  /** Ecliptic longitude, eastwards from the equinox along the ecliptic, in degrees. */
+  eclipticLongitude: DegreesType;
+  /** Ecliptic latitude, north of the ecliptic, in degrees. */
+  eclipticLatitude: DegreesType;
+}
+
+/**
  * The **reference plane** an orbit's `i`, `om` and `w` are measured from.
  *
  * ::: info

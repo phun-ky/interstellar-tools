@@ -4,7 +4,7 @@ FullOrbitInterface
 # Interface: FullOrbitInterface
 
 Defined in:
-[orbits.ts:237](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L237)
+[orbits.ts:259](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L259)
 
 An [OrbitInterface](OrbitInterface.md) with every orientation element given:
 `i`, `w`, `om` and `q`. Comets and asteroids carry these.
@@ -22,7 +22,7 @@ a: DistanceInterface;
 ```
 
 Defined in:
-[orbits.ts:210](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L210)
+[orbits.ts:232](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L232)
 
 Semi-major axis of this body's orbit around the parent's centre of mass.
 
@@ -39,7 +39,7 @@ angle: Radians;
 ```
 
 Defined in:
-[orbits.ts:218](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L218)
+[orbits.ts:240](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L240)
 
 Current orbital position at J2000 in radians (true anomaly).
 
@@ -56,7 +56,7 @@ e: number;
 ```
 
 Defined in:
-[orbits.ts:212](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L212)
+[orbits.ts:234](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L234)
 
 Orbital eccentricity (0 = circular, closer to 1 = highly elliptical).
 
@@ -73,7 +73,7 @@ frame?: OrbitFrameInterface;
 ```
 
 Defined in:
-[orbits.ts:228](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L228)
+[orbits.ts:250](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L250)
 
 The plane `i`, `om` and `w` are measured from. Given with them.
 
@@ -90,7 +90,7 @@ i: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:239](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L239)
+[orbits.ts:261](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L261)
 
 Orbital inclination in degrees.
 
@@ -107,7 +107,7 @@ om: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:243](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L243)
+[orbits.ts:265](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L265)
 
 Longitude of the ascending node in degrees.
 
@@ -124,7 +124,7 @@ period: TemporalInterface;
 ```
 
 Defined in:
-[orbits.ts:214](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L214)
+[orbits.ts:236](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L236)
 
 Orbital period, always positive. See `retrograde` for the direction.
 
@@ -141,7 +141,7 @@ q: DistanceInterface;
 ```
 
 Defined in:
-[orbits.ts:245](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L245)
+[orbits.ts:267](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L267)
 
 Periapsis distance $q = a(1 - e)$.
 
@@ -158,7 +158,7 @@ retrograde?: boolean;
 ```
 
 Defined in:
-[orbits.ts:216](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L216)
+[orbits.ts:238](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L238)
 
 `true` for a retrograde orbit. Omitted for the usual prograde orbits.
 
@@ -175,7 +175,7 @@ w: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:241](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L241)
+[orbits.ts:263](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L263)
 
 Argument of periapsis in degrees.
 

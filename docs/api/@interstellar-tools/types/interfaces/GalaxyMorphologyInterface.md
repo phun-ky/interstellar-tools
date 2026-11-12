@@ -4,7 +4,7 @@ GalaxyMorphologyInterface
 # Interface: GalaxyMorphologyInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:620](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L620)
+[celestial-bodies/body-observations.ts:710](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L710)
 
 [GalaxyInterface.type](GalaxyInterface.md#type) **split into its parts**.
 
@@ -17,7 +17,7 @@ bar?: "none" | "strong" | "weak";
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:641](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L641)
+[celestial-bodies/body-observations.ts:731](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L731)
 
 How strong its bar is.
 
@@ -46,7 +46,7 @@ hubbleType?:
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:624](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L624)
+[celestial-bodies/body-observations.ts:714](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L714)
 
 The Hubble stage.
 
@@ -59,7 +59,7 @@ interacting?: boolean;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:649](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L649)
+[celestial-bodies/body-observations.ts:739](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L739)
 
 Visibly interacting with a neighbour.
 
@@ -72,7 +72,7 @@ peculiar?: boolean;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:647](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L647)
+[celestial-bodies/body-observations.ts:737](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L737)
 
 Peculiar in shape.
 
@@ -85,7 +85,7 @@ raw: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:622](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L622)
+[celestial-bodies/body-observations.ts:712](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L712)
 
 As published: `GalaxyInterface.type`, such as `'SBbc'`.
 
@@ -98,7 +98,7 @@ ring?: "none" | "inner" | "outer" | "nuclear";
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:643](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L643)
+[celestial-bodies/body-observations.ts:733](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L733)
 
 Its ring structure.
 
@@ -111,6 +111,6 @@ tType?: ObservedType;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:645](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L645)
+[celestial-bodies/body-observations.ts:735](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L735)
 
 de Vaucouleurs's numerical T-type.

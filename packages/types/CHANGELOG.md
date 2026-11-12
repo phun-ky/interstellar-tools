@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.10.0...%40interstellar-tools%2Ftypes%402.11.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Type a star's astrosphere, and how to draw it ([96c877a](https://github.com/phun-ky/interstellar-tools/commit/96c877a47f0288bb3eb4add1a2d81d74dbea1fd2))
+
 ## [2.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.9.0...%40interstellar-tools%2Ftypes%402.10.0) (2026-11-12)
 
 ### Feature

@@ -4,7 +4,7 @@ VariabilityInterface
 # Interface: VariabilityInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:484](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L484)
+[celestial-bodies/body-observations.ts:487](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L487)
 
 How a star's brightness **varies**.
 
@@ -17,7 +17,7 @@ amplitude?: ObservedType<MagnitudeInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:490](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L490)
+[celestial-bodies/body-observations.ts:493](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L493)
 
 The amplitude.
 
@@ -30,7 +30,7 @@ band?: PhotometricBandType;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:492](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L492)
+[celestial-bodies/body-observations.ts:495](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L495)
 
 The band the amplitude is measured in.
 
@@ -43,7 +43,7 @@ period?: ObservedType<TemporalInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:488](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L488)
+[celestial-bodies/body-observations.ts:491](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L491)
 
 The period, for a periodic variable.
 
@@ -56,6 +56,6 @@ type: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:486](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L486)
+[celestial-bodies/body-observations.ts:489](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L489)
 
 The GCVS type, such as `'SRc'`, `'UV'`, `'DSCT'`, `'EA'` or `'DCEP'`.

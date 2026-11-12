@@ -4,7 +4,7 @@ ObservationSourceInterface
 # Interface: ObservationSourceInterface
 
 Defined in:
-[observations.ts:89](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L89)
+[observations.ts:92](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L92)
 
 Where a value **came from**.
 
@@ -26,7 +26,7 @@ catalog: ObservationCatalogType;
 ```
 
 Defined in:
-[observations.ts:91](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L91)
+[observations.ts:94](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L94)
 
 The catalogue or archive the value was taken from.
 
@@ -39,7 +39,7 @@ reference?: string;
 ```
 
 Defined in:
-[observations.ts:93](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L93)
+[observations.ts:96](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L96)
 
 The DOI or ADS bibcode of the paper behind the value.
 
@@ -52,7 +52,7 @@ retrievedAt?: Date;
 ```
 
 Defined in:
-[observations.ts:97](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L97)
+[observations.ts:100](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L100)
 
 When the value was taken from the catalogue.
 
@@ -65,6 +65,6 @@ url?: string;
 ```
 
 Defined in:
-[observations.ts:95](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L95)
+[observations.ts:98](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L98)
 
 The page the value was read from.

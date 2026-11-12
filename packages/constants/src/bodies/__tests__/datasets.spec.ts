@@ -23,6 +23,9 @@ import {
   LY_PER_PC,
   MOONS,
   PLANETS,
+  SECONDS_PER_DAY,
+  SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K,
+  SOLAR_GM_NOMINAL_M3_PER_S2,
   SPEED_OF_LIGHT_M_PER_S,
   STARS,
   SUN_GALACTOCENTRIC_DISTANCE,
@@ -1922,5 +1925,419 @@ describe('INTERSTELLAR_OBJECTS', () => {
   test('have a positive drawing size', () => {
     for (const { name, display } of INTERSTELLAR_OBJECTS)
       assert.ok((display?.size ?? 0) > 0, name);
+  });
+
+  test('have JPL’s SPK-IDs, and were found on their one pass, ʻOumuamua on its way out', () => {
+    const DAY_MS = SECONDS_PER_DAY * 1000;
+
+    assert.deepEqual(
+      INTERSTELLAR_OBJECTS.map(
+        ({ observations }) => observations?.identifiers?.spkId
+      ),
+      [50788063, 1003639, 1004083]
+    );
+
+    for (const { id, name, orbit, observations } of INTERSTELLAR_OBJECTS) {
+      const found = observations!.discovery!.date!.getTime();
+      const perihelion = orbit.periapsisTime!.getTime();
+
+      // ʻOumuamua 40 days after perihelion, the comets 100 and 120 days before
+      assert.equal(found > perihelion, id === '1i-oumuamua', name);
+      assert.ok(Math.abs(found - perihelion) < 125 * DAY_MS, name);
+      assert.match(
+        observations!.discovery!.facility!,
+        /\([A-Z0-9]\d\d\)$/,
+        name
+      );
+    }
+  });
+
+  test('carry JPL’s orbit solution, with A1, A2 and A3 in au/d²', () => {
+    for (const { name, observations } of INTERSTELLAR_OBJECTS) {
+      const solution = observations!.orbitSolution!;
+      const { a1, a2, a3 } = solution.nonGravitational!;
+
+      assert.equal(solution.source?.catalog, 'JPL SBDB', name);
+      assert.equal(solution.epoch?.timeScale, 'TDB', name);
+      assert.ok(solution.firstObservation! < solution.lastObservation!, name);
+      // The arc runs from the first observation to the last, in days
+      assert.equal(
+        solution.observationArc!.value,
+        (solution.lastObservation!.getTime() -
+          solution.firstObservation!.getTime()) /
+          (SECONDS_PER_DAY * 1000),
+        name
+      );
+
+      for (const term of [a1, a2, a3]) {
+        assert.equal(term?.unit, 'au/d2', name);
+        assert.ok(term!.uncertainty!.plus > 0, name);
+      }
+    }
+  });
+
+  test('give ʻOumuamua’s push, its A1 in m/s²', () => {
+    const { observations } = INTERSTELLAR_OBJECTS[0]!;
+    const a1 = observations!.orbitSolution!.nonGravitational!.a1!;
+    const push = observations!.anomalousAcceleration!;
+    const perDaySquared = AU_METERS / SECONDS_PER_DAY ** 2;
+
+    assert.equal(push.unit, 'm/s2');
+    assert.ok(Math.abs(push.value / (a1.value * perDaySquared) - 1) < 1e-5);
+    assert.ok(
+      Math.abs(
+        push.uncertainty!.plus / (a1.uncertainty!.plus * perDaySquared) - 1
+      ) < 1e-4
+    );
+  });
+
+  test('came from their radiants, along the orbit’s incoming asymptote (within 0.2°)', () => {
+    // The J2000 ecliptic's tilt to the ICRS equator, as JPL's ecliptic frame
+    const obliquity = ((84381.448 / 3600) * Math.PI) / 180;
+    const rad = (degrees: number) => (degrees * Math.PI) / 180;
+
+    for (const { name, orbit, observations } of INTERSTELLAR_OBJECTS) {
+      const [i, om] = [rad(orbit.i), rad(orbit.om)];
+      // Where the hyperbola starts, its true anomaly −arccos(−1/e)
+      const u = rad(orbit.w) - Math.acos(-1 / orbit.e);
+      const x =
+        Math.cos(om) * Math.cos(u) - Math.sin(om) * Math.sin(u) * Math.cos(i);
+      const y =
+        Math.sin(om) * Math.cos(u) + Math.cos(om) * Math.sin(u) * Math.cos(i);
+      const z = Math.sin(u) * Math.sin(i);
+      const asymptote = [
+        x,
+        y * Math.cos(obliquity) - z * Math.sin(obliquity),
+        y * Math.sin(obliquity) + z * Math.cos(obliquity)
+      ];
+      const { rightAscension, declination } = observations!.incomingRadiant!;
+      const radiant = [
+        Math.cos(rad(declination)) * Math.cos(rad(rightAscension)),
+        Math.cos(rad(declination)) * Math.sin(rad(rightAscension)),
+        Math.sin(rad(declination))
+      ];
+      const cos = asymptote.reduce(
+        (sum, value, k) => sum + value * radiant[k]!,
+        0
+      );
+
+      assert.ok(Math.acos(Math.min(1, cos)) < rad(0.2), name);
+    }
+  });
+});
+
+describe('rings', () => {
+  const RINGED = PLANETS.filter(({ observations }) => observations?.rings);
+  const ringsOf = (id: string) =>
+    PLANETS.find((planet) => planet.id === id)!.observations!.rings!;
+
+  test('belong to Jupiter, Saturn, Uranus and Neptune', () => {
+    assert.deepEqual(
+      RINGED.map(({ id }) => id),
+      ['jupiter', 'saturn', 'uranus', 'neptune']
+    );
+  });
+
+  test('run from the inside out, outside the planet, in km', () => {
+    for (const { name, ellipsoid, observations } of RINGED) {
+      const { rings, gaps = [] } = observations!.rings!;
+      const equator = ellipsoid!.equatorialRadius.value;
+      const outermost = Math.max(...rings.map((r) => r.outerRadius.value));
+
+      assert.ok(rings.length > 0, name);
+      assertUnique(`${name}'s rings`, [
+        ...rings.map((r) => r.name),
+        ...gaps.map((g) => g.name)
+      ]);
+
+      for (const list of [rings, gaps])
+        for (const [i, { name: ring, innerRadius, outerRadius }] of [
+          ...list.entries()
+        ]) {
+          assert.equal(innerRadius.unit, 'km', `${name} ${ring}`);
+          assert.equal(outerRadius.unit, 'km', `${name} ${ring}`);
+          assert.ok(innerRadius.value > equator, `${name} ${ring}`);
+          assert.ok(innerRadius.value < outerRadius.value, `${name} ${ring}`);
+          assert.ok(outerRadius.value <= outermost, `${name} ${ring}`);
+          assert.ok(
+            i === 0 || list[i - 1].innerRadius.value <= innerRadius.value,
+            `${name} ${ring} is in order`
+          );
+        }
+    }
+  });
+
+  test('credit every value to the PDS Rings Node or NASA NSSDCA', () => {
+    for (const { name, observations } of RINGED) {
+      const { rings, gaps = [] } = observations!.rings!;
+
+      for (const feature of [...rings, ...gaps])
+        for (const value of Object.values(feature))
+          if (typeof value === 'object') {
+            assert.match(value.source.catalog, /^(PDS|NSSDCA)$/, name);
+            assert.match(value.source.url, /^https:\/\//, name);
+          }
+    }
+  });
+
+  test('give a range’s middle, and the range in its note', () => {
+    const c = ringsOf('saturn').rings.find((r) => r.name === 'C')!;
+    const epsilon = ringsOf('uranus').rings.find((r) => r.name === 'ε')!;
+
+    assert.equal(c.normalOpticalDepth?.value, 0.2);
+    assert.equal(c.normalOpticalDepth?.provenance, 'derived');
+    assert.match(c.normalOpticalDepth?.note ?? '', /0\.05 to 0\.35/);
+    assert.deepEqual(c.thickness, {
+      value: 5,
+      unit: 'm',
+      source: {
+        catalog: 'NSSDCA',
+        url: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/satringfact.html'
+      }
+    });
+    // 51 149 km across, 20 to 96 km wide: 29 km either side
+    assert.equal(epsilon.innerRadius.value, 51_120);
+    assert.equal(epsilon.outerRadius.value, 51_178);
+    assert.equal(epsilon.innerRadius.provenance, 'derived');
+  });
+
+  test('name only shepherds that orbit the planet, and every moon that feeds a ring', () => {
+    for (const { id, observations } of RINGED)
+      for (const shepherd of observations!.rings!.shepherdIds ?? [])
+        assert.equal(NODE_BY_ID.get(shepherd)?.parent, id, shepherd);
+
+    const sources = MOONS.filter(
+      ({ observations }) => observations?.ringInteraction === 'source'
+    );
+
+    assert.deepEqual(sources.map(({ id }) => id).sort(), [
+      'amalthea',
+      'enceladus',
+      'metis',
+      'phoebe',
+      'thebe'
+    ]);
+
+    for (const moon of sources)
+      assert.ok(ringsOf(moon.parent).shepherdIds?.includes(moon.id), moon.id);
+  });
+});
+
+describe('star observations', () => {
+  // SIMBAD lists Spica as one star, so Spica B has only its letter
+  const MEASURED = STARS.filter(
+    ({ id, parent }) =>
+      !['sun', 'spica-b'].includes(id) && parent !== 'sagittarius-a-star'
+  );
+
+  test('split every star’s type into its parts', () => {
+    for (const { id, type, observations } of STARS) {
+      const classification = observations!.spectralClassification!;
+
+      assert.equal(classification.raw, type, id);
+      assert.ok(type.startsWith(classification.spectralClass!), id);
+    }
+  });
+
+  test('give every star but the Sun and the S-stars SIMBAD’s identifiers, unique', () => {
+    for (const field of ['hip', 'hd', 'gaiaDr3'] as const)
+      assertUnique(
+        field,
+        MEASURED.flatMap(({ observations }) =>
+          observations?.identifiers?.[field] === undefined
+            ? []
+            : [String(observations.identifiers[field])]
+        )
+      );
+
+    const spicaB = STARS.find(({ id }) => id === 'spica-b')!.observations!;
+
+    assert.equal(spicaB.component, 'B');
+    assert.equal(spicaB.identifiers ?? spicaB.astrometry, undefined);
+
+    for (const { id, observations } of MEASURED) {
+      const { hip, gaiaDr3 } = observations!.identifiers!;
+
+      assert.ok(hip !== undefined || gaiaDr3 !== undefined, id);
+    }
+  });
+
+  test('measure their parallax and proper motion, with error bars, in mas', () => {
+    for (const { id, observations } of MEASURED) {
+      const { direction, parallax, properMotion } = observations!.astrometry!;
+
+      assert.ok(
+        direction.rightAscension >= 0 && direction.rightAscension < 360,
+        id
+      );
+      assert.ok(Math.abs(direction.declination) <= 90, id);
+      assert.equal(parallax!.unit, 'mas', id);
+      assert.ok(parallax!.value > parallax!.uncertainty!.plus, id);
+      assert.ok(properMotion!.uncertainty!.rightAscension.plus > 0, id);
+      assert.ok(properMotion!.uncertainty!.declination.plus > 0, id);
+      assert.match(
+        parallax!.source!.catalog,
+        /^(Hipparcos|Gaia DR3|SIMBAD)$/,
+        id
+      );
+    }
+  });
+
+  test('put Proxima Centauri nearest, and Barnard’s Star fastest across the sky', () => {
+    const by = (rank: (star: StarInterface) => number) =>
+      [...MEASURED].sort((a, b) => rank(b) - rank(a))[0]!.id;
+    const motion = ({ observations }: StarInterface) =>
+      Math.hypot(
+        observations!.astrometry!.properMotion!.rightAscension,
+        observations!.astrometry!.properMotion!.declination
+      );
+
+    assert.equal(
+      by(({ observations }) => observations!.astrometry!.parallax!.value),
+      'proxima-centauri'
+    );
+    assert.equal(by(motion), 'barnards-star');
+    // 10.39″ a year
+    assert.equal(
+      (
+        motion(MEASURED.find(({ id }) => id === 'barnards-star')!) / 1000
+      ).toFixed(2),
+      '10.39'
+    );
+  });
+  test('give the Sun the IAU’s nominal temperature, luminosity and gravity', () => {
+    const sun = STARS.find(({ id }) => id === 'sun')!.observations!;
+    // log g from the nominal GM☉ over the nominal radius, 695 700 km, in cgs
+    const logG = Math.log10(
+      (SOLAR_GM_NOMINAL_M3_PER_S2 / 695_700_000 ** 2) * 100
+    );
+
+    assert.equal(
+      sun.effectiveTemperature!.value,
+      SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K
+    );
+    assert.deepEqual(
+      [sun.luminosity!.value, sun.luminosity!.unit],
+      [1, 'L_sun']
+    );
+    assert.equal(sun.logSurfaceGravity!.value, Number(logG.toFixed(3)));
+    assert.equal(sun.metallicity!.value, 0);
+  });
+
+  test('give every star a temperature and, but Polaris, a luminosity, each from a paper’s DOI', () => {
+    for (const { id, observations } of STARS) {
+      const {
+        effectiveTemperature,
+        gravityDarkening,
+        luminosity,
+        logSurfaceGravity,
+        metallicity
+      } = observations!;
+
+      assert.ok(effectiveTemperature ?? gravityDarkening, id);
+      assert.equal(luminosity === undefined, id === 'polaris', id);
+
+      for (const value of [
+        effectiveTemperature,
+        gravityDarkening?.pole,
+        gravityDarkening?.equator,
+        luminosity,
+        logSurfaceGravity,
+        metallicity
+      ]) {
+        if (!value) continue;
+
+        assert.match(value.source!.reference!, /^10\.\d{4,}\//, id);
+        assert.ok(!('unit' in value) || value.unit !== undefined, id);
+      }
+    }
+  });
+
+  test('meet L = (R/R☉)² (T/T☉)⁴ with each star’s radius', () => {
+    for (const { id, parent, radius, observations } of STARS) {
+      const { effectiveTemperature, luminosity } = observations!;
+
+      if (!effectiveTemperature || !luminosity) continue;
+
+      const stefanBoltzmann =
+        (radius.value / 695_700) ** 2 *
+        (effectiveTemperature.value / SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K) **
+          4;
+      // The S-stars' radii aren't from Habibi et al., whose luminosities
+      // are good to about 0.2 dex
+      const tolerance = parent === 'sagittarius-a-star' ? 0.15 : 0.05;
+
+      assert.ok(
+        Math.abs(Math.log10(stefanBoltzmann / luminosity.value)) < tolerance,
+        `${id}: ${stefanBoltzmann} vs ${luminosity.value} L☉`
+      );
+    }
+  });
+
+  test('convert a luminosity given as log L, error bars and all', () => {
+    const vega = STARS.find(({ id }) => id === 'vega')!.observations!;
+    const { value, uncertainty, provenance } = vega.luminosity!;
+
+    // log L/L☉ = 1.6034 ± 0.0049 (Yoon et al. 2010)
+    assert.ok(Math.abs(value / 10 ** 1.6034 - 1) < 1e-3);
+    assert.ok(
+      Math.abs(uncertainty!.plus / (10 ** 1.6083 - 10 ** 1.6034) - 1) < 0.02
+    );
+    assert.ok(
+      Math.abs(uncertainty!.minus / (10 ** 1.6034 - 10 ** 1.5985) - 1) < 0.02
+    );
+    assert.equal(provenance, 'derived');
+  });
+  test('give the Sun the heliosphere the Voyagers crossed, nose first', () => {
+    const sun = STARS.find(({ id }) => id === 'sun')!;
+    const { astropause, upwind, crossings } = sun.observations!.astrosphere!;
+    const rad = (degrees: number) => (degrees * Math.PI) / 180;
+    // The angle between two ecliptic directions, in degrees
+    const apart = (
+      a: { eclipticLongitude: number; eclipticLatitude: number },
+      b: { eclipticLongitude: number; eclipticLatitude: number }
+    ) =>
+      (Math.acos(
+        Math.sin(rad(a.eclipticLatitude)) * Math.sin(rad(b.eclipticLatitude)) +
+          Math.cos(rad(a.eclipticLatitude)) *
+            Math.cos(rad(b.eclipticLatitude)) *
+            Math.cos(rad(a.eclipticLongitude - b.eclipticLongitude))
+      ) *
+        180) /
+      Math.PI;
+
+    // Blunt upwind, drawn out downwind
+    assert.ok(astropause!.nose!.value < astropause!.flank!.value);
+    assert.ok(astropause!.flank!.value < astropause!.tail!.value);
+    assert.equal(astropause!.tail!.limit, 'lower');
+
+    assert.deepEqual(
+      crossings!.map(({ probeId, boundary }) => `${probeId} ${boundary}`),
+      [
+        'voyager-1 termination shock',
+        'voyager-2 termination shock',
+        'voyager-1 astropause',
+        'voyager-2 astropause'
+      ]
+    );
+
+    for (const [i, crossing] of crossings!.entries()) {
+      assert.equal(crossing.distance.unit, 'au');
+      assert.match(crossing.distance.source!.reference!, /^10\./);
+      // Both Voyagers head out within 60° of the nose
+      assert.ok(apart(crossing.direction!, upwind!) < 60, crossing.probeId);
+      assert.ok(i === 0 || crossings![i - 1]!.date < crossing.date);
+    }
+
+    for (const probeId of ['voyager-1', 'voyager-2']) {
+      const [shock, pause] = crossings!.filter(
+        (crossing) => crossing.probeId === probeId
+      );
+
+      assert.ok(shock!.distance.value < pause!.distance.value, probeId);
+    }
+
+    // Hidden until a renderer offers to show it
+    assert.equal(sun.display!.astrosphere!.visibleByDefault, undefined);
   });
 });

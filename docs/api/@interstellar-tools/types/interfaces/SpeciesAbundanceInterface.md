@@ -4,7 +4,7 @@ SpeciesAbundanceInterface
 # Interface: SpeciesAbundanceInterface
 
 Defined in:
-[observations.ts:411](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L411)
+[observations.ts:414](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L414)
 
 A **chemical species**, and how much of it there is.
 
@@ -19,7 +19,7 @@ abundance?: ObservedType<
 ```
 
 Defined in:
-[observations.ts:415](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L415)
+[observations.ts:418](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L418)
 
 How much, as a share or in dex.
 
@@ -32,7 +32,7 @@ detectedOnly?: boolean;
 ```
 
 Defined in:
-[observations.ts:417](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L417)
+[observations.ts:420](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L420)
 
 `true` when it's detected without an amount.
 
@@ -45,7 +45,7 @@ method?: string;
 ```
 
 Defined in:
-[observations.ts:419](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L419)
+[observations.ts:422](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L422)
 
 How, such as `'transmission spectroscopy'`.
 
@@ -58,6 +58,6 @@ species: string;
 ```
 
 Defined in:
-[observations.ts:413](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L413)
+[observations.ts:416](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L416)
 
 A formula or name, such as `'N2'`, `'CH4'`, `'H2O'` or `'Na'`.

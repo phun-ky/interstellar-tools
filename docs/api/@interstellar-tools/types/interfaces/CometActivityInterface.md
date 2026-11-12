@@ -4,7 +4,7 @@ CometActivityInterface
 # Interface: CometActivityInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:325](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L325)
+[celestial-bodies/body-observations.ts:328](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L328)
 
 A comet's **activity**: its coma, tails and outgassing.
 
@@ -17,7 +17,7 @@ activityOnset?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:337](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L337)
+[celestial-bodies/body-observations.ts:340](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L340)
 
 Its distance from the Sun when activity was first seen.
 
@@ -30,7 +30,7 @@ afRho?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:327](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L327)
+[celestial-bodies/body-observations.ts:330](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L330)
 
 A'Hearn's dust proxy, Afρ.
 
@@ -43,7 +43,7 @@ comaDiameter?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:333](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L333)
+[celestial-bodies/body-observations.ts:336](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L336)
 
 How wide its coma is.
 
@@ -56,7 +56,7 @@ dustProduction?: ObservedType<MassRateInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:329](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L329)
+[celestial-bodies/body-observations.ts:332](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L332)
 
 How much dust it gives off.
 
@@ -72,14 +72,14 @@ fragmentations?: {
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:341](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L341)
+[celestial-bodies/body-observations.ts:344](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L344)
 
 Its breakups.
 
 | Name             | Type                                                                                      | Defined in                                                                                                                                                         |
 | ---------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `date`           | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) | [celestial-bodies/body-observations.ts:341](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L341) |
-| `fragmentCount?` | `number`                                                                                  | [celestial-bodies/body-observations.ts:341](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L341) |
+| `date`           | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) | [celestial-bodies/body-observations.ts:344](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L344) |
+| `fragmentCount?` | `number`                                                                                  | [celestial-bodies/body-observations.ts:344](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L344) |
 
 ---
 
@@ -90,7 +90,7 @@ isotopeRatios?: Record<string, ObservedType>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:343](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L343)
+[celestial-bodies/body-observations.ts:346](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L346)
 
 Isotope ratios, such as `{ 'D/H': … }`.
 
@@ -106,14 +106,14 @@ outbursts?: {
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:339](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L339)
+[celestial-bodies/body-observations.ts:342](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L342)
 
 Its outbursts.
 
 | Name         | Type                                                                                             | Defined in                                                                                                                                                         |
 | ------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `amplitude?` | [`ObservedType`](../type-aliases/ObservedType.md)<[`MagnitudeInterface`](MagnitudeInterface.md)> | [celestial-bodies/body-observations.ts:339](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L339) |
-| `date`       | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)        | [celestial-bodies/body-observations.ts:339](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L339) |
+| `amplitude?` | [`ObservedType`](../type-aliases/ObservedType.md)<[`MagnitudeInterface`](MagnitudeInterface.md)> | [celestial-bodies/body-observations.ts:342](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L342) |
+| `date`       | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)        | [celestial-bodies/body-observations.ts:342](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L342) |
 
 ---
 
@@ -124,7 +124,7 @@ productionRates?: CometProductionRateInterface[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:331](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L331)
+[celestial-bodies/body-observations.ts:334](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L334)
 
 How much gas, by species.
 
@@ -137,6 +137,6 @@ tails?: CometTailInterface[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:335](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L335)
+[celestial-bodies/body-observations.ts:338](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L338)
 
 Its tails.

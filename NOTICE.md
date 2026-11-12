@@ -47,6 +47,31 @@ copyright. They're compiled from public references, credited here:
 - **Star masses:** Yoon et al. 2010 (ApJ 708, 71) for Vega, Peterson et al. 2006
   (ApJ 636, 1087) for Altair, and Schiller & Przybilla 2008 (A&A 479, 849) for
   Deneb.
+- **Star identifiers, positions and motions:** from
+  [SIMBAD](https://simbad.cds.unistra.fr/simbad/) (Wenger et al. 2000, A&AS 143,
+  9), with the parallaxes and proper motions of the Hipparcos new reduction (van
+  Leeuwen 2007, A&A 474, 653) and of
+  [Gaia DR3](https://www.cosmos.esa.int/web/gaia/dr3) (Gaia Collaboration,
+  Vallenari et al. 2023, A&A 674, A1), and the radial velocities, V magnitudes
+  and α Centauri's parallax from the papers SIMBAD cites for each.
+- **Star temperatures, luminosities, gravities and metallicities:** the IAU's
+  nominal solar values (Prša et al. 2016, AJ 152, 41); Yoon et al. 2010 for
+  Vega; Peterson et al. 2006 for Altair; Schiller & Przybilla 2008 for Deneb;
+  Tkachenko et al. 2016 for Spica; Kervella et al. 2017, Akeson et al. 2021 and
+  Porto de Mello et al. 2008 for α Centauri; Ribas et al. 2017 and Passegger et
+  al. 2016 for Proxima Centauri; Bond et al. 2017 for Sirius; Levesque & Massey
+  2020 and Joyce et al. 2020 for Betelgeuse; Usenko et al. 2005 for Polaris;
+  Ramírez & Allende Prieto 2011 and Heiter et al. 2015 for Arcturus; Przybilla
+  et al. 2006 and 2010 and Moravveji et al. 2012 for Rigel; Domiciano de Souza
+  et al. 2021 for Canopus; Schweitzer et al. 2019 for Barnard's Star; Agol et
+  al. 2021 for TRAPPIST-1; and Habibi et al. 2017 for the S-stars. Each value
+  carries its paper's DOI.
+- **The heliosphere:** the Voyagers' termination shock and heliopause crossings
+  from Stone et al. 2005 (Science 309, 2017), Burlaga et al. 2008 (Nature
+  454, 75) and Burlaga et al. 2019 (Nature Astronomy 3, 1007), with their
+  directions from JPL Horizons; the heliopause's shape from IBEX (Reisenfeld et
+  al. 2021, ApJS 254, 40); and the interstellar wind's direction and speed from
+  McComas et al. 2015 (ApJS 220, 22).
 - **Gravitational parameters (`mu`):** the DE440 ephemeris (Park et al. 2021, AJ
   161, 105) for the Sun, Mercury, Venus and Earth, Park et al. 2016 (Nature
   537, 515) for Ceres, and JPL's
@@ -81,18 +106,30 @@ copyright. They're compiled from public references, credited here:
   Pluto's from the page's earlier version, which listed it, and the Moon's from
   NASA's
   [Moon fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html).
-- **Interstellar objects:** the designations from the IAU's Minor Planet Center
-  (MPECs 2017-V17, 2019-S72 and 2025-N12). The orbits from
+- **Interstellar objects:** the designations, earlier designations and
+  discoveries from the IAU's Minor Planet Center (MPECs 2017-U181, 2017-V17,
+  2019-R106, 2019-S72 and 2025-N12). The orbits from
   [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/): its heliocentric elements
   osculating at perihelion, from JPL's solutions #16 for ʻOumuamua (Micheli et
-  al. 2018, Nature 559, 223), #54 for Borisov and #55, a temporary one, for
-  3I/ATLAS. The speeds coming in from Bailer-Jones et al. (2018, AJ 156, 205)
-  for ʻOumuamua and (2020, A&A 634, A14) for Borisov, and for 3I/ATLAS from
-  JPL's barycentric elements, checked against Seligman et al. (2025, ApJL 989,
-  L36). ʻOumuamua's effective radius from Trilling et al. (2018, AJ 156, 261)
-  and its tumbling from Belton et al. (2018, ApJL 856, L21); Borisov's nucleus
-  from Jewitt et al. (2020, ApJL 888, L23) and Hui et al. (2020, AJ 160, 92);
-  3I/ATLAS's from Hui et al. (2026, ApJL 999, L37).
+  al. 2018, Nature 559, 223), #54 for Borisov and #55 for 3I/ATLAS. The speeds
+  coming in from Bailer-Jones et al. (2018, AJ 156, 205) for ʻOumuamua and
+  (2020, A&A 634, A14) for Borisov, and for 3I/ATLAS from JPL's barycentric
+  elements, checked against Seligman et al. (2025, ApJL 989, L36). ʻOumuamua's
+  effective radius from Trilling et al. (2018, AJ 156, 261) and its tumbling
+  from Belton et al. (2018, ApJL 856, L21); Borisov's nucleus from Jewitt et al.
+  (2020, ApJL 888, L23) and Hui et al. (2020, AJ 160, 92); 3I/ATLAS's from Hui
+  et al. (2026, ApJL 999, L37). Their orbit solutions' uncertainties,
+  non-gravitational accelerations and magnitudes from JPL's
+  [Small-Body Database](https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html).
+- **Planetary rings:** the rings and gaps of Jupiter, Saturn, Uranus and
+  Neptune, their edges and optical depths from the PDS Ring-Moon Systems Node's
+  vital statistics
+  ([Jupiter](https://pds-rings.seti.org/jupiter/jupiter_tables.html),
+  [Saturn](https://pds-rings.seti.org/saturn/saturn_tables.html),
+  [Uranus](https://pds-rings.seti.org/uranus/uranus_tables.html) and
+  [Neptune](https://pds-rings.seti.org/neptune/neptune_tables.html)) and the
+  papers they cite, and Saturn's rings' thicknesses from NASA NSSDCA's
+  [Saturnian rings fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/satringfact.html).
 - **Galaxies:** Andromeda's distance from Li et al. (2021, ApJ 920, 84) and
   Triangulum's from Breuval et al. (2023, ApJ 951, 118), both from Cepheids.
   Andromeda's and Triangulum's D25 diameters and morphological types from the

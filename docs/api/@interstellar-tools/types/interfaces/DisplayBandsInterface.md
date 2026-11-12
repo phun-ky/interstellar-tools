@@ -4,7 +4,7 @@ DisplayBandsInterface
 # Interface: DisplayBandsInterface
 
 Defined in:
-[celestial-bodies/display.ts:225](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L225)
+[celestial-bodies/display.ts:228](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L228)
 
 How to draw a giant planet's **belts and zones**.
 
@@ -17,7 +17,7 @@ contrast?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:233](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L233)
+[celestial-bodies/display.ts:236](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L236)
 
 How different belts and zones are, 0 (featureless) to 1.
 
@@ -30,7 +30,7 @@ count: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:229](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L229)
+[celestial-bodies/display.ts:232](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L232)
 
 How many belt and zone pairs, from pole to pole.
 
@@ -43,7 +43,7 @@ palette: DisplayPaletteType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:227](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L227)
+[celestial-bodies/display.ts:230](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L230)
 
 Belt, zone and accent colours.
 
@@ -56,7 +56,7 @@ storms?: DisplayStormInterface[];
 ```
 
 Defined in:
-[celestial-bodies/display.ts:235](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L235)
+[celestial-bodies/display.ts:238](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L238)
 
 Storms.
 
@@ -69,6 +69,6 @@ turbulence?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:231](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L231)
+[celestial-bodies/display.ts:234](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L234)
 
 How much the bands waver, 0 (straight) to 1.

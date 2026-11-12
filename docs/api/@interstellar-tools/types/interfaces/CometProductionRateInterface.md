@@ -4,7 +4,7 @@ CometProductionRateInterface
 # Interface: CometProductionRateInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:299](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L299)
+[celestial-bodies/body-observations.ts:302](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L302)
 
 How fast a comet gives off one **species**.
 
@@ -17,7 +17,7 @@ heliocentricDistance?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:305](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L305)
+[celestial-bodies/body-observations.ts:308](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L308)
 
 Its distance from the Sun when measured.
 
@@ -30,7 +30,7 @@ rate: ObservedType<ProductionRateInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:303](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L303)
+[celestial-bodies/body-observations.ts:306](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L306)
 
 In molecules a second.
 
@@ -43,6 +43,6 @@ species: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:301](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L301)
+[celestial-bodies/body-observations.ts:304](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L304)
 
 Such as `'H2O'`, `'OH'`, `'CO'`, `'CO2'`, `'CN'`, `'C2'` or `'HCN'`.

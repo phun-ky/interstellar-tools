@@ -4,7 +4,7 @@ DisplaySurfaceInterface
 # Interface: DisplaySurfaceInterface
 
 Defined in:
-[celestial-bodies/display.ts:185](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L185)
+[celestial-bodies/display.ts:188](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L188)
 
 How to draw a **solid surface**.
 
@@ -17,7 +17,7 @@ iceCaps?: DisplayIceCapsInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:193](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L193)
+[celestial-bodies/display.ts:196](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L196)
 
 Polar ice caps.
 
@@ -30,7 +30,7 @@ lava?: DisplayLavaInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:195](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L195)
+[celestial-bodies/display.ts:198](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L198)
 
 Lava.
 
@@ -43,7 +43,7 @@ ocean?: DisplayOceanInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:191](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L191)
+[celestial-bodies/display.ts:194](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L194)
 
 Oceans.
 
@@ -56,7 +56,7 @@ palette: DisplayPaletteType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:187](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L187)
+[celestial-bodies/display.ts:190](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L190)
 
 Lowland, midland and highland colours.
 
@@ -69,6 +69,6 @@ roughness?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:189](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L189)
+[celestial-bodies/display.ts:192](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L192)
 
 Small-scale relief and crater contrast, 0 (smooth) to 1 (rugged).

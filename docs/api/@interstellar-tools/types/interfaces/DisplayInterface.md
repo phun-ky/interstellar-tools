@@ -4,7 +4,7 @@ DisplayInterface
 # Interface: DisplayInterface
 
 Defined in:
-[celestial-bodies/display.ts:79](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L79)
+[celestial-bodies/display.ts:80](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L80)
 
 How a body is **drawn**: everything about rendering, kept apart from its
 physical data, its `orbit` and its `observations`.
@@ -18,17 +18,17 @@ It holds three kinds of values:
   datasets never set these.
 - **How to draw the body itself**, for a procedural renderer: `model`, and the
   groups that model reads, `surface`, `bands`, `clouds`, `atmosphere`,
-  `emission`, `rings`, `photosphere`, `coma`, `galaxy` and `blackHole`, with a
-  noise `seed`. They come from the body's `observations` or from images of it,
-  and `derivation` records which.
+  `emission`, `rings`, `photosphere`, `astrosphere`, `coma`, `galaxy` and
+  `blackHole`, with a noise `seed`. They come from the body's `observations` or
+  from images of it, and `derivation` records which.
 
 ::: info
 
 - Colours are hex strings (`#rrggbb`) or CSS colour names, like `color`.
 - Intensities, coverages and fractions run from 0 to 1.
 - Sizes in the drawing groups are in multiples of the drawn body's radius, never
-  physical units. The physical sizes, such as a ring's radii, are in
-  `observations`.
+  physical units, but for `astrosphere`'s, which come from `observations`. The
+  physical sizes, such as a ring's radii, are in `observations`.
 - The computed orbit distances are in whatever unit the renderer uses for
   `orbit.a` (for example au), in the orbit's plane, with the parent at the
   origin and periapsis along +x.
@@ -65,6 +65,19 @@ const saturn: DisplayInterface = {
 
 ## Properties
 
+### astrosphere?
+
+```ts
+astrosphere?: DisplayAstrosphereInterface;
+```
+
+Defined in:
+[celestial-bodies/display.ts:112](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L112)
+
+How to draw a star's astrosphere.
+
+---
+
 ### atmosphere?
 
 ```ts
@@ -72,7 +85,7 @@ atmosphere?: DisplayAtmosphereInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:103](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L103)
+[celestial-bodies/display.ts:104](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L104)
 
 The glow of an atmosphere at the limb.
 
@@ -85,7 +98,7 @@ bands?: DisplayBandsInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:99](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L99)
+[celestial-bodies/display.ts:100](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L100)
 
 A giant planet's belts, zones and storms.
 
@@ -98,7 +111,7 @@ blackHole?: DisplayBlackHoleInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:115](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L115)
+[celestial-bodies/display.ts:118](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L118)
 
 A black hole's photon ring and accretion disk.
 
@@ -111,7 +124,7 @@ clouds?: DisplayCloudsInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:101](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L101)
+[celestial-bodies/display.ts:102](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L102)
 
 A cloud layer over a solid surface.
 
@@ -124,7 +137,7 @@ color?: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:81](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L81)
+[celestial-bodies/display.ts:82](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L82)
 
 Colour to draw the body in, as a hex string (`#rrggbb`) or a CSS colour name.
 
@@ -137,7 +150,7 @@ coma?: DisplayComaInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:111](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L111)
+[celestial-bodies/display.ts:114](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L114)
 
 A comet's coma and tails.
 
@@ -150,7 +163,7 @@ density?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:87](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L87)
+[celestial-bodies/display.ts:88](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L88)
 
 How densely to fill an area, e.g. how many asteroids to draw in a belt.
 
@@ -163,7 +176,7 @@ derivation?: DisplayDerivationInterface[];
 ```
 
 Defined in:
-[celestial-bodies/display.ts:119](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L119)
+[celestial-bodies/display.ts:122](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L122)
 
 Why each drawing value is what it is.
 
@@ -176,7 +189,7 @@ emission?: DisplayEmissionInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:105](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L105)
+[celestial-bodies/display.ts:106](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L106)
 
 Light the body gives off itself, seen on its night side too.
 
@@ -189,7 +202,7 @@ focusOffsetX?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:91](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L91)
+[celestial-bodies/display.ts:92](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L92)
 
 Distance from the ellipse's centre to its focus, $c = a e$, computed by a
 renderer.
@@ -203,7 +216,7 @@ galaxy?: DisplayGalaxyInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:113](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L113)
+[celestial-bodies/display.ts:116](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L116)
 
 A galaxy's bulge, disk and arms.
 
@@ -216,7 +229,7 @@ model?: DisplayModelType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:95](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L95)
+[celestial-bodies/display.ts:96](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L96)
 
 Which procedural model draws the body.
 
@@ -229,7 +242,7 @@ opacity?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:85](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L85)
+[celestial-bodies/display.ts:86](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L86)
 
 Transparency, from 0 (invisible) to 1 (solid).
 
@@ -242,7 +255,7 @@ orbitPath?: CartesianCoordinatesInterface[];
 ```
 
 Defined in:
-[celestial-bodies/display.ts:93](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L93)
+[celestial-bodies/display.ts:94](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L94)
 
 Points along the drawn orbit, computed by a renderer.
 
@@ -255,7 +268,7 @@ photosphere?: DisplayPhotosphereInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:109](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L109)
+[celestial-bodies/display.ts:110](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L110)
 
 A star's disc: its colour, limb darkening, granulation, spots and corona.
 
@@ -268,7 +281,7 @@ rings?: DisplayRingsInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:107](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L107)
+[celestial-bodies/display.ts:108](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L108)
 
 How to draw the rings in `observations.rings`.
 
@@ -281,7 +294,7 @@ seed?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:117](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L117)
+[celestial-bodies/display.ts:120](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L120)
 
 A seed for the procedural noise, so the body always looks the same.
 
@@ -294,7 +307,7 @@ semiMinorAxis?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:89](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L89)
+[celestial-bodies/display.ts:90](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L90)
 
 Semi-minor axis of the orbit, $b = a\sqrt{1 - e^2}$, computed by a renderer.
 
@@ -307,7 +320,7 @@ size?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:83](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L83)
+[celestial-bodies/display.ts:84](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L84)
 
 Scaled size for drawing, not the physical size (see `radius`).
 
@@ -320,6 +333,6 @@ surface?: DisplaySurfaceInterface;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:97](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L97)
+[celestial-bodies/display.ts:98](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L98)
 
 A solid surface: its colours, relief, oceans, ice caps and lava.

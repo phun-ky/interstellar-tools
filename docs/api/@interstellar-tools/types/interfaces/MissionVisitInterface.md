@@ -4,7 +4,7 @@ MissionVisitInterface
 # Interface: MissionVisitInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:248](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L248)
+[celestial-bodies/body-observations.ts:251](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L251)
 
 A **spacecraft's visit** to a small body.
 
@@ -17,7 +17,7 @@ date: Date;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:254](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L254)
+[celestial-bodies/body-observations.ts:257](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L257)
 
 When it arrived or passed.
 
@@ -30,7 +30,7 @@ kind: 'flyby' | 'orbiter' | 'lander' | 'impactor' | 'sample return';
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:252](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L252)
+[celestial-bodies/body-observations.ts:255](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L255)
 
 What it did there.
 
@@ -43,6 +43,6 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:250](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L250)
+[celestial-bodies/body-observations.ts:253](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L253)
 
 The mission, such as `'OSIRIS-REx'`.

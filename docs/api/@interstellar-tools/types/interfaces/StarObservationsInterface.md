@@ -4,7 +4,7 @@ StarObservationsInterface
 # Interface: StarObservationsInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:553](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L553)
+[celestial-bodies/body-observations.ts:641](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L641)
 
 What is measured about a **star**. Its own `mass` (M☉) and `radius` stay the
 values the equations use; these carry uncertainties and methods.
@@ -36,7 +36,7 @@ absoluteMagnitudes?: Partial<Record<PhotometricBandType, ObservedType<MagnitudeI
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:563](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L563)
+[celestial-bodies/body-observations.ts:651](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L651)
 
 Absolute magnitudes, by band, with `bol` for bolometric.
 
@@ -49,7 +49,7 @@ activity?: StellarActivityInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:600](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L600)
+[celestial-bodies/body-observations.ts:688](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L688)
 
 Its magnetic activity.
 
@@ -62,7 +62,7 @@ age?: ObservedType<TemporalInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:585](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L585)
+[celestial-bodies/body-observations.ts:673](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L673)
 
 Its age.
 
@@ -75,7 +75,7 @@ alphaEnhancement?: ObservedType<DexInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:575](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L575)
+[celestial-bodies/body-observations.ts:663](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L663)
 
 The alpha-element enhancement, \[α/Fe].
 
@@ -88,7 +88,7 @@ angularDiameter?: ObservedType<AngleInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:579](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L579)
+[celestial-bodies/body-observations.ts:667](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L667)
 
 Its limb-darkened angular diameter.
 
@@ -101,7 +101,7 @@ apparentMagnitudes?: Partial<Record<PhotometricBandType, ObservedType<MagnitudeI
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:561](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L561)
+[celestial-bodies/body-observations.ts:649](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L649)
 
 Apparent magnitudes, by band.
 
@@ -114,9 +114,22 @@ astrometry?: AstrometryInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:559](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L559)
+[celestial-bodies/body-observations.ts:647](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L647)
 
 Its position, parallax and motion.
+
+---
+
+### astrosphere?
+
+```ts
+astrosphere?: AstrosphereInterface;
+```
+
+Defined in:
+[celestial-bodies/body-observations.ts:696](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L696)
+
+The bubble its wind blows in the interstellar medium.
 
 ---
 
@@ -127,7 +140,7 @@ colorIndices?: Record<string, ObservedType<MagnitudeInterface>>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:565](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L565)
+[celestial-bodies/body-observations.ts:653](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L653)
 
 Colour indices, such as `{ 'B-V': … }`.
 
@@ -140,7 +153,7 @@ component?: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:608](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L608)
+[celestial-bodies/body-observations.ts:698](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L698)
 
 Its letter within its system, such as `'A'`.
 
@@ -153,7 +166,7 @@ discovery?: DiscoveryInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:557](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L557)
+[celestial-bodies/body-observations.ts:645](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L645)
 
 How it was discovered, as for a companion.
 
@@ -166,7 +179,7 @@ effectiveTemperature?: ObservedType<TemperatureInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:569](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L569)
+[celestial-bodies/body-observations.ts:657](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L657)
 
 The effective temperature.
 
@@ -179,7 +192,7 @@ evolutionaryStage?: StellarEvolutionaryStageType;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:604](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L604)
+[celestial-bodies/body-observations.ts:692](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L692)
 
 Where it is in its life.
 
@@ -195,14 +208,14 @@ gravityDarkening?: {
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:593](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L593)
+[celestial-bodies/body-observations.ts:681](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L681)
 
 Its pole and equator temperatures, from gravity darkening.
 
 | Name      | Type                                                                                                 | Defined in                                                                                                                                                         |
 | --------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `equator` | [`ObservedType`](../type-aliases/ObservedType.md)<[`TemperatureInterface`](TemperatureInterface.md)> | [celestial-bodies/body-observations.ts:595](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L595) |
-| `pole`    | [`ObservedType`](../type-aliases/ObservedType.md)<[`TemperatureInterface`](TemperatureInterface.md)> | [celestial-bodies/body-observations.ts:594](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L594) |
+| `equator` | [`ObservedType`](../type-aliases/ObservedType.md)<[`TemperatureInterface`](TemperatureInterface.md)> | [celestial-bodies/body-observations.ts:683](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L683) |
+| `pole`    | [`ObservedType`](../type-aliases/ObservedType.md)<[`TemperatureInterface`](TemperatureInterface.md)> | [celestial-bodies/body-observations.ts:682](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L682) |
 
 ---
 
@@ -213,7 +226,7 @@ identifiers?: IdentifiersInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:555](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L555)
+[celestial-bodies/body-observations.ts:643](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L643)
 
 Catalogue identifiers.
 
@@ -226,7 +239,7 @@ limbDarkening?: LimbDarkeningInterface[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:598](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L598)
+[celestial-bodies/body-observations.ts:686](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L686)
 
 Fitted limb-darkening laws.
 
@@ -239,7 +252,7 @@ logSurfaceGravity?: ObservedType<DexInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:571](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L571)
+[celestial-bodies/body-observations.ts:659](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L659)
 
 The surface gravity as log₁₀ g, in cgs.
 
@@ -252,7 +265,7 @@ luminosity?: ObservedType<LuminosityInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:583](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L583)
+[celestial-bodies/body-observations.ts:671](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L671)
 
 Its luminosity.
 
@@ -265,7 +278,7 @@ mass?: ObservedType<MassInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:581](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L581)
+[celestial-bodies/body-observations.ts:669](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L669)
 
 Its mass, with uncertainty and method.
 
@@ -278,7 +291,7 @@ massLossRate?: ObservedType<MassRateInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:606](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L606)
+[celestial-bodies/body-observations.ts:694](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L694)
 
 How fast it loses mass.
 
@@ -291,7 +304,7 @@ metallicity?: ObservedType<DexInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:573](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L573)
+[celestial-bodies/body-observations.ts:661](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L661)
 
 The iron abundance, \[Fe/H].
 
@@ -304,7 +317,7 @@ oblateness?: ObservedType;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:591](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L591)
+[celestial-bodies/body-observations.ts:679](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L679)
 
 How flattened its spin makes it, as for Vega or Altair.
 
@@ -317,7 +330,7 @@ projectedRotationalVelocity?: ObservedType<SpeedInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:587](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L587)
+[celestial-bodies/body-observations.ts:675](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L675)
 
 Its projected rotation speed, v sin i.
 
@@ -330,7 +343,7 @@ radius?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:577](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L577)
+[celestial-bodies/body-observations.ts:665](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L665)
 
 Its radius, with uncertainty and method.
 
@@ -343,7 +356,7 @@ sources?: ObservationSourceInterface[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:610](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L610)
+[celestial-bodies/body-observations.ts:700](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L700)
 
 Sources for the record as a whole.
 
@@ -356,7 +369,7 @@ spectralClassification?: SpectralClassificationInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:567](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L567)
+[celestial-bodies/body-observations.ts:655](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L655)
 
 `type`, split into its parts.
 
@@ -369,7 +382,7 @@ spinInclination?: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:589](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L589)
+[celestial-bodies/body-observations.ts:677](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L677)
 
 The inclination of its spin axis to the line of sight.
 
@@ -382,6 +395,6 @@ variability?: VariabilityInterface[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:602](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L602)
+[celestial-bodies/body-observations.ts:690](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L690)
 
 How it varies.

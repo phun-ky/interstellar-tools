@@ -4,7 +4,7 @@ OpenOrbitInterface
 # Interface: OpenOrbitInterface
 
 Defined in:
-[orbits.ts:291](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L291)
+[orbits.ts:313](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L313)
 
 An **open orbit**: a hyperbola, $e > 1$, that passes its parent once and never
 comes back, as an interstellar object's does around the Sun.
@@ -56,7 +56,7 @@ a: DistanceInterface;
 ```
 
 Defined in:
-[orbits.ts:293](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L293)
+[orbits.ts:315](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L315)
 
 Semi-major axis, negative.
 
@@ -69,7 +69,7 @@ angle: Radians;
 ```
 
 Defined in:
-[orbits.ts:301](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L301)
+[orbits.ts:323](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L323)
 
 True anomaly at J2000 in radians, between $-\nu_\infty$ and $\nu_\infty$.
 
@@ -82,7 +82,7 @@ e: number;
 ```
 
 Defined in:
-[orbits.ts:295](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L295)
+[orbits.ts:317](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L317)
 
 Orbital eccentricity, above 1.
 
@@ -95,7 +95,7 @@ excessSpeed: number;
 ```
 
 Defined in:
-[orbits.ts:311](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L311)
+[orbits.ts:333](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L333)
 
 Hyperbolic excess speed $v_\infty$: its speed far from its parent, coming in, in
 km/s.
@@ -109,7 +109,7 @@ frame?: OrbitFrameInterface;
 ```
 
 Defined in:
-[orbits.ts:313](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L313)
+[orbits.ts:335](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L335)
 
 The plane `i`, `om` and `w` are measured from.
 
@@ -122,7 +122,7 @@ i: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:303](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L303)
+[orbits.ts:325](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L325)
 
 Orbital inclination in degrees.
 
@@ -135,7 +135,7 @@ om: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:307](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L307)
+[orbits.ts:329](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L329)
 
 Longitude of the ascending node in degrees.
 
@@ -148,7 +148,7 @@ periapsisTime: Date;
 ```
 
 Defined in:
-[orbits.ts:309](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L309)
+[orbits.ts:331](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L331)
 
 When it passes periapsis, in UTC.
 
@@ -161,7 +161,7 @@ q: DistanceInterface;
 ```
 
 Defined in:
-[orbits.ts:297](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L297)
+[orbits.ts:319](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L319)
 
 Periapsis distance $q = a(1 - e)$, positive.
 
@@ -174,7 +174,7 @@ retrograde?: boolean;
 ```
 
 Defined in:
-[orbits.ts:299](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L299)
+[orbits.ts:321](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L321)
 
 `true` for a retrograde orbit, `i > 90°`. Omitted for prograde ones.
 
@@ -187,6 +187,6 @@ w: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:305](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L305)
+[orbits.ts:327](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L327)
 
 Argument of periapsis in degrees.

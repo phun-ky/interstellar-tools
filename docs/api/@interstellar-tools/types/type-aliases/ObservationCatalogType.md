@@ -21,7 +21,7 @@ type ObservationCatalogType =
 ```
 
 Defined in:
-[observations.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L62)
+[observations.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L65)
 
 The **catalogues** the datasets in `@interstellar-tools/constants` draw on. Any
 other name is accepted too.

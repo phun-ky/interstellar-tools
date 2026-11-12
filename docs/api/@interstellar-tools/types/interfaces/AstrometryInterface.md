@@ -4,7 +4,7 @@ AstrometryInterface
 # Interface: AstrometryInterface
 
 Defined in:
-[observations.ts:293](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L293)
+[observations.ts:296](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L296)
 
 Where a body outside the Solar System is **on the sky**, and how it moves.
 
@@ -17,7 +17,7 @@ direction: CelestialDirectionInterface;
 ```
 
 Defined in:
-[observations.ts:295](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L295)
+[observations.ts:298](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L298)
 
 The ICRS position.
 
@@ -30,7 +30,7 @@ distance?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:307](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L307)
+[observations.ts:310](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L310)
 
 The distance from the Sun.
 
@@ -43,7 +43,7 @@ epoch?: EpochInterface;
 ```
 
 Defined in:
-[observations.ts:297](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L297)
+[observations.ts:300](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L300)
 
 The epoch of `direction`, such as J2016.0 for Gaia DR3.
 
@@ -56,7 +56,7 @@ galactic?: GalacticDirectionInterface;
 ```
 
 Defined in:
-[observations.ts:299](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L299)
+[observations.ts:302](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L302)
 
 The same position in galactic coordinates.
 
@@ -69,7 +69,7 @@ parallax?: ObservedType<AngleInterface>;
 ```
 
 Defined in:
-[observations.ts:301](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L301)
+[observations.ts:304](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L304)
 
 The trigonometric parallax.
 
@@ -82,7 +82,7 @@ properMotion?: ObservedProperMotionInterface;
 ```
 
 Defined in:
-[observations.ts:303](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L303)
+[observations.ts:306](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L306)
 
 The proper motion, μα\* and μδ.
 
@@ -95,6 +95,6 @@ radialVelocity?: ObservedType<SpeedInterface>;
 ```
 
 Defined in:
-[observations.ts:305](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L305)
+[observations.ts:308](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L308)
 
 The velocity along the line of sight, positive moving away.

@@ -4,7 +4,7 @@ DisplayRingsInterface
 # Interface: DisplayRingsInterface
 
 Defined in:
-[celestial-bodies/display.ts:284](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L284)
+[celestial-bodies/display.ts:287](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L287)
 
 How to draw a **ring system**. Its radii, rings and gaps are the measured ones,
 in the body's `observations.rings`.
@@ -18,7 +18,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:286](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L286)
+[celestial-bodies/display.ts:289](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L289)
 
 The rings' colour.
 
@@ -31,7 +31,7 @@ opacity: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:288](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L288)
+[celestial-bodies/display.ts:291](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L291)
 
 How opaque they are overall, 0–1, scaled by each ring's optical depth where it's
 known.
@@ -45,6 +45,6 @@ shadows?: boolean;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:290](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L290)
+[celestial-bodies/display.ts:293](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L293)
 
 Whether the planet and the rings cast shadows on each other.

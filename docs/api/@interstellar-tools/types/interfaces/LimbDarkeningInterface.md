@@ -4,7 +4,7 @@ LimbDarkeningInterface
 # Interface: LimbDarkeningInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:500](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L500)
+[celestial-bodies/body-observations.ts:503](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L503)
 
 A fitted **limb-darkening** law, in one band.
 
@@ -17,7 +17,7 @@ band: PhotometricBandType;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:504](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L504)
+[celestial-bodies/body-observations.ts:507](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L507)
 
 The band they were fitted in.
 
@@ -30,7 +30,7 @@ coefficients: ObservedType[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:506](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L506)
+[celestial-bodies/body-observations.ts:509](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L509)
 
 The coefficients, in the law's order.
 
@@ -43,6 +43,6 @@ law: 'linear' | 'quadratic' | 'square-root' | 'nonlinear' | 'power-2';
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:502](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L502)
+[celestial-bodies/body-observations.ts:505](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L505)
 
 The law the coefficients belong to.

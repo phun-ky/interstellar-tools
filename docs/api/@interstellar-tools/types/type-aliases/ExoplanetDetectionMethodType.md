@@ -18,6 +18,6 @@ type ExoplanetDetectionMethodType =
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:61](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L61)
+[celestial-bodies/body-observations.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L64)
 
 How an **exoplanet** was found.

@@ -8,7 +8,7 @@ const PLANETS: PlanetsType;
 ```
 
 Defined in:
-[bodies/planets.ts:57](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/planets.ts#L57)
+[bodies/planets.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/planets.ts#L71)
 
 Represents a dataset of planets and planetoids in the solar system.
 
@@ -58,6 +58,17 @@ Represents a dataset of planets and planetoids in the solar system.
   on the north side of the solar system's invariable plane, so Venus's and
   Uranus's prime meridians turn backwards; Ceres's and Pluto's are `'positive'`,
   by the right-hand rule. The IAU has none for the other dwarf planets.
+
+- `observations.rings` are Jupiter's, Saturn's, Uranus's and Neptune's rings,
+  and Saturn's named gaps, from the inside out: their edges in km from the
+  planet's centre and their normal optical depth, from the PDS Ring-Moon Systems
+  Node's vital statistics and the papers they cite, and Saturn's rings'
+  thicknesses from NASA NSSDCA. Uranus's and Neptune's edges are half the ring's
+  width either side of its middle, the way the sources give them. A value given
+  as a range, such as the C ring's optical depth of 0.05 to 0.35, is the range's
+  middle, with the range in its `note`. Saturn's ringlets, Neptune's Adams ring
+  arcs and its Arago ring are left out, and `shepherdIds` names only the moons
+  in `MOONS`.
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See

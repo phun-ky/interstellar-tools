@@ -4,7 +4,7 @@ SolidBodyObservationsInterface
 # Interface: SolidBodyObservationsInterface
 
 Defined in:
-[observations.ts:654](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L654)
+[observations.ts:655](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L655)
 
 What every **solid or planetary body** can have measured: planets, moons and
 small bodies.
@@ -24,7 +24,7 @@ atmosphere?: PlanetaryAtmosphereInterface;
 ```
 
 Defined in:
-[observations.ts:672](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L672)
+[observations.ts:673](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L673)
 
 Its atmosphere.
 
@@ -37,7 +37,7 @@ discovery?: DiscoveryInterface;
 ```
 
 Defined in:
-[observations.ts:658](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L658)
+[observations.ts:659](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L659)
 
 How it was discovered.
 
@@ -50,7 +50,7 @@ identifiers?: IdentifiersInterface;
 ```
 
 Defined in:
-[observations.ts:656](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L656)
+[observations.ts:657](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L657)
 
 Catalogue identifiers.
 
@@ -63,7 +63,7 @@ magnetosphere?: MagnetosphereInterface;
 ```
 
 Defined in:
-[observations.ts:676](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L676)
+[observations.ts:677](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L677)
 
 Its magnetic field.
 
@@ -76,7 +76,7 @@ massProperties?: MassPropertiesInterface;
 ```
 
 Defined in:
-[observations.ts:666](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L666)
+[observations.ts:667](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L667)
 
 Its measured mass and gravity.
 
@@ -89,7 +89,7 @@ orbitSolution?: OrbitSolutionInterface;
 ```
 
 Defined in:
-[observations.ts:660](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L660)
+[observations.ts:661](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L661)
 
 How well its orbit is known.
 
@@ -102,7 +102,7 @@ reflectance?: ReflectanceInterface;
 ```
 
 Defined in:
-[observations.ts:668](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L668)
+[observations.ts:669](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L669)
 
 Its brightness and reflectance.
 
@@ -115,7 +115,7 @@ rotation?: RotationObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:662](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L662)
+[observations.ts:663](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L663)
 
 Its measured spin.
 
@@ -128,7 +128,7 @@ size?: SizeObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:664](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L664)
+[observations.ts:665](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L665)
 
 Its measured size and shape.
 
@@ -141,7 +141,7 @@ sources?: ObservationSourceInterface[];
 ```
 
 Defined in:
-[observations.ts:678](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L678)
+[observations.ts:679](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L679)
 
 Sources for the record as a whole.
 
@@ -154,7 +154,7 @@ surface?: SurfaceObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:674](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L674)
+[observations.ts:675](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L675)
 
 Its surface.
 
@@ -167,6 +167,6 @@ thermal?: ThermalObservationsInterface;
 ```
 
 Defined in:
-[observations.ts:670](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L670)
+[observations.ts:671](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L671)
 
 Its temperatures and heat.
