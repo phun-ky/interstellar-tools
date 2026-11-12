@@ -8,7 +8,7 @@ const INTERSTELLAR_OBJECTS: InterstellarObjectsType;
 ```
 
 Defined in:
-[bodies/interstellar-objects.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L50)
+[bodies/interstellar-objects.ts:76](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L76)
 
 Represents the **interstellar objects** seen so far: bodies from other stars'
 systems, passing the Sun once on open orbits.
@@ -48,6 +48,22 @@ systems, passing the Sun once on open orbits.
 
 - `rotation`: ʻOumuamua tumbles, its spin axis circling every 8.67 h (Belton et
   al. 2018). Borisov's and 3I/ATLAS's spins aren't settled, so they have none.
+
+- `observations.orbitSolution` is the JPL solution each orbit comes from, as its
+  Small-Body Database gives it on 12 November 2026: its epoch, arc and
+  observation count, the elements' 1σ uncertainties at that epoch, and the
+  fitted non-gravitational accelerations A1, A2 and A3 at 1 au, in au/d², with
+  the comets' ΔT, how long after perihelion their outgassing peaked. ʻOumuamua's
+  `anomalousAcceleration` is its A1 in m/s²: it had no coma to explain it.
+
+- `observations.incomingRadiant` is where each came from, in the ICRS: the
+  incoming asymptote of its orbit around the Solar System's barycentre, from JPL
+  Horizons' elements at J2000.
+
+- `observations.discovery` and the old designations in `identifiers.aliases` are
+  from the Minor Planet Center's circulars, MPECs 2017-U181, 2017-V17,
+  2019-R106, 2019-S72 and 2025-N12. The comets' total magnitudes, M1 and K1, and
+  ʻOumuamua's H are JPL's.
 
 - Sources: compiled from public references, mainly NASA JPL and the IAU's Minor
   Planet Center. See
@@ -104,7 +120,74 @@ Every interstellar object seen so far, as of 2026.
     size: 2
   },
   /** Effective radius in km, of an elongated body */
-  radius: { value: 0.07, unit: 'km' }
+  radius: { value: 0.07, unit: 'km' },
+  observations: {
+    identifiers: { spkId: 50788063, aliases: ['A/2017 U1', 'C/2017 U1'] },
+    discovery: {
+      date: new Date('2017-10-19'),
+      discoverers: ['R. Weryk'],
+      facility: 'Pan-STARRS 1, Haleakala (F51)'
+    },
+    /** JPL's solution #16, at its epoch, with A1, A2 and A3 at 1 au */
+    orbitSolution: {
+      epoch: { jd: 2458080.5, timeScale: 'TDB' },
+      observationArc: { value: 80, unit: 'd' },
+      observationCount: 207,
+      firstObservation: new Date('2017-10-14'),
+      lastObservation: new Date('2018-01-02'),
+      sigma: {
+        e: 2.1064e-5,
+        a: 1.0015e-4,
+        q: 6.6635e-6,
+        i: 2.8826e-4,
+        om: 2.5422e-4,
+        w: 1.2495e-3
+      },
+      nonGravitational: {
+        a1: {
+          value: 2.790193364e-7,
+          unit: 'au/d2',
+          uncertainty: sigma(3.574e-8)
+        },
+        a2: {
+          value: 1.44126416e-8,
+          unit: 'au/d2',
+          uncertainty: sigma(2.445e-8)
+        },
+        a3: {
+          value: 1.573922616e-8,
+          unit: 'au/d2',
+          uncertainty: sigma(2.249e-8)
+        }
+      },
+      source: sbdb('1I')
+    },
+    /** Where it came from: near Vega, in Lyra */
+    incomingRadiant: {
+      rightAscension: 279.499 as DegreesType,
+      declination: 33.865 as DegreesType
+    },
+    /** A1 in m/s², with no coma to push it */
+    anomalousAcceleration: {
+      value: 5.59155e-6,
+      unit: 'm/s2',
+      uncertainty: sigma(7.162e-7),
+      provenance: 'derived',
+      note: 'JPL’s A1 at 1 au, from au/d²',
+      source: sbdb('1I')
+    },
+    nucleus: {
+      reflectance: {
+        absoluteMagnitude: {
+          value: 22.08,
+          unit: 'mag',
+          uncertainty: sigma(0.445),
+          source: sbdb('1I')
+        }
+      }
+    },
+    sources: [sbdb('1I'), mpec('K17/K17UI1'), mpec('K17/K17V17')]
+  }
 },
 ```
 

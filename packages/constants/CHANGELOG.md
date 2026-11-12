@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.9.0...%40interstellar-tools%2Fconstants%402.10.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add what's measured about the interstellar objects ([ebd9420](https://github.com/phun-ky/interstellar-tools/commit/ebd9420c79332f08fb2408a8968e083e40c823a0))
+
 ## [2.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.8.0...%40interstellar-tools%2Fconstants%402.9.0) (2026-11-12)
 
 ### Feature
