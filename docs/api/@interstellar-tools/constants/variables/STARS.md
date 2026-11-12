@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:38](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L38)
+[bodies/stars.ts:74](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L74)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -37,6 +37,17 @@ Represents a dataset of well-known stars within the Milky Way.
 
 - The Sun's `rotation.iau` is the IAU's rotation model (Archinal et al. 2018),
   turning with the Carrington period.
+
+- `observations.spectralClassification` is each star's `type` split into its
+  parts.
+
+- `observations.identifiers`, `astrometry` and `apparentMagnitudes` are given
+  for every star but the Sun and the S-stars, as SIMBAD has them: the ICRS
+  position at J2000, and the parallax and proper motion from the Hipparcos new
+  reduction (van Leeuwen 2007), or from Gaia DR3 for Sirius B, Proxima Centauri,
+  Barnard's Star and TRAPPIST-1. α Centauri's parallax is Pourbaix et al.'s
+  (1997), and the radial velocities and V magnitudes credit the paper each is
+  from. SIMBAD lists Spica as one star, so Spica A carries the pair's values.
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See
@@ -112,7 +123,53 @@ time.
   /** Galactic position in light-years (relative to Milky Way center) */
   x: { value: 25.3, unit: 'ly' },
   y: { value: 27230.011753394454, unit: 'ly' },
-  z: { value: 0, unit: 'ly' }
+  z: { value: 0, unit: 'ly' },
+  observations: {
+    spectralClassification: {
+      raw: 'A0V',
+      spectralClass: 'A',
+      subclass: 0,
+      luminosityClass: 'V'
+    },
+    identifiers: {
+      hip: 91262,
+      hd: 172167,
+      catalogs: { HR: '7001', GJ: '721' },
+      aliases: ['α Lyr']
+    },
+    astrometry: {
+      direction: {
+        rightAscension: 279.23473479 as DegreesType,
+        declination: 38.78368896 as DegreesType
+      },
+      epoch: J2000,
+      parallax: {
+        value: 130.23,
+        unit: 'mas',
+        uncertainty: sigma(0.36),
+        source: HIPPARCOS
+      },
+      properMotion: {
+        rightAscension: 200.94,
+        declination: 286.23,
+        uncertainty: { rightAscension: sigma(0.32), declination: sigma(0.4) },
+        source: HIPPARCOS
+      },
+      radialVelocity: {
+        value: -13.5,
+        unit: 'km/s',
+        uncertainty: sigma(0.4),
+        source: simbad('* alf Lyr', '2004A&A...420..183A')
+      }
+    },
+    apparentMagnitudes: {
+      V: {
+        value: 0.03,
+        unit: 'mag',
+        source: simbad('* alf Lyr', '2002yCat.2237....0D')
+      }
+    }
+  }
 },
 ```
 
