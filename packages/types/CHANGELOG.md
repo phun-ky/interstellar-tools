@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.9.0...%40interstellar-tools%2Ftypes%402.10.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Group how a procedural renderer draws a body ([162b64c](https://github.com/phun-ky/interstellar-tools/commit/162b64ca4454000dcad9f6b63249437c5b5a956a))
+
 ## [2.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.8.0...%40interstellar-tools%2Ftypes%402.9.0) (2026-11-12)
 
 ### Feature
