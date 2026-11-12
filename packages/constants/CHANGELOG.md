@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.8.0...%40interstellar-tools%2Fconstants%402.9.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the rings of Jupiter, Saturn, Uranus and Neptune ([7f3525b](https://github.com/phun-ky/interstellar-tools/commit/7f3525b1d49d38da121c420af1889a8c50bf577b))
+
 ## [2.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.7.0...%40interstellar-tools%2Fconstants%402.8.0) (2026-11-12)
 
 ### Feature
