@@ -2288,4 +2288,56 @@ describe('star observations', () => {
     );
     assert.equal(provenance, 'derived');
   });
+  test('give the Sun the heliosphere the Voyagers crossed, nose first', () => {
+    const sun = STARS.find(({ id }) => id === 'sun')!;
+    const { astropause, upwind, crossings } = sun.observations!.astrosphere!;
+    const rad = (degrees: number) => (degrees * Math.PI) / 180;
+    // The angle between two ecliptic directions, in degrees
+    const apart = (
+      a: { eclipticLongitude: number; eclipticLatitude: number },
+      b: { eclipticLongitude: number; eclipticLatitude: number }
+    ) =>
+      (Math.acos(
+        Math.sin(rad(a.eclipticLatitude)) * Math.sin(rad(b.eclipticLatitude)) +
+          Math.cos(rad(a.eclipticLatitude)) *
+            Math.cos(rad(b.eclipticLatitude)) *
+            Math.cos(rad(a.eclipticLongitude - b.eclipticLongitude))
+      ) *
+        180) /
+      Math.PI;
+
+    // Blunt upwind, drawn out downwind
+    assert.ok(astropause!.nose!.value < astropause!.flank!.value);
+    assert.ok(astropause!.flank!.value < astropause!.tail!.value);
+    assert.equal(astropause!.tail!.limit, 'lower');
+
+    assert.deepEqual(
+      crossings!.map(({ probeId, boundary }) => `${probeId} ${boundary}`),
+      [
+        'voyager-1 termination shock',
+        'voyager-2 termination shock',
+        'voyager-1 astropause',
+        'voyager-2 astropause'
+      ]
+    );
+
+    for (const [i, crossing] of crossings!.entries()) {
+      assert.equal(crossing.distance.unit, 'au');
+      assert.match(crossing.distance.source!.reference!, /^10\./);
+      // Both Voyagers head out within 60° of the nose
+      assert.ok(apart(crossing.direction!, upwind!) < 60, crossing.probeId);
+      assert.ok(i === 0 || crossings![i - 1]!.date < crossing.date);
+    }
+
+    for (const probeId of ['voyager-1', 'voyager-2']) {
+      const [shock, pause] = crossings!.filter(
+        (crossing) => crossing.probeId === probeId
+      );
+
+      assert.ok(shock!.distance.value < pause!.distance.value, probeId);
+    }
+
+    // Hidden until a renderer offers to show it
+    assert.equal(sun.display!.astrosphere!.visibleByDefault, undefined);
+  });
 });

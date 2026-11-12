@@ -92,6 +92,15 @@ const SCHWEITZER_2019 = paper(
 );
 const AGOL_2021 = paper('Agol et al. 2021', '10.3847/PSJ/abd022');
 const HABIBI_2017 = paper('Habibi et al. 2017', '10.3847/1538-4357/aa876f');
+// The heliosphere's
+const STONE_2005 = paper('Stone et al. 2005', '10.1126/science.1117684');
+const BURLAGA_2008 = paper('Burlaga et al. 2008', '10.1038/nature07029');
+const BURLAGA_2019 = paper('Burlaga et al. 2019', '10.1038/s41550-019-0920-y');
+const MCCOMAS_2015 = paper('McComas et al. 2015', '10.1088/0067-0049/220/2/22');
+const REISENFELD_2021 = paper(
+  'Reisenfeld et al. 2021',
+  '10.3847/1538-4365/abf658'
+);
 
 /**
  * Represents a dataset of well-known stars within the Milky Way.
@@ -129,6 +138,14 @@ const HABIBI_2017 = paper('Habibi et al. 2017', '10.3847/1538-4357/aa876f');
  *   pole's. The Sun's are the IAU's nominal values (Prša et al. 2016). A metallicity is left out
  *   where no bulk [Fe/H] is measured, as for Altair, Spica and Sirius A; Deneb's and Rigel's are
  *   [M/H]. Deneb's `radius` is Schiller & Przybilla's 203 R☉, like its mass.
+ * - The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is IBEX's map
+ *   (Reisenfeld et al. 2021): nearest just south of the nose, flaring towards the flanks, and at
+ *   least 350 au down the tail. Its nose faces `upwind`, where the interstellar wind comes from,
+ *   opposite the inflow direction McComas et al. 2015 give. `crossings` are the Voyagers'
+ *   termination shock and heliopause crossings, from the papers each credits, with the direction
+ *   each was in from JPL Horizons; Horizons puts them within 0.03 au of the papers' distances.
+ *   Whether the heliosphere has a bow shock is disputed, so it has none here. The Sun's
+ *   `display.astrosphere` keeps it hidden until a renderer offers to show it.
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
@@ -179,9 +196,99 @@ export const STARS: StarsType = [
     mu: 1.3271244004127942e20, // DE440: 1.32712440041279419e20, to double precision
     display: {
       /** Visual representation color */
-      color: '#fff5f1'
+      color: '#fff5f1',
+      /** The heliosphere has no colour of its own: kept hidden unless asked for */
+      astrosphere: { color: '#5b8fd9', opacity: 0.15 }
     },
     observations: {
+      /** The heliosphere, the bubble the solar wind blows */
+      astrosphere: {
+        astropause: {
+          nose: {
+            value: 115,
+            unit: 'au',
+            uncertainty: sigma(10),
+            provenance: 'derived',
+            note: 'The middle of 110 to 120 au, its nearest, just south of the nose',
+            source: REISENFELD_2021
+          },
+          flank: {
+            value: 170,
+            unit: 'au',
+            uncertainty: sigma(15),
+            provenance: 'derived',
+            note: 'The middle of 160 to 180 au, towards the flanks and poles',
+            source: REISENFELD_2021
+          },
+          tail: {
+            value: 350,
+            unit: 'au',
+            uncertainty: sigma(50),
+            limit: 'lower',
+            note: 'At least: as far as the technique reaches',
+            source: REISENFELD_2021
+          }
+        },
+        /** Opposite McComas et al.'s inflow direction, 75.7°, −5.1°, which is where the wind goes */
+        upwind: {
+          eclipticLongitude: 255.7 as DegreesType,
+          eclipticLatitude: 5.1 as DegreesType
+        },
+        inflowSpeed: {
+          value: 25.4,
+          unit: 'km/s',
+          note: 'IBEX’s working value, 1000 au out',
+          source: MCCOMAS_2015
+        },
+        /** Where each Voyager was, from JPL Horizons */
+        crossings: [
+          {
+            probeId: 'voyager-1',
+            boundary: 'termination shock',
+            date: new Date('2004-12-16'),
+            distance: { value: 94.01, unit: 'au', source: STONE_2005 },
+            direction: {
+              eclipticLongitude: 253 as DegreesType,
+              eclipticLatitude: 34.71 as DegreesType
+            }
+          },
+          {
+            probeId: 'voyager-2',
+            boundary: 'termination shock',
+            date: new Date('2007-08-31'),
+            distance: {
+              value: 83.7,
+              unit: 'au',
+              note: 'Crossed several times, 31 August to 1 September 2007',
+              source: BURLAGA_2008
+            },
+            direction: {
+              eclipticLongitude: 288.65 as DegreesType,
+              eclipticLatitude: -31.61 as DegreesType
+            }
+          },
+          {
+            probeId: 'voyager-1',
+            boundary: 'astropause',
+            date: new Date('2012-08-25'),
+            distance: { value: 121.6, unit: 'au', source: BURLAGA_2019 },
+            direction: {
+              eclipticLongitude: 254.88 as DegreesType,
+              eclipticLatitude: 34.95 as DegreesType
+            }
+          },
+          {
+            probeId: 'voyager-2',
+            boundary: 'astropause',
+            date: new Date('2018-11-05'),
+            distance: { value: 119, unit: 'au', source: BURLAGA_2019 },
+            direction: {
+              eclipticLongitude: 290.08 as DegreesType,
+              eclipticLatitude: -36.5 as DegreesType
+            }
+          }
+        ]
+      },
       effectiveTemperature: {
         value: 5772,
         unit: 'K',
