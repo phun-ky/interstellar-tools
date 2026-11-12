@@ -39,7 +39,8 @@ const sigma = (value: number) => ({ plus: value, minus: value });
  *   barycentre: ʻOumuamua's from Bailer-Jones et al. 2018, Borisov's from Bailer-Jones et al.
  *   2020, and 3I/ATLAS's from JPL's solution, within 0.03 km/s of Seligman et al. 2025's.
  * - ʻOumuamua and 3I/ATLAS go round the Sun backwards, `retrograde: true`.
- * - 3I/ATLAS's orbit is from JPL's temporary solution, on observations from October 2025 on.
+ * - 3I/ATLAS's orbit is from JPL's solution #55, on observations from 3 October 2025 to
+ *   16 October 2026.
  * - `radius`: ʻOumuamua's is an effective one, for a body perhaps 6 to 10 times longer than wide,
  *   from Spitzer's limit (Trilling et al. 2018); Borisov's nucleus is 0.2 to 0.5 km (Jewitt et
  *   al. 2020, Hui et al. 2020), and 3I/ATLAS's 1.3 ± 0.2 km from the Hubble Space Telescope (Hui
