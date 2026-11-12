@@ -29,7 +29,9 @@ import SolarDayFigure from './components/mars/SolarDayFigure.vue';
 import NavStatus from './components/NavStatus.vue';
 import OrbitWidget from './components/OrbitWidget.vue';
 import PullQuote from './components/PullQuote.vue';
+import HeliosphereSideView from './components/tracking/HeliosphereSideView.vue';
 import IssGroundTrack from './components/tracking/IssGroundTrack.vue';
+import ProbeDistanceScale from './components/tracking/ProbeDistanceScale.vue';
 
 const GLOBAL_CLASS = 'ph';
 const THEME_DARK = 'theme--dark';
@@ -60,6 +62,8 @@ export default {
     ctx.app.component('MarsLandingGrid', MarsLandingGrid);
     ctx.app.component('SolarDayFigure', SolarDayFigure);
     ctx.app.component('IssGroundTrack', IssGroundTrack);
+    ctx.app.component('HeliosphereSideView', HeliosphereSideView);
+    ctx.app.component('ProbeDistanceScale', ProbeDistanceScale);
 
     if (typeof window !== 'undefined') {
       document.documentElement.classList.add(GLOBAL_CLASS);
