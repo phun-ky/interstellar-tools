@@ -97,6 +97,8 @@ export * from './categories/helpers/apply-matrix-3.js';
 
 export * from './categories/helpers/convert-distance-unit.js';
 
+export * from './categories/helpers/convert-quantity.js';
+
 export * from './categories/helpers/det-3.js';
 
 export * from './categories/helpers/mat-mul3.js';
