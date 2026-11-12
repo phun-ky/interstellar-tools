@@ -81,8 +81,9 @@ copyright. They're compiled from public references, credited here:
   Pluto's from the page's earlier version, which listed it, and the Moon's from
   NASA's
   [Moon fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html).
-- **Interstellar objects:** the designations from the IAU's Minor Planet Center
-  (MPECs 2017-V17, 2019-S72 and 2025-N12). The orbits from
+- **Interstellar objects:** the designations, earlier designations and
+  discoveries from the IAU's Minor Planet Center (MPECs 2017-U181, 2017-V17,
+  2019-R106, 2019-S72 and 2025-N12). The orbits from
   [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/): its heliocentric elements
   osculating at perihelion, from JPL's solutions #16 for ʻOumuamua (Micheli et
   al. 2018, Nature 559, 223), #54 for Borisov and #55, a temporary one, for
@@ -92,7 +93,9 @@ copyright. They're compiled from public references, credited here:
   L36). ʻOumuamua's effective radius from Trilling et al. (2018, AJ 156, 261)
   and its tumbling from Belton et al. (2018, ApJL 856, L21); Borisov's nucleus
   from Jewitt et al. (2020, ApJL 888, L23) and Hui et al. (2020, AJ 160, 92);
-  3I/ATLAS's from Hui et al. (2026, ApJL 999, L37).
+  3I/ATLAS's from Hui et al. (2026, ApJL 999, L37). Their orbit solutions'
+  uncertainties, non-gravitational accelerations and magnitudes from JPL's
+  [Small-Body Database](https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html).
 - **Planetary rings:** the rings and gaps of Jupiter, Saturn, Uranus and
   Neptune, their edges and optical depths from the PDS Ring-Moon Systems Node's
   vital statistics

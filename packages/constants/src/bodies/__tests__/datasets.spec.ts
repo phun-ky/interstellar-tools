@@ -23,6 +23,7 @@ import {
   LY_PER_PC,
   MOONS,
   PLANETS,
+  SECONDS_PER_DAY,
   SPEED_OF_LIGHT_M_PER_S,
   STARS,
   SUN_GALACTOCENTRIC_DISTANCE,
@@ -1922,6 +1923,104 @@ describe('INTERSTELLAR_OBJECTS', () => {
   test('have a positive drawing size', () => {
     for (const { name, display } of INTERSTELLAR_OBJECTS)
       assert.ok((display?.size ?? 0) > 0, name);
+  });
+
+  test('have JPL’s SPK-IDs, and were found on their one pass, ʻOumuamua on its way out', () => {
+    const DAY_MS = SECONDS_PER_DAY * 1000;
+
+    assert.deepEqual(
+      INTERSTELLAR_OBJECTS.map(
+        ({ observations }) => observations?.identifiers?.spkId
+      ),
+      [50788063, 1003639, 1004083]
+    );
+
+    for (const { id, name, orbit, observations } of INTERSTELLAR_OBJECTS) {
+      const found = observations!.discovery!.date!.getTime();
+      const perihelion = orbit.periapsisTime!.getTime();
+
+      // ʻOumuamua 40 days after perihelion, the comets 100 and 120 days before
+      assert.equal(found > perihelion, id === '1i-oumuamua', name);
+      assert.ok(Math.abs(found - perihelion) < 125 * DAY_MS, name);
+      assert.match(
+        observations!.discovery!.facility!,
+        /\([A-Z0-9]\d\d\)$/,
+        name
+      );
+    }
+  });
+
+  test('carry JPL’s orbit solution, with A1, A2 and A3 in au/d²', () => {
+    for (const { name, observations } of INTERSTELLAR_OBJECTS) {
+      const solution = observations!.orbitSolution!;
+      const { a1, a2, a3 } = solution.nonGravitational!;
+
+      assert.equal(solution.source?.catalog, 'JPL SBDB', name);
+      assert.equal(solution.epoch?.timeScale, 'TDB', name);
+      assert.ok(solution.firstObservation! < solution.lastObservation!, name);
+      // The arc runs from the first observation to the last, in days
+      assert.equal(
+        solution.observationArc!.value,
+        (solution.lastObservation!.getTime() -
+          solution.firstObservation!.getTime()) /
+          (SECONDS_PER_DAY * 1000),
+        name
+      );
+
+      for (const term of [a1, a2, a3]) {
+        assert.equal(term?.unit, 'au/d2', name);
+        assert.ok(term!.uncertainty!.plus > 0, name);
+      }
+    }
+  });
+
+  test('give ʻOumuamua’s push, its A1 in m/s²', () => {
+    const { observations } = INTERSTELLAR_OBJECTS[0]!;
+    const a1 = observations!.orbitSolution!.nonGravitational!.a1!;
+    const push = observations!.anomalousAcceleration!;
+    const perDaySquared = AU_METERS / SECONDS_PER_DAY ** 2;
+
+    assert.equal(push.unit, 'm/s2');
+    assert.ok(Math.abs(push.value / (a1.value * perDaySquared) - 1) < 1e-5);
+    assert.ok(
+      Math.abs(
+        push.uncertainty!.plus / (a1.uncertainty!.plus * perDaySquared) - 1
+      ) < 1e-4
+    );
+  });
+
+  test('came from their radiants, along the orbit’s incoming asymptote (within 0.2°)', () => {
+    // The J2000 ecliptic's tilt to the ICRS equator, as JPL's ecliptic frame
+    const obliquity = ((84381.448 / 3600) * Math.PI) / 180;
+    const rad = (degrees: number) => (degrees * Math.PI) / 180;
+
+    for (const { name, orbit, observations } of INTERSTELLAR_OBJECTS) {
+      const [i, om] = [rad(orbit.i), rad(orbit.om)];
+      // Where the hyperbola starts, its true anomaly −arccos(−1/e)
+      const u = rad(orbit.w) - Math.acos(-1 / orbit.e);
+      const x =
+        Math.cos(om) * Math.cos(u) - Math.sin(om) * Math.sin(u) * Math.cos(i);
+      const y =
+        Math.sin(om) * Math.cos(u) + Math.cos(om) * Math.sin(u) * Math.cos(i);
+      const z = Math.sin(u) * Math.sin(i);
+      const asymptote = [
+        x,
+        y * Math.cos(obliquity) - z * Math.sin(obliquity),
+        y * Math.sin(obliquity) + z * Math.cos(obliquity)
+      ];
+      const { rightAscension, declination } = observations!.incomingRadiant!;
+      const radiant = [
+        Math.cos(rad(declination)) * Math.cos(rad(rightAscension)),
+        Math.cos(rad(declination)) * Math.sin(rad(rightAscension)),
+        Math.sin(rad(declination))
+      ];
+      const cos = asymptote.reduce(
+        (sum, value, k) => sum + value * radiant[k]!,
+        0
+      );
+
+      assert.ok(Math.acos(Math.min(1, cos)) < rad(0.2), name);
+    }
   });
 });
 
