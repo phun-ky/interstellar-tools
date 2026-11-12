@@ -47,6 +47,13 @@ copyright. They're compiled from public references, credited here:
 - **Star masses:** Yoon et al. 2010 (ApJ 708, 71) for Vega, Peterson et al. 2006
   (ApJ 636, 1087) for Altair, and Schiller & Przybilla 2008 (A&A 479, 849) for
   Deneb.
+- **Star identifiers, positions and motions:** from
+  [SIMBAD](https://simbad.cds.unistra.fr/simbad/) (Wenger et al. 2000, A&AS 143,
+  9), with the parallaxes and proper motions of the Hipparcos new reduction (van
+  Leeuwen 2007, A&A 474, 653) and of
+  [Gaia DR3](https://www.cosmos.esa.int/web/gaia/dr3) (Gaia Collaboration,
+  Vallenari et al. 2023, A&A 674, A1), and the radial velocities, V magnitudes
+  and α Centauri's parallax from the papers SIMBAD cites for each.
 - **Gravitational parameters (`mu`):** the DE440 ephemeris (Park et al. 2021, AJ
   161, 105) for the Sun, Mercury, Venus and Earth, Park et al. 2016 (Nature
   537, 515) for Ceres, and JPL's

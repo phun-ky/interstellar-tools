@@ -2120,3 +2120,87 @@ describe('rings', () => {
       assert.ok(ringsOf(moon.parent).shepherdIds?.includes(moon.id), moon.id);
   });
 });
+
+describe('star observations', () => {
+  // SIMBAD lists Spica as one star, so Spica B has only its letter
+  const MEASURED = STARS.filter(
+    ({ id, parent }) =>
+      !['sun', 'spica-b'].includes(id) && parent !== 'sagittarius-a-star'
+  );
+
+  test('split every star’s type into its parts', () => {
+    for (const { id, type, observations } of STARS) {
+      const classification = observations!.spectralClassification!;
+
+      assert.equal(classification.raw, type, id);
+      assert.ok(type.startsWith(classification.spectralClass!), id);
+    }
+  });
+
+  test('give every star but the Sun and the S-stars SIMBAD’s identifiers, unique', () => {
+    for (const field of ['hip', 'hd', 'gaiaDr3'] as const)
+      assertUnique(
+        field,
+        MEASURED.flatMap(({ observations }) =>
+          observations?.identifiers?.[field] === undefined
+            ? []
+            : [String(observations.identifiers[field])]
+        )
+      );
+
+    const spicaB = STARS.find(({ id }) => id === 'spica-b')!.observations!;
+
+    assert.equal(spicaB.component, 'B');
+    assert.equal(spicaB.identifiers ?? spicaB.astrometry, undefined);
+
+    for (const { id, observations } of MEASURED) {
+      const { hip, gaiaDr3 } = observations!.identifiers!;
+
+      assert.ok(hip !== undefined || gaiaDr3 !== undefined, id);
+    }
+  });
+
+  test('measure their parallax and proper motion, with error bars, in mas', () => {
+    for (const { id, observations } of MEASURED) {
+      const { direction, parallax, properMotion } = observations!.astrometry!;
+
+      assert.ok(
+        direction.rightAscension >= 0 && direction.rightAscension < 360,
+        id
+      );
+      assert.ok(Math.abs(direction.declination) <= 90, id);
+      assert.equal(parallax!.unit, 'mas', id);
+      assert.ok(parallax!.value > parallax!.uncertainty!.plus, id);
+      assert.ok(properMotion!.uncertainty!.rightAscension.plus > 0, id);
+      assert.ok(properMotion!.uncertainty!.declination.plus > 0, id);
+      assert.match(
+        parallax!.source!.catalog,
+        /^(Hipparcos|Gaia DR3|SIMBAD)$/,
+        id
+      );
+    }
+  });
+
+  test('put Proxima Centauri nearest, and Barnard’s Star fastest across the sky', () => {
+    const by = (rank: (star: StarInterface) => number) =>
+      [...MEASURED].sort((a, b) => rank(b) - rank(a))[0]!.id;
+    const motion = ({ observations }: StarInterface) =>
+      Math.hypot(
+        observations!.astrometry!.properMotion!.rightAscension,
+        observations!.astrometry!.properMotion!.declination
+      );
+
+    assert.equal(
+      by(({ observations }) => observations!.astrometry!.parallax!.value),
+      'proxima-centauri'
+    );
+    assert.equal(by(motion), 'barnards-star');
+    // 10.39″ a year
+    assert.equal(
+      (
+        motion(MEASURED.find(({ id }) => id === 'barnards-star')!) / 1000
+      ).toFixed(2),
+      '10.39'
+    );
+  });
+});
