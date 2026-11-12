@@ -9,7 +9,7 @@ This list is not an exhaustive list, and addition/changes will be added over tim
 | sun | Sun | G2V | star | solar-system |  |  |  |  |  | 25.379995 d | north (286.13°, 63.87°) | 1 | 696340 km | 1.3271244004127942e+20 | #fff5f1 |  |  |  |
 | vega | Vega | A0V | star | milky-way | 27230.011753394454 ly | 0.005 | 480 Myr |  | 1.569867205171707 | 0.71 d |  | 2.135 | 2600000 km |  | blue | 25.3 ly | 27230.011753394454 ly | 0 ly |
 | altair | Altair | A7V | star | milky-way | 27050.005155082687 ly | 0.004 | 410 Myr |  | 1.5701789517599378 | 7.766667 h |  | 1.791 | 1700000 km |  | white | 16.7 ly | 27050.005155082687 ly | 0 ly |
-| deneb | Deneb | A2Ia | star | milky-way | 27375.280016832705 ly | 0.009 | 720 Myr |  | 1.475524958596149 |  |  | 19 | 108000000 km |  | #cad7ff | 2616 ly | 27375.280016832705 ly | 0 ly |
+| deneb | Deneb | A2Ia | star | milky-way | 27375.280016832705 ly | 0.009 | 720 Myr |  | 1.475524958596149 |  |  | 19 | 141227100 km |  | #cad7ff | 2616 ly | 27375.280016832705 ly | 0 ly |
 | spica-a | Spica A | B1III-IV | star | spica | 0.050727 au | 0.133 | 4.0145 d |  | 2.3899 | 2.007 d |  | 11.43 | 5196879 km |  | blue |  |  |  |
 | spica-b | Spica B | B2V | star | spica | 0.080417 au | 0.133 | 4.0145 d |  | 2.3899 | 2.676 d |  | 7.21 | 2601918 km |  | #cad7ff |  |  |  |
 | alpha-centauri-a | Alpha Centauri A | G2V | star | alpha-centauri-ab | 10.66 au | 0.51947 | 79.762 yr |  | 3.275243601437025 | 28.8 d |  | 1.0788 | 847015 km |  | #fff4ea |  |  |  |

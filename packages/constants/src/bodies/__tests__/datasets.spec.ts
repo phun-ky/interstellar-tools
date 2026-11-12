@@ -24,6 +24,8 @@ import {
   MOONS,
   PLANETS,
   SECONDS_PER_DAY,
+  SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K,
+  SOLAR_GM_NOMINAL_M3_PER_S2,
   SPEED_OF_LIGHT_M_PER_S,
   STARS,
   SUN_GALACTOCENTRIC_DISTANCE,
@@ -2202,5 +2204,88 @@ describe('star observations', () => {
       ).toFixed(2),
       '10.39'
     );
+  });
+  test('give the Sun the IAU’s nominal temperature, luminosity and gravity', () => {
+    const sun = STARS.find(({ id }) => id === 'sun')!.observations!;
+    // log g from the nominal GM☉ over the nominal radius, 695 700 km, in cgs
+    const logG = Math.log10(
+      (SOLAR_GM_NOMINAL_M3_PER_S2 / 695_700_000 ** 2) * 100
+    );
+
+    assert.equal(
+      sun.effectiveTemperature!.value,
+      SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K
+    );
+    assert.deepEqual(
+      [sun.luminosity!.value, sun.luminosity!.unit],
+      [1, 'L_sun']
+    );
+    assert.equal(sun.logSurfaceGravity!.value, Number(logG.toFixed(3)));
+    assert.equal(sun.metallicity!.value, 0);
+  });
+
+  test('give every star a temperature and, but Polaris, a luminosity, each from a paper’s DOI', () => {
+    for (const { id, observations } of STARS) {
+      const {
+        effectiveTemperature,
+        gravityDarkening,
+        luminosity,
+        logSurfaceGravity,
+        metallicity
+      } = observations!;
+
+      assert.ok(effectiveTemperature ?? gravityDarkening, id);
+      assert.equal(luminosity === undefined, id === 'polaris', id);
+
+      for (const value of [
+        effectiveTemperature,
+        gravityDarkening?.pole,
+        gravityDarkening?.equator,
+        luminosity,
+        logSurfaceGravity,
+        metallicity
+      ]) {
+        if (!value) continue;
+
+        assert.match(value.source!.reference!, /^10\.\d{4,}\//, id);
+        assert.ok(!('unit' in value) || value.unit !== undefined, id);
+      }
+    }
+  });
+
+  test('meet L = (R/R☉)² (T/T☉)⁴ with each star’s radius', () => {
+    for (const { id, parent, radius, observations } of STARS) {
+      const { effectiveTemperature, luminosity } = observations!;
+
+      if (!effectiveTemperature || !luminosity) continue;
+
+      const stefanBoltzmann =
+        (radius.value / 695_700) ** 2 *
+        (effectiveTemperature.value / SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K) **
+          4;
+      // The S-stars' radii aren't from Habibi et al., whose luminosities
+      // are good to about 0.2 dex
+      const tolerance = parent === 'sagittarius-a-star' ? 0.15 : 0.05;
+
+      assert.ok(
+        Math.abs(Math.log10(stefanBoltzmann / luminosity.value)) < tolerance,
+        `${id}: ${stefanBoltzmann} vs ${luminosity.value} L☉`
+      );
+    }
+  });
+
+  test('convert a luminosity given as log L, error bars and all', () => {
+    const vega = STARS.find(({ id }) => id === 'vega')!.observations!;
+    const { value, uncertainty, provenance } = vega.luminosity!;
+
+    // log L/L☉ = 1.6034 ± 0.0049 (Yoon et al. 2010)
+    assert.ok(Math.abs(value / 10 ** 1.6034 - 1) < 1e-3);
+    assert.ok(
+      Math.abs(uncertainty!.plus / (10 ** 1.6083 - 10 ** 1.6034) - 1) < 0.02
+    );
+    assert.ok(
+      Math.abs(uncertainty!.minus / (10 ** 1.6034 - 10 ** 1.5985) - 1) < 0.02
+    );
+    assert.equal(provenance, 'derived');
   });
 });
