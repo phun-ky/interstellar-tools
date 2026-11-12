@@ -2341,3 +2341,52 @@ describe('star observations', () => {
     assert.equal(sun.display!.astrosphere!.visibleByDefault, undefined);
   });
 });
+
+describe('ring display', () => {
+  test('draws the rings only around the planets that have them', () => {
+    for (const { id, display, observations } of PLANETS)
+      assert.equal(
+        display?.rings !== undefined,
+        observations?.rings !== undefined,
+        id
+      );
+  });
+
+  test('makes them as opaque as their densest ring, 1 − e^−τ', () => {
+    for (const { id, display, observations } of PLANETS) {
+      if (!observations?.rings) continue;
+
+      const tau = Math.max(
+        ...observations.rings.rings.map(
+          ({ normalOpticalDepth }) => normalOpticalDepth?.value ?? 0
+        )
+      );
+
+      assert.equal(
+        display!.rings!.opacity,
+        Number((1 - Math.exp(-tau)).toPrecision(2)),
+        id
+      );
+      assert.match(display!.rings!.color, /^#[0-9a-f]{6}$/, id);
+    }
+  });
+
+  test('says why each ring colour and opacity is what it is', () => {
+    for (const { id, display, observations } of PLANETS) {
+      if (!observations?.rings) continue;
+
+      const why = new Map(
+        display!.derivation!.map(({ property, basis }) => [property, basis])
+      );
+
+      assert.equal(why.get('rings.opacity'), 'derived', id);
+      // Only Saturn's rings have a true-colour image to take a colour from
+      assert.equal(
+        why.get('rings.color'),
+        id === 'saturn' ? 'imagery' : 'assumed',
+        id
+      );
+      assert.equal(display!.rings!.shadows, id === 'saturn' || undefined, id);
+    }
+  });
+});
