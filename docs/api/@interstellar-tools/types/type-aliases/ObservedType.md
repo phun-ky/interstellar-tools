@@ -9,7 +9,7 @@ type ObservedType<T extends ValueInterface = DimensionlessInterface> = T &
 ```
 
 Defined in:
-[observations.ts:171](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L171)
+[observations.ts:174](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L174)
 
 Any unit-carrying value with **measurement metadata**. A plain value of the same
 kind fits too.

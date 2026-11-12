@@ -4,7 +4,7 @@ MassPropertiesInterface
 # Interface: MassPropertiesInterface
 
 Defined in:
-[observations.ts:316](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L316)
+[observations.ts:319](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L319)
 
 Measured **mass and gravity**. The body's own `mu` stays the value the equations
 use.
@@ -18,7 +18,7 @@ bulkDensity?: ObservedType<DensityInterface>;
 ```
 
 Defined in:
-[observations.ts:322](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L322)
+[observations.ts:325](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L325)
 
 The bulk density.
 
@@ -31,7 +31,7 @@ escapeVelocity?: ObservedType<SpeedInterface>;
 ```
 
 Defined in:
-[observations.ts:326](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L326)
+[observations.ts:329](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L329)
 
 The escape speed from the surface.
 
@@ -44,7 +44,7 @@ gm?: ObservedType<GravitationalParameterInterface>;
 ```
 
 Defined in:
-[observations.ts:320](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L320)
+[observations.ts:323](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L323)
 
 $GM$ with its uncertainty, usually better known than the mass.
 
@@ -57,7 +57,7 @@ j2?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:330](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L330)
+[observations.ts:333](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L333)
 
 The second zonal gravity harmonic, $J_2$.
 
@@ -70,7 +70,7 @@ mass?: ObservedType<MassInterface>;
 ```
 
 Defined in:
-[observations.ts:318](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L318)
+[observations.ts:321](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L321)
 
 The mass.
 
@@ -83,7 +83,7 @@ momentOfInertiaFactor?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:328](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L328)
+[observations.ts:331](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L331)
 
 The normalised moment of inertia, $C / MR^2$.
 
@@ -96,6 +96,6 @@ surfaceGravity?: ObservedType<AccelerationInterface>;
 ```
 
 Defined in:
-[observations.ts:324](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L324)
+[observations.ts:327](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L327)
 
 The gravity at the surface, on the equator.

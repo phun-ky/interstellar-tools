@@ -4,7 +4,7 @@ DisplayOceanInterface
 # Interface: DisplayOceanInterface
 
 Defined in:
-[celestial-bodies/display.ts:147](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L147)
+[celestial-bodies/display.ts:150](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L150)
 
 **Oceans** on a solid surface.
 
@@ -17,7 +17,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:149](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L149)
+[celestial-bodies/display.ts:152](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L152)
 
 The water's colour.
 
@@ -30,7 +30,7 @@ coverage: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:151](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L151)
+[celestial-bodies/display.ts:154](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L154)
 
 The share of the surface under water, 0–1.
 
@@ -43,6 +43,6 @@ specular?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:153](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L153)
+[celestial-bodies/display.ts:156](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L156)
 
 How strong the Sun's glint is, 0–1.

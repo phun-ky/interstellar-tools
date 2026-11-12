@@ -4,7 +4,7 @@ DisplayTailInterface
 # Interface: DisplayTailInterface
 
 Defined in:
-[celestial-bodies/display.ts:330](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L330)
+[celestial-bodies/display.ts:355](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L355)
 
 One **comet tail** to draw.
 
@@ -17,7 +17,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:334](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L334)
+[celestial-bodies/display.ts:359](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L359)
 
 Its colour.
 
@@ -30,7 +30,7 @@ curvature?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:338](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L338)
+[celestial-bodies/display.ts:363](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L363)
 
 How far it curves from the line away from the Sun, 0 (straight, as an ion tail)
 to 1.
@@ -44,7 +44,7 @@ kind: 'dust' | 'ion' | 'sodium' | 'anti-tail';
 ```
 
 Defined in:
-[celestial-bodies/display.ts:332](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L332)
+[celestial-bodies/display.ts:357](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L357)
 
 What kind.
 
@@ -57,7 +57,7 @@ length: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:336](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L336)
+[celestial-bodies/display.ts:361](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L361)
 
 How long it is, in multiples of the drawn nucleus's radius.
 
@@ -70,6 +70,6 @@ opacity?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:340](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L340)
+[celestial-bodies/display.ts:365](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L365)
 
 How opaque it is, 0–1.

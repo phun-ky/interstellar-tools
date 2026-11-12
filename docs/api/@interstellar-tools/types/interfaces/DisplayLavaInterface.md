@@ -4,7 +4,7 @@ DisplayLavaInterface
 # Interface: DisplayLavaInterface
 
 Defined in:
-[celestial-bodies/display.ts:173](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L173)
+[celestial-bodies/display.ts:176](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L176)
 
 Glowing **lava** cracks on a molten surface.
 
@@ -17,7 +17,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:177](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L177)
+[celestial-bodies/display.ts:180](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L180)
 
 Their glow, normally the melt's blackbody colour.
 
@@ -30,6 +30,6 @@ intensity: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:175](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L175)
+[celestial-bodies/display.ts:178](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L178)
 
 How bright the cracks are, 0–1.

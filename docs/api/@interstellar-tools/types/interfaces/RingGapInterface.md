@@ -4,7 +4,7 @@ RingGapInterface
 # Interface: RingGapInterface
 
 Defined in:
-[observations.ts:524](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L524)
+[observations.ts:527](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L527)
 
 A named **gap** in a ring system, such as the Cassini Division.
 
@@ -17,7 +17,7 @@ innerRadius: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:528](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L528)
+[observations.ts:531](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L531)
 
 Its inner edge, from the planet's centre.
 
@@ -30,7 +30,7 @@ name: string;
 ```
 
 Defined in:
-[observations.ts:526](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L526)
+[observations.ts:529](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L529)
 
 Its name.
 
@@ -43,7 +43,7 @@ normalOpticalDepth?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:532](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L532)
+[observations.ts:535](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L535)
 
 Its normal optical depth, τ: low, but rarely 0.
 
@@ -56,6 +56,6 @@ outerRadius: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:530](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L530)
+[observations.ts:533](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L533)
 
 Its outer edge, from the planet's centre.

@@ -4,7 +4,7 @@ ThermalObservationsInterface
 # Interface: ThermalObservationsInterface
 
 Defined in:
-[observations.ts:385](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L385)
+[observations.ts:388](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L388)
 
 Measured **temperatures** and heat.
 
@@ -17,7 +17,7 @@ daysideTemperature?: ObservedType<TemperatureInterface>;
 ```
 
 Defined in:
-[observations.ts:395](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L395)
+[observations.ts:398](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L398)
 
 An exoplanet's dayside brightness temperature, from its secondary eclipse.
 
@@ -30,7 +30,7 @@ energyBalance?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:399](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L399)
+[observations.ts:402](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L402)
 
 Emitted over absorbed power: above 1, the body has heat of its own.
 
@@ -43,7 +43,7 @@ equilibriumTemperature?: ObservedType<TemperatureInterface>;
 ```
 
 Defined in:
-[observations.ts:387](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L387)
+[observations.ts:390](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L390)
 
 The blackbody equilibrium temperature.
 
@@ -56,7 +56,7 @@ heatFlow?: ObservedType<IrradianceInterface>;
 ```
 
 Defined in:
-[observations.ts:401](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L401)
+[observations.ts:404](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L404)
 
 Internal or tidal heat flowing out through the surface.
 
@@ -69,7 +69,7 @@ nightsideTemperature?: ObservedType<TemperatureInterface>;
 ```
 
 Defined in:
-[observations.ts:397](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L397)
+[observations.ts:400](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L400)
 
 An exoplanet's nightside brightness temperature, from its phase curve.
 
@@ -82,7 +82,7 @@ oneBarTemperature?: ObservedType<TemperatureInterface>;
 ```
 
 Defined in:
-[observations.ts:393](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L393)
+[observations.ts:396](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L396)
 
 A giant planet's temperature at the 1-bar level.
 
@@ -97,7 +97,7 @@ surfaceTemperature?:
 ```
 
 Defined in:
-[observations.ts:389](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L389)
+[observations.ts:392](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L392)
 
 A solid body's surface temperature, or its range.
 
@@ -110,6 +110,6 @@ thermalInertia?: ObservedType<ThermalInertiaInterface>;
 ```
 
 Defined in:
-[observations.ts:403](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L403)
+[observations.ts:406](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L406)
 
 The surface's thermal inertia.

@@ -4,7 +4,7 @@ DisplayDerivationInterface
 # Interface: DisplayDerivationInterface
 
 Defined in:
-[celestial-bodies/display.ts:416](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L416)
+[celestial-bodies/display.ts:441](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L441)
 
 **Why a drawing value is what it is**: taken from images, worked out from an
 observation, or assumed.
@@ -29,7 +29,7 @@ basis: ProvenanceType | 'imagery';
 ```
 
 Defined in:
-[celestial-bodies/display.ts:420](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L420)
+[celestial-bodies/display.ts:445](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L445)
 
 How it was set: `'imagery'` for colours taken from spacecraft or telescope
 images.
@@ -43,7 +43,7 @@ from?: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:424](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L424)
+[celestial-bodies/display.ts:449](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L449)
 
 A dotted path into `observations` to the value it came from.
 
@@ -56,7 +56,7 @@ property: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:418](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L418)
+[celestial-bodies/display.ts:443](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L443)
 
 A dotted path into `display`, such as `'bands.count'`.
 
@@ -69,6 +69,6 @@ reason: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:422](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L422)
+[celestial-bodies/display.ts:447](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L447)
 
 Why, in plain words.

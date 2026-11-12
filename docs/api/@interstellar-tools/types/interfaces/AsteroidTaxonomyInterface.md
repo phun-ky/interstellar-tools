@@ -4,7 +4,7 @@ AsteroidTaxonomyInterface
 # Interface: AsteroidTaxonomyInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:209](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L209)
+[celestial-bodies/body-observations.ts:212](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L212)
 
 **Spectral taxonomy** finer than
 [AsteroidSpectralType](../type-aliases/AsteroidSpectralType.md).
@@ -18,7 +18,7 @@ busDeMeo?: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:213](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L213)
+[celestial-bodies/body-observations.ts:216](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L216)
 
 The Bus–DeMeo class, such as `'Sq'` or `'Xk'`.
 
@@ -31,7 +31,7 @@ smassII?: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:215](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L215)
+[celestial-bodies/body-observations.ts:218](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L218)
 
 The SMASSII class.
 
@@ -44,6 +44,6 @@ tholen?: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:211](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L211)
+[celestial-bodies/body-observations.ts:214](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L214)
 
 The Tholen class, such as `'S'`, `'C'` or `'M'`.

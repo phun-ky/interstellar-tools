@@ -4,7 +4,7 @@ ImpactRiskInterface
 # Interface: ImpactRiskInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:223](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L223)
+[celestial-bodies/body-observations.ts:226](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L226)
 
 An **impact risk** assessment of a near-Earth object.
 
@@ -17,7 +17,7 @@ assessedAt: Date;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:233](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L233)
+[celestial-bodies/body-observations.ts:236](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L236)
 
 When it was assessed.
 
@@ -30,7 +30,7 @@ assessedBy: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:231](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L231)
+[celestial-bodies/body-observations.ts:234](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L234)
 
 Who assessed it, such as `'JPL Sentry'` or `'ESA NEOCC'`.
 
@@ -43,7 +43,7 @@ cumulativeProbability: number;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:225](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L225)
+[celestial-bodies/body-observations.ts:228](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L228)
 
 The cumulative impact probability over the span assessed.
 
@@ -60,15 +60,15 @@ nextCloseApproach?: {
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:235](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L235)
+[celestial-bodies/body-observations.ts:238](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L238)
 
 The next close approach.
 
 | Name       | Type                                                                                      | Description                                      | Defined in                                                                                                                                                         |
 | ---------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `bodyId`   | `string`                                                                                  | The id of the body it passes, such as `'earth'`. | [celestial-bodies/body-observations.ts:239](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L239) |
-| `date`     | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) | -                                                | [celestial-bodies/body-observations.ts:236](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L236) |
-| `distance` | [`DistanceInterface`](DistanceInterface.md)                                               | -                                                | [celestial-bodies/body-observations.ts:237](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L237) |
+| `bodyId`   | `string`                                                                                  | The id of the body it passes, such as `'earth'`. | [celestial-bodies/body-observations.ts:242](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L242) |
+| `date`     | [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) | -                                                | [celestial-bodies/body-observations.ts:239](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L239) |
+| `distance` | [`DistanceInterface`](DistanceInterface.md)                                               | -                                                | [celestial-bodies/body-observations.ts:240](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L240) |
 
 ---
 
@@ -79,7 +79,7 @@ palermoScale?: number;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:227](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L227)
+[celestial-bodies/body-observations.ts:230](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L230)
 
 The Palermo technical scale.
 
@@ -92,6 +92,6 @@ torinoScale?: 0 | 7 | 3 | 6 | 1 | 2 | 4 | 5 | 8 | 9 | 10;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:229](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L229)
+[celestial-bodies/body-observations.ts:232](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L232)
 
 The Torino scale.

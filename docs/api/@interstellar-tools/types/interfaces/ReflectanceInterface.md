@@ -4,7 +4,7 @@ ReflectanceInterface
 # Interface: ReflectanceInterface
 
 Defined in:
-[observations.ts:361](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L361)
+[observations.ts:364](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L364)
 
 How **bright** a body is, and how it reflects light.
 
@@ -17,7 +17,7 @@ absoluteMagnitude?: ObservedType<MagnitudeInterface>;
 ```
 
 Defined in:
-[observations.ts:367](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L367)
+[observations.ts:370](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L370)
 
 H for small bodies, V(1,0) for planets and moons.
 
@@ -30,7 +30,7 @@ apparentMagnitudes?: Partial<Record<PhotometricBandType, ObservedType<MagnitudeI
 ```
 
 Defined in:
-[observations.ts:377](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L377)
+[observations.ts:380](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L380)
 
 Apparent magnitudes, at their `epoch`.
 
@@ -43,7 +43,7 @@ bondAlbedo?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:365](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L365)
+[observations.ts:368](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L368)
 
 The Bond albedo.
 
@@ -56,7 +56,7 @@ colorIndices?: Record<string, ObservedType<MagnitudeInterface>>;
 ```
 
 Defined in:
-[observations.ts:375](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L375)
+[observations.ts:378](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L378)
 
 Colour indices, such as `{ 'B-V': …, 'g-r': … }`.
 
@@ -69,7 +69,7 @@ geometricAlbedo?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:363](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L363)
+[observations.ts:366](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L366)
 
 The geometric albedo.
 
@@ -82,7 +82,7 @@ slopeG?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:369](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L369)
+[observations.ts:372](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L372)
 
 The IAU's H–G phase slope, G.
 
@@ -95,7 +95,7 @@ slopeG1?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:371](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L371)
+[observations.ts:374](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L374)
 
 G1, of the H–G1–G2 system.
 
@@ -108,6 +108,6 @@ slopeG2?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:373](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L373)
+[observations.ts:376](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L376)
 
 G2, of the H–G1–G2 system.

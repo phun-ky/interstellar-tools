@@ -9,6 +9,6 @@ type LuminosityClassType =
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:414](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L414)
+[celestial-bodies/body-observations.ts:417](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L417)
 
 The MK **luminosity classes**.

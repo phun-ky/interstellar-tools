@@ -4,7 +4,7 @@ CometNucleusInterface
 # Interface: CometNucleusInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:351](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L351)
+[celestial-bodies/body-observations.ts:354](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L354)
 
 A comet's **nucleus**.
 
@@ -17,7 +17,7 @@ activeFraction?: ObservedType<FractionInterface>;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:361](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L361)
+[celestial-bodies/body-observations.ts:364](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L364)
 
 The share of its surface that outgasses.
 
@@ -30,7 +30,7 @@ massProperties?: MassPropertiesInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:355](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L355)
+[celestial-bodies/body-observations.ts:358](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L358)
 
 Its mass and density.
 
@@ -43,7 +43,7 @@ reflectance?: ReflectanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:357](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L357)
+[celestial-bodies/body-observations.ts:360](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L360)
 
 Its albedo and brightness.
 
@@ -56,7 +56,7 @@ rotation?: RotationObservationsInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:359](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L359)
+[celestial-bodies/body-observations.ts:362](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L362)
 
 Its spin.
 
@@ -69,7 +69,7 @@ size?: SizeObservationsInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:353](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L353)
+[celestial-bodies/body-observations.ts:356](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L356)
 
 Its size and shape.
 
@@ -82,6 +82,6 @@ surface?: SurfaceObservationsInterface;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:363](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L363)
+[celestial-bodies/body-observations.ts:366](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L366)
 
 Its surface.

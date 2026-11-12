@@ -4,7 +4,7 @@ DiscoveryInterface
 # Interface: DiscoveryInterface
 
 Defined in:
-[observations.ts:220](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L220)
+[observations.ts:223](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L223)
 
 How and when a body was **discovered**.
 
@@ -17,7 +17,7 @@ date?: Date;
 ```
 
 Defined in:
-[observations.ts:222](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L222)
+[observations.ts:225](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L225)
 
 The date, where the day is known.
 
@@ -30,7 +30,7 @@ discoverers?: string[];
 ```
 
 Defined in:
-[observations.ts:226](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L226)
+[observations.ts:229](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L229)
 
 The people credited.
 
@@ -43,7 +43,7 @@ facility?: string;
 ```
 
 Defined in:
-[observations.ts:228](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L228)
+[observations.ts:231](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L231)
 
 The observatory, mission or survey, such as `'Pan-STARRS1'`.
 
@@ -56,7 +56,7 @@ method?: string;
 ```
 
 Defined in:
-[observations.ts:230](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L230)
+[observations.ts:233](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L233)
 
 How it was found, such as `'transit'` or `'photographic plates'`.
 
@@ -69,6 +69,6 @@ year?: number;
 ```
 
 Defined in:
-[observations.ts:224](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L224)
+[observations.ts:227](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L227)
 
 The year.

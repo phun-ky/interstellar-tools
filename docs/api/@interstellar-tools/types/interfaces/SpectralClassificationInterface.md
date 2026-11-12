@@ -4,7 +4,7 @@ SpectralClassificationInterface
 # Interface: SpectralClassificationInterface
 
 Defined in:
-[celestial-bodies/body-observations.ts:433](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L433)
+[celestial-bodies/body-observations.ts:436](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L436)
 
 [StarInterface.type](StarInterface.md#type) **split into its parts**. A class
 given as a range, such as Spica's `'B1III-IV'` or Betelgeuse's `'M1-M2Ia-Iab'`,
@@ -32,7 +32,7 @@ luminosityClass?:
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:456](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L456)
+[celestial-bodies/body-observations.ts:459](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L459)
 
 The luminosity class, or a range, `['III', 'IV']` in B1III-IV.
 
@@ -45,7 +45,7 @@ peculiarities?: string[];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:459](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L459)
+[celestial-bodies/body-observations.ts:462](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L462)
 
 Peculiarity codes, such as `'e'`, `'m'`, `'p'` or `'n'`.
 
@@ -58,7 +58,7 @@ raw: string;
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:435](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L435)
+[celestial-bodies/body-observations.ts:438](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L438)
 
 As published: `StarInterface.type`, such as `'G2V'`.
 
@@ -87,7 +87,7 @@ spectralClass?:
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:437](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L437)
+[celestial-bodies/body-observations.ts:440](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L440)
 
 The spectral class letter.
 
@@ -100,6 +100,6 @@ subclass?: number | readonly [number, number];
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:454](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L454)
+[celestial-bodies/body-observations.ts:457](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L457)
 
 The subclass, such as `2` in G2V, or a range, `[1, 2]` in M1-M2.

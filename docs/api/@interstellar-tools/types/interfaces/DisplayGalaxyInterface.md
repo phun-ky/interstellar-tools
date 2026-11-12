@@ -4,7 +4,7 @@ DisplayGalaxyInterface
 # Interface: DisplayGalaxyInterface
 
 Defined in:
-[celestial-bodies/display.ts:364](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L364)
+[celestial-bodies/display.ts:389](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L389)
 
 How to draw a **galaxy**.
 
@@ -17,7 +17,7 @@ armCount: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:374](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L374)
+[celestial-bodies/display.ts:399](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L399)
 
 How many spiral arms; 0 for ellipticals and irregulars.
 
@@ -30,7 +30,7 @@ armPitch?: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:376](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L376)
+[celestial-bodies/display.ts:401](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L401)
 
 The arms' pitch angle: the smaller, the tighter they wind.
 
@@ -43,7 +43,7 @@ barLength?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:378](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L378)
+[celestial-bodies/display.ts:403](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L403)
 
 The bar's length, as a share of the disk's radius, 0–1.
 
@@ -56,7 +56,7 @@ bulgeColor: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:366](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L366)
+[celestial-bodies/display.ts:391](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L391)
 
 The bulge's colour.
 
@@ -69,7 +69,7 @@ bulgeRadius?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:380](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L380)
+[celestial-bodies/display.ts:405](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L405)
 
 The bulge's radius, as a share of the disk's radius, 0–1.
 
@@ -82,7 +82,7 @@ diskColor: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:368](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L368)
+[celestial-bodies/display.ts:393](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L393)
 
 The disk's colour.
 
@@ -95,7 +95,7 @@ dust?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:384](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L384)
+[celestial-bodies/display.ts:409](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L409)
 
 How strong the dust lanes are, 0–1.
 
@@ -108,7 +108,7 @@ dustColor?: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:372](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L372)
+[celestial-bodies/display.ts:397](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L397)
 
 The colour of the dust lanes.
 
@@ -121,7 +121,7 @@ ellipticity?: number;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:382](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L382)
+[celestial-bodies/display.ts:407](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L407)
 
 An elliptical's axis ratio, b/a, 0–1.
 
@@ -134,6 +134,6 @@ starFormingColor?: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:370](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L370)
+[celestial-bodies/display.ts:395](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L395)
 
 The colour of star-forming knots in the arms.

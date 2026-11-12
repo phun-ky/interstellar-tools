@@ -4,7 +4,7 @@ OrbitSolutionInterface
 # Interface: OrbitSolutionInterface
 
 Defined in:
-[observations.ts:619](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L619)
+[observations.ts:620](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L620)
 
 The **orbit determination** behind `orbit`: how well its elements are known.
 
@@ -17,7 +17,7 @@ conditionCode?: number;
 ```
 
 Defined in:
-[observations.ts:623](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L623)
+[observations.ts:624](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L624)
 
 JPL's condition code, 0 (best) to 9, or the MPC's U parameter.
 
@@ -30,7 +30,7 @@ earthMoid?: DistanceInterface;
 ```
 
 Defined in:
-[observations.ts:637](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L637)
+[observations.ts:638](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L638)
 
 The minimum orbit intersection distance with Earth.
 
@@ -43,7 +43,7 @@ epoch?: EpochInterface;
 ```
 
 Defined in:
-[observations.ts:621](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L621)
+[observations.ts:622](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L622)
 
 The catalogue solution's osculating epoch.
 
@@ -56,7 +56,7 @@ firstObservation?: Date;
 ```
 
 Defined in:
-[observations.ts:629](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L629)
+[observations.ts:630](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L630)
 
 The first observation used.
 
@@ -69,7 +69,7 @@ jupiterMoid?: DistanceInterface;
 ```
 
 Defined in:
-[observations.ts:639](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L639)
+[observations.ts:640](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L640)
 
 The minimum orbit intersection distance with Jupiter.
 
@@ -82,7 +82,7 @@ lastObservation?: Date;
 ```
 
 Defined in:
-[observations.ts:631](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L631)
+[observations.ts:632](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L632)
 
 The last observation used.
 
@@ -95,7 +95,7 @@ nonGravitational?: NonGravitationalInterface;
 ```
 
 Defined in:
-[observations.ts:643](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L643)
+[observations.ts:644](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L644)
 
 The non-gravitational parameters fitted with the orbit.
 
@@ -108,7 +108,7 @@ observationArc?: TemporalInterface;
 ```
 
 Defined in:
-[observations.ts:625](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L625)
+[observations.ts:626](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L626)
 
 The time from the first observation used to the last.
 
@@ -121,7 +121,7 @@ observationCount?: number;
 ```
 
 Defined in:
-[observations.ts:627](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L627)
+[observations.ts:628](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L628)
 
 How many observations were used.
 
@@ -134,7 +134,7 @@ sigma?: Partial<Record<"i" | "a" | "e" | "w" | "om" | "q" | "period", number>>;
 ```
 
 Defined in:
-[observations.ts:633](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L633)
+[observations.ts:634](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L634)
 
 The elements' 1σ uncertainties, in the units `orbit` gives them in.
 
@@ -147,7 +147,7 @@ source?: ObservationSourceInterface;
 ```
 
 Defined in:
-[observations.ts:645](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L645)
+[observations.ts:646](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L646)
 
 Where the solution came from.
 
@@ -160,6 +160,6 @@ tisserandJupiter?: number;
 ```
 
 Defined in:
-[observations.ts:641](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L641)
+[observations.ts:642](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L642)
 
 The Tisserand parameter with respect to Jupiter.

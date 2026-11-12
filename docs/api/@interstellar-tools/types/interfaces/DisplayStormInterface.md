@@ -4,7 +4,7 @@ DisplayStormInterface
 # Interface: DisplayStormInterface
 
 Defined in:
-[celestial-bodies/display.ts:203](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L203)
+[celestial-bodies/display.ts:206](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L206)
 
 An oval **storm** on a giant planet.
 
@@ -17,7 +17,7 @@ color: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:215](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L215)
+[celestial-bodies/display.ts:218](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L218)
 
 Its colour.
 
@@ -30,7 +30,7 @@ feature?: string;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:205](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L205)
+[celestial-bodies/display.ts:208](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L208)
 
 The name of the feature in `observations.atmosphere.features` it draws, such as
 `'Great Red Spot'`.
@@ -44,7 +44,7 @@ height: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:213](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L213)
+[celestial-bodies/display.ts:216](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L216)
 
 How tall it is, north to south.
 
@@ -57,7 +57,7 @@ historical?: boolean;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:217](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L217)
+[celestial-bodies/display.ts:220](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L220)
 
 `true` for a feature that has gone since, such as Neptune's Great Dark Spot.
 
@@ -70,7 +70,7 @@ latitude: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:207](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L207)
+[celestial-bodies/display.ts:210](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L210)
 
 The planetographic latitude of its centre.
 
@@ -83,7 +83,7 @@ longitude?: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:209](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L209)
+[celestial-bodies/display.ts:212](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L212)
 
 Its longitude in the rotating frame; 0 if left out.
 
@@ -96,6 +96,6 @@ width: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/display.ts:211](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L211)
+[celestial-bodies/display.ts:214](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/display.ts#L214)
 
 How wide it is, east to west.

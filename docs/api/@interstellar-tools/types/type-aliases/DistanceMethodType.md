@@ -18,6 +18,6 @@ type DistanceMethodType =
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:657](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L657)
+[celestial-bodies/body-observations.ts:747](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L747)
 
 How a galaxy's **distance** was measured.

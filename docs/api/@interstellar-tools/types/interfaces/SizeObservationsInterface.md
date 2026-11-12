@@ -4,7 +4,7 @@ SizeObservationsInterface
 # Interface: SizeObservationsInterface
 
 Defined in:
-[observations.ts:339](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L339)
+[observations.ts:342](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L342)
 
 Measured **size and shape**, with uncertainties. The body's `radius` and
 `ellipsoid` stay the values the equations use.
@@ -18,7 +18,7 @@ effectiveDiameter?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:343](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L343)
+[observations.ts:346](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L346)
 
 The volume-equivalent diameter, as small bodies are usually given.
 
@@ -31,7 +31,7 @@ flattening?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:351](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L351)
+[observations.ts:354](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L354)
 
 The flattening, $(a - c) / a$.
 
@@ -44,7 +44,7 @@ meanRadius?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:341](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L341)
+[observations.ts:344](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L344)
 
 The mean radius, with its uncertainty and method.
 
@@ -57,7 +57,7 @@ shapeModel?: string;
 ```
 
 Defined in:
-[observations.ts:353](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L353)
+[observations.ts:356](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L356)
 
 The shape model, such as a PDS or DAMIT model ID.
 
@@ -70,6 +70,6 @@ triaxialRadii?: readonly [ObservedType<DistanceInterface>, ObservedType<Distance
 ```
 
 Defined in:
-[observations.ts:345](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L345)
+[observations.ts:348](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L348)
 
 The triaxial semi-axes, a ≥ b ≥ c.

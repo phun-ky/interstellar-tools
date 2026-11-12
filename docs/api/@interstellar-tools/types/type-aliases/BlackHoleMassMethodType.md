@@ -15,6 +15,6 @@ type BlackHoleMassMethodType =
 ```
 
 Defined in:
-[celestial-bodies/body-observations.ts:688](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L688)
+[celestial-bodies/body-observations.ts:778](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/body-observations.ts#L778)
 
 How a **black hole's mass** was measured.

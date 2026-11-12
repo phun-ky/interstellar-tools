@@ -4,7 +4,7 @@ AtmosphericFeatureInterface
 # Interface: AtmosphericFeatureInterface
 
 Defined in:
-[observations.ts:443](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L443)
+[observations.ts:446](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L446)
 
 A lasting **feature of an atmosphere**, such as a storm.
 
@@ -17,7 +17,7 @@ firstObserved?: Date;
 ```
 
 Defined in:
-[observations.ts:451](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L451)
+[observations.ts:454](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L454)
 
 When it was first seen.
 
@@ -30,7 +30,7 @@ lastObserved?: Date;
 ```
 
 Defined in:
-[observations.ts:453](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L453)
+[observations.ts:456](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L456)
 
 When it was last seen, set once it has gone.
 
@@ -43,7 +43,7 @@ latitude?: DegreesType;
 ```
 
 Defined in:
-[observations.ts:447](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L447)
+[observations.ts:450](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L450)
 
 The planetographic latitude of its centre.
 
@@ -56,7 +56,7 @@ name: string;
 ```
 
 Defined in:
-[observations.ts:445](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L445)
+[observations.ts:448](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L448)
 
 Its name, such as `'Great Red Spot'`.
 
@@ -69,6 +69,6 @@ size?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:449](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L449)
+[observations.ts:452](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L452)
 
 Its size, east to west.

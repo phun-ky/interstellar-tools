@@ -4,7 +4,7 @@ RingInterface
 # Interface: RingInterface
 
 Defined in:
-[observations.ts:502](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L502)
+[observations.ts:505](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L505)
 
 One **ring** of a planet.
 
@@ -17,7 +17,7 @@ composition?: string;
 ```
 
 Defined in:
-[observations.ts:516](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L516)
+[observations.ts:519](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L519)
 
 Such as `'water ice'` or `'dark carbonaceous dust'`.
 
@@ -30,7 +30,7 @@ geometricAlbedo?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:512](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L512)
+[observations.ts:515](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L515)
 
 The geometric albedo of its particles.
 
@@ -43,7 +43,7 @@ innerRadius: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:506](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L506)
+[observations.ts:509](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L509)
 
 Its inner edge, from the planet's centre.
 
@@ -56,7 +56,7 @@ name: string;
 ```
 
 Defined in:
-[observations.ts:504](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L504)
+[observations.ts:507](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L507)
 
 Its name, such as `'A'` or `'ε'`.
 
@@ -69,7 +69,7 @@ normalOpticalDepth?: ObservedType<DimensionlessInterface>;
 ```
 
 Defined in:
-[observations.ts:510](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L510)
+[observations.ts:513](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L513)
 
 Its normal optical depth, τ.
 
@@ -82,7 +82,7 @@ outerRadius: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:508](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L508)
+[observations.ts:511](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L511)
 
 Its outer edge, from the planet's centre.
 
@@ -95,6 +95,6 @@ thickness?: ObservedType<DistanceInterface>;
 ```
 
 Defined in:
-[observations.ts:514](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L514)
+[observations.ts:517](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L517)
 
 How thick it is.

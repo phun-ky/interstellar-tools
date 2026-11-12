@@ -4,7 +4,7 @@ RingSystemInterface
 # Interface: RingSystemInterface
 
 Defined in:
-[observations.ts:552](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L552)
+[observations.ts:555](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L555)
 
 A planet's **ring system**, in its equator's plane.
 
@@ -31,7 +31,7 @@ gaps?: RingGapInterface[];
 ```
 
 Defined in:
-[observations.ts:556](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L556)
+[observations.ts:559](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L559)
 
 Its named gaps.
 
@@ -44,7 +44,7 @@ rings: RingInterface[];
 ```
 
 Defined in:
-[observations.ts:554](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L554)
+[observations.ts:557](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L557)
 
 Its rings, from the inside out.
 
@@ -57,6 +57,6 @@ shepherdIds?: string[];
 ```
 
 Defined in:
-[observations.ts:558](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L558)
+[observations.ts:561](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L561)
 
 Ids of the moons that shepherd or shape it.

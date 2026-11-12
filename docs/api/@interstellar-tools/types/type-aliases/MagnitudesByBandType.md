@@ -10,6 +10,6 @@ type MagnitudesByBandType = Partial<
 ```
 
 Defined in:
-[observations.ts:270](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L270)
+[observations.ts:273](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/observations.ts#L273)
 
 **Magnitudes** by photometric band.
