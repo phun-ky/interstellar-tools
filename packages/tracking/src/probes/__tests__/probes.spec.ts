@@ -113,6 +113,29 @@ describe('PROBES', () => {
     }
   });
 
+  test('follows Juno past Jupiter’s cloud tops within 1 000 km, every 10 minutes', () => {
+    const juno = PROBES.find(({ id }) => id === 'juno')!;
+    // Its perijove of 17 January 2027, 58 km/s from Jupiter
+    const horizons = parseHorizonsVectors(
+      readFileSync(
+        new URL('fixtures/horizons-juno-perijove.txt', import.meta.url),
+        'utf8'
+      )
+    );
+
+    assert.equal(horizons.samples.length, 37);
+
+    for (const truth of horizons.samples) {
+      const { r } = stateAt(juno.ephemeris, truth.epoch);
+
+      assert.ok(
+        Math.hypot(r[0] - truth.r[0], r[1] - truth.r[1], r[2] - truth.r[2]) <
+          1_000_000,
+        truth.epoch.toISOString()
+      );
+    }
+  });
+
   test('puts Voyager 1 172 au out, leaving at 17 km/s, and JWST beyond Earth', () => {
     const at = (id: string) =>
       stateAt(PROBES.find((probe) => probe.id === id)!.ephemeris, START);
