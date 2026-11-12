@@ -1,6 +1,7 @@
 import {
   AU_METERS,
   SPEED_OF_LIGHT_M_PER_S,
+  STARS,
   WGS84
 } from '@interstellar-tools/constants';
 import {
@@ -356,6 +357,47 @@ describe('Tracking guide: probes', () => {
       (Math.hypot(...probe('jwst').r) / AU_METERS).toFixed(2),
       '1.00'
     );
+  });
+
+  test('the heliosphere the Voyagers crossed, and the shape drawn of it', () => {
+    const sun = STARS.find(({ id }) => id === 'sun')!;
+    const { astropause, upwind, crossings } = sun.observations!.astrosphere!;
+    const b = astropause!.nose!.value;
+    // A Rankine half-body b to the nose: r = b φ / sin φ, φ from the nose
+    const halfBody = (phi: number) => (b * phi) / Math.sin(phi);
+    const rad = (degrees: number) => (degrees * Math.PI) / 180;
+    const voyager1 = crossings!.find(
+      ({ probeId, boundary }) =>
+        probeId === 'voyager-1' && boundary === 'astropause'
+    )!;
+    // Its angle from the nose, between two ecliptic directions
+    const phi = Math.acos(
+      Math.sin(rad(voyager1.direction!.eclipticLatitude)) *
+        Math.sin(rad(upwind!.eclipticLatitude)) +
+        Math.cos(rad(voyager1.direction!.eclipticLatitude)) *
+          Math.cos(rad(upwind!.eclipticLatitude)) *
+          Math.cos(
+            rad(
+              voyager1.direction!.eclipticLongitude - upwind!.eclipticLongitude
+            )
+          )
+    );
+
+    assert.equal(b, 115);
+    assert.deepEqual(
+      crossings!.map(({ probeId, boundary, distance }) =>
+        [probeId, boundary, distance.value].join(' ')
+      ),
+      [
+        'voyager-1 termination shock 94.01',
+        'voyager-2 termination shock 83.7',
+        'voyager-1 astropause 121.6',
+        'voyager-2 astropause 119'
+      ]
+    );
+    // The figure's caption: flanks at 181 au, Voyager 1's crossing at 120 au
+    assert.equal(Math.round(halfBody(Math.PI / 2)), 181);
+    assert.equal(Math.round(halfBody(phi)), 120);
   });
 
   test('the OEM on the page, as one segment', () => {
