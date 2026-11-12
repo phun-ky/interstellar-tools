@@ -1,6 +1,9 @@
 import type { DistanceInterface } from './distance.js';
 import type { DegreesType, ValueInterface } from './numeric.js';
-import type { CelestialDirectionInterface } from './orbits.js';
+import type {
+  CelestialDirectionInterface,
+  EclipticDirectionInterface
+} from './orbits.js';
 import type {
   GalacticDirectionInterface,
   ProperMotionInterface
@@ -589,9 +592,7 @@ export interface RotationObservationsInterface {
   /** How fast the period lengthens. */
   periodChange?: ObservedType<PeriodChangeInterface>;
   /** The spin pole of a small body that has no IAU rotation model. */
-  pole?:
-    | CelestialDirectionInterface
-    | { eclipticLongitude: DegreesType; eclipticLatitude: DegreesType };
+  pole?: CelestialDirectionInterface | EclipticDirectionInterface;
 }
 
 /**

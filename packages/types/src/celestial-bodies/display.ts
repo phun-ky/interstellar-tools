@@ -31,16 +31,17 @@ export interface CartesianCoordinatesInterface {
  *   `orbitPath`. The datasets never set these.
  * - **How to draw the body itself**, for a procedural renderer: `model`, and
  *   the groups that model reads, `surface`, `bands`, `clouds`, `atmosphere`,
- *   `emission`, `rings`, `photosphere`, `coma`, `galaxy` and `blackHole`,
- *   with a noise `seed`. They come from the body's `observations` or from
- *   images of it, and `derivation` records which.
+ *   `emission`, `rings`, `photosphere`, `astrosphere`, `coma`, `galaxy` and
+ *   `blackHole`, with a noise `seed`. They come from the body's
+ *   `observations` or from images of it, and `derivation` records which.
  *
  * ::: info
  *
  * - Colours are hex strings (`#rrggbb`) or CSS colour names, like `color`.
  * - Intensities, coverages and fractions run from 0 to 1.
  * - Sizes in the drawing groups are in multiples of the drawn body's radius,
- *   never physical units. The physical sizes, such as a ring's radii, are in
+ *   never physical units, but for `astrosphere`'s, which come from
+ *   `observations`. The physical sizes, such as a ring's radii, are in
  *   `observations`.
  * - The computed orbit distances are in whatever unit the renderer uses for
  *   `orbit.a` (for example au), in the orbit's plane, with the parent at the
@@ -107,6 +108,8 @@ export interface DisplayInterface {
   rings?: DisplayRingsInterface;
   /** A star's disc: its colour, limb darkening, granulation, spots and corona. */
   photosphere?: DisplayPhotosphereInterface;
+  /** How to draw a star's astrosphere. */
+  astrosphere?: DisplayAstrosphereInterface;
   /** A comet's coma and tails. */
   coma?: DisplayComaInterface;
   /** A galaxy's bulge, disk and arms. */
@@ -320,6 +323,28 @@ export interface DisplayPhotosphereInterface {
   spotLatitude?: DegreesType;
   /** Its corona. */
   corona?: DisplayCoronaInterface;
+}
+
+/**
+ * How to draw a star's **astrosphere**, its boundaries from the star's
+ * `observations.astrosphere`.
+ *
+ * Unlike the other groups, its sizes are physical, from `observations`, as
+ * it's drawn around the star's whole system: the heliosphere is over a hundred
+ * times wider than Neptune's orbit.
+ *
+ * @group Celestial Bodies
+ */
+export interface DisplayAstrosphereInterface {
+  /** The colour of its boundaries. */
+  color: string;
+  /** How opaque they are, 0–1. */
+  opacity: number;
+  /**
+   * Whether to draw it without being asked. Left out, a renderer keeps it
+   * hidden, behind an option to show it.
+   */
+  visibleByDefault?: boolean;
 }
 
 /**

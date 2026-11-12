@@ -19,7 +19,10 @@ import type {
   SpeciesAbundanceInterface,
   SurfaceObservationsInterface
 } from '../observations.js';
-import type { CelestialDirectionInterface } from '../orbits.js';
+import type {
+  CelestialDirectionInterface,
+  EclipticDirectionInterface
+} from '../orbits.js';
 import type {
   AccelerationInterface,
   AngleInterface,
@@ -529,6 +532,91 @@ export interface StellarActivityInterface {
 }
 
 /**
+ * A **boundary of an astrosphere**, by how far it lies from the star in three
+ * directions. The bubble is blunt on the side the interstellar wind blows
+ * from and drawn out behind, so one radius doesn't describe it.
+ *
+ * @group Observations
+ */
+export interface AstrosphereBoundaryInterface {
+  /** How far it is towards the nose, upwind. */
+  nose?: ObservedType<DistanceInterface>;
+  /** How far it is on the flanks, at right angles to the wind. */
+  flank?: ObservedType<DistanceInterface>;
+  /** How far it is down the tail, downwind. */
+  tail?: ObservedType<DistanceInterface>;
+}
+
+/**
+ * The boundaries of an **astrosphere**:
+ *
+ * - `'termination shock'`: where the stellar wind slows below the speed of
+ *   sound.
+ * - `'astropause'`: where the stellar wind meets the interstellar medium; the
+ *   Sun's is the heliopause.
+ * - `'bow shock'`: where the interstellar medium, if it flows faster than its
+ *   own speed of sound, is shocked ahead of the bubble.
+ *
+ * @group Observations
+ */
+export type AstrosphereBoundaryType =
+  'termination shock' | 'astropause' | 'bow shock';
+
+/**
+ * A **probe crossing** an astrosphere's boundary, as the Voyagers crossed the
+ * Sun's.
+ *
+ * @group Observations
+ */
+export interface AstrosphereCrossingInterface {
+  /** The probe's id, as in `PROBES` in `@interstellar-tools/tracking`. */
+  probeId: string;
+  /** Which boundary it crossed. */
+  boundary: AstrosphereBoundaryType;
+  /** When it crossed. */
+  date: Date;
+  /** How far from the star it was. */
+  distance: ObservedType<DistanceInterface>;
+  /** Which way from the star it was. */
+  direction?: EclipticDirectionInterface;
+}
+
+/**
+ * A star's **astrosphere**, the bubble its wind blows into the interstellar
+ * medium: the Sun's is the heliosphere.
+ *
+ * @example
+ * ```ts
+ * const heliosphere: AstrosphereInterface = {
+ *   astropause: { nose: { value: 120, unit: 'au' } },
+ *   crossings: [
+ *     {
+ *       probeId: 'voyager-1',
+ *       boundary: 'astropause',
+ *       date: new Date('2012-08-25'),
+ *       distance: { value: 121.6, unit: 'au' }
+ *     }
+ *   ]
+ * };
+ * ```
+ * @group Observations
+ */
+export interface AstrosphereInterface {
+  /** Where the stellar wind slows below the speed of sound. */
+  terminationShock?: AstrosphereBoundaryInterface;
+  /** Where the stellar wind meets the interstellar medium: the heliopause. */
+  astropause?: AstrosphereBoundaryInterface;
+  /** Where the interstellar medium is shocked ahead of it, if it is. */
+  bowShock?: AstrosphereBoundaryInterface;
+  /** The direction the interstellar wind blows from, which its nose faces. */
+  upwind?: EclipticDirectionInterface;
+  /** The interstellar wind's speed, relative to the star. */
+  inflowSpeed?: ObservedType<SpeedInterface>;
+  /** Probes that have crossed its boundaries. */
+  crossings?: AstrosphereCrossingInterface[];
+}
+
+/**
  * What is measured about a **star**. Its own `mass` (M☉) and `radius` stay
  * the values the equations use; these carry uncertainties and methods.
  *
@@ -604,6 +692,8 @@ export interface StarObservationsInterface {
   evolutionaryStage?: StellarEvolutionaryStageType;
   /** How fast it loses mass. */
   massLossRate?: ObservedType<MassRateInterface>;
+  /** The bubble its wind blows in the interstellar medium. */
+  astrosphere?: AstrosphereInterface;
   /** Its letter within its system, such as `'A'`. */
   component?: string;
   /** Sources for the record as a whole. */
