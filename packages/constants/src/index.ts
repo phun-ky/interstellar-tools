@@ -14,6 +14,8 @@ export * from './geodesy.js';
 
 export * from './math.js';
 
+export * from './nominal.js';
+
 export * from './objects.js';
 
 export * from './temporal.js';
