@@ -2,6 +2,7 @@ import type { EllipsoidInterface } from '../cartography.js';
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
+import type { MoonObservationsInterface } from './body-observations.js';
 import type { DisplayInterface } from './display.js';
 import type { RotationInterface } from './rotation.js';
 
@@ -75,6 +76,11 @@ export interface MoonInterface {
   z?: DistanceInterface;
   /** How to draw the moon: its colour, and state a renderer computes. */
   display?: DisplayInterface;
+  /**
+   * What is measured about it, with uncertainties and sources, apart from
+   * the values the equations use.
+   */
+  observations?: MoonObservationsInterface;
 }
 
 /**
