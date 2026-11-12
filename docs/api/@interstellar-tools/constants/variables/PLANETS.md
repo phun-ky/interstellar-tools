@@ -8,7 +8,7 @@ const PLANETS: PlanetsType;
 ```
 
 Defined in:
-[bodies/planets.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/planets.ts#L71)
+[bodies/planets.ts:75](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/planets.ts#L75)
 
 Represents a dataset of planets and planetoids in the solar system.
 
@@ -69,6 +69,12 @@ Represents a dataset of planets and planetoids in the solar system.
   middle, with the range in its `note`. Saturn's ringlets, Neptune's Adams ring
   arcs and its Arago ring are left out, and `shepherdIds` names only the moons
   in `MOONS`.
+
+- `display.rings` draws them: each is as opaque as its densest ring, 1 − e^−τ,
+  so Jupiter's faint dust all but vanishes. Saturn's colour is measured from
+  Cassini's natural-colour mosaic PIA06175. No true-colour image of the others
+  exists, so theirs are a neutral grey as dark as their particles, which reflect
+  about 1.5 % of the light. `display.derivation` says which.
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See

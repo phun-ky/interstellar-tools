@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.14.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.13.0...%40interstellar-tools%2Fconstants%402.14.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Draw the giant planets' rings ([6bfdc52](https://github.com/phun-ky/interstellar-tools/commit/6bfdc520d2aecd060f8e3aca253e4838dcfa1947))
+
 ## [2.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.12.0...%40interstellar-tools%2Fconstants%402.13.0) (2026-11-12)
 
 ### Feature
