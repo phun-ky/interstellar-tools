@@ -97,6 +97,21 @@ npm i --save @interstellar-tools/constants
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [TWO_PI](variables/TWO_PI.md) | The circle constant **τ** (tau), equal to **2π** `(≈ 6.283185307179586)`. Useful for full rotations, radians-per-turn calculations, angular velocity, and other periodic math where factors of 2 arise naturally. |
 
+## Nominal
+
+| Variable                                                                                    | Description                                                                                   |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [EARTH_EQUATORIAL_RADIUS_NOMINAL_KM](variables/EARTH_EQUATORIAL_RADIUS_NOMINAL_KM.md)       | Nominal **equatorial radius of Earth**, $R^\mathrm{N}_{eE}$: 6378.1 km, zero tide.            |
+| [EARTH_GM_NOMINAL_M3_PER_S2](variables/EARTH_GM_NOMINAL_M3_PER_S2.md)                       | Nominal **mass parameter of Earth**, $(GM)^\mathrm{N}_E$: 3.986004 × 10¹⁴ m³/s².              |
+| [EARTH_POLAR_RADIUS_NOMINAL_KM](variables/EARTH_POLAR_RADIUS_NOMINAL_KM.md)                 | Nominal **polar radius of Earth**, $R^\mathrm{N}_{pE}$: 6356.8 km, zero tide.                 |
+| [JUPITER_EQUATORIAL_RADIUS_NOMINAL_KM](variables/JUPITER_EQUATORIAL_RADIUS_NOMINAL_KM.md)   | Nominal **equatorial radius of Jupiter**, $R^\mathrm{N}_{eJ}$: 71 492 km, at the 1-bar level. |
+| [JUPITER_GM_NOMINAL_M3_PER_S2](variables/JUPITER_GM_NOMINAL_M3_PER_S2.md)                   | Nominal **mass parameter of Jupiter**, $(GM)^\mathrm{N}_J$: 1.2668653 × 10¹⁷ m³/s².           |
+| [JUPITER_POLAR_RADIUS_NOMINAL_KM](variables/JUPITER_POLAR_RADIUS_NOMINAL_KM.md)             | Nominal **polar radius of Jupiter**, $R^\mathrm{N}_{pJ}$: 66 854 km, at the 1-bar level.      |
+| [SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K](variables/SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K.md) | Nominal **solar effective temperature**, $T^\mathrm{N}_{\mathrm{eff}\odot}$: 5772 K.          |
+| [SOLAR_GM_NOMINAL_M3_PER_S2](variables/SOLAR_GM_NOMINAL_M3_PER_S2.md)                       | Nominal **solar mass parameter**, $(GM)^\mathrm{N}_\odot$: 1.3271244 × 10²⁰ m³/s².            |
+| [SOLAR_IRRADIANCE_NOMINAL_W_PER_M2](variables/SOLAR_IRRADIANCE_NOMINAL_W_PER_M2.md)         | Nominal **total solar irradiance**, $S^\mathrm{N}_\odot$: 1361 W/m².                          |
+| [SOLAR_LUMINOSITY_NOMINAL_W](variables/SOLAR_LUMINOSITY_NOMINAL_W.md)                       | Nominal **solar luminosity**, $L^\mathrm{N}_\odot$: 3.828 × 10²⁶ W.                           |
+
 ## Objects
 
 | Variable                                                                                                  | Description                                                                                                                     |

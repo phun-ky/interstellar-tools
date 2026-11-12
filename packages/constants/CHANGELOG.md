@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.7.0...%40interstellar-tools%2Fconstants%402.8.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the IAU's 2015 nominal conversion constants ([f40cfca](https://github.com/phun-ky/interstellar-tools/commit/f40cfca6a639ced183d7e7e315d8f5407da5ab75))
+
 ## [2.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.6.0...%40interstellar-tools%2Fconstants%402.7.0) (2026-11-11)
 
 ### Feature
