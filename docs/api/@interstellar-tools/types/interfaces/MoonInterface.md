@@ -4,7 +4,7 @@ MoonInterface
 # Interface: MoonInterface
 
 Defined in:
-[celestial-bodies/moons.ts:39](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L39)
+[celestial-bodies/moons.ts:40](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L40)
 
 Represents a **moon** (natural satellite) orbiting a planet, a dwarf planet or
 an asteroid.
@@ -46,7 +46,7 @@ category: 'natural satellite' | 'irregular satellite' | 'retrograde satellite';
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:46](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L46)
+[celestial-bodies/moons.ts:47](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L47)
 
 Classification of the moon.
 
@@ -59,7 +59,7 @@ display?: DisplayInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:77](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L77)
+[celestial-bodies/moons.ts:78](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L78)
 
 How to draw the moon: its colour, and state a renderer computes.
 
@@ -72,7 +72,7 @@ ellipsoid?: EllipsoidInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L64)
+[celestial-bodies/moons.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L65)
 
 Reference ellipsoid, from the IAU Working Group on Cartographic Coordinates and
 Rotational Elements, where it gives one. `radius` is the mean radius.
@@ -86,7 +86,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:41](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L41)
+[celestial-bodies/moons.ts:42](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L42)
 
 Stable identifier, used by `parent` references. Never translated.
 
@@ -99,7 +99,7 @@ mu?: number;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:69](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L69)
+[celestial-bodies/moons.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L70)
 
 Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s², as the
 orbit equations take it. Given where JPL publishes one.
@@ -113,9 +113,23 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:43](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L43)
+[celestial-bodies/moons.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L44)
 
 Name of the moon (e.g., "Io", "Europa", "Titan").
+
+---
+
+### observations?
+
+```ts
+observations?: MoonObservationsInterface;
+```
+
+Defined in:
+[celestial-bodies/moons.ts:83](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L83)
+
+What is measured about it, with uncertainties and sources, apart from the values
+the equations use.
 
 ---
 
@@ -126,7 +140,7 @@ orbit: OrbitInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:51](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L51)
+[celestial-bodies/moons.ts:52](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L52)
 
 Orbit around the parent.
 
@@ -139,7 +153,7 @@ parent: string;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:49](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L49)
+[celestial-bodies/moons.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L50)
 
 Id of the planet, or asteroid, the moon orbits (e.g., `'jupiter'`,
 `'65803-didymos'`).
@@ -153,7 +167,7 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:58](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L58)
+[celestial-bodies/moons.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L59)
 
 Mean radius of the moon in kilometres; the IAU's, where it gives one.
 
@@ -166,7 +180,7 @@ rotation?: RotationInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:56](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L56)
+[celestial-bodies/moons.ts:57](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L57)
 
 How the moon spins: its sidereal rotation period and direction. Given where the
 IAU, or a measurement, publishes one.
@@ -180,7 +194,7 @@ type?: undefined;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L44)
+[celestial-bodies/moons.ts:45](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L45)
 
 ---
 
@@ -191,7 +205,7 @@ x?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L71)
+[celestial-bodies/moons.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L72)
 
 X-coordinate in a distance-based system (optional).
 
@@ -204,7 +218,7 @@ y?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:73](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L73)
+[celestial-bodies/moons.ts:74](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L74)
 
 Y-coordinate in a distance-based system (optional).
 
@@ -217,6 +231,6 @@ z?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/moons.ts:75](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L75)
+[celestial-bodies/moons.ts:76](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/moons.ts#L76)
 
 Z-coordinate in a distance-based system (optional).

@@ -27,6 +27,10 @@ const andromeda: ProperMotionInterface = {
 };
 ```
 
+## Extended by
+
+- [`ObservedProperMotionInterface`](ObservedProperMotionInterface.md)
+
 ## Properties
 
 ### declination

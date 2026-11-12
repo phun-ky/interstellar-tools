@@ -4,7 +4,7 @@ InterstellarObjectInterface
 # Interface: InterstellarObjectInterface
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:51](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L51)
+[celestial-bodies/interstellar-objects.ts:52](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L52)
 
 An **interstellar object**: a body from another star's system, passing through
 the Solar System once, on an open orbit around the Sun. The IAU's Minor Planet
@@ -58,7 +58,7 @@ category: 'interstellar object';
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:61](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L61)
+[celestial-bodies/interstellar-objects.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L62)
 
 Category classification: every one is an interstellar object.
 
@@ -71,7 +71,7 @@ designation: string;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:57](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L57)
+[celestial-bodies/interstellar-objects.ts:58](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L58)
 
 The Minor Planet Center's designation, e.g. `'1I/2017 U1'`.
 
@@ -84,7 +84,7 @@ display?: DisplayInterface;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L71)
+[celestial-bodies/interstellar-objects.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L72)
 
 How to draw it: its colour and drawn size, and state a renderer computes.
 
@@ -97,7 +97,7 @@ id: string;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L53)
+[celestial-bodies/interstellar-objects.ts:54](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L54)
 
 Stable identifier. Never translated.
 
@@ -110,9 +110,23 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:55](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L55)
+[celestial-bodies/interstellar-objects.ts:56](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L56)
 
 Name (e.g., "ʻOumuamua", "Borisov").
+
+---
+
+### observations?
+
+```ts
+observations?: InterstellarObjectObservationsInterface;
+```
+
+Defined in:
+[celestial-bodies/interstellar-objects.ts:77](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L77)
+
+What is measured about it, with uncertainties and sources, apart from the values
+the equations use.
 
 ---
 
@@ -123,7 +137,7 @@ orbit: OpenOrbitInterface;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L65)
+[celestial-bodies/interstellar-objects.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L66)
 
 Its open orbit around the parent.
 
@@ -136,7 +150,7 @@ parent: string;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L63)
+[celestial-bodies/interstellar-objects.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L64)
 
 Id of the star it passes, `'sun'`.
 
@@ -149,7 +163,7 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:69](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L69)
+[celestial-bodies/interstellar-objects.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L70)
 
 Radius of its nucleus or body, or an effective one for an elongated body.
 
@@ -162,7 +176,7 @@ rotation?: RotationInterface;
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:67](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L67)
+[celestial-bodies/interstellar-objects.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L68)
 
 How it spins, where that's measured.
 
@@ -175,6 +189,6 @@ type: 'interstellar comet' | 'interstellar object';
 ```
 
 Defined in:
-[celestial-bodies/interstellar-objects.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L59)
+[celestial-bodies/interstellar-objects.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/interstellar-objects.ts#L60)
 
 `'interstellar comet'` with a coma, `'interstellar object'` without.

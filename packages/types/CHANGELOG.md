@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.8.0...%40interstellar-tools%2Ftypes%402.9.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Type what is measured about each body ([99eee08](https://github.com/phun-ky/interstellar-tools/commit/99eee081e9f100b00e9786da9f180f5aee07058c))
+
 ## [2.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.7.0...%40interstellar-tools%2Ftypes%402.8.0) (2026-11-11)
 
 ### Feature

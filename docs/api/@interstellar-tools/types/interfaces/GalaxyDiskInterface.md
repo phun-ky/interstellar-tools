@@ -4,7 +4,7 @@ GalaxyDiskInterface
 # Interface: GalaxyDiskInterface
 
 Defined in:
-[celestial-bodies/galaxies.ts:91](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L91)
+[celestial-bodies/galaxies.ts:101](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L101)
 
 How a **galaxy's disk** is turned, as seen from the Sun.
 
@@ -41,7 +41,7 @@ inclination: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:93](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L93)
+[celestial-bodies/galaxies.ts:103](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L103)
 
 Angle between the disk and the sky, 0° face-on to 90° edge-on.
 
@@ -54,7 +54,7 @@ nearSide?: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:97](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L97)
+[celestial-bodies/galaxies.ts:107](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L107)
 
 Position angle of the nearer half of the minor axis, in degrees. Omitted where
 it isn't known.
@@ -68,7 +68,7 @@ positionAngle: DegreesType;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:95](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L95)
+[celestial-bodies/galaxies.ts:105](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L105)
 
 Position angle of the receding half of the major axis, east of north, in
 degrees.
