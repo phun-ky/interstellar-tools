@@ -66,6 +66,12 @@ copyright. They're compiled from public references, credited here:
   et al. 2021 for Canopus; Schweitzer et al. 2019 for Barnard's Star; Agol et
   al. 2021 for TRAPPIST-1; and Habibi et al. 2017 for the S-stars. Each value
   carries its paper's DOI.
+- **The heliosphere:** the Voyagers' termination shock and heliopause crossings
+  from Stone et al. 2005 (Science 309, 2017), Burlaga et al. 2008 (Nature
+  454, 75) and Burlaga et al. 2019 (Nature Astronomy 3, 1007), with their
+  directions from JPL Horizons; the heliopause's shape from IBEX (Reisenfeld et
+  al. 2021, ApJS 254, 40); and the interstellar wind's direction and speed from
+  McComas et al. 2015 (ApJS 220, 22).
 - **Gravitational parameters (`mu`):** the DE440 ephemeris (Park et al. 2021, AJ
   161, 105) for the Sun, Mercury, Venus and Earth, Park et al. 2016 (Nature
   537, 515) for Ceres, and JPL's
