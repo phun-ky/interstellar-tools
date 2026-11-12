@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.11.0...%40interstellar-tools%2Fconstants%402.12.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the stars' temperatures, luminosities, gravities and metallicities ([9a39eef](https://github.com/phun-ky/interstellar-tools/commit/9a39eefa302562bc415ba3e1227e229cb0134878))
+
 ## [2.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.10.0...%40interstellar-tools%2Fconstants%402.11.0) (2026-11-12)
 
 ### Documentation
