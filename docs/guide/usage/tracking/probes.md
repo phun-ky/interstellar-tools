@@ -15,7 +15,7 @@ Ephemeris Messages.
 
 ## The probes snapshot
 
-`PROBES` holds eleven notable probes, with an ephemeris for each from JPL
+`PROBES` holds thirteen notable probes, with an ephemeris for each from JPL
 Horizons, from 1 November 2026 to 31 December 2027: where Voyager 1 is, how far
 New Horizons has gone, where JWST sits.
 

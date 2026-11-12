@@ -37,13 +37,14 @@ const probe = (
  *
  * | Probe | Near | On its way to |
  * | --- | --- | --- |
- * | Voyager 1 and 2, Pioneer 10, New Horizons | leaving the Solar System | |
+ * | Voyager 1 and 2, Pioneer 10 and 11, New Horizons | leaving the Solar System | |
  * | James Webb Space Telescope | Sun-Earth L2 | |
  * | Parker Solar Probe, Solar Orbiter | the Sun, close in | |
  * | Europa Clipper | | Europa |
  * | JUICE | | Ganymede |
  * | Psyche | | 16 Psyche |
  * | Lucy | | the Trojan asteroids, at Sun-Jupiter L4 |
+ * | Juno | Jupiter, in a 33-day polar orbit | |
  *
  * ::: info Notes
  *
@@ -52,7 +53,8 @@ const probe = (
  *   Earth.
  * - **Within 1 000 km.** The samples are spaced to keep {@link stateAt} within
  *   1 000 km of Horizons: months apart for the probes leaving the Solar System,
- *   hours apart through flybys and Parker Solar Probe's perihelia.
+ *   hours apart through flybys and Parker Solar Probe's perihelia, and minutes
+ *   apart as Juno swings past Jupiter's cloud tops.
  * - **Predictions.** Past the date the ephemerides were fetched, 5 November
  *   2026, Horizons' positions are the missions' planned trajectories: a
  *   manoeuvre that's changed or added moves the probe off them.
@@ -112,6 +114,15 @@ export const PROBES: readonly ProbeRecordInterface[] = [
     status: 'ended',
     near: 'sun',
     horizonsId: '-23'
+  }),
+  probe({
+    id: 'pioneer-11',
+    name: 'Pioneer 11',
+    agencies: ['NASA'],
+    launch: '1973-04-06',
+    status: 'ended',
+    near: 'sun',
+    horizonsId: '-24'
   }),
   probe({
     id: 'jwst',
@@ -179,5 +190,14 @@ export const PROBES: readonly ProbeRecordInterface[] = [
     near: 'sun',
     destination: 'sun-jupiter-l4',
     horizonsId: '-49'
+  }),
+  probe({
+    id: 'juno',
+    name: 'Juno',
+    agencies: ['NASA'],
+    launch: '2011-08-05',
+    status: 'active',
+    near: 'jupiter',
+    horizonsId: '-61'
   })
 ];

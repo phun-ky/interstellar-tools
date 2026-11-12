@@ -31,3 +31,6 @@ centre in the ICRF:
   perihelion of 19 June 2025, about 10 solar radii from the Sun's centre.
 - `horizons-<id>-30d.txt`: each probe in the `PROBES` dataset, every 30 days
   from 2026-11-01 to 2027-12-31, in km and km/s, to check the dataset against.
+  Juno's and Pioneer 11's were fetched on 2026-11-12.
+- `horizons-juno-perijove.txt`: Juno (-61) every 10 minutes from 2027-01-17
+  20:00 to 2027-01-18 02:00 TDB, through its perijove, fetched on 2026-11-12.
