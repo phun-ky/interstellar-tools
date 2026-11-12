@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.12.0...%40interstellar-tools%2Fconstants%402.13.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the Sun's heliosphere, and the Voyagers' crossings of it ([10fed19](https://github.com/phun-ky/interstellar-tools/commit/10fed19e3124032344504eaa074b64fb1ba96ba5))
+
 ## [2.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.11.0...%40interstellar-tools%2Fconstants%402.12.0) (2026-11-12)
 
 ### Feature

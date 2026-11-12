@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:147](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L147)
+[bodies/stars.ts:164](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L164)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -60,6 +60,17 @@ Represents a dataset of well-known stars within the Milky Way.
   2016). A metallicity is left out where no bulk \[Fe/H] is measured, as for
   Altair, Spica and Sirius A; Deneb's and Rigel's are \[M/H]. Deneb's `radius`
   is Schiller & Przybilla's 203 R☉, like its mass.
+
+- The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is
+  IBEX's map (Reisenfeld et al. 2021): nearest just south of the nose, flaring
+  towards the flanks, and at least 350 au down the tail. Its nose faces
+  `upwind`, where the interstellar wind comes from, opposite the inflow
+  direction McComas et al. 2015 give. `crossings` are the Voyagers' termination
+  shock and heliopause crossings, from the papers each credits, with the
+  direction each was in from JPL Horizons; Horizons puts them within 0.03 au of
+  the papers' distances. Whether the heliosphere has a bow shock is disputed, so
+  it has none here. The Sun's `display.astrosphere` keeps it hidden until a
+  renderer offers to show it.
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See
