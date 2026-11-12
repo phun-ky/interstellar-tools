@@ -2,6 +2,8 @@ export * from './celestial-bodies.js';
 
 export * from './asteroids.js';
 
+export * from './body-observations.js';
+
 export * from './comets.js';
 
 export * from './display.js';

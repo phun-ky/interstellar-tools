@@ -5,6 +5,11 @@ import type {
   ObservedMotionInterface
 } from '../positions.js';
 
+import type {
+  BlackHoleObservationsInterface,
+  GalaxyObservationsInterface
+} from './body-observations.js';
+
 /**
  * Represents a **black hole** at the center of a galaxy.
  *
@@ -58,6 +63,11 @@ export interface BlackHoleInterface {
   y: DistanceInterface;
   /** Z-coordinate relative to the galaxy center in AU, out of its disk. */
   z?: DistanceInterface;
+  /**
+   * What is measured about it, with uncertainties and sources, apart from
+   * the values the equations use.
+   */
+  observations?: BlackHoleObservationsInterface;
 }
 
 /**
@@ -149,6 +159,11 @@ export interface GalaxyInterface {
   disk?: GalaxyDiskInterface;
   /** Its motion seen from the Sun. Omitted for the Milky Way itself. */
   motion?: ObservedMotionInterface;
+  /**
+   * What is measured about it, with uncertainties and sources, apart from
+   * the values the equations use.
+   */
+  observations?: GalaxyObservationsInterface;
 }
 
 /**

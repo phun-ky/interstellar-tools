@@ -1,6 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
 
+import type { StarObservationsInterface } from './body-observations.js';
 import type { DisplayInterface } from './display.js';
 import type { RotationInterface } from './rotation.js';
 
@@ -73,6 +74,11 @@ export interface StarInterface {
   z?: DistanceInterface;
   /** How to draw the star: its colour, and state a renderer computes. */
   display?: DisplayInterface;
+  /**
+   * What is measured about it, with uncertainties and sources, apart from
+   * the values the equations use.
+   */
+  observations?: StarObservationsInterface;
 }
 
 /**

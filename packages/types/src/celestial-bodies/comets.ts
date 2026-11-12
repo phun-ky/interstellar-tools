@@ -1,6 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { FullOrbitInterface } from '../orbits.js';
 
+import type { CometObservationsInterface } from './body-observations.js';
 import type { DisplayInterface } from './display.js';
 import type { RotationInterface } from './rotation.js';
 
@@ -50,6 +51,11 @@ export interface CometInterface {
   radius: DistanceInterface;
   /** How to draw the comet: its colour and drawn size, and state a renderer computes. */
   display?: DisplayInterface;
+  /**
+   * What is measured about it, with uncertainties and sources, apart from
+   * the values the equations use.
+   */
+  observations?: CometObservationsInterface;
 }
 
 /**
