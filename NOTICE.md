@@ -130,6 +130,9 @@ copyright. They're compiled from public references, credited here:
   [Neptune](https://pds-rings.seti.org/neptune/neptune_tables.html)) and the
   papers they cite, and Saturn's rings' thicknesses from NASA NSSDCA's
   [Saturnian rings fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/satringfact.html).
+  Saturn's ring colour is measured from Cassini's natural-colour mosaic
+  [PIA06175](https://photojournal.jpl.nasa.gov/catalog/PIA06175) (NASA/JPL/Space
+  Science Institute).
 - **Galaxies:** Andromeda's distance from Li et al. (2021, ApJ 920, 84) and
   Triangulum's from Breuval et al. (2023, ApJ 951, 118), both from Cepheids.
   Andromeda's and Triangulum's D25 diameters and morphological types from the

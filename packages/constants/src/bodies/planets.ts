@@ -51,6 +51,10 @@ import {
  *   as the C ring's optical depth of 0.05 to 0.35, is the range's middle, with the range in its
  *   `note`. Saturn's ringlets, Neptune's Adams ring arcs and its Arago ring are left out, and
  *   `shepherdIds` names only the moons in `MOONS`.
+ * - `display.rings` draws them: each is as opaque as its densest ring, 1 − e^−τ, so Jupiter's
+ *   faint dust all but vanishes. Saturn's colour is measured from Cassini's natural-colour mosaic
+ *   PIA06175. No true-colour image of the others exists, so theirs are a neutral grey as dark as
+ *   their particles, which reflect about 1.5 % of the light. `display.derivation` says which.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -370,7 +374,26 @@ export const PLANETS: PlanetsType = [
     mu: 1.266865319e17,
     observations: { rings: JUPITER_RINGS },
     display: {
-      color: '#C08850'
+      color: '#C08850',
+      rings: {
+        color: '#212121',
+        opacity: 5e-6
+      },
+      derivation: [
+        {
+          property: 'rings.color',
+          basis: 'assumed',
+          reason:
+            'No true-colour image of them exists: a neutral grey at the albedo of about 0.015 NASA NSSDCA gives their particles, as sRGB'
+        },
+        {
+          property: 'rings.opacity',
+          basis: 'derived',
+          reason:
+            '1 − e^−τ for the main ring, the densest, at its τ of 5 × 10⁻⁶',
+          from: 'rings.rings'
+        }
+      ]
     },
     x: { value: 3.9953, unit: 'au' },
     y: { value: 2.9459, unit: 'au' },
@@ -414,7 +437,26 @@ export const PLANETS: PlanetsType = [
     mu: 3.793120623e16,
     observations: { rings: SATURN_RINGS },
     display: {
-      color: '#D2B48C'
+      color: '#D2B48C',
+      rings: {
+        color: '#cabcba',
+        opacity: 0.93,
+        shadows: true
+      },
+      derivation: [
+        {
+          property: 'rings.color',
+          basis: 'imagery',
+          reason:
+            'The mean of the brighter half of the rings’ pixels in Cassini’s natural-colour mosaic PIA06175 (NASA/JPL/Space Science Institute, 2005)'
+        },
+        {
+          property: 'rings.opacity',
+          basis: 'derived',
+          reason: '1 − e^−τ for the B ring, the densest, at its τ of 2.7',
+          from: 'rings.rings'
+        }
+      ]
     },
     x: { value: 6.4288, unit: 'au' },
     y: { value: 6.5083, unit: 'au' },
@@ -459,7 +501,25 @@ export const PLANETS: PlanetsType = [
     mu: 5.7939513e15,
     observations: { rings: URANUS_RINGS },
     display: {
-      color: '#78D6FF'
+      color: '#78D6FF',
+      rings: {
+        color: '#212121',
+        opacity: 0.75
+      },
+      derivation: [
+        {
+          property: 'rings.color',
+          basis: 'assumed',
+          reason:
+            'No true-colour image of them exists: a neutral grey at the albedo of about 0.015 NASA NSSDCA gives their particles, as sRGB'
+        },
+        {
+          property: 'rings.opacity',
+          basis: 'derived',
+          reason: '1 − e^−τ for the ε ring, the densest, at its τ of 1.4',
+          from: 'rings.rings'
+        }
+      ]
     },
     x: { value: 14.4012, unit: 'au' },
     y: { value: -13.7439, unit: 'au' },
@@ -506,7 +566,25 @@ export const PLANETS: PlanetsType = [
     mu: 6.83509997e15,
     observations: { rings: NEPTUNE_RINGS },
     display: {
-      color: '#0053D6'
+      color: '#0053D6',
+      rings: {
+        color: '#212121',
+        opacity: 0.054
+      },
+      derivation: [
+        {
+          property: 'rings.color',
+          basis: 'assumed',
+          reason:
+            'No true-colour image of them exists: a neutral grey at the albedo of about 0.015 NASA NSSDCA gives their particles, as sRGB'
+        },
+        {
+          property: 'rings.opacity',
+          basis: 'derived',
+          reason: '1 − e^−τ for the Adams ring, the densest, at its τ of 0.055',
+          from: 'rings.rings'
+        }
+      ]
     },
     x: { value: 16.8038, unit: 'au' },
     y: { value: -24.9923, unit: 'au' },
