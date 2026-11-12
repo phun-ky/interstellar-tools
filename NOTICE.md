@@ -93,6 +93,15 @@ copyright. They're compiled from public references, credited here:
   and its tumbling from Belton et al. (2018, ApJL 856, L21); Borisov's nucleus
   from Jewitt et al. (2020, ApJL 888, L23) and Hui et al. (2020, AJ 160, 92);
   3I/ATLAS's from Hui et al. (2026, ApJL 999, L37).
+- **Planetary rings:** the rings and gaps of Jupiter, Saturn, Uranus and
+  Neptune, their edges and optical depths from the PDS Ring-Moon Systems Node's
+  vital statistics
+  ([Jupiter](https://pds-rings.seti.org/jupiter/jupiter_tables.html),
+  [Saturn](https://pds-rings.seti.org/saturn/saturn_tables.html),
+  [Uranus](https://pds-rings.seti.org/uranus/uranus_tables.html) and
+  [Neptune](https://pds-rings.seti.org/neptune/neptune_tables.html)) and the
+  papers they cite, and Saturn's rings' thicknesses from NASA NSSDCA's
+  [Saturnian rings fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/satringfact.html).
 - **Galaxies:** Andromeda's distance from Li et al. (2021, ApJ 920, 84) and
   Triangulum's from Breuval et al. (2023, ApJ 951, 118), both from Cepheids.
   Andromeda's and Triangulum's D25 diameters and morphological types from the

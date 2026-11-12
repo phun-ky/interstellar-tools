@@ -36,6 +36,9 @@ import { iauTerm } from './iau.js';
  * - `rotation.obliquity` is only the Moon's, NASA's mean 6.68°. The IAU's models of the other moons
  *   assume their spin axes follow their orbits' poles, so a tilt worked out from them isn't one
  *   anyone measured.
+ * - `observations.ringInteraction` is `'source'` for the moons whose dust feeds a ring: Metis,
+ *   Amalthea and Thebe for Jupiter's (Burns et al. 1999), Enceladus for Saturn's E ring and Phoebe
+ *   for its Phoebe ring.
  * - Colors are hex strings used only for visual representation.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
@@ -565,6 +568,7 @@ export const MOONS: MoonsType = [
     },
     radius: { value: 83, unit: 'km' },
     mu: 1.6456e8,
+    observations: { ringInteraction: 'source' },
     display: {
       color: '#A0522D'
     }
@@ -629,6 +633,7 @@ export const MOONS: MoonsType = [
     },
     radius: { value: 21, unit: 'km' },
     mu: 2.5e6, // estimate, likely from an assumed density of 0.9 g/cm³
+    observations: { ringInteraction: 'source' },
     display: {
       color: '#CD853F'
     }
@@ -682,6 +687,7 @@ export const MOONS: MoonsType = [
     },
     radius: { value: 49, unit: 'km' },
     mu: 3.015e7, // estimate, likely from an assumed density of 0.9 g/cm³
+    observations: { ringInteraction: 'source' },
     display: {
       color: '#B87333'
     }
@@ -797,6 +803,7 @@ export const MOONS: MoonsType = [
       alongOrbitRadius: { value: 251.4, unit: 'km' }
     },
     mu: 7.21037e9,
+    observations: { ringInteraction: 'source' },
     display: {
       color: '#F0FFFF' // Ice-blue white (brightest moon in the Solar System)
     }
@@ -950,6 +957,7 @@ export const MOONS: MoonsType = [
     },
     radius: { value: 106, unit: 'km' },
     mu: 5.5479e8,
+    observations: { ringInteraction: 'source' },
     display: {
       color: '#483D8B'
     }
