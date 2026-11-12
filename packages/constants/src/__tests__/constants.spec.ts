@@ -5,6 +5,9 @@ import {
   AU_METERS,
   EGM2008,
   AU_PER_LY,
+  EARTH_EQUATORIAL_RADIUS_NOMINAL_KM,
+  EARTH_GM_NOMINAL_M3_PER_S2,
+  EARTH_POLAR_RADIUS_NOMINAL_KM,
   EARTH_SIDEREAL_DAY_SECONDS,
   EPOCH_2000_UTC_MIDNIGHT,
   EPOCH_2000_UTC_MIDNIGHT_TIME_SCALE,
@@ -15,6 +18,9 @@ import {
   J2000_UTC_TIME_SCALE,
   JULIAN_YEAR_DAYS,
   JULIAN_YEAR_SECONDS,
+  JUPITER_EQUATORIAL_RADIUS_NOMINAL_KM,
+  JUPITER_GM_NOMINAL_M3_PER_S2,
+  JUPITER_POLAR_RADIUS_NOMINAL_KM,
   KM_PER_AU,
   MARS_SIDEREAL_DAY_SECONDS,
   MARS_SOL_DAYS,
@@ -26,8 +32,13 @@ import {
   MILLISECONDS_PER_DAY,
   MILLISECONDS_PER_SECOND,
   PC_PER_LY,
+  PLANETS,
   RADIANS_PER_ARCSECOND,
   SECONDS_PER_DAY,
+  SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K,
+  SOLAR_GM_NOMINAL_M3_PER_S2,
+  SOLAR_IRRADIANCE_NOMINAL_W_PER_M2,
+  SOLAR_LUMINOSITY_NOMINAL_W,
   SOLAR_RADIUS_NOMINAL_KM,
   SOLAR_RADIUS_PHOTOSPHERIC_KM,
   SOLAR_RADIUS_PICARD_SODISM_535_7_NM_KM,
@@ -39,6 +50,7 @@ import {
   SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM,
   SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM,
   SPEED_OF_LIGHT_M_PER_S,
+  STARS,
   TIME_SCALE_TT,
   TIME_SCALE_UTC,
   TT_MINUS_UTC_AT_J2000_MS,
@@ -92,6 +104,58 @@ describe('defined constants', () => {
 
   test('nominal solar radius is the IAU 2015 B3 value', () => {
     assert.equal(SOLAR_RADIUS_NOMINAL_KM, 695_700);
+  });
+
+  test('nominal values are the IAU 2015 B3 ones', () => {
+    assert.equal(SOLAR_IRRADIANCE_NOMINAL_W_PER_M2, 1361);
+    assert.equal(SOLAR_LUMINOSITY_NOMINAL_W, 3.828e26);
+    assert.equal(SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K, 5772);
+    assert.equal(SOLAR_GM_NOMINAL_M3_PER_S2, 1.3271244e20);
+    assert.equal(EARTH_EQUATORIAL_RADIUS_NOMINAL_KM, 6378.1);
+    assert.equal(EARTH_POLAR_RADIUS_NOMINAL_KM, 6356.8);
+    assert.equal(EARTH_GM_NOMINAL_M3_PER_S2, 3.986004e14);
+    assert.equal(JUPITER_EQUATORIAL_RADIUS_NOMINAL_KM, 71_492);
+    assert.equal(JUPITER_POLAR_RADIUS_NOMINAL_KM, 66_854);
+    assert.equal(JUPITER_GM_NOMINAL_M3_PER_S2, 1.2668653e17);
+  });
+
+  test('nominal solar values agree with each other, the au and the datasets', () => {
+    // Stefan–Boltzmann, CODATA 2018 (exact)
+    const sigma = 5.670374419e-8;
+    const radius = SOLAR_RADIUS_NOMINAL_KM * 1000;
+
+    // L = 4πR²σT⁴, to 0.1 %
+    assert.ok(
+      Math.abs(
+        (4 *
+          Math.PI *
+          radius ** 2 *
+          sigma *
+          SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K ** 4) /
+          SOLAR_LUMINOSITY_NOMINAL_W -
+          1
+      ) < 1e-3
+    );
+    // S = L / 4π(1 au)², to 0.1 %
+    assert.ok(
+      Math.abs(
+        SOLAR_LUMINOSITY_NOMINAL_W /
+          (4 * Math.PI * AU_METERS ** 2) /
+          SOLAR_IRRADIANCE_NOMINAL_W_PER_M2 -
+          1
+      ) < 1e-3
+    );
+
+    // The datasets' measured GM, to 1e-7
+    const gm = (id: string) =>
+      [...STARS, ...PLANETS].find((body) => body.id === id)!.mu!;
+
+    for (const [id, nominal] of [
+      ['sun', SOLAR_GM_NOMINAL_M3_PER_S2],
+      ['earth', EARTH_GM_NOMINAL_M3_PER_S2],
+      ['jupiter', JUPITER_GM_NOMINAL_M3_PER_S2]
+    ] as const)
+      assert.ok(Math.abs(gm(id) / nominal - 1) < 1e-7, id);
   });
 
   test('measured solar radii are close to nominal, with positive uncertainties', () => {
