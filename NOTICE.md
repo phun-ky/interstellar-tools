@@ -54,6 +54,18 @@ copyright. They're compiled from public references, credited here:
   [Gaia DR3](https://www.cosmos.esa.int/web/gaia/dr3) (Gaia Collaboration,
   Vallenari et al. 2023, A&A 674, A1), and the radial velocities, V magnitudes
   and α Centauri's parallax from the papers SIMBAD cites for each.
+- **Star temperatures, luminosities, gravities and metallicities:** the IAU's
+  nominal solar values (Prša et al. 2016, AJ 152, 41); Yoon et al. 2010 for
+  Vega; Peterson et al. 2006 for Altair; Schiller & Przybilla 2008 for Deneb;
+  Tkachenko et al. 2016 for Spica; Kervella et al. 2017, Akeson et al. 2021 and
+  Porto de Mello et al. 2008 for α Centauri; Ribas et al. 2017 and Passegger et
+  al. 2016 for Proxima Centauri; Bond et al. 2017 for Sirius; Levesque & Massey
+  2020 and Joyce et al. 2020 for Betelgeuse; Usenko et al. 2005 for Polaris;
+  Ramírez & Allende Prieto 2011 and Heiter et al. 2015 for Arcturus; Przybilla
+  et al. 2006 and 2010 and Moravveji et al. 2012 for Rigel; Domiciano de Souza
+  et al. 2021 for Canopus; Schweitzer et al. 2019 for Barnard's Star; Agol et
+  al. 2021 for TRAPPIST-1; and Habibi et al. 2017 for the S-stars. Each value
+  carries its paper's DOI.
 - **Gravitational parameters (`mu`):** the DE440 ephemeris (Park et al. 2021, AJ
   161, 105) for the Sun, Mercury, Venus and Earth, Park et al. 2016 (Nature
   537, 515) for Ceres, and JPL's
