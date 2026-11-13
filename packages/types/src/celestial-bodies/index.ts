@@ -8,6 +8,8 @@ export * from './comets.js';
 
 export * from './display.js';
 
+export * from './observation-groups.js';
+
 export * from './galaxies.js';
 
 export * from './interstellar-objects.js';
