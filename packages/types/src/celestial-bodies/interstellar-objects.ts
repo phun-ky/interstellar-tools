@@ -41,7 +41,7 @@ import type { RotationInterface } from './rotation.js';
  *     om: 308.148 as DegreesType,
  *     angle: -1.8537 as Radians,
  *     periapsisTime: new Date('2019-12-08T13:16:04Z'),
- *     excessSpeed: 32.28,
+ *     excessSpeed: { value: 32.28, unit: 'km/s' },
  *     frame: { plane: 'ecliptic' }
  *   },
  *   radius: { value: 0.4, unit: 'km' }

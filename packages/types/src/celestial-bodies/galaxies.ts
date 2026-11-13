@@ -4,6 +4,7 @@ import type {
   GalacticDirectionInterface,
   ObservedMotionInterface
 } from '../positions.js';
+import type { MassInterface } from '../quantities.js';
 
 import type {
   BlackHoleObservationsInterface,
@@ -27,7 +28,7 @@ import type {
  * const sagittariusA: BlackHoleInterface = {
  *   id: 'sagittarius-a-star',
  *   name: 'Sagittarius A*',
- *   mass: 4.2996e6,
+ *   mass: { value: 4.2996e6, unit: 'M_sun' },
  *   mu: 5.706e26,
  *   radius: { value: 0.08488, unit: 'au' },
  *   distance: { value: 26992, unit: 'ly' },
@@ -44,8 +45,8 @@ export interface BlackHoleInterface {
   id?: string;
   /** Name of the central black hole. */
   name: string;
-  /** Mass of the black hole in solar masses. */
-  mass: number;
+  /** Mass of the black hole, in solar masses in the datasets. */
+  mass: MassInterface;
   /**
    * Standard gravitational parameter $\mu = G M$, in m³/s², as the orbit
    * equations take it. Given where something orbits it.

@@ -32,8 +32,8 @@ const INTERSTELLAR_OBJECT_BODIES: InterstellarObjectsType = [
       /** True anomaly at J2000, on the way in */
       angle: -2.548421093178 as Radians,
       periapsisTime: new Date('2017-09-09T11:51:02.065Z'),
-      /** Speed coming in, in km/s */
-      excessSpeed: 26.39
+      /** Speed coming in */
+      excessSpeed: { value: 26.39, unit: 'km/s' }
     },
     /** Tumbling: its spin axis circles every 8.67 h (Belton et al. 2018) */
     rotation: { period: { value: 8.67, unit: 'h' }, tumbling: true },
@@ -64,7 +64,7 @@ const INTERSTELLAR_OBJECT_BODIES: InterstellarObjectsType = [
       frame: { plane: 'ecliptic' },
       angle: -1.8537256788316 as Radians,
       periapsisTime: new Date('2019-12-08T13:16:03.851Z'),
-      excessSpeed: 32.28
+      excessSpeed: { value: 32.28, unit: 'km/s' }
     },
     display: {
       color: '#FFFFFF', // A comet's coma, rich in carbon monoxide
@@ -91,7 +91,7 @@ const INTERSTELLAR_OBJECT_BODIES: InterstellarObjectsType = [
       frame: { plane: 'ecliptic' },
       angle: -1.7293706146496 as Radians,
       periapsisTime: new Date('2025-10-29T11:33:25.411Z'),
-      excessSpeed: 57.97
+      excessSpeed: { value: 57.97, unit: 'km/s' }
     },
     display: {
       color: '#FFFFFF', // A comet's coma, rich in carbon dioxide

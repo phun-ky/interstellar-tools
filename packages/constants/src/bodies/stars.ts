@@ -16,7 +16,7 @@ const STAR_BODIES: StarsType = [
     parent: 'solar-system',
     // No orbit: the Sun's wobble around the barycenter is the sum of the planets' pulls, not a Kepler orbit
     /** Mass in solar masses */
-    mass: 1,
+    mass: { value: 1, unit: 'M_sun' },
     /**
      * Sidereal rotation in days: the IAU's, the Carrington period its
      * coordinates turn with. Its gas turns faster at the equator than at the
@@ -65,7 +65,7 @@ const STAR_BODIES: StarsType = [
     /** Equatorial rotation in days: Monnier et al. 2012, from interferometry. Seen nearly pole-on */
     rotation: { period: { value: 0.71, unit: 'd' } },
     /** Radius in km */
-    mass: 2.135, // Yoon et al. 2010
+    mass: { value: 2.135, unit: 'M_sun' }, // Yoon et al. 2010
     radius: { value: 2600000, unit: 'km' },
     display: {
       /** Visual representation color */
@@ -91,7 +91,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Equatorial rotation in hours, 7 h 46 m: Bouchaud et al. 2020, from interferometry */
     rotation: { period: { value: 7.766667, unit: 'h' } },
-    mass: 1.791, // Peterson et al. 2006
+    mass: { value: 1.791, unit: 'M_sun' }, // Peterson et al. 2006
     radius: { value: 1700000, unit: 'km' },
     display: {
       color: 'white'
@@ -112,7 +112,7 @@ const STAR_BODIES: StarsType = [
       period: { value: 720, unit: 'Myr' },
       angle: 1.475524958596149 as Radians
     },
-    mass: 19, // Schiller & Przybilla 2008
+    mass: { value: 19, unit: 'M_sun' }, // Schiller & Przybilla 2008
     radius: { value: 141227100, unit: 'km' }, // 203 R☉, Schiller & Przybilla 2008
     display: {
       color: '#cad7ff' // A-type (blue-white)
@@ -143,7 +143,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in days: two turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
     rotation: { period: { value: 2.007, unit: 'd' } },
-    mass: 11.43,
+    mass: { value: 11.43, unit: 'M_sun' },
     radius: { value: 5196879, unit: 'km' }, // 7.47 R☉
     display: {
       color: 'blue'
@@ -166,7 +166,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in days: 1.5 turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
     rotation: { period: { value: 2.676, unit: 'd' } },
-    mass: 7.21,
+    mass: { value: 7.21, unit: 'M_sun' },
     radius: { value: 2601918, unit: 'km' }, // 3.74 R☉
     display: {
       color: '#cad7ff' // B-type (blue-white)
@@ -200,7 +200,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in days: Hallam et al. 1991, from its ultraviolet activity. Uncertain: Bazot et al. 2007 find 22.5 ± 5.9 d */
     rotation: { period: { value: 28.8, unit: 'd' } },
-    mass: 1.0788,
+    mass: { value: 1.0788, unit: 'M_sun' },
     radius: { value: 847015, unit: 'km' }, // 1.2175 R☉
     display: {
       color: '#fff4ea' // G-type
@@ -224,7 +224,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in days: DeWarf et al. 2010, from its activity */
     rotation: { period: { value: 36.2, unit: 'd' } },
-    mass: 0.9092,
+    mass: { value: 0.9092, unit: 'M_sun' },
     radius: { value: 597676, unit: 'km' }, // 0.8591 R☉
     display: {
       color: '#ffd2a1' // K-type
@@ -244,7 +244,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in days: Benedict et al. 1998, from its starspots. Suárez Mascareño et al. 2020: 87 ± 12 d */
     rotation: { period: { value: 83, unit: 'd' } },
-    mass: 0.1221,
+    mass: { value: 0.1221, unit: 'M_sun' },
     radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
     display: {
       color: '#ffcc6f' // M-type
@@ -271,7 +271,7 @@ const STAR_BODIES: StarsType = [
       om: 45.4 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 2.063,
+    mass: { value: 2.063, unit: 'M_sun' },
     radius: { value: 1192708, unit: 'km' }, // 1.7144 R☉
     display: {
       color: '#b5c7ff' // A-type
@@ -293,7 +293,7 @@ const STAR_BODIES: StarsType = [
       om: 45.4 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 1.018,
+    mass: { value: 1.018, unit: 'M_sun' },
     radius: { value: 5634, unit: 'km' }, // 0.008098 R☉: Earth-sized
     display: {
       color: '#a8bdff' // White dwarf, 25 200 K
@@ -316,7 +316,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in years: Kervella et al. 2018, from ALMA, for an inclination of 60° */
     rotation: { period: { value: 31, unit: 'yr' } },
-    mass: 18, // 16.5 to 19 M☉, Joyce et al. 2020
+    mass: { value: 18, unit: 'M_sun' }, // 16.5 to 19 M☉, Joyce et al. 2020
     radius: { value: 531514800, unit: 'km' }, // 764 R☉, Joyce et al. 2020
     display: {
       color: '#ffca8a' // M-type supergiant
@@ -340,7 +340,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in days: Lee et al. 2008 */
     rotation: { period: { value: 119, unit: 'd' } },
-    mass: 5.13, // Evans et al. 2024
+    mass: { value: 5.13, unit: 'M_sun' }, // Evans et al. 2024
     radius: { value: 32190039, unit: 'km' }, // 46.27 R☉, Evans et al. 2024
     display: {
       color: '#fffcf7' // F-type supergiant
@@ -364,7 +364,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in years: Gray & Brown 2006, from its magnetic activity */
     rotation: { period: { value: 2, unit: 'yr' } },
-    mass: 1.08, // Ramírez & Allende Prieto 2011
+    mass: { value: 1.08, unit: 'M_sun' }, // Ramírez & Allende Prieto 2011
     radius: { value: 17670780, unit: 'km' }, // 25.4 R☉, Ramírez & Allende Prieto 2011
     display: {
       color: '#ffdfb5' // K-type giant
@@ -386,7 +386,7 @@ const STAR_BODIES: StarsType = [
       period: { value: 230, unit: 'Myr' },
       angle: 1.538851641798522 as Radians
     },
-    mass: 23, // Przybilla et al. 2010, from evolutionary tracks
+    mass: { value: 23, unit: 'M_sun' }, // Przybilla et al. 2010, from evolutionary tracks
     radius: { value: 54890730, unit: 'km' }, // 78.9 R☉, Moravveji et al. 2012
     display: {
       color: '#b6ceff' // B-type supergiant
@@ -408,7 +408,7 @@ const STAR_BODIES: StarsType = [
       period: { value: 230, unit: 'Myr' },
       angle: 1.5593449755210198 as Radians
     },
-    mass: 9.81, // Domiciano de Souza et al. 2021
+    mass: { value: 9.81, unit: 'M_sun' }, // Domiciano de Souza et al. 2021
     radius: { value: 50994810, unit: 'km' }, // 73.3 R☉, Domiciano de Souza et al. 2021
     display: {
       color: '#cbd9ff' // A/F-type giant
@@ -433,7 +433,7 @@ const STAR_BODIES: StarsType = [
     },
     /** Rotation in days: González Hernández et al. 2024, from its activity */
     rotation: { period: { value: 142, unit: 'd' } },
-    mass: 0.162, // Schweitzer et al. 2019
+    mass: { value: 0.162, unit: 'M_sun' }, // Schweitzer et al. 2019
     radius: { value: 128705, unit: 'km' }, // 0.185 R☉, Schweitzer et al. 2019
     display: {
       color: '#ffc97f' // M-type
@@ -451,7 +451,7 @@ const STAR_BODIES: StarsType = [
     parent: 'trappist-1',
     /** Rotation in days: Vida et al. 2017, from its starspots */
     rotation: { period: { value: 3.295, unit: 'd' } },
-    mass: 0.0898, // Mann et al. 2019, as Agol et al. 2021 adopt
+    mass: { value: 0.0898, unit: 'M_sun' }, // Mann et al. 2019, as Agol et al. 2021 adopt
     radius: { value: 82927, unit: 'km' }, // 0.1192 R☉, Agol et al. 2021
     mu: 1.19176e19, // its mass × the Sun's GM
     display: {
@@ -482,7 +482,7 @@ const STAR_BODIES: StarsType = [
       om: 342.04 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 12.4,
+    mass: { value: 12.4, unit: 'M_sun' },
     radius: { value: 3610683, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -504,7 +504,7 @@ const STAR_BODIES: StarsType = [
       om: 228.21 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 13.6,
+    mass: { value: 13.6, unit: 'M_sun' },
     radius: { value: 3847221, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -526,7 +526,7 @@ const STAR_BODIES: StarsType = [
       om: 258.84 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 12.2,
+    mass: { value: 12.2, unit: 'M_sun' },
     radius: { value: 3638511, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -548,7 +548,7 @@ const STAR_BODIES: StarsType = [
       om: 85.07 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 9.2,
+    mass: { value: 9.2, unit: 'M_sun' },
     radius: { value: 3137607, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -570,7 +570,7 @@ const STAR_BODIES: StarsType = [
       om: 315.43 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 13.2,
+    mass: { value: 13.2, unit: 'M_sun' },
     radius: { value: 3555027, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -592,7 +592,7 @@ const STAR_BODIES: StarsType = [
       om: 156.6 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 8.2,
+    mass: { value: 8.2, unit: 'M_sun' },
     radius: { value: 2706273, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -614,7 +614,7 @@ const STAR_BODIES: StarsType = [
       om: 230.1 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 7.6,
+    mass: { value: 7.6, unit: 'M_sun' },
     radius: { value: 2831499, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
