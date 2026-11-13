@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.12.0...%40interstellar-tools%2Ftracking%400.13.0) (2026-11-13)
+
+### ⚠ BREAKING CHANGES
+
+* engines.node is >=22.12.0 in every package, dropping
+  Node 22.9 to 22.11.
+* the bodies in STARS, PLANETS, MOONS and
+  INTERSTELLAR_OBJECTS have no observations, and no display groups beyond
+  their colour and size. Import the groups, or put them back with
+  withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY) and
+  withDisplay(PLANETS, RING_DISPLAY).
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@3.0.0 ([5d98738](https://github.com/phun-ky/interstellar-tools/commit/5d98738795aae62f392cdd70fefd01c39ebd4ae2))
+* 🤖 @interstellar-tools/equations@2.0.0 ([4ea0915](https://github.com/phun-ky/interstellar-tools/commit/4ea0915d2eb34ed42ad3bd5518bc5994a9e03dc8))
+* 🤖 @interstellar-tools/maps@0.12.0 ([6cc7652](https://github.com/phun-ky/interstellar-tools/commit/6cc765234e9844d1d751df04df2e413dda1a6494))
+* 🤖 @interstellar-tools/temporal@2.0.0 ([a837776](https://github.com/phun-ky/interstellar-tools/commit/a837776ed48a8ac81853cbee9090364dca92293e))
+* 🤖 @interstellar-tools/types@3.0.0 ([3c8ddc0](https://github.com/phun-ky/interstellar-tools/commit/3c8ddc0caa8852c508e51a7607b8c67866de1d92))
+* 🤖 Require Node 22.12 or later ([98324bd](https://github.com/phun-ky/interstellar-tools/commit/98324bdd410d21d668de8682ccea7fa6c4aa04db)), closes [#305](https://github.com/phun-ky/interstellar-tools/issues/305)
+
+### Documentation
+
+* ✏️ Draw the heliosphere and the probes leaving it ([683cc8d](https://github.com/phun-ky/interstellar-tools/commit/683cc8d9adab39c957173dcea211470fb939136d))
+
+### Refactoring
+
+* 💡 Keep what is measured apart from the bodies ([ddbd828](https://github.com/phun-ky/interstellar-tools/commit/ddbd828071142ab3836d4a1edbefeca6ea4dd420)), closes [#417](https://github.com/phun-ky/interstellar-tools/issues/417)
+
 ## [0.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.11.1...%40interstellar-tools%2Ftracking%400.12.0) (2026-11-12)
 
 ### Feature
