@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%401.3.1...%40interstellar-tools%2Ftemporal%402.0.0) (2026-11-13)
+
+### ⚠ BREAKING CHANGES
+
+* engines.node is >=22.12.0 in every package, dropping
+  Node 22.9 to 22.11.
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@3.0.0 ([5d98738](https://github.com/phun-ky/interstellar-tools/commit/5d98738795aae62f392cdd70fefd01c39ebd4ae2))
+* 🤖 @interstellar-tools/types@3.0.0 ([3c8ddc0](https://github.com/phun-ky/interstellar-tools/commit/3c8ddc0caa8852c508e51a7607b8c67866de1d92))
+* 🤖 Require Node 22.12 or later ([98324bd](https://github.com/phun-ky/interstellar-tools/commit/98324bdd410d21d668de8682ccea7fa6c4aa04db)), closes [#305](https://github.com/phun-ky/interstellar-tools/issues/305)
+
+### Adding missing tests
+
+* 💍 Count the leap seconds a sol spans in the Mars time tests ([7fd322d](https://github.com/phun-ky/interstellar-tools/commit/7fd322d0ba817ef09c30e74f60238b03b8eff57d)), closes [#378](https://github.com/phun-ky/interstellar-tools/issues/378)
+
 ## [1.3.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%401.3.0...%40interstellar-tools%2Ftemporal%401.3.1) (2026-11-06)
 
 ### Tasks
