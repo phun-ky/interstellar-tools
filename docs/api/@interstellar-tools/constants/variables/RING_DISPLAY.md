@@ -15,7 +15,7 @@ its densest ring, with Saturn's colour measured from Cassini's images and the
 others' assumed. `derivation` says which.
 
 Kept apart from [PLANETS](PLANETS.md);
-[withDisplay](../functions/withDisplay.md) puts them back, as the planets'
+[withDisplay](../functions/withDisplay.md) puts them on, as the planets'
 `display.rings`.
 
 ## Example

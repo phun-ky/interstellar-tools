@@ -4,7 +4,7 @@ BlackHoleInterface
 # Interface: BlackHoleInterface
 
 Defined in:
-[celestial-bodies/galaxies.ts:42](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L42)
+[celestial-bodies/galaxies.ts:43](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L43)
 
 Represents a **black hole** at the center of a galaxy.
 
@@ -26,7 +26,7 @@ Represents a **black hole** at the center of a galaxy.
 const sagittariusA: BlackHoleInterface = {
   id: 'sagittarius-a-star',
   name: 'Sagittarius A*',
-  mass: 4.2996e6,
+  mass: { value: 4.2996e6, unit: 'M_sun' },
   mu: 5.706e26,
   radius: { value: 0.08488, unit: 'au' },
   distance: { value: 26992, unit: 'ly' },
@@ -46,7 +46,7 @@ distance?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:55](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L55)
+[celestial-bodies/galaxies.ts:56](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L56)
 
 Distance from the Sun, where it's measured apart from its galaxy's.
 
@@ -59,7 +59,7 @@ id?: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L44)
+[celestial-bodies/galaxies.ts:45](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L45)
 
 Stable identifier, used by `parent` references. Given where something orbits it.
 
@@ -68,13 +68,13 @@ Stable identifier, used by `parent` references. Given where something orbits it.
 ### mass
 
 ```ts
-mass: number;
+mass: MassInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:48](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L48)
+[celestial-bodies/galaxies.ts:49](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L49)
 
-Mass of the black hole in solar masses.
+Mass of the black hole, in solar masses in the datasets.
 
 ---
 
@@ -85,7 +85,7 @@ mu?: number;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L53)
+[celestial-bodies/galaxies.ts:54](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L54)
 
 Standard gravitational parameter $\mu = G M$, in m³/s², as the orbit equations
 take it. Given where something orbits it.
@@ -99,7 +99,7 @@ name: string;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:46](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L46)
+[celestial-bodies/galaxies.ts:47](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L47)
 
 Name of the central black hole.
 
@@ -112,7 +112,7 @@ observations?: BlackHoleObservationsInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:70](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L70)
+[celestial-bodies/galaxies.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L71)
 
 What is measured about it, with uncertainties and sources, apart from the values
 the equations use.
@@ -126,7 +126,7 @@ radius: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L59)
+[celestial-bodies/galaxies.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L60)
 
 Schwarzschild radius of the black hole in AU.
 
@@ -139,7 +139,7 @@ ringDiameter?: Radians;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:57](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L57)
+[celestial-bodies/galaxies.ts:58](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L58)
 
 Angular diameter of the ring the Event Horizon Telescope imaged around its
 shadow.
@@ -153,7 +153,7 @@ x: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:61](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L61)
+[celestial-bodies/galaxies.ts:62](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L62)
 
 X-coordinate relative to the galaxy center in AU.
 
@@ -166,7 +166,7 @@ y: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L63)
+[celestial-bodies/galaxies.ts:64](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L64)
 
 Y-coordinate relative to the galaxy center in AU.
 
@@ -179,6 +179,6 @@ z?: DistanceInterface;
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L65)
+[celestial-bodies/galaxies.ts:66](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L66)
 
 Z-coordinate relative to the galaxy center in AU, out of its disk.

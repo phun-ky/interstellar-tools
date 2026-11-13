@@ -4,7 +4,7 @@ EclipticDirectionInterface
 # Interface: EclipticDirectionInterface
 
 Defined in:
-[orbits.ts:131](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L131)
+[orbits.ts:132](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L132)
 
 A **direction in ecliptic coordinates**, against the J2000 ecliptic and equinox,
 in degrees: how a small body's spin pole or the interstellar wind's direction is
@@ -29,7 +29,7 @@ eclipticLatitude: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:135](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L135)
+[orbits.ts:136](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L136)
 
 Ecliptic latitude, north of the ecliptic, in degrees.
 
@@ -42,6 +42,6 @@ eclipticLongitude: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:133](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L133)
+[orbits.ts:134](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L134)
 
 Ecliptic longitude, eastwards from the equinox along the ecliptic, in degrees.

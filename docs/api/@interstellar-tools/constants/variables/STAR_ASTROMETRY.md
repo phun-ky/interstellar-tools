@@ -16,7 +16,7 @@ magnitude, and its letter within its system. Given for every star but the Sun
 and the S-stars, from SIMBAD, Hipparcos and Gaia DR3.
 
 Kept apart from [STARS](STARS.md), so an app loads these only when it needs
-them. [withObservations](../functions/withObservations.md) puts them back on the
+them. [withObservations](../functions/withObservations.md) puts them on the
 stars.
 
 ## Example

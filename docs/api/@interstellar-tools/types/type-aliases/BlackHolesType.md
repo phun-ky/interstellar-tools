@@ -8,6 +8,6 @@ type BlackHolesType = BlackHoleInterface[];
 ```
 
 Defined in:
-[celestial-bodies/galaxies.ts:183](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L183)
+[celestial-bodies/galaxies.ts:184](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/galaxies.ts#L184)
 
 Type alias for a collection of **black holes**.

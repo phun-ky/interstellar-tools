@@ -17,5 +17,5 @@ Thebe for Jupiter's (Burns et al. 1999), Enceladus for Saturn's E ring and
 Phoebe for its Phoebe ring.
 
 Kept apart from [MOONS](MOONS.md);
-[withObservations](../functions/withObservations.md) puts them back, as the
-moons' `observations.ringInteraction`.
+[withObservations](../functions/withObservations.md) puts them on, as the moons'
+`observations.ringInteraction`.
