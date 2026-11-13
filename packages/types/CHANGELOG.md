@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.11.0...%40interstellar-tools%2Ftypes%402.12.0) (2026-11-13)
+
+### Feature
+
+* 🎸 Type observations and drawing groups kept apart from the bodies ([b9e7a61](https://github.com/phun-ky/interstellar-tools/commit/b9e7a61252126b84aee71a99329b01693f0128a5)), references [#417](https://github.com/phun-ky/interstellar-tools/issues/417)
+
 ## [2.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.10.0...%40interstellar-tools%2Ftypes%402.11.0) (2026-11-12)
 
 ### Feature
