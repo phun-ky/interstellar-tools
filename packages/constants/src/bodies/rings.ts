@@ -1,14 +1,14 @@
 import type {
+  ByBodyIdType,
   DistanceInterface,
   ObservationMetaInterface,
   ObservationSourceInterface,
   ObservedType,
+  PlanetObservationsInterface,
   RingGapInterface,
   RingInterface,
   RingSystemInterface
 } from '@interstellar-tools/types';
-
-// Shared by the datasets. Not exported from the package.
 
 type RingDetailsType = Omit<
   RingInterface,
@@ -141,9 +141,8 @@ const SATURN_THICKNESS = nssdca('sat');
 const URANUS = pds('uranus');
 const URANUS_DUST = pds('uranus', SHOWALTER_LISSAUER_2006);
 const NEPTUNE = pds('neptune');
-
 /** Jupiter's faint, dusty rings: the halo, the main ring and the gossamer rings. */
-export const JUPITER_RINGS: RingSystemInterface = {
+const JUPITER_RINGS: RingSystemInterface = {
   rings: [
     ring('Halo', 89_400, 123_000, JUPITER, {
       normalOpticalDepth: amount(3e-6, JUPITER),
@@ -170,9 +169,8 @@ export const JUPITER_RINGS: RingSystemInterface = {
   // (Burns et al. 1999). Adrastea isn't in MOONS
   shepherdIds: ['metis', 'amalthea', 'thebe']
 };
-
 /** Saturn's main rings, its faint dust rings and its named gaps. */
-export const SATURN_RINGS: RingSystemInterface = {
+const SATURN_RINGS: RingSystemInterface = {
   rings: [
     ring('D', 66_900, 74_491, SATURN_EDGES, {
       normalOpticalDepth: amount([1e-5, 1e-3], SATURN_EDGES)
@@ -233,9 +231,8 @@ export const SATURN_RINGS: RingSystemInterface = {
   // Division; Enceladus feeds the E ring, and Phoebe its own
   shepherdIds: ['mimas', 'enceladus', 'phoebe']
 };
-
 /** Uranus's narrow rings, and its two faint outer dust rings. */
-export const URANUS_RINGS: RingSystemInterface = {
+const URANUS_RINGS: RingSystemInterface = {
   rings: [
     byMiddle('6', 41_837, 1.5, URANUS, {
       normalOpticalDepth: amount(0.3, URANUS)
@@ -277,9 +274,8 @@ export const URANUS_RINGS: RingSystemInterface = {
     })
   ]
 };
-
 /** Neptune's rings. The Adams ring's arcs and the faint Arago ring aren't included. */
-export const NEPTUNE_RINGS: RingSystemInterface = {
+const NEPTUNE_RINGS: RingSystemInterface = {
   rings: [
     byMiddle('Galle', 42_000, 2000, NEPTUNE, {
       normalOpticalDepth: amount(1e-4, NEPTUNE)
@@ -299,4 +295,28 @@ export const NEPTUNE_RINGS: RingSystemInterface = {
       normalOpticalDepth: amount([0.01, 0.1], NEPTUNE)
     })
   ]
+};
+
+/**
+ * The **rings** of Jupiter, Saturn, Uranus and Neptune, keyed by planet id:
+ * each ring's edges and optical depth, and Saturn's named gaps, from the PDS
+ * Ring-Moon Systems Node and NASA NSSDCA.
+ *
+ * Kept apart from {@link PLANETS}, so an app loads them only when it shows
+ * them. {@link withObservations} puts them back on the planets, as their
+ * `observations.rings`; see `PLANETS` for how they were chosen.
+ *
+ * @group Observations
+ * @example
+ * ```ts
+ * PLANET_RINGS.saturn.rings?.rings.length; // 9
+ * ```
+ */
+export const PLANET_RINGS: ByBodyIdType<
+  Pick<PlanetObservationsInterface, 'rings'>
+> = {
+  jupiter: { rings: JUPITER_RINGS },
+  saturn: { rings: SATURN_RINGS },
+  uranus: { rings: URANUS_RINGS },
+  neptune: { rings: NEPTUNE_RINGS }
 };
