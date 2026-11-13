@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "@interstellar-tools/constants": "^3.0.0",
-    "@interstellar-tools/equations": "^1.4.0",
+    "@interstellar-tools/equations": "^2.0.0",
     "@interstellar-tools/types": "^3.0.0"
   },
   "devDependencies": {
