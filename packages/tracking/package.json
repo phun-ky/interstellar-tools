@@ -60,7 +60,7 @@
   "dependencies": {
     "@interstellar-tools/constants": "^3.0.0",
     "@interstellar-tools/equations": "^2.0.0",
-    "@interstellar-tools/maps": "^0.11.0",
+    "@interstellar-tools/maps": "^0.12.0",
     "@interstellar-tools/temporal": "^2.0.0",
     "@interstellar-tools/types": "^3.0.0"
   },
