@@ -15,7 +15,7 @@ Ephemeris Messages.
 
 ## The probes snapshot
 
-`PROBES` holds eleven notable probes, with an ephemeris for each from JPL
+`PROBES` holds thirteen notable probes, with an ephemeris for each from JPL
 Horizons, from 1 November 2026 to 31 December 2027: where Voyager 1 is, how far
 New Horizons has gone, where JWST sits.
 
@@ -59,6 +59,51 @@ Sun-Earth L2, is 1.00 au from the Sun, just beyond Earth.
 Positions are from the Sun's centre, in the ICRF. For one from Earth, subtract
 Earth's position: from Horizons, or roughly from `sunPosition` in
 `@interstellar-tools/equations`, which gives the Sun from Earth.
+
+## Out of the Sun's bubble
+
+The solar wind blows a bubble into the gas between the stars: the heliosphere.
+Where the wind slows below the speed of sound is the termination shock, and
+where it meets the interstellar gas is the heliopause. The Voyagers have crossed
+both, and `HELIOSPHERE` keeps where and when:
+
+```ts
+import { HELIOSPHERE } from '@interstellar-tools/constants';
+
+const { astropause, crossings } = HELIOSPHERE;
+const nose = astropause!.nose!.value; // 115: au to the heliopause, upwind
+const crossed = crossings!.map(({ probeId, boundary, distance }) =>
+  [probeId, boundary, distance.value].join(' ')
+);
+// ['voyager-1 termination shock 94.01', 'voyager-2 termination shock 83.7',
+//  'voyager-1 astropause 121.6', 'voyager-2 astropause 119']
+```
+
+<HeliosphereSideView>
+
+The heliosphere side on, the interstellar wind from the left. The heliopause is
+drawn as a blunt body in a steady flow, sized by its 115 au to the nose: that
+puts its flanks at 181 au, where IBEX measured 170 ± 15 au, and Voyager 1's
+crossing at 120 au, where it crossed at 121.6 au. Voyager 2 crossed 14 au inside
+it, where the bubble is pushed in on the south. The termination shock is drawn
+only where the Voyagers crossed it. The paths are from JPL Horizons, from launch
+to 2027, seen in the plane through the nose and ecliptic north.
+
+</HeliosphereSideView>
+
+Pioneer 10 is heading the other way, down the tail, where the heliopause is at
+least 350 au out. Only the Voyagers are still sending, and Voyager 1's signal
+takes almost a day to reach us:
+
+<ProbeDistanceScale>
+
+The planets, the Kuiper belt, the heliosphere's boundaries and five probes on 5
+November 2026, each step of the scale ten times farther than the last, with how
+long each probe's signal takes to reach us. The planets and the belt are from
+`PLANETS` and `ASTEROID_BELTS`, the boundaries from the Voyagers' crossings, and
+the probes from `PROBES` with `stateAt`.
+
+</ProbeDistanceScale>
 
 ## From JPL Horizons
 

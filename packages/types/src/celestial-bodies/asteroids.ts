@@ -1,6 +1,7 @@
 import { DistanceInterface } from '../distance.js';
 import type { FullOrbitInterface } from '../orbits.js';
 
+import type { AsteroidObservationsInterface } from './body-observations.js';
 import type { DisplayInterface } from './display.js';
 import type { RotationInterface } from './rotation.js';
 
@@ -171,6 +172,11 @@ export interface AsteroidInterface {
 
   /** How to draw the asteroid: its colour and drawn size, and state a renderer computes. */
   display?: DisplayInterface;
+  /**
+   * What is measured about it, with uncertainties and sources, apart from
+   * the values the equations use.
+   */
+  observations?: AsteroidObservationsInterface;
 }
 
 /**

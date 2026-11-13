@@ -1,6 +1,7 @@
 import type { DistanceInterface } from './distance.js';
 import type { Vector3DTupleType } from './math.js';
 import type { DegreesType, Radians } from './numeric.js';
+import type { SpeedInterface } from './quantities.js';
 import type { TemporalInterface } from './temporal.js';
 
 /**
@@ -111,6 +112,28 @@ export interface CelestialDirectionInterface {
   rightAscension: DegreesType;
   /** Declination, north of the equator, in degrees. */
   declination: DegreesType;
+}
+
+/**
+ * A **direction in ecliptic coordinates**, against the J2000 ecliptic and
+ * equinox, in degrees: how a small body's spin pole or the interstellar wind's
+ * direction is often given.
+ *
+ * @example
+ * ```ts
+ * // Where the interstellar wind comes from (McComas et al. 2015)
+ * const upwind: EclipticDirectionInterface = {
+ *   eclipticLongitude: 255.7 as DegreesType,
+ *   eclipticLatitude: 5.1 as DegreesType
+ * };
+ * ```
+ * @group Orbits
+ */
+export interface EclipticDirectionInterface {
+  /** Ecliptic longitude, eastwards from the equinox along the ecliptic, in degrees. */
+  eclipticLongitude: DegreesType;
+  /** Ecliptic latitude, north of the ecliptic, in degrees. */
+  eclipticLatitude: DegreesType;
 }
 
 /**
@@ -243,6 +266,74 @@ export interface FullOrbitInterface extends OrbitInterface {
   om: DegreesType;
   /** Periapsis distance $q = a(1 - e)$. */
   q: DistanceInterface;
+}
+
+/**
+ * An **open orbit**: a hyperbola, $e > 1$, that passes its parent once and
+ * never comes back, as an interstellar object's does around the Sun.
+ *
+ * It has no period, so it's a type of its own, not an
+ * {@link OrbitInterface}: functions that read an orbit's `period` don't take
+ * it.
+ *
+ * ::: info
+ *
+ * - `a` is negative, and the periapsis distance $q = a(1 - e)$ is still
+ *   positive.
+ * - `angle` is the true anomaly at J2000, as for every other orbit. On a
+ *   hyperbola it lies between $-\nu_\infty$ and $\nu_\infty$, the directions of
+ *   its asymptotes, $\nu_\infty = \arccos(-1/e)$: negative before periapsis,
+ *   on the way in.
+ * - `periapsisTime` and `excessSpeed` describe the pass better than `a` and
+ *   `angle` do: when it's closest, and how fast it comes in, far away. On an
+ *   ideal two-body hyperbola $v_\infty = \sqrt{-\mu / a}$; a real object's
+ *   speed is better taken from its orbit around the Solar System's
+ *   barycentre, before the planets and its own outgassing pulled on it.
+ * - `retrograde` is set exactly when `i > 90°`, as for a closed orbit.
+ *
+ * :::
+ *
+ * @example
+ * ```ts
+ * // 2I/Borisov, from JPL Horizons' elements osculating at its perihelion
+ * const borisov: OpenOrbitInterface = {
+ *   a: { value: -0.8515, unit: 'au' },
+ *   e: 3.3565,
+ *   q: { value: 2.0065, unit: 'au' },
+ *   i: 44.053 as DegreesType,
+ *   w: 209.124 as DegreesType,
+ *   om: 308.148 as DegreesType,
+ *   angle: -1.8537 as Radians,
+ *   periapsisTime: new Date('2019-12-08T13:16:04Z'),
+ *   excessSpeed: { value: 32.28, unit: 'km/s' },
+ *   frame: { plane: 'ecliptic' }
+ * };
+ * ```
+ * @group Orbits
+ */
+export interface OpenOrbitInterface {
+  /** Semi-major axis, negative. */
+  a: DistanceInterface;
+  /** Orbital eccentricity, above 1. */
+  e: number;
+  /** Periapsis distance $q = a(1 - e)$, positive. */
+  q: DistanceInterface;
+  /** `true` for a retrograde orbit, `i > 90°`. Omitted for prograde ones. */
+  retrograde?: boolean;
+  /** True anomaly at J2000 in radians, between $-\nu_\infty$ and $\nu_\infty$. */
+  angle: Radians;
+  /** Orbital inclination in degrees. */
+  i: DegreesType;
+  /** Argument of periapsis in degrees. */
+  w: DegreesType;
+  /** Longitude of the ascending node in degrees. */
+  om: DegreesType;
+  /** When it passes periapsis, in UTC. */
+  periapsisTime: Date;
+  /** Hyperbolic excess speed $v_\infty$: its speed far from its parent, coming in. */
+  excessSpeed: SpeedInterface;
+  /** The plane `i`, `om` and `w` are measured from. */
+  frame?: OrbitFrameInterface;
 }
 
 /**

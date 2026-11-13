@@ -35,16 +35,17 @@ npm i --save @interstellar-tools/constants
 
 ## Datasets
 
-| Variable                                      | Description                                                                         |
-| --------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [ASTEROID_BELTS](variables/ASTEROID_BELTS.md) | Predefined asteroid belts in the solar system visualization.                        |
-| [ASTEROIDS](variables/ASTEROIDS.md)           | Represents a collection of well-known asteroids within the solar system simulation. |
-| [COMETS](variables/COMETS.md)                 | Represents a collection of well-known comets within the solar system simulation.    |
-| [GALAXIES](variables/GALAXIES.md)             | Represents a collection of galaxies within the space visualization.                 |
-| [MOONS](variables/MOONS.md)                   | Represents a dataset of natural satellites (moons) in the solar system.             |
-| [PLANETS](variables/PLANETS.md)               | Represents a dataset of planets and planetoids in the solar system.                 |
-| [STARS](variables/STARS.md)                   | Represents a dataset of well-known stars within the Milky Way.                      |
-| [SYSTEMS](variables/SYSTEMS.md)               | Predefined systems: the barycenters that stars and planets orbit.                   |
+| Variable                                                  | Description                                                                                                                 |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| [ASTEROID_BELTS](variables/ASTEROID_BELTS.md)             | Predefined asteroid belts in the solar system visualization.                                                                |
+| [ASTEROIDS](variables/ASTEROIDS.md)                       | Represents a collection of well-known asteroids within the solar system simulation.                                         |
+| [COMETS](variables/COMETS.md)                             | Represents a collection of well-known comets within the solar system simulation.                                            |
+| [GALAXIES](variables/GALAXIES.md)                         | Represents a collection of galaxies within the space visualization.                                                         |
+| [INTERSTELLAR_OBJECTS](variables/INTERSTELLAR_OBJECTS.md) | Represents the **interstellar objects** seen so far: bodies from other stars' systems, passing the Sun once on open orbits. |
+| [MOONS](variables/MOONS.md)                               | Represents a dataset of natural satellites (moons) in the solar system.                                                     |
+| [PLANETS](variables/PLANETS.md)                           | Represents a dataset of planets and planetoids in the solar system.                                                         |
+| [STARS](variables/STARS.md)                               | Represents a dataset of well-known stars within the Milky Way.                                                              |
+| [SYSTEMS](variables/SYSTEMS.md)                           | Predefined systems: the barycenters that stars and planets orbit.                                                           |
 
 ## Date
 
@@ -82,11 +83,34 @@ npm i --save @interstellar-tools/constants
 | [RADIANS_PER_ARCSECOND](variables/RADIANS_PER_ARCSECOND.md)   | Radians in one arcsecond: `π / 648 000`.                                                             |
 | [SPEED_OF_LIGHT_M_PER_S](variables/SPEED_OF_LIGHT_M_PER_S.md) | Speed of light in vacuum, **exact** per SI (m·s⁻¹).                                                  |
 
+## Galactic
+
+| Variable                                                                        | Description                                                                                                             |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [SUN_GALACTOCENTRIC_DISTANCE](variables/SUN_GALACTOCENTRIC_DISTANCE.md)         | The **Sun's distance from the Milky Way's centre**, $R_0$: 8275.9 ± 8.6 pc.                                             |
+| [SUN_GALACTOCENTRIC_VELOCITY](variables/SUN_GALACTOCENTRIC_VELOCITY.md)         | The **Sun's velocity around the Milky Way's centre**, in km/s, in the `'galactocentric'` frame: $(12.9, 251.51, 8.56)$. |
+| [SUN_HEIGHT_ABOVE_GALACTIC_PLANE](variables/SUN_HEIGHT_ABOVE_GALACTIC_PLANE.md) | The **Sun's height above the Milky Way's plane**, $z_\odot$: 20.8 ± 0.3 pc, to the galactic north.                      |
+
 ## Math
 
 | Variable                      | Description                                                                                                                                                                                                       |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [TWO_PI](variables/TWO_PI.md) | The circle constant **τ** (tau), equal to **2π** `(≈ 6.283185307179586)`. Useful for full rotations, radians-per-turn calculations, angular velocity, and other periodic math where factors of 2 arise naturally. |
+
+## Nominal
+
+| Variable                                                                                    | Description                                                                                   |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [EARTH_EQUATORIAL_RADIUS_NOMINAL_KM](variables/EARTH_EQUATORIAL_RADIUS_NOMINAL_KM.md)       | Nominal **equatorial radius of Earth**, $R^\mathrm{N}_{eE}$: 6378.1 km, zero tide.            |
+| [EARTH_GM_NOMINAL_M3_PER_S2](variables/EARTH_GM_NOMINAL_M3_PER_S2.md)                       | Nominal **mass parameter of Earth**, $(GM)^\mathrm{N}_E$: 3.986004 × 10¹⁴ m³/s².              |
+| [EARTH_POLAR_RADIUS_NOMINAL_KM](variables/EARTH_POLAR_RADIUS_NOMINAL_KM.md)                 | Nominal **polar radius of Earth**, $R^\mathrm{N}_{pE}$: 6356.8 km, zero tide.                 |
+| [JUPITER_EQUATORIAL_RADIUS_NOMINAL_KM](variables/JUPITER_EQUATORIAL_RADIUS_NOMINAL_KM.md)   | Nominal **equatorial radius of Jupiter**, $R^\mathrm{N}_{eJ}$: 71 492 km, at the 1-bar level. |
+| [JUPITER_GM_NOMINAL_M3_PER_S2](variables/JUPITER_GM_NOMINAL_M3_PER_S2.md)                   | Nominal **mass parameter of Jupiter**, $(GM)^\mathrm{N}_J$: 1.2668653 × 10¹⁷ m³/s².           |
+| [JUPITER_POLAR_RADIUS_NOMINAL_KM](variables/JUPITER_POLAR_RADIUS_NOMINAL_KM.md)             | Nominal **polar radius of Jupiter**, $R^\mathrm{N}_{pJ}$: 66 854 km, at the 1-bar level.      |
+| [SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K](variables/SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K.md) | Nominal **solar effective temperature**, $T^\mathrm{N}_{\mathrm{eff}\odot}$: 5772 K.          |
+| [SOLAR_GM_NOMINAL_M3_PER_S2](variables/SOLAR_GM_NOMINAL_M3_PER_S2.md)                       | Nominal **solar mass parameter**, $(GM)^\mathrm{N}_\odot$: 1.3271244 × 10²⁰ m³/s².            |
+| [SOLAR_IRRADIANCE_NOMINAL_W_PER_M2](variables/SOLAR_IRRADIANCE_NOMINAL_W_PER_M2.md)         | Nominal **total solar irradiance**, $S^\mathrm{N}_\odot$: 1361 W/m².                          |
+| [SOLAR_LUMINOSITY_NOMINAL_W](variables/SOLAR_LUMINOSITY_NOMINAL_W.md)                       | Nominal **solar luminosity**, $L^\mathrm{N}_\odot$: 3.828 × 10²⁶ W.                           |
 
 ## Objects
 
@@ -102,6 +126,22 @@ npm i --save @interstellar-tools/constants
 | [SOLAR_RADIUS_PICARD_SODISM_782_2_NM_UNC_KM](variables/SOLAR_RADIUS_PICARD_SODISM_782_2_NM_UNC_KM.md)     | 1σ uncertainty at 782.2 nm.                                                                                                     |
 | [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM.md)         | Limb–inflection minus photospheric offset (~0.333 Mm). / export const SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM = 333; |
 | [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM.md) | 1σ uncertainty for SOHO/MDI Mercury-transit radius.                                                                             |
+
+## Observations
+
+| Name                                                                              | Description                                                                                                                                                                                                                                                                                        |
+| --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [DISCOVERIES](variables/DISCOVERIES.md)                                           | How and when bodies were **discovered**, keyed by body id: the date, the people credited and the observatory, from the Minor Planet Center's circulars. For the interstellar objects so far.                                                                                                       |
+| [HELIOSPHERE](variables/HELIOSPHERE.md)                                           | The Sun's **heliosphere**, the bubble the solar wind blows into the interstellar medium: the heliopause's distance towards the nose, on the flanks and down the tail, the interstellar wind's direction and speed, and the Voyagers' crossings of its boundaries.                                  |
+| [HELIOSPHERE_DISPLAY](variables/HELIOSPHERE_DISPLAY.md)                           | How to **draw the heliosphere**: hidden until a renderer offers to show it, as it has no colour of its own. It is also the Sun's `display.astrosphere`.                                                                                                                                            |
+| [INTERSTELLAR_OBJECT_OBSERVATIONS](variables/INTERSTELLAR_OBJECT_OBSERVATIONS.md) | What is **measured about the interstellar objects**, keyed by id: their catalogue identifiers, JPL's orbit solutions with the fitted non-gravitational accelerations, the radiants they came from, their magnitudes and, for ʻOumuamua, its push in m/s².                                          |
+| [MOON_RING_ROLES](variables/MOON_RING_ROLES.md)                                   | The moons whose dust **feeds a ring**, keyed by moon id: Metis, Amalthea and Thebe for Jupiter's (Burns et al. 1999), Enceladus for Saturn's E ring and Phoebe for its Phoebe ring.                                                                                                                |
+| [PLANET_RINGS](variables/PLANET_RINGS.md)                                         | The **rings** of Jupiter, Saturn, Uranus and Neptune, keyed by planet id: each ring's edges and optical depth, and Saturn's named gaps, from the PDS Ring-Moon Systems Node and NASA NSSDCA.                                                                                                       |
+| [RING_DISPLAY](variables/RING_DISPLAY.md)                                         | How to **draw the giant planets' rings**, keyed by planet id: each as opaque as its densest ring, with Saturn's colour measured from Cassini's images and the others' assumed. `derivation` says which.                                                                                            |
+| [STAR_ASTROMETRY](variables/STAR_ASTROMETRY.md)                                   | Where each star **is on the sky**, keyed by star id: its catalogue identifiers, its ICRS position at J2000, parallax, proper motion and radial velocity, its V magnitude, and its letter within its system. Given for every star but the Sun and the S-stars, from SIMBAD, Hipparcos and Gaia DR3. |
+| [STAR_PARAMETERS](variables/STAR_PARAMETERS.md)                                   | What each star's **light** tells about it, keyed by star id: its spectral class, effective temperature, luminosity, surface gravity and metallicity, and for Vega and Altair, the temperatures at their poles and equators.                                                                        |
+| [withDisplay](functions/withDisplay.md)                                           | The bodies, with **drawing groups kept apart** put back on them: each body's entry in each group is merged into its `display`, beside its colour.                                                                                                                                                  |
+| [withObservations](functions/withObservations.md)                                 | The bodies, with **observations kept apart** put back on them: each body's entry in each group is merged into its `observations`.                                                                                                                                                                  |
 
 ## Temporal
 

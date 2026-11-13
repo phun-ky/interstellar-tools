@@ -1,5 +1,7 @@
 import { DegreesType, MoonsType, Radians } from '@interstellar-tools/types';
 
+import { iauTerm } from './iau.js';
+
 /**
  * Represents a dataset of natural satellites (moons) in the solar system.
  *
@@ -24,6 +26,22 @@ import { DegreesType, MoonsType, Radians } from '@interstellar-tools/types';
  *   (Archinal et al. 2018), or a light curve's period for Himalia, Nereid and Pluto's small moons,
  *   which spin chaotically. Most moons keep one face to their planet, `synchronous: true`. Hyperion
  *   tumbles, and Pasiphae's, Halimede's and Dysnomia's spins aren't known, so they have none.
+ * - `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), with every periodic term:
+ *   without them Triton's pole would be 21° off, and Mimas's prime meridian up to 58°. The Moon's
+ *   is the 2009 report's (Archinal et al. 2011), which the 2015 report dropped for the lunar
+ *   ephemeris' librations, and Phobos's has the 2019 correction (Archinal et al. 2019). Charon's
+ *   pole is `'positive'`, by the right-hand rule, and the others' `'north'`, so the prime meridians
+ *   of Uranus's moons and Triton turn backwards. The IAU has none for Himalia, Pasiphae, Hyperion,
+ *   Nereid, Halimede, Pluto's small moons, Dysnomia or Dimorphos.
+ * - `rotation.obliquity` is only the Moon's, NASA's mean 6.68°. The IAU's models of the other moons
+ *   assume their spin axes follow their orbits' poles, so a tilt worked out from them isn't one
+ *   anyone measured.
+ * - What is measured about the moons isn't carried here: it is exported apart, keyed by moon id, as
+ *   {@link MOON_RING_ROLES}. {@link withObservations} puts it on the moons, as the
+ *   `observations.ringInteraction` described below.
+ * - `observations.ringInteraction` is `'source'` for the moons whose dust feeds a ring: Metis,
+ *   Amalthea and Thebe for Jupiter's (Burns et al. 1999), Enceladus for Saturn's E ring and Phoebe
+ *   for its Phoebe ring.
  * - Colors are hex strings used only for visual representation.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
@@ -65,7 +83,55 @@ export const MOONS: MoonsType = [
       frame: { plane: 'ecliptic' }
     },
     /** Sidereal rotation in days: the IAU's 2009 rate, 13.17635815° a day */
-    rotation: { period: { value: 27.32166171, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 27.32166171, unit: 'd' },
+      synchronous: true,
+      obliquity: 6.68 as DegreesType,
+      iau: {
+        pole: 'north',
+        rightAscension: 269.9949 as DegreesType,
+        rightAscensionRate: 0.0031,
+        declination: 66.5392 as DegreesType,
+        declinationRate: 0.013,
+        primeMeridian: 38.3213 as DegreesType,
+        primeMeridianRate: 13.17635815,
+        primeMeridianAcceleration: -1.4e-12,
+        rightAscensionTerms: [
+          iauTerm(-3.8787, 125.045, -1935.5364525),
+          iauTerm(-0.1204, 250.089, -3871.072905),
+          iauTerm(0.07, 260.008, 475263.3328725),
+          iauTerm(-0.0172, 176.625, 487269.629985),
+          iauTerm(0.0072, 311.589, 964468.49931),
+          iauTerm(-0.0052, 15.134, -5806.6093575),
+          iauTerm(0.0043, 25.053, 473327.79642)
+        ],
+        declinationTerms: [
+          iauTerm(1.5419, 125.045, -1935.5364525),
+          iauTerm(0.0239, 250.089, -3871.072905),
+          iauTerm(-0.0278, 260.008, 475263.3328725),
+          iauTerm(0.0068, 176.625, 487269.629985),
+          iauTerm(-0.0029, 311.589, 964468.49931),
+          iauTerm(0.0009, 134.963, 477198.869325),
+          iauTerm(0.0008, 15.134, -5806.6093575),
+          iauTerm(-0.0009, 25.053, 473327.79642)
+        ],
+        primeMeridianTerms: [
+          iauTerm(3.561, 125.045, -1935.5364525),
+          iauTerm(0.1208, 250.089, -3871.072905),
+          iauTerm(-0.0642, 260.008, 475263.3328725),
+          iauTerm(0.0158, 176.625, 487269.629985),
+          iauTerm(0.0252, 357.529, 35999.0509575),
+          iauTerm(-0.0066, 311.589, 964468.49931),
+          iauTerm(-0.0047, 134.963, 477198.869325),
+          iauTerm(-0.0046, 276.617, 12006.300765),
+          iauTerm(0.0028, 34.226, 63863.5132425),
+          iauTerm(0.0052, 15.134, -5806.6093575),
+          iauTerm(0.004, 119.743, 131.84064),
+          iauTerm(0.0019, 239.961, 6003.1503825),
+          iauTerm(-0.0044, 25.053, 473327.79642)
+        ]
+      }
+    },
     /** Radius in km */
     radius: { value: 1737.4, unit: 'km' },
     ellipsoid: {
@@ -102,7 +168,41 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 0.3189101044, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 0.3189101044, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 317.67071657 as DegreesType,
+        rightAscensionRate: -0.10844326,
+        declination: 52.88627266 as DegreesType,
+        declinationRate: -0.06134706,
+        /** With the 2019 correction, as `primeMeridianTerms`' last term */
+        primeMeridian: 35.1877444 as DegreesType,
+        primeMeridianRate: 1128.84475928,
+        /** 12.72192797° a Julian century squared, in degrees a day squared */
+        primeMeridianAcceleration: 12.72192797 / 36525 ** 2,
+        rightAscensionTerms: [
+          iauTerm(-1.78428399, 190.72646643, 15917.10818695),
+          iauTerm(0.02212824, 21.4689247, 31834.27934054),
+          iauTerm(-0.01028251, 332.86082793, 19139.89694742),
+          iauTerm(-0.00475595, 394.93256437, 38280.79631835)
+        ],
+        declinationTerms: [
+          iauTerm(-1.07516537, 190.72646643, 15917.10818695),
+          iauTerm(0.00668626, 21.4689247, 31834.27934054),
+          iauTerm(-0.0064874, 332.86082793, 19139.89694742),
+          iauTerm(0.00281576, 394.93256437, 38280.79631835)
+        ],
+        primeMeridianTerms: [
+          iauTerm(1.42421769, 190.72646643, 15917.10818695),
+          iauTerm(-0.02273783, 21.4689247, 31834.27934054),
+          iauTerm(0.00410711, 332.86082793, 19139.89694742),
+          iauTerm(0.00631964, 394.93256437, 38280.79631835),
+          iauTerm(-1.143, 189.6327156, 41215158.1842005, 12.711923222)
+        ]
+      }
+    },
     radius: { value: 11.08, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 13.0, unit: 'km' },
@@ -136,7 +236,40 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 1.262440789, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 1.262440789, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 316.65705808 as DegreesType,
+        rightAscensionRate: -0.10518014,
+        declination: 53.50992033 as DegreesType,
+        declinationRate: -0.05979094,
+        primeMeridian: 79.39932954 as DegreesType,
+        primeMeridianRate: 285.16188899,
+        rightAscensionTerms: [
+          iauTerm(3.09217726, 121.46893664, 660.22803474),
+          iauTerm(0.22980637, 231.05028581, 660.9912354),
+          iauTerm(0.06418655, 251.37314025, 1320.50145245),
+          iauTerm(0.02533537, 217.98635955, 38279.9612555),
+          iauTerm(0.00778695, 196.19729402, 19139.83628608)
+        ],
+        declinationTerms: [
+          iauTerm(1.83936004, 121.46893664, 660.22803474),
+          iauTerm(0.1432532, 231.05028581, 660.9912354),
+          iauTerm(0.01911409, 251.37314025, 1320.50145245),
+          iauTerm(-0.0148259, 217.98635955, 38279.9612555),
+          iauTerm(0.0019243, 196.19729402, 19139.83628608)
+        ],
+        primeMeridianTerms: [
+          iauTerm(-2.73954829, 121.46893664, 660.22803474),
+          iauTerm(-0.39968606, 231.05028581, 660.9912354),
+          iauTerm(-0.06563259, 251.37314025, 1320.50145245),
+          iauTerm(-0.0291294, 217.98635955, 38279.9612555),
+          iauTerm(0.0169916, 196.19729402, 19139.83628608)
+        ]
+      }
+    },
     radius: { value: 6.2, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 7.8, unit: 'km' },
@@ -172,7 +305,31 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 1.7691378, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 1.7691378, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.05 as DegreesType,
+        rightAscensionRate: -0.009,
+        declination: 64.5 as DegreesType,
+        declinationRate: 0.003,
+        primeMeridian: 200.39 as DegreesType,
+        primeMeridianRate: 203.4889538,
+        rightAscensionTerms: [
+          iauTerm(0.094, 283.9, 4850.7),
+          iauTerm(0.024, 355.8, 1191.3)
+        ],
+        declinationTerms: [
+          iauTerm(0.04, 283.9, 4850.7),
+          iauTerm(0.011, 355.8, 1191.3)
+        ],
+        primeMeridianTerms: [
+          iauTerm(-0.085, 283.9, 4850.7),
+          iauTerm(-0.022, 355.8, 1191.3)
+        ]
+      }
+    },
     radius: { value: 1821.49, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 1829.4, unit: 'km' },
@@ -206,7 +363,37 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 3.551181079, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 3.551181079, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.08 as DegreesType,
+        rightAscensionRate: -0.009,
+        declination: 64.51 as DegreesType,
+        declinationRate: 0.003,
+        primeMeridian: 36.022 as DegreesType,
+        primeMeridianRate: 101.3747235,
+        rightAscensionTerms: [
+          iauTerm(1.086, 355.8, 1191.3),
+          iauTerm(0.06, 119.9, 262.1),
+          iauTerm(0.015, 229.8, 64.3),
+          iauTerm(0.009, 352.25, 2382.6)
+        ],
+        declinationTerms: [
+          iauTerm(0.468, 355.8, 1191.3),
+          iauTerm(0.026, 119.9, 262.1),
+          iauTerm(0.007, 229.8, 64.3),
+          iauTerm(0.002, 352.25, 2382.6)
+        ],
+        primeMeridianTerms: [
+          iauTerm(-0.98, 355.8, 1191.3),
+          iauTerm(-0.054, 119.9, 262.1),
+          iauTerm(-0.014, 229.8, 64.3),
+          iauTerm(-0.008, 352.25, 2382.6)
+        ]
+      }
+    },
     radius: { value: 1560.8, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 1562.6, unit: 'km' },
@@ -240,7 +427,34 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 7.15455312, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 7.15455312, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.2 as DegreesType,
+        rightAscensionRate: -0.009,
+        declination: 64.57 as DegreesType,
+        declinationRate: 0.003,
+        primeMeridian: 44.064 as DegreesType,
+        primeMeridianRate: 50.3176081,
+        rightAscensionTerms: [
+          iauTerm(-0.037, 355.8, 1191.3),
+          iauTerm(0.431, 119.9, 262.1),
+          iauTerm(0.091, 229.8, 64.3)
+        ],
+        declinationTerms: [
+          iauTerm(-0.016, 355.8, 1191.3),
+          iauTerm(0.186, 119.9, 262.1),
+          iauTerm(0.039, 229.8, 64.3)
+        ],
+        primeMeridianTerms: [
+          iauTerm(0.033, 355.8, 1191.3),
+          iauTerm(-0.389, 119.9, 262.1),
+          iauTerm(-0.082, 229.8, 64.3)
+        ]
+      }
+    },
     radius: { value: 2631.2, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 2631.2, unit: 'km' },
@@ -273,7 +487,34 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 16.68901797, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 16.68901797, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.72 as DegreesType,
+        rightAscensionRate: -0.009,
+        declination: 64.83 as DegreesType,
+        declinationRate: 0.003,
+        primeMeridian: 259.51 as DegreesType,
+        primeMeridianRate: 21.5710715,
+        rightAscensionTerms: [
+          iauTerm(-0.068, 119.9, 262.1),
+          iauTerm(0.59, 229.8, 64.3),
+          iauTerm(0.01, 113.35, 6070)
+        ],
+        declinationTerms: [
+          iauTerm(-0.029, 119.9, 262.1),
+          iauTerm(0.254, 229.8, 64.3),
+          iauTerm(-0.004, 113.35, 6070)
+        ],
+        primeMeridianTerms: [
+          iauTerm(0.061, 119.9, 262.1),
+          iauTerm(-0.533, 229.8, 64.3),
+          iauTerm(-0.009, 113.35, 6070)
+        ]
+      }
+    },
     radius: { value: 2410.3, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 2410.3, unit: 'km' },
@@ -306,7 +547,28 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 0.4981792545, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 0.4981792545, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.05 as DegreesType,
+        rightAscensionRate: -0.009,
+        declination: 64.49 as DegreesType,
+        declinationRate: 0.003,
+        primeMeridian: 231.67 as DegreesType,
+        primeMeridianRate: 722.631456,
+        rightAscensionTerms: [
+          iauTerm(-0.84, 73.32, 91472.9),
+          iauTerm(0.01, 146.64, 182945.8)
+        ],
+        declinationTerms: [iauTerm(-0.36, 73.32, 91472.9)],
+        primeMeridianTerms: [
+          iauTerm(0.76, 73.32, 91472.9),
+          iauTerm(-0.01, 146.64, 182945.8)
+        ]
+      }
+    },
     radius: { value: 83, unit: 'km' },
     mu: 1.6456e8,
     display: {
@@ -358,7 +620,19 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 0.2947787969, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 0.2947787969, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.05 as DegreesType,
+        rightAscensionRate: -0.009,
+        declination: 64.49 as DegreesType,
+        declinationRate: 0.003,
+        primeMeridian: 346.09 as DegreesType,
+        primeMeridianRate: 1221.2547301
+      }
+    },
     radius: { value: 21, unit: 'km' },
     mu: 2.5e6, // estimate, likely from an assumed density of 0.9 g/cm³
     display: {
@@ -387,7 +661,31 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 0.6745357381, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 0.6745357381, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 268.05 as DegreesType,
+        rightAscensionRate: -0.009,
+        declination: 64.49 as DegreesType,
+        declinationRate: 0.003,
+        primeMeridian: 8.56 as DegreesType,
+        primeMeridianRate: 533.70041,
+        rightAscensionTerms: [
+          iauTerm(-2.11, 24.62, 45137.2),
+          iauTerm(0.04, 49.24, 90274.4)
+        ],
+        declinationTerms: [
+          iauTerm(-0.91, 24.62, 45137.2),
+          iauTerm(0.01, 49.24, 90274.4)
+        ],
+        primeMeridianTerms: [
+          iauTerm(1.91, 24.62, 45137.2),
+          iauTerm(-0.04, 49.24, 90274.4)
+        ]
+      }
+    },
     radius: { value: 49, unit: 'km' },
     mu: 3.015e7, // estimate, likely from an assumed density of 0.9 g/cm³
     display: {
@@ -439,7 +737,19 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 15.94544758, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 15.94544758, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 39.4827 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 83.4279 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 186.5855 as DegreesType,
+        primeMeridianRate: 22.5769768
+      }
+    },
     radius: { value: 2575, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 2575.15, unit: 'km' },
@@ -473,7 +783,19 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 1.370218084, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 1.370218084, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 40.66 as DegreesType,
+        rightAscensionRate: -0.036,
+        declination: 83.52 as DegreesType,
+        declinationRate: -0.004,
+        primeMeridian: 6.32 as DegreesType,
+        primeMeridianRate: 262.7318996
+      }
+    },
     radius: { value: 252.1, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 256.6, unit: 'km' },
@@ -507,7 +829,22 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 4.517502623, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 4.517502623, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 40.38 as DegreesType,
+        rightAscensionRate: -0.036,
+        declination: 83.55 as DegreesType,
+        declinationRate: -0.004,
+        primeMeridian: 235.16 as DegreesType,
+        primeMeridianRate: 79.6900478,
+        rightAscensionTerms: [iauTerm(3.1, 345.2, -1016.3)],
+        declinationTerms: [iauTerm(-0.35, 345.2, -1016.3)],
+        primeMeridianTerms: [iauTerm(-3.08, 345.2, -1016.3)]
+      }
+    },
     radius: { value: 764, unit: 'km' },
     mu: 1.5394175e11,
     display: {
@@ -536,7 +873,19 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 79.33084957, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 79.33084957, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 318.16 as DegreesType,
+        rightAscensionRate: -3.949,
+        declination: 75.03 as DegreesType,
+        declinationRate: -1.143,
+        primeMeridian: 355.2 as DegreesType,
+        primeMeridianRate: 4.5379572
+      }
+    },
     radius: { value: 735, unit: 'km' },
     mu: 1.2051511e11,
     display: {
@@ -593,7 +942,18 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days: IAU, 9.274 h, not synchronous */
-    rotation: { period: { value: 0.3864157683, unit: 'd' } },
+    rotation: {
+      period: { value: 0.3864157683, unit: 'd' },
+      iau: {
+        pole: 'north',
+        rightAscension: 356.9 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 77.8 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 178.58 as DegreesType,
+        primeMeridianRate: 931.639
+      }
+    },
     radius: { value: 106, unit: 'km' },
     mu: 5.5479e8,
     display: {
@@ -622,7 +982,25 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days: IAU */
-    rotation: { period: { value: 0.9424218102, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 0.9424218102, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 40.66 as DegreesType,
+        rightAscensionRate: -0.036,
+        declination: 83.52 as DegreesType,
+        declinationRate: -0.004,
+        primeMeridian: 333.46 as DegreesType,
+        primeMeridianRate: 381.994555,
+        rightAscensionTerms: [iauTerm(13.56, 177.4, -36505.5)],
+        declinationTerms: [iauTerm(-1.53, 177.4, -36505.5)],
+        primeMeridianTerms: [
+          iauTerm(-13.48, 177.4, -36505.5),
+          iauTerm(-44.85, 316.45, 506.2)
+        ]
+      }
+    },
     radius: { value: 198.2, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 207.8, unit: 'km' },
@@ -656,7 +1034,25 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days: IAU */
-    rotation: { period: { value: 1.887802561, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 1.887802561, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 40.66 as DegreesType,
+        rightAscensionRate: -0.036,
+        declination: 83.52 as DegreesType,
+        declinationRate: -0.004,
+        primeMeridian: 8.95 as DegreesType,
+        primeMeridianRate: 190.6979085,
+        rightAscensionTerms: [iauTerm(9.66, 300, -7225.9)],
+        declinationTerms: [iauTerm(-1.09, 300, -7225.9)],
+        primeMeridianTerms: [
+          iauTerm(-9.6, 300, -7225.9),
+          iauTerm(2.23, 316.45, 506.2)
+        ]
+      }
+    },
     radius: { value: 531.1, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 538.4, unit: 'km' },
@@ -690,7 +1086,19 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days: IAU */
-    rotation: { period: { value: 2.736915553, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 2.736915553, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 40.66 as DegreesType,
+        rightAscensionRate: -0.036,
+        declination: 83.52 as DegreesType,
+        declinationRate: -0.004,
+        primeMeridian: 357.6 as DegreesType,
+        primeMeridianRate: 131.5349316
+      }
+    },
     radius: { value: 561.4, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 563.4, unit: 'km' },
@@ -726,7 +1134,22 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 8.705865458, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 8.705865458, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 257.43 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -15.1 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 77.74 as DegreesType,
+        primeMeridianRate: -41.3514316,
+        rightAscensionTerms: [iauTerm(0.29, 340.82, -75.32)],
+        declinationTerms: [iauTerm(0.28, 340.82, -75.32)],
+        primeMeridianTerms: [iauTerm(0.08, 340.82, -75.32)]
+      }
+    },
     radius: { value: 788, unit: 'km' },
     mu: 2.269e11,
     display: {
@@ -755,7 +1178,22 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 13.46323198, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 13.46323198, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 257.43 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -15.1 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 6.77 as DegreesType,
+        primeMeridianRate: -26.7394932,
+        rightAscensionTerms: [iauTerm(0.16, 259.14, -504.81)],
+        declinationTerms: [iauTerm(0.16, 259.14, -504.81)],
+        primeMeridianTerms: [iauTerm(0.04, 259.14, -504.81)]
+      }
+    },
     radius: { value: 761, unit: 'km' },
     mu: 2.053e11,
     display: {
@@ -784,7 +1222,33 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 1.413479233, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 1.413479233, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 257.43 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -15.08 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 30.7 as DegreesType,
+        primeMeridianRate: -254.6906892,
+        rightAscensionTerms: [
+          iauTerm(4.41, 102.23, -2024.22),
+          iauTerm(-0.04, 204.46, -4048.44)
+        ],
+        declinationTerms: [
+          iauTerm(4.25, 102.23, -2024.22),
+          iauTerm(-0.02, 204.46, -4048.44)
+        ],
+        primeMeridianTerms: [
+          iauTerm(1.15, 102.23, -2024.22),
+          iauTerm(-1.27, 316.41, 2863.96),
+          iauTerm(-0.09, 204.46, -4048.44),
+          iauTerm(0.15, 632.82, 5727.92)
+        ]
+      }
+    },
     radius: { value: 235, unit: 'km' },
     mu: 4.3e9,
     display: {
@@ -813,7 +1277,25 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 2.520378872, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 2.520378872, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 257.43 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -15.1 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 156.22 as DegreesType,
+        primeMeridianRate: -142.8356681,
+        rightAscensionTerms: [iauTerm(0.29, 304.01, -51.94)],
+        declinationTerms: [iauTerm(0.28, 304.01, -51.94)],
+        primeMeridianTerms: [
+          iauTerm(0.05, 316.41, 2863.96),
+          iauTerm(0.08, 304.01, -51.94)
+        ]
+      }
+    },
     radius: { value: 578, unit: 'km' },
     mu: 8.35e10,
     display: {
@@ -842,7 +1324,25 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 4.144176246, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 4.144176246, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 257.43 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -15.1 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 108.05 as DegreesType,
+        primeMeridianRate: -86.8688923,
+        rightAscensionTerms: [iauTerm(0.21, 308.71, -93.17)],
+        declinationTerms: [iauTerm(0.2, 308.71, -93.17)],
+        primeMeridianTerms: [
+          iauTerm(-0.09, 316.41, 2863.96),
+          iauTerm(0.06, 308.71, -93.17)
+        ]
+      }
+    },
     radius: { value: 584, unit: 'km' },
     mu: 8.51e10,
     display: {
@@ -877,7 +1377,47 @@ export const MOONS: MoonsType = [
     rotation: {
       period: { value: 5.876854078, unit: 'd' },
       retrograde: true,
-      synchronous: true
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 299.36 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 41.17 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 296.53 as DegreesType,
+        primeMeridianRate: -61.2572637,
+        rightAscensionTerms: [
+          iauTerm(-32.35, 177.85, 52.316),
+          iauTerm(-6.28, 355.7, 104.632),
+          iauTerm(-2.08, 533.55, 156.948),
+          iauTerm(-0.74, 711.4, 209.264),
+          iauTerm(-0.28, 889.25, 261.58),
+          iauTerm(-0.11, 1067.1, 313.896),
+          iauTerm(-0.07, 1244.95, 366.212),
+          iauTerm(-0.02, 1422.8, 418.528),
+          iauTerm(-0.01, 1600.65, 470.844)
+        ],
+        declinationTerms: [
+          iauTerm(22.55, 177.85, 52.316),
+          iauTerm(2.1, 355.7, 104.632),
+          iauTerm(0.55, 533.55, 156.948),
+          iauTerm(0.16, 711.4, 209.264),
+          iauTerm(0.05, 889.25, 261.58),
+          iauTerm(0.02, 1067.1, 313.896),
+          iauTerm(0.01, 1244.95, 366.212)
+        ],
+        primeMeridianTerms: [
+          iauTerm(22.25, 177.85, 52.316),
+          iauTerm(6.73, 355.7, 104.632),
+          iauTerm(2.05, 533.55, 156.948),
+          iauTerm(0.74, 711.4, 209.264),
+          iauTerm(0.28, 889.25, 261.58),
+          iauTerm(0.11, 1067.1, 313.896),
+          iauTerm(0.05, 1244.95, 366.212),
+          iauTerm(0.02, 1422.8, 418.528),
+          iauTerm(0.01, 1600.65, 470.844)
+        ]
+      }
     },
     radius: { value: 1352.6, unit: 'km' },
     mu: 1.42849546e12,
@@ -929,7 +1469,31 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days */
-    rotation: { period: { value: 1.122315482, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 1.122315482, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'north',
+        rightAscension: 299.27 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 42.91 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 93.38 as DegreesType,
+        primeMeridianRate: 320.7654228,
+        rightAscensionTerms: [
+          iauTerm(0.7, 357.85, 52.316),
+          iauTerm(-0.05, 142.61, 2824.6)
+        ],
+        declinationTerms: [
+          iauTerm(-0.51, 357.85, 52.316),
+          iauTerm(-0.04, 142.61, 2824.6)
+        ],
+        primeMeridianTerms: [
+          iauTerm(-0.48, 357.85, 52.316),
+          iauTerm(0.04, 142.61, 2824.6)
+        ]
+      }
+    },
     radius: { value: 210, unit: 'km' },
     mu: 2.58342e9, // poorly constrained (±94 %)
     display: {
@@ -986,7 +1550,19 @@ export const MOONS: MoonsType = [
       }
     },
     /** Sidereal rotation in days: IAU. Pluto and Charon face each other */
-    rotation: { period: { value: 6.387222999, unit: 'd' }, synchronous: true },
+    rotation: {
+      period: { value: 6.387222999, unit: 'd' },
+      synchronous: true,
+      iau: {
+        pole: 'positive',
+        rightAscension: 132.993 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -6.163 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 122.695 as DegreesType,
+        primeMeridianRate: 56.3625225
+      }
+    },
     radius: { value: 606, unit: 'km' },
     ellipsoid: {
       equatorialRadius: { value: 606, unit: 'km' },

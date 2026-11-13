@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.4.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.4.0...%40interstellar-tools%2Fmcp%401.4.1) (2026-11-12)
+
+### Tasks
+
+* 🤖 @interstellar-tools/tracking@0.12.0 ([04a1d4a](https://github.com/phun-ky/interstellar-tools/commit/04a1d4abce4093a19d6194de3885a2a79323f56c))
+
+### Documentation
+
+* ✏️ Count the thirteen probes the MCP server serves ([d9ed33d](https://github.com/phun-ky/interstellar-tools/commit/d9ed33de3d1f7a9b8b261a5c7fbbcc33b626439d))
+
+## [1.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.3.3...%40interstellar-tools%2Fmcp%401.4.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Serve the interstellar objects from the MCP server ([74b9ecd](https://github.com/phun-ky/interstellar-tools/commit/74b9ecd5d7625590a210ff7d931a3338f237a031)), closes [#380](https://github.com/phun-ky/interstellar-tools/issues/380)
+
 ## [1.3.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.3.2...%40interstellar-tools%2Fmcp%401.3.3) (2026-11-06)
 
 ### Tasks

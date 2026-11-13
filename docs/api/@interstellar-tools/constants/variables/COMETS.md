@@ -8,7 +8,7 @@ const COMETS: CometsType;
 ```
 
 Defined in:
-[bodies/comets.ts:34](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/comets.ts#L34)
+[bodies/comets.ts:37](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/comets.ts#L37)
 
 Represents a collection of well-known comets within the solar system simulation.
 
@@ -26,6 +26,10 @@ Represents a collection of well-known comets within the solar system simulation.
   change their spin as they outgas. 67P's, Tempel 1's and Borrelly's are the
   IAU's, from Rosetta, Deep Impact and Deep Space 1. Halley and Hartley 2
   tumble, `tumbling: true`.
+
+- No comet has a `rotation.iau`: the IAU's models of Tempel 1 and 67P hold only
+  near one flyby or for a few months of 2014, Borrelly's has no prime meridian,
+  and Hartley 2's gives only its axes.
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See

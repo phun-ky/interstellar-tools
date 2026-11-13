@@ -1,5 +1,81 @@
 # Changelog
 
+## [2.15.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.14.0...%40interstellar-tools%2Fconstants%402.15.0) (2026-11-13)
+
+### Feature
+
+* 🎸 Export the bodies' observations apart, so apps load only what they use ([0c38383](https://github.com/phun-ky/interstellar-tools/commit/0c383834dd3073e131b174bb8dd3090c5ae2d970)), references [#417](https://github.com/phun-ky/interstellar-tools/issues/417)
+
+## [2.14.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.13.0...%40interstellar-tools%2Fconstants%402.14.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Draw the giant planets' rings ([6bfdc52](https://github.com/phun-ky/interstellar-tools/commit/6bfdc520d2aecd060f8e3aca253e4838dcfa1947))
+
+## [2.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.12.0...%40interstellar-tools%2Fconstants%402.13.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the Sun's heliosphere, and the Voyagers' crossings of it ([10fed19](https://github.com/phun-ky/interstellar-tools/commit/10fed19e3124032344504eaa074b64fb1ba96ba5))
+
+## [2.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.11.0...%40interstellar-tools%2Fconstants%402.12.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the stars' temperatures, luminosities, gravities and metallicities ([9a39eef](https://github.com/phun-ky/interstellar-tools/commit/9a39eefa302562bc415ba3e1227e229cb0134878))
+
+## [2.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.10.0...%40interstellar-tools%2Fconstants%402.11.0) (2026-11-12)
+
+### Documentation
+
+* ✏️ Drop "temporary" from 3I/ATLAS's orbit solution ([04af784](https://github.com/phun-ky/interstellar-tools/commit/04af7845012cacebf9b5d1fba99f1056a316f08c)), references [#55](https://github.com/phun-ky/interstellar-tools/issues/55)
+
+### Feature
+
+* 🎸 Add the stars' identifiers, positions, motions and spectral classes ([54f856e](https://github.com/phun-ky/interstellar-tools/commit/54f856eb36b60729c06a2cebbac1a1ce2549200b))
+
+## [2.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.9.0...%40interstellar-tools%2Fconstants%402.10.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add what's measured about the interstellar objects ([ebd9420](https://github.com/phun-ky/interstellar-tools/commit/ebd9420c79332f08fb2408a8968e083e40c823a0))
+
+## [2.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.8.0...%40interstellar-tools%2Fconstants%402.9.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the rings of Jupiter, Saturn, Uranus and Neptune ([7f3525b](https://github.com/phun-ky/interstellar-tools/commit/7f3525b1d49d38da121c420af1889a8c50bf577b))
+
+## [2.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.7.0...%40interstellar-tools%2Fconstants%402.8.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Add the IAU's 2015 nominal conversion constants ([f40cfca](https://github.com/phun-ky/interstellar-tools/commit/f40cfca6a639ced183d7e7e315d8f5407da5ab75))
+
+## [2.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.6.0...%40interstellar-tools%2Fconstants%402.7.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Add the interstellar objects ʻOumuamua, Borisov and 3I/ATLAS ([eaaeb2c](https://github.com/phun-ky/interstellar-tools/commit/eaaeb2cf649dd3cce258a7cbfab90cd0c33a0aa5)), references [#380](https://github.com/phun-ky/interstellar-tools/issues/380)
+
+## [2.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.5.0...%40interstellar-tools%2Fconstants%402.6.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give the bodies the IAU's rotation models and axial tilts ([c478630](https://github.com/phun-ky/interstellar-tools/commit/c478630938cfd3fc3b6cb5dad63fd4ce4d62c600)), references [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
+## [2.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.4.0...%40interstellar-tools%2Fconstants%402.5.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give galaxies their disks and motions, and the Sun its velocity ([1b317cd](https://github.com/phun-ky/interstellar-tools/commit/1b317cdd8cc1d41fca6ae4a412ab6ebf91d3412b)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+## [2.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.3.0...%40interstellar-tools%2Fconstants%402.4.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give galaxies their direction from the Sun, and the Sun its place in the Milky Way ([b3c0f9a](https://github.com/phun-ky/interstellar-tools/commit/b3c0f9aaf033e6063b09db75362963cbac02ef15)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [2.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.2.0...%40interstellar-tools%2Fconstants%402.3.0) (2026-11-09)
 
 ### Feature

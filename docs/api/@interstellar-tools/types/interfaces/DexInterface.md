@@ -1,0 +1,42 @@
+[Documentation](../../../index.md) / [@interstellar-tools/types](../index.md) /
+DexInterface
+
+# Interface: DexInterface
+
+Defined in:
+[quantities.ts:311](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/quantities.ts#L311)
+
+A **logarithmic quantity**, in dex: a metallicity \[Fe/H], log g, log R′HK, 12 +
+log(O/H).
+
+## Extends
+
+- [`ValueInterface`](ValueInterface.md)
+
+## Properties
+
+### unit
+
+```ts
+unit: 'dex';
+```
+
+Defined in:
+[quantities.ts:312](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/quantities.ts#L312)
+
+---
+
+### value
+
+```ts
+value: number;
+```
+
+Defined in:
+[numeric.ts:18](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/numeric.ts#L18)
+
+The numeric value of the measurement.
+
+#### Inherited from
+
+[`ValueInterface`](ValueInterface.md).[`value`](ValueInterface.md#value)

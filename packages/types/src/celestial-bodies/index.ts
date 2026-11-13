@@ -2,11 +2,17 @@ export * from './celestial-bodies.js';
 
 export * from './asteroids.js';
 
+export * from './body-observations.js';
+
 export * from './comets.js';
 
 export * from './display.js';
 
+export * from './observation-groups.js';
+
 export * from './galaxies.js';
+
+export * from './interstellar-objects.js';
 
 export * from './moons.js';
 

@@ -165,8 +165,9 @@ const { r, v } = stateAt(voyager1, new Date('2026-01-05T06:00:00Z')); // m and m
 const [segment] = parseOem(oemText);
 ```
 
-Or use `PROBES`: eleven notable probes, from Voyager 1 to JWST and Parker Solar
-Probe, with ephemerides from Horizons from November 2026 to the end of 2027:
+Or use `PROBES`: thirteen notable probes, from Voyager 1 to JWST and Parker
+Solar Probe, with ephemerides from Horizons from November 2026 to the end of
+2027:
 
 ```ts
 import { PROBES, stateAt } from '@interstellar-tools/tracking';

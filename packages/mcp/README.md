@@ -19,7 +19,8 @@ The full documentation lives at
 
 ## Installation
 
-- [Node.js](https://nodejs.org/) version 22.9.0 or higher
+- [Node.js](https://nodejs.org/) version 22.12.0 or higher
+- ES modules; `require()` needs Node 22.12 or later
 
 Add it to any MCP client that launches stdio servers, for example:
 
@@ -116,12 +117,13 @@ All tools are pure and offline: no network access, no side effects.
 
 Each dataset in `@interstellar-tools/constants` is available as a JSON resource
 at `interstellar://datasets/{name}`, where `name` is one of `planets`, `moons`,
-`stars`, `comets`, `asteroids`, `asteroid-belts`, `galaxies` or `systems`.
+`stars`, `comets`, `asteroids`, `asteroid-belts`, `interstellar-objects`,
+`galaxies` or `systems`.
 
 The snapshots in `@interstellar-tools/tracking` are resources too:
 `interstellar://tracking/satellites`, twelve satellites' OMM records dated 4
-November 2026, and `interstellar://tracking/probes`, eleven space probes and the
-span of their ephemerides.
+November 2026, and `interstellar://tracking/probes`, thirteen space probes and
+the span of their ephemerides.
 
 ## Programmatic use
 

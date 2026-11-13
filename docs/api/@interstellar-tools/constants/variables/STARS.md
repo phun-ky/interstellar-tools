@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:36](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L36)
+[bodies/stars.ts:687](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L687)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -35,6 +35,52 @@ Represents a dataset of well-known stars within the Milky Way.
   poles in `equatorialPeriod` and `polarPeriod`. A star's spin direction is
   unknown.
 
+- The Sun's `rotation.iau` is the IAU's rotation model (Archinal et al. 2018),
+  turning with the Carrington period.
+
+- `observations` are also exported apart, keyed by star id:
+  [STAR_PARAMETERS](STAR_PARAMETERS.md), [STAR_ASTROMETRY](STAR_ASTROMETRY.md)
+  and [HELIOSPHERE](HELIOSPHERE.md), with
+  [HELIOSPHERE_DISPLAY](HELIOSPHERE_DISPLAY.md) for `display.astrosphere`.
+  Import those to load only what an app shows;
+  [withObservations](../functions/withObservations.md) puts them back. From 3.0,
+  `STARS` won't carry them
+  ([#417](https://github.com/phun-ky/interstellar-tools/issues/417)).
+
+- `observations.spectralClassification` is each star's `type` split into its
+  parts.
+
+- `observations.identifiers`, `astrometry` and `apparentMagnitudes` are given
+  for every star but the Sun and the S-stars, as SIMBAD has them: the ICRS
+  position at J2000, and the parallax and proper motion from the Hipparcos new
+  reduction (van Leeuwen 2007), or from Gaia DR3 for Sirius B, Proxima Centauri,
+  Barnard's Star and TRAPPIST-1. α Centauri's parallax is Pourbaix et al.'s
+  (1997), and the radial velocities and V magnitudes credit the paper each is
+  from. SIMBAD lists Spica as one star, so Spica A carries the pair's values.
+
+- `observations.effectiveTemperature`, `luminosity` (L☉), `logSurfaceGravity`
+  and `metallicity` (\[Fe/H]) are from the papers each credits, chosen to agree
+  with the star's `mass` and `radius`: with `radius`, the temperature and
+  luminosity meet L = (R/R☉)² (T/T☉)⁴ within 12 % for every star but the
+  S-stars, whose radii aren't Habibi et al.'s. A luminosity given as log L/L☉ is
+  converted, error bars and all. Vega and Altair spin fast enough to be hotter
+  at their poles, so their temperatures are in `gravityDarkening`, and their
+  gravities are the pole's. The Sun's are the IAU's nominal values (Prša et al.
+  2016). A metallicity is left out where no bulk \[Fe/H] is measured, as for
+  Altair, Spica and Sirius A; Deneb's and Rigel's are \[M/H]. Deneb's `radius`
+  is Schiller & Przybilla's 203 R☉, like its mass.
+
+- The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is
+  IBEX's map (Reisenfeld et al. 2021): nearest just south of the nose, flaring
+  towards the flanks, and at least 350 au down the tail. Its nose faces
+  `upwind`, where the interstellar wind comes from, opposite the inflow
+  direction McComas et al. 2015 give. `crossings` are the Voyagers' termination
+  shock and heliopause crossings, from the papers each credits, with the
+  direction each was in from JPL Horizons; Horizons puts them within 0.03 au of
+  the papers' distances. Whether the heliosphere has a bow shock is disputed, so
+  it has none here. The Sun's `display.astrosphere` keeps it hidden until a
+  renderer offers to show it.
+
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See
   [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
@@ -47,33 +93,33 @@ time.
 
 <div class="ph table-overflow">
 
-| id               | name             | type        | category | parent             | orbit.a               | orbit.e | orbit.period | orbit.retrograde | orbit.angle        | rotation.period | mass (M☉) | radius                                                                         | mu (m³/s²)             | display.color | x        | y                     | z    |
-| ---------------- | ---------------- | ----------- | -------- | ------------------ | --------------------- | ------- | ------------ | ---------------- | ------------------ | --------------- | --------- | ------------------------------------------------------------------------------ | ---------------------- | ------------- | -------- | --------------------- | ---- |
-| sun              | Sun              | G2V         | star     | solar-system       |                       |         |              |                  |                    | 25.379995 d     | 1         | 696340 km                                                                      | 1.3271244004127942e+20 | #fff5f1       |          |                       |      |
-| vega             | Vega             | A0V         | star     | milky-way          | 27230.011753394454 ly | 0.005   | 480 Myr      |                  | 1.569867205171707  | 0.71 d          | 2.135     | [`2600000`](https://github.com/phun-ky/interstellar-tools/commit/2600000) km   |                        | blue          | 25.3 ly  | 27230.011753394454 ly | 0 ly |
-| altair           | Altair           | A7V         | star     | milky-way          | 27050.005155082687 ly | 0.004   | 410 Myr      |                  | 1.5701789517599378 | 7.766667 h      | 1.791     | [`1700000`](https://github.com/phun-ky/interstellar-tools/commit/1700000) km   |                        | white         | 16.7 ly  | 27050.005155082687 ly | 0 ly |
-| deneb            | Deneb            | A2Ia        | star     | milky-way          | 27375.280016832705 ly | 0.009   | 720 Myr      |                  | 1.475524958596149  |                 | 19        | [`1080000`](https://github.com/phun-ky/interstellar-tools/commit/108000000) km |                        | #cad7ff       | 2616 ly  | 27375.280016832705 ly | 0 ly |
-| spica-a          | Spica A          | B1III-IV    | star     | spica              | 0.050727 au           | 0.133   | 4.0145 d     |                  | 2.3899             | 2.007 d         | 11.43     | [`5196879`](https://github.com/phun-ky/interstellar-tools/commit/5196879) km   |                        | blue          |          |                       |      |
-| spica-b          | Spica B          | B2V         | star     | spica              | 0.080417 au           | 0.133   | 4.0145 d     |                  | 2.3899             | 2.676 d         | 7.21      | [`2601918`](https://github.com/phun-ky/interstellar-tools/commit/2601918) km   |                        | #cad7ff       |          |                       |      |
-| alpha-centauri-a | Alpha Centauri A | G2V         | star     | alpha-centauri-ab  | 10.66 au              | 0.51947 | 79.762 yr    |                  | 3.275243601437025  | 28.8 d          | 1.0788    | 847015 km                                                                      |                        | #fff4ea       |          |                       |      |
-| alpha-centauri-b | Alpha Centauri B | K1V         | star     | alpha-centauri-ab  | 12.64 au              | 0.51947 | 79.762 yr    |                  | 3.275243601437025  | 36.2 d          | 0.9092    | 597676 km                                                                      |                        | #ffd2a1       |          |                       |      |
-| proxima-centauri | Proxima Centauri | M5.5Ve      | star     | alpha-centauri     | 8197 au               | 0.5     | 547 kyr      |                  | 3.099566485428788  | 83 d            | 0.1221    | 107277 km                                                                      |                        | #ffcc6f       |          |                       |      |
-| sirius-a         | Sirius A         | A1V         | star     | sirius             | 6.5365 au             | 0.59142 | 50.1284 yr   |                  | 1.906838           |                 | 2.063     | [`1192708`](https://github.com/phun-ky/interstellar-tools/commit/1192708) km   |                        | #b5c7ff       |          |                       |      |
-| sirius-b         | Sirius B         | DA2         | star     | sirius             | 13.2463 au            | 0.59142 | 50.1284 yr   |                  | 1.906838           |                 | 1.018     | 5634 km                                                                        |                        | #a8bdff       |          |                       |      |
-| betelgeuse       | Betelgeuse       | M1-M2Ia-Iab | star     | milky-way          | 27005.560612584955 ly | 0.07    | 230 Myr      |                  | 1.5505028167596557 | 31 yr           | 18        | [`5315148`](https://github.com/phun-ky/interstellar-tools/commit/531514800) km |                        | #ffca8a       | 548 ly   | 27230.011753394454 ly | 0 ly |
-| polaris          | Polaris          | F7Ib        | star     | milky-way          | 27003.691641144178 ly | 0.07    | 230 Myr      |                  | 1.554260796991538  | 119 d           | 5.13      | [`3219003`](https://github.com/phun-ky/interstellar-tools/commit/32190039) km  |                        | #fffcf7       | 446.5 ly | 27003.691641144178 ly | 0 ly |
-| arcturus         | Arcturus         | K1.5III     | star     | milky-way          | 27000.024969588456 ly | 0.07    | 230 Myr      |                  | 1.569436327633381  | 2 yr            | 1.08      | [`1767078`](https://github.com/phun-ky/interstellar-tools/commit/17670780) km  |                        | #ffdfb5       | 36.72 ly | 27000.024969588456 ly | 0 ly |
-| rigel            | Rigel            | B8Ia        | star     | milky-way          | 27013.782109138294 ly | 0.07    | 230 Myr      |                  | 1.538851641798522  |                 | 23        | [`5489073`](https://github.com/phun-ky/interstellar-tools/commit/54890730) km  |                        | #b6ceff       | 862.8 ly | 27013.782109138294 ly | 0 ly |
-| canopus          | Canopus          | A9II        | star     | milky-way          | 27001.77039825352 ly  | 0.07    | 230 Myr      |                  | 1.5593449755210198 |                 | 9.81      | [`5099481`](https://github.com/phun-ky/interstellar-tools/commit/50994810) km  |                        | #cbd9ff       | 309.2 ly | 27001.77039825352 ly  | 0 ly |
-| barnards-star    | Barnard's Star   | M4V         | star     | milky-way          | 27000.00065846979 ly  | 0.07    | 230 Myr      |                  | 1.5705754749466354 | 142 d           | 0.162     | 128705 km                                                                      |                        | #ffc97f       | 5.963 ly | 27000.00065846979 ly  | 0 ly |
-| trappist-1a      | TRAPPIST-1       | M8V         | star     | trappist-1         |                       |         |              |                  |                    | 3.295 d         | 0.0898    | 82927 km                                                                       | 1.19176e+19            | #ffa24c       |          |                       |      |
-| s1               | S1               | B0-B3V      | star     | sagittarius-a-star | 4924.2 au             | 0.556   | 166 yr       |                  | 5.998693           |                 | 12.4      | [`3610683`](https://github.com/phun-ky/interstellar-tools/commit/3610683) km   |                        | #cad7ff       |          |                       |      |
-| s2               | S2               | B0V         | star     | sagittarius-a-star | 1034.7 au             | 0.88444 | 16.046 yr    |                  | 3.537946           |                 | 13.6      | [`3847221`](https://github.com/phun-ky/interstellar-tools/commit/3847221) km   |                        | #cad7ff       |          |                       |      |
-| s4               | S4               | B0-B3V      | star     | sagittarius-a-star | 2954.5 au             | 0.3905  | 77 yr        |                  | 3.301758           |                 | 12.2      | [`3638511`](https://github.com/phun-ky/interstellar-tools/commit/3638511) km   |                        | #cad7ff       |          |                       |      |
-| s6               | S6               | B0-B3V      | star     | sagittarius-a-star | 5440.6 au             | 0.84    | 192 yr       |                  | 3.074946           |                 | 9.2       | [`3137607`](https://github.com/phun-ky/interstellar-tools/commit/3137607) km   |                        | #cad7ff       |          |                       |      |
-| s8               | S8               | B0-B3V      | star     | sagittarius-a-star | 3349.3 au             | 0.8031  | 92.9 yr      |                  | 2.66468            |                 | 13.2      | [`3555027`](https://github.com/phun-ky/interstellar-tools/commit/3555027) km   |                        | #cad7ff       |          |                       |      |
-| s9               | S9               | B0-B3V      | star     | sagittarius-a-star | 2254.4 au             | 0.644   | 51.3 yr      |                  | 3.059443           |                 | 8.2       | [`2706273`](https://github.com/phun-ky/interstellar-tools/commit/2706273) km   |                        | #cad7ff       |          |                       |      |
-| s12              | S12              | B0-B3V      | star     | sagittarius-a-star | 2472 au               | 0.8883  | 58.9 yr      |                  | 2.542369           |                 | 7.6       | [`2831499`](https://github.com/phun-ky/interstellar-tools/commit/2831499) km   |                        | #cad7ff       |          |                       |      |
+| id               | name             | type        | category | parent             | orbit.a               | orbit.e | orbit.period | orbit.retrograde | orbit.angle        | rotation.period | rotation.iau            | mass (M☉) | radius                                                                         | mu (m³/s²)             | display.color | x        | y                     | z    |
+| ---------------- | ---------------- | ----------- | -------- | ------------------ | --------------------- | ------- | ------------ | ---------------- | ------------------ | --------------- | ----------------------- | --------- | ------------------------------------------------------------------------------ | ---------------------- | ------------- | -------- | --------------------- | ---- |
+| sun              | Sun              | G2V         | star     | solar-system       |                       |         |              |                  |                    | 25.379995 d     | north (286.13°, 63.87°) | 1         | 696340 km                                                                      | 1.3271244004127942e+20 | #fff5f1       |          |                       |      |
+| vega             | Vega             | A0V         | star     | milky-way          | 27230.011753394454 ly | 0.005   | 480 Myr      |                  | 1.569867205171707  | 0.71 d          |                         | 2.135     | [`2600000`](https://github.com/phun-ky/interstellar-tools/commit/2600000) km   |                        | blue          | 25.3 ly  | 27230.011753394454 ly | 0 ly |
+| altair           | Altair           | A7V         | star     | milky-way          | 27050.005155082687 ly | 0.004   | 410 Myr      |                  | 1.5701789517599378 | 7.766667 h      |                         | 1.791     | [`1700000`](https://github.com/phun-ky/interstellar-tools/commit/1700000) km   |                        | white         | 16.7 ly  | 27050.005155082687 ly | 0 ly |
+| deneb            | Deneb            | A2Ia        | star     | milky-way          | 27375.280016832705 ly | 0.009   | 720 Myr      |                  | 1.475524958596149  |                 |                         | 19        | [`1412271`](https://github.com/phun-ky/interstellar-tools/commit/141227100) km |                        | #cad7ff       | 2616 ly  | 27375.280016832705 ly | 0 ly |
+| spica-a          | Spica A          | B1III-IV    | star     | spica              | 0.050727 au           | 0.133   | 4.0145 d     |                  | 2.3899             | 2.007 d         |                         | 11.43     | [`5196879`](https://github.com/phun-ky/interstellar-tools/commit/5196879) km   |                        | blue          |          |                       |      |
+| spica-b          | Spica B          | B2V         | star     | spica              | 0.080417 au           | 0.133   | 4.0145 d     |                  | 2.3899             | 2.676 d         |                         | 7.21      | [`2601918`](https://github.com/phun-ky/interstellar-tools/commit/2601918) km   |                        | #cad7ff       |          |                       |      |
+| alpha-centauri-a | Alpha Centauri A | G2V         | star     | alpha-centauri-ab  | 10.66 au              | 0.51947 | 79.762 yr    |                  | 3.275243601437025  | 28.8 d          |                         | 1.0788    | 847015 km                                                                      |                        | #fff4ea       |          |                       |      |
+| alpha-centauri-b | Alpha Centauri B | K1V         | star     | alpha-centauri-ab  | 12.64 au              | 0.51947 | 79.762 yr    |                  | 3.275243601437025  | 36.2 d          |                         | 0.9092    | 597676 km                                                                      |                        | #ffd2a1       |          |                       |      |
+| proxima-centauri | Proxima Centauri | M5.5Ve      | star     | alpha-centauri     | 8197 au               | 0.5     | 547 kyr      |                  | 3.099566485428788  | 83 d            |                         | 0.1221    | 107277 km                                                                      |                        | #ffcc6f       |          |                       |      |
+| sirius-a         | Sirius A         | A1V         | star     | sirius             | 6.5365 au             | 0.59142 | 50.1284 yr   |                  | 1.906838           |                 |                         | 2.063     | [`1192708`](https://github.com/phun-ky/interstellar-tools/commit/1192708) km   |                        | #b5c7ff       |          |                       |      |
+| sirius-b         | Sirius B         | DA2         | star     | sirius             | 13.2463 au            | 0.59142 | 50.1284 yr   |                  | 1.906838           |                 |                         | 1.018     | 5634 km                                                                        |                        | #a8bdff       |          |                       |      |
+| betelgeuse       | Betelgeuse       | M1-M2Ia-Iab | star     | milky-way          | 27005.560612584955 ly | 0.07    | 230 Myr      |                  | 1.5505028167596557 | 31 yr           |                         | 18        | [`5315148`](https://github.com/phun-ky/interstellar-tools/commit/531514800) km |                        | #ffca8a       | 548 ly   | 27230.011753394454 ly | 0 ly |
+| polaris          | Polaris          | F7Ib        | star     | milky-way          | 27003.691641144178 ly | 0.07    | 230 Myr      |                  | 1.554260796991538  | 119 d           |                         | 5.13      | [`3219003`](https://github.com/phun-ky/interstellar-tools/commit/32190039) km  |                        | #fffcf7       | 446.5 ly | 27003.691641144178 ly | 0 ly |
+| arcturus         | Arcturus         | K1.5III     | star     | milky-way          | 27000.024969588456 ly | 0.07    | 230 Myr      |                  | 1.569436327633381  | 2 yr            |                         | 1.08      | [`1767078`](https://github.com/phun-ky/interstellar-tools/commit/17670780) km  |                        | #ffdfb5       | 36.72 ly | 27000.024969588456 ly | 0 ly |
+| rigel            | Rigel            | B8Ia        | star     | milky-way          | 27013.782109138294 ly | 0.07    | 230 Myr      |                  | 1.538851641798522  |                 |                         | 23        | [`5489073`](https://github.com/phun-ky/interstellar-tools/commit/54890730) km  |                        | #b6ceff       | 862.8 ly | 27013.782109138294 ly | 0 ly |
+| canopus          | Canopus          | A9II        | star     | milky-way          | 27001.77039825352 ly  | 0.07    | 230 Myr      |                  | 1.5593449755210198 |                 |                         | 9.81      | [`5099481`](https://github.com/phun-ky/interstellar-tools/commit/50994810) km  |                        | #cbd9ff       | 309.2 ly | 27001.77039825352 ly  | 0 ly |
+| barnards-star    | Barnard's Star   | M4V         | star     | milky-way          | 27000.00065846979 ly  | 0.07    | 230 Myr      |                  | 1.5705754749466354 | 142 d           |                         | 0.162     | 128705 km                                                                      |                        | #ffc97f       | 5.963 ly | 27000.00065846979 ly  | 0 ly |
+| trappist-1a      | TRAPPIST-1       | M8V         | star     | trappist-1         |                       |         |              |                  |                    | 3.295 d         |                         | 0.0898    | 82927 km                                                                       | 1.19176e+19            | #ffa24c       |          |                       |      |
+| s1               | S1               | B0-B3V      | star     | sagittarius-a-star | 4924.2 au             | 0.556   | 166 yr       |                  | 5.998693           |                 |                         | 12.4      | [`3610683`](https://github.com/phun-ky/interstellar-tools/commit/3610683) km   |                        | #cad7ff       |          |                       |      |
+| s2               | S2               | B0V         | star     | sagittarius-a-star | 1034.7 au             | 0.88444 | 16.046 yr    |                  | 3.537946           |                 |                         | 13.6      | [`3847221`](https://github.com/phun-ky/interstellar-tools/commit/3847221) km   |                        | #cad7ff       |          |                       |      |
+| s4               | S4               | B0-B3V      | star     | sagittarius-a-star | 2954.5 au             | 0.3905  | 77 yr        |                  | 3.301758           |                 |                         | 12.2      | [`3638511`](https://github.com/phun-ky/interstellar-tools/commit/3638511) km   |                        | #cad7ff       |          |                       |      |
+| s6               | S6               | B0-B3V      | star     | sagittarius-a-star | 5440.6 au             | 0.84    | 192 yr       |                  | 3.074946           |                 |                         | 9.2       | [`3137607`](https://github.com/phun-ky/interstellar-tools/commit/3137607) km   |                        | #cad7ff       |          |                       |      |
+| s8               | S8               | B0-B3V      | star     | sagittarius-a-star | 3349.3 au             | 0.8031  | 92.9 yr      |                  | 2.66468            |                 |                         | 13.2      | [`3555027`](https://github.com/phun-ky/interstellar-tools/commit/3555027) km   |                        | #cad7ff       |          |                       |      |
+| s9               | S9               | B0-B3V      | star     | sagittarius-a-star | 2254.4 au             | 0.644   | 51.3 yr      |                  | 3.059443           |                 |                         | 8.2       | [`2706273`](https://github.com/phun-ky/interstellar-tools/commit/2706273) km   |                        | #cad7ff       |          |                       |      |
+| s12              | S12              | B0-B3V      | star     | sagittarius-a-star | 2472 au               | 0.8883  | 58.9 yr      |                  | 2.542369           |                 |                         | 7.6       | [`2831499`](https://github.com/phun-ky/interstellar-tools/commit/2831499) km   |                        | #cad7ff       |          |                       |      |
 
 </div>
 

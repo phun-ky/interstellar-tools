@@ -2,11 +2,23 @@ import {
   ASTEROID_BELTS,
   ASTEROIDS,
   COMETS,
+  DISCOVERIES,
   GALAXIES,
+  HELIOSPHERE,
+  HELIOSPHERE_DISPLAY,
+  INTERSTELLAR_OBJECT_OBSERVATIONS,
+  INTERSTELLAR_OBJECTS,
+  MOON_RING_ROLES,
   MOONS,
+  PLANET_RINGS,
   PLANETS,
+  RING_DISPLAY,
+  STAR_ASTROMETRY,
+  STAR_PARAMETERS,
   STARS,
-  SYSTEMS
+  SYSTEMS,
+  withDisplay,
+  withObservations
 } from '@interstellar-tools/constants';
 import {
   McpServer,
@@ -16,16 +28,41 @@ import { z } from 'zod';
 
 import { PURE_TOOL, result } from './tools/shared.js';
 
+// The datasets carry what draws and moves the bodies, with what is measured
+// about them apart; an assistant gets them whole
+const STARS_WHOLE = withDisplay(
+  withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY, {
+    sun: { astrosphere: HELIOSPHERE }
+  }),
+  { sun: { astrosphere: HELIOSPHERE_DISPLAY } }
+);
+const PLANETS_WHOLE = withDisplay(
+  withObservations(PLANETS, PLANET_RINGS),
+  RING_DISPLAY
+);
+
 export const DATASETS = {
   planets: {
     description: 'Planets and dwarf planets of the Solar System.',
-    data: PLANETS
+    data: PLANETS_WHOLE
   },
-  moons: { description: 'Natural satellites.', data: MOONS },
-  stars: { description: 'Stars.', data: STARS },
+  moons: {
+    description: 'Natural satellites.',
+    data: withObservations(MOONS, MOON_RING_ROLES)
+  },
+  stars: { description: 'Stars.', data: STARS_WHOLE },
   comets: { description: 'Comets.', data: COMETS },
   asteroids: { description: 'Asteroids.', data: ASTEROIDS },
   'asteroid-belts': { description: 'Asteroid belts.', data: ASTEROID_BELTS },
+  'interstellar-objects': {
+    description:
+      'Interstellar objects passing the Sun once on open orbits: 1I/ʻOumuamua, 2I/Borisov and 3I/ATLAS.',
+    data: withObservations(
+      INTERSTELLAR_OBJECTS,
+      INTERSTELLAR_OBJECT_OBSERVATIONS,
+      DISCOVERIES
+    )
+  },
   galaxies: { description: 'Galaxies.', data: GALAXIES },
   systems: {
     description:
@@ -42,7 +79,7 @@ const DATASET_NAMES = Object.keys(DATASETS) as [
 ];
 const uriFor = (name: DatasetNameType) => `interstellar://datasets/${name}`;
 const UNITS_NOTE =
-  'Each body has a stable `id` and names the body, system or galaxy it is bound to in `parent`; `orbit` holds its elements around that parent. Values carry their own units ({ value, unit }); `orbit.a` is usually in au, `orbit.period` in days (always positive; `orbit.retrograde: true` marks a retrograde orbit), `radius` in km, `orbit.angle` in radians at J2000.';
+  'Each body has a stable `id` and names the body, system or galaxy it is bound to in `parent`; `orbit` holds its elements around that parent. Values carry their own units ({ value, unit }); `orbit.a` is usually in au, `orbit.period` in days (always positive; `orbit.retrograde: true` marks a retrograde orbit), `radius` in km, `orbit.angle` in radians at J2000. Interstellar objects have open orbits instead: `orbit.e` above 1, a negative `orbit.a`, no `orbit.period`, the perihelion time in `orbit.periapsisTime` and the incoming speed in `orbit.excessSpeed`.';
 
 export const registerBodies = (server: McpServer) => {
   server.registerResource(

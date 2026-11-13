@@ -8,7 +8,13 @@ export * from './math.js';
 
 export * from './physics.js';
 
+export * from './observations.js';
+
 export * from './orbits.js';
+
+export * from './positions.js';
+
+export * from './quantities.js';
 
 export * from './cartography.js';
 

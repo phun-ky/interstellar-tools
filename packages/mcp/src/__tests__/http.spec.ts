@@ -90,7 +90,7 @@ describe('Streamable HTTP', () => {
       clients.map((client) => client.listResources())
     );
 
-    for (const { resources } of results) assert.equal(resources.length, 10);
+    for (const { resources } of results) assert.equal(resources.length, 11);
 
     await Promise.all(clients.map((client) => client.close()));
   });

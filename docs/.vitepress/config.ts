@@ -202,6 +202,14 @@ export default defineConfig({
                 {
                   text: 'Geodesy',
                   link: '/guide/usage/equations/geodesy'
+                },
+                {
+                  text: 'Orbits in 3D',
+                  link: '/guide/usage/equations/orbits-in-3d'
+                },
+                {
+                  text: 'Galaxies in 3D',
+                  link: '/guide/usage/equations/galaxies-in-3d'
                 }
               ]
             },
@@ -242,6 +250,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: 'Release notes', link: '/guide/releases/' },
+            { text: '3.0 release notes', link: '/guide/releases/3.0' },
             { text: '2.0 release notes', link: '/guide/releases/2.0' },
             { text: '1.0 release notes', link: '/guide/releases/1.0' },
             { text: 'Upgrading', link: '/guide/upgrading' }

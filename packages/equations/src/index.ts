@@ -11,9 +11,13 @@ export * from './categories/angle/wrap-angle.js';
 
 // categories/cartography
 
+export * from './categories/cartography/axial-tilt.js';
+
 export * from './categories/cartography/body-fixed-from-inertial-dcm-iau.js';
 
 export * from './categories/cartography/body-fixed-to-geodetic.js';
+
+export * from './categories/cartography/body-orientation.js';
 
 export * from './categories/cartography/central-angle.js';
 
@@ -51,6 +55,8 @@ export * from './categories/cartography/prime-vertical-radius-of-curvature.js';
 
 export * from './categories/cartography/spherical-polygon-area.js';
 
+export * from './categories/cartography/subsolar-point.js';
+
 export * from './categories/cartography/sun-position.js';
 
 // categories/entry
@@ -67,11 +73,31 @@ export * from './categories/entry/stagnation-heat-flux.js';
 
 export * from './categories/entry/terminal-velocity.js';
 
+// categories/galactic
+
+export * from './categories/galactic/equatorial-to-galactic.js';
+
+export * from './categories/galactic/galactic-to-equatorial.js';
+
+export * from './categories/galactic/galactocentric-position.js';
+
+export * from './categories/galactic/galactocentric-to-galactic.js';
+
+export * from './categories/galactic/galactocentric-velocity.js';
+
+export * from './categories/galactic/galactic-to-supergalactic.js';
+
+export * from './categories/galactic/galaxy-disk-axis.js';
+
+export * from './categories/galactic/supergalactic-to-galactic.js';
+
 // categories/helpers
 
 export * from './categories/helpers/apply-matrix-3.js';
 
 export * from './categories/helpers/convert-distance-unit.js';
+
+export * from './categories/helpers/convert-quantity.js';
 
 export * from './categories/helpers/det-3.js';
 
@@ -183,6 +209,8 @@ export * from './categories/orbits/launch-azimuth-for-inclination.js';
 
 export * from './categories/orbits/mean-motion.js';
 
+export * from './categories/orbits/orbit-frame-to-icrf.js';
+
 export * from './categories/orbits/peri-apoapsis-radii.js';
 
 export * from './categories/orbits/repeat-ground-track.js';
@@ -204,6 +232,8 @@ export * from './categories/orbits/hill-sphere-radius.js';
 export * from './categories/orbits/solar-day-length.js';
 
 export * from './categories/orbits/sphere-of-influence-radius.js';
+
+export * from './categories/orbits/state-at.js';
 
 export * from './categories/orbits/state-to-elements.js';
 

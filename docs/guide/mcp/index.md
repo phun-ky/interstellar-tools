@@ -78,7 +78,7 @@ assistant converts them with `convert_distance` before using the orbit tools.
 
 ## Before you start
 
-- [Node.js](https://nodejs.org/) 22.9.0 or newer, so `npx` is on your `PATH`.
+- [Node.js](https://nodejs.org/) 22.12.0 or newer, so `npx` is on your `PATH`.
 - Decide which of the two ways to run the server your assistant needs:
 
 | How it runs               | Command                                 | For                                                                                 |

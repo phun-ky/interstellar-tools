@@ -17,7 +17,38 @@ import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
  * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
  *   published: none for Deneb, Sirius, Rigel and Canopus. The Sun's is the IAU's Carrington period, with its faster equator
  *   and slower poles in `equatorialPeriod` and `polarPeriod`. A star's spin direction is unknown.
+ * - The Sun's `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), turning with the
+ *   Carrington period.
  *
+ * - What is measured about the stars isn't carried here, so an app loads only what it shows. It is
+ *   exported apart, keyed by star id: {@link STAR_PARAMETERS}, {@link STAR_ASTROMETRY} and
+ *   {@link HELIOSPHERE}, with {@link HELIOSPHERE_DISPLAY} to draw the heliosphere.
+ *   {@link withObservations} and {@link withDisplay} put them on the stars, as the `observations` and
+ *   `display.astrosphere` described below.
+ * - `observations.spectralClassification` is each star's `type` split into its parts.
+ * - `observations.identifiers`, `astrometry` and `apparentMagnitudes` are given for every star but
+ *   the Sun and the S-stars, as SIMBAD has them: the ICRS position at J2000, and the parallax and
+ *   proper motion from the Hipparcos new reduction (van Leeuwen 2007), or from Gaia DR3 for
+ *   Sirius B, Proxima Centauri, Barnard's Star and TRAPPIST-1. α Centauri's parallax is Pourbaix
+ *   et al.'s (1997), and the radial velocities and V magnitudes credit the paper each is from.
+ *   SIMBAD lists Spica as one star, so Spica A carries the pair's values.
+ * - `observations.effectiveTemperature`, `luminosity` (L☉), `logSurfaceGravity` and `metallicity`
+ *   ([Fe/H]) are from the papers each credits, chosen to agree with the star's `mass` and
+ *   `radius`: with `radius`, the temperature and luminosity meet L = (R/R☉)² (T/T☉)⁴ within 12 %
+ *   for every star but the S-stars, whose radii aren't Habibi et al.'s. A luminosity given as
+ *   log L/L☉ is converted, error bars and all. Vega and Altair spin fast enough to be hotter at
+ *   their poles, so their temperatures are in `gravityDarkening`, and their gravities are the
+ *   pole's. The Sun's are the IAU's nominal values (Prša et al. 2016). A metallicity is left out
+ *   where no bulk [Fe/H] is measured, as for Altair, Spica and Sirius A; Deneb's and Rigel's are
+ *   [M/H]. Deneb's `radius` is Schiller & Przybilla's 203 R☉, like its mass.
+ * - The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is IBEX's map
+ *   (Reisenfeld et al. 2021): nearest just south of the nose, flaring towards the flanks, and at
+ *   least 350 au down the tail. Its nose faces `upwind`, where the interstellar wind comes from,
+ *   opposite the inflow direction McComas et al. 2015 give. `crossings` are the Voyagers'
+ *   termination shock and heliopause crossings, from the papers each credits, with the direction
+ *   each was in from JPL Horizons; Horizons puts them within 0.03 au of the papers' distances.
+ *   Whether the heliosphere has a bow shock is disputed, so it has none here. The Sun's
+ *   `display.astrosphere` keeps it hidden until a renderer offers to show it.
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
  *
@@ -43,7 +74,7 @@ export const STARS: StarsType = [
     parent: 'solar-system',
     // No orbit: the Sun's wobble around the barycenter is the sum of the planets' pulls, not a Kepler orbit
     /** Mass in solar masses */
-    mass: 1,
+    mass: { value: 1, unit: 'M_sun' },
     /**
      * Sidereal rotation in days: the IAU's, the Carrington period its
      * coordinates turn with. Its gas turns faster at the equator than at the
@@ -52,7 +83,16 @@ export const STARS: StarsType = [
     rotation: {
       period: { value: 25.379995, unit: 'd' },
       equatorialPeriod: { value: 24.47, unit: 'd' },
-      polarPeriod: { value: 34.16, unit: 'd' }
+      polarPeriod: { value: 34.16, unit: 'd' },
+      iau: {
+        pole: 'north',
+        rightAscension: 286.13 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 63.87 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 84.176 as DegreesType,
+        primeMeridianRate: 14.1844
+      }
     },
     /** Radius in km */
     radius: { value: 696340, unit: 'km' },
@@ -83,7 +123,7 @@ export const STARS: StarsType = [
     /** Equatorial rotation in days: Monnier et al. 2012, from interferometry. Seen nearly pole-on */
     rotation: { period: { value: 0.71, unit: 'd' } },
     /** Radius in km */
-    mass: 2.135, // Yoon et al. 2010
+    mass: { value: 2.135, unit: 'M_sun' }, // Yoon et al. 2010
     radius: { value: 2600000, unit: 'km' },
     display: {
       /** Visual representation color */
@@ -109,7 +149,7 @@ export const STARS: StarsType = [
     },
     /** Equatorial rotation in hours, 7 h 46 m: Bouchaud et al. 2020, from interferometry */
     rotation: { period: { value: 7.766667, unit: 'h' } },
-    mass: 1.791, // Peterson et al. 2006
+    mass: { value: 1.791, unit: 'M_sun' }, // Peterson et al. 2006
     radius: { value: 1700000, unit: 'km' },
     display: {
       color: 'white'
@@ -130,8 +170,8 @@ export const STARS: StarsType = [
       period: { value: 720, unit: 'Myr' },
       angle: 1.475524958596149 as Radians
     },
-    mass: 19, // Schiller & Przybilla 2008
-    radius: { value: 108000000, unit: 'km' },
+    mass: { value: 19, unit: 'M_sun' }, // Schiller & Przybilla 2008
+    radius: { value: 141227100, unit: 'km' }, // 203 R☉, Schiller & Przybilla 2008
     display: {
       color: '#cad7ff' // A-type (blue-white)
     },
@@ -161,7 +201,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in days: two turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
     rotation: { period: { value: 2.007, unit: 'd' } },
-    mass: 11.43,
+    mass: { value: 11.43, unit: 'M_sun' },
     radius: { value: 5196879, unit: 'km' }, // 7.47 R☉
     display: {
       color: 'blue'
@@ -184,7 +224,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in days: 1.5 turns each 4.0145 d orbit, in Tkachenko et al. 2016's model of the pair */
     rotation: { period: { value: 2.676, unit: 'd' } },
-    mass: 7.21,
+    mass: { value: 7.21, unit: 'M_sun' },
     radius: { value: 2601918, unit: 'km' }, // 3.74 R☉
     display: {
       color: '#cad7ff' // B-type (blue-white)
@@ -218,7 +258,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in days: Hallam et al. 1991, from its ultraviolet activity. Uncertain: Bazot et al. 2007 find 22.5 ± 5.9 d */
     rotation: { period: { value: 28.8, unit: 'd' } },
-    mass: 1.0788,
+    mass: { value: 1.0788, unit: 'M_sun' },
     radius: { value: 847015, unit: 'km' }, // 1.2175 R☉
     display: {
       color: '#fff4ea' // G-type
@@ -242,7 +282,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in days: DeWarf et al. 2010, from its activity */
     rotation: { period: { value: 36.2, unit: 'd' } },
-    mass: 0.9092,
+    mass: { value: 0.9092, unit: 'M_sun' },
     radius: { value: 597676, unit: 'km' }, // 0.8591 R☉
     display: {
       color: '#ffd2a1' // K-type
@@ -262,7 +302,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in days: Benedict et al. 1998, from its starspots. Suárez Mascareño et al. 2020: 87 ± 12 d */
     rotation: { period: { value: 83, unit: 'd' } },
-    mass: 0.1221,
+    mass: { value: 0.1221, unit: 'M_sun' },
     radius: { value: 107277, unit: 'km' }, // 0.1542 R☉
     display: {
       color: '#ffcc6f' // M-type
@@ -289,7 +329,7 @@ export const STARS: StarsType = [
       om: 45.4 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 2.063,
+    mass: { value: 2.063, unit: 'M_sun' },
     radius: { value: 1192708, unit: 'km' }, // 1.7144 R☉
     display: {
       color: '#b5c7ff' // A-type
@@ -311,7 +351,7 @@ export const STARS: StarsType = [
       om: 45.4 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 1.018,
+    mass: { value: 1.018, unit: 'M_sun' },
     radius: { value: 5634, unit: 'km' }, // 0.008098 R☉: Earth-sized
     display: {
       color: '#a8bdff' // White dwarf, 25 200 K
@@ -334,7 +374,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in years: Kervella et al. 2018, from ALMA, for an inclination of 60° */
     rotation: { period: { value: 31, unit: 'yr' } },
-    mass: 18, // 16.5 to 19 M☉, Joyce et al. 2020
+    mass: { value: 18, unit: 'M_sun' }, // 16.5 to 19 M☉, Joyce et al. 2020
     radius: { value: 531514800, unit: 'km' }, // 764 R☉, Joyce et al. 2020
     display: {
       color: '#ffca8a' // M-type supergiant
@@ -358,7 +398,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in days: Lee et al. 2008 */
     rotation: { period: { value: 119, unit: 'd' } },
-    mass: 5.13, // Evans et al. 2024
+    mass: { value: 5.13, unit: 'M_sun' }, // Evans et al. 2024
     radius: { value: 32190039, unit: 'km' }, // 46.27 R☉, Evans et al. 2024
     display: {
       color: '#fffcf7' // F-type supergiant
@@ -382,7 +422,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in years: Gray & Brown 2006, from its magnetic activity */
     rotation: { period: { value: 2, unit: 'yr' } },
-    mass: 1.08, // Ramírez & Allende Prieto 2011
+    mass: { value: 1.08, unit: 'M_sun' }, // Ramírez & Allende Prieto 2011
     radius: { value: 17670780, unit: 'km' }, // 25.4 R☉, Ramírez & Allende Prieto 2011
     display: {
       color: '#ffdfb5' // K-type giant
@@ -404,7 +444,7 @@ export const STARS: StarsType = [
       period: { value: 230, unit: 'Myr' },
       angle: 1.538851641798522 as Radians
     },
-    mass: 23, // Przybilla et al. 2010, from evolutionary tracks
+    mass: { value: 23, unit: 'M_sun' }, // Przybilla et al. 2010, from evolutionary tracks
     radius: { value: 54890730, unit: 'km' }, // 78.9 R☉, Moravveji et al. 2012
     display: {
       color: '#b6ceff' // B-type supergiant
@@ -426,7 +466,7 @@ export const STARS: StarsType = [
       period: { value: 230, unit: 'Myr' },
       angle: 1.5593449755210198 as Radians
     },
-    mass: 9.81, // Domiciano de Souza et al. 2021
+    mass: { value: 9.81, unit: 'M_sun' }, // Domiciano de Souza et al. 2021
     radius: { value: 50994810, unit: 'km' }, // 73.3 R☉, Domiciano de Souza et al. 2021
     display: {
       color: '#cbd9ff' // A/F-type giant
@@ -451,7 +491,7 @@ export const STARS: StarsType = [
     },
     /** Rotation in days: González Hernández et al. 2024, from its activity */
     rotation: { period: { value: 142, unit: 'd' } },
-    mass: 0.162, // Schweitzer et al. 2019
+    mass: { value: 0.162, unit: 'M_sun' }, // Schweitzer et al. 2019
     radius: { value: 128705, unit: 'km' }, // 0.185 R☉, Schweitzer et al. 2019
     display: {
       color: '#ffc97f' // M-type
@@ -469,7 +509,7 @@ export const STARS: StarsType = [
     parent: 'trappist-1',
     /** Rotation in days: Vida et al. 2017, from its starspots */
     rotation: { period: { value: 3.295, unit: 'd' } },
-    mass: 0.0898, // Mann et al. 2019, as Agol et al. 2021 adopt
+    mass: { value: 0.0898, unit: 'M_sun' }, // Mann et al. 2019, as Agol et al. 2021 adopt
     radius: { value: 82927, unit: 'km' }, // 0.1192 R☉, Agol et al. 2021
     mu: 1.19176e19, // its mass × the Sun's GM
     display: {
@@ -500,7 +540,7 @@ export const STARS: StarsType = [
       om: 342.04 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 12.4,
+    mass: { value: 12.4, unit: 'M_sun' },
     radius: { value: 3610683, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -522,7 +562,7 @@ export const STARS: StarsType = [
       om: 228.21 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 13.6,
+    mass: { value: 13.6, unit: 'M_sun' },
     radius: { value: 3847221, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -544,7 +584,7 @@ export const STARS: StarsType = [
       om: 258.84 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 12.2,
+    mass: { value: 12.2, unit: 'M_sun' },
     radius: { value: 3638511, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -566,7 +606,7 @@ export const STARS: StarsType = [
       om: 85.07 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 9.2,
+    mass: { value: 9.2, unit: 'M_sun' },
     radius: { value: 3137607, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -588,7 +628,7 @@ export const STARS: StarsType = [
       om: 315.43 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 13.2,
+    mass: { value: 13.2, unit: 'M_sun' },
     radius: { value: 3555027, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -610,7 +650,7 @@ export const STARS: StarsType = [
       om: 156.6 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 8.2,
+    mass: { value: 8.2, unit: 'M_sun' },
     radius: { value: 2706273, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type
@@ -632,7 +672,7 @@ export const STARS: StarsType = [
       om: 230.1 as DegreesType,
       frame: { plane: 'sky' }
     },
-    mass: 7.6,
+    mass: { value: 7.6, unit: 'M_sun' },
     radius: { value: 2831499, unit: 'km' },
     display: {
       color: '#cad7ff' // B-type

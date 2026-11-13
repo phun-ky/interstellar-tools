@@ -1,5 +1,67 @@
 # Changelog
 
+## [2.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.11.0...%40interstellar-tools%2Ftypes%402.12.0) (2026-11-13)
+
+### Feature
+
+* 🎸 Type observations and drawing groups kept apart from the bodies ([b9e7a61](https://github.com/phun-ky/interstellar-tools/commit/b9e7a61252126b84aee71a99329b01693f0128a5)), references [#417](https://github.com/phun-ky/interstellar-tools/issues/417)
+
+## [2.11.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.10.0...%40interstellar-tools%2Ftypes%402.11.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Type a star's astrosphere, and how to draw it ([96c877a](https://github.com/phun-ky/interstellar-tools/commit/96c877a47f0288bb3eb4add1a2d81d74dbea1fd2))
+
+## [2.10.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.9.0...%40interstellar-tools%2Ftypes%402.10.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Group how a procedural renderer draws a body ([162b64c](https://github.com/phun-ky/interstellar-tools/commit/162b64ca4454000dcad9f6b63249437c5b5a956a))
+
+## [2.9.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.8.0...%40interstellar-tools%2Ftypes%402.9.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Type what is measured about each body ([99eee08](https://github.com/phun-ky/interstellar-tools/commit/99eee081e9f100b00e9786da9f180f5aee07058c))
+
+## [2.8.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.7.0...%40interstellar-tools%2Ftypes%402.8.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Type unit-carrying quantities beyond distance and time ([4fb30e1](https://github.com/phun-ky/interstellar-tools/commit/4fb30e109dbb7abd7492f3399a4b3b96181a3446))
+
+## [2.7.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.6.0...%40interstellar-tools%2Ftypes%402.7.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Type open orbits and interstellar objects ([b376bf6](https://github.com/phun-ky/interstellar-tools/commit/b376bf6a852d65cbeb5d44aeedcb33d1e78b587c)), references [#380](https://github.com/phun-ky/interstellar-tools/issues/380)
+
+## [2.6.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.5.0...%40interstellar-tools%2Ftypes%402.6.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give rotations an axial tilt and an IAU rotation model ([6ace491](https://github.com/phun-ky/interstellar-tools/commit/6ace4911e39c9aea9c998c9e6510a40ff8c51687)), references [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
+## [2.5.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.4.0...%40interstellar-tools%2Ftypes%402.5.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Give galaxies a disk and a motion, and add velocity and supergalactic types ([d5fd9e3](https://github.com/phun-ky/interstellar-tools/commit/d5fd9e3b54b46d40ddd27986ddec87968747f084)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+## [2.4.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.3.1...%40interstellar-tools%2Ftypes%402.4.0) (2026-11-11)
+
+### Documentation
+
+* ✏️ Centre the galactocentric frame where Astropy does ([125f74a](https://github.com/phun-ky/interstellar-tools/commit/125f74a92dc6c04144c5828b73d548d982739278)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+### Feature
+
+* 🎸 Give galaxies a direction and a 3D position, centred on Sagittarius A* ([88aa641](https://github.com/phun-ky/interstellar-tools/commit/88aa641a8cf8cccb630461e40a6f2a44a1b601f3)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+### Refactoring
+
+* 💡 Keep galaxies from the Sun, without a stored position ([ee84dcb](https://github.com/phun-ky/interstellar-tools/commit/ee84dcb66e433764bbbe6c8a1c4ebaf3819a6b07)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [2.3.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.3.0...%40interstellar-tools%2Ftypes%402.3.1) (2026-11-09)
 
 ### Bug

@@ -1,5 +1,47 @@
 # Changelog
 
+## [1.25.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.24.0...%40interstellar-tools%2Fequations%401.25.0) (2026-11-12)
+
+### Feature
+
+* 🎸 Convert any quantity between units of its kind ([4309431](https://github.com/phun-ky/interstellar-tools/commit/4309431bbce57ff0f08963eb4514960a01751a9f))
+
+## [1.24.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.23.1...%40interstellar-tools%2Fequations%401.24.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Orient a body, tilt its axis and find its subsolar point ([ea19c76](https://github.com/phun-ky/interstellar-tools/commit/ea19c762c37679f8c548108ddb4794cb515da643)), closes [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
+## [1.23.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.23.0...%40interstellar-tools%2Fequations%401.23.1) (2026-11-11)
+
+### Bug
+
+* 🐛 Turn bodyFixedFromInertialDcmIAU the IAU's way ([c2dc5d8](https://github.com/phun-ky/interstellar-tools/commit/c2dc5d8f792502fc29ece89d23ae198bfde35aab)), references [#362](https://github.com/phun-ky/interstellar-tools/issues/362)
+
+## [1.23.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.22.0...%40interstellar-tools%2Fequations%401.23.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Set galaxies moving, turn their disks, and add supergalactic coordinates ([577cfa8](https://github.com/phun-ky/interstellar-tools/commit/577cfa8889d273eba86bf2e4593d9c4212f354e4)), closes [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+## [1.22.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.21.0...%40interstellar-tools%2Fequations%401.22.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Convert between equatorial and galactic coordinates, and back from galactocentric ([0d62a14](https://github.com/phun-ky/interstellar-tools/commit/0d62a14372577e8dbd7cd7994ec1b0944edda704)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+## [1.21.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.20.0...%40interstellar-tools%2Fequations%401.21.0) (2026-11-11)
+
+### Feature
+
+* 🎸 Place galaxies around the Milky Way's centre with galactocentricPosition ([9e31400](https://github.com/phun-ky/interstellar-tools/commit/9e31400561220dcb6b730983eeacabc72104b38b)), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
+## [1.20.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.19.1...%40interstellar-tools%2Fequations%401.20.0) (2026-11-10)
+
+### Feature
+
+* 🎸 Place any dataset orbit in 3D on a date, with stateAt ([3f5c2dc](https://github.com/phun-ky/interstellar-tools/commit/3f5c2dc71f71be5a23c91409b48e2a6fefdb1b93)), closes [#372](https://github.com/phun-ky/interstellar-tools/issues/372), references [#373](https://github.com/phun-ky/interstellar-tools/issues/373)
+
 ## [1.19.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.19.0...%40interstellar-tools%2Fequations%401.19.1) (2026-11-06)
 
 ### Tasks

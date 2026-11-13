@@ -13,6 +13,10 @@ import { AsteroidsType, DegreesType, Radians } from '@interstellar-tools/types';
  *   asteroid's light curves. Pallas, Hygiea, Psyche, Eunomia, Bennu, Ryugu, Itokawa, Ida, Šteins,
  *   Didymos and Apophis spin backwards against the Sun's spin, `retrograde: true`. Apophis tumbles,
  *   `tumbling: true`. Lutetia's and Arrokoth's poles lie too near 90° from the Sun's to tell.
+ * - `rotation.iau` is the IAU's rotation model (Archinal et al. 2018) where it gives one: Vesta,
+ *   Eros, Pallas, Davida, 52 Europa, Itokawa, Lutetia, Ida, Gaspra and Šteins. Their poles are
+ *   `'positive'`, by the right-hand rule. Itokawa's and Lutetia's prime meridians are arbitrary,
+ *   and Šteins's turns at the IAU's rounded 6.05 h, 0.75° a day slower than its `period`.
  * - The asteroids spacecraft visited, from Bennu to Apophis, have JPL Horizons' osculating
  *   elements at J2000, and `mu` where a spacecraft or a moon weighed them.
  *
@@ -52,7 +56,18 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 2.151, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU */
-    rotation: { period: { value: 5.342128248, unit: 'h' } },
+    rotation: {
+      period: { value: 5.342128248, unit: 'h' },
+      iau: {
+        pole: 'positive',
+        rightAscension: 309.031 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 42.235 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 285.39 as DegreesType,
+        primeMeridianRate: 1617.3329428
+      }
+    },
     radius: { value: 262.7, unit: 'km' },
     display: {
       color: '#999999',
@@ -79,7 +94,18 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 1.134, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU. It spins on its side */
-    rotation: { period: { value: 5.270257308, unit: 'h' } },
+    rotation: {
+      period: { value: 5.270257308, unit: 'h' },
+      iau: {
+        pole: 'positive',
+        rightAscension: 11.35 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 17.22 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 326.07 as DegreesType,
+        primeMeridianRate: 1639.38864745
+      }
+    },
     radius: { value: 8.4, unit: 'km' },
     display: {
       color: '#aaaaaa',
@@ -109,7 +135,19 @@ export const ASTEROIDS: AsteroidsType = [
      * from the Sun's, so against the Sun's spin, though forwards around its
      * own steeply tilted orbit
      */
-    rotation: { period: { value: 7.813322366, unit: 'h' }, retrograde: true },
+    rotation: {
+      period: { value: 7.813322366, unit: 'h' },
+      retrograde: true,
+      iau: {
+        pole: 'positive',
+        rightAscension: 33 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -3 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 38 as DegreesType,
+        primeMeridianRate: 1105.8036
+      }
+    },
     radius: { value: 256, unit: 'km' },
     display: {
       color: '#888888',
@@ -239,7 +277,18 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 2.549, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU */
-    rotation: { period: { value: 5.129364, unit: 'h' } },
+    rotation: {
+      period: { value: 5.129364, unit: 'h' },
+      iau: {
+        pole: 'positive',
+        rightAscension: 297 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 5 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 268.1 as DegreesType,
+        primeMeridianRate: 1684.4193549
+      }
+    },
     radius: { value: 149, unit: 'km' },
     display: {
       color: '#444444',
@@ -265,7 +314,18 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 2.788, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU */
-    rotation: { period: { value: 5.6299584, unit: 'h' } },
+    rotation: {
+      period: { value: 5.6299584, unit: 'h' },
+      iau: {
+        pole: 'positive',
+        rightAscension: 257 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 12 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 55 as DegreesType,
+        primeMeridianRate: 1534.6472187
+      }
+    },
     radius: { value: 156.5, unit: 'km' },
     display: {
       color: '#555555',
@@ -397,7 +457,19 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 0.9533, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU. Backwards against the Sun's spin */
-    rotation: { period: { value: 12.132395, unit: 'h' }, retrograde: true },
+    rotation: {
+      period: { value: 12.132395, unit: 'h' },
+      retrograde: true,
+      iau: {
+        pole: 'positive',
+        rightAscension: 90.53 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -66.3 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 0 as DegreesType,
+        primeMeridianRate: 712.143
+      }
+    },
     radius: { value: 0.1638, unit: 'km' },
     mu: 2.343, // Hayabusa, Fujiwara et al. 2006
     display: {
@@ -424,7 +496,18 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 2.0418, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU. Its pole lies within the error of 90° from the Sun's, so the spin direction is unknown */
-    rotation: { period: { value: 8.1682701, unit: 'h' } },
+    rotation: {
+      period: { value: 8.1682701, unit: 'h' },
+      iau: {
+        pole: 'positive',
+        rightAscension: 52 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 12 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 94 as DegreesType,
+        primeMeridianRate: 1057.7515
+      }
+    },
     radius: { value: 49, unit: 'km' },
     mu: 113460000.0, // Rosetta, Pätzold et al. 2011
     display: {
@@ -451,7 +534,19 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 2.7288, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU. Backwards against the Sun's spin */
-    rotation: { period: { value: 4.633632, unit: 'h' }, retrograde: true },
+    rotation: {
+      period: { value: 4.633632, unit: 'h' },
+      retrograde: true,
+      iau: {
+        pole: 'positive',
+        rightAscension: 168.76 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -87.12 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 274.05 as DegreesType,
+        primeMeridianRate: 1864.628007
+      }
+    },
     radius: { value: 15.7, unit: 'km' },
     mu: 2800000.0, // from its moon Dactyl's orbit (Belton et al. 1995), ±14 %
     display: {
@@ -478,7 +573,18 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 1.8259, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU */
-    rotation: { period: { value: 7.0420728, unit: 'h' } },
+    rotation: {
+      period: { value: 7.0420728, unit: 'h' },
+      iau: {
+        pole: 'positive',
+        rightAscension: 9.47 as DegreesType,
+        rightAscensionRate: 0,
+        declination: 26.7 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 83.67 as DegreesType,
+        primeMeridianRate: 1226.911485
+      }
+    },
     radius: { value: 6.1, unit: 'km' },
     display: {
       color: '#93806B',
@@ -504,7 +610,19 @@ export const ASTEROIDS: AsteroidsType = [
       q: { value: 2.0152, unit: 'au' }
     },
     /** Sidereal rotation in hours: Lamy et al. 2008. The IAU's 2015 rate rounds it to 6.05 h. Backwards against the Sun's spin */
-    rotation: { period: { value: 6.04681, unit: 'h' }, retrograde: true },
+    rotation: {
+      period: { value: 6.04681, unit: 'h' },
+      retrograde: true,
+      iau: {
+        pole: 'positive',
+        rightAscension: 91 as DegreesType,
+        rightAscensionRate: 0,
+        declination: -62 as DegreesType,
+        declinationRate: 0,
+        primeMeridian: 321.76 as DegreesType,
+        primeMeridianRate: 1428.09917
+      }
+    },
     radius: { value: 2.65, unit: 'km' },
     display: {
       color: '#A7A5A1',

@@ -21,8 +21,10 @@ Support follows the major version:
 - **The previous major gets fixes for high and critical vulnerabilities for 6
   months** after the next major is released, as a patch on its latest release.
   That leaves time to migrate without staying exposed. `types` and `constants`
-  1.x are the first: they get those fixes for 6 months after their 2.0 release.
-  `0.x` gets no more releases once 1.0 is out.
+  2.x, and `temporal`, `equations` and `mcp` 1.x, get those fixes for 6 months
+  after their 3.0 and 2.0 releases. `types` and `constants` 1.x keep them for
+  the 6 months after their 2.0 release they were promised. `0.x` gets no more
+  releases once 1.0 is out.
 - **Security comes before the deprecation grace period.** If a vulnerability
   can't be fixed without breaking an API, deprecated or not, the fix may change
   or remove it in a patch or minor release instead of waiting for a major. The

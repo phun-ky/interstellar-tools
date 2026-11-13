@@ -1,6 +1,8 @@
 import { DistanceInterface } from '../distance.js';
 import type { OrbitInterface } from '../orbits.js';
+import type { MassInterface } from '../quantities.js';
 
+import type { StarObservationsInterface } from './body-observations.js';
 import type { DisplayInterface } from './display.js';
 import type { RotationInterface } from './rotation.js';
 
@@ -51,8 +53,8 @@ export interface StarInterface {
   parent?: string;
   /** Orbit around the parent. */
   orbit?: OrbitInterface;
-  /** Mass in solar masses ($M_\odot$). */
-  mass?: number;
+  /** Mass, in solar masses ($M_\odot$) in the datasets. */
+  mass?: MassInterface;
   /**
    * Standard gravitational parameter $\mu = G M$ of the body alone, in m³/s²,
    * as the orbit equations take it. Given where JPL publishes one.
@@ -73,6 +75,11 @@ export interface StarInterface {
   z?: DistanceInterface;
   /** How to draw the star: its colour, and state a renderer computes. */
   display?: DisplayInterface;
+  /**
+   * What is measured about it, with uncertainties and sources, apart from
+   * the values the equations use.
+   */
+  observations?: StarObservationsInterface;
 }
 
 /**

@@ -161,8 +161,9 @@ const { r, v } = stateAt(voyager1, new Date('2026-01-05T06:00:00Z')); // m and m
 const [segment] = parseOem(oemText);
 ```
 
-Or use `PROBES`: eleven notable probes, from Voyager 1 to JWST and Parker Solar
-Probe, with ephemerides from Horizons from November 2026 to the end of 2027:
+Or use `PROBES`: thirteen notable probes, from Voyager 1 to JWST and Parker
+Solar Probe, with ephemerides from Horizons from November 2026 to the end of
+2027:
 
 ```ts
 import { PROBES, stateAt } from '@interstellar-tools/tracking';
@@ -230,7 +231,8 @@ The full documentation lives at
 
 ## Installation
 
-- [Node.js](https://nodejs.org/) version 22.9.0 or higher
+- [Node.js](https://nodejs.org/) version 22.12.0 or higher
+- ES modules; `require()` needs Node 22.12 or later
 
 ```shell [npm]
 npm i --save @interstellar-tools/tracking
