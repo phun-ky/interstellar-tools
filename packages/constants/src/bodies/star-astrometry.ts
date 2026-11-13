@@ -36,7 +36,7 @@ const J2000: EpochInterface = { jd: 2451545, timeScale: 'TT' };
  * star but the Sun and the S-stars, from SIMBAD, Hipparcos and Gaia DR3.
  *
  * Kept apart from {@link STARS}, so an app loads these only when it needs
- * them. {@link withObservations} puts them back on the stars.
+ * them. {@link withObservations} puts them on the stars.
  *
  * @group Observations
  * @example

@@ -303,7 +303,7 @@ const NEPTUNE_RINGS: RingSystemInterface = {
  * Ring-Moon Systems Node and NASA NSSDCA.
  *
  * Kept apart from {@link PLANETS}, so an app loads them only when it shows
- * them. {@link withObservations} puts them back on the planets, as their
+ * them. {@link withObservations} puts them on the planets, as their
  * `observations.rings`; see `PLANETS` for how they were chosen.
  *
  * @group Observations

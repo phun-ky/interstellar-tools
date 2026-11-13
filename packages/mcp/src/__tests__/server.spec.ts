@@ -626,6 +626,33 @@ describe('bodies', () => {
     );
   });
 
+  test('serves the bodies whole, with what is measured about them', async () => {
+    type BodyType = {
+      id: string;
+      observations?: Record<string, { value?: number } & object>;
+      display?: Record<string, unknown>;
+    };
+    const find = async (dataset: string, id: string) =>
+      (
+        (await readJson(
+          `interstellar://datasets/${dataset}`
+        )) as unknown as BodyType[]
+      ).find((body) => body.id === id)!;
+    const vega = await find('stars', 'vega');
+    const sun = await find('stars', 'sun');
+    const saturn = await find('planets', 'saturn');
+
+    assert.equal(vega.observations?.luminosity?.value, 40.12);
+    assert.ok(sun.observations?.astrosphere);
+    assert.ok(sun.display?.astrosphere);
+    assert.ok(saturn.observations?.rings);
+    assert.ok(saturn.display?.rings);
+    assert.ok((await find('moons', 'enceladus')).observations?.ringInteraction);
+    assert.ok(
+      (await find('interstellar-objects', '2i-borisov')).observations?.discovery
+    );
+  });
+
   test('find_body matches ids', async () => {
     const res = await call('find_body', { query: 'alpha-centauri-ab' });
     const { matches } = res.structuredContent!;

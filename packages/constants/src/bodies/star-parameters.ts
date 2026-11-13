@@ -72,7 +72,7 @@ const HABIBI_2017 = paper('Habibi et al. 2017', '10.3847/1538-4357/aa876f');
  * and for Vega and Altair, the temperatures at their poles and equators.
  *
  * Kept apart from {@link STARS}, so an app that shows a star's class and
- * temperature loads only these. {@link withObservations} puts them back on
+ * temperature loads only these. {@link withObservations} puts them on
  * the stars. Every value carries the DOI of its paper; see `STARS` for how
  * they were chosen.
  *

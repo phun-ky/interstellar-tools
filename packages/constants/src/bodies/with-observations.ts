@@ -26,14 +26,14 @@ const attach = <B extends { id: string }>(
   });
 
 /**
- * The bodies, with **observations kept apart** put back on them: each body's
+ * The bodies, with **observations kept apart** put on them: each body's
  * entry in each group is merged into its `observations`.
  *
  * The datasets export what is measured about the bodies apart from them, keyed
  * by id, so an app loads only the groups it imports: `STAR_PARAMETERS`,
  * `STAR_ASTROMETRY`, `HELIOSPHERE`, `PLANET_RINGS`, `MOON_RING_ROLES`,
- * `INTERSTELLAR_OBJECT_OBSERVATIONS` and `DISCOVERIES`. This puts them back
- * together, for an app that wants everything on the body.
+ * `INTERSTELLAR_OBJECT_OBSERVATIONS` and `DISCOVERIES`. This puts them on the
+ * bodies, for an app that wants everything in one object.
  *
  * ::: info Notes
  *
@@ -63,7 +63,7 @@ export const withObservations = <
 ): B[] => attach(bodies, 'observations', groups);
 
 /**
- * The bodies, with **drawing groups kept apart** put back on them: each
+ * The bodies, with **drawing groups kept apart** put on them: each
  * body's entry in each group is merged into its `display`, beside its colour.
  *
  * @param bodies - The bodies, such as `PLANETS`.

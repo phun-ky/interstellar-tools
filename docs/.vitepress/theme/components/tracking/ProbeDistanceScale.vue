@@ -4,16 +4,16 @@
  * boundaries and the probes leaving it, on one logarithmic scale, with how
  * long each probe's signal takes to reach us. The planets and the belt come
  * from PLANETS and ASTEROID_BELTS, the boundaries from the Voyagers'
- * crossings in the Sun's `observations.astrosphere`, and the probes from
+ * crossings in HELIOSPHERE, and the probes from
  * PROBES with stateAt, on `date`. Use it in Markdown as
  * <ProbeDistanceScale>caption</ProbeDistanceScale>.
  */
 import {
   ASTEROID_BELTS,
   AU_METERS,
+  HELIOSPHERE,
   PLANETS,
-  SPEED_OF_LIGHT_M_PER_S,
-  STARS
+  SPEED_OF_LIGHT_M_PER_S
 } from '@interstellar-tools/constants';
 import { PROBES, stateAt } from '@interstellar-tools/tracking';
 import { computed } from 'vue';
@@ -52,8 +52,7 @@ const lightTime = (au: number) => {
     ? `${Math.round(minutes)} light-min`
     : `${(minutes / 60).toFixed(1)} light-h`;
 };
-const crossings = STARS.find(({ id }) => id === 'sun')!.observations!
-  .astrosphere!.crossings!;
+const crossings = HELIOSPHERE.crossings!;
 const span = (boundary: string) => {
   const distances = crossings
     .filter((crossing) => crossing.boundary === boundary)

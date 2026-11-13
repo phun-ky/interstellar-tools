@@ -9,7 +9,7 @@ import type {
  * circulars. For the interstellar objects so far.
  *
  * Small and apart, so an app that shows a discovery date loads only this.
- * {@link withObservations} puts it back, as a body's
+ * {@link withObservations} puts it on, as a body's
  * `observations.discovery`.
  *
  * @group Observations

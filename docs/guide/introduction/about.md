@@ -32,8 +32,8 @@ simulation, visualization, mission tooling, and teaching.
   [how versions work](../upgrading.md#how-versions-work).
 - Validation: unit tests in place; not yet cross-validated against flight-grade
   references.
-- Runtime targets: Node 22.9+, modern browsers with ESM bundlers (Vite, Webpack,
-  etc.).
+- Runtime targets: Node 22.12+, modern browsers with ESM bundlers (Vite,
+  Webpack, etc.).
 
 ## Why this exists
 

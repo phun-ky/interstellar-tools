@@ -17,7 +17,8 @@ The full documentation lives at
 
 ## Installation
 
-- [Node.js](https://nodejs.org/) version 22.9.0 or higher
+- [Node.js](https://nodejs.org/) version 22.12.0 or higher
+- ES modules; `require()` needs Node 22.12 or later
 
 ```shell [npm]
 npm i --save @interstellar-tools/temporal

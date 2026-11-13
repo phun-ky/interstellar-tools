@@ -2,14 +2,13 @@
 /**
  * The heliosphere side on, the interstellar wind from the left, with the
  * paths of the probes leaving it. The bubble, the wind's direction and the
- * Voyagers' crossings come from the Sun's `observations.astrosphere` in
- * STARS; the paths, from launch to 2027, from probe-paths.json (JPL
+ * Voyagers' crossings come from HELIOSPHERE in the constants package; the paths, from launch to 2027, from probe-paths.json (JPL
  * Horizons). The heliopause is a Rankine half-body, the shape a steady flow
  * makes round a source, sized by the heliopause's distance to the nose; the
  * termination shock is drawn only on the side the Voyagers crossed it. Use
  * it in Markdown as <HeliosphereSideView>caption</HeliosphereSideView>.
  */
-import { STARS } from '@interstellar-tools/constants';
+import { HELIOSPHERE } from '@interstellar-tools/constants';
 import { PROBES } from '@interstellar-tools/tracking';
 import { computed } from 'vue';
 
@@ -42,8 +41,7 @@ const line = (points: Point[]) =>
   `M${points.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' L')}`;
 const onCanvas = ([x, y]: Point) =>
   x >= -40 && x <= WIDTH + 40 && y >= -40 && y <= HEIGHT + 40;
-const sun = STARS.find(({ id }) => id === 'sun')!;
-const astrosphere = sun.observations!.astrosphere!;
+const astrosphere = HELIOSPHERE;
 // The axes of the view: towards the nose, and north square to it
 const upwind = ecliptic(
   astrosphere.upwind!.eclipticLongitude,

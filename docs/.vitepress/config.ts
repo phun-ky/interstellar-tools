@@ -250,6 +250,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: 'Release notes', link: '/guide/releases/' },
+            { text: '3.0 release notes', link: '/guide/releases/3.0' },
             { text: '2.0 release notes', link: '/guide/releases/2.0' },
             { text: '1.0 release notes', link: '/guide/releases/1.0' },
             { text: 'Upgrading', link: '/guide/upgrading' }

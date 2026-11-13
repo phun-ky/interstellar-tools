@@ -1,6 +1,7 @@
 import type { DistanceInterface } from './distance.js';
 import type { Vector3DTupleType } from './math.js';
 import type { DegreesType, Radians } from './numeric.js';
+import type { SpeedInterface } from './quantities.js';
 import type { TemporalInterface } from './temporal.js';
 
 /**
@@ -304,7 +305,7 @@ export interface FullOrbitInterface extends OrbitInterface {
  *   om: 308.148 as DegreesType,
  *   angle: -1.8537 as Radians,
  *   periapsisTime: new Date('2019-12-08T13:16:04Z'),
- *   excessSpeed: 32.28,
+ *   excessSpeed: { value: 32.28, unit: 'km/s' },
  *   frame: { plane: 'ecliptic' }
  * };
  * ```
@@ -329,8 +330,8 @@ export interface OpenOrbitInterface {
   om: DegreesType;
   /** When it passes periapsis, in UTC. */
   periapsisTime: Date;
-  /** Hyperbolic excess speed $v_\infty$: its speed far from its parent, coming in, in km/s. */
-  excessSpeed: number;
+  /** Hyperbolic excess speed $v_\infty$: its speed far from its parent, coming in. */
+  excessSpeed: SpeedInterface;
   /** The plane `i`, `om` and `w` are measured from. */
   frame?: OrbitFrameInterface;
 }

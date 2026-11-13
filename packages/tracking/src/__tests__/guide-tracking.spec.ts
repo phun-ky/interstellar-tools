@@ -1,7 +1,7 @@
 import {
   AU_METERS,
+  HELIOSPHERE,
   SPEED_OF_LIGHT_M_PER_S,
-  STARS,
   WGS84
 } from '@interstellar-tools/constants';
 import {
@@ -360,8 +360,7 @@ describe('Tracking guide: probes', () => {
   });
 
   test('the heliosphere the Voyagers crossed, and the shape drawn of it', () => {
-    const sun = STARS.find(({ id }) => id === 'sun')!;
-    const { astropause, upwind, crossings } = sun.observations!.astrosphere!;
+    const { astropause, upwind, crossings } = HELIOSPHERE;
     const b = astropause!.nose!.value;
     // A Rankine half-body b to the nose: r = b φ / sin φ, φ from the nose
     const halfBody = (phi: number) => (b * phi) / Math.sin(phi);

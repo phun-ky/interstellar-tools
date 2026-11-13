@@ -16,24 +16,54 @@ import {
   ASTEROIDS,
   AU_METERS,
   COMETS,
+  DISCOVERIES,
   G_SI,
   GALAXIES,
-  INTERSTELLAR_OBJECTS,
+  HELIOSPHERE,
+  HELIOSPHERE_DISPLAY,
+  INTERSTELLAR_OBJECT_OBSERVATIONS,
+  INTERSTELLAR_OBJECTS as INTERSTELLAR_OBJECT_BODIES,
   J2000_UTC,
   LY_PER_PC,
-  MOONS,
-  PLANETS,
+  MOON_RING_ROLES,
+  MOONS as MOON_BODIES,
+  PLANET_RINGS,
+  PLANETS as PLANET_BODIES,
+  RING_DISPLAY,
   SECONDS_PER_DAY,
   SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K,
   SOLAR_GM_NOMINAL_M3_PER_S2,
   SPEED_OF_LIGHT_M_PER_S,
-  STARS,
+  STAR_ASTROMETRY,
+  STAR_PARAMETERS,
+  STARS as STAR_BODIES,
   SUN_GALACTOCENTRIC_DISTANCE,
   SUN_GALACTOCENTRIC_VELOCITY,
   SUN_HEIGHT_ABOVE_GALACTIC_PLANE,
   SYSTEMS,
-  WGS84
+  WGS84,
+  withDisplay,
+  withObservations
 } from '../../index.js';
+
+// The datasets carry what draws and moves the bodies; what is measured about
+// them is exported apart. Put back together, they're checked as one
+const STARS = withDisplay(
+  withObservations(STAR_BODIES, STAR_PARAMETERS, STAR_ASTROMETRY, {
+    sun: { astrosphere: HELIOSPHERE }
+  }),
+  { sun: { astrosphere: HELIOSPHERE_DISPLAY } }
+);
+const PLANETS = withDisplay(
+  withObservations(PLANET_BODIES, PLANET_RINGS),
+  RING_DISPLAY
+);
+const MOONS = withObservations(MOON_BODIES, MOON_RING_ROLES);
+const INTERSTELLAR_OBJECTS = withObservations(
+  INTERSTELLAR_OBJECT_BODIES,
+  INTERSTELLAR_OBJECT_OBSERVATIONS,
+  DISCOVERIES
+);
 
 type MeasureType = { value: number; unit: string };
 type OrbitingType = {
@@ -41,7 +71,7 @@ type OrbitingType = {
   name: string;
   parent?: string;
   orbit?: OrbitInterface;
-  mass?: number;
+  mass?: { value: number; unit: string };
 };
 type BodyType =
   | PlanetInterface
@@ -130,7 +160,7 @@ const assertValidOrbit = (name: string, orbit: OrbitInterface) => {
 
 // Total mass of a star or system in M☉, summing a system's members
 const massOf = (node: OrbitingType): number =>
-  node.mass ??
+  node.mass?.value ??
   NODES.filter((child) => child.parent === node.id).reduce(
     (sum, child) => sum + massOf(child),
     0
@@ -822,7 +852,7 @@ describe('Sagittarius A* and the S-stars', () => {
     const GM_SUN = STARS.find(({ id }) => id === 'sun')!.mu!;
 
     assert.equal(sgrA.id, 'sagittarius-a-star');
-    assert.ok(Math.abs(sgrA.mu! / (GM_SUN * sgrA.mass) - 1) < 1e-12);
+    assert.ok(Math.abs(sgrA.mu! / (GM_SUN * sgrA.mass.value) - 1) < 1e-12);
     assert.equal(sgrA.distance!.unit, 'ly');
     assert.ok(Math.abs(sgrA.distance!.value - 8275.9 * LY_PER_PC) < 0.01);
     // 51.8 μas (EHT 2022)
@@ -846,7 +876,8 @@ describe('Sagittarius A* and the S-stars', () => {
       assert.ok(Math.abs(orbit!.a.value - a * 8275.9) < 0.1, `${name}.orbit.a`);
       assert.equal(orbit!.e, e, `${name}.orbit.e`);
       assert.deepEqual([orbit!.i, orbit!.om, orbit!.w], [i, om, w], name);
-      assert.equal(mass, m, `${name}.mass`);
+      assert.equal(mass?.value, m, `${name}.mass`);
+      assert.equal(mass?.unit, 'M_sun', `${name}.mass`);
       assert.ok(Math.abs(radius.value - r * 695_700) < 1, `${name}.radius`);
     }
   });
@@ -879,7 +910,7 @@ describe('Sagittarius A* and the S-stars', () => {
 
   test('gives each period within 1 % of Kepler’s third law around Sagittarius A*', () => {
     for (const { name, orbit } of sStars) {
-      const kepler = Math.sqrt(orbit!.a.value ** 3 / sgrA.mass);
+      const kepler = Math.sqrt(orbit!.a.value ** 3 / sgrA.mass.value);
 
       assert.ok(
         Math.abs(orbit!.period.value / kepler - 1) < 0.01,
@@ -1174,12 +1205,16 @@ describe('GALAXIES', () => {
     const GM_SUN = STARS.find(({ id }) => id === 'sun')!.mu!;
 
     for (const { id, name, blackHole } of GALAXIES) {
-      assert.equal(blackHole?.mass, masses[id], name);
+      assert.equal(blackHole?.mass.value, masses[id], name);
 
       if (!blackHole) continue;
 
+      assert.equal(blackHole.mass.unit, 'M_sun', name);
+
       const radius =
-        (2 * GM_SUN * blackHole.mass) / SPEED_OF_LIGHT_M_PER_S ** 2 / AU_METERS;
+        (2 * GM_SUN * blackHole.mass.value) /
+        SPEED_OF_LIGHT_M_PER_S ** 2 /
+        AU_METERS;
 
       assert.equal(blackHole.radius.unit, 'au', name);
       assert.ok(
@@ -1893,8 +1928,8 @@ describe('INTERSTELLAR_OBJECTS', () => {
         (Math.sqrt(SUN_GM_AU3_PER_D2 / -orbit.a.value) * KM_PER_AU) / 86_400;
 
       assert.ok(
-        Math.abs(speed - orbit.excessSpeed) < 0.15,
-        `${name}: ${orbit.excessSpeed} km/s against ${speed} km/s`
+        Math.abs(speed - orbit.excessSpeed.value) < 0.15,
+        `${name}: ${orbit.excessSpeed.value} km/s against ${speed} km/s`
       );
     }
   });
@@ -1903,9 +1938,15 @@ describe('INTERSTELLAR_OBJECTS', () => {
     const [oumuamua, borisov, atlas] = INTERSTELLAR_OBJECTS;
 
     // Bailer-Jones et al. 2018 and 2020, Seligman et al. 2025
-    assert.equal(oumuamua!.orbit.excessSpeed, 26.39);
-    assert.equal(borisov!.orbit.excessSpeed, 32.28);
-    assert.ok(Math.abs(atlas!.orbit.excessSpeed - 57.942) < 0.049);
+    assert.deepEqual(oumuamua!.orbit.excessSpeed, {
+      value: 26.39,
+      unit: 'km/s'
+    });
+    assert.deepEqual(borisov!.orbit.excessSpeed, {
+      value: 32.28,
+      unit: 'km/s'
+    });
+    assert.ok(Math.abs(atlas!.orbit.excessSpeed.value - 57.942) < 0.049);
     // Trilling et al. 2018, Jewitt et al. 2020, Hui et al. 2026
     assert.deepEqual(
       INTERSTELLAR_OBJECTS.map(({ radius }) => radius),
@@ -2388,5 +2429,45 @@ describe('ring display', () => {
       );
       assert.equal(display!.rings!.shadows, id === 'saturn' || undefined, id);
     }
+  });
+});
+
+describe('masses and speeds', () => {
+  test('give every star’s and black hole’s mass in M☉, and the excess speeds in km/s', () => {
+    for (const { name, mass } of STARS)
+      if (mass) {
+        assert.equal(mass.unit, 'M_sun', name);
+        assert.ok(mass.value > 0, name);
+      }
+
+    for (const { name, blackHole } of GALAXIES)
+      if (blackHole) assert.equal(blackHole.mass.unit, 'M_sun', name);
+
+    for (const { name, orbit } of INTERSTELLAR_OBJECTS)
+      assert.equal(orbit.excessSpeed.unit, 'km/s', name);
+  });
+});
+
+describe('the datasets apart from their observations', () => {
+  test('carry no observations, and draw with nothing but hints', () => {
+    for (const [label, bodies] of Object.entries({
+      STARS: STAR_BODIES,
+      PLANETS: PLANET_BODIES,
+      MOONS: MOON_BODIES,
+      INTERSTELLAR_OBJECTS: INTERSTELLAR_OBJECT_BODIES
+    }))
+      for (const body of bodies as readonly {
+        id: string;
+        observations?: unknown;
+        display?: object;
+      }[]) {
+        assert.equal(body.observations, undefined, `${label} ${body.id}`);
+
+        for (const group of Object.keys(body.display ?? {}))
+          assert.ok(
+            ['color', 'size', 'opacity', 'density'].includes(group),
+            `${label} ${body.id}.display.${group}`
+          );
+      }
   });
 });

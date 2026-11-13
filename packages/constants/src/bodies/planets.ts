@@ -1,12 +1,76 @@
 import { DegreesType, PlanetsType, Radians } from '@interstellar-tools/types';
 
 import { iauTerm } from './iau.js';
-import { RING_DISPLAY } from './ring-display.js';
-import { PLANET_RINGS } from './rings.js';
-import { withDisplay, withObservations } from './with-observations.js';
 
-// The planets, with what draws and moves them
-const PLANET_BODIES: PlanetsType = [
+/**
+ * Represents a dataset of planets and planetoids in the solar system.
+ *
+ *
+ * ::: info
+ *
+ * - Units: `a` (au), `period` (days), `radius` (km); coordinates `x`,`y`,`z` in au.
+ * - `orbit.angle` is the true anomaly at J2000 (2000-01-01 12:00 TT). `x`,`y`,`z` are the heliocentric
+ *   position at J2000 in the J2000 ecliptic frame, x towards the equinox.
+ * - For the planets, both are computed from the J2000 elements in JPL's "Approximate Positions of the
+ *   Planets" (Table 1), using this dataset's `a` and `e`. For the dwarf planets, the orbit and position
+ *   are JPL Horizons' osculating heliocentric elements and state at J2000; Pluto's are its system
+ *   barycenter's, which Charon also circles. Sedna's orbit around the Solar System's barycenter is
+ *   longer, about 506 au and 11 400 years.
+ * - `i`, `w` and `om`, in degrees, are against the J2000 ecliptic, `frame`, from the same sources.
+ *   Earth's orbit defines the ecliptic, so its `i` and `om` are 0, and `w` is its longitude of
+ *   perihelion.
+ * - TRAPPIST-1's seven planets orbit their star, `trappist-1a`, with `i` and `w` on the sky,
+ *   `frame: { plane: 'sky' }`, and have no `x`,`y`,`z`, which are heliocentric.
+ * - `period` is always positive; retrograde orbits have `retrograde: true`.
+ * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
+ *   (Archinal et al. 2018), and for Earth the IERS's Earth rotation angle. The IAU gives no rate
+ *   for the other dwarf planets, so theirs is a light curve's. Venus, Uranus and Pluto spin
+ *   backwards, `retrograde: true`. TRAPPIST-1's planets' spins aren't measured.
+ * - `rotation.obliquity` is the axial tilt in degrees, the angle between the spin axis, by the
+ *   right-hand rule, and the orbit's pole: from the IAU pole at J2000 and JPL's mean orbit, to
+ *   0.01°. Over 90°, as for Venus, Uranus and Pluto, the body spins backwards. Pluto's is 119.61°:
+ *   the 122.53° often quoted comes from the IAU's pole before 2009.
+ * - `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), with every periodic term:
+ *   without them Mars's pole would be 1.6° off, and its tilt 23.9°. Earth's is the 2009 report's
+ *   (Archinal et al. 2011), which the 2015 report dropped: its prime meridian can be 150″ or more off,
+ *   so use the IERS's Earth rotation angle for precise work. The planets' poles are the IAU's
+ *   `'north'`, on the north side of the solar system's invariable plane, so Venus's and Uranus's
+ *   prime meridians turn backwards; Ceres's and Pluto's are `'positive'`, by the right-hand rule.
+ *   The IAU has none for the other dwarf planets.
+ * - The rings aren't carried here, so an app loads them only where it shows them. They're exported
+ *   apart, keyed by planet id: {@link PLANET_RINGS} and {@link RING_DISPLAY}. {@link withObservations}
+ *   and {@link withDisplay} put them on the planets, as the `observations.rings` and `display.rings`
+ *   described below.
+ * - `observations.rings` are Jupiter's, Saturn's, Uranus's and Neptune's rings, and Saturn's named
+ *   gaps, from the inside out: their edges in km from the planet's centre and their normal optical
+ *   depth, from the PDS Ring-Moon Systems Node's vital statistics and the papers they cite, and
+ *   Saturn's rings' thicknesses from NASA NSSDCA. Uranus's and Neptune's edges are half the ring's
+ *   width either side of its middle, the way the sources give them. A value given as a range, such
+ *   as the C ring's optical depth of 0.05 to 0.35, is the range's middle, with the range in its
+ *   `note`. Saturn's ringlets, Neptune's Adams ring arcs and its Arago ring are left out, and
+ *   `shepherdIds` names only the moons in `MOONS`.
+ * - `display.rings` draws them: each is as opaque as its densest ring, 1 − e^−τ, so Jupiter's
+ *   faint dust all but vanishes. Saturn's colour is measured from Cassini's natural-colour mosaic
+ *   PIA06175. No true-colour image of the others exists, so theirs are a neutral grey as dark as
+ *   their particles, which reflect about 1.5 % of the light. `display.derivation` says which.
+ *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+ * :::
+ *
+ *
+ * {@include ../../../../docs/partials/planets.md}
+ *
+ * **Example item in dataset:**
+ *
+ * {@includeCode ../bodies/planets.ts#datasetPlanets}
+ * @see {@link PlanetsType}.
+ * @group Datasets
+ * @example
+ * ```ts
+ * console.log(PLANETS[0].name); // "Mercury"
+ * ```
+ */
+export const PLANETS: PlanetsType = [
   // #region datasetPlanets
   {
     id: 'mercury',
@@ -803,75 +867,3 @@ const PLANET_BODIES: PlanetsType = [
     }
   }
 ] as const satisfies PlanetsType;
-
-/**
- * Represents a dataset of planets and planetoids in the solar system.
- *
- *
- * ::: info
- *
- * - Units: `a` (au), `period` (days), `radius` (km); coordinates `x`,`y`,`z` in au.
- * - `orbit.angle` is the true anomaly at J2000 (2000-01-01 12:00 TT). `x`,`y`,`z` are the heliocentric
- *   position at J2000 in the J2000 ecliptic frame, x towards the equinox.
- * - For the planets, both are computed from the J2000 elements in JPL's "Approximate Positions of the
- *   Planets" (Table 1), using this dataset's `a` and `e`. For the dwarf planets, the orbit and position
- *   are JPL Horizons' osculating heliocentric elements and state at J2000; Pluto's are its system
- *   barycenter's, which Charon also circles. Sedna's orbit around the Solar System's barycenter is
- *   longer, about 506 au and 11 400 years.
- * - `i`, `w` and `om`, in degrees, are against the J2000 ecliptic, `frame`, from the same sources.
- *   Earth's orbit defines the ecliptic, so its `i` and `om` are 0, and `w` is its longitude of
- *   perihelion.
- * - TRAPPIST-1's seven planets orbit their star, `trappist-1a`, with `i` and `w` on the sky,
- *   `frame: { plane: 'sky' }`, and have no `x`,`y`,`z`, which are heliocentric.
- * - `period` is always positive; retrograde orbits have `retrograde: true`.
- * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
- *   (Archinal et al. 2018), and for Earth the IERS's Earth rotation angle. The IAU gives no rate
- *   for the other dwarf planets, so theirs is a light curve's. Venus, Uranus and Pluto spin
- *   backwards, `retrograde: true`. TRAPPIST-1's planets' spins aren't measured.
- * - `rotation.obliquity` is the axial tilt in degrees, the angle between the spin axis, by the
- *   right-hand rule, and the orbit's pole: from the IAU pole at J2000 and JPL's mean orbit, to
- *   0.01°. Over 90°, as for Venus, Uranus and Pluto, the body spins backwards. Pluto's is 119.61°:
- *   the 122.53° often quoted comes from the IAU's pole before 2009.
- * - `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), with every periodic term:
- *   without them Mars's pole would be 1.6° off, and its tilt 23.9°. Earth's is the 2009 report's
- *   (Archinal et al. 2011), which the 2015 report dropped: its prime meridian can be 150″ or more off,
- *   so use the IERS's Earth rotation angle for precise work. The planets' poles are the IAU's
- *   `'north'`, on the north side of the solar system's invariable plane, so Venus's and Uranus's
- *   prime meridians turn backwards; Ceres's and Pluto's are `'positive'`, by the right-hand rule.
- *   The IAU has none for the other dwarf planets.
- * - `observations.rings` and `display.rings` are also exported apart, keyed by planet id: {@link PLANET_RINGS}
- *   and {@link RING_DISPLAY}. Import those to load them only where they're shown; {@link withObservations} and
- *   {@link withDisplay} put them back. From 3.0, `PLANETS` won't carry them (#417).
- * - `observations.rings` are Jupiter's, Saturn's, Uranus's and Neptune's rings, and Saturn's named
- *   gaps, from the inside out: their edges in km from the planet's centre and their normal optical
- *   depth, from the PDS Ring-Moon Systems Node's vital statistics and the papers they cite, and
- *   Saturn's rings' thicknesses from NASA NSSDCA. Uranus's and Neptune's edges are half the ring's
- *   width either side of its middle, the way the sources give them. A value given as a range, such
- *   as the C ring's optical depth of 0.05 to 0.35, is the range's middle, with the range in its
- *   `note`. Saturn's ringlets, Neptune's Adams ring arcs and its Arago ring are left out, and
- *   `shepherdIds` names only the moons in `MOONS`.
- * - `display.rings` draws them: each is as opaque as its densest ring, 1 − e^−τ, so Jupiter's
- *   faint dust all but vanishes. Saturn's colour is measured from Cassini's natural-colour mosaic
- *   PIA06175. No true-colour image of the others exists, so theirs are a neutral grey as dark as
- *   their particles, which reflect about 1.5 % of the light. `display.derivation` says which.
- *
- * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
- * :::
- *
- *
- * {@include ../../../../docs/partials/planets.md}
- *
- * **Example item in dataset:**
- *
- * {@includeCode ../bodies/planets.ts#datasetPlanets}
- * @see {@link PlanetsType}.
- * @group Datasets
- * @example
- * ```ts
- * console.log(PLANETS[0].name); // "Mercury"
- * ```
- */
-export const PLANETS: PlanetsType = withDisplay(
-  withObservations(PLANET_BODIES, PLANET_RINGS),
-  RING_DISPLAY
-);

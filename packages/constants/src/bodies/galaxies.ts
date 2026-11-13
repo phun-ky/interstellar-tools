@@ -70,7 +70,7 @@ export const GALAXIES: GalaxiesType = [
       id: 'sagittarius-a-star',
       name: 'Sagittarius A*',
       /** Mass in solar masses: GRAVITY Collaboration 2024 */
-      mass: 4.2996e6,
+      mass: { value: 4.2996e6, unit: 'M_sun' },
       /** G·M in m³/s², from its mass and the Sun's GM */
       mu: 5.70610407201485e26,
       /** Schwarzschild radius in au */
@@ -115,7 +115,7 @@ export const GALAXIES: GalaxiesType = [
     blackHole: {
       name: 'M31*',
       /** Mass in solar masses: Bender et al. 2005, 1.1 to 2.3 × 10⁸ */
-      mass: 1.4e8,
+      mass: { value: 1.4e8, unit: 'M_sun' },
       /** Schwarzschild radius in au */
       radius: { value: 2.764, unit: 'au' },
       x: { value: 0, unit: 'au' },
@@ -232,7 +232,7 @@ export const GALAXIES: GalaxiesType = [
     blackHole: {
       name: 'M87*',
       /** Mass in solar masses: EHT Collaboration 2019, from the ring at 16.8 Mpc. Stars give 5.4 × 10⁹ (Liepold et al. 2023) */
-      mass: 6.5e9,
+      mass: { value: 6.5e9, unit: 'M_sun' },
       /** Schwarzschild radius in au */
       radius: { value: 128.318, unit: 'au' },
       /** The first black hole imaged: a ring of 42 μas (EHT Collaboration 2019) */
@@ -257,7 +257,7 @@ export const GALAXIES: GalaxiesType = [
     blackHole: {
       name: 'Centaurus A*',
       /** Mass in solar masses: Cappellari et al. 2009, from its stars, ± 3.0 × 10⁷ */
-      mass: 5.5e7,
+      mass: { value: 5.5e7, unit: 'M_sun' },
       /** Schwarzschild radius in au */
       radius: { value: 1.08577, unit: 'au' },
       x: { value: 0, unit: 'au' },

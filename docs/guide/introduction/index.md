@@ -7,7 +7,8 @@ calculations safely.
 
 ## Prerequisites
 
-- **Node.js**: version 22.9.0 or higher recommended
+- **Node.js**: version 22.12.0 or higher; `require()` needs it for these ES
+  modules
 - **TypeScript**: version 5+ recommended
 
 ## Install
