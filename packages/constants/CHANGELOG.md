@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.15.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.14.0...%40interstellar-tools%2Fconstants%402.15.0) (2026-11-13)
+
+### Feature
+
+* 🎸 Export the bodies' observations apart, so apps load only what they use ([0c38383](https://github.com/phun-ky/interstellar-tools/commit/0c383834dd3073e131b174bb8dd3090c5ae2d970)), references [#417](https://github.com/phun-ky/interstellar-tools/issues/417)
+
 ## [2.14.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.13.0...%40interstellar-tools%2Fconstants%402.14.0) (2026-11-12)
 
 ### Feature

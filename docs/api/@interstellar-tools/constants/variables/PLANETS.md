@@ -8,7 +8,7 @@ const PLANETS: PlanetsType;
 ```
 
 Defined in:
-[bodies/planets.ts:75](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/planets.ts#L75)
+[bodies/planets.ts:874](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/planets.ts#L874)
 
 Represents a dataset of planets and planetoids in the solar system.
 
@@ -58,6 +58,14 @@ Represents a dataset of planets and planetoids in the solar system.
   on the north side of the solar system's invariable plane, so Venus's and
   Uranus's prime meridians turn backwards; Ceres's and Pluto's are `'positive'`,
   by the right-hand rule. The IAU has none for the other dwarf planets.
+
+- `observations.rings` and `display.rings` are also exported apart, keyed by
+  planet id: [PLANET_RINGS](PLANET_RINGS.md) and
+  [RING_DISPLAY](RING_DISPLAY.md). Import those to load them only where they're
+  shown; [withObservations](../functions/withObservations.md) and
+  [withDisplay](../functions/withDisplay.md) put them back. From 3.0, `PLANETS`
+  won't carry them
+  ([#417](https://github.com/phun-ky/interstellar-tools/issues/417)).
 
 - `observations.rings` are Jupiter's, Saturn's, Uranus's and Neptune's rings,
   and Saturn's named gaps, from the inside out: their edges in km from the

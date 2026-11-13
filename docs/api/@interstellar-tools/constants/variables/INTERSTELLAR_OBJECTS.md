@@ -8,7 +8,7 @@ const INTERSTELLAR_OBJECTS: InterstellarObjectsType;
 ```
 
 Defined in:
-[bodies/interstellar-objects.ts:77](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L77)
+[bodies/interstellar-objects.ts:162](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L162)
 
 Represents the **interstellar objects** seen so far: bodies from other stars'
 systems, passing the Sun once on open orbits.
@@ -49,6 +49,13 @@ systems, passing the Sun once on open orbits.
 
 - `rotation`: ʻOumuamua tumbles, its spin axis circling every 8.67 h (Belton et
   al. 2018). Borisov's and 3I/ATLAS's spins aren't settled, so they have none.
+
+- `observations` are also exported apart, keyed by id:
+  [INTERSTELLAR_OBJECT_OBSERVATIONS](INTERSTELLAR_OBJECT_OBSERVATIONS.md), and
+  their discoveries in [DISCOVERIES](DISCOVERIES.md). Import those to load only
+  what an app shows; [withObservations](../functions/withObservations.md) puts
+  them back. From 3.0, `INTERSTELLAR_OBJECTS` won't carry them
+  ([#417](https://github.com/phun-ky/interstellar-tools/issues/417)).
 
 - `observations.orbitSolution` is the JPL solution each orbit comes from, as its
   Small-Body Database gives it on 12 November 2026: its epoch, arc and
@@ -121,74 +128,7 @@ Every interstellar object seen so far, as of 2026.
     size: 2
   },
   /** Effective radius in km, of an elongated body */
-  radius: { value: 0.07, unit: 'km' },
-  observations: {
-    identifiers: { spkId: 50788063, aliases: ['A/2017 U1', 'C/2017 U1'] },
-    discovery: {
-      date: new Date('2017-10-19'),
-      discoverers: ['R. Weryk'],
-      facility: 'Pan-STARRS 1, Haleakala (F51)'
-    },
-    /** JPL's solution #16, at its epoch, with A1, A2 and A3 at 1 au */
-    orbitSolution: {
-      epoch: { jd: 2458080.5, timeScale: 'TDB' },
-      observationArc: { value: 80, unit: 'd' },
-      observationCount: 207,
-      firstObservation: new Date('2017-10-14'),
-      lastObservation: new Date('2018-01-02'),
-      sigma: {
-        e: 2.1064e-5,
-        a: 1.0015e-4,
-        q: 6.6635e-6,
-        i: 2.8826e-4,
-        om: 2.5422e-4,
-        w: 1.2495e-3
-      },
-      nonGravitational: {
-        a1: {
-          value: 2.790193364e-7,
-          unit: 'au/d2',
-          uncertainty: sigma(3.574e-8)
-        },
-        a2: {
-          value: 1.44126416e-8,
-          unit: 'au/d2',
-          uncertainty: sigma(2.445e-8)
-        },
-        a3: {
-          value: 1.573922616e-8,
-          unit: 'au/d2',
-          uncertainty: sigma(2.249e-8)
-        }
-      },
-      source: sbdb('1I')
-    },
-    /** Where it came from: near Vega, in Lyra */
-    incomingRadiant: {
-      rightAscension: 279.499 as DegreesType,
-      declination: 33.865 as DegreesType
-    },
-    /** A1 in m/s², with no coma to push it */
-    anomalousAcceleration: {
-      value: 5.59155e-6,
-      unit: 'm/s2',
-      uncertainty: sigma(7.162e-7),
-      provenance: 'derived',
-      note: 'JPL’s A1 at 1 au, from au/d²',
-      source: sbdb('1I')
-    },
-    nucleus: {
-      reflectance: {
-        absoluteMagnitude: {
-          value: 22.08,
-          unit: 'mag',
-          uncertainty: sigma(0.445),
-          source: sbdb('1I')
-        }
-      }
-    },
-    sources: [sbdb('1I'), mpec('K17/K17UI1'), mpec('K17/K17V17')]
-  }
+  radius: { value: 0.07, unit: 'km' }
 },
 ```
 

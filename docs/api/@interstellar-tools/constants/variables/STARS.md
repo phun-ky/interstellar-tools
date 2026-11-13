@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:164](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L164)
+[bodies/stars.ts:687](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L687)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -37,6 +37,15 @@ Represents a dataset of well-known stars within the Milky Way.
 
 - The Sun's `rotation.iau` is the IAU's rotation model (Archinal et al. 2018),
   turning with the Carrington period.
+
+- `observations` are also exported apart, keyed by star id:
+  [STAR_PARAMETERS](STAR_PARAMETERS.md), [STAR_ASTROMETRY](STAR_ASTROMETRY.md)
+  and [HELIOSPHERE](HELIOSPHERE.md), with
+  [HELIOSPHERE_DISPLAY](HELIOSPHERE_DISPLAY.md) for `display.astrosphere`.
+  Import those to load only what an app shows;
+  [withObservations](../functions/withObservations.md) puts them back. From 3.0,
+  `STARS` won't carry them
+  ([#417](https://github.com/phun-ky/interstellar-tools/issues/417)).
 
 - `observations.spectralClassification` is each star's `type` split into its
   parts.
@@ -146,82 +155,7 @@ time.
   /** Galactic position in light-years (relative to Milky Way center) */
   x: { value: 25.3, unit: 'ly' },
   y: { value: 27230.011753394454, unit: 'ly' },
-  z: { value: 0, unit: 'ly' },
-  observations: {
-    gravityDarkening: {
-      pole: {
-        value: 10059,
-        unit: 'K',
-        uncertainty: sigma(13),
-        source: YOON_2010
-      },
-      equator: {
-        value: 8152,
-        unit: 'K',
-        uncertainty: sigma(42),
-        source: YOON_2010
-      }
-    },
-    luminosity: {
-      value: 40.12,
-      unit: 'L_sun',
-      uncertainty: { plus: 0.46, minus: 0.45 },
-      provenance: 'derived',
-      note: 'From log L/L☉ = 1.6034 ± 0.0049',
-      source: YOON_2010
-    },
-    logSurfaceGravity: {
-      value: 4.021,
-      unit: 'dex',
-      uncertainty: sigma(0.014),
-      note: 'At its pole: 3.655 ± 0.021 at its equator',
-      source: YOON_2010
-    },
-    spectralClassification: {
-      raw: 'A0V',
-      spectralClass: 'A',
-      subclass: 0,
-      luminosityClass: 'V'
-    },
-    identifiers: {
-      hip: 91262,
-      hd: 172167,
-      catalogs: { HR: '7001', GJ: '721' },
-      aliases: ['α Lyr']
-    },
-    astrometry: {
-      direction: {
-        rightAscension: 279.23473479 as DegreesType,
-        declination: 38.78368896 as DegreesType
-      },
-      epoch: J2000,
-      parallax: {
-        value: 130.23,
-        unit: 'mas',
-        uncertainty: sigma(0.36),
-        source: HIPPARCOS
-      },
-      properMotion: {
-        rightAscension: 200.94,
-        declination: 286.23,
-        uncertainty: { rightAscension: sigma(0.32), declination: sigma(0.4) },
-        source: HIPPARCOS
-      },
-      radialVelocity: {
-        value: -13.5,
-        unit: 'km/s',
-        uncertainty: sigma(0.4),
-        source: simbad('* alf Lyr', '2004A&A...420..183A')
-      }
-    },
-    apparentMagnitudes: {
-      V: {
-        value: 0.03,
-        unit: 'mag',
-        source: simbad('* alf Lyr', '2002yCat.2237....0D')
-      }
-    }
-  }
+  z: { value: 0, unit: 'ly' }
 },
 ```
 

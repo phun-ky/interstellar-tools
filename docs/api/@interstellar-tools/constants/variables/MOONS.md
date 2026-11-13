@@ -8,7 +8,7 @@ const MOONS: MoonsType;
 ```
 
 Defined in:
-[bodies/moons.ts:60](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/moons.ts#L60)
+[bodies/moons.ts:1749](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/moons.ts#L1749)
 
 Represents a dataset of natural satellites (moons) in the solar system.
 
@@ -55,6 +55,12 @@ Represents a dataset of natural satellites (moons) in the solar system.
 - `rotation.obliquity` is only the Moon's, NASA's mean 6.68°. The IAU's models
   of the other moons assume their spin axes follow their orbits' poles, so a
   tilt worked out from them isn't one anyone measured.
+
+- `observations` are also exported apart, keyed by moon id, as
+  [MOON_RING_ROLES](MOON_RING_ROLES.md);
+  [withObservations](../functions/withObservations.md) puts them back. From 3.0,
+  `MOONS` won't carry them
+  ([#417](https://github.com/phun-ky/interstellar-tools/issues/417)).
 
 - `observations.ringInteraction` is `'source'` for the moons whose dust feeds a
   ring: Metis, Amalthea and Thebe for Jupiter's (Burns et al. 1999), Enceladus
