@@ -1,5 +1,35 @@
 # Changelog
 
+## [2.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.4.1...%40interstellar-tools%2Fmcp%402.0.0) (2026-11-13)
+
+### ⚠ BREAKING CHANGES
+
+* engines.node is >=22.12.0 in every package, dropping
+  Node 22.9 to 22.11.
+* StarInterface.mass, BlackHoleInterface.mass and
+  OpenOrbitInterface.excessSpeed are quantities with a unit, not numbers:
+  read star.mass.value, blackHole.mass.value and orbit.excessSpeed.value.
+* the bodies in STARS, PLANETS, MOONS and
+  INTERSTELLAR_OBJECTS have no observations, and no display groups beyond
+  their colour and size. Import the groups, or put them back with
+  withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY) and
+  withDisplay(PLANETS, RING_DISPLAY).
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@3.0.0 ([5d98738](https://github.com/phun-ky/interstellar-tools/commit/5d98738795aae62f392cdd70fefd01c39ebd4ae2))
+* 🤖 @interstellar-tools/equations@2.0.0 ([4ea0915](https://github.com/phun-ky/interstellar-tools/commit/4ea0915d2eb34ed42ad3bd5518bc5994a9e03dc8))
+* 🤖 @interstellar-tools/maps@0.12.0 ([6cc7652](https://github.com/phun-ky/interstellar-tools/commit/6cc765234e9844d1d751df04df2e413dda1a6494))
+* 🤖 @interstellar-tools/temporal@2.0.0 ([a837776](https://github.com/phun-ky/interstellar-tools/commit/a837776ed48a8ac81853cbee9090364dca92293e))
+* 🤖 @interstellar-tools/tracking@0.13.0 ([347cd11](https://github.com/phun-ky/interstellar-tools/commit/347cd116a86ccdaf88c9e53433418682bc95bf4f))
+* 🤖 @interstellar-tools/types@3.0.0 ([3c8ddc0](https://github.com/phun-ky/interstellar-tools/commit/3c8ddc0caa8852c508e51a7607b8c67866de1d92))
+* 🤖 Require Node 22.12 or later ([98324bd](https://github.com/phun-ky/interstellar-tools/commit/98324bdd410d21d668de8682ccea7fa6c4aa04db)), closes [#305](https://github.com/phun-ky/interstellar-tools/issues/305)
+
+### Refactoring
+
+* 💡 Give masses and excess speeds their units ([692679a](https://github.com/phun-ky/interstellar-tools/commit/692679a82534460e6337461c542a016652facbee))
+* 💡 Keep what is measured apart from the bodies ([ddbd828](https://github.com/phun-ky/interstellar-tools/commit/ddbd828071142ab3836d4a1edbefeca6ea4dd420)), closes [#417](https://github.com/phun-ky/interstellar-tools/issues/417)
+
 ## [1.4.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%401.4.0...%40interstellar-tools%2Fmcp%401.4.1) (2026-11-12)
 
 ### Tasks
