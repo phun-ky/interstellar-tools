@@ -8,7 +8,7 @@ import type {
  * and Thebe for Jupiter's (Burns et al. 1999), Enceladus for Saturn's E ring
  * and Phoebe for its Phoebe ring.
  *
- * Kept apart from {@link MOONS}; {@link withObservations} puts them back, as
+ * Kept apart from {@link MOONS}; {@link withObservations} puts them on, as
  * the moons' `observations.ringInteraction`.
  *
  * @group Observations

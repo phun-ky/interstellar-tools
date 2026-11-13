@@ -65,13 +65,12 @@ Earth's position: from Horizons, or roughly from `sunPosition` in
 The solar wind blows a bubble into the gas between the stars: the heliosphere.
 Where the wind slows below the speed of sound is the termination shock, and
 where it meets the interstellar gas is the heliopause. The Voyagers have crossed
-both, and the Sun's entry in `STARS` keeps where and when:
+both, and `HELIOSPHERE` keeps where and when:
 
 ```ts
-import { STARS } from '@interstellar-tools/constants';
+import { HELIOSPHERE } from '@interstellar-tools/constants';
 
-const sun = STARS.find(({ id }) => id === 'sun')!;
-const { astropause, crossings } = sun.observations!.astrosphere!;
+const { astropause, crossings } = HELIOSPHERE;
 const nose = astropause!.nose!.value; // 115: au to the heliopause, upwind
 const crossed = crossings!.map(({ probeId, boundary, distance }) =>
   [probeId, boundary, distance.value].join(' ')

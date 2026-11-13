@@ -1,11 +1,66 @@
 import { DegreesType, MoonsType, Radians } from '@interstellar-tools/types';
 
 import { iauTerm } from './iau.js';
-import { MOON_RING_ROLES } from './moon-ring-roles.js';
-import { withObservations } from './with-observations.js';
 
-// The moons, with what draws and moves them
-const MOON_BODIES: MoonsType = [
+/**
+ * Represents a dataset of natural satellites (moons) in the solar system.
+ *
+ *
+ * ::: info
+ *
+ * - Units: `a` in astronomical units (au), `period` in days (d), `radius` in kilometers (km),
+ *   `mu` in m³/s².
+ * - `a`, `e`, `i`, `w` and `om` are JPL's mean elements, in the plane JPL gives them in, `frame`:
+ *   the ecliptic for the Moon and the irregular moons Himalia, Pasiphae, Nereid and Halimede, a
+ *   Laplace plane for Mars's, Jupiter's and Saturn's regular moons, and the planet's equator for
+ *   Uranus's, Neptune's and Pluto's, with each plane's pole. Dysnomia's are Holler et al. 2021's,
+ *   against the ICRF equator, and Dimorphos's from JPL Horizons, against Didymos's equator, before
+ *   DART hit it.
+ * - `orbit.angle` is the true anomaly at J2000 that, with `w`, puts the moon where JPL Horizons has
+ *   it at J2000, within its plane. For a near-circular orbit the periapsis is barely defined, so
+ *   only `w + angle` matters. Irregular moons are strongly perturbed by the Sun, so their elements
+ *   describe J2000 only.
+ * - Moons orbit a planet, a dwarf planet, or an asteroid: Dimorphos orbits Didymos.
+ * - `mu` is the moon's G·M from JPL's satellite physical parameters, where JPL publishes one.
+ * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
+ *   (Archinal et al. 2018), or a light curve's period for Himalia, Nereid and Pluto's small moons,
+ *   which spin chaotically. Most moons keep one face to their planet, `synchronous: true`. Hyperion
+ *   tumbles, and Pasiphae's, Halimede's and Dysnomia's spins aren't known, so they have none.
+ * - `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), with every periodic term:
+ *   without them Triton's pole would be 21° off, and Mimas's prime meridian up to 58°. The Moon's
+ *   is the 2009 report's (Archinal et al. 2011), which the 2015 report dropped for the lunar
+ *   ephemeris' librations, and Phobos's has the 2019 correction (Archinal et al. 2019). Charon's
+ *   pole is `'positive'`, by the right-hand rule, and the others' `'north'`, so the prime meridians
+ *   of Uranus's moons and Triton turn backwards. The IAU has none for Himalia, Pasiphae, Hyperion,
+ *   Nereid, Halimede, Pluto's small moons, Dysnomia or Dimorphos.
+ * - `rotation.obliquity` is only the Moon's, NASA's mean 6.68°. The IAU's models of the other moons
+ *   assume their spin axes follow their orbits' poles, so a tilt worked out from them isn't one
+ *   anyone measured.
+ * - What is measured about the moons isn't carried here: it is exported apart, keyed by moon id, as
+ *   {@link MOON_RING_ROLES}. {@link withObservations} puts it on the moons, as the
+ *   `observations.ringInteraction` described below.
+ * - `observations.ringInteraction` is `'source'` for the moons whose dust feeds a ring: Metis,
+ *   Amalthea and Thebe for Jupiter's (Burns et al. 1999), Enceladus for Saturn's E ring and Phoebe
+ *   for its Phoebe ring.
+ * - Colors are hex strings used only for visual representation.
+ *
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+ * :::
+ *
+ * {@include ../../../../docs/partials/moons.md}
+ *
+ * @see {@link MoonsType}.
+ *
+ * **Example item in dataset:**
+ *
+ * {@includeCode ../bodies/moons.ts#datasetMoons}
+ * @group Datasets
+ * @example
+ * ```ts
+ * console.log(MOONS[0].name); // "Moon"
+ * ```
+ */
+export const MOONS: MoonsType = [
   // **Earth**
   // #region datasetMoons
   {
@@ -1688,62 +1743,3 @@ const MOON_BODIES: MoonsType = [
     }
   }
 ] as const satisfies MoonsType;
-
-/**
- * Represents a dataset of natural satellites (moons) in the solar system.
- *
- *
- * ::: info
- *
- * - Units: `a` in astronomical units (au), `period` in days (d), `radius` in kilometers (km),
- *   `mu` in m³/s².
- * - `a`, `e`, `i`, `w` and `om` are JPL's mean elements, in the plane JPL gives them in, `frame`:
- *   the ecliptic for the Moon and the irregular moons Himalia, Pasiphae, Nereid and Halimede, a
- *   Laplace plane for Mars's, Jupiter's and Saturn's regular moons, and the planet's equator for
- *   Uranus's, Neptune's and Pluto's, with each plane's pole. Dysnomia's are Holler et al. 2021's,
- *   against the ICRF equator, and Dimorphos's from JPL Horizons, against Didymos's equator, before
- *   DART hit it.
- * - `orbit.angle` is the true anomaly at J2000 that, with `w`, puts the moon where JPL Horizons has
- *   it at J2000, within its plane. For a near-circular orbit the periapsis is barely defined, so
- *   only `w + angle` matters. Irregular moons are strongly perturbed by the Sun, so their elements
- *   describe J2000 only.
- * - Moons orbit a planet, a dwarf planet, or an asteroid: Dimorphos orbits Didymos.
- * - `mu` is the moon's G·M from JPL's satellite physical parameters, where JPL publishes one.
- * - `rotation.period` is the sidereal rotation in days: 360° over the IAU's rotation rate
- *   (Archinal et al. 2018), or a light curve's period for Himalia, Nereid and Pluto's small moons,
- *   which spin chaotically. Most moons keep one face to their planet, `synchronous: true`. Hyperion
- *   tumbles, and Pasiphae's, Halimede's and Dysnomia's spins aren't known, so they have none.
- * - `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), with every periodic term:
- *   without them Triton's pole would be 21° off, and Mimas's prime meridian up to 58°. The Moon's
- *   is the 2009 report's (Archinal et al. 2011), which the 2015 report dropped for the lunar
- *   ephemeris' librations, and Phobos's has the 2019 correction (Archinal et al. 2019). Charon's
- *   pole is `'positive'`, by the right-hand rule, and the others' `'north'`, so the prime meridians
- *   of Uranus's moons and Triton turn backwards. The IAU has none for Himalia, Pasiphae, Hyperion,
- *   Nereid, Halimede, Pluto's small moons, Dysnomia or Dimorphos.
- * - `rotation.obliquity` is only the Moon's, NASA's mean 6.68°. The IAU's models of the other moons
- *   assume their spin axes follow their orbits' poles, so a tilt worked out from them isn't one
- *   anyone measured.
- * - `observations` are also exported apart, keyed by moon id, as {@link MOON_RING_ROLES}; {@link withObservations}
- *   puts them back. From 3.0, `MOONS` won't carry them (#417).
- * - `observations.ringInteraction` is `'source'` for the moons whose dust feeds a ring: Metis,
- *   Amalthea and Thebe for Jupiter's (Burns et al. 1999), Enceladus for Saturn's E ring and Phoebe
- *   for its Phoebe ring.
- * - Colors are hex strings used only for visual representation.
- *
- * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
- * :::
- *
- * {@include ../../../../docs/partials/moons.md}
- *
- * @see {@link MoonsType}.
- *
- * **Example item in dataset:**
- *
- * {@includeCode ../bodies/moons.ts#datasetMoons}
- * @group Datasets
- * @example
- * ```ts
- * console.log(MOONS[0].name); // "Moon"
- * ```
- */
-export const MOONS: MoonsType = withObservations(MOON_BODIES, MOON_RING_ROLES);

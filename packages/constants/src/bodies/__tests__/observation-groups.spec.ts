@@ -43,11 +43,28 @@ describe('observation groups', () => {
     }
   });
 
-  test('are what the datasets carry, value for value', () => {
+  test('go back on the bodies, value for value, with withObservations and withDisplay', () => {
+    const stars = withDisplay(
+      withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY, {
+        sun: { astrosphere: HELIOSPHERE }
+      }),
+      { sun: { astrosphere: HELIOSPHERE_DISPLAY } }
+    );
+    const planets = withDisplay(
+      withObservations(PLANETS, PLANET_RINGS),
+      RING_DISPLAY
+    );
+    const moons = withObservations(MOONS, MOON_RING_ROLES);
+    const objects = withObservations(
+      INTERSTELLAR_OBJECTS,
+      INTERSTELLAR_OBJECT_OBSERVATIONS,
+      DISCOVERIES
+    );
+
     for (const [id, parameters] of Object.entries(STAR_PARAMETERS))
       for (const [field, value] of Object.entries(parameters))
         assert.equal(
-          (find(STARS, id).observations as Record<string, unknown>)[field],
+          (find(stars, id).observations as Record<string, unknown>)[field],
           value,
           `${id}.${field}`
         );
@@ -55,32 +72,28 @@ describe('observation groups', () => {
     for (const [id, astrometry] of Object.entries(STAR_ASTROMETRY))
       for (const [field, value] of Object.entries(astrometry))
         assert.equal(
-          (find(STARS, id).observations as Record<string, unknown>)[field],
+          (find(stars, id).observations as Record<string, unknown>)[field],
           value,
           `${id}.${field}`
         );
 
     for (const [id, { rings }] of Object.entries(PLANET_RINGS))
-      assert.equal(find(PLANETS, id).observations?.rings, rings, id);
+      assert.equal(find(planets, id).observations?.rings, rings, id);
 
     for (const [id, { rings }] of Object.entries(RING_DISPLAY))
-      assert.equal(find(PLANETS, id).display?.rings, rings, id);
+      assert.equal(find(planets, id).display?.rings, rings, id);
 
     for (const [id, { ringInteraction }] of Object.entries(MOON_RING_ROLES))
       assert.equal(
-        find(MOONS, id).observations?.ringInteraction,
+        find(moons, id).observations?.ringInteraction,
         ringInteraction,
         id
       );
 
     for (const [id, { discovery }] of Object.entries(DISCOVERIES))
-      assert.equal(
-        find(INTERSTELLAR_OBJECTS, id).observations?.discovery,
-        discovery,
-        id
-      );
+      assert.equal(find(objects, id).observations?.discovery, discovery, id);
 
-    const sun = find(STARS, 'sun');
+    const sun = find(stars, 'sun');
 
     assert.equal(sun.observations?.astrosphere, HELIOSPHERE);
     assert.equal(sun.display?.astrosphere, HELIOSPHERE_DISPLAY);

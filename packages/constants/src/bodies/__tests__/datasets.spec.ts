@@ -16,24 +16,54 @@ import {
   ASTEROIDS,
   AU_METERS,
   COMETS,
+  DISCOVERIES,
   G_SI,
   GALAXIES,
-  INTERSTELLAR_OBJECTS,
+  HELIOSPHERE,
+  HELIOSPHERE_DISPLAY,
+  INTERSTELLAR_OBJECT_OBSERVATIONS,
+  INTERSTELLAR_OBJECTS as INTERSTELLAR_OBJECT_BODIES,
   J2000_UTC,
   LY_PER_PC,
-  MOONS,
-  PLANETS,
+  MOON_RING_ROLES,
+  MOONS as MOON_BODIES,
+  PLANET_RINGS,
+  PLANETS as PLANET_BODIES,
+  RING_DISPLAY,
   SECONDS_PER_DAY,
   SOLAR_EFFECTIVE_TEMPERATURE_NOMINAL_K,
   SOLAR_GM_NOMINAL_M3_PER_S2,
   SPEED_OF_LIGHT_M_PER_S,
-  STARS,
+  STAR_ASTROMETRY,
+  STAR_PARAMETERS,
+  STARS as STAR_BODIES,
   SUN_GALACTOCENTRIC_DISTANCE,
   SUN_GALACTOCENTRIC_VELOCITY,
   SUN_HEIGHT_ABOVE_GALACTIC_PLANE,
   SYSTEMS,
-  WGS84
+  WGS84,
+  withDisplay,
+  withObservations
 } from '../../index.js';
+
+// The datasets carry what draws and moves the bodies; what is measured about
+// them is exported apart. Put back together, they're checked as one
+const STARS = withDisplay(
+  withObservations(STAR_BODIES, STAR_PARAMETERS, STAR_ASTROMETRY, {
+    sun: { astrosphere: HELIOSPHERE }
+  }),
+  { sun: { astrosphere: HELIOSPHERE_DISPLAY } }
+);
+const PLANETS = withDisplay(
+  withObservations(PLANET_BODIES, PLANET_RINGS),
+  RING_DISPLAY
+);
+const MOONS = withObservations(MOON_BODIES, MOON_RING_ROLES);
+const INTERSTELLAR_OBJECTS = withObservations(
+  INTERSTELLAR_OBJECT_BODIES,
+  INTERSTELLAR_OBJECT_OBSERVATIONS,
+  DISCOVERIES
+);
 
 type MeasureType = { value: number; unit: string };
 type OrbitingType = {
@@ -2415,5 +2445,29 @@ describe('masses and speeds', () => {
 
     for (const { name, orbit } of INTERSTELLAR_OBJECTS)
       assert.equal(orbit.excessSpeed.unit, 'km/s', name);
+  });
+});
+
+describe('the datasets apart from their observations', () => {
+  test('carry no observations, and draw with nothing but hints', () => {
+    for (const [label, bodies] of Object.entries({
+      STARS: STAR_BODIES,
+      PLANETS: PLANET_BODIES,
+      MOONS: MOON_BODIES,
+      INTERSTELLAR_OBJECTS: INTERSTELLAR_OBJECT_BODIES
+    }))
+      for (const body of bodies as readonly {
+        id: string;
+        observations?: unknown;
+        display?: object;
+      }[]) {
+        assert.equal(body.observations, undefined, `${label} ${body.id}`);
+
+        for (const group of Object.keys(body.display ?? {}))
+          assert.ok(
+            ['color', 'size', 'opacity', 'density'].includes(group),
+            `${label} ${body.id}.display.${group}`
+          );
+      }
   });
 });

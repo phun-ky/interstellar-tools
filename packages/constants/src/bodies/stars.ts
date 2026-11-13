@@ -1,12 +1,70 @@
 import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
 
-import { HELIOSPHERE, HELIOSPHERE_DISPLAY } from './heliosphere.js';
-import { STAR_ASTROMETRY } from './star-astrometry.js';
-import { STAR_PARAMETERS } from './star-parameters.js';
-import { withDisplay, withObservations } from './with-observations.js';
-
-// The stars, with what draws and moves them
-const STAR_BODIES: StarsType = [
+/**
+ * Represents a dataset of well-known stars within the Milky Way.
+ *
+ * ::: info
+ *
+ * - Each star names its `parent` (a galaxy, a system barycenter, or Sagittarius A* for the S-stars)
+ *   and its `orbit` around it.
+ * - Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly, `period` in Myr.
+ *   Orbits within a system or around Sagittarius A*: `a` in au, `period` in d, yr or kyr. `angle` in radians. `mass` in M☉.
+ * - Orbits within a system or around Sagittarius A* that have an `i` are on the sky,
+ *   `frame: { plane: 'sky' }`: `i` to
+ *   the plane of the sky, `om` the position angle of the node from north through east.
+ * - `color` is for visualization only.
+ * - `period` is always positive; retrograde orbits have `retrograde: true`.
+ * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
+ *   published: none for Deneb, Sirius, Rigel and Canopus. The Sun's is the IAU's Carrington period, with its faster equator
+ *   and slower poles in `equatorialPeriod` and `polarPeriod`. A star's spin direction is unknown.
+ * - The Sun's `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), turning with the
+ *   Carrington period.
+ *
+ * - What is measured about the stars isn't carried here, so an app loads only what it shows. It is
+ *   exported apart, keyed by star id: {@link STAR_PARAMETERS}, {@link STAR_ASTROMETRY} and
+ *   {@link HELIOSPHERE}, with {@link HELIOSPHERE_DISPLAY} to draw the heliosphere.
+ *   {@link withObservations} and {@link withDisplay} put them on the stars, as the `observations` and
+ *   `display.astrosphere` described below.
+ * - `observations.spectralClassification` is each star's `type` split into its parts.
+ * - `observations.identifiers`, `astrometry` and `apparentMagnitudes` are given for every star but
+ *   the Sun and the S-stars, as SIMBAD has them: the ICRS position at J2000, and the parallax and
+ *   proper motion from the Hipparcos new reduction (van Leeuwen 2007), or from Gaia DR3 for
+ *   Sirius B, Proxima Centauri, Barnard's Star and TRAPPIST-1. α Centauri's parallax is Pourbaix
+ *   et al.'s (1997), and the radial velocities and V magnitudes credit the paper each is from.
+ *   SIMBAD lists Spica as one star, so Spica A carries the pair's values.
+ * - `observations.effectiveTemperature`, `luminosity` (L☉), `logSurfaceGravity` and `metallicity`
+ *   ([Fe/H]) are from the papers each credits, chosen to agree with the star's `mass` and
+ *   `radius`: with `radius`, the temperature and luminosity meet L = (R/R☉)² (T/T☉)⁴ within 12 %
+ *   for every star but the S-stars, whose radii aren't Habibi et al.'s. A luminosity given as
+ *   log L/L☉ is converted, error bars and all. Vega and Altair spin fast enough to be hotter at
+ *   their poles, so their temperatures are in `gravityDarkening`, and their gravities are the
+ *   pole's. The Sun's are the IAU's nominal values (Prša et al. 2016). A metallicity is left out
+ *   where no bulk [Fe/H] is measured, as for Altair, Spica and Sirius A; Deneb's and Rigel's are
+ *   [M/H]. Deneb's `radius` is Schiller & Przybilla's 203 R☉, like its mass.
+ * - The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is IBEX's map
+ *   (Reisenfeld et al. 2021): nearest just south of the nose, flaring towards the flanks, and at
+ *   least 350 au down the tail. Its nose faces `upwind`, where the interstellar wind comes from,
+ *   opposite the inflow direction McComas et al. 2015 give. `crossings` are the Voyagers'
+ *   termination shock and heliopause crossings, from the papers each credits, with the direction
+ *   each was in from JPL Horizons; Horizons puts them within 0.03 au of the papers' distances.
+ *   Whether the heliosphere has a bow shock is disputed, so it has none here. The Sun's
+ *   `display.astrosphere` keeps it hidden until a renderer offers to show it.
+ * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
+ * :::
+ *
+ * {@include ../../../../docs/partials/stars.md}
+ *
+ * **Example item in dataset:**
+ *
+ * {@includeCode ../bodies/stars.ts#datasetStars}
+ * @group Datasets
+ * @see {@link StarsType}.
+ * @example
+ * ```ts
+ * console.log(STARS[0].name); // "Sun"
+ * ```
+ */
+export const STARS: StarsType = [
   {
     id: 'sun',
     name: 'Sun',
@@ -621,72 +679,3 @@ const STAR_BODIES: StarsType = [
     }
   }
 ] as const satisfies StarsType;
-
-/**
- * Represents a dataset of well-known stars within the Milky Way.
- *
- * ::: info
- *
- * - Each star names its `parent` (a galaxy, a system barycenter, or Sagittarius A* for the S-stars)
- *   and its `orbit` around it.
- * - Units: `radius` (km). Orbits around the galaxy: `a` and `x`,`y`,`z` in ly, `period` in Myr.
- *   Orbits within a system or around Sagittarius A*: `a` in au, `period` in d, yr or kyr. `angle` in radians. `mass` in M☉.
- * - Orbits within a system or around Sagittarius A* that have an `i` are on the sky,
- *   `frame: { plane: 'sky' }`: `i` to
- *   the plane of the sky, `om` the position angle of the node from north through east.
- * - `color` is for visualization only.
- * - `period` is always positive; retrograde orbits have `retrograde: true`.
- * - `rotation.period` is the rotation, from interferometry, spectroscopy or starspots, where one is
- *   published: none for Deneb, Sirius, Rigel and Canopus. The Sun's is the IAU's Carrington period, with its faster equator
- *   and slower poles in `equatorialPeriod` and `polarPeriod`. A star's spin direction is unknown.
- * - The Sun's `rotation.iau` is the IAU's rotation model (Archinal et al. 2018), turning with the
- *   Carrington period.
- *
- * - `observations` are also exported apart, keyed by star id: {@link STAR_PARAMETERS}, {@link STAR_ASTROMETRY}
- *   and {@link HELIOSPHERE}, with {@link HELIOSPHERE_DISPLAY} for `display.astrosphere`. Import those to load
- *   only what an app shows; {@link withObservations} puts them back. From 3.0, `STARS` won't carry them (#417).
- * - `observations.spectralClassification` is each star's `type` split into its parts.
- * - `observations.identifiers`, `astrometry` and `apparentMagnitudes` are given for every star but
- *   the Sun and the S-stars, as SIMBAD has them: the ICRS position at J2000, and the parallax and
- *   proper motion from the Hipparcos new reduction (van Leeuwen 2007), or from Gaia DR3 for
- *   Sirius B, Proxima Centauri, Barnard's Star and TRAPPIST-1. α Centauri's parallax is Pourbaix
- *   et al.'s (1997), and the radial velocities and V magnitudes credit the paper each is from.
- *   SIMBAD lists Spica as one star, so Spica A carries the pair's values.
- * - `observations.effectiveTemperature`, `luminosity` (L☉), `logSurfaceGravity` and `metallicity`
- *   ([Fe/H]) are from the papers each credits, chosen to agree with the star's `mass` and
- *   `radius`: with `radius`, the temperature and luminosity meet L = (R/R☉)² (T/T☉)⁴ within 12 %
- *   for every star but the S-stars, whose radii aren't Habibi et al.'s. A luminosity given as
- *   log L/L☉ is converted, error bars and all. Vega and Altair spin fast enough to be hotter at
- *   their poles, so their temperatures are in `gravityDarkening`, and their gravities are the
- *   pole's. The Sun's are the IAU's nominal values (Prša et al. 2016). A metallicity is left out
- *   where no bulk [Fe/H] is measured, as for Altair, Spica and Sirius A; Deneb's and Rigel's are
- *   [M/H]. Deneb's `radius` is Schiller & Przybilla's 203 R☉, like its mass.
- * - The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is IBEX's map
- *   (Reisenfeld et al. 2021): nearest just south of the nose, flaring towards the flanks, and at
- *   least 350 au down the tail. Its nose faces `upwind`, where the interstellar wind comes from,
- *   opposite the inflow direction McComas et al. 2015 give. `crossings` are the Voyagers'
- *   termination shock and heliopause crossings, from the papers each credits, with the direction
- *   each was in from JPL Horizons; Horizons puts them within 0.03 au of the papers' distances.
- *   Whether the heliosphere has a bow shock is disputed, so it has none here. The Sun's
- *   `display.astrosphere` keeps it hidden until a renderer offers to show it.
- * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
- * :::
- *
- * {@include ../../../../docs/partials/stars.md}
- *
- * **Example item in dataset:**
- *
- * {@includeCode ../bodies/stars.ts#datasetStars}
- * @group Datasets
- * @see {@link StarsType}.
- * @example
- * ```ts
- * console.log(STARS[0].name); // "Sun"
- * ```
- */
-export const STARS: StarsType = withDisplay(
-  withObservations(STAR_BODIES, STAR_PARAMETERS, STAR_ASTROMETRY, {
-    sun: { astrosphere: HELIOSPHERE }
-  }),
-  { sun: { astrosphere: HELIOSPHERE_DISPLAY } }
-);

@@ -5,7 +5,7 @@ import type { ByBodyIdType, RingDisplayType } from '@interstellar-tools/types';
  * opaque as its densest ring, with Saturn's colour measured from Cassini's
  * images and the others' assumed. `derivation` says which.
  *
- * Kept apart from {@link PLANETS}; {@link withDisplay} puts them back, as
+ * Kept apart from {@link PLANETS}; {@link withDisplay} puts them on, as
  * the planets' `display.rings`.
  *
  * @group Observations

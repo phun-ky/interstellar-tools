@@ -28,7 +28,7 @@ const mpec = (path: string): ObservationSourceInterface => ({
  *
  * Kept apart from {@link INTERSTELLAR_OBJECTS}, so an app loads these only
  * when it shows them; their discoveries are in {@link DISCOVERIES}.
- * {@link withObservations} puts both back on the objects.
+ * {@link withObservations} puts both on the objects.
  *
  * @group Observations
  * @example

@@ -22,7 +22,8 @@ const REISENFELD_2021 = paper(
  * the Voyagers' crossings of its boundaries.
  *
  * Kept apart from {@link STARS}, so an app loads it only when it draws it. It
- * is also the Sun's `observations.astrosphere`; see `STARS` for its sources.
+ * goes on the Sun as its `observations.astrosphere`, with {@link withObservations}; see `STARS` for
+ * its sources.
  *
  * @group Observations
  * @example
@@ -121,7 +122,8 @@ export const HELIOSPHERE: AstrosphereInterface = {
 
 /**
  * How to **draw the heliosphere**: hidden until a renderer offers to show it,
- * as it has no colour of its own. It is also the Sun's `display.astrosphere`.
+ * as it has no colour of its own. {@link withDisplay} puts it on the Sun as its
+ * `display.astrosphere`.
  *
  * @group Observations
  */
