@@ -8,6 +8,7 @@ guide when you do.
 
 | Release         | Status                   | Covers                               |
 | --------------- | ------------------------ | ------------------------------------ |
+| [3.0](./3.0.md) | November 2026            | every package, from 2.x to 3.0       |
 | [2.0](./2.0.md) | November 2026            | types and constants, from 1.x to 2.0 |
 | [1.0](./1.0.md) | Released 18 October 2026 | Everything from 0.x to 1.0           |
 

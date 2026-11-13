@@ -51,6 +51,100 @@ anything:
   [security policy](https://github.com/phun-ky/interstellar-tools/blob/main/SECURITY.md#supported-versions)
   describes.
 
+## Migrating from 2.x to 3.0
+
+Every package gets a major release: `types` and `constants` 3.0.0, `temporal`,
+`equations` and `mcp` 2.0.0, `maps` 0.12.0 and `tracking` 0.13.0. Upgrade them
+together, so you have one copy of `types`.
+
+See the [3.0 release notes](./releases/3.0.md) for why.
+
+### Checklist
+
+- [ ] Run on Node 22.12 or later.
+- [ ] Read `star.mass.value`, `galaxy.blackHole.mass.value` and
+      `object.orbit.excessSpeed.value` where you read the numbers.
+- [ ] Import the observation groups you show, or put them back on the bodies
+      with `withObservations`.
+- [ ] Import `RING_DISPLAY` and `HELIOSPHERE_DISPLAY`, or use `withDisplay`, for
+      `display.rings` and `display.astrosphere`.
+
+### Node 22.12 or later
+
+Every package's `engines` asks for `>=22.12.0`, where `require()` loads ES
+modules. If you `import` them, any Node 22.12 or later works; on 22.9 to 22.11,
+`require()` fails with `ERR_REQUIRE_ESM`.
+
+### Masses and excess speeds have units
+
+`StarInterface.mass` and `BlackHoleInterface.mass` are `MassInterface`, and
+`OpenOrbitInterface.excessSpeed` is `SpeedInterface`:
+
+```ts
+import { GALAXIES, STARS } from '@interstellar-tools/constants';
+
+const vega = STARS.find(({ id }) => id === 'vega')!;
+const milkyWay = GALAXIES.find(({ id }) => id === 'milky-way')!;
+// 2.x: vega.mass, in M☉
+const mass = vega.mass?.value; // 2.135, in vega.mass.unit, 'M_sun'
+// 2.x: milkyWay.blackHole.mass
+const sgrA = milkyWay.blackHole?.mass.value; // 4.2996e6
+```
+
+`convertQuantity` from `@interstellar-tools/equations` turns them into other
+units, such as kg.
+
+### Observations are apart from the bodies
+
+The bodies in `STARS`, `PLANETS`, `MOONS` and `INTERSTELLAR_OBJECTS` no longer
+have `observations`. Look them up in their group, by the body's id:
+
+| 2.x                                                           | 3.0                                    |
+| ------------------------------------------------------------- | -------------------------------------- |
+| a star's `observations.effectiveTemperature`, `luminosity`, … | `STAR_PARAMETERS[id]`                  |
+| a star's `observations.identifiers`, `astrometry`, …          | `STAR_ASTROMETRY[id]`                  |
+| the Sun's `observations.astrosphere`                          | `HELIOSPHERE`                          |
+| a planet's `observations.rings`                               | `PLANET_RINGS[id].rings`               |
+| a moon's `observations.ringInteraction`                       | `MOON_RING_ROLES[id].ringInteraction`  |
+| an interstellar object's `observations.discovery`             | `DISCOVERIES[id].discovery`            |
+| its other `observations`                                      | `INTERSTELLAR_OBJECT_OBSERVATIONS[id]` |
+
+```ts
+import { STAR_PARAMETERS } from '@interstellar-tools/constants';
+
+// 2.x: star.observations?.luminosity?.value
+const luminosity = STAR_PARAMETERS.vega?.luminosity?.value; // 40.12, in L☉
+```
+
+To keep the 2.x shape, put the groups back on the bodies. The result is what the
+dataset held in 2.15:
+
+```ts
+import {
+  STAR_ASTROMETRY,
+  STAR_PARAMETERS,
+  STARS,
+  withObservations
+} from '@interstellar-tools/constants';
+
+const stars = withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY);
+```
+
+### Drawing groups are apart from the bodies too
+
+The planets' `display.rings` and the Sun's `display.astrosphere` are in
+`RING_DISPLAY` and `HELIOSPHERE_DISPLAY`; each body keeps its `display.color`:
+
+```ts
+import {
+  PLANETS,
+  RING_DISPLAY,
+  withDisplay
+} from '@interstellar-tools/constants';
+
+const planets = withDisplay(PLANETS, RING_DISPLAY);
+```
+
 ## Migrating from 1.x to 2.0
 
 Only `types` and `constants` go to 2.0. The other packages get a patch release
