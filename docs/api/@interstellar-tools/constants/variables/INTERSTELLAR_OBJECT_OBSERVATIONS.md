@@ -20,8 +20,7 @@ its push in m/s².
 Kept apart from [INTERSTELLAR_OBJECTS](INTERSTELLAR_OBJECTS.md), so an app loads
 these only when it shows them; their discoveries are in
 [DISCOVERIES](DISCOVERIES.md).
-[withObservations](../functions/withObservations.md) puts both back on the
-objects.
+[withObservations](../functions/withObservations.md) puts both on the objects.
 
 ## Example
 

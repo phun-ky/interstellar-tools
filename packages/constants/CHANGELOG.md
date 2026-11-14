@@ -1,5 +1,30 @@
 # Changelog
 
+## [3.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.15.0...%40interstellar-tools%2Fconstants%403.0.0) (2026-11-13)
+
+### ⚠ BREAKING CHANGES
+
+* engines.node is >=22.12.0 in every package, dropping
+  Node 22.9 to 22.11.
+* StarInterface.mass, BlackHoleInterface.mass and
+  OpenOrbitInterface.excessSpeed are quantities with a unit, not numbers:
+  read star.mass.value, blackHole.mass.value and orbit.excessSpeed.value.
+* the bodies in STARS, PLANETS, MOONS and
+  INTERSTELLAR_OBJECTS have no observations, and no display groups beyond
+  their colour and size. Import the groups, or put them back with
+  withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY) and
+  withDisplay(PLANETS, RING_DISPLAY).
+
+### Tasks
+
+* 🤖 @interstellar-tools/types@3.0.0 ([3c8ddc0](https://github.com/phun-ky/interstellar-tools/commit/3c8ddc0caa8852c508e51a7607b8c67866de1d92))
+* 🤖 Require Node 22.12 or later ([98324bd](https://github.com/phun-ky/interstellar-tools/commit/98324bdd410d21d668de8682ccea7fa6c4aa04db)), closes [#305](https://github.com/phun-ky/interstellar-tools/issues/305)
+
+### Refactoring
+
+* 💡 Give masses and excess speeds their units ([692679a](https://github.com/phun-ky/interstellar-tools/commit/692679a82534460e6337461c542a016652facbee))
+* 💡 Keep what is measured apart from the bodies ([ddbd828](https://github.com/phun-ky/interstellar-tools/commit/ddbd828071142ab3836d4a1edbefeca6ea4dd420)), closes [#417](https://github.com/phun-ky/interstellar-tools/issues/417)
+
 ## [2.15.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.14.0...%40interstellar-tools%2Fconstants%402.15.0) (2026-11-13)
 
 ### Feature

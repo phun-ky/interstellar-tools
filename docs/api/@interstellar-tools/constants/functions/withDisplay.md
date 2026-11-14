@@ -18,8 +18,8 @@ function withDisplay<
 Defined in:
 [bodies/with-observations.ts:81](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/with-observations.ts#L81)
 
-The bodies, with **drawing groups kept apart** put back on them: each body's
-entry in each group is merged into its `display`, beside its colour.
+The bodies, with **drawing groups kept apart** put on them: each body's entry in
+each group is merged into its `display`, beside its colour.
 
 ## Type Parameters
 

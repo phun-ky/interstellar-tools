@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.12.0...%40interstellar-tools%2Ftypes%403.0.0) (2026-11-13)
+
+### ⚠ BREAKING CHANGES
+
+* engines.node is >=22.12.0 in every package, dropping
+  Node 22.9 to 22.11.
+* StarInterface.mass, BlackHoleInterface.mass and
+  OpenOrbitInterface.excessSpeed are quantities with a unit, not numbers:
+  read star.mass.value, blackHole.mass.value and orbit.excessSpeed.value.
+
+### Tasks
+
+* 🤖 Require Node 22.12 or later ([98324bd](https://github.com/phun-ky/interstellar-tools/commit/98324bdd410d21d668de8682ccea7fa6c4aa04db)), closes [#305](https://github.com/phun-ky/interstellar-tools/issues/305)
+
+### Refactoring
+
+* 💡 Give masses and excess speeds their units ([692679a](https://github.com/phun-ky/interstellar-tools/commit/692679a82534460e6337461c542a016652facbee))
+
 ## [2.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%402.11.0...%40interstellar-tools%2Ftypes%402.12.0) (2026-11-13)
 
 ### Feature

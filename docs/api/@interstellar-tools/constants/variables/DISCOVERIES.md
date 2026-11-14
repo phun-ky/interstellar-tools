@@ -17,7 +17,7 @@ credited and the observatory, from the Minor Planet Center's circulars. For the
 interstellar objects so far.
 
 Small and apart, so an app that shows a discovery date loads only this.
-[withObservations](../functions/withObservations.md) puts it back, as a body's
+[withObservations](../functions/withObservations.md) puts it on, as a body's
 `observations.discovery`.
 
 ## Example

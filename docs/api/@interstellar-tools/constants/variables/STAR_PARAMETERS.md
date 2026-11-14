@@ -16,9 +16,8 @@ and Altair, the temperatures at their poles and equators.
 
 Kept apart from [STARS](STARS.md), so an app that shows a star's class and
 temperature loads only these.
-[withObservations](../functions/withObservations.md) puts them back on the
-stars. Every value carries the DOI of its paper; see `STARS` for how they were
-chosen.
+[withObservations](../functions/withObservations.md) puts them on the stars.
+Every value carries the DOI of its paper; see `STARS` for how they were chosen.
 
 ## Example
 

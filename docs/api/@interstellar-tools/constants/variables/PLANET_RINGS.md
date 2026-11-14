@@ -15,7 +15,7 @@ ring's edges and optical depth, and Saturn's named gaps, from the PDS Ring-Moon
 Systems Node and NASA NSSDCA.
 
 Kept apart from [PLANETS](PLANETS.md), so an app loads them only when it shows
-them. [withObservations](../functions/withObservations.md) puts them back on the
+them. [withObservations](../functions/withObservations.md) puts them on the
 planets, as their `observations.rings`; see `PLANETS` for how they were chosen.
 
 ## Example

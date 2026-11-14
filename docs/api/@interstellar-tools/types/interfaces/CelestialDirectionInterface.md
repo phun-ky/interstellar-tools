@@ -4,7 +4,7 @@ CelestialDirectionInterface
 # Interface: CelestialDirectionInterface
 
 Defined in:
-[orbits.ts:109](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L109)
+[orbits.ts:110](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L110)
 
 A **direction on the sky**, in the ICRF (the J2000 equator and equinox), in
 degrees as catalogues give it: the pole of a reference plane, for example.
@@ -28,7 +28,7 @@ declination: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:113](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L113)
+[orbits.ts:114](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L114)
 
 Declination, north of the equator, in degrees.
 
@@ -41,6 +41,6 @@ rightAscension: DegreesType;
 ```
 
 Defined in:
-[orbits.ts:111](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L111)
+[orbits.ts:112](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L112)
 
 Right ascension, eastwards from the equinox along the equator, in degrees.

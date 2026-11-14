@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.25.0...%40interstellar-tools%2Fequations%402.0.0) (2026-11-13)
+
+### ⚠ BREAKING CHANGES
+
+* engines.node is >=22.12.0 in every package, dropping
+  Node 22.9 to 22.11.
+
+### Tasks
+
+* 🤖 @interstellar-tools/constants@3.0.0 ([5d98738](https://github.com/phun-ky/interstellar-tools/commit/5d98738795aae62f392cdd70fefd01c39ebd4ae2))
+* 🤖 @interstellar-tools/temporal@2.0.0 ([a837776](https://github.com/phun-ky/interstellar-tools/commit/a837776ed48a8ac81853cbee9090364dca92293e))
+* 🤖 @interstellar-tools/types@3.0.0 ([3c8ddc0](https://github.com/phun-ky/interstellar-tools/commit/3c8ddc0caa8852c508e51a7607b8c67866de1d92))
+* 🤖 Require Node 22.12 or later ([98324bd](https://github.com/phun-ky/interstellar-tools/commit/98324bdd410d21d668de8682ccea7fa6c4aa04db)), closes [#305](https://github.com/phun-ky/interstellar-tools/issues/305)
+
 ## [1.25.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%401.24.0...%40interstellar-tools%2Fequations%401.25.0) (2026-11-12)
 
 ### Feature
