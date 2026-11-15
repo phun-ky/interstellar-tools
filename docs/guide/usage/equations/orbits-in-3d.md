@@ -66,7 +66,8 @@ orbit's plane into it with `orbitFrameToIcrf`, by the tilt of the ecliptic,
 23.44°, for Mars:
 
 ```ts
-stateAt(mars.orbit!, date).r.map((m) => m / AU_METERS); // [-1.0241, 1.1618, 0.5606] au
+stateAt(mars.orbit!, date).r.map((m) => m / AU_METERS);
+// [-1.0241, 1.1618, 0.5606] au
 ```
 
 Positions in one frame add up. Earth's position from the Sun, taken from Mars's,
@@ -79,7 +80,8 @@ const earthFromSun = stateAt(earth.orbit!, date).r;
 const seen = fromSun.map((m, k) => m - earthFromSun[k]!);
 const metres = Math.hypot(...seen);
 const fromEarth = metres / AU_METERS; // 0.9136 au
-const ra = ((Math.atan2(seen[1]!, seen[0]!) * 180) / Math.PI + 360) % 360; // 162.26°, 10 h 49 min
+const ra = ((Math.atan2(seen[1]!, seen[0]!) * 180) / Math.PI + 360) % 360;
+// 162.26°, 10 h 49 min
 const dec = (Math.asin(seen[2]! / metres) * 180) / Math.PI; // +11.06°, in Leo
 ```
 
@@ -104,7 +106,8 @@ const saturnFromSun = stateAt(saturn.orbit!, date).r;
 const titanFromSun = titanFromSaturn.map((m, k) => m + saturnFromSun[k]!);
 const km = Math.hypot(...titanFromSaturn) / 1000; // 1 191 000 km from Saturn
 const au = Math.hypot(...titanFromSun) / AU_METERS; // 9.4088 au from the Sun
-const pole = applyMatrix3(orbitFrameToIcrf(titan.orbit.frame!), [0, 0, 1]); // [0.084, 0.062, 0.995], the pole
+const pole = applyMatrix3(orbitFrameToIcrf(titan.orbit.frame!), [0, 0, 1]);
+// [0.084, 0.062, 0.995], the pole
 ```
 
 ## Limits

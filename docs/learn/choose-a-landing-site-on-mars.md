@@ -145,7 +145,8 @@ in a given direction and returns each cell's brightness, from 0 (in shadow) to 1
 import { hillshadeGrid } from '@interstellar-tools/maps';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
-const shade = hillshadeGrid(grid, rad(315), rad(30)); // sun in the north-west, 30° up
+// sun in the north-west, 30° up
+const shade = hillshadeGrid(grid, rad(315), rad(30));
 ```
 
 Maps are usually lit from the north-west, the side our eyes expect light to come

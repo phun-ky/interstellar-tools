@@ -83,7 +83,8 @@ import type { DegreesType } from '@interstellar-tools/types';
 
 const here = { l: 0 as DegreesType, b: 0 as DegreesType };
 const sun = galactocentricPosition(here, { value: 0, unit: 'pc' });
-const position = [sun.x.value, sun.y.value, sun.z.value]; // [-8275.87, 0.00, 20.80] pc
+const position = [sun.x.value, sun.y.value, sun.z.value];
+// [-8275.87, 0.00, 20.80] pc
 ```
 
 The origin isn't Sagittarius A\* itself. It's the IAU's galactic centre, 4.3′
@@ -176,7 +177,8 @@ const velocity = [x, y, z]; // [37.11, -119.81, -10.86] km/s
 const at = galactocentricPosition(andromeda.direction!, andromeda.distance);
 const out = [at.x.value, at.y.value, at.z.value];
 const towardsCentre =
-  (out[0]! * x + out[1]! * y + out[2]! * z) / Math.hypot(...out); // -109.07 km/s
+  (out[0]! * x + out[1]! * y + out[2]! * z) / Math.hypot(...out);
+// -109.07 km/s
 ```
 
 Andromeda comes towards us at 300 km/s, but most of that is the Sun's own orbit:
@@ -194,7 +196,8 @@ import { GALAXIES } from '@interstellar-tools/constants';
 import { galaxyDiskAxis } from '@interstellar-tools/equations';
 
 const andromeda = GALAXIES.find(({ id }) => id === 'andromeda')!;
-const axis = galaxyDiskAxis(andromeda.direction!, andromeda.disk!); // [-0.4186, -0.7544, -0.5056]
+const axis = galaxyDiskAxis(andromeda.direction!, andromeda.disk!);
+// [-0.4186, -0.7544, -0.5056]
 ```
 
 It needs the disk's `nearSide`, so that it tilts the right way: Andromeda and

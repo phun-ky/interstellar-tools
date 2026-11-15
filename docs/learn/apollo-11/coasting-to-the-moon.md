@@ -71,7 +71,8 @@ const docking = 3 * 3600 + 24 * 60 + 3.7; // s
 const M = (M0 + n * (docking - t0)) as Radians;
 const nu = eccentricToTrueAnomaly(solveKepler(M, tli.e), tli.e);
 const p = tli.a * (1 - tli.e ** 2);
-const rDocking = p / (1 + tli.e * Math.cos(nu)); // 16 231 km from Earth's centre
+const rDocking = p / (1 + tli.e * Math.cos(nu));
+// 16 231 km from Earth's centre
 ```
 
 Docking came 9 850 km up, at 6.91 km/s, slowing all the time. The crew pulled

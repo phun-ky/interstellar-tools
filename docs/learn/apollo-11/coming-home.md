@@ -77,7 +77,8 @@ equation for the true anomaly there and time the flight:
 const p = tei.a * (1 - tei.e ** 2);
 const soi = 62_600_000; // m
 const nuSoi = Math.acos((p / soi - 1) / tei.e) as Radians;
-const toSoi = hyperbolicTimeOfFlight(tei.nu, nuSoi, tei.e, tei.a, MU_MOON); // 12.3 h
+const toSoi = hyperbolicTimeOfFlight(tei.nu, nuSoi, tei.e, tei.a, MU_MOON);
+// 12.3 h
 ```
 
 The flown crossing came 12.7 h after cutoff. A two-body hyperbola leaves out the
@@ -157,7 +158,8 @@ const H = 7200; // m, Earth's atmosphere as one exponential
 const rho0 = 1.225; // kg/m³
 const peak = ballisticPeakDeceleration(vEI, gamma, H) / g0; // 35.8 g
 const beta = ballisticCoefficient(5486.4, 1.2891, 12.017); // 354 kg/m²
-const where = ballisticPeakDecelerationAltitude(gamma, beta, rho0, H); // 38.9 km
+const where = ballisticPeakDecelerationAltitude(gamma, beta, rho0, H);
+// 38.9 km
 ```
 
 The command module weighed 5 486 kg at entry, and at hypersonic speed its drag

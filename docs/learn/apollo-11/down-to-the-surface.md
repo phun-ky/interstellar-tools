@@ -68,7 +68,8 @@ const low = R_MOON + 60.0 * NM; // m
 const high = R_MOON + 169.7 * NM; // m
 const a = (low + high) / 2;
 const loi1 =
-  hyperbolicPeriapsisSpeed(vInf, low, MU_MOON) - visVivaSpeed(low, a, MU_MOON); // 871 m/s
+  hyperbolicPeriapsisSpeed(vInf, low, MU_MOON) - visVivaSpeed(low, a, MU_MOON);
+// 871 m/s
 const period = keplerPeriod(a, MU_MOON) / 60; // 128.8 min
 ```
 

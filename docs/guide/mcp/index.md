@@ -129,7 +129,8 @@ and the tools appear.
 ### Claude Code
 
 ```shell
-claude mcp add --transport stdio interstellar-tools -- npx -y @interstellar-tools/mcp
+claude mcp add --transport stdio interstellar-tools \
+  -- npx -y @interstellar-tools/mcp
 ```
 
 Add `--scope user` to make it available in every project, or `--scope project`

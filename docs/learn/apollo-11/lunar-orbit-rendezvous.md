@@ -52,7 +52,8 @@ Apollo 11 got from Earth's rotation at Pad 39A:
 import { surfaceRotationSpeed } from '@interstellar-tools/equations';
 import type { Radians } from '@interstellar-tools/types';
 
-const omega = (2 * Math.PI) / (27.322 * 86_400); // rad/s, one turn a sidereal month
+// rad/s, one turn a sidereal month
+const omega = (2 * Math.PI) / (27.322 * 86_400);
 const tranquility = ((0.674 * Math.PI) / 180) as Radians;
 
 surfaceRotationSpeed(tranquility, R_MOON, omega); // 4.6 m/s
@@ -94,7 +95,8 @@ const aCSM = R_MOON + 59 * NM;
 const lm = keplerPeriod(a, MU_MOON) / 60; // 113.3 min
 const csm = keplerPeriod(aCSM, MU_MOON) / 60; // 118.7 min
 const lap =
-  synodicPeriod(meanMotion(a, MU_MOON), meanMotion(aCSM, MU_MOON)) / 3600; // 41.8 h
+  synodicPeriod(meanMotion(a, MU_MOON), meanMotion(aCSM, MU_MOON)) / 3600;
+// 41.8 h
 ```
 
 At about 16° an orbit, the LM would have needed 42 hours to lap the CSM. So the
@@ -115,7 +117,8 @@ vis-viva gives its size:
 
 ```ts
 const after = R_MOON + ((49.3 + 45.7) / 2) * NM; // 45.7 × 49.3 n mi
-const csi = visVivaSpeed(high, after, MU_MOON) - visVivaSpeed(high, a, MU_MOON); // 16.0 m/s
+const csi = visVivaSpeed(high, after, MU_MOON) - visVivaSpeed(high, a, MU_MOON);
+// 16.0 m/s
 ```
 
 The flown burn was 15.7 m/s.

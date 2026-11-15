@@ -26,7 +26,8 @@ npm i @interstellar-tools/tracking
 npm i @interstellar-tools/mcp
 
 # or add the core packages at once
-npm i @interstellar-tools/constants @interstellar-tools/equations @interstellar-tools/types @interstellar-tools/temporal
+npm i @interstellar-tools/constants @interstellar-tools/equations \
+  @interstellar-tools/types @interstellar-tools/temporal
 ```
 
 To use the toolkit from an AI assistant, you don't need to install anything: run
