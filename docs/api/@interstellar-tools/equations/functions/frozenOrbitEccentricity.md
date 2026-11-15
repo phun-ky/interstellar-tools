@@ -67,11 +67,8 @@ The frozen eccentricity $e_f$.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `J2` is 0, or `Re` or `a` is not > 0.
+- If any input is not a finite number.
+- If `J2` is 0, or `Re` or `a` is not > 0.
 
 ## Example
 

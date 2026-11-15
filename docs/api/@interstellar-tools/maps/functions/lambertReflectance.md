@@ -53,11 +53,8 @@ The relative reflectance, in \[0, 1].
 
 ## Throws
 
-If `incidence` is not a finite number.
-
-## Throws
-
-If `incidence < 0`.
+- If `incidence` is not a finite number.
+- If `incidence < 0`.
 
 ## Example
 

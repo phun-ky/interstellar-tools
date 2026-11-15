@@ -54,13 +54,10 @@ in **radians**, longitude in (-π, π], and height `h` in **m**.
 
 ## Throws
 
-If `from` or `to` is not a valid `Date`, `step` is not a finite number, or a
-value of `elements` is not a finite number.
-
-## Throws
-
-If `to` is not after `from`, `step <= 0`, the track would have more than a
-million points, or SGP4 fails along it, as in [propagate](propagate.md).
+- If `from` or `to` is not a valid `Date`, `step` is not a finite number, or a
+  value of `elements` is not a finite number.
+- If `to` is not after `from`, `step <= 0`, the track would have more than a
+  million points, or SGP4 fails along it, as in [propagate](propagate.md).
 
 ## Example
 

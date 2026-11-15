@@ -59,13 +59,10 @@ The passes in the window, in order: see
 
 ## Throws
 
-If `from` or `to` is not a valid `Date`, an option is not a finite number, or a
-value of `elements` or `observer` is not a finite number.
-
-## Throws
-
-If `to` is not after `from`, `minElevation` is outside (-π/2, π/2), `step <= 0`,
-or SGP4 fails within the window, as in [propagate](propagate.md).
+- If `from` or `to` is not a valid `Date`, an option is not a finite number, or
+  a value of `elements` or `observer` is not a finite number.
+- If `to` is not after `from`, `minElevation` is outside (-π/2, π/2),
+  `step <= 0`, or SGP4 fails within the window, as in [propagate](propagate.md).
 
 ## Example
 

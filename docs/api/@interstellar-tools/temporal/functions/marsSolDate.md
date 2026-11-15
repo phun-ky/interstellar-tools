@@ -46,11 +46,8 @@ The Mars Sol Date in **sols**.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If `date` is before 1972-01-01, where TT isn't defined from the leap seconds.
+- If `date` is not a valid `Date`.
+- If `date` is before 1972-01-01, where TT isn't defined from the leap seconds.
 
 ## Example
 

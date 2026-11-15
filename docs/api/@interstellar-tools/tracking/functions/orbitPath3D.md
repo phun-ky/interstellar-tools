@@ -55,14 +55,11 @@ The positions, at `from`, every `step` after it, and at `to`, in units of
 
 ## Throws
 
-If `from` or `to` is not a valid `Date`, `step` or `unit` is not a finite
-number, or a value of `elements` is not a finite number.
-
-## Throws
-
-If `to` is not after `from`, `step` or `unit` is not > 0, `frame` is neither
-`'earth-fixed'` nor `'inertial'`, the path would have more than a million
-points, or SGP4 fails along it, as in [propagate](propagate.md).
+- If `from` or `to` is not a valid `Date`, `step` or `unit` is not a finite
+  number, or a value of `elements` is not a finite number.
+- If `to` is not after `from`, `step` or `unit` is not > 0, `frame` is neither
+  `'earth-fixed'` nor `'inertial'`, the path would have more than a million
+  points, or SGP4 fails along it, as in [propagate](propagate.md).
 
 ## Example
 

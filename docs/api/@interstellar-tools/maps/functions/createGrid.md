@@ -38,12 +38,9 @@ The grid.
 
 ## Throws
 
-If a size or `noData` is not a finite number, or a value is infinite.
-
-## Throws
-
-If `rows` or `columns` is not a positive integer, the number of values isn't
-`rows × columns`, or a cell size is `<= 0`.
+- If a size or `noData` is not a finite number, or a value is infinite.
+- If `rows` or `columns` is not a positive integer, the number of values isn't
+  `rows × columns`, or a cell size is `<= 0`.
 
 ## Example
 

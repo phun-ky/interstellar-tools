@@ -49,11 +49,8 @@ after.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `e <= 1` or `nu` is at or beyond the asymptotes.
+- If any input is not a finite number.
+- If `e <= 1` or `nu` is at or beyond the asymptotes.
 
 ## Example
 

@@ -101,12 +101,9 @@ The acceleration in **m/s²**, pointing away from the Sun.
 
 ## Throws
 
-If a position is not three finite numbers, or a number is not finite.
-
-## Throws
-
-If `rSun` is at `r`, `Cr` or `areaToMass` is < 0, or `illumination` is outside
-\[0, 1].
+- If a position is not three finite numbers, or a number is not finite.
+- If `rSun` is at `r`, `Cr` or `areaToMass` is < 0, or `illumination` is outside
+  \[0, 1].
 
 ## Example
 

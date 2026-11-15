@@ -55,11 +55,8 @@ Specific energy gain ($\Delta \varepsilon$) (J/kg).
 
 ## Throws
 
-If inputs are not numbers.
-
-## Throws
-
-If inputs are non-finite or negative.
+- If inputs are not numbers.
+- If inputs are non-finite or negative.
 
 ## Example
 

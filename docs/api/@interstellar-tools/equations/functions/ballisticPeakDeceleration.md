@@ -77,11 +77,8 @@ Peak deceleration $a_\text{max}$ in **m/s²**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `VE <= 0`, `H <= 0`, or `gamma` is zero or past vertical.
+- If any input is not a finite number.
+- If `VE <= 0`, `H <= 0`, or `gamma` is zero or past vertical.
 
 ## Example
 

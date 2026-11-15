@@ -62,11 +62,8 @@ The two burns `dv1` and `dv2` in **m/s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `n <= 0`, `t <= 0`, or the transfer time can't be targeted.
+- If any input is not a finite number.
+- If `n <= 0`, `t <= 0`, or the transfer time can't be targeted.
 
 ## Example
 

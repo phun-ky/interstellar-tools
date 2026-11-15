@@ -100,12 +100,9 @@ The acceleration in **m/s²**, without the central term.
 
 ## Throws
 
-If `r` is not three finite numbers, or a number in `mu`, `Re` or `J` is not
-finite.
-
-## Throws
-
-If `r` is zero, or `mu` or `Re` is not > 0.
+- If `r` is not three finite numbers, or a number in `mu`, `Re` or `J` is not
+  finite.
+- If `r` is zero, or `mu` or `Re` is not > 0.
 
 ## Example
 

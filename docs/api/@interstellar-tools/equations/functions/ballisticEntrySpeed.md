@@ -71,11 +71,8 @@ Speed $V$ in **m/s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `VE`, `beta`, `rho0` or `H` is `<= 0`, or `gamma` is zero or past vertical.
+- If any input is not a finite number.
+- If `VE`, `beta`, `rho0` or `H` is `<= 0`, or `gamma` is zero or past vertical.
 
 ## Example
 

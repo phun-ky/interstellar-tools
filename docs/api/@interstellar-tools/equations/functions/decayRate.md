@@ -57,11 +57,8 @@ The change in semi-major axis per revolution $\Delta a_{\text{rev}}$ in **m**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `a` or `beta` is not > 0, or `rho < 0`.
+- If any input is not a finite number.
+- If `a` or `beta` is not > 0, or `rho < 0`.
 
 ## Example
 

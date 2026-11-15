@@ -50,11 +50,8 @@ Turning angle $\delta$ in **radians** (range: 0 to π).
 
 ## Throws
 
-If any input is not finite.
-
-## Throws
-
-If `rp <= 0`, `mu <= 0`, or `vInfinity < 0`.
+- If any input is not finite.
+- If `rp <= 0`, `mu <= 0`, or `vInfinity < 0`.
 
 ## Example
 

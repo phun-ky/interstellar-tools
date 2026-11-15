@@ -63,11 +63,8 @@ Sphere of influence radius `rSOI` in the same distance units as `a`.
 
 ## Throws
 
-If any input is not finite.
-
-## Throws
-
-If `a <= 0`, `m <= 0`, or `M <= 0`.
+- If any input is not finite.
+- If `a <= 0`, `m <= 0`, or `M <= 0`.
 
 ## Example
 

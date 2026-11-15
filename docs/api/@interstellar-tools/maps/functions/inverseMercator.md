@@ -56,11 +56,8 @@ The point on the sphere, `{ phi, lambda }` in **radians**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `R <= 0`.
+- If any input is not a finite number.
+- If `R <= 0`.
 
 ## Example
 

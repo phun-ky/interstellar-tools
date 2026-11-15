@@ -67,15 +67,9 @@ The hyperbolic anomaly $F$ in **radians**, with the sign of `Mh`.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `e <= 1`, `tolerance <= 0` or `maxIter < 1`.
-
-## Throws
-
-If the iteration doesn't converge within `maxIter` steps.
+- If any input is not a finite number.
+- If `e <= 1`, `tolerance <= 0` or `maxIter < 1`.
+- If the iteration doesn't converge within `maxIter` steps.
 
 ## Example
 

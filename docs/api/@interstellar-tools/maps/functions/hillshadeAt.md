@@ -90,12 +90,9 @@ The hillshade in \[0, 1], or `NaN` for a `NaN` slope.
 
 ## Throws
 
-If `sunAzimuth`, `sunElevation` or a sloping cell's `aspect` is not finite, or
-`slope` is infinite.
-
-## Throws
-
-If `slope` is outside \[0, π/2], or `sunElevation` outside \[−π/2, π/2].
+- If `sunAzimuth`, `sunElevation` or a sloping cell's `aspect` is not finite, or
+  `slope` is infinite.
+- If `slope` is outside \[0, π/2], or `sunElevation` outside \[−π/2, π/2].
 
 ## Example
 

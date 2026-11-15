@@ -67,11 +67,8 @@ The Doppler shift $\Delta f$ in **Hz**.
 
 ## Throws
 
-If an input is not a finite number.
-
-## Throws
-
-If `frequency <= 0`, or `rangeRate` is as fast as light or faster.
+- If an input is not a finite number.
+- If `frequency <= 0`, or `rangeRate` is as fast as light or faster.
 
 ## Example
 

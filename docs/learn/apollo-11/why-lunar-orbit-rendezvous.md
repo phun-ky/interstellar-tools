@@ -54,7 +54,8 @@ const DESCENT = { dv: 2112.3, Isp: 305 }; // m/s, s
 const ASCENT = { dv: 1850.2, Isp: 309 };
 const csm = 16_767; // kg, CSM at trans-Earth injection
 const atLiftoff = initialMassForDeltaV(csm, ASCENT.dv, ASCENT.Isp); // 30 876 kg
-const direct = initialMassForDeltaV(atLiftoff, DESCENT.dv, DESCENT.Isp); // 62 565 kg
+const direct = initialMassForDeltaV(atLiftoff, DESCENT.dv, DESCENT.Isp);
+// 62 565 kg
 
 // The rocket equation, forwards, gives the descent's Δv back
 rocketDeltaVFromIsp(DESCENT.Isp, direct, atLiftoff); // 2112.3 m/s
@@ -82,7 +83,8 @@ descent price once, and the CSM pays nothing:
 
 ```ts
 const ascentStage = 4888; // kg, at lunar liftoff
-const lm = initialMassForDeltaV(ascentStage, DESCENT.dv, DESCENT.Isp); // 9 905 kg
+const lm = initialMassForDeltaV(ascentStage, DESCENT.dv, DESCENT.Isp);
+// 9 905 kg
 const lor = csm + lm; // 26 672 kg
 ```
 

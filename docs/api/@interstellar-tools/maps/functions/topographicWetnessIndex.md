@@ -69,11 +69,8 @@ A grid of the same shape, the index for each cell.
 
 ## Throws
 
-If a size, cell size or `minSlope` is not finite.
-
-## Throws
-
-If the grid's parts don't fit together, or `minSlope` is not in (0, π/2).
+- If a size, cell size or `minSlope` is not finite.
+- If the grid's parts don't fit together, or `minSlope` is not in (0, π/2).
 
 ## Example
 

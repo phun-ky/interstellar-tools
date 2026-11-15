@@ -87,11 +87,8 @@ The incidence, emission and phase angles.
 
 ## Throws
 
-If a component is not a finite number.
-
-## Throws
-
-If a vector is zero.
+- If a component is not a finite number.
+- If a vector is zero.
 
 ## Example
 

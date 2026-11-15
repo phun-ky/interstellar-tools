@@ -53,11 +53,8 @@ The angular radius $\lambda_0$ in **radians**.
 
 ## Throws
 
-If an input is not a finite number.
-
-## Throws
-
-If `height <= 0`, or `minElevation` is outside \[0, π/2).
+- If an input is not a finite number.
+- If `height <= 0`, or `minElevation` is outside \[0, π/2).
 
 ## Example
 

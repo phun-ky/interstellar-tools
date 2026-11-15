@@ -77,13 +77,10 @@ The azimuth, elevation, range and range rate: see
 
 ## Throws
 
-If `r` or `v` is not three finite numbers, or the observer's coordinates aren't
-finite.
-
-## Throws
-
-If the observer's `phi` is outside \[-π/2, π/2], or the satellite is at the
-observer.
+- If `r` or `v` is not three finite numbers, or the observer's coordinates
+  aren't finite.
+- If the observer's `phi` is outside \[-π/2, π/2], or the satellite is at the
+  observer.
 
 ## Example
 

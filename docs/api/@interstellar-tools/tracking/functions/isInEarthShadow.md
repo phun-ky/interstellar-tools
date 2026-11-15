@@ -59,11 +59,8 @@ Where:
 
 ## Throws
 
-If `r` or `sun` is not three finite numbers.
-
-## Throws
-
-If `sun` is at Earth's centre.
+- If `r` or `sun` is not three finite numbers.
+- If `sun` is at Earth's centre.
 
 ## Example
 

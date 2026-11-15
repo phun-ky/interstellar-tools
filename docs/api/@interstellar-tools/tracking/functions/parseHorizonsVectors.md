@@ -57,13 +57,10 @@ The ephemeris: see
 
 ## Throws
 
-If `text` is not a string.
-
-## Throws
-
-If the table, the target, centre or frame is missing, the units or time scale
-aren't read, a record has no velocity (`VEC_TABLE=1`), or the times don't
-increase.
+- If `text` is not a string.
+- If the table, the target, centre or frame is missing, the units or time scale
+  aren't read, a record has no velocity (`VEC_TABLE=1`), or the times don't
+  increase.
 
 ## Example
 

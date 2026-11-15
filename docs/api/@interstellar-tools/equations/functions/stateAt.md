@@ -52,16 +52,10 @@ the orbit's parent.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If the orbit's eccentricity is outside $0 \leq e < 1$.
-
-## Throws
-
-If `frame` is `'icrf'` and the orbit has no `frame`, or one that can't be placed
-in the ICRF yet ([orbitFrameToIcrf](orbitFrameToIcrf.md)).
+- If `date` is not a valid `Date`.
+- If the orbit's eccentricity is outside $0 \leq e < 1$.
+- If `frame` is `'icrf'` and the orbit has no `frame`, or one that can't be
+  placed in the ICRF yet ([orbitFrameToIcrf](orbitFrameToIcrf.md)).
 
 ## Example
 

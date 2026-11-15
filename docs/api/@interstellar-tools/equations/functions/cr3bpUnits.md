@@ -79,11 +79,8 @@ The mass ratio and the length, time and speed units.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If any input is `<= 0`, or `gm2 > gm1`.
+- If any input is not a finite number.
+- If any input is `<= 0`, or `gm2 > gm1`.
 
 ## Example
 

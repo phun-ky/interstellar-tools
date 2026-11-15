@@ -67,11 +67,8 @@ The Jacobi constant $C_J$.
 
 ## Throws
 
-If `mu` or a state component is not finite.
-
-## Throws
-
-If `mu` is outside (0, 0.5], or the state is at the centre of either body.
+- If `mu` or a state component is not finite.
+- If `mu` is outside (0, 0.5], or the state is at the centre of either body.
 
 ## Example
 

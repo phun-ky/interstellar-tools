@@ -72,12 +72,9 @@ The inclination $i$ in **radians**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `J2`, `mu`, `Re`, `a` or `rate` is not > 0, `e` is outside \[0, 1), or the
-orbit is too high to be sun-synchronous.
+- If any input is not a finite number.
+- If `J2`, `mu`, `Re`, `a` or `rate` is not > 0, `e` is outside \[0, 1), or the
+  orbit is too high to be sun-synchronous.
 
 ## Example
 

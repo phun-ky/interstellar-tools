@@ -85,11 +85,8 @@ Inclination $i$ in **radians**, in \[0, π].
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `lat` is outside \[-π/2, π/2].
+- If any input is not a finite number.
+- If `lat` is outside \[-π/2, π/2].
 
 ## Example
 

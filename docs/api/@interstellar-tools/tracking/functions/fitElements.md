@@ -86,13 +86,11 @@ The fitted `elements`, the `rms` and per-state `residuals`, the number of
 
 ## Throws
 
-If `states` is not an array of states with a valid `Date` and three finite
-numbers each, `epoch` is not a valid `Date`, or `bstar` is not a finite number.
-
-## Throws
-
-If there are fewer than 2 states, they aren't of a closed orbit, or SGP4 fails
-on the first guess: give `initial` elements then.
+- If `states` is not an array of states with a valid `Date` and three finite
+  numbers each, `epoch` is not a valid `Date`, or `bstar` is not a finite
+  number.
+- If there are fewer than 2 states, they aren't of a closed orbit, or SGP4 fails
+  on the first guess: give `initial` elements then.
 
 ## Example
 

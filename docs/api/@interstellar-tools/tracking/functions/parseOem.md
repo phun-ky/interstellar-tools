@@ -64,14 +64,11 @@ The segments, in order: see
 
 ## Throws
 
-If `text` is not a string.
-
-## Throws
-
-If the OEM is malformed: it doesn't start with `CCSDS_OEM_VERS`, a required
-keyword is missing, the time system isn't one of those read, a segment has no
-data, or a data line has the wrong number of values, an invalid epoch or epochs
-out of order. The message names the line.
+- If `text` is not a string.
+- If the OEM is malformed: it doesn't start with `CCSDS_OEM_VERS`, a required
+  keyword is missing, the time system isn't one of those read, a segment has no
+  data, or a data line has the wrong number of values, an invalid epoch or
+  epochs out of order. The message names the line.
 
 ## Example
 

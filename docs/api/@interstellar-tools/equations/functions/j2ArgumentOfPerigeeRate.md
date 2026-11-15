@@ -59,11 +59,8 @@ Argument of perigee drift rate $\dot{\omega}$ in rad/s.
 
 ## Throws
 
-If any input is not finite.
-
-## Throws
-
-If `n < 0`, `Re <= 0`, `a <= 0`, or `e` is outside \[0, 1].
+- If any input is not finite.
+- If `n < 0`, `Re <= 0`, `a <= 0`, or `e` is outside \[0, 1].
 
 ## Example
 

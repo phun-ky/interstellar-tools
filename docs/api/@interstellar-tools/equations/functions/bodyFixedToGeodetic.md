@@ -103,11 +103,8 @@ The geodetic latitude, longitude and height.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `a <= 0`, `eSquared` is outside \[0, 1), or the point is at the centre.
+- If any input is not a finite number.
+- If `a <= 0`, `eSquared` is outside \[0, 1), or the point is at the centre.
 
 ## Example
 

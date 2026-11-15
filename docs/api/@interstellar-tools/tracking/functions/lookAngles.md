@@ -49,13 +49,10 @@ The azimuth, elevation, range and range rate: see
 
 ## Throws
 
-If `date` is not a valid `Date`, or a value of `elements` or `observer` is not a
-finite number.
-
-## Throws
-
-If the observer's `phi` is outside \[-π/2, π/2], or SGP4 fails at that time, as
-in [propagate](propagate.md).
+- If `date` is not a valid `Date`, or a value of `elements` or `observer` is not
+  a finite number.
+- If the observer's `phi` is outside \[-π/2, π/2], or SGP4 fails at that time,
+  as in [propagate](propagate.md).
 
 ## Example
 

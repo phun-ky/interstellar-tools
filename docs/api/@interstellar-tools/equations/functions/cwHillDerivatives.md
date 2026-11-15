@@ -70,11 +70,8 @@ Time derivative of `state` as `[xDot, yDot, zDot, xDDot, yDDot, zDDot]`.
 
 ## Throws
 
-If `n` or any state component is not finite.
-
-## Throws
-
-If `n < 0`.
+- If `n` or any state component is not finite.
+- If `n < 0`.
 
 ## Example
 

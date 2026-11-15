@@ -71,11 +71,8 @@ The density $\rho$ in **kg/m³**.
 
 ## Throws
 
-If `h` is not a finite number.
-
-## Throws
-
-If `h < 0`.
+- If `h` is not a finite number.
+- If `h < 0`.
 
 ## Example
 

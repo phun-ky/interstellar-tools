@@ -69,11 +69,8 @@ The ground sample distance in **m**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `distance <= 0`, or `ifov` is outside (0, π).
+- If any input is not a finite number.
+- If `distance <= 0`, or `ifov` is outside (0, π).
 
 ## Example
 

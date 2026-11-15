@@ -62,12 +62,9 @@ The position `r` in **m** and velocity `v` in **m/s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `mu <= 0`, `e < 0`, `e = 1`, `i` is outside \[0, π], `a` has the wrong sign
-for `e`, or `nu` is beyond a hyperbola's asymptotes.
+- If any input is not a finite number.
+- If `mu <= 0`, `e < 0`, `e = 1`, `i` is outside \[0, π], `a` has the wrong sign
+  for `e`, or `nu` is beyond a hyperbola's asymptotes.
 
 ## Example
 

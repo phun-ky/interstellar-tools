@@ -63,11 +63,8 @@ The pole, the prime meridian's angle, and the ICRF → body-fixed rotation.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If `date` is before 1972-01-01, or the model gives an angle that isn't finite.
+- If `date` is not a valid `Date`.
+- If `date` is before 1972-01-01, or the model gives an angle that isn't finite.
 
 ## Example
 

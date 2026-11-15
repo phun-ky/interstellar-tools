@@ -64,11 +64,8 @@ The tile, `{ x, y, z }`.
 
 ## Throws
 
-If `phi` or `lambda` is not a finite number.
-
-## Throws
-
-If `phi` is outside \[−π/2, π/2], or `zoom` is not an integer in \[0, 30].
+- If `phi` or `lambda` is not a finite number.
+- If `phi` is outside \[−π/2, π/2], or `zoom` is not an integer in \[0, 30].
 
 ## Example
 

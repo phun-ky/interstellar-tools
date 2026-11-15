@@ -64,11 +64,8 @@ Where:
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `slope` or `dynamicTilt` is negative, or `rFootprint` or `hCoM` is `<= 0`.
+- If any input is not a finite number.
+- If `slope` or `dynamicTilt` is negative, or `rFootprint` or `hCoM` is `<= 0`.
 
 ## Example
 

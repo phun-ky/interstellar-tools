@@ -82,12 +82,9 @@ Time of flight in **s** from `nu1` to `nu2`.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `e <= 1`, `a >= 0`, `mu <= 0`, or either true anomaly is at or beyond the
-asymptotes.
+- If any input is not a finite number.
+- If `e <= 1`, `a >= 0`, `mu <= 0`, or either true anomaly is at or beyond the
+  asymptotes.
 
 ## Example
 

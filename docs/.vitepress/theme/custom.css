@@ -56,7 +56,7 @@ html.ph body {
   *::before {
     margin: 0;
     padding: 0;
-    word-break: break-word;
+    overflow-wrap: break-word;
     box-sizing: border-box;
     -webkit-font-smoothing: antialised;
 
@@ -77,21 +77,6 @@ html.ph body {
   }
 
   .vp-doc {
-    & p,
-    & li,
-    & td {
-      & > code {
-        /* background-color: transparent;
-        color: var(--ph-color-code);
-        font-weight: 700; */
-        &::before {
-          content: '`';
-        }
-        &::after {
-          content: '`';
-        }
-      }
-    }
     & li {
       a {
         color: var(--ph-color-link);
@@ -307,6 +292,22 @@ table {
   margin-top: 1.5rem;
   border-collapse: collapse;
 }
+
+/* A table in a page is as wide as it needs, up to the text column, and
+   scrolls inside it when it's wider: the page itself never scrolls sideways */
+.vp-doc table {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0;
+  overflow-x: auto;
+}
+
+/* On a narrow screen, a column of text keeps room for a few words a line:
+   the table scrolls before it squeezes the text to a word at a time */
+.vp-doc td:not(:first-of-type) {
+  min-width: 10rem;
+}
 @media screen and (min-width: 1024px) {
   table {
     border-collapse: normal;
@@ -344,4 +345,11 @@ table > tbody > tr:nth-child(2n) {
 
 .vp-doc .MathJax svg {
   color: var(--ph-color-text-accent);
+}
+
+/* A wide equation scrolls inside its line, like a table, not the page */
+.vp-doc mjx-container[display='true'] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }

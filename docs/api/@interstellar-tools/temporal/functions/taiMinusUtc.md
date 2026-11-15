@@ -48,11 +48,8 @@ TAI − UTC in **s**: a whole number, 37 since 2017.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If `date` is before 1972-01-01.
+- If `date` is not a valid `Date`.
+- If `date` is before 1972-01-01.
 
 ## Example
 

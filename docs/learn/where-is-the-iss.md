@@ -60,7 +60,8 @@ import { propagate, subSatellitePoint } from '@interstellar-tools/tracking';
 
 const { r, v } = propagate(iss, iss.epoch); // m and m/s
 const speed = Math.hypot(...v); // ≈ 7 670 m/s: 27 600 km/h
-const below = subSatellitePoint(iss, iss.epoch); // 0.00° N, 39.10° W, 415.1 km up
+const below = subSatellitePoint(iss, iss.epoch);
+// 0.00° N, 39.10° W, 415.1 km up
 ```
 
 At the epoch, the ISS is crossing the equator heading north, over the Atlantic

@@ -50,13 +50,10 @@ The two lines of the TLE, 69 characters each.
 
 ## Throws
 
-If a value of `elements` is not a finite number.
-
-## Throws
-
-If a value doesn't fit in a TLE: a catalogue number above 339 999, an epoch
-outside 1957 to 2056, an international designator not like `1998-067A`, or a
-mean motion of 100 revolutions a day or more.
+- If a value of `elements` is not a finite number.
+- If a value doesn't fit in a TLE: a catalogue number above 339 999, an epoch
+  outside 1957 to 2056, an international designator not like `1998-067A`, or a
+  mean motion of 100 revolutions a day or more.
 
 ## Example
 

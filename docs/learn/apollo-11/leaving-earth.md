@@ -177,7 +177,8 @@ import {
   rotatingLaunchAzimuth
 } from '@interstellar-tools/equations';
 
-const { northbound } = launchAzimuthForInclination(lat, toRad(32.521)); // 73.53°
+const { northbound } = launchAzimuthForInclination(lat, toRad(32.521));
+// 73.53°
 
 rotatingLaunchAzimuth(northbound, 7793.1, 408.6); // 72.6° over the ground
 ```

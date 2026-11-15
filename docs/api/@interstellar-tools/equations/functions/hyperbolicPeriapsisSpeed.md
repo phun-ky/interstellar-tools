@@ -50,11 +50,8 @@ Periapsis speed $v_p$ in the same speed units as `vInfinity`.
 
 ## Throws
 
-If any input is not finite.
-
-## Throws
-
-If `vInfinity < 0`, `rp <= 0`, or `mu <= 0`.
+- If any input is not finite.
+- If `vInfinity < 0`, `rp <= 0`, or `mu <= 0`.
 
 ## Example
 

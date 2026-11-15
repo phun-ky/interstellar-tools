@@ -90,13 +90,10 @@ The semi-major axis $a$ in **m**.
 
 ## Throws
 
-If any input is not a finite number, or `revolutions` or `days` is not an
-integer.
-
-## Throws
-
-If `revolutions`, `days`, `mu`, `Re` or `rotationRate` is not > 0, `e` is
-outside \[0, 1), or the cycle has no orbit above the planet's surface.
+- If any input is not a finite number, or `revolutions` or `days` is not an
+  integer.
+- If `revolutions`, `days`, `mu`, `Re` or `rotationRate` is not > 0, `e` is
+  outside \[0, 1), or the cycle has no orbit above the planet's surface.
 
 ## Example
 

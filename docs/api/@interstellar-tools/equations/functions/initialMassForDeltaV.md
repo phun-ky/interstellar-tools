@@ -77,11 +77,8 @@ Mass at ignition $m_0$ in **kg**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `mf <= 0`, `dv < 0`, `Isp <= 0` or `g0 <= 0`.
+- If any input is not a finite number.
+- If `mf <= 0`, `dv < 0`, `Isp <= 0` or `g0 <= 0`.
 
 ## Example
 

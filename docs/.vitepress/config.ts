@@ -27,6 +27,29 @@ const pageUrl = (relativePath: string) =>
   SITE_URL +
   relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '');
 
+interface ApiSidebarItemInterface {
+  text?: string;
+  items?: ApiSidebarItemInterface[];
+}
+
+/**
+ * An API sidebar item whose name may break between its words: before each
+ * capital that follows a lower-case letter or digit, so a name too long for
+ * the sidebar, such as `specificAngularMomentumFromElements`, wraps at
+ * `From`, not mid-word. VitePress renders sidebar text as HTML.
+ */
+const breakAtWords = <T extends ApiSidebarItemInterface>(item: T): T => ({
+  ...item,
+  ...(item.text && {
+    text: item.text.replace(/([a-z\d])([A-Z])/g, '$1<wbr>$2')
+  }),
+  ...(item.items && { items: item.items.map(breakAtWords) })
+});
+const apiSidebar = typedocSidebar.map((item) => ({
+  ...breakAtWords(item),
+  collapsed: true
+}));
+
 export default defineConfig({
   base: '/interstellar-tools/',
   lang: 'en-GB',
@@ -258,19 +281,13 @@ export default defineConfig({
         },
         {
           text: 'Reference',
-          items: typedocSidebar.map((s) => ({
-            ...s,
-            collapsed: true
-          }))
+          items: apiSidebar
         }
       ],
       '/api/': [
         {
           text: 'Reference',
-          items: typedocSidebar.map((s) => ({
-            ...s,
-            collapsed: true
-          }))
+          items: apiSidebar
         }
       ]
     }

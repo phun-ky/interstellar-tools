@@ -53,11 +53,8 @@ Ideal delta-v $\Delta v$ in **m/s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `ve <= 0`, `m0 <= 0`, `mf <= 0`, or `mf >= m0`.
+- If any input is not a finite number.
+- If `ve <= 0`, `m0 <= 0`, `mf <= 0`, or `mf >= m0`.
 
 ## Example
 

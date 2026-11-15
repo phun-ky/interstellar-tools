@@ -45,11 +45,8 @@ First eccentricity squared ($e^2$) (dimensionless).
 
 ## Throws
 
-If `a` or `c` is not a finite number.
-
-## Throws
-
-If `a <= 0` or `c <= 0`.
+- If `a` or `c` is not a finite number.
+- If `a <= 0` or `c <= 0`.
 
 ## Example
 

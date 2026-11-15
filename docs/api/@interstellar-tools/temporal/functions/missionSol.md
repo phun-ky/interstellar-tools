@@ -55,12 +55,9 @@ The sol number, an integer.
 
 ## Throws
 
-If a date is not a valid `Date`, `longitude` is not a finite number, or
-`firstSol` is not an integer.
-
-## Throws
-
-If a date is before 1972-01-01.
+- If a date is not a valid `Date`, `longitude` is not a finite number, or
+  `firstSol` is not an integer.
+- If a date is before 1972-01-01.
 
 ## Example
 

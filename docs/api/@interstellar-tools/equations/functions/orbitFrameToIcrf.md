@@ -39,13 +39,10 @@ The rotation matrix from the plane's coordinates to the ICRF.
 
 ## Throws
 
-If `frame` is a `'laplace'` or `'parent-equator'` plane without a `pole`.
-
-## Throws
-
-If `frame` is `'sky'` or `'galactic'`: the sky needs the direction to the
-system, and the galactic plane where its `om` is counted from, which the
-datasets don't give yet.
+- If `frame` is a `'laplace'` or `'parent-equator'` plane without a `pole`.
+- If `frame` is `'sky'` or `'galactic'`: the sky needs the direction to the
+  system, and the galactic plane where its `om` is counted from, which the
+  datasets don't give yet.
 
 ## Example
 

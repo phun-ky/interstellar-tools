@@ -68,11 +68,8 @@ Mass flow rate $\dot m$ in **kg/s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `F <= 0`, `Isp <= 0` or `g0 <= 0`.
+- If any input is not a finite number.
+- If `F <= 0`, `Isp <= 0` or `g0 <= 0`.
 
 ## Example
 

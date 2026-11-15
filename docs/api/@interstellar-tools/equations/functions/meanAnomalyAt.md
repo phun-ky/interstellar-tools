@@ -40,11 +40,8 @@ The mean anomaly at `date`, in $[0, 2\pi)$.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If the orbit's eccentricity is outside $0 \leq e < 1$.
+- If `date` is not a valid `Date`.
+- If the orbit's eccentricity is outside $0 \leq e < 1$.
 
 ## Example
 

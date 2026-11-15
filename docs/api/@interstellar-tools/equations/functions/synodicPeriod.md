@@ -68,11 +68,8 @@ Synodic period in **s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `n1 <= 0`, `n2 <= 0`, or `n1 = n2` (the bodies never realign).
+- If any input is not a finite number.
+- If `n1 <= 0`, `n2 <= 0`, or `n1 = n2` (the bodies never realign).
 
 ## Example
 

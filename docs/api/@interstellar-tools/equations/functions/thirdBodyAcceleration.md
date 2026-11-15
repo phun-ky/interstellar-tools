@@ -70,11 +70,8 @@ The acceleration in **m/s²**.
 
 ## Throws
 
-If a position is not three finite numbers, or `muBody` is not finite.
-
-## Throws
-
-If `rBody` is zero or at `r`, or `muBody < 0`.
+- If a position is not three finite numbers, or `muBody` is not finite.
+- If `rBody` is zero or at `r`, or `muBody < 0`.
 
 ## Example
 
