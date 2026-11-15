@@ -60,11 +60,8 @@ Waiting time in **s**, in \[0, synodic period).
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If a mean motion is `<= 0`, or both are equal (the phase never changes).
+- If any input is not a finite number.
+- If a mean motion is `<= 0`, or both are equal (the phase never changes).
 
 ## Example
 

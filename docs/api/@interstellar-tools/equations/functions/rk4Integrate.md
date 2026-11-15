@@ -59,11 +59,8 @@ The times and states, `t[k]` with `y[k]`.
 
 ## Throws
 
-If a number is not finite, or `steps` or `every` is not an integer.
-
-## Throws
-
-If `t1 = t0`, `steps < 1` or `every < 1`.
+- If a number is not finite, or `steps` or `every` is not an integer.
+- If `t1 = t0`, `steps < 1` or `every < 1`.
 
 ## Example
 

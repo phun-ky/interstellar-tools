@@ -59,11 +59,8 @@ Drag acceleration magnitude $a_D$ in m/s².
 
 ## Throws
 
-If any input is not finite.
-
-## Throws
-
-If `m <= 0` or any of `Cd, A, rho, v` is negative.
+- If any input is not finite.
+- If `m <= 0` or any of `Cd, A, rho, v` is negative.
 
 ## Example
 

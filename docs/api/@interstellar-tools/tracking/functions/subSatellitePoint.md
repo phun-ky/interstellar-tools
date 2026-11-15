@@ -47,12 +47,9 @@ Taking it at a series of times draws the satellite's **ground track**.
 
 ## Throws
 
-If `date` is not a valid `Date`, or a value of `elements` is not a finite
-number.
-
-## Throws
-
-If SGP4 fails at that time, as in [propagate](propagate.md).
+- If `date` is not a valid `Date`, or a value of `elements` is not a finite
+  number.
+- If SGP4 fails at that time, as in [propagate](propagate.md).
 
 ## Example
 

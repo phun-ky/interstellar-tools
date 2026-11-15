@@ -45,11 +45,8 @@ The local mean solar time in **Mars hours**, from 0 up to 24.
 
 ## Throws
 
-If `date` is not a valid `Date`, or `longitude` is not a finite number.
-
-## Throws
-
-If `date` is before 1972-01-01.
+- If `date` is not a valid `Date`, or `longitude` is not a finite number.
+- If `date` is before 1972-01-01.
 
 ## Example
 

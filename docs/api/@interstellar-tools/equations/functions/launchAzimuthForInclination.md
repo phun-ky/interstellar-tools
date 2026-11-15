@@ -80,12 +80,9 @@ The northbound and southbound inertial azimuths, in **radians**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `lat` is not in (-π/2, π/2), `i` is not in \[0, π], or `i` can't be reached
-from `lat` (`i < |lat|` or `i > π - |lat|`).
+- If any input is not a finite number.
+- If `lat` is not in (-π/2, π/2), `i` is not in \[0, π], or `i` can't be reached
+  from `lat` (`i < |lat|` or `i > π - |lat|`).
 
 ## Example
 

@@ -36,13 +36,11 @@ The moment as a `Date`.
 
 ## Throws
 
-If `jd` is not a finite number.
-
-## Throws
-
-If `scale` is not a [TimeScaleType](../../types/type-aliases/TimeScaleType.md),
-the moment is before 1972-01-01 for TAI, TT, TDB and GPS, or it's outside the
-range of a `Date`.
+- If `jd` is not a finite number.
+- If `scale` is not a
+  [TimeScaleType](../../types/type-aliases/TimeScaleType.md), the moment is
+  before 1972-01-01 for TAI, TT, TDB and GPS, or it's outside the range of a
+  `Date`.
 
 ## Example
 

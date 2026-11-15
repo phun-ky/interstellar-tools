@@ -74,11 +74,8 @@ Eastward surface speed $v_\text{rot}$ in **m/s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `lat` is outside \[-π/2, π/2] or `R <= 0`.
+- If any input is not a finite number.
+- If `lat` is outside \[-π/2, π/2] or `R <= 0`.
 
 ## Example
 

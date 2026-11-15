@@ -54,11 +54,8 @@ The distance along the surface to the horizon $s$ in **m**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `h < 0` or `R <= 0`.
+- If any input is not a finite number.
+- If `h < 0` or `R <= 0`.
 
 ## Example
 

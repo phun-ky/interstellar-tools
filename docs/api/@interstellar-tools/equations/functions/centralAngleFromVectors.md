@@ -57,11 +57,8 @@ The central angle $\Delta\sigma$ in **radians**.
 
 ## Throws
 
-If a component is not a finite number.
-
-## Throws
-
-If either vector is zero.
+- If a component is not a finite number.
+- If either vector is zero.
 
 ## Example
 

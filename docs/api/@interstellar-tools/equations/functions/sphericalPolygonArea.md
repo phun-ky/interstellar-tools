@@ -106,12 +106,9 @@ The area $A$ in **m²**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If there are fewer than 3 vertices, a latitude is outside \[-π/2, π/2], or
-`R <= 0`.
+- If any input is not a finite number.
+- If there are fewer than 3 vertices, a latitude is outside \[-π/2, π/2], or
+  `R <= 0`.
 
 ## Example
 

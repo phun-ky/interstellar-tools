@@ -74,12 +74,9 @@ The point on the map, `{ x, y }` in **m**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `phi` or `phi0` is outside \[−π/2, π/2], `R <= 0`, or the point is the
-centre's antipode.
+- If any input is not a finite number.
+- If `phi` or `phi0` is outside \[−π/2, π/2], `R <= 0`, or the point is the
+  centre's antipode.
 
 ## Example
 

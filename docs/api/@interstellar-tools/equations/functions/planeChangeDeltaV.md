@@ -48,11 +48,8 @@ Required impulsive Δv (m/s).
 
 ## Throws
 
-If `v` is not a number or `deltaI` not a number (radians).
-
-## Throws
-
-If `v` is non-finite or < 0; if `deltaI` is non-finite or outside \[0, π].
+- If `v` is not a number or `deltaI` not a number (radians).
+- If `v` is non-finite or < 0; if `deltaI` is non-finite or outside \[0, π].
 
 ## Example
 

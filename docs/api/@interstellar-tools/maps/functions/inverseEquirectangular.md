@@ -53,12 +53,9 @@ The point on the sphere, `{ phi, lambda }` in **radians**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `y` is beyond a pole, `phi0` is outside \[−π/2, π/2], `phi1` outside (−π/2,
-π/2), or `R <= 0`.
+- If any input is not a finite number.
+- If `y` is beyond a pole, `phi0` is outside \[−π/2, π/2], `phi1` outside (−π/2,
+  π/2), or `R <= 0`.
 
 ## Example
 

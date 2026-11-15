@@ -76,11 +76,8 @@ The meridional radius of curvature $M$ in **m**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `phi` is outside \[-π/2, π/2], `a <= 0`, or `eSquared` is outside \[0, 1).
+- If any input is not a finite number.
+- If `phi` is outside \[-π/2, π/2], `a <= 0`, or `eSquared` is outside \[0, 1).
 
 ## Example
 

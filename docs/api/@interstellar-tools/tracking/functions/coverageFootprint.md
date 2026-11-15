@@ -71,12 +71,9 @@ longitude `lambda` in **radians**, and `h` 0.
 
 ## Throws
 
-If a value is not a finite number, or `points` is not an integer.
-
-## Throws
-
-If `phi` is outside \[-π/2, π/2], `h <= 0`, `minElevation` is outside \[0, π/2),
-or `points < 3`.
+- If a value is not a finite number, or `points` is not an integer.
+- If `phi` is outside \[-π/2, π/2], `h <= 0`, `minElevation` is outside \[0,
+  π/2), or `points < 3`.
 
 ## Example
 

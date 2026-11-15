@@ -62,8 +62,5 @@ their sum `dvTotal` (m/s), transfer time `tTransfer` (s), and burn directions
 
 ## Throws
 
-If an input is not a number.
-
-## Throws
-
-If ($r_1\le 0$), ($r_2\le 0$), or ($\mu\le 0$), or a value is non-finite.
+- If an input is not a number.
+- If ($r_1\le 0$), ($r_2\le 0$), or ($\mu\le 0$), or a value is non-finite.

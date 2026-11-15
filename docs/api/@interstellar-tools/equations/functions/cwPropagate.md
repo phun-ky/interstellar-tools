@@ -54,11 +54,8 @@ The relative state at `t`.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `n <= 0`.
+- If any input is not a finite number.
+- If `n <= 0`.
 
 ## Example
 

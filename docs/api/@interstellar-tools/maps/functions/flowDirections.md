@@ -62,11 +62,8 @@ A grid of the same shape, flow directions from 0 to 7 clockwise from north, or
 
 ## Throws
 
-If a size or cell size is not finite.
-
-## Throws
-
-If the grid's parts don't fit together.
+- If a size or cell size is not finite.
+- If the grid's parts don't fit together.
 
 ## Example
 

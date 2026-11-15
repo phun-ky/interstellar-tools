@@ -53,12 +53,10 @@ The Julian date in **days**.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If `scale` is not a [TimeScaleType](../../types/type-aliases/TimeScaleType.md),
-or `date` is before 1972-01-01 for TAI, TT, TDB and GPS.
+- If `date` is not a valid `Date`.
+- If `scale` is not a
+  [TimeScaleType](../../types/type-aliases/TimeScaleType.md), or `date` is
+  before 1972-01-01 for TAI, TT, TDB and GPS.
 
 ## Example
 

@@ -65,12 +65,9 @@ The point on the sphere, `{ phi, lambda }` in **radians**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If the point is more than $R$ from the centre, `phi0` is outside \[−π/2, π/2],
-or `R <= 0`.
+- If any input is not a finite number.
+- If the point is more than $R$ from the centre, `phi0` is outside \[−π/2, π/2],
+  or `R <= 0`.
 
 ## Example
 

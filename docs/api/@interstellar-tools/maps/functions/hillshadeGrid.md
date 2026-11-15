@@ -37,12 +37,9 @@ A grid of the same shape, hillshade in \[0, 1].
 
 ## Throws
 
-If a size, cell size or Sun angle is not finite.
-
-## Throws
-
-If the grid's parts don't fit together, or `sunElevation` is outside \[−π/2,
-π/2].
+- If a size, cell size or Sun angle is not finite.
+- If the grid's parts don't fit together, or `sunElevation` is outside \[−π/2,
+  π/2].
 
 ## Example
 

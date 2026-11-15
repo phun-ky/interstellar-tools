@@ -56,12 +56,9 @@ The planetocentric latitude and east longitude where the Sun is overhead.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If `sunDirection` is zero or not finite, `date` is before 1972-01-01, or the
-model gives an angle that isn't finite.
+- If `date` is not a valid `Date`.
+- If `sunDirection` is zero or not finite, `date` is before 1972-01-01, or the
+  model gives an angle that isn't finite.
 
 ## Example
 

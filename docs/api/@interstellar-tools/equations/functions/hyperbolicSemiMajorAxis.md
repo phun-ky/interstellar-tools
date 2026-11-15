@@ -64,11 +64,8 @@ Semi-major axis $a$ in **m** (negative).
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `vInfinity <= 0` or `mu <= 0`.
+- If any input is not a finite number.
+- If `vInfinity <= 0` or `mu <= 0`.
 
 ## Example
 

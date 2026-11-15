@@ -62,11 +62,8 @@ Asymptote true anomaly $\nu_\infty$ in **radians**.
 
 ## Throws
 
-If `e` is not a finite number.
-
-## Throws
-
-If `e <= 1`.
+- If `e` is not a finite number.
+- If `e <= 1`.
 
 ## Example
 

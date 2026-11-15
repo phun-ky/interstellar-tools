@@ -74,11 +74,8 @@ The Hill sphere radius $r_H$ in **m**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `a <= 0`, `e` is outside \[0, 1), `m <= 0` or `M <= 0`.
+- If any input is not a finite number.
+- If `a <= 0`, `e` is outside \[0, 1), `m <= 0` or `M <= 0`.
 
 ## Example
 

@@ -99,12 +99,9 @@ The lifetime in **s**.
 
 ## Throws
 
-If a number is not finite, or `density` is not a function.
-
-## Throws
-
-If `beta`, `mu` or `Re` is not > 0, `reentryHeight < 0`, `a` is not above the
-re-entry height, or the density at a height is not a finite number > 0.
+- If a number is not finite, or `density` is not a function.
+- If `beta`, `mu` or `Re` is not > 0, `reentryHeight < 0`, `a` is not above the
+  re-entry height, or the density at a height is not a finite number > 0.
 
 ## Example
 

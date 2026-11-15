@@ -65,13 +65,10 @@ The times and states of the accepted steps, `t[k]` with `y[k]`, from `t0` to
 
 ## Throws
 
-If a number is not finite, `maxSteps` is not an integer, or `f` returns an array
-of the wrong length.
-
-## Throws
-
-If `t1 = t0`, an option is out of range, or the integration needs more than
-`maxSteps` steps, or a step too small to tell from rounding.
+- If a number is not finite, `maxSteps` is not an integer, or `f` returns an
+  array of the wrong length.
+- If `t1 = t0`, an option is out of range, or the integration needs more than
+  `maxSteps` steps, or a step too small to tell from rounding.
 
 ## Example
 

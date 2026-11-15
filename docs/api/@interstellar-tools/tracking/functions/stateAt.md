@@ -71,12 +71,9 @@ The position `r` in **m** and velocity `v` in **m/s**: see
 
 ## Throws
 
-If `date` is not a valid `Date`, the ephemeris has no samples, or `points` is
-not an integer.
-
-## Throws
-
-If `date` is outside the ephemeris, or `points` is outside 2 to 8.
+- If `date` is not a valid `Date`, the ephemeris has no samples, or `points` is
+  not an integer.
+- If `date` is outside the ephemeris, or `points` is outside 2 to 8.
 
 ## Example
 

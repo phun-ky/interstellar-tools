@@ -81,12 +81,9 @@ The solar day, in the unit of `P` and `T`.
 
 ## Throws
 
-If `P` or `T` is not a finite number.
-
-## Throws
-
-If `P = 0`, `T <= 0`, or `P = T` (the body keeps one face to the Sun and has no
-solar day).
+- If `P` or `T` is not a finite number.
+- If `P = 0`, `T <= 0`, or `P = T` (the body keeps one face to the Sun and has
+  no solar day).
 
 ## Example
 

@@ -100,12 +100,9 @@ The classical orbital elements.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `mu <= 0`, `tolerance < 0`, `r` is zero, or the motion is straight up or down
-(no angular momentum).
+- If any input is not a finite number.
+- If `mu <= 0`, `tolerance < 0`, `r` is zero, or the motion is straight up or
+  down (no angular momentum).
 
 ## Example
 

@@ -61,11 +61,8 @@ of 1.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `a <= 0`, `b <= 0`, `c <= 0`, or `eps < 0`.
+- If any input is not a finite number.
+- If `a <= 0`, `b <= 0`, `c <= 0`, or `eps < 0`.
 
 ## Examples
 

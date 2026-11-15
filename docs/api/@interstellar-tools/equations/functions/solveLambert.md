@@ -122,12 +122,10 @@ The velocities `v1` at `r1` and `v2` at `r2`, in **m/s**.
 
 ## Throws
 
-If any input is not finite.
-
-## Throws
-
-If `dt <= 0`, `mu <= 0`, a position is zero, the positions are 0° or 180° apart,
-or `dt` is too short to solve accurately or too long for a single revolution.
+- If any input is not finite.
+- If `dt <= 0`, `mu <= 0`, a position is zero, the positions are 0° or 180°
+  apart, or `dt` is too short to solve accurately or too long for a single
+  revolution.
 
 ## Example
 

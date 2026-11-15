@@ -52,18 +52,12 @@ Gravitational parameter ($\mu$) in m³/s².
 
 ## Throws
 
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `M` is non-finite or negative.
-
-## Throws
-
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `m` is non-finite or negative.
-
-## Throws
-
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `G` is non-finite or negative.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `M` is non-finite or negative.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `m` is non-finite or negative.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `G` is non-finite or negative.
 
 ## Example
 

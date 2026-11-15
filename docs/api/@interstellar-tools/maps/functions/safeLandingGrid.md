@@ -66,12 +66,9 @@ A grid of 1 (safe), 0 (unsafe) and `NaN` (unknown).
 
 ## Throws
 
-If a grid size, cell size or lander value is not finite.
-
-## Throws
-
-If the grid's parts don't fit together, `rFootprint` or `hCoM` is `<= 0`, or
-`dynamicTilt` or `maxRoughness` is negative.
+- If a grid size, cell size or lander value is not finite.
+- If the grid's parts don't fit together, `rFootprint` or `hCoM` is `<= 0`, or
+  `dynamicTilt` or `maxRoughness` is negative.
 
 ## Example
 

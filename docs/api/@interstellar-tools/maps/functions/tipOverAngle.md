@@ -78,11 +78,8 @@ The tip-over angle $\theta_\text{tip}$ in **radians**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If any input is `<= 0`.
+- If any input is not a finite number.
+- If any input is `<= 0`.
 
 ## Example
 

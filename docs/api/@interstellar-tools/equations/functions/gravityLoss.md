@@ -63,11 +63,9 @@ descending.
 
 ## Throws
 
-If any input is not a finite number, or `g` and `gamma` have different lengths.
-
-## Throws
-
-If `gamma` has fewer than 2 samples, `dt <= 0` or any `g < 0`.
+- If any input is not a finite number, or `g` and `gamma` have different
+  lengths.
+- If `gamma` has fewer than 2 samples, `dt <= 0` or any `g < 0`.
 
 ## Example
 

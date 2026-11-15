@@ -67,11 +67,8 @@ little flow.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If any input is negative.
+- If any input is not a finite number.
+- If any input is negative.
 
 ## Example
 

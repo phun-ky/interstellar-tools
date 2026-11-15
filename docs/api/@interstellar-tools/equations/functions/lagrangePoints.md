@@ -94,11 +94,8 @@ L1 to L5 in **m**: see
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `m1 <= 0`, `m2 <= 0`, `m2 > m1` or `separation <= 0`.
+- If any input is not a finite number.
+- If `m1 <= 0`, `m2 <= 0`, `m2 > m1` or `separation <= 0`.
 
 ## Example
 

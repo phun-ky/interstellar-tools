@@ -64,11 +64,8 @@ Mean motion $n$ in **rad/s**.
 
 ## Throws
 
-If `a` or `mu` is not a finite number.
-
-## Throws
-
-If `a <= 0` or `mu <= 0`.
+- If `a` or `mu` is not a finite number.
+- If `a <= 0` or `mu <= 0`.
 
 ## Example
 

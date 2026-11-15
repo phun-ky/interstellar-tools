@@ -70,11 +70,8 @@ The points on the disc, in order: see
 
 ## Throws
 
-If a latitude, longitude, `R`, `phi0` or `lambda0` is not a finite number.
-
-## Throws
-
-If a latitude or `phi0` is outside \[-π/2, π/2], or `R <= 0`.
+- If a latitude, longitude, `R`, `phi0` or `lambda0` is not a finite number.
+- If a latitude or `phi0` is outside \[-π/2, π/2], or `R <= 0`.
 
 ## Example
 

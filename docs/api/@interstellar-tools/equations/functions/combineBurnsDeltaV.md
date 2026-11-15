@@ -62,11 +62,8 @@ Equivalent single ($\Delta v$) (m/s).
 
 ## Throws
 
-If any input is not a number.
-
-## Throws
-
-If inputs are non-finite or out of domain.
+- If any input is not a number.
+- If inputs are non-finite or out of domain.
 
 ## Example
 

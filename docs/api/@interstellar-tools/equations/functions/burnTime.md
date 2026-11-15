@@ -80,11 +80,8 @@ Burn time $t_b$ in **s**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `m0 <= 0`, `dv < 0`, `F <= 0`, `Isp <= 0` or `g0 <= 0`.
+- If any input is not a finite number.
+- If `m0 <= 0`, `dv < 0`, `F <= 0`, `Isp <= 0` or `g0 <= 0`.
 
 ## Example
 

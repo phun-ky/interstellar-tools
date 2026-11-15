@@ -53,12 +53,9 @@ The state at `t + h`.
 
 ## Throws
 
-If `t`, `h` or a component of `y` is not finite, or `f` returns an array of the
-wrong length.
-
-## Throws
-
-If `h` is zero.
+- If `t`, `h` or a component of `y` is not finite, or `f` returns an array of
+  the wrong length.
+- If `h` is zero.
 
 ## Example
 

@@ -76,18 +76,12 @@ Specific mechanical energy ($\varepsilon$) (J/kg).
 
 ## Throws
 
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `v` is not finite or negative.
-
-## Throws
-
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `r` is not finite or non-positive.
-
-## Throws
-
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `mu` is not finite or negative.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `v` is not finite or negative.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `r` is not finite or non-positive.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `mu` is not finite or negative.
 
 ## Example
 

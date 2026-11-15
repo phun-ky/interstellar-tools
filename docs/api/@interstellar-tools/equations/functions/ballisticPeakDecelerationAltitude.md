@@ -62,11 +62,8 @@ Altitude of peak deceleration $h^\ast$ in **m** (negative if below the surface).
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `beta`, `rho0` or `H` is `<= 0`, or `gamma` is zero or past vertical.
+- If any input is not a finite number.
+- If `beta`, `rho0` or `H` is `<= 0`, or `gamma` is zero or past vertical.
 
 ## Example
 

@@ -59,12 +59,9 @@ Azimuth over the ground $\beta_\text{rot}$ in **radians**, in \[0, 2π).
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `v <= 0`, or the speed over the ground is zero (the target velocity equals
-the pad's).
+- If any input is not a finite number.
+- If `v <= 0`, or the speed over the ground is zero (the target velocity equals
+  the pad's).
 
 ## Example
 

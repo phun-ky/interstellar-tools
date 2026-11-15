@@ -37,13 +37,10 @@ The position `r` in **m** and velocity `v` in **m/s**, in the TEME frame.
 
 ## Throws
 
-If `date` is not a valid `Date`, or a value of `elements` is not a finite
-number.
-
-## Throws
-
-If the elements are out of range, or SGP4 fails at that time: the satellite has
-decayed, or its eccentricity or mean motion left the model's range.
+- If `date` is not a valid `Date`, or a value of `elements` is not a finite
+  number.
+- If the elements are out of range, or SGP4 fails at that time: the satellite
+  has decayed, or its eccentricity or mean motion left the model's range.
 
 ## Example
 

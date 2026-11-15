@@ -67,11 +67,8 @@ The central angle $\Delta\sigma$ in **radians**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If a latitude is outside \[-π/2, π/2].
+- If any input is not a finite number.
+- If a latitude is outside \[-π/2, π/2].
 
 ## Example
 

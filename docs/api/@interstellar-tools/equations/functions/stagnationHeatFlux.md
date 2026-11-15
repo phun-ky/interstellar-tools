@@ -64,11 +64,8 @@ Stagnation-point heat flux $\dot q$ in **W/m²**.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If any input is `<= 0`.
+- If any input is not a finite number.
+- If any input is `<= 0`.
 
 ## Example
 

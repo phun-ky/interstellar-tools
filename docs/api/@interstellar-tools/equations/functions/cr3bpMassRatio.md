@@ -51,11 +51,8 @@ The mass ratio $\mu$.
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `m1 <= 0`, `m2 <= 0` or `m2 > m1`.
+- If any input is not a finite number.
+- If `m1 <= 0`, `m2 <= 0` or `m2 > m1`.
 
 ## Example
 

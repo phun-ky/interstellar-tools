@@ -45,11 +45,8 @@ True anomaly $\nu$ in **radians**, in (-π, π).
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `e <= 1`.
+- If any input is not a finite number.
+- If `e <= 1`.
 
 ## Example
 

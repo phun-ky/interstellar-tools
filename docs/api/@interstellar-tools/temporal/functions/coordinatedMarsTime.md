@@ -39,11 +39,8 @@ The time at Airy-0 in **Mars hours**, from 0 up to 24.
 
 ## Throws
 
-If `date` is not a valid `Date`.
-
-## Throws
-
-If `date` is before 1972-01-01.
+- If `date` is not a valid `Date`.
+- If `date` is before 1972-01-01.
 
 ## Example
 

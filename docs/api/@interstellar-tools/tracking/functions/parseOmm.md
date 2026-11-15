@@ -65,16 +65,10 @@ The mean elements, in radians and rad/s: see
 
 ## Throws
 
-If `omm` is text that isn't valid JSON.
-
-## Throws
-
-If `omm` isn't one record, or a required value is missing or not a number.
-
-## Throws
-
-If `EPOCH` isn't a valid date and time, `CLASSIFICATION_TYPE` isn't U, C or S,
-or a value is out of range; the message names the keyword.
+- If `omm` is text that isn't valid JSON.
+- If `omm` isn't one record, or a required value is missing or not a number.
+- If `EPOCH` isn't a valid date and time, `CLASSIFICATION_TYPE` isn't U, C or S,
+  or a value is out of range; the message names the keyword.
 
 ## Example
 

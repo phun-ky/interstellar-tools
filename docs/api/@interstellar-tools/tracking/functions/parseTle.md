@@ -58,12 +58,9 @@ The mean elements, in radians and rad/s: see
 
 ## Throws
 
-If a line or `name` is not a string.
-
-## Throws
-
-If a line is malformed, its checksum is wrong, the lines' catalogue numbers
-differ, or a value is out of range; the message names the field.
+- If a line or `name` is not a string.
+- If a line is malformed, its checksum is wrong, the lines' catalogue numbers
+  differ, or a value is out of range; the message names the field.
 
 ## Example
 

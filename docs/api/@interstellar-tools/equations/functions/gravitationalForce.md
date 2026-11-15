@@ -83,18 +83,12 @@ $$
 
 ## Throws
 
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `m1` or `m2` are non-finite or negative.
-
-## Throws
-
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If positions coincide (`r = 0`).
-
-## Throws
-
-[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-If `G` is non-finite or not positive.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `m1` or `m2` are non-finite or negative.
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If positions coincide (`r = 0`).
+- [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+  If `G` is non-finite or not positive.
 
 ## Example
 

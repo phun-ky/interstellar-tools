@@ -66,11 +66,8 @@ Thrust-to-weight ratio (dimensionless).
 
 ## Throws
 
-If any input is not a finite number.
-
-## Throws
-
-If `F < 0`, `m <= 0` or `g <= 0`.
+- If any input is not a finite number.
+- If `F < 0`, `m <= 0` or `g <= 0`.
 
 ## Example
 

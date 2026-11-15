@@ -88,13 +88,10 @@ An ephemeris centred on `'EARTH'`, in the frame `'TEME'` and the time scale
 
 ## Throws
 
-If `r` or `v` is not three finite numbers, a date is not a valid `Date`, or an
-option is not a finite number or a function where it should be.
-
-## Throws
-
-If `to` isn't after `from`, a step, coefficient or tolerance is not > 0, or a
-manoeuvre is outside the span.
+- If `r` or `v` is not three finite numbers, a date is not a valid `Date`, or an
+  option is not a finite number or a function where it should be.
+- If `to` isn't after `from`, a step, coefficient or tolerance is not > 0, or a
+  manoeuvre is outside the span.
 
 ## Examples
 

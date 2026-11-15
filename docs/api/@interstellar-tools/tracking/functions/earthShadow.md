@@ -66,12 +66,9 @@ Where:
 
 ## Throws
 
-If `r` or `sun` is not three finite numbers.
-
-## Throws
-
-If `r` is within Earth's equatorial radius of its centre, or `sun` is at Earth's
-centre.
+- If `r` or `sun` is not three finite numbers.
+- If `r` is within Earth's equatorial radius of its centre, or `sun` is at
+  Earth's centre.
 
 ## Example
 

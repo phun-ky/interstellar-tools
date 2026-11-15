@@ -90,13 +90,10 @@ The state of the atmosphere: see
 
 ## Throws
 
-If `date` is not a valid `Date`, or a number is not finite.
-
-## Throws
-
-If `h < 0`, `|phi| > π/2`, `f107 <= 0`, `f107a <= 0`, `ap < 0`, or `apHistory`
-isn't 7 finite numbers >= 0; or if the model has no physical result there, at
-extreme geomagnetic activity.
+- If `date` is not a valid `Date`, or a number is not finite.
+- If `h < 0`, `|phi| > π/2`, `f107 <= 0`, `f107a <= 0`, `ap < 0`, or `apHistory`
+  isn't 7 finite numbers >= 0; or if the model has no physical result there, at
+  extreme geomagnetic activity.
 
 ## Example
 

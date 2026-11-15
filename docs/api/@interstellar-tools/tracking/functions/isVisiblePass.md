@@ -52,13 +52,10 @@ not in Earth's umbra ([earthShadow](earthShadow.md)).
 
 ## Throws
 
-If `rise` or `set` is not a valid `Date`, `sunElevation` is not a finite number,
-or a value of `elements` or `observer` is not a finite number.
-
-## Throws
-
-If `set` is before `rise`, `sunElevation` is outside \[-π/2, π/2], or SGP4 fails
-during the pass, as in [propagate](propagate.md).
+- If `rise` or `set` is not a valid `Date`, `sunElevation` is not a finite
+  number, or a value of `elements` or `observer` is not a finite number.
+- If `set` is before `rise`, `sunElevation` is outside \[-π/2, π/2], or SGP4
+  fails during the pass, as in [propagate](propagate.md).
 
 ## Example
 
