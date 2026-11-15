@@ -80,8 +80,8 @@ console.log('Δθ = 25°  → Δv =', dv_25.toFixed(3), 'm/s');
   plan.
 
 - **Thruster gimbal limits / split burns** If attitude or gimbal constraints
-  force two impulses separated by a known ($\Delta\theta$), compute the
-  $\Delta v$ impact vs. the ideal pointing case.
+  force two impulses separated by a known ($\Delta\theta$), compute the $\Delta
+  v$ impact vs. the ideal pointing case.
 
 - **Bounds & sanity checks** Quickly verify plans against the vector-law bounds:
   ($\lvert v_1 - v_2\rvert \le \Delta v \le v_1 + v_2$), with extremes at
@@ -98,9 +98,9 @@ console.log('Δθ = 25°  → Δv =', dv_25.toFixed(3), 'm/s');
 - Use radians for `deltaTheta` ($0 \ldots \pi$).
 - If your "burns" are orthogonal components you plan to fire **simultaneously**,
   $\Delta\theta \approx 90^\circ$.
-- If you fire **back-to-back** in the **same** direction,
-  $\Delta\theta = 0^\circ$ ($\Delta v$ reduces to $\lvert v_1 - v_2\rvert$ if
-  one partly cancels the other).
+- If you fire **back-to-back** in the **same** direction, $\Delta\theta =
+  0^\circ$ ($\Delta v$ reduces to $\lvert v_1 - v_2\rvert$ if one partly cancels
+  the other).
 - If they oppose, $\Delta\theta = 180^\circ$ (Δv sums to $v_1 + v_2$).
 
 :::
@@ -179,17 +179,18 @@ console.log(
 - **Raise LEO → GEO (classic design case)** Compute the budget for a coplanar
   circular raise from ($r_1$) (e.g., LEO) to ($r_2$) (GEO):
   - Transfer semi-major axis: ($a_t=\tfrac{r_1+r_2}{2}$)
-  - Burns:
-    ($\Delta v_1=\sqrt{\tfrac{\mu}{r_1}}\!\left(\sqrt{\tfrac{2r_2}{r_1+r_2}}-1\right),\quad
-       \Delta v_2=\sqrt{\tfrac{\mu}{r_2}}\!\left(1-\sqrt{\tfrac{2r_1}{r_1+r_2}}\right)$)
+  - Burns: ($\Delta
+    v_1=\sqrt{\tfrac{\mu}{r_1}}\!\left(\sqrt{\tfrac{2r_2}{r_1+r_2}}-1\right)$)
+    and ($\Delta
+    v_2=\sqrt{\tfrac{\mu}{r_2}}\!\left(1-\sqrt{\tfrac{2r_1}{r_1+r_2}}\right)$)
   - Total: ($\Delta v_{\text{total}}=\Delta v_1+\Delta v_2$)
   - Time of flight: ($t_t=\pi\sqrt{\tfrac{a_t^3}{\mu}}$) (half the transfer
     ellipse period) Use the returned `dir1`/`dir2` to label burns as
     **prograde**/**retrograde** for ops planning.
 
 - **Lowering orbit (deorbit preparation or constellation altitude change)** For
-  ($r_2<r_1$), the same formulas apply; the API returns magnitudes
-  ($\Delta v_1,\Delta v_2$) with directions:
+  ($r_2<r_1$), the same formulas apply; the API returns magnitudes ($\Delta
+  v_1,\Delta v_2$) with directions:
   - First burn is **retrograde** at ($r_1$) (speed decrease),
   - Second burn is **retrograde** at ($r_2$) to circularize. This is useful for
     controlled **perigee lowering** or moving satellites to a new operational
@@ -216,15 +217,14 @@ console.log(
   inclination change is needed, perform it where the speed is **lowest**
   (typically at apogee). After computing the tangential circularization
   ($v$)-change at ($r_2$), combine it with a normal component using your
-  plane-change tools, e.g.
-  ($\Delta v_{\text{combined}}=\sqrt{v_t^2+v_n^2-2 v_t v_n\cos\Delta\theta}$).
-  This gives a more realistic single-burn magnitude for the apogee manoeuvre.
+  plane-change tools, e.g. ($\Delta v_{\text{combined}}=\sqrt{v_t^2+v_n^2-2 v_t
+  v_n\cos\Delta\theta}$). This gives a more realistic single-burn magnitude for
+  the apogee manoeuvre.
 
-- **Constellation shell changes and station-keeping resets** Use
-  ($\Delta v_{\text{total}}$) and ($t_t$) to estimate fuel and downtime when
-  migrating satellites between shells (e.g.,
-  ($550\ \text{km} \to 600\ \text{km}$)), or when re-baselining after long
-  station-keeping campaigns.
+- **Constellation shell changes and station-keeping resets** Use ($\Delta
+  v_{\text{total}}$) and ($t_t$) to estimate fuel and downtime when migrating
+  satellites between shells (e.g., ($550\ \text{km} \to 600\ \text{km}$)), or
+  when re-baselining after long station-keeping campaigns.
 
 ::: tip Guidance
 
@@ -253,8 +253,9 @@ const vLEO = circularSpeed(rLEO, muEarth); // m/s ≈ 7670
 const dv = 50; // m/s
 // Oberth approximation: Δε ≈ v · Δv  (specific energy gain, J/kg ≡ m^2/s^2)
 const deltaEps = oberthEnergyGain(vLEO, dv);
-// For intuition, translate Δε to an approximate change in semi-major axis (elliptic case):
-// ε = -μ/(2a)  ⇒  Δa ≈ (a^2 / μ) · Δε (valid for small changes around circular LEO)
+// For intuition, translate Δε to an approximate change in semi-major axis
+// (elliptic case): ε = -μ/(2a)  ⇒  Δa ≈ (a^2 / μ) · Δε
+// (valid for small changes around circular LEO)
 const aLEO = rLEO; // circular → a = r
 const deltaA = ((aLEO * aLEO) / muEarth) * deltaEps; // meters
 
@@ -271,75 +272,60 @@ console.log(`Approx. semi-major axis change Δa ≈ ${deltaA.toFixed(0)} m`);
 
 - **Maximize energy gain at periapsis (departure burn)** When planning an escape
   or high-energy transfer, compute the specific energy increment from a
-  **periapsis** burn where orbital speed ($v$) is highest:
-  ($\Delta \varepsilon
-  \approx v\_{\text{peri}}\,\Delta v
- $). Use this to show
-  why concentrating ($\Delta
-  v$) near periapsis is more effective than the same
-  ($\Delta v$) elsewhere.
+  **periapsis** burn where orbital speed ($v$) is highest: ($\Delta \varepsilon
+  \approx v_{\text{peri}}\,\Delta v$). Use this to show why concentrating
+  ($\Delta v$) near periapsis is more effective than the same ($\Delta v$)
+  elsewhere.
 
 - **Compare burn placement: periapsis vs. apoapsis** For the same impulsive
   ($\Delta v$), evaluate the energy benefit at different true anomalies:
-  ($
-  \Delta \varepsilon*{\text{peri}} \approx v*{\text{peri}} \Delta v$) vs.
-  ($
-  \Delta \varepsilon*{\text{apo}} \approx v*{\text{apo}} \Delta v$) with
-  ($
-  v*{\text{peri}} \gg v*{\text{apo}}$). Use this to justify performing plane
+  ($\Delta \varepsilon_{\text{peri}} \approx v_{\text{peri}}\,\Delta v$) vs.
+  ($\Delta \varepsilon_{\text{apo}} \approx v_{\text{apo}}\,\Delta v$) with
+  ($v_{\text{peri}} \gg v_{\text{apo}}$). Use this to justify performing plane
   changes or trims at **apoapsis** (cheap angle change) but **energy-raising
   burns** at **periapsis**.
 
 - **Interplanetary departure staging (parking → hyperbolic)** Budget the
   **hyperbolic excess** energy by applying the Oberth estimate at LEO/LEO-like
-  periapsis: ($\Delta \varepsilon \approx v\_{\text{LEO}}\,\Delta v$). Helps
+  periapsis: ($\Delta \varepsilon \approx v_{\text{LEO}}\,\Delta v$). Helps
   compare "all at LEO" vs. "split between LEO and deep-space" strategies.
 
 - **Powered gravity assist (periapsis burn during flyby)** During a close
   planetary flyby, add a small **prograde** burn near pericenter to leverage the
-  high ($v$) for a large energy increase:
-  ($\Delta \varepsilon \approx
-  v\_{\text{p}} \Delta v$). Useful to illustrate
-  the payoff of **perijove/periapsis burns** in Jovian assists.
+  high ($v$) for a large energy increase: ($\Delta \varepsilon \approx
+  v_{\text{p}}\,\Delta v$). Useful to illustrate the payoff of
+  **perijove/periapsis burns** in Jovian assists.
 
 - **Mission design trade: deep-space manoeuvre vs. low-periapsis burn** For a
-  fixed ($\Delta v$) capability, compare:
-  ($\Delta \varepsilon*{\text{DSM}}
-  \approx v*{\text{DSM}} \Delta v$) vs.
-  ($\Delta \varepsilon*{\text{peri}}
-  \approx v*{\text{peri}} \Delta v
- $). Shows
-  why moving thrust "down the gravity well" can reduce total ($\Delta
-  v$) to
-  reach a target energy.
+  fixed ($\Delta v$) capability, compare: ($\Delta \varepsilon_{\text{DSM}}
+  \approx v_{\text{DSM}}\,\Delta v$) vs. ($\Delta \varepsilon_{\text{peri}}
+  \approx v_{\text{peri}}\,\Delta v$). Shows why moving thrust "down the gravity
+  well" can reduce total ($\Delta v$) to reach a target energy.
 
 - **Angle-off-velocity corrections (non-prograde burn)** If the burn is not
   perfectly aligned with velocity by angle ($\phi$), use the small-angle form to
-  estimate the effective energy gain:
-  ($\Delta \varepsilon \approx v\,\Delta v
-  \cos \phi$). Demonstrates pointing
-  sensitivity and why guidance strives for **prograde alignment** during
-  energy-critical burns.
+  estimate the effective energy gain: ($\Delta \varepsilon \approx v\,\Delta v
+  \cos \phi$). Demonstrates pointing sensitivity and why guidance strives for
+  **prograde alignment** during energy-critical burns.
 
-- **Back-of-the-envelope fuel/energy checks** Quickly convert available
-  ($\Delta v$) into expected **specific energy** change at a known speed ($v$):
-  ($\Delta \varepsilon \approx v\,\Delta v$). Handy for sanity checks in **ops
+- **Back-of-the-envelope fuel/energy checks** Quickly convert available ($\Delta
+  v$) into expected **specific energy** change at a known speed ($v$): ($\Delta
+  \varepsilon \approx v\,\Delta v$). Handy for sanity checks in **ops
   consoles**, **design docs**, and **CI tests** without invoking full orbit
   propagation.
 
 ::: info Notes
 
 - Valid for **small**, **impulsive**, **prograde** burns; higher-order term
-  ($
-  \tfrac{1}{2}(\Delta v)^2$) is neglected.
+  ($\tfrac{1}{2}(\Delta v)^2$) is neglected.
 - Use with care when ($\Delta v$) is large or burn duration is non-negligible.
 
 :::
 
 ## Rocket performance
 
-Example usage of: `rocketDeltaVFromIsp`, `initialMassForDeltaV`,
-`massFlowRate`, `burnTime`, `thrustToWeight`, `rocketThrust`, `gravityLoss`.
+Example usage of: `rocketDeltaVFromIsp`, `initialMassForDeltaV`, `massFlowRate`,
+`burnTime`, `thrustToWeight`, `rocketThrust`, `gravityLoss`.
 
 <DocPhoto
   src="manoeuvres/rs-25-test.webp"
