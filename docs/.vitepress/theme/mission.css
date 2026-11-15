@@ -14,9 +14,9 @@ html:root {
   --mc-line: rgba(20, 90, 110, 0.24);
   --mc-text: #0d1b24;
   --mc-muted: #4a5d67;
-  --mc-faint: #6d7f88;
-  --mc-teal: #1c7a81;
-  --mc-teal-soft: rgba(28, 122, 129, 0.1);
+  --mc-faint: #5c6e77;
+  --mc-teal: #1c6c73;
+  --mc-teal-soft: rgba(28, 108, 115, 0.1);
   --mc-amber: #9a5800;
   --mc-amber-fill: #ffb547;
   --mc-amber-soft: rgba(255, 181, 71, 0.16);
@@ -35,7 +35,7 @@ html.dark {
   --mc-line: rgba(71, 184, 190, 0.22);
   --mc-text: #dfe9ee;
   --mc-muted: #aabcc6;
-  --mc-faint: #5f7781;
+  --mc-faint: #748c96;
   --mc-teal: #47b8be;
   --mc-teal-soft: rgba(71, 184, 190, 0.1);
   --mc-amber: #ffb547;
@@ -103,6 +103,25 @@ html.ph body {
     linear-gradient(90deg, var(--mc-grid) 1px, transparent 1px);
   background-size: 32px 32px;
   color: var(--mc-muted);
+}
+
+/* The grid stays in the margins: the text column is solid, so no lines run
+   behind what is being read. From 960px the column has 32px of padding
+   either side, and the grid fades out across it */
+.VPDoc .content {
+  background-color: var(--mc-bg);
+}
+
+@media (min-width: 960px) {
+  .VPDoc .content {
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--mc-bg) 32px,
+      var(--mc-bg) calc(100% - 32px),
+      transparent
+    );
+  }
 }
 
 /* ---------- Shared HUD parts (home page and docs) ---------- */
@@ -336,9 +355,8 @@ html.ph body {
 .vp-doc h1 {
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 0;
   color: var(--mc-text);
 }
 
@@ -346,8 +364,7 @@ html.ph body {
   padding-top: 28px;
   border-top: 1px solid var(--mc-line);
   font-size: 1.75rem;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 .vp-doc h3 {
