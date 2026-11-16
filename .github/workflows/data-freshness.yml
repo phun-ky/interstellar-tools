@@ -1,0 +1,55 @@
+# Checks the bundled data that goes stale on its own, once a month, and opens
+# an issue when something needs refreshing: a new IERS leap second, or probe
+# ephemerides that run out within 90 days. See scripts/check-data-freshness.mjs
+
+name: Data freshness
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+# Read-only by default; the job asks for what it needs
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check bundled data
+    runs-on: ubuntu-24.04
+    permissions:
+      # Open an issue when the data needs refreshing
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Node.js environment
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Check the data
+        id: check
+        # Exit 1 means stale data, not a broken job; the next step reports it
+        run: |
+          if node scripts/check-data-freshness.mjs > problems.md; then
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Open an issue
+        if: steps.check.outputs.stale == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: 'Bundled data needs refreshing'
+        run: |
+          # A failed fetch writes nothing; fail the job instead of opening an empty issue
+          test -s problems.md
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body-file problems.md
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --label 'mindless: 🤖 chore' --body-file problems.md
+          fi
