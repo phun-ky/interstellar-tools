@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.0...%40interstellar-tools%2Ftracking%400.13.1) (2026-11-16)
+
+### Bug
+
+* 🐛 publish the sources the source maps point at ([0b2500e](https://github.com/phun-ky/interstellar-tools/commit/0b2500efdfcd2cebc0324cbc7dc8e847bb1046f1))
+
 ## [0.13.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.12.0...%40interstellar-tools%2Ftracking%400.13.0) (2026-11-13)
 
 ### ⚠ BREAKING CHANGES
