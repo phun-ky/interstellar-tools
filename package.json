@@ -114,6 +114,7 @@
     "banners": "node scripts/banners/render.mjs",
     "clean": "npm run clean --workspaces --if-present",
     "commit": "npx git-cz",
+    "prepare": "git config core.hooksPath .githooks || true",
     "predocs:gen": "npm run docs:partials:gen",
     "docs:gen": "node ./node_modules/.bin/typedoc",
     "docs:check": "node ./node_modules/.bin/typedoc --emit none --treatWarningsAsErrors",
