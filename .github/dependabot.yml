@@ -16,12 +16,15 @@ updates:
           - 'version-update:semver-major'
     schedule:
       interval: 'weekly'
+    # Only propose versions published at least two weeks ago: a compromised
+    # release is usually caught within days. Security updates still open at once
+    cooldown:
+      default-days: 14
     labels:
       - 'mindless: 📦 dependencies'
-      - 'problems: security'
     commit-message:
       prefix: 'chore: 🤖 '
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 5
     allow:
       - dependency-type: direct
       - dependency-type: production
@@ -36,6 +39,9 @@ updates:
           - 'patch'
     schedule:
       interval: 'weekly'
+    # Same two weeks as npm, for the same reason
+    cooldown:
+      default-days: 14
     labels:
       - 'mindless: 📦 dependencies'
     commit-message:

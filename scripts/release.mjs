@@ -157,6 +157,8 @@ for (const entry of packages) {
 if (DRY_RUN) process.exit(0);
 
 run(['run', 'build']);
+// Once, before any package is released, so a broken tarball stops them all
+run(['run', 'check:pack']);
 run(['run', 'docs:gen']);
 git(['add', '.'], ROOT);
 
