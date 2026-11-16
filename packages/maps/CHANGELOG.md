@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.12.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.12.0...%40interstellar-tools%2Fmaps%400.12.1) (2026-11-16)
+
+### Bug
+
+* 🐛 publish the sources the source maps point at ([0b2500e](https://github.com/phun-ky/interstellar-tools/commit/0b2500efdfcd2cebc0324cbc7dc8e847bb1046f1))
+
 ## [0.12.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.11.2...%40interstellar-tools%2Fmaps%400.12.0) (2026-11-13)
 
 ### ⚠ BREAKING CHANGES
