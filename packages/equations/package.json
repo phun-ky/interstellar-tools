@@ -98,7 +98,10 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/__tests__",
+    "CHANGELOG.md"
   ],
   "sideEffects": false,
   "scripts": {
