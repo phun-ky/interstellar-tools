@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.0.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%403.0.0...%40interstellar-tools%2Fconstants%403.0.1) (2026-11-16)
+
+### Bug
+
+* 🐛 publish the sources the source maps point at ([0b2500e](https://github.com/phun-ky/interstellar-tools/commit/0b2500efdfcd2cebc0324cbc7dc8e847bb1046f1))
+
 ## [3.0.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%402.15.0...%40interstellar-tools%2Fconstants%403.0.0) (2026-11-13)
 
 ### ⚠ BREAKING CHANGES
