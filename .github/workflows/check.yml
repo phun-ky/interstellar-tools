@@ -88,6 +88,8 @@ jobs:
         run: npm run test:ci
       - name: Test the release scripts # Version decisions, without git or npm
         run: npm run test:scripts
+      - name: Check the packages # Pack, install and import every package, as npm would publish it
+        run: npm run check:pack
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
