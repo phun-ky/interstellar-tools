@@ -174,7 +174,7 @@
   "overrides": {
     "@xmldom/xmldom": "^0.9.12",
     "katex": "^0.18.10",
-    "basic-ftp": "6.2.1",
-    "vite": "6.4.3"
+    "basic-ftp": "^6.2.4",
+    "vite": "^6.4.4"
   }
 }
