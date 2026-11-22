@@ -2,6 +2,7 @@
 // .bestpractices.json whose status differs from what's saved on the site.
 // Open it, review the highlighted fields, and save: nothing is written until
 // you do. Saved justifications are kept unless you pass --justifications.
+// Long proposals are split over several links, each short enough to open.
 // Usage: node scripts/bestpractices-url.mjs [--level silver] [--justifications]
 // Levels: passing, silver, gold (the metal series) and baseline-1, baseline-2,
 // baseline-3 (OSPS Baseline, read from the official criteria list).
@@ -73,7 +74,6 @@ const originalId = (field) =>
 const saved = new Proxy(project, {
   get: (target, field) => target[field] ?? target[originalId(String(field))]
 });
-const params = new URLSearchParams();
 const changed = [];
 
 let reworded = 0;
@@ -97,9 +97,13 @@ for (const [key, value] of Object.entries(answers)) {
     }
   }
 
-  params.set(key, value);
-  params.set(`${name}_justification`, justification);
-  changed.push(`${name}: ${saved[key] ?? '?'} → ${value}`);
+  changed.push({
+    key,
+    value,
+    name,
+    justification,
+    line: `${name}: ${saved[key] ?? '?'} → ${value}`
+  });
 }
 
 const note =
@@ -112,15 +116,42 @@ if (changed.length === 0) {
   process.exit(0);
 }
 
-// Proposals only fill blank fields unless forced. Force the statuses that
-// differ (their justifications follow), so they show as changes to review
-params.set(
-  'overrides',
-  changed.map((line) => `${line.split(':')[0]}_status`).join(',')
-);
+const BASE = `https://www.bestpractices.dev/en/projects/${PROJECT}/${values.level}/edit?`;
+// The site answers 414 URI Too Long above about 8 KB, so split into links
+const MAX_URL = 8000;
+const urlFor = (batch) => {
+  const params = new URLSearchParams();
+
+  for (const { key, value, name, justification } of batch) {
+    params.set(key, value);
+    params.set(`${name}_justification`, justification);
+  }
+
+  // Proposals only fill blank fields unless forced. Force the statuses that
+  // differ (their justifications follow), so they show as changes to review
+  params.set('overrides', batch.map(({ key }) => key).join(','));
+
+  return BASE + params;
+};
+const urls = [];
+
+let batch = [];
+
+for (const entry of changed) {
+  if (batch.length > 0 && urlFor([...batch, entry]).length > MAX_URL) {
+    urls.push(urlFor(batch));
+    batch = [];
+  }
+
+  batch.push(entry);
+}
+
+urls.push(urlFor(batch));
 
 console.log(`${changed.length} answers differ from the saved project:\n`);
-for (const line of changed) console.log(`  ${line}`);
+for (const { line } of changed) console.log(`  ${line}`);
 console.log(
-  `\nReview and save them here:\n\nhttps://www.bestpractices.dev/en/projects/${PROJECT}/${values.level}/edit?${params}\n${note}`
+  urls.length === 1
+    ? `\nReview and save them here:\n\n${urls[0]}\n${note}`
+    : `\nReview and save them in ${urls.length} links, one at a time:\n\n${urls.join('\n\n')}\n${note}`
 );
