@@ -1,15 +1,18 @@
-// Print a bestpractices.dev link that proposes the answers in
+// Print bestpractices.dev links that propose the answers in
 // .bestpractices.json whose status differs from what's saved on the site.
-// Open it, review the highlighted fields, and save: nothing is written until
-// you do. Saved justifications are kept unless you pass --justifications.
-// Long proposals are split over several links, each short enough to open.
+// Open each link, review the highlighted fields, and save: nothing is written
+// until you do. Saved justifications are kept unless you pass --justifications.
+// A level with many changes is split over several links, because the site
+// refuses very long URLs (HTTP 414); save each one in turn.
 // Usage: node scripts/bestpractices-url.mjs [--level silver] [--justifications]
 // Levels: passing, silver, gold (the metal series) and baseline-1, baseline-2,
-// baseline-3 (OSPS Baseline, read from the official criteria list).
+// baseline-3 (OSPS Baseline), each read from the official criteria lists.
 import { readFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 
 const PROJECT = 15627;
+// Well below the length at which the site starts refusing a URL
+const MAX_URL_LENGTH = 6000;
 const { values } = parseArgs({
   options: {
     level: { type: 'string', default: 'silver' },
@@ -19,27 +22,45 @@ const { values } = parseArgs({
 const answers = JSON.parse(
   readFileSync(new URL('../.bestpractices.json', import.meta.url), 'utf8')
 );
-const CRITERIA =
-  'https://raw.githubusercontent.com/ossf/best-practices-badge/main/criteria/baseline_criteria.yml';
-/** The criteria in one Baseline level, from the official criteria list. */
-const baselineCriteria = async (level) => {
-  const res = await fetch(CRITERIA);
+const CRITERIA_BASE =
+  'https://raw.githubusercontent.com/ossf/best-practices-badge/main/criteria/';
+// Each level's heading in the official criteria file, and how its criteria are
+// indented under it
+const LEVELS = {
+  passing: { file: 'criteria.yml', heading: /^- '0':/ },
+  silver: { file: 'criteria.yml', heading: /^- '1':/ },
+  gold: { file: 'criteria.yml', heading: /^- '2':/ },
+  'baseline-1': { file: 'baseline_criteria.yml', heading: /^baseline-1:/ },
+  'baseline-2': { file: 'baseline_criteria.yml', heading: /^baseline-2:/ },
+  'baseline-3': { file: 'baseline_criteria.yml', heading: /^baseline-3:/ }
+};
+const level = LEVELS[values.level];
+
+if (!level) {
+  console.error(
+    `Unknown level "${values.level}"; use one of ${Object.keys(LEVELS).join(', ')}`
+  );
+  process.exit(1);
+}
+
+/** The criteria in the chosen level, from the official criteria list. */
+const levelCriteria = async () => {
+  const res = await fetch(`${CRITERIA_BASE}${level.file}`);
 
   if (!res.ok) {
-    console.error(`Couldn't read the Baseline criteria: HTTP ${res.status}`);
+    console.error(`Couldn't read ${level.file}: HTTP ${res.status}`);
     process.exit(1);
   }
 
   const names = new Set();
 
-  let current;
+  let inside = false;
 
   for (const line of (await res.text()).split('\n')) {
-    const heading = line.match(/^(baseline-\d):/);
-
-    if (heading) current = heading[1];
-    else if (current === level) {
-      const criterion = line.match(/^ {6}(osps_\w+):\s*$/);
+    // A level heading starts at the left margin; the next one ends the level
+    if (/^\S/.test(line)) inside = level.heading.test(line);
+    else if (inside) {
+      const criterion = line.match(/^ {6}(?:- )?([a-z][a-z0-9_]*):\s*$/);
 
       if (criterion) names.add(criterion[1]);
     }
@@ -48,11 +69,8 @@ const baselineCriteria = async (level) => {
   return names;
 };
 // Fields from another level are ignored by the site, so leave them out
-const inLevel = values.level.startsWith('baseline-')
-  ? await baselineCriteria(values.level).then(
-      (names) => (name) => names.has(name)
-    )
-  : (name) => !name.startsWith('osps_');
+const criteria = await levelCriteria();
+const inLevel = (name) => criteria.has(name);
 const response = await fetch(
   `https://www.bestpractices.dev/projects/${PROJECT}.json`
 );
@@ -98,9 +116,8 @@ for (const [key, value] of Object.entries(answers)) {
   }
 
   changed.push({
-    key,
-    value,
     name,
+    status: value,
     justification,
     line: `${name}: ${saved[key] ?? '?'} → ${value}`
   });
@@ -116,42 +133,48 @@ if (changed.length === 0) {
   process.exit(0);
 }
 
-const BASE = `https://www.bestpractices.dev/en/projects/${PROJECT}/${values.level}/edit?`;
-// The site answers 414 URI Too Long above about 8 KB, so split into links
-const MAX_URL = 8000;
-const urlFor = (batch) => {
+const EDIT_URL = `https://www.bestpractices.dev/en/projects/${PROJECT}/${values.level}/edit?`;
+/**
+ * The edit link for some answers. Proposals only fill blank fields unless
+ * forced, so the statuses that differ are forced (their justifications follow)
+ * and show as changes to review.
+ */
+const linkFor = (batch) => {
   const params = new URLSearchParams();
 
-  for (const { key, value, name, justification } of batch) {
-    params.set(key, value);
+  for (const { name, status, justification } of batch) {
+    params.set(`${name}_status`, status);
     params.set(`${name}_justification`, justification);
   }
 
-  // Proposals only fill blank fields unless forced. Force the statuses that
-  // differ (their justifications follow), so they show as changes to review
-  params.set('overrides', batch.map(({ key }) => key).join(','));
+  params.set('overrides', batch.map(({ name }) => `${name}_status`).join(','));
 
-  return BASE + params;
+  return `${EDIT_URL}${params}`;
 };
-const urls = [];
+// Fill each link with answers until the next one would make it too long
+const links = [];
 
 let batch = [];
 
-for (const entry of changed) {
-  if (batch.length > 0 && urlFor([...batch, entry]).length > MAX_URL) {
-    urls.push(urlFor(batch));
+for (const answer of changed) {
+  if (batch.length > 0 && linkFor([...batch, answer]).length > MAX_URL_LENGTH) {
+    links.push(linkFor(batch));
     batch = [];
   }
 
-  batch.push(entry);
+  batch.push(answer);
 }
 
-urls.push(urlFor(batch));
+links.push(linkFor(batch));
 
 console.log(`${changed.length} answers differ from the saved project:\n`);
 for (const { line } of changed) console.log(`  ${line}`);
 console.log(
-  urls.length === 1
-    ? `\nReview and save them here:\n\n${urls[0]}\n${note}`
-    : `\nReview and save them in ${urls.length} links, one at a time:\n\n${urls.join('\n\n')}\n${note}`
+  links.length === 1
+    ? '\nReview and save them here:\n'
+    : `\nReview and save them in ${links.length} steps, one link at a time:\n`
 );
+links.forEach((link, index) =>
+  console.log(links.length === 1 ? link : `${index + 1}. ${link}\n`)
+);
+console.log(note);
