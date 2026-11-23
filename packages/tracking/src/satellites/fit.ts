@@ -277,7 +277,7 @@ export const fitElements = (
   // Check the initial elements by propagating them
   if (initial !== undefined) propagateMinutes(initial, 0);
 
-  const sorted = [...states].sort(
+  const sorted = states.toSorted(
     (a, b) => a.epoch.getTime() - b.epoch.getTime()
   );
   const template: MeanElementsInterface = {
