@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
+    "lib": ["ES2023"],
     "composite": true,
     "declaration": true,
     "declarationMap": true
