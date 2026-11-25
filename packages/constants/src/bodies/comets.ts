@@ -37,7 +37,7 @@ import { CometsType, DegreesType, Radians } from '@interstellar-tools/types';
 export const COMETS: CometsType = [
   {
     id: '1p-halley',
-    // eslint-disable-next-line @stylistic/quotes
+
     name: "Halley's Comet",
     type: 'periodic comet',
     category: 'halley-type comet',

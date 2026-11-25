@@ -1,7 +1,9 @@
+import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { solveKepler } from '../solve-kepler.js';
-import type { Radians } from '@interstellar-tools/types';
 
 const EPSILON = 1e-8; // Floating-point tolerance
 const assertApproxEqual = (actual: number, expected: number) => {
@@ -137,7 +139,10 @@ describe('solveKepler: any finite M', () => {
       const base = solveKepler(1.234 as Radians, e);
 
       for (const k of [-3, -1, 1, 7, 100]) {
-        assertApproxEqual(solveKepler((1.234 + TWO_PI * k) as Radians, e), base);
+        assertApproxEqual(
+          solveKepler((1.234 + TWO_PI * k) as Radians, e),
+          base
+        );
       }
     }
   });

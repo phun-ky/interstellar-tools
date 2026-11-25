@@ -1,9 +1,10 @@
+import { OrbitInterface, TimeStepInterface } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
 import { computeAngle } from '../compute-angle.js';
 import { wrapAngle } from '../wrap-angle.js';
-import { OrbitInterface, TimeStepInterface } from '@interstellar-tools/types';
 
 describe('computeAngle', () => {
   // Test cases

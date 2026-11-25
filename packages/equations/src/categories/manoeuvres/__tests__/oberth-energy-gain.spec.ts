@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { oberthEnergyGain } from '../oberth-energy-gain.js';
+
 import { absClose } from '../../../__tests__/helpers/index.js';
+import { oberthEnergyGain } from '../oberth-energy-gain.js';
 
 const relClose = (
   a: number,
@@ -11,6 +12,7 @@ const relClose = (
   msg?: string
 ) => {
   const denom = Math.max(1, Math.abs(a), Math.abs(b));
+
   assert.ok(Math.abs(a - b) <= Math.max(abs, rel * denom), msg);
 };
 
@@ -19,6 +21,7 @@ describe('oberthEnergyGain', () => {
     const v = 7800; // m/s (LEO-ish)
     const dv = 100; // m/s
     const dE = oberthEnergyGain(v, dv);
+
     absClose(dE, v * dv);
   });
 
@@ -28,11 +31,12 @@ describe('oberthEnergyGain', () => {
   });
 
   test('scaling: scale v and dv by k ⇒ Δε scales by k²', () => {
-    const v = 5000,
-      dv = 20;
+    const v = 5000;
+    const dv = 20;
     const k = 3.5;
     const base = oberthEnergyGain(v, dv);
     const scaled = oberthEnergyGain(k * v, k * dv);
+
     relClose(scaled, k * k * base, 1e-12, 1e-12);
   });
 
@@ -41,6 +45,7 @@ describe('oberthEnergyGain', () => {
     const values = [2000, 4000, 8000, 12000].map((v) =>
       oberthEnergyGain(v, dv)
     );
+
     for (let i = 1; i < values.length; i++) {
       assert.ok(values[i] > values[i - 1]);
     }
@@ -49,6 +54,7 @@ describe('oberthEnergyGain', () => {
   test('monotonicity: Δε increases with dv for fixed v', () => {
     const v = 9000;
     const values = [1, 5, 25, 50, 100].map((dv) => oberthEnergyGain(v, dv));
+
     for (let i = 1; i < values.length; i++) {
       assert.ok(values[i] > values[i - 1]);
     }
@@ -61,6 +67,7 @@ describe('oberthEnergyGain', () => {
     const dv = 10; // small impulse
     const approx = oberthEnergyGain(v, dv);
     const exact = v * dv + 0.5 * dv * dv; // neglecting gravity/curvature during the burn
+
     // The approximation should be lower than exact by ~0.5*dv²
     absClose(exact - approx, 0.5 * dv * dv);
   });
@@ -68,9 +75,9 @@ describe('oberthEnergyGain', () => {
   // ---------------- validation ----------------
 
   test('TypeError on non-number inputs', () => {
-    assert.throws(() => oberthEnergyGain('7800' as any, 50), TypeError);
+    assert.throws(() => oberthEnergyGain('7800' as never, 50), TypeError);
 
-    assert.throws(() => oberthEnergyGain(7800, '50' as any), TypeError);
+    assert.throws(() => oberthEnergyGain(7800, '50' as never), TypeError);
   });
 
   test('RangeError on non-finite/negative v or dv', () => {
@@ -88,6 +95,7 @@ describe('oberthEnergyGain', () => {
     const v = 1e6; // m/s (synthetic test)
     const dv = 1e3; // m/s
     const dE = oberthEnergyGain(v, dv);
+
     absClose(dE, v * dv);
   });
 });

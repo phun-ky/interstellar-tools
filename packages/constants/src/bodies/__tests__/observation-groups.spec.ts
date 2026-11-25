@@ -1,4 +1,5 @@
 import type { DisplayInterface } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';

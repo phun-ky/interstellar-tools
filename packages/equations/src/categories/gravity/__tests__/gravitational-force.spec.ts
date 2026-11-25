@@ -1,13 +1,11 @@
+import { G_SI } from '@interstellar-tools/constants';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { G_SI } from '@interstellar-tools/constants';
-import {
-  relClose,
-  vecRelClose
-} from '../../../__tests__/helpers/index.js';
-import { gravitationalForce } from '../gravitational-force.js';
+import { relClose, vecRelClose } from '../../../__tests__/helpers/index.js';
 import { norm } from '../../helpers/misc.js';
+import { gravitationalForce } from '../gravitational-force.js';
 
 describe('gravitationalForce', () => {
   test('computes simple 1D case (+x) with custom G', () => {
@@ -16,7 +14,6 @@ describe('gravitationalForce', () => {
     const m2 = 3;
     const r1: [number, number, number] = [0, 0, 0];
     const r2: [number, number, number] = [10, 0, 0];
-
     const res = gravitationalForce(m1, m2, r1, r2, G);
 
     // Expected: |F| = G m1 m2 / r² = 6 / 100 = 0.06; direction = +x
@@ -39,7 +36,6 @@ describe('gravitationalForce', () => {
     const r1: [number, number, number] = [1, 2, 3];
     const r2: [number, number, number] = [-2, 6, 3]; // displacement = (-3, 4, 0)
     const res = gravitationalForce(m1, m2, r1, r2, G);
-
     // direction should align with normalized (r2 - r1)
     const dr: [number, number, number] = [
       r2[0] - r1[0],
@@ -64,7 +60,6 @@ describe('gravitationalForce', () => {
     const m2 = 11;
     const r1: [number, number, number] = [0, -2, 5];
     const r2: [number, number, number] = [3, 1, -1];
-
     const F12 = gravitationalForce(m1, m2, r1, r2, G).vector;
     const F21 = gravitationalForce(m2, m1, r2, r1, G).vector;
 
@@ -76,9 +71,7 @@ describe('gravitationalForce', () => {
     const mSun = 1.9885e30; // kg
     const r1: [number, number, number] = [0, 0, 0];
     const r2: [number, number, number] = [1.495978707e11, 0, 0]; // m
-
     const res = gravitationalForce(mEarth, mSun, r1, r2, G_SI);
-
     // Compare to closed-form expectation (not using the function's internal dir)
     const r = Math.hypot(r2[0] - r1[0], r2[1] - r1[1], r2[2] - r1[2]);
     const expectedMag = (G_SI * mEarth * mSun) / (r * r);
@@ -88,6 +81,7 @@ describe('gravitationalForce', () => {
 
     // also compare to the commonly quoted magnitude ~3.542e22 N within 0.5%
     const ref = 3.542e22;
+
     assert.ok(
       Math.abs(res.magnitude - ref) / ref < 5e-3,
       `|F| ${res.magnitude} differs from ~${ref}`
@@ -109,6 +103,7 @@ describe('gravitationalForce', () => {
 
   test('error: coincident positions (r = 0)', () => {
     const r: [number, number, number] = [3, -4, 5];
+
     assert.throws(
       () => gravitationalForce(1, 1, r, r, 1),
       /singular \(r = 0\)/
@@ -129,10 +124,8 @@ describe('gravitationalForce', () => {
     const m1 = 2;
     const m2 = 5;
     const r1: [number, number, number] = [0, 0, 0];
-
     const r2a: [number, number, number] = [2, 0, 0]; // r = 2
     const r2b: [number, number, number] = [4, 0, 0]; // r = 4 (double -> quarter force)
-
     const Fa = gravitationalForce(m1, m2, r1, r2a, G).magnitude;
     const Fb = gravitationalForce(m1, m2, r1, r2b, G).magnitude;
 

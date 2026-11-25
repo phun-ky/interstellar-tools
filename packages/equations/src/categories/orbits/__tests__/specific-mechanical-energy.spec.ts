@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { specificMechanicalEnergy } from '../specific-mechanical-energy.js';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { specificMechanicalEnergy } from '../specific-mechanical-energy.js';
 
 describe('specificMechanicalEnergy', () => {
   test('circular orbit: ε = -μ/(2r) when v = sqrt(μ/r)', () => {
     const mu = 3.986004418e14; // m³/s² (Earth GM)
     const r = 6378e3 + 400e3; // m (LEO-ish)
     const v = Math.sqrt(mu / r); // m/s
-
     const eps = specificMechanicalEnergy(v, r, mu);
     const expected = -mu / (2 * r);
 
@@ -19,7 +19,6 @@ describe('specificMechanicalEnergy', () => {
     const mu = 3.986004418e14; // m³/s²
     const r = 7000e3; // m
     const v = Math.sqrt((2 * mu) / r);
-
     const eps = specificMechanicalEnergy(v, r, mu);
 
     // Use absolute tolerance because the expected value is 0
@@ -31,8 +30,8 @@ describe('specificMechanicalEnergy', () => {
     const r = 7000e3;
     const v_escape = Math.sqrt((2 * mu) / r);
     const v = 1.01 * v_escape;
-
     const eps = specificMechanicalEnergy(v, r, mu);
+
     assert.ok(eps > 0, 'ε should be positive for hyperbolic cases');
   });
 
@@ -41,8 +40,8 @@ describe('specificMechanicalEnergy', () => {
     const r = 7000e3;
     const v_circ = Math.sqrt(mu / r);
     const v = 0.95 * v_circ;
-
     const eps = specificMechanicalEnergy(v, r, mu);
+
     assert.ok(eps < 0, 'ε should be negative for bound (elliptic) cases');
   });
 
@@ -51,7 +50,6 @@ describe('specificMechanicalEnergy', () => {
     const a = 10000e3; // m (semi-major axis)
     const r = 8000e3; // m (some point on the ellipse)
     const v = Math.sqrt(mu * (2 / r - 1 / a)); // vis-viva
-
     const eps = specificMechanicalEnergy(v, r, mu);
     const expected = -mu / (2 * a);
 
@@ -63,7 +61,6 @@ describe('specificMechanicalEnergy', () => {
     const r = 8000e3;
     const v1 = 7000;
     const v2 = 7500;
-
     const eps1 = specificMechanicalEnergy(v1, r, mu);
     const eps2 = specificMechanicalEnergy(v2, r, mu);
 
@@ -75,7 +72,6 @@ describe('specificMechanicalEnergy', () => {
     const v = 7500;
     const r1 = 7000e3;
     const r2 = 8000e3;
-
     const eps1 = specificMechanicalEnergy(v, r1, mu);
     const eps2 = specificMechanicalEnergy(v, r2, mu);
 

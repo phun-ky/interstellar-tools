@@ -209,7 +209,7 @@ describe('derived constants match their definitions', () => {
 
   test('METERS_PER_PC = (648000 / π) au (IAU 2015 B2)', () => {
     relClose(METERS_PER_PC, (AU_METERS * 648_000) / Math.PI);
-    relClose(METERS_PER_PC, 3.085_677_581_491_367_3e16, 1e-15);
+    relClose(METERS_PER_PC, 3.085_677_581_491_367e16, 1e-15);
   });
 
   test('distance ratios are consistent and reciprocal', () => {
@@ -253,8 +253,8 @@ describe('EGM2008', () => {
   test('holds J2 to J6 from the normalised coefficients', () => {
     // −√(2n + 1) C̄(n,0), from the coefficient file's tide-free values
     const expected = [
-      1.0826261738522226e-3, -2.5324105185677223e-6, -1.619897599916973e-6,
-      -2.2775359073083618e-7, 5.4066657628381321e-7
+      1.0826261738522225e-3, -2.5324105185677225e-6, -1.619897599916973e-6,
+      -2.2775359073083618e-7, 5.406665762838132e-7
     ];
 
     assert.equal(EGM2008.J.length, 5);

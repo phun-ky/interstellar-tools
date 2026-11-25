@@ -136,7 +136,7 @@
     "@release-it/conventional-changelog": "^12.0.2",
     "cobertura": "^1.0.3",
     "eslint": "^10.12.0",
-    "eslint-config-phun-ky": "^2.0.10",
+    "eslint-config-phun-ky": "^3.0.0",
     "git-cz": "^4.9.0",
     "glob-bin": "^1.0.0",
     "globals": "^17.14.0",

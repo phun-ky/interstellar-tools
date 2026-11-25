@@ -3,17 +3,19 @@ import type {
   Radians,
   Vector3DTupleType
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { rot3 } from '../rot-3.js';
+
 import {
   absClose,
   matRelClose,
   relClose
 } from '../../../__tests__/helpers/index.js';
 import { applyMatrix3 } from '../apply-matrix-3.js';
-import { matMul3 } from '../mat-mul3.js';
 import { det3 } from '../det-3.js';
+import { matMul3 } from '../mat-mul3.js';
+import { rot3 } from '../rot-3.js';
 import { transpose3 } from '../transpose-3.js';
 
 const I3: Matrix3x3Type = [
@@ -21,15 +23,16 @@ const I3: Matrix3x3Type = [
   [0, 1, 0],
   [0, 0, 1]
 ];
+
 describe('rot3', () => {
   test('returns identity at theta = 0', () => {
     const R = rot3(0 as Radians);
+
     matRelClose(R, I3, 1e-12);
   });
 
   test('rotates +X to +Y by +90° about +Z (right-handed active rotation)', () => {
     const R = rot3((Math.PI / 2) as Radians);
-
     const xAxis: Vector3DTupleType = [1, 0, 0];
     const out = applyMatrix3(R, xAxis);
 
@@ -41,7 +44,6 @@ describe('rot3', () => {
 
   test('rotates +Y to -X by +90° about +Z', () => {
     const R = rot3((Math.PI / 2) as Radians);
-
     const yAxis: Vector3DTupleType = [0, 1, 0];
     const out = applyMatrix3(R, yAxis);
 
@@ -53,7 +55,6 @@ describe('rot3', () => {
 
   test('leaves Z component unchanged (rotation about Z)', () => {
     const R = rot3(1.234 as Radians);
-
     const v: Vector3DTupleType = [1, 2, 3];
     const out = applyMatrix3(R, v);
 
@@ -63,12 +64,14 @@ describe('rot3', () => {
   test('is orthonormal: RᵀR ≈ I', () => {
     const R = rot3(2.345 as Radians);
     const RtR = matMul3(transpose3(R), R);
+
     matRelClose(RtR, I3, 1e-12);
   });
 
   test('has determinant +1 (proper rotation)', () => {
     const R = rot3(0.789 as Radians);
-    absClose(det3(R), 1, 1e-12, `det(R) expected ~1`);
+
+    absClose(det3(R), 1, 1e-12, 'det(R) expected ~1');
   });
 
   test('inverse equals rotation by -theta: R(theta) * R(-theta) ≈ I', () => {

@@ -6,6 +6,7 @@ import {
   PLANETS,
   STARS
 } from '@interstellar-tools/constants';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';

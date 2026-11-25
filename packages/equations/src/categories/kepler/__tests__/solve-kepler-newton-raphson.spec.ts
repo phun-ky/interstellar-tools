@@ -1,7 +1,9 @@
+import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { solveKeplerNewtonRaphson } from '../solve-kepler-newton-raphson.js';
-import type { Radians } from '@interstellar-tools/types';
 
 const EPSILON = 1e-9;
 const assertApproxEqual = (actual: number, expected: number) => {

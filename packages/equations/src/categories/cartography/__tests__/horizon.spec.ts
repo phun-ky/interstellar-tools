@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { horizonDistance } from '../horizon-distance.js';
 import { horizonSurfaceDistance } from '../horizon-surface-distance.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 const R_EARTH = 6_371_000;
 

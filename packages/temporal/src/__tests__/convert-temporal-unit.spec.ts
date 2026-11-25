@@ -1,11 +1,13 @@
-import { TemporalInterface, TemporalUnitType } from '@interstellar-tools/types';
-import assert from 'node:assert/strict';
-import test, { describe } from 'node:test';
-import { convertTemporalUnit, SECONDS_PER } from '../convert-temporal-unit.js';
 import {
   JULIAN_YEAR_SECONDS,
   SECONDS_PER_DAY
 } from '@interstellar-tools/constants';
+import { TemporalInterface, TemporalUnitType } from '@interstellar-tools/types';
+
+import assert from 'node:assert/strict';
+import test, { describe } from 'node:test';
+
+import { convertTemporalUnit, SECONDS_PER } from '../convert-temporal-unit.js';
 
 // Helpers
 const EPS_ABS = 1e-9;
@@ -13,6 +15,7 @@ const EPS_REL = 1e-12;
 const approxEqual = (a: number, b: number, msg?: string) => {
   const diff = Math.abs(a - b);
   const scale = Math.max(1, Math.abs(a), Math.abs(b));
+
   assert.ok(
     diff <= Math.max(EPS_ABS, EPS_REL * scale),
     msg ?? `expected ~${b}, got ${a}`
@@ -25,7 +28,6 @@ const conv = (
 ) => {
   return convertTemporalUnit({ value, unit } as TemporalInterface, target);
 };
-
 const CANONICAL: TemporalUnitType[] = [
   's',
   'ms',
@@ -44,13 +46,13 @@ const CANONICAL: TemporalUnitType[] = [
   'Myr',
   'Gyr'
 ];
-
 const roundTo3 = (v: number) => Math.round(v * 1000) / 1000;
 
 describe('convert-temporal-unit', () => {
   test('identity: all canonical units map to themselves', () => {
     for (const u of CANONICAL) {
       const out = conv(123.456, u, u);
+
       assert.equal(out.unit, u);
       assert.equal(roundTo3(out.value), 123.456);
     }
@@ -85,8 +87,11 @@ describe('convert-temporal-unit', () => {
 
   test('extremes: yoctoseconds ↔ seconds round-trip', () => {
     const s = conv(1, 'ys', 's').value;
+
     approxEqual(s, 1e-24);
+
     const back = conv(s, 's', 'ys').value;
+
     approxEqual(back, 1);
   });
 
@@ -99,15 +104,18 @@ describe('convert-temporal-unit', () => {
       ['Myr', 'kyr', 0.00042],
       ['Gyr', 'yr', 0.009]
     ];
+
     for (const [from, mid, val] of pairs) {
       const midVal = conv(val, from, mid).value;
       const back = conv(midVal, mid, from).value;
+
       approxEqual(back, val, `round-trip failed for ${from}↔${mid}`);
     }
   });
 
   test('unit labels in output are canonical', () => {
     const out = conv(42, 'h', 'min');
+
     assert.equal(out.unit, 'min');
   });
 

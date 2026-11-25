@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { rocketDeltaVFromVe } from '../rocket-delta-v-from-ve.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { rocketDeltaVFromVe } from '../rocket-delta-v-from-ve.js';
 
 describe('rocketDeltaVFromVe', () => {
   test('computes Δv = ve * ln(m0/mf) for typical inputs', () => {
     const ve = 3100; // m/s
     const m0 = 1200; // kg
     const mf = 800; // kg
-
     const dv = rocketDeltaVFromVe(ve, m0, mf);
-
     const expected = ve * Math.log(m0 / mf);
+
     relClose(dv, expected);
     assert.ok(dv > 0);
   });
@@ -20,7 +20,6 @@ describe('rocketDeltaVFromVe', () => {
     const ve = 3000;
     const m0 = 1000;
     const mf = 999.999;
-
     const dv = rocketDeltaVFromVe(ve, m0, mf);
 
     // ln(1 + tiny) ~ tiny
@@ -31,7 +30,6 @@ describe('rocketDeltaVFromVe', () => {
   test('scales linearly with ve (doubling ve doubles Δv)', () => {
     const m0 = 1200;
     const mf = 800;
-
     const dv1 = rocketDeltaVFromVe(1000, m0, mf);
     const dv2 = rocketDeltaVFromVe(2000, m0, mf);
 
@@ -41,7 +39,6 @@ describe('rocketDeltaVFromVe', () => {
   test('increases as mf decreases (more propellant -> higher Δv)', () => {
     const ve = 3000;
     const m0 = 1000;
-
     const dvLessProp = rocketDeltaVFromVe(ve, m0, 900);
     const dvMoreProp = rocketDeltaVFromVe(ve, m0, 500);
 

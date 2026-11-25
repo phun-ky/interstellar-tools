@@ -5,6 +5,7 @@ import type {
   Vector3DTupleType
 } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -214,6 +215,7 @@ describe('lookAngles', () => {
       if (elevation > 0) visible++;
 
       highest = Math.max(highest, elevation);
+
       // From a 420 km orbit, the horizon is at most about 2 300 km away
       if (elevation > 0) assert.ok(range < 2_400_000, `range ${range}`);
     }

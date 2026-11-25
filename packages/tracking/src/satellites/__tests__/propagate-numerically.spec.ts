@@ -15,13 +15,14 @@ import type {
   Radians,
   StateVectorInterface
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
 import { stateAt } from '../../probes/interpolate.js';
 import { fitElements } from '../fit.js';
-import { propagate } from '../propagate.js';
 import { propagateNumerically } from '../propagate-numerically.js';
+import { propagate } from '../propagate.js';
 import { parseTle } from '../tle.js';
 
 const MU = EGM2008.mu;

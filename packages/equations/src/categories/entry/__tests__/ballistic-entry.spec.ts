@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { ballisticCoefficient } from '../ballistic-coefficient.js';
 import { ballisticEntrySpeed } from '../ballistic-entry-speed.js';
 import { ballisticPeakDecelerationAltitude } from '../ballistic-peak-deceleration-altitude.js';
 import { ballisticPeakDeceleration } from '../ballistic-peak-deceleration.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 const RHO0 = 1.225; // kg/m³
 const H = 7200; // m
 const VE = 11_000; // m/s
 const GAMMA = (-6.5 * Math.PI) / 180;
 const BETA = 322; // kg/m²
-
 const deceleration = (h: number, beta = BETA) => {
   const v = ballisticEntrySpeed(h, VE, GAMMA, beta, RHO0, H);
 

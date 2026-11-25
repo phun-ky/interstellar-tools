@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { rk4Integrate, rk4Step } from '../rk4.js';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { rk4Integrate, rk4Step } from '../rk4.js';
 
 describe('rk4Step', () => {
   test('matches e^h to fifth order for dy/dt = y', () => {

@@ -2,11 +2,13 @@ import type {
   ClassicalElementsInterface,
   Radians
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { elementsToState } from '../elements-to-state.js';
 import { visVivaSpeed } from '../vis-viva-speed.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 const MU = 3.986004418e14;
 const rad = (d: number) => ((d * Math.PI) / 180) as Radians;

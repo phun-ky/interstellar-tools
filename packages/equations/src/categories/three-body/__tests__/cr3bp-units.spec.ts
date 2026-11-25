@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { cr3bpUnits } from '../cr3bp-units.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { cr3bpUnits } from '../cr3bp-units.js';
 
 describe('cr3bpUnits', () => {
   test('gives 4.342 days and 1 024.5 m/s for Earth and Moon', () => {

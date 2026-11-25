@@ -1,14 +1,12 @@
+import { G_SI } from '@interstellar-tools/constants';
+import { Vector3DTupleType } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import {
-  relClose,
-  vecRelClose
-} from '../../../__tests__/helpers/index.js';
-import { G_SI } from '@interstellar-tools/constants';
-import { Vector3DTupleType } from '@interstellar-tools/types';
-import { forceOn1By2 } from '../force-on1-by2.js';
+import { relClose, vecRelClose } from '../../../__tests__/helpers/index.js';
 import { norm, scale, sub } from '../../helpers/misc.js';
+import { forceOn1By2 } from '../force-on1-by2.js';
 
 describe('forceOn1By2', () => {
   test('1D sanity (+x): |F| = G*m1*m2/r² and points +x', () => {
@@ -17,11 +15,10 @@ describe('forceOn1By2', () => {
     const m2 = 3;
     const r1: Vector3DTupleType = [0, 0, 0];
     const r2: Vector3DTupleType = [10, 0, 0];
-
     const F = forceOn1By2(m1, m2, r1, r2, G);
-
     // Expected magnitude and direction
     const expectedMag = (G * m1 * m2) / 10 ** 2; // 0.06
+
     relClose(norm(F), expectedMag, 1e-14);
     vecRelClose(F, [expectedMag, 0, 0], 1e-14);
   });
@@ -32,8 +29,8 @@ describe('forceOn1By2', () => {
     const m2 = 3;
     const r1: Vector3DTupleType = [0, 0, 0];
     const r2: Vector3DTupleType = [-10, 0, 0];
-
     const F = forceOn1By2(m1, m2, r1, r2, G);
+
     relClose(norm(F), 0.06, 1e-14);
     vecRelClose(F, [-0.06, 0, 0], 1e-14);
   });
@@ -44,14 +41,13 @@ describe('forceOn1By2', () => {
     const m2 = 11;
     const r1: Vector3DTupleType = [0.2, -3, 5.5];
     const r2: Vector3DTupleType = [4.2, 1, -1];
-
     const F = forceOn1By2(m1, m2, r1, r2, G);
     const dr = sub(r2, r1);
     const r = Math.hypot(...dr);
     const rhat: Vector3DTupleType = [dr[0] / r, dr[1] / r, dr[2] / r];
-
     // Normalize F and compare to rhat
     const Fhat = scale(F, 1 / norm(F)) as Vector3DTupleType;
+
     vecRelClose(Fhat, rhat, 1e-12);
   });
 
@@ -61,7 +57,6 @@ describe('forceOn1By2', () => {
     const m2 = 11;
     const r1: Vector3DTupleType = [0, -2, 5];
     const r2: Vector3DTupleType = [3, 1, -1];
-
     const F12 = forceOn1By2(m1, m2, r1, r2, G);
     const F21 = forceOn1By2(m2, m1, r2, r1, G);
 
@@ -73,10 +68,8 @@ describe('forceOn1By2', () => {
     const m1 = 2;
     const m2 = 5;
     const r1: Vector3DTupleType = [0, 0, 0];
-
     const r2a: Vector3DTupleType = [2, 0, 0]; // r = 2
     const r2b: Vector3DTupleType = [4, 0, 0]; // r = 4 (double → quarter force)
-
     const Fa = forceOn1By2(m1, m2, r1, r2a, G);
     const Fb = forceOn1By2(m1, m2, r1, r2b, G);
 
@@ -89,7 +82,6 @@ describe('forceOn1By2', () => {
     const m2 = 5;
     const r1: Vector3DTupleType = [1, 2, 3];
     const r2: Vector3DTupleType = [4, -1, 0];
-
     const F = forceOn1By2(m1, m2, r1, r2, G);
     const F_m1x2 = forceOn1By2(2 * m1, m2, r1, r2, G);
     const F_m2x2 = forceOn1By2(m1, 2 * m2, r1, r2, G);
@@ -106,7 +98,6 @@ describe('forceOn1By2', () => {
     const mSun = 1.9885e30; // kg
     const rEarth: Vector3DTupleType = [0, 0, 0];
     const rSun: Vector3DTupleType = [1.495978707e11, 0, 0]; // m
-
     const F = forceOn1By2(mEarth, mSun, rEarth, rSun, G_SI);
     const r = Math.hypot(
       rSun[0] - rEarth[0],
@@ -119,6 +110,7 @@ describe('forceOn1By2', () => {
 
     // also within ~0.5% of the commonly quoted magnitude
     const ref = 3.542e22;
+
     assert.ok(
       Math.abs(norm(F) - ref) / ref < 5e-3,
       `|F| ${norm(F)} differs from ~${ref}`

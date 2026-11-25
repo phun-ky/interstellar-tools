@@ -1,5 +1,6 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { after, before, describe, test } from 'node:test';
@@ -21,6 +22,7 @@ const call = async (name: string, args: Record<string, unknown>) => {
 
   return res as {
     isError?: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- tool outputs mix numbers, strings and vectors
     structuredContent?: Record<string, any>;
     content: { type: string; text?: string }[];
   };
@@ -632,6 +634,7 @@ describe('bodies', () => {
       observations?: Record<string, { value?: number } & object>;
       display?: Record<string, unknown>;
     };
+
     const find = async (dataset: string, id: string) =>
       (
         (await readJson(
@@ -762,6 +765,7 @@ describe('tracking tools', () => {
     ).structuredContent!;
 
     assert.deepEqual(fromOmm.position_teme_m, fromId.position_teme_m);
+
     // Two element sets 12 hours apart, within a kilometre of each other
     const apart = Math.hypot(
       ...fromTle.position_teme_m.map(

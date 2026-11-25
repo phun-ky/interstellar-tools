@@ -1,4 +1,5 @@
 import type { Vector3DTupleType } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -8,7 +9,6 @@ import { hohmannTransfer } from '../hohmann-transfer.js';
 import { solveLambert } from '../solve-lambert.js';
 
 const MU = 3.986004418e14;
-
 // Reflect y: turns a counterclockwise transfer into a clockwise one
 const mirror = ([x, y, z]: Vector3DTupleType): Vector3DTupleType => [x, -y, z];
 

@@ -1,5 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -100,6 +101,7 @@ for (const [name, project, inverse] of [
         close(a.x, 0);
         close(b.x, 0);
         close(a.y, b.y);
+
         const pole = inverse(0, a.y, 3, { lambda0: rad(10) });
 
         close(pole.phi, (sign * Math.PI) / 2);

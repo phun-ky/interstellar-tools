@@ -1,12 +1,13 @@
-import assert from 'node:assert/strict';
-import test, { describe } from 'node:test';
-
 import type {
   Matrix3x3Type,
   Vector3DTupleType
 } from '@interstellar-tools/types';
-import { applyMatrix3 } from '../apply-matrix-3.js';
+
+import assert from 'node:assert/strict';
+import test, { describe } from 'node:test';
+
 import { vecRelClose } from '../../../__tests__/helpers/index.js';
+import { applyMatrix3 } from '../apply-matrix-3.js';
 
 describe('applyMatrix3', () => {
   test('applies identity matrix (returns same vector)', () => {
@@ -15,10 +16,9 @@ describe('applyMatrix3', () => {
       [0, 1, 0],
       [0, 0, 1]
     ];
-
     const v: Vector3DTupleType = [1, 2, 3];
-
     const out = applyMatrix3(I, v);
+
     assert.deepEqual(out, v);
   });
 
@@ -28,10 +28,9 @@ describe('applyMatrix3', () => {
       [0, 0, -1],
       [0, 1, 0]
     ];
-
     const v: Vector3DTupleType = [1, 2, 3];
-
     const out = applyMatrix3(M, v);
+
     assert.deepEqual(out, [1, -3, 2]);
   });
 
@@ -42,9 +41,7 @@ describe('applyMatrix3', () => {
       [17, 19, 23]
     ];
     const v: Vector3DTupleType = [29, 31, 37];
-
     const out = applyMatrix3(M, v);
-
     const expected: Vector3DTupleType = [
       2 * 29 + 3 * 31 + 5 * 37,
       7 * 29 + 11 * 31 + 13 * 37,
@@ -60,12 +57,9 @@ describe('applyMatrix3', () => {
       [0, 3, 4],
       [-1, 0.5, 2]
     ];
-
     const u: Vector3DTupleType = [1, 2, 3];
     const v: Vector3DTupleType = [-4, 5, -6];
-
     const uPlusV: Vector3DTupleType = [u[0] + v[0], u[1] + v[1], u[2] + v[2]];
-
     const left = applyMatrix3(M, uPlusV);
     const rightU = applyMatrix3(M, u);
     const rightV = applyMatrix3(M, v);
@@ -84,12 +78,9 @@ describe('applyMatrix3', () => {
       [0.4, 0.5, 0.6],
       [0.7, 0.8, 0.9]
     ];
-
     const v: Vector3DTupleType = [1.1, -2.2, 3.3];
     const k = -7.5;
-
     const kv: Vector3DTupleType = [k * v[0], k * v[1], k * v[2]];
-
     const left = applyMatrix3(M, kv);
     const right0 = applyMatrix3(M, v);
     const right: Vector3DTupleType = [

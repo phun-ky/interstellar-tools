@@ -7,8 +7,10 @@ import {
 } from '@interstellar-tools/constants';
 import type { DistanceUnitType } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
 import { convertDistanceUnit, METERS_PER } from '../convert-distance-unit.js';
 

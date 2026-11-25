@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
+import { atmosphericDragAcceleration } from '../../orbits/atmospheric-drag-acceleration.js';
 import { stagnationHeatFlux } from '../stagnation-heat-flux.js';
 import { terminalVelocity } from '../terminal-velocity.js';
-import { atmosphericDragAcceleration } from '../../orbits/atmospheric-drag-acceleration.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('stagnationHeatFlux', () => {
   test('is k √(ρ / Rn) V³ with Earth’s k by default', () => {

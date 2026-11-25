@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 import { specificAngularMomentumFromElements } from '../specific-angular-momentum-from-elements.js';
 
 describe('specificAngularMomentumFromElements', () => {
@@ -11,6 +11,7 @@ describe('specificAngularMomentumFromElements', () => {
     const e = 0.1; // -
     const h = specificAngularMomentumFromElements(a, e, mu);
     const expected = Math.sqrt(mu * a * (1 - e * e));
+
     relClose(h, expected, 1e-15);
   });
 
@@ -20,6 +21,7 @@ describe('specificAngularMomentumFromElements', () => {
     const e = 0;
     const h = specificAngularMomentumFromElements(a, e, mu);
     const expected = Math.sqrt(mu * a);
+
     relClose(h, expected, 1e-15);
   });
 
@@ -29,6 +31,7 @@ describe('specificAngularMomentumFromElements', () => {
     const e = 1.2; // -
     const h = specificAngularMomentumFromElements(a, e, mu);
     const expected = Math.sqrt(mu * a * (1 - e * e)); // positive since a<0 and (1-e²)<0
+
     relClose(h, expected, 1e-15);
   });
 
@@ -40,8 +43,8 @@ describe('specificAngularMomentumFromElements', () => {
     // Target radicand = -tol/2: μ*a*(1-e²) = -tol/2  =>  1-e² = -(tol/2)/(μ*a)
     const oneMinusE2 = -(tol / 2) / (mu * a);
     const e = Math.sqrt(1 - oneMinusE2); // slightly > 1 (physically inconsistent with a>0), used only to hit tolerance path
-
     const h = specificAngularMomentumFromElements(a, e, mu);
+
     absClose(h, 0, 1e-12);
   });
 
@@ -49,6 +52,7 @@ describe('specificAngularMomentumFromElements', () => {
     const mu = 3.986004418e14;
     const a = 7000e3; // m
     const e = 1.1; // makes 1 - e² < 0 with a>0 → negative radicand
+
     assert.throws(
       () => specificAngularMomentumFromElements(a, e, mu),
       /Invalid \(a,e\).*μ·a·\(1-e²\) < 0/
@@ -60,6 +64,7 @@ describe('specificAngularMomentumFromElements', () => {
     const a = 7000e3;
     const e = 0.3;
     const h = specificAngularMomentumFromElements(a, e, mu);
+
     absClose(h, 0, 0);
   });
 
@@ -68,11 +73,10 @@ describe('specificAngularMomentumFromElements', () => {
     const e = 0.2;
     const a1 = 8000e3;
     const a2 = 2 * a1;
-
     const h1 = specificAngularMomentumFromElements(a1, e, mu);
     const h2 = specificAngularMomentumFromElements(a2, e, mu);
-
     const expectedRatio = Math.sqrt(Math.abs(a2) / Math.abs(a1));
+
     relClose(h2 / h1, expectedRatio, 1e-12);
   });
 
@@ -114,6 +118,7 @@ describe('specificAngularMomentumFromElements', () => {
     const a = 1e9;
     const e = 0.5;
     const h = specificAngularMomentumFromElements(a, e, mu);
+
     assert.ok(Number.isFinite(h) && h > 0);
   });
 });

@@ -1,9 +1,11 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { angleClose, relClose } from '../../../__tests__/helpers/index.js';
 import { inclinationFromLaunchAzimuth } from '../inclination-from-launch-azimuth.js';
 import { launchAzimuthForInclination } from '../launch-azimuth-for-inclination.js';
-import { angleClose, relClose } from '../../../__tests__/helpers/index.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 const deg = (r: number) => (r * 180) / Math.PI;

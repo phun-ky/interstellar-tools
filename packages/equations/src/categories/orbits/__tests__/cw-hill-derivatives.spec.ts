@@ -1,22 +1,18 @@
 import { CwState, CwStateDerivative } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose, relCloseTuple } from '../../../__tests__/helpers/index.js';
 import { cwHillDerivatives } from '../cw-hill-derivatives.js';
-import {
-  relClose,
-  relCloseTuple
-} from '../../../__tests__/helpers/index.js';
 
 describe('cwHillDerivatives', () => {
   test('returns [xDot,yDot,zDot,xDDot,yDDot,zDDot] matching CW/Hill accelerations', () => {
     const n = 0.001; // rad/s
     const state: CwState = [100, -50, 25, 0.2, -0.1, 0.05];
-
     const ds = cwHillDerivatives(state, n);
-
-    const [x, y, z, xDot, yDot, zDot] = state;
+    const [x, , z, xDot, yDot, zDot] = state;
     const n2 = n * n;
-
     const expected: CwStateDerivative = [
       xDot,
       yDot,
@@ -32,25 +28,24 @@ describe('cwHillDerivatives', () => {
   test('when n = 0, accelerations are zero and derivative is pure velocity', () => {
     const n = 0;
     const state: CwState = [1, 2, 3, 0.1, 0.2, 0.3];
-
     const ds = cwHillDerivatives(state, n);
-
     const expected: CwStateDerivative = [0.1, 0.2, 0.3, 0, 0, 0];
+
     relCloseTuple(ds, expected);
   });
 
   test('z dynamics are simple harmonic: zDDot = -n² z', () => {
     const n = 0.01;
     const state: CwState = [0, 0, 123.456, 0, 0, 0];
-
     const ds = cwHillDerivatives(state, n);
-
     const expectedZDDot = -(n * n) * state[2];
+
     relClose(ds[5], expectedZDDot);
   });
 
   test('throws TypeError when n is not finite (NaN)', () => {
     const state: CwState = [0, 0, 0, 0, 0, 0];
+
     assert.throws(
       () => cwHillDerivatives(state, Number.NaN),
       (err) =>
@@ -61,6 +56,7 @@ describe('cwHillDerivatives', () => {
 
   test('throws RangeError when n < 0', () => {
     const state: CwState = [0, 0, 0, 0, 0, 0];
+
     assert.throws(
       () => cwHillDerivatives(state, -1e-9),
       (err) =>
@@ -71,8 +67,8 @@ describe('cwHillDerivatives', () => {
 
   test('throws TypeError when a state component is not finite', () => {
     const n = 0.001;
-
     const badX: CwState = [Number.NaN, 0, 0, 0, 0, 0];
+
     assert.throws(
       () => cwHillDerivatives(badX, n),
       (err) =>
@@ -81,6 +77,7 @@ describe('cwHillDerivatives', () => {
     );
 
     const badYDot: CwState = [0, 0, 0, 0, Number.POSITIVE_INFINITY, 0];
+
     assert.throws(
       () => cwHillDerivatives(badYDot, n),
       (err) =>
@@ -92,7 +89,6 @@ describe('cwHillDerivatives', () => {
   test('output is always finite for finite inputs', () => {
     const n = 0.002;
     const state: CwState = [1e6, -1e6, 1e5, 10, -10, 1];
-
     const ds = cwHillDerivatives(state, n);
 
     for (const v of ds) {

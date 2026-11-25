@@ -1,8 +1,10 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { gravityLoss } from '../gravity-loss.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { gravityLoss } from '../gravity-loss.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 const constant = (deg: number, n: number) =>

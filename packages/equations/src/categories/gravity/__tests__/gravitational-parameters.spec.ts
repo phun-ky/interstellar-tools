@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
 import { gravitationalParameter } from '../gravitational-parameter.js';
 
@@ -9,6 +10,7 @@ describe('gravitationalParameter', () => {
     const M = 2;
     const m = 3;
     const mu = gravitationalParameter(M, m, G);
+
     assert.equal(mu, 10 * (2 + 3)); // 50
   });
 
@@ -16,6 +18,7 @@ describe('gravitationalParameter', () => {
     const GM_canonical = 3.986004418e14; // m³/s²
     const M_from_GM = GM_canonical / 6.6743e-11;
     const mu = gravitationalParameter(M_from_GM); // m=0, G=G_SI
+
     relClose(mu, GM_canonical, 1e-12);
   });
 
@@ -23,6 +26,7 @@ describe('gravitationalParameter', () => {
     const G = 6.7;
     const M = 0;
     const m = 123;
+
     assert.equal(gravitationalParameter(M, m, G), G * m);
   });
 
@@ -32,6 +36,7 @@ describe('gravitationalParameter', () => {
     const m = 11;
     const mu1 = gravitationalParameter(M, m, G);
     const mu2 = gravitationalParameter(m, M, G);
+
     assert.equal(mu1, mu2);
   });
 
@@ -43,6 +48,7 @@ describe('gravitationalParameter', () => {
     const approx = G * M;
     // Relative error should be about m/M
     const relErr = Math.abs(exact - approx) / approx;
+
     assert.ok(relErr < 2e-6, `relative error ${relErr} not < 2e-6`);
   });
 
@@ -50,7 +56,6 @@ describe('gravitationalParameter', () => {
     const G = 5;
     const M = 10;
     const m = 4;
-
     const mu = gravitationalParameter(M, m, G);
     const mu_doubleG = gravitationalParameter(M, m, 2 * G);
     const mu_doubleMasses = gravitationalParameter(2 * M, 2 * m, G);
@@ -64,6 +69,7 @@ describe('gravitationalParameter', () => {
   test('throws on invalid M (negative or non-finite)', () => {
     const G = 6.7;
     const m = 1;
+
     assert.throws(() => gravitationalParameter(-1, m, G), /finite|positive/);
     assert.throws(() => gravitationalParameter(Number.NaN, m, G), /finite/);
   });
@@ -71,6 +77,7 @@ describe('gravitationalParameter', () => {
   test('throws on invalid m (negative or non-finite)', () => {
     const G = 6.7;
     const M = 1;
+
     assert.throws(() => gravitationalParameter(M, -1, G), /finite|positive/);
     assert.throws(() => gravitationalParameter(M, Number.NaN, G), /finite/);
   });
@@ -78,6 +85,7 @@ describe('gravitationalParameter', () => {
   test('throws on invalid G (non-finite or ≤ 0)', () => {
     const M = 1;
     const m = 1;
+
     assert.throws(() => gravitationalParameter(M, m, 0), /positive/);
     assert.throws(() => gravitationalParameter(M, m, -1), /positive/);
     assert.throws(() => gravitationalParameter(M, m, Number.NaN), /finite/);

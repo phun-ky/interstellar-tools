@@ -1,7 +1,9 @@
 import type { Radians, Vector3DTupleType } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { groundSampleDistance } from '../ground-sample-distance.js';
 import { illuminationAngles } from '../illumination-angles.js';
 import { instantaneousFieldOfView } from '../instantaneous-field-of-view.js';

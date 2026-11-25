@@ -1,16 +1,16 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { flatteningOblateSpheroid } from '../flattening-oblate-spheroid.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { flatteningOblateSpheroid } from '../flattening-oblate-spheroid.js';
 
 describe('flatteningOblateSpheroid', () => {
   test('computes f = (a - c) / a for typical Earth-like radii (WGS84-ish)', () => {
     const a = 6378137.0; // m (equatorial)
     const c = 6356752.314245; // m (polar)
-
     const f = flatteningOblateSpheroid(a, c);
-
     const expected = (a - c) / a;
+
     relClose(f, expected);
 
     // sanity: Earth flattening is ~1/298.257... ≈ 0.0033528 (ballpark)
@@ -20,7 +20,6 @@ describe('flatteningOblateSpheroid', () => {
   test('returns 0 for a perfect sphere (a === c)', () => {
     const a = 10;
     const c = 10;
-
     const f = flatteningOblateSpheroid(a, c);
 
     // exactly 0 with identical numbers; tolerant check is fine
@@ -29,7 +28,6 @@ describe('flatteningOblateSpheroid', () => {
 
   test('increases as c decreases for fixed a (more flattened => larger f)', () => {
     const a = 10;
-
     const fLessFlat = flatteningOblateSpheroid(a, 9.9);
     const fMoreFlat = flatteningOblateSpheroid(a, 9.0);
 
@@ -42,7 +40,6 @@ describe('flatteningOblateSpheroid', () => {
   test('is dimensionless and within [0, 1) for physically valid oblate spheroids (a >= c > 0)', () => {
     const a = 10;
     const c = 7;
-
     const f = flatteningOblateSpheroid(a, c);
 
     assert.ok(f >= 0, `expected f >= 0, got ${f}`);
@@ -90,7 +87,6 @@ describe('flatteningOblateSpheroid', () => {
     // This test documents that behavior.
     const a = 10;
     const c = 11;
-
     const f = flatteningOblateSpheroid(a, c);
 
     assert.ok(f < 0, `expected f < 0 for c > a, got ${f}`);

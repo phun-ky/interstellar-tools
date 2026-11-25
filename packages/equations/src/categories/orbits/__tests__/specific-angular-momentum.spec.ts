@@ -1,9 +1,11 @@
+import { Vector3DTupleType } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
-import { specificAngularMomentum } from '../specific-angular-momentum.js';
-import { Vector3DTupleType } from '@interstellar-tools/types';
 import { dot, norm } from '../../helpers/misc.js';
+import { specificAngularMomentum } from '../specific-angular-momentum.js';
 
 describe('specificAngularMomentum', () => {
   test('orthogonal state: r ⟂ v → h = r * v', () => {
@@ -11,19 +13,19 @@ describe('specificAngularMomentum', () => {
     const v: Vector3DTupleType = [0, 7.67e3, 0]; // m/s
     const h = specificAngularMomentum(r, v);
     const expected = norm(r) * norm(v); // r*v_perp (since perp)
+
     relClose(h, expected, 1e-14);
   });
 
   test('manual cross vs function: ||r×v|| matches', () => {
     const r: Vector3DTupleType = [1.2e7, -3.4e6, 5.6e6];
     const v: Vector3DTupleType = [-7.8e3, 9.1e3, 2.3e3];
-
     const hx = r[1] * v[2] - r[2] * v[1];
     const hy = r[2] * v[0] - r[0] * v[2];
     const hz = r[0] * v[1] - r[1] * v[0];
     const expected = Math.hypot(hx, hy, hz);
-
     const h = specificAngularMomentum(r, v);
+
     relClose(h, expected, 1e-15);
   });
 
@@ -35,8 +37,8 @@ describe('specificAngularMomentum', () => {
     const cosT = dot(r, v) / (rr * vv);
     const sinT = Math.sqrt(Math.max(0, 1 - cosT * cosT));
     const expected = rr * vv * sinT;
-
     const h = specificAngularMomentum(r, v);
+
     relClose(h, expected, 1e-12);
   });
 
@@ -45,6 +47,7 @@ describe('specificAngularMomentum', () => {
     const k = 3.5e-3; // arbitrary scale to mimic m/s
     const v: Vector3DTupleType = [k * r[0], k * r[1], k * r[2]];
     const h = specificAngularMomentum(r, v);
+
     absClose(h, 0, 1e-12);
   });
 
@@ -52,20 +55,19 @@ describe('specificAngularMomentum', () => {
     const r: Vector3DTupleType = [7e6, 0, 0];
     const v: Vector3DTupleType = [0, 0, 0];
     const h = specificAngularMomentum(r, v);
+
     absClose(h, 0, 1e-12);
   });
 
   test('rotation invariance of magnitude (rotate 90° about z)', () => {
     const r: Vector3DTupleType = [5e6, 2e6, 0];
     const v: Vector3DTupleType = [1e3, 3e3, 0];
-
     const h1 = specificAngularMomentum(r, v);
-
     // 90° rotation about z: (x,y) -> (-y, x)
     const r2: Vector3DTupleType = [-r[1], r[0], 0];
     const v2: Vector3DTupleType = [-v[1], v[0], 0];
-
     const h2 = specificAngularMomentum(r2, v2);
+
     relClose(h2, h1, 1e-15);
   });
 
@@ -75,6 +77,7 @@ describe('specificAngularMomentum', () => {
     const v: Vector3DTupleType = [0, Math.sqrt(mu / r[0]), 0];
     const h = specificAngularMomentum(r, v);
     const expected = Math.sqrt(mu * r[0]);
+
     relClose(h, expected, 1e-12);
   });
 
@@ -105,6 +108,7 @@ describe('specificAngularMomentum', () => {
   test('input validation: zero-length position vector throws', () => {
     const rZero: Vector3DTupleType = [0, 0, 0];
     const v: Vector3DTupleType = [1e3, 2e3, 3e3];
+
     assert.throws(() => specificAngularMomentum(rZero, v), /non-zero/);
   });
 
@@ -112,6 +116,7 @@ describe('specificAngularMomentum', () => {
     const r: Vector3DTupleType = [1e9, 1e9, 1e9];
     const v: Vector3DTupleType = [1e5, -2e5, 3e5];
     const h = specificAngularMomentum(r, v);
+
     assert.ok(Number.isFinite(h) && h >= 0);
   });
 });

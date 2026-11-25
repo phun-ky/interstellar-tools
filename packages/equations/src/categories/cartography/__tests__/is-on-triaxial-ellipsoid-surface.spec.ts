@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { isOnTriaxialEllipsoidSurface } from '../is-on-triaxial-ellipsoid-surface.js';
 
 describe('isOnTriaxialEllipsoidSurface', () => {
@@ -18,16 +19,13 @@ describe('isOnTriaxialEllipsoidSurface', () => {
     const a = 3;
     const b = 2;
     const c = 1;
-
     const u = 0.3;
     const v = -0.4;
     const w = 0.5;
-
     // Scale factor s such that:
     // (s*u)²/a² + (s*v)²/b² + (s*w)²/c² = 1  =>  s = 1 / sqrt( u²/a² + v²/b² + w²/c² )
     const denom = (u * u) / (a * a) + (v * v) / (b * b) + (w * w) / (c * c);
     const s = 1 / Math.sqrt(denom);
-
     const x = s * u;
     const y = s * v;
     const z = s * w;
@@ -41,6 +39,7 @@ describe('isOnTriaxialEllipsoidSurface', () => {
 
   test('returns false for an exterior point (2a,0,0)', () => {
     const a = 3;
+
     assert.equal(isOnTriaxialEllipsoidSurface(2 * a, 0, 0, a, 2, 1), false);
   });
 
@@ -48,7 +47,6 @@ describe('isOnTriaxialEllipsoidSurface', () => {
     const a = 3;
     const b = 2;
     const c = 1;
-
     // Slightly off the +X axis surface point
     const x = a * 1.0000001;
 

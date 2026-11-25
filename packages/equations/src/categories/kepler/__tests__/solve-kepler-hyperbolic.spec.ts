@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKeplerHyperbolic } from '../solve-kepler-hyperbolic.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { solveKeplerHyperbolic } from '../solve-kepler-hyperbolic.js';
 
 const residual = (F: number, e: number, M: number) => e * Math.sinh(F) - F - M;
 

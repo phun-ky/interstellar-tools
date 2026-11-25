@@ -1,18 +1,21 @@
 import type { CwState } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { matMul3 } from '../../helpers/mat-mul3.js';
 import { cwHillDerivatives } from '../cw-hill-derivatives.js';
 import { cwPropagate } from '../cw-propagate.js';
 import { cwStateTransition } from '../cw-state-transition.js';
-import { matMul3 } from '../../helpers/mat-mul3.js';
-import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
 const n = 0.00113; // rad/s, about a 93-minute orbit
-
 // Classic RK4 on cwHillDerivatives, as an independent check
 const rk4 = (state: CwState, t: number, steps: number): CwState => {
   const h = t / steps;
+
   let y = [...state];
+
   const add = (a: number[], b: readonly number[], k: number) =>
     a.map((x, i) => x + k * b[i]);
 

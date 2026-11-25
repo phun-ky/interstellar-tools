@@ -1,5 +1,6 @@
 import type { Radians } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -36,12 +37,12 @@ describe('earthRotationAngle', () => {
   test('matches SOFA (eraEra00 at MJD 54388.0 UT1)', () => {
     close(
       earthRotationAngle(new Date('2007-10-15T00:00:00Z')),
-      0.4022837240028158102,
+      0.4022837240028158,
       1e-12
     );
   });
 
-  test('turns 1.00273781191135448 turns a day, wrapped to [0, 2π)', () => {
+  test('turns 1.0027378119113546 turns a day, wrapped to [0, 2π)', () => {
     fc.assert(
       fc.property(moment, (date) => {
         const today = earthRotationAngle(date);
@@ -66,7 +67,7 @@ describe('greenwichMeanSiderealTime', () => {
   test('matches SOFA (eraGmst82 at MJD 53736.0 UT1)', () => {
     close(
       greenwichMeanSiderealTime(new Date('2006-01-01T00:00:00Z')),
-      1.754174981860675096,
+      1.754174981860675,
       1e-12
     );
   });

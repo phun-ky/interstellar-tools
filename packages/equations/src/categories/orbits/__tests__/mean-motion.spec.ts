@@ -1,16 +1,16 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { meanMotion } from '../mean-motion.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { meanMotion } from '../mean-motion.js';
 
 describe('meanMotion', () => {
   test('computes n = sqrt(mu / a^3) for a typical Earth orbit (km-based)', () => {
     const mu = 398600.4418; // km³/s²
     const a = 7000; // km
-
     const n = meanMotion(a, mu);
-
     const expected = Math.sqrt(mu / (a * a * a));
+
     relClose(n, expected);
     assert.ok(n > 0);
   });
@@ -19,11 +19,10 @@ describe('meanMotion', () => {
     const mu = 398600.4418;
     const a1 = 7000;
     const a2 = 2 * a1;
-
     const n1 = meanMotion(a1, mu);
     const n2 = meanMotion(a2, mu);
-
     const expectedRatio = 1 / Math.pow(2, 3 / 2); // n2/n1
+
     relClose(n2 / n1, expectedRatio);
   });
 
@@ -31,7 +30,6 @@ describe('meanMotion', () => {
     const mu1 = 100;
     const mu2 = 4 * mu1;
     const a = 10;
-
     const n1 = meanMotion(a, mu1);
     const n2 = meanMotion(a, mu2);
 

@@ -1,31 +1,35 @@
+import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 import { rad, toRad } from '../radians.js';
-import type { Radians } from '@interstellar-tools/types';
 
 describe('radians', () => {
   /* ---------------------------------- toRad --------------------------------- */
 
   test('toRad converts 180° to π', () => {
     const x = toRad(180);
+
     absClose(x, Math.PI, 1e-12);
   });
 
   test('toRad converts 90° to π/2', () => {
     const x = toRad(90);
+
     absClose(x, Math.PI / 2, 1e-12);
   });
 
   test('toRad converts -90° to -π/2', () => {
     const x = toRad(-90);
+
     absClose(x, -Math.PI / 2, 1e-12);
   });
 
   test('toRad is linear: toRad(a + b) = toRad(a) + toRad(b)', () => {
     const a = 12.34;
     const b = -56.78;
-
     const left = toRad(a + b);
     const right = (toRad(a) + toRad(b)) as number;
 
@@ -43,6 +47,7 @@ describe('radians', () => {
 
   test('rad works with Math constants (π branded as Radians)', () => {
     const x: Radians = rad(Math.PI);
+
     absClose(x, Math.PI, 0);
   });
 });

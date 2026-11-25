@@ -1,8 +1,10 @@
+import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
 import { gravityAssistTurningAngle } from '../gravity-assist-turning-angle.js';
-import type { Radians } from '@interstellar-tools/types';
 
 describe('gravityAssistTurningAngle', () => {
   /**
@@ -17,6 +19,7 @@ describe('gravityAssistTurningAngle', () => {
     const denom = 1 + (rp * vInf * vInf) / mu;
     const x = 1 / denom;
     const clamped = Math.min(1, Math.max(0, x));
+
     return (2 * Math.asin(clamped)) as Radians;
   };
 
@@ -24,7 +27,6 @@ describe('gravityAssistTurningAngle', () => {
     const rp = 7000; // km
     const vInf = 8; // km/s
     const mu = 398600.4418; // km³/s²
-
     const delta = gravityAssistTurningAngle(rp, vInf, mu);
     const expected = expectedTurningAngle(rp, vInf, mu);
 
@@ -37,7 +39,6 @@ describe('gravityAssistTurningAngle', () => {
     const rp = 7000;
     const vInf = 0;
     const mu = 398600.4418;
-
     const delta = gravityAssistTurningAngle(rp, vInf, mu);
 
     relClose(delta, Math.PI, 1e-12);
@@ -46,7 +47,6 @@ describe('gravityAssistTurningAngle', () => {
   test('turning angle decreases as periapsis radius increases (all else equal)', () => {
     const vInf = 8;
     const mu = 398600.4418;
-
     const deltaLowRp = gravityAssistTurningAngle(7000, vInf, mu);
     const deltaHighRp = gravityAssistTurningAngle(70000, vInf, mu);
 
@@ -59,7 +59,6 @@ describe('gravityAssistTurningAngle', () => {
   test('turning angle decreases as vInfinity increases (all else equal)', () => {
     const rp = 7000;
     const mu = 398600.4418;
-
     const deltaLowV = gravityAssistTurningAngle(rp, 4, mu);
     const deltaHighV = gravityAssistTurningAngle(rp, 8, mu);
 
@@ -127,7 +126,6 @@ describe('gravityAssistTurningAngle', () => {
     const rp = 1e17;
     const vInf = 8;
     const mu = 398600.4418;
-
     const delta = gravityAssistTurningAngle(rp, vInf, mu);
 
     // For huge rp, delta is extremely small
@@ -138,9 +136,7 @@ describe('gravityAssistTurningAngle', () => {
     const rp = 1e8; // or 1e12, etc.
     const vInf = 8;
     const mu = 398600.4418;
-
     const delta = gravityAssistTurningAngle(rp, vInf, mu);
-
     const approx = (2 * mu) / (rp * vInf * vInf);
 
     // This is an approximation, so use a looser tolerance

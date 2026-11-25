@@ -3,14 +3,16 @@ import type {
   Radians,
   Vector3DTupleType
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { rot1 } from '../rot-1.js';
+
 import { absClose, matRelClose } from '../../../__tests__/helpers/index.js';
 import { applyMatrix3 } from '../apply-matrix-3.js';
-import { matMul3 } from '../mat-mul3.js';
-import { transpose3 } from '../transpose-3.js';
 import { det3 } from '../det-3.js';
+import { matMul3 } from '../mat-mul3.js';
+import { rot1 } from '../rot-1.js';
+import { transpose3 } from '../transpose-3.js';
 
 const I3: Matrix3x3Type = [
   [1, 0, 0],
@@ -21,12 +23,12 @@ const I3: Matrix3x3Type = [
 describe('rot1', () => {
   test('returns identity at theta = 0', () => {
     const R = rot1(0 as Radians);
+
     matRelClose(R, I3, 1e-12);
   });
 
   test('rotates Y to +Z by +90° about +X (right-handed active rotation)', () => {
     const R = rot1((Math.PI / 2) as Radians);
-
     const yAxis: Vector3DTupleType = [0, 1, 0];
     const out = applyMatrix3(R, yAxis);
 
@@ -38,7 +40,6 @@ describe('rot1', () => {
 
   test('rotates Z to -Y by +90° about +X', () => {
     const R = rot1((Math.PI / 2) as Radians);
-
     const zAxis: Vector3DTupleType = [0, 0, 1];
     const out = applyMatrix3(R, zAxis);
 
@@ -51,12 +52,14 @@ describe('rot1', () => {
   test('is orthonormal: RᵀR ≈ I', () => {
     const R = rot1(1.234 as Radians);
     const RtR = matMul3(transpose3(R), R);
+
     matRelClose(RtR, I3, 1e-12);
   });
 
   test('has determinant +1 (proper rotation)', () => {
     const R = rot1(0.789 as Radians);
-    absClose(det3(R), 1, 1e-12, `det(R) expected ~1`);
+
+    absClose(det3(R), 1, 1e-12, 'det(R) expected ~1');
   });
 
   test('inverse equals rotation by -theta: R(theta) * R(-theta) ≈ I', () => {

@@ -1,8 +1,10 @@
+import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { flightPathAngleFromTrueAnomaly } from '../flight-path-angle-from-true-anomaly.js';
-import type { Radians } from '@interstellar-tools/types';
+
 import { absClose } from '../../../__tests__/helpers/index.js';
+import { flightPathAngleFromTrueAnomaly } from '../flight-path-angle-from-true-anomaly.js';
 
 const EPS = 1e-12;
 const PI = Math.PI;
@@ -17,8 +19,10 @@ describe('flightPathAngleFromTrueAnomaly', () => {
       PI as Radians,
       -1.1 as Radians
     ];
+
     for (const nu of nus) {
       const g = flightPathAngleFromTrueAnomaly(nu, e);
+
       absClose(g, 0, EPS, `gamma(ν=${nu}, e=0) should be 0`);
     }
   });
@@ -29,10 +33,12 @@ describe('flightPathAngleFromTrueAnomaly', () => {
       { nu: 1.2 as Radians, e: 0.7 },
       { nu: 2.0 as Radians, e: 0.5 }
     ];
+
     for (const { nu, e } of cases) {
       const gamma = flightPathAngleFromTrueAnomaly(nu, e) as number;
       const ratio =
         (e * Math.sin(nu as number)) / (1 + e * Math.cos(nu as number));
+
       // Avoiding points too close to denom=0 by choice of cases above
       absClose(
         Math.tan(gamma),
@@ -53,16 +59,20 @@ describe('flightPathAngleFromTrueAnomaly', () => {
     const nu = 0.8 as Radians;
     const g1 = flightPathAngleFromTrueAnomaly(nu, e);
     const g2 = flightPathAngleFromTrueAnomaly(-nu as number as Radians, e);
+
     absClose(g1, -g2, 1e-12);
   });
 
   test('limits: ν = 0 and ν = π both yield γ = 0 for 0 ≤ e < 1', () => {
     const es = [0, 0.1, 0.5, 0.9];
+
     for (const e of es) {
       const g0 = flightPathAngleFromTrueAnomaly(0 as Radians, e);
+
       absClose(g0, 0);
 
       const gpi = flightPathAngleFromTrueAnomaly(PI as Radians, e);
+
       absClose(gpi, 0);
     }
   });
@@ -71,14 +81,17 @@ describe('flightPathAngleFromTrueAnomaly', () => {
     const e = 1;
     const nu = PI as Radians;
     const g = flightPathAngleFromTrueAnomaly(nu, e);
+
     absClose(g, 0);
   });
 
   test('parabolic (e=1): for general ν, γ ≈ ν/2 (principal value), away from ν=π', () => {
     const e = 1;
     const nus: Radians[] = [0.6 as Radians, 1.0 as Radians, -1.2 as Radians];
+
     for (const nu of nus) {
       const g = flightPathAngleFromTrueAnomaly(nu, e);
+
       // Using identity tan γ = sin ν / (1 + cos ν) = tan(ν/2)
       // γ = atan2(sin(ν/2), cos(ν/2)) → principal value ≈ ν/2 for |ν| < π
       absClose(
@@ -94,6 +107,7 @@ describe('flightPathAngleFromTrueAnomaly', () => {
     const e = 1.5;
     const nu0 = Math.acos(-1 / e) as Radians; // 1 + e cos ν0 = 0
     const g = flightPathAngleFromTrueAnomaly(nu0, e);
+
     absClose(g, PI / 2, 1e-12);
   });
 
@@ -101,6 +115,7 @@ describe('flightPathAngleFromTrueAnomaly', () => {
     const e = 1.5;
     const nu0 = -Math.acos(-1 / e) as Radians;
     const g = flightPathAngleFromTrueAnomaly(nu0, e);
+
     absClose(g, -PI / 2, 1e-12);
   });
 

@@ -2,6 +2,7 @@ import { AU_METERS as AU } from '@interstellar-tools/constants';
 import { sunPosition } from '@interstellar-tools/equations';
 import type { Vector3DTupleType } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 

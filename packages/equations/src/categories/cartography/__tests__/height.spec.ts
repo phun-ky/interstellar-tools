@@ -1,11 +1,13 @@
 import type { Radians, Vector3DTupleType } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { absClose } from '../../../__tests__/helpers/index.js';
 import { geodeticToBodyFixed } from '../geodetic-to-body-fixed.js';
 import { heightAboveEllipsoid } from '../height-above-ellipsoid.js';
 import { heightAboveSphere } from '../height-above-sphere.js';
-import { absClose } from '../../../__tests__/helpers/index.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 // WGS84

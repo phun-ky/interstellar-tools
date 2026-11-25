@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { atmosphericDragAcceleration } from '../atmospheric-drag-acceleration.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { atmosphericDragAcceleration } from '../atmospheric-drag-acceleration.js';
 
 describe('atmosphericDragAcceleration', () => {
   test('computes aD = 0.5 * (Cd*A/m) * rho * v² for typical inputs', () => {
@@ -10,26 +11,28 @@ describe('atmosphericDragAcceleration', () => {
     const m = 500; // kg
     const rho = 1e-12; // kg/m^3
     const v = 7700; // m/s
-
     const aD = atmosphericDragAcceleration(Cd, A, m, rho, v);
-
     const expected = 0.5 * ((Cd * A) / m) * rho * v * v;
+
     relClose(aD, expected);
     assert.ok(aD >= 0);
   });
 
   test('returns 0 when rho = 0', () => {
     const aD = atmosphericDragAcceleration(2.2, 2.0, 500, 0, 7700);
+
     assert.equal(aD, 0);
   });
 
   test('returns 0 when v = 0', () => {
     const aD = atmosphericDragAcceleration(2.2, 2.0, 500, 1e-12, 0);
+
     assert.equal(aD, 0);
   });
 
   test('returns 0 when A = 0 (no reference area)', () => {
     const aD = atmosphericDragAcceleration(2.2, 0, 500, 1e-12, 7700);
+
     assert.equal(aD, 0);
   });
 
@@ -38,7 +41,6 @@ describe('atmosphericDragAcceleration', () => {
     const A = 2.0;
     const m = 500;
     const rho = 1e-12;
-
     const a1 = atmosphericDragAcceleration(Cd, A, m, rho, 1000);
     const a2 = atmosphericDragAcceleration(Cd, A, m, rho, 2000);
 

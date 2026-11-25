@@ -1,8 +1,10 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { surfaceRotationSpeed } from '../surface-rotation-speed.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { surfaceRotationSpeed } from '../surface-rotation-speed.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 const OMEGA = 7.292115e-5; // rad/s

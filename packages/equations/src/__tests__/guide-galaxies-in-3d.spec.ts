@@ -4,14 +4,15 @@ import {
   SUN_HEIGHT_ABOVE_GALACTIC_PLANE
 } from '@interstellar-tools/constants';
 import type { DegreesType } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';
 
 import { equatorialToGalactic } from '../categories/galactic/equatorial-to-galactic.js';
 import { galacticToEquatorial } from '../categories/galactic/galactic-to-equatorial.js';
-import { galactocentricPosition } from '../categories/galactic/galactocentric-position.js';
 import { galacticToSupergalactic } from '../categories/galactic/galactic-to-supergalactic.js';
+import { galactocentricPosition } from '../categories/galactic/galactocentric-position.js';
 import { galactocentricToGalactic } from '../categories/galactic/galactocentric-to-galactic.js';
 import { galactocentricVelocity } from '../categories/galactic/galactocentric-velocity.js';
 import { galaxyDiskAxis } from '../categories/galactic/galaxy-disk-axis.js';

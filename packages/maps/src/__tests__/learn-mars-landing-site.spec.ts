@@ -1,6 +1,7 @@
 import { PLANETS } from '@interstellar-tools/constants';
 import { greatCircleDistance } from '@interstellar-tools/equations';
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';

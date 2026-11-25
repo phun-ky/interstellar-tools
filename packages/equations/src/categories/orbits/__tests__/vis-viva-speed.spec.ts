@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 import { visVivaSpeed } from '../vis-viva-speed.js';
 
@@ -8,7 +9,6 @@ describe('visVivaSpeed', () => {
     const mu = 3.986004418e14; // m³/s² (Earth GM)
     const r = 6778e3; // m (LEO-ish)
     const a = r;
-
     const v = visVivaSpeed(r, a, mu);
     const expected = Math.sqrt(mu / r);
 
@@ -18,7 +18,6 @@ describe('visVivaSpeed', () => {
   test('parabolic trajectory: a = Infinity → v = sqrt(2μ/r)', () => {
     const mu = 3.986004418e14;
     const r = 7000e3;
-
     const v = visVivaSpeed(r, Infinity, mu);
     const expected = Math.sqrt((2 * mu) / r);
 
@@ -29,7 +28,6 @@ describe('visVivaSpeed', () => {
     const mu = 3.986004418e14;
     const r = 10000e3;
     const a = -15000e3; // negative semi-major axis
-
     const v = visVivaSpeed(r, a, mu);
     const expected = Math.sqrt(mu * (2 / r - 1 / a));
 
@@ -40,23 +38,21 @@ describe('visVivaSpeed', () => {
     const mu = 3.986004418e14;
     const r = 8000e3;
     const a = r / 2; // 1/a = 2/r
-
     const v = visVivaSpeed(r, a, mu);
+
     absClose(v, 0, 1e-12);
   });
 
   test('tiny negative radicand (within tolerance) is clamped to v ≈ 0', () => {
     const mu = 3.986004418e14;
     const r = 8000e3;
-
     // Function's tolerance: tol = |1e-14 * mu / r|
     const tol = Math.abs((1e-14 * mu) / r);
     const delta = tol / (2 * mu); // makes radicand = μ*(2/r - 1/a) = -tol/2
-
     // Choose 1/a = 2/r + delta  → a = 1 / (2/r + delta)
     const a = 1 / (2 / r + delta);
-
     const v = visVivaSpeed(r, a, mu);
+
     absClose(v, 0, 1e-12);
   });
 
@@ -76,7 +72,6 @@ describe('visVivaSpeed', () => {
     const a = 10000e3; // ellipse: r must be < 2a
     const r1 = 8000e3;
     const r2 = 15000e3; // < 2a = 20000 km
-
     const v1 = visVivaSpeed(r1, a, mu);
     const v2 = visVivaSpeed(r2, a, mu);
 

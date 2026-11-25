@@ -3,7 +3,9 @@ import type {
   Matrix3x3Type,
   Vector3DTupleType
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
+
 import { norm2pi } from '../../categories/helpers/misc.js';
 
 export const relClose = (
@@ -15,7 +17,9 @@ export const relClose = (
   if (a === null) {
     assert.fail();
   }
+
   const scale = Math.max(1, Math.abs(a), Math.abs(b));
+
   assert.ok(
     Math.abs(a - b) <= eps * scale,
     msg ?? `|${a} - ${b}| > ${eps} * ${scale}`
@@ -42,6 +46,7 @@ export const absClose = (a: number, b: number, eps = 1e-12, msg?: string) => {
 export const angleClose = (a: number, b: number, eps = 1e-12) => {
   const da = Math.abs(norm2pi(a) - norm2pi(b));
   const d = Math.min(da, TWO_PI - da);
+
   assert.ok(d <= eps, `angles not close: |Δ|=${d} > ${eps}`);
 };
 

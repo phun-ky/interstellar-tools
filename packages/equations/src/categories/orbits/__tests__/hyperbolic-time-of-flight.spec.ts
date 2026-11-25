@@ -1,12 +1,13 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { hyperbolicTimeOfFlight } from '../hyperbolic-time-of-flight.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { hyperbolicTimeOfFlight } from '../hyperbolic-time-of-flight.js';
 
 const MU = 3.986004418e14;
 const rad = (d: number) => ((d * Math.PI) / 180) as Radians;
-
 // dt/dν = r² / h on any conic: integrate it with Simpson's rule as an
 // independent check of Kepler's equation for hyperbolas
 const integrateTime = (nu1: number, nu2: number, e: number, a: number) => {
@@ -15,6 +16,7 @@ const integrateTime = (nu1: number, nu2: number, e: number, a: number) => {
   const f = (nu: number) => (p / (1 + e * Math.cos(nu))) ** 2 / h;
   const n = 20_000;
   const step = (nu2 - nu1) / n;
+
   let sum = f(nu1) + f(nu2);
 
   for (let k = 1; k < n; k++) sum += (k % 2 ? 4 : 2) * f(nu1 + k * step);
