@@ -1,13 +1,12 @@
-import assert from 'node:assert/strict';
-import test, { describe } from 'node:test';
-import { accelerationOn1By2 } from '../acceleration-on1-by2.js';
-import {
-  relClose,
-  vecRelClose
-} from '../../../__tests__/helpers/index.js';
 import { G_SI } from '@interstellar-tools/constants';
 import { Vector3DTupleType } from '@interstellar-tools/types';
+
+import assert from 'node:assert/strict';
+import test, { describe } from 'node:test';
+
+import { relClose, vecRelClose } from '../../../__tests__/helpers/index.js';
 import { norm, scale, sub } from '../../helpers/misc.js';
+import { accelerationOn1By2 } from '../acceleration-on1-by2.js';
 
 describe('accelerationOn1By2', () => {
   test('1D sanity (+x): ||a|| = G*m2/r² and points +x', () => {
@@ -15,7 +14,6 @@ describe('accelerationOn1By2', () => {
     const m2 = 3;
     const r1: Vector3DTupleType = [0, 0, 0];
     const r2: Vector3DTupleType = [10, 0, 0];
-
     const a = accelerationOn1By2(m2, r1, r2, G);
 
     // Expected magnitude: 1*3/10² = 0.03, direction +x
@@ -28,7 +26,6 @@ describe('accelerationOn1By2', () => {
     const m2 = 3;
     const r1: Vector3DTupleType = [0, 0, 0];
     const r2: Vector3DTupleType = [-10, 0, 0];
-
     const a = accelerationOn1By2(m2, r1, r2, G);
 
     relClose(norm(a), 0.03, 1e-14);
@@ -40,13 +37,12 @@ describe('accelerationOn1By2', () => {
     const m2 = 11;
     const r1: Vector3DTupleType = [0.2, -3, 5.5];
     const r2: Vector3DTupleType = [4.2, 1, -1];
-
     const a = accelerationOn1By2(m2, r1, r2, G);
     const dr = sub(r2, r1);
     const r = Math.hypot(...dr);
     const rhat: Vector3DTupleType = [dr[0] / r, dr[1] / r, dr[2] / r];
-
     const ahat = scale(a, 1 / norm(a)) as Vector3DTupleType;
+
     vecRelClose(ahat, rhat, 1e-12);
   });
 
@@ -54,10 +50,8 @@ describe('accelerationOn1By2', () => {
     const G = 10;
     const m2 = 5;
     const r1: Vector3DTupleType = [0, 0, 0];
-
     const r2a: Vector3DTupleType = [2, 0, 0]; // r = 2
     const r2b: Vector3DTupleType = [4, 0, 0]; // r = 4 (double → quarter a)
-
     const aA = accelerationOn1By2(m2, r1, r2a, G);
     const aB = accelerationOn1By2(m2, r1, r2b, G);
 
@@ -69,7 +63,6 @@ describe('accelerationOn1By2', () => {
     const m2 = 5;
     const r1: Vector3DTupleType = [1, 2, 3];
     const r2: Vector3DTupleType = [4, -1, 0];
-
     const a = accelerationOn1By2(m2, r1, r2, G);
     const a_m2x2 = accelerationOn1By2(2 * m2, r1, r2, G);
     const a_Gx2 = accelerationOn1By2(m2, r1, r2, 2 * G);
@@ -82,9 +75,7 @@ describe('accelerationOn1By2', () => {
     const mSun = 1.9885e30; // kg
     const rEarth: Vector3DTupleType = [0, 0, 0];
     const rSun: Vector3DTupleType = [1.495978707e11, 0, 0]; // m
-
     const a = accelerationOn1By2(mSun, rEarth, rSun, G_SI);
-
     // Closed-form expectation GM_sun / r²
     const dr = sub(rSun, rEarth);
     const r = Math.hypot(...dr);
@@ -94,6 +85,7 @@ describe('accelerationOn1By2', () => {
 
     // Also within ~0.5% of commonly cited value
     const ref = 5.93e-3;
+
     assert.ok(
       Math.abs(norm(a) - ref) / ref < 5e-3,
       `|a| ${norm(a)} differs from ~${ref}`

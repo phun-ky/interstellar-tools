@@ -1,10 +1,12 @@
+import { TWO_PI } from '@interstellar-tools/constants';
+import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { solveKeplerBisection } from '../solve-kepler-bisection.js';
-import type { Radians } from '@interstellar-tools/types';
+
 import { angleClose } from '../../../__tests__/helpers/index.js';
-import { TWO_PI } from '@interstellar-tools/constants';
 import { norm2pi, residual } from '../../helpers/misc.js';
+import { solveKeplerBisection } from '../solve-kepler-bisection.js';
 
 describe('solveKeplerBisection', () => {
   test('basic correctness: residual close to 0 (e=0.5, M=1.234)', () => {
@@ -12,6 +14,7 @@ describe('solveKeplerBisection', () => {
     const M = 1.234 as Radians;
     const tol = 1e-12;
     const E = solveKeplerBisection(M, e, 200, tol);
+
     assert.ok(E >= 0 && E < TWO_PI, 'E not in [0, 2π)');
     assert.ok(
       Math.abs(residual(E, e, M)) < tol,
@@ -23,6 +26,7 @@ describe('solveKeplerBisection', () => {
     const e = 0;
     const M = (7 * Math.PI) as Radians; // maps to π
     const E = solveKeplerBisection(M, e, 50, 1e-12);
+
     angleClose(E, norm2pi(M), 1e-12);
   });
 
@@ -30,6 +34,7 @@ describe('solveKeplerBisection', () => {
     const e = 0.999;
     const M = (0.9 * Math.PI) as Radians;
     const E = solveKeplerBisection(M, e, 500, 1e-12);
+
     assert.ok(E >= 0 && E < TWO_PI);
     assert.ok(Math.abs(residual(E, e, M)) < 1e-12);
   });
@@ -41,6 +46,7 @@ describe('solveKeplerBisection', () => {
     const E1 = solveKeplerBisection(M1, e, 200, 1e-12);
     const E2 = solveKeplerBisection(M2, e, 200, 1e-12);
     const Enorm = solveKeplerBisection(Math.PI as Radians, e, 200, 1e-12);
+
     angleClose(E1, Enorm, 1e-12);
     angleClose(E2, Enorm, 1e-12);
   });
@@ -48,13 +54,14 @@ describe('solveKeplerBisection', () => {
   test('early exit at endpoints: M≈0 and M≈2π both return ~0', () => {
     const e = 0.42;
     const tol = 1e-12;
-
     const M0 = 1e-13 as Radians; // |F(0)| < tol
     const E0 = solveKeplerBisection(M0, e, 5, tol);
+
     angleClose(E0, 0, 1e-12);
 
     const M2pi = (2 * Math.PI - 1e-13) as Radians; // |F(2π)| < tol ⇒ returns 0
     const E2 = solveKeplerBisection(M2pi, e, 5, tol);
+
     angleClose(E2, 0, 1e-12);
   });
 
@@ -64,6 +71,7 @@ describe('solveKeplerBisection', () => {
     const M2 = 3.0 as Radians;
     const E1 = solveKeplerBisection(M1, e, 300, 1e-12);
     const E2 = solveKeplerBisection(M2, e, 300, 1e-12);
+
     assert.ok(E1 < E2, `Expected E1 < E2 but got E1=${E1}, E2=${E2}`);
   });
 
@@ -111,7 +119,7 @@ describe('solveKeplerBisection', () => {
     );
 
     assert.throws(
-      () => solveKeplerBisection(1 as Radians, 0.1, '100' as any, 1e-9),
+      () => solveKeplerBisection(1 as Radians, 0.1, '100' as never, 1e-9),
       RangeError
     );
 
@@ -121,7 +129,7 @@ describe('solveKeplerBisection', () => {
     );
 
     assert.throws(
-      () => solveKeplerBisection(1 as Radians, 0.1, 100, '1e-9' as any),
+      () => solveKeplerBisection(1 as Radians, 0.1, 100, '1e-9' as never),
       RangeError
     );
   });
@@ -133,6 +141,7 @@ describe('solveKeplerBisection', () => {
     const E2 = solveKeplerBisection(M, e, 200, 1e-12);
     const r1 = Math.abs(residual(E1, e, M));
     const r2 = Math.abs(residual(E2, e, M));
+
     assert.ok(
       r2 <= r1 + 1e-15,
       `expected residual to not increase: r1=${r1}, r2=${r2}`

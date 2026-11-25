@@ -1,18 +1,18 @@
+import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { planetographicLatitudeOblate } from '../planetographic-latitude-oblate.js';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
-import type { Radians } from '@interstellar-tools/types';
+import { planetographicLatitudeOblate } from '../planetographic-latitude-oblate.js';
 
 describe('planetographicLatitudeOblate', () => {
   test('reduces to planetocentric latitude when a === c (sphere)', () => {
     const a = 10;
     const c = 10;
-
     const x = 3;
     const y = 4;
     const z = 5;
-
     const phiG = planetographicLatitudeOblate(x, y, z, a, c);
     const expected = Math.atan2(z, Math.hypot(x, y)) as Radians; // oneMinusE2 = 1
 
@@ -39,13 +39,10 @@ describe('planetographicLatitudeOblate', () => {
   test('matches the explicit formula atan2(z/(c^2/a^2), hypot(x,y))', () => {
     const a = 10;
     const c = 9;
-
     const x = 1.2;
     const y = -3.4;
     const z = 5.6;
-
     const phi = planetographicLatitudeOblate(x, y, z, a, c);
-
     const oneMinusE2 = (c * c) / (a * a); // c²/a²
     const expected = Math.atan2(z / oneMinusE2, Math.hypot(x, y)) as Radians;
 
@@ -55,11 +52,9 @@ describe('planetographicLatitudeOblate', () => {
   test('is invariant under scaling of (x,y,z) by a positive factor', () => {
     const a = 10;
     const c = 9;
-
     const x = 1.2;
     const y = -3.4;
     const z = 5.6;
-
     const phi1 = planetographicLatitudeOblate(x, y, z, a, c);
     const phi2 = planetographicLatitudeOblate(10 * x, 10 * y, 10 * z, a, c);
 
@@ -69,11 +64,9 @@ describe('planetographicLatitudeOblate', () => {
   test('for an oblate spheroid (a > c), |φg| > |φc| when z ≠ 0 (same Cartesian point)', () => {
     const a = 10;
     const c = 9;
-
     const x = 3;
     const y = 4;
     const z = 1;
-
     const phiC = Math.atan2(z, Math.hypot(x, y)); // planetocentric latitude
     const phiG = planetographicLatitudeOblate(x, y, z, a, c);
 
@@ -86,7 +79,6 @@ describe('planetographicLatitudeOblate', () => {
   test('returns within [-π/2, +π/2] for finite inputs', () => {
     const a = 10;
     const c = 9;
-
     const samples: Array<[number, number, number]> = [
       [1, 0, 0],
       [0, 1, 0],
@@ -98,6 +90,7 @@ describe('planetographicLatitudeOblate', () => {
 
     for (const [x, y, z] of samples) {
       const phi = planetographicLatitudeOblate(x, y, z, a, c);
+
       assert.ok(phi >= -Math.PI / 2 - 1e-15, `phi < -π/2: ${phi}`);
       assert.ok(phi <= Math.PI / 2 + 1e-15, `phi > +π/2: ${phi}`);
     }

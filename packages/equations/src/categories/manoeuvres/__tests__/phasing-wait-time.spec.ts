@@ -1,9 +1,11 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { phasingWaitTime } from '../phasing-wait-time.js';
-import { synodicPeriod } from '../../orbits/synodic-period.js';
+
 import { angleClose, relClose } from '../../../__tests__/helpers/index.js';
+import { synodicPeriod } from '../../orbits/synodic-period.js';
+import { phasingWaitTime } from '../phasing-wait-time.js';
 
 const rad = (d: number) => ((d * Math.PI) / 180) as Radians;
 const nTarget = 0.00113;

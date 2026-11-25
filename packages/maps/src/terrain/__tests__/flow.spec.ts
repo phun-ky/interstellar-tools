@@ -1,4 +1,5 @@
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -206,6 +207,7 @@ describe('flowAccumulation', () => {
         const directions = flowDirections(grid).values;
         const area = flowAccumulation(grid).values;
         const inflow = new Float64Array(rows * columns);
+
         let ending = 0;
         let cells = 0;
 

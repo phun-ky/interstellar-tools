@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { synodicPeriod } from '../synodic-period.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { synodicPeriod } from '../synodic-period.js';
 
 describe('synodicPeriod', () => {
   test('gives about 780 days for Earth and Mars', () => {

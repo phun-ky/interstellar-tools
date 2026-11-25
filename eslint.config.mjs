@@ -18,6 +18,16 @@ export default defineConfig([
     }
   },
   {
+    files: ['**/*.{js,mjs,cjs,ts,tsx}'],
+    rules: {
+      // Tests drop fields with `const { a: _a, ...rest } = obj`
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { ignoreRestSiblings: true }
+      ]
+    }
+  },
+  {
     files: ['scripts/**/*.mjs'],
     languageOptions: {
       globals: {

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import {
   NORMALIZE_TEMPORAL_UNIT,
   normalizeTemporalUnit
@@ -23,7 +24,6 @@ const canonical = [
   'Myr',
   'Gyr'
 ];
-
 const aliasPairs = [
   // seconds & submultiples
   ['second', 's'],

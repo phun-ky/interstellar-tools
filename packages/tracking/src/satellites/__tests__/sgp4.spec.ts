@@ -1,4 +1,5 @@
 import type { MeanElementsInterface, Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';
@@ -86,6 +87,7 @@ describe('propagateMinutes', () => {
     assert.throws(
       () => propagateMinutes(minotaur, 55),
       sgp4Error(
+        // eslint-disable-next-line @stylistic/max-len -- one regex, readable as the message it matches
         /^SGP4 can't propagate these elements to 55 min from epoch: the satellite has decayed: its distance from Earth's centre fell to 635\d\.\d km$/
       )
     );
@@ -116,6 +118,7 @@ describe('propagateMinutes', () => {
     assert.throws(
       () => propagateMinutes({ ...iss, bstar: 10 }, 60),
       sgp4Error(
+        // eslint-disable-next-line @stylistic/max-len -- one regex, readable as the message it matches
         /^SGP4 can't propagate these elements to 60 min from epoch: the mean eccentricity reached -0\.003/
       )
     );
@@ -164,6 +167,7 @@ describe('propagateMinutes', () => {
     const period = (2 * Math.PI) / iss.meanMotion / 60;
 
     assert.ok(Math.abs(Math.hypot(...at.r) / 1000 - 6790) < 20);
+
     // One orbit back is near the epoch position
     const back = propagateMinutes(iss, -period);
     const now = propagateMinutes(iss, 0);

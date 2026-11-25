@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { massFlowRate } from '../mass-flow-rate.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { massFlowRate } from '../mass-flow-rate.js';
 
 describe('massFlowRate', () => {
   test('computes F / (Isp * g0) with the default g0', () => {

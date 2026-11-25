@@ -1,5 +1,6 @@
 import { AU_METERS } from '@interstellar-tools/constants';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -88,7 +89,6 @@ describe('sunPosition', () => {
             today[1] * tomorrow[1] +
             today[2] * tomorrow[2]) /
           (Math.hypot(...today) * Math.hypot(...tomorrow));
-
         // Faster at perihelion (1.019°) than at aphelion (0.953°)
         const degrees = toDeg(Math.acos(Math.min(1, cos)));
 

@@ -1,5 +1,6 @@
 import type { MeanElementsInterface, Radians } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';

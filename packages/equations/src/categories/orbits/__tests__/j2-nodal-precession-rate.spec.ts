@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
-import { j2NodalPrecessionRate } from '../j2-nodal-precession-rate.js';
 import { rad } from '../../helpers/radians.js';
+import { j2NodalPrecessionRate } from '../j2-nodal-precession-rate.js';
 
 describe('j2NodalPrecessionRate', () => {
   test('computes Ωdot from the reference formula (typical Earth-ish LEO inputs)', () => {
@@ -12,9 +13,7 @@ describe('j2NodalPrecessionRate', () => {
     const a = 7000; // km
     const i = rad((98 * Math.PI) / 180);
     const e = 0.001;
-
     const omegaDot = j2NodalPrecessionRate(J2, n, Re, a, i, e);
-
     const expected =
       (-1.5 * J2 * n * Math.pow(Re / a, 2) * Math.cos(i)) /
       Math.pow(1 - e * e, 2);
@@ -28,7 +27,6 @@ describe('j2NodalPrecessionRate', () => {
     const Re = 6000;
     const a = 7000;
     const e = 0;
-
     const prograde = j2NodalPrecessionRate(
       J2,
       n,
@@ -59,7 +57,6 @@ describe('j2NodalPrecessionRate', () => {
     const Re = 6000;
     const a = 7000;
     const e = 0;
-
     const omegaDot = j2NodalPrecessionRate(J2, n, Re, a, rad(Math.PI / 2), e);
 
     relClose(omegaDot, 0, 1e-12);
@@ -72,7 +69,6 @@ describe('j2NodalPrecessionRate', () => {
     const a = 7000;
     const i = rad((45 * Math.PI) / 180);
     const e = 0;
-
     const omegaDot = j2NodalPrecessionRate(J2, n, Re, a, i, e);
     const expected = -1.5 * J2 * n * Math.pow(Re / a, 2) * Math.cos(i);
 
@@ -179,7 +175,6 @@ describe('j2NodalPrecessionRate', () => {
     const Re = 6000;
     const a = 7000;
     const i = rad((60 * Math.PI) / 180);
-
     const omegaDot0 = j2NodalPrecessionRate(J2, n, Re, a, i, 0);
     const omegaDot5 = j2NodalPrecessionRate(J2, n, Re, a, i, 0.5);
 

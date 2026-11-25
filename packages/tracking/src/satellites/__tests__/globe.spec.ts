@@ -1,6 +1,7 @@
 import { orthographic } from '@interstellar-tools/maps';
 import type { Radians, Vector3DTupleType } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 

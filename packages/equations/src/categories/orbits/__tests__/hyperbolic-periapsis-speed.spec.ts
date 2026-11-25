@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { hyperbolicPeriapsisSpeed } from '../hyperbolic-periapsis-speed.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { hyperbolicPeriapsisSpeed } from '../hyperbolic-periapsis-speed.js';
 
 describe('hyperbolicPeriapsisSpeed', () => {
   test('returns sqrt(vInf² + 2mu/rp) for typical inputs (Earth, km-based example)', () => {
     const vInf = 3.2; // km/s
     const mu = 398600.4418; // km³/s²
     const rp = 6678; // km
-
     const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
-
     const expected = Math.sqrt(vInf * vInf + (2 * mu) / rp);
+
     relClose(vp, expected);
   });
 
@@ -19,10 +19,9 @@ describe('hyperbolicPeriapsisSpeed', () => {
     const vInf = 0;
     const mu = 398600.4418;
     const rp = 6678;
-
     const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
-
     const expected = Math.sqrt((2 * mu) / rp);
+
     relClose(vp, expected);
   });
 
@@ -30,7 +29,6 @@ describe('hyperbolicPeriapsisSpeed', () => {
     const vInf = 5;
     const mu = 1e5;
     const rp = 1e3;
-
     const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
 
     assert.ok(vp >= vInf, `expected vp (${vp}) >= vInfinity (${vInf})`);
@@ -94,9 +92,7 @@ describe('hyperbolicPeriapsisSpeed', () => {
     const vInf = 12.345;
     const mu = 3.986004418e5;
     const rp = 1e12;
-
     const vp = hyperbolicPeriapsisSpeed(vInf, rp, mu);
-
     const delta = vp - vInf;
     const approx = mu / (rp * vInf);
 

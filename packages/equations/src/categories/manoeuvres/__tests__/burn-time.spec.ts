@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { burnTime } from '../burn-time.js';
 import { initialMassForDeltaV } from '../initial-mass-for-delta-v.js';
 import { massFlowRate } from '../mass-flow-rate.js';
 import { rocketDeltaVFromIsp } from '../rocket-delta-v-from-isp.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('burnTime', () => {
   test('equals the propellant used divided by the mass flow rate', () => {

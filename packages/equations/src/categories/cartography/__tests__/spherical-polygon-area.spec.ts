@@ -1,9 +1,11 @@
 import type { Radians } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { sphericalPolygonArea } from '../spherical-polygon-area.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { sphericalPolygonArea } from '../spherical-polygon-area.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 // A polygon from [lat, lon] pairs in degrees
@@ -213,6 +215,7 @@ describe('sphericalPolygonArea', () => {
                 sides.reduce((t, x) => t * Math.tan((s - x) / 2), 1)
             )
           );
+
         // and it loses digits as a triangle nears a hemisphere, E → 2π
         fc.pre(E < 1.8 * Math.PI);
 
@@ -238,7 +241,7 @@ describe('sphericalPolygonArea', () => {
           [0, 0],
           [-0.0010486448188880176, 3.141592115916969]
         ],
-        6.2820886717912956085
+        6.282088671791295
       ],
       [
         [
@@ -246,7 +249,7 @@ describe('sphericalPolygonArea', () => {
           [0, -3.1415924575451526],
           [0.11371118276600971, 0]
         ],
-        6.282789773533066733
+        6.282789773533067
       ],
       [
         [
@@ -254,7 +257,7 @@ describe('sphericalPolygonArea', () => {
           [0.9186209042236433, 0],
           [-1.5551751343760165, 0]
         ],
-        6.283183843602511947
+        6.283183843602512
       ],
       [
         [
@@ -262,7 +265,7 @@ describe('sphericalPolygonArea', () => {
           [-0.05115658431759368, 0],
           [0.01628485205019609, 0]
         ],
-        6.2831523581241558954
+        6.2831523581241555
       ]
     ] as const)
       relClose(

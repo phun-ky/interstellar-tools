@@ -8,6 +8,7 @@ import type {
   Radians
 } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 

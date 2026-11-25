@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { thrustToWeight } from '../thrust-to-weight.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { thrustToWeight } from '../thrust-to-weight.js';
 
 describe('thrustToWeight', () => {
   test('computes F / (m * g)', () => {

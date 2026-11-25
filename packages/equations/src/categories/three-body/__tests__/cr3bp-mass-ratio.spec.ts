@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { cr3bpMassRatio } from '../cr3bp-mass-ratio.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { cr3bpMassRatio } from '../cr3bp-mass-ratio.js';
 
 describe('cr3bpMassRatio', () => {
   test('gives about 0.01215 for Earth and Moon', () => {

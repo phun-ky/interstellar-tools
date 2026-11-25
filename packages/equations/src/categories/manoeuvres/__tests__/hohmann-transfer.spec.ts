@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 import {
   hohmannSemiMajorAxis,
   hohmannTransfer,
   hohmannTransferTime
 } from '../hohmann-transfer.js';
-import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
 type Dir = 'prograde' | 'retrograde' | 'none';
 
@@ -14,6 +15,7 @@ describe('hohmannTransfer', () => {
     const r1 = 7000e3;
     const r2 = 42164e3;
     const at = hohmannSemiMajorAxis(r1, r2);
+
     absClose(at, 0.5 * (r1 + r2));
   });
 
@@ -24,6 +26,7 @@ describe('hohmannTransfer', () => {
     const at = 0.5 * (r1 + r2);
     const expected = Math.PI * Math.sqrt((at * at * at) / mu);
     const t = hohmannTransferTime(r1, r2, mu);
+
     relClose(t, expected, 1e-12);
   });
 
@@ -31,9 +34,7 @@ describe('hohmannTransfer', () => {
     const mu = 3.986004418e14; // Earth μ
     const r1 = 7000e3;
     const r2 = 12000e3;
-
     const res = hohmannTransfer(r1, r2, mu);
-
     // Expected magnitudes from textbook formulas
     const at = 0.5 * (r1 + r2);
     const dv1Exp = Math.sqrt(mu / r1) * (Math.sqrt((2 * r2) / (r1 + r2)) - 1);
@@ -52,6 +53,7 @@ describe('hohmannTransfer', () => {
 
     // Transfer time check
     const tExp = Math.PI * Math.sqrt((at * at * at) / mu);
+
     relClose(res.tTransfer, tExp, 1e-12);
   });
 
@@ -59,9 +61,7 @@ describe('hohmannTransfer', () => {
     const mu = 3.986004418e14;
     const r1 = 12000e3;
     const r2 = 7000e3;
-
     const res = hohmannTransfer(r1, r2, mu);
-
     const at = 0.5 * (r1 + r2);
     const dv1Exp = Math.sqrt(mu / r1) * (Math.sqrt((2 * r2) / (r1 + r2)) - 1);
     const dv2Exp = Math.sqrt(mu / r2) * (1 - Math.sqrt((2 * r1) / (r1 + r2)));
@@ -75,6 +75,7 @@ describe('hohmannTransfer', () => {
     assert.equal(res.dir2 as Dir, 'retrograde');
 
     const tExp = Math.PI * Math.sqrt((at * at * at) / mu);
+
     relClose(res.tTransfer, tExp, 1e-12);
   });
 
@@ -82,7 +83,6 @@ describe('hohmannTransfer', () => {
     const mu = 3.986004418e14;
     const r1 = 9000e3;
     const r2 = 14000e3;
-
     const up = hohmannTransfer(r1, r2, mu);
     const down = hohmannTransfer(r2, r1, mu);
 
@@ -102,6 +102,7 @@ describe('hohmannTransfer', () => {
 
     const T_circ = 2 * Math.PI * Math.sqrt((r * r * r) / mu);
     const half = 0.5 * T_circ;
+
     relClose(res.tTransfer, half, 1e-12);
   });
 
@@ -110,11 +111,14 @@ describe('hohmannTransfer', () => {
 
     // TypeError: non-number inputs
 
-    assert.throws(() => hohmannTransfer('x' as any, 7000e3, mu), TypeError);
+    assert.throws(() => hohmannTransfer('x' as never, 7000e3, mu), TypeError);
 
-    assert.throws(() => hohmannTransfer(7000e3, 'y' as any, mu), TypeError);
+    assert.throws(() => hohmannTransfer(7000e3, 'y' as never, mu), TypeError);
 
-    assert.throws(() => hohmannTransfer(7000e3, 8000e3, 'z' as any), TypeError);
+    assert.throws(
+      () => hohmannTransfer(7000e3, 8000e3, 'z' as never),
+      TypeError
+    );
 
     // RangeError: non-finite / non-positive
     assert.throws(() => hohmannTransfer(NaN, 8000e3, mu), RangeError);
@@ -125,13 +129,13 @@ describe('hohmannTransfer', () => {
 
     // Semi-major axis helper
 
-    assert.throws(() => hohmannSemiMajorAxis('a' as any, 1), TypeError);
+    assert.throws(() => hohmannSemiMajorAxis('a' as never, 1), TypeError);
     assert.throws(() => hohmannSemiMajorAxis(1, NaN), RangeError);
     assert.throws(() => hohmannSemiMajorAxis(0, 1), RangeError);
 
     // Transfer time helper
     assert.throws(() => hohmannTransferTime(1, 1, 0), RangeError);
 
-    assert.throws(() => hohmannTransferTime(1, 1, 'mu' as any), TypeError);
+    assert.throws(() => hohmannTransferTime(1, 1, 'mu' as never), TypeError);
   });
 });

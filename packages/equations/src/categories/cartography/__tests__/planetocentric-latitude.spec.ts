@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { planetocentricLatitude } from '../planetocentric-latitude.js';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { planetocentricLatitude } from '../planetocentric-latitude.js';
 
 describe('planetocentricLatitude', () => {
   test('returns 0 on the equatorial plane (z=0, x/y not both 0)', () => {
@@ -26,7 +27,6 @@ describe('planetocentricLatitude', () => {
     const x = 3;
     const y = -4;
     const z = 5;
-
     const phi = planetocentricLatitude(x, y, z);
     const expected = Math.atan2(z, Math.hypot(x, y));
 
@@ -37,7 +37,6 @@ describe('planetocentricLatitude', () => {
     const x = 1.2;
     const y = -3.4;
     const z = 5.6;
-
     const phi = planetocentricLatitude(x, y, z);
     const phiScaled = planetocentricLatitude(10 * x, 10 * y, 10 * z);
 
@@ -56,6 +55,7 @@ describe('planetocentricLatitude', () => {
 
     for (const [x, y, z] of samples) {
       const phi = planetocentricLatitude(x, y, z);
+
       assert.ok(phi >= -Math.PI / 2 - 1e-15, `phi < -π/2: ${phi}`);
       assert.ok(phi <= Math.PI / 2 + 1e-15, `phi > +π/2: ${phi}`);
     }

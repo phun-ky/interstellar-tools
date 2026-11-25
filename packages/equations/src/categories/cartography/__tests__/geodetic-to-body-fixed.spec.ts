@@ -1,8 +1,10 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { geodeticToBodyFixed } from '../geodetic-to-body-fixed.js';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
+import { geodeticToBodyFixed } from '../geodetic-to-body-fixed.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 const A = 6_378_137; // m, WGS84

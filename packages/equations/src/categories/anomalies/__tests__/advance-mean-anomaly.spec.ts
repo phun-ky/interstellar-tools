@@ -1,16 +1,15 @@
+import { TWO_PI } from '@interstellar-tools/constants';
+import { OrbitInterface, TemporalInterface } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { advanceMeanAnomaly } from '../advance-mean-anomaly.js';
-
-import { OrbitInterface, TemporalInterface } from '@interstellar-tools/types';
-import { TWO_PI } from '@interstellar-tools/constants';
-import { trueToMeanAnomaly } from '../true-to-mean-anomaly.js';
 import { wrapAngle } from '../../angle/wrap-angle.js';
 import { norm2pi } from '../../helpers/misc.js';
+import { advanceMeanAnomaly } from '../advance-mean-anomaly.js';
+import { trueToMeanAnomaly } from '../true-to-mean-anomaly.js';
 
 const EPSILON = 1e-10; // Increased tolerance for floating-point comparisons
-
 /* node:coverage disable */
 const assertApproxEqual = (actual: number, expected: number) => {
   assert.ok(

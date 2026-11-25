@@ -1,6 +1,8 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { isStableLanding } from '../is-stable-landing.js';
 import { tipOverAngle } from '../tip-over-angle.js';
 

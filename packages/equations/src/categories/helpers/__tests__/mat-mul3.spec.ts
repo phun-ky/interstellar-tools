@@ -1,8 +1,10 @@
+import { Matrix3x3Type } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { matRelClose } from '../../../__tests__/helpers/index.js';
 import { matMul3 } from '../mat-mul3.js';
-import { Matrix3x3Type } from '@interstellar-tools/types';
 
 const I3: Matrix3x3Type = [
   [1, 0, 0],
@@ -28,15 +30,12 @@ describe('matMul3', () => {
       [0, 1, 4],
       [5, 6, 0]
     ];
-
     const B: Matrix3x3Type = [
       [-2, 1, 0],
       [3, 0, 0],
       [4, 5, 1]
     ];
-
     const C = matMul3(A, B);
-
     // Computed by hand / verified:
     const expected: Matrix3x3Type = [
       [16, 16, 3],
@@ -63,7 +62,6 @@ describe('matMul3', () => {
       [0.4, 0.5, 0.6],
       [0.7, 0.8, 0.9]
     ];
-
     const left = matMul3(matMul3(A, B), C);
     const right = matMul3(A, matMul3(B, C));
 
@@ -86,14 +84,12 @@ describe('matMul3', () => {
       [0, 1, 0],
       [2, 0, 2]
     ];
-
     const add = (X: Matrix3x3Type, Y: Matrix3x3Type): Matrix3x3Type =>
       [
         [X[0][0] + Y[0][0], X[0][1] + Y[0][1], X[0][2] + Y[0][2]],
         [X[1][0] + Y[1][0], X[1][1] + Y[1][1], X[1][2] + Y[1][2]],
         [X[2][0] + Y[2][0], X[2][1] + Y[2][1], X[2][2] + Y[2][2]]
       ] as const;
-
     const left = matMul3(A, add(B, C));
     const right = add(matMul3(A, B), matMul3(A, C));
 

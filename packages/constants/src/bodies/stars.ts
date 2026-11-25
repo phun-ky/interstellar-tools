@@ -477,7 +477,7 @@ export const STARS: StarsType = [
   },
   {
     id: 'barnards-star',
-    // eslint-disable-next-line @stylistic/quotes
+
     name: "Barnard's Star",
     type: 'M4V', // Red Dwarf, the fastest-moving star in our sky
     category: 'star',

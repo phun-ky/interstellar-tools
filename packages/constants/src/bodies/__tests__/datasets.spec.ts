@@ -8,6 +8,7 @@ import type {
   PlanetInterface,
   StarInterface
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -85,7 +86,6 @@ const COLOR = /^(#[0-9a-f]{6}|[a-z]+)$/i;
 // Lowercase kebab-case, e.g. 'alpha-centauri-ab' or '67p-churyumov-gerasimenko'
 const ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const TWO_PI = 2 * Math.PI;
-
 const ORBITING: Record<
   string,
   { bodies: BodyType[]; units: Record<string, string> }
@@ -102,7 +102,6 @@ const ORBITING: Record<
     units: { a: 'au', period: 'd', radius: 'km' }
   }
 };
-
 const GALAXY_IDS = new Set(GALAXIES.map((galaxy) => galaxy.id));
 const SYSTEM_IDS = new Set(SYSTEMS.map((system) => system.id));
 const STAR_IDS = new Set(STARS.map((star) => star.id));
@@ -131,19 +130,16 @@ const NODES: OrbitingType[] = [
   ...MOONS
 ];
 const NODE_BY_ID = new Map(NODES.map((node) => [node.id, node]));
-
 // Orbit fields live in `orbit`; everything else on the body itself
 const measure = (body: BodyType, field: string) =>
   field === 'a' || field === 'period'
     ? (body.orbit as unknown as Record<string, MeasureType>)[field]
     : (body as unknown as Record<string, MeasureType>)[field];
-
 const assertUnique = (label: string, values: string[]) => {
   const duplicates = values.filter((value, i) => values.indexOf(value) !== i);
 
   assert.deepEqual(duplicates, [], `${label} has duplicates`);
 };
-
 const assertValidOrbit = (name: string, orbit: OrbitInterface) => {
   assert.ok(orbit.e >= 0 && orbit.e < 1, `${name}.orbit.e = ${orbit.e}`);
   assert.ok(orbit.a.value > 0, `${name}.orbit.a`);
@@ -157,7 +153,6 @@ const assertValidOrbit = (name: string, orbit: OrbitInterface) => {
     `${name}.orbit.angle = ${orbit.angle}`
   );
 };
-
 // Total mass of a star or system in M☉, summing a system's members
 const massOf = (node: OrbitingType): number =>
   node.mass?.value ??
@@ -165,7 +160,6 @@ const massOf = (node: OrbitingType): number =>
     (sum, child) => sum + massOf(child),
     0
   );
-
 const toUnit = (value: number, unit: string, units: Record<string, number>) =>
   value * units[unit];
 
@@ -293,6 +287,7 @@ describe('parents', () => {
   test('every chain of parents ends at a galaxy, without cycles', () => {
     for (const node of NODES) {
       const seen = new Set<string>();
+
       let id = node.id;
 
       while (!GALAXY_IDS.has(id)) {
@@ -609,9 +604,9 @@ describe('rotation', () => {
   test('Earth turns once in 23 h 56 m 4.0989 s, by the Earth rotation angle', () => {
     const { rotation } = PLANETS.find(({ id }) => id === 'earth')!;
 
-    // The IERS: 1.00273781191135448 turns a day of UT1
+    // The IERS: 1.0027378119113546 turns a day of UT1
     assert.ok(
-      Math.abs(rotation!.period.value - 1 / 1.002_737_811_911_354_48) < 1e-10
+      Math.abs(rotation!.period.value - 1 / 1.0027378119113546) < 1e-10
     );
     assert.equal((rotation!.period.value * 86_400).toFixed(4), '86164.0989');
   });
@@ -890,6 +885,7 @@ describe('Sagittarius A* and the S-stars', () => {
         ((((2 * Math.PI * (2000 - tP)) / period.value) % (2 * Math.PI)) +
           2 * Math.PI) %
         (2 * Math.PI);
+
       let E = e < 0.8 ? M : Math.PI;
 
       for (let k = 0; k < 100; k++)
@@ -942,6 +938,7 @@ describe('SYSTEMS', () => {
       );
 
       if (system.orbit) assertValidOrbit(system.name, system.orbit);
+
       if (system.distance) {
         assert.equal(system.distance.unit, 'ly', `${system.name}.distance`);
         assert.ok(system.distance.value >= 0, `${system.name}.distance`);
@@ -1433,6 +1430,7 @@ describe('ASTEROID_BELTS', () => {
       assert.equal(outerRadius.unit, innerRadius.unit, `${belt.name} radii`);
       assert.ok(innerRadius.value > 0, `${belt.name}.innerRadius`);
       assert.ok(innerRadius.value < outerRadius.value, `${belt.name} radii`);
+
       const { color = '', opacity = -1, density = -1 } = belt.display ?? {};
 
       assert.ok(opacity >= 0 && opacity <= 1, `${belt.name}.display.opacity`);
@@ -1603,7 +1601,6 @@ const IAU_NORTH_POLE = [
 const ROTATING = [...PLANETS, ...MOONS, ...STARS, ...ASTEROIDS, ...COMETS];
 const MODELLED = ROTATING.filter(({ rotation }) => rotation?.iau);
 const RAD = Math.PI / 180;
-
 // The pole's right ascension and declination, and the prime meridian, in
 // degrees, `d` days from J2000
 const orient = (model: IauRotationModelInterface, d: number) => {
@@ -1854,7 +1851,7 @@ describe('IAU rotation models', () => {
 });
 
 // The Sun's G·M in au³/d², as JPL Horizons uses for heliocentric elements
-const SUN_GM_AU3_PER_D2 = 2.9591220828411951e-4;
+const SUN_GM_AU3_PER_D2 = 2.959122082841195e-4;
 const KM_PER_AU = AU_METERS / 1000;
 
 describe('INTERSTELLAR_OBJECTS', () => {

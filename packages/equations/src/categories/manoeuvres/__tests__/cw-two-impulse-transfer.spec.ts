@@ -1,13 +1,14 @@
 import type { CwState } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { cwTwoImpulseTransfer } from '../cw-two-impulse-transfer.js';
-import { cwPropagate } from '../../orbits/cw-propagate.js';
+
 import { absClose } from '../../../__tests__/helpers/index.js';
+import { cwPropagate } from '../../orbits/cw-propagate.js';
+import { cwTwoImpulseTransfer } from '../cw-two-impulse-transfer.js';
 
 const n = 0.00113;
 const ZERO: CwState = [0, 0, 0, 0, 0, 0];
-
 const applyBurn = (state: CwState, dv: readonly number[]): CwState =>
   [
     state[0],

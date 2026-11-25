@@ -1,16 +1,16 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { eccentricitySquaredOblateSpheroid } from '../eccentricity-squared-oblate-spheroid.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { eccentricitySquaredOblateSpheroid } from '../eccentricity-squared-oblate-spheroid.js';
 
 describe('eccentricitySquaredOblateSpheroid', () => {
   test('computes e² = 1 - (c²/a²) for typical Earth-like radii (WGS84-ish)', () => {
     const a = 6378137.0; // m (equatorial)
     const c = 6356752.314245; // m (polar)
-
     const e2 = eccentricitySquaredOblateSpheroid(a, c);
-
     const expected = 1 - (c * c) / (a * a);
+
     relClose(e2, expected);
 
     // sanity: Earth e² is ~0.00669438 (ballpark)
@@ -20,7 +20,6 @@ describe('eccentricitySquaredOblateSpheroid', () => {
   test('returns 0 for a perfect sphere (a === c)', () => {
     const a = 10;
     const c = 10;
-
     const e2 = eccentricitySquaredOblateSpheroid(a, c);
 
     // This should be exactly 0 for identical inputs, but keep it tolerant anyway.
@@ -29,7 +28,6 @@ describe('eccentricitySquaredOblateSpheroid', () => {
 
   test('increases as c decreases for fixed a (more flattened => larger e²)', () => {
     const a = 10;
-
     const e2LessFlat = eccentricitySquaredOblateSpheroid(a, 9.9);
     const e2MoreFlat = eccentricitySquaredOblateSpheroid(a, 9.0);
 
@@ -42,7 +40,6 @@ describe('eccentricitySquaredOblateSpheroid', () => {
   test('is dimensionless and within [0, 1) for physically valid oblate spheroids (a >= c > 0)', () => {
     const a = 10;
     const c = 7;
-
     const e2 = eccentricitySquaredOblateSpheroid(a, c);
 
     assert.ok(e2 >= 0, `expected e2 >= 0, got ${e2}`);
@@ -90,7 +87,6 @@ describe('eccentricitySquaredOblateSpheroid', () => {
     // This test documents that behavior.
     const a = 10;
     const c = 11;
-
     const e2 = eccentricitySquaredOblateSpheroid(a, c);
 
     assert.ok(e2 < 0, `expected e2 < 0 for c > a, got ${e2}`);

@@ -27,6 +27,7 @@ import type {
   Radians,
   Vector3DTupleType
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';
@@ -45,10 +46,10 @@ import {
   groundTrack
 } from '../satellites/ground-track.js';
 import { dopplerShift, lookAngles } from '../satellites/look-angles.js';
-import { isVisiblePass, predictPasses } from '../satellites/passes.js';
 import { parseOmm } from '../satellites/omm.js';
-import { propagate } from '../satellites/propagate.js';
+import { isVisiblePass, predictPasses } from '../satellites/passes.js';
 import { propagateNumerically } from '../satellites/propagate-numerically.js';
+import { propagate } from '../satellites/propagate.js';
 import { earthShadow } from '../satellites/shadow.js';
 import { parseTle } from '../satellites/tle.js';
 
@@ -235,6 +236,7 @@ describe('Tracking guide: satellites', () => {
   test('fits elements to noisy positions to their noise, metres from the truth', () => {
     // Normally distributed noise, from a fixed seed
     let seed = 1;
+
     const uniform = () => {
       seed = (seed * 16_807) % 2_147_483_647;
 
@@ -260,6 +262,7 @@ describe('Tracking guide: satellites', () => {
       }
     );
     const fit = fitElements(states, states[states.length - 1]!.epoch);
+
     let farthest = 0;
 
     // Over the two days and the day after
@@ -318,11 +321,11 @@ describe('Tracking guide: satellites', () => {
         1000
       );
     };
-    const msis =
-      (f107: number, ap: number) =>
-      ({ phi, lambda, h }: GeodeticCoordinatesInterface, date: Date) =>
+    const msis = (f107: number, ap: number) => {
+      return ({ phi, lambda, h }: GeodeticCoordinatesInterface, date: Date) =>
         nrlmsise00(date, h, phi, lambda, { f107, f107a: f107, ap })
           .effectiveDensity;
+    };
     const a = 6_378_137 + 400_000;
 
     assert.equal(lost().toFixed(1), '1.9');
@@ -457,6 +460,7 @@ describe('Tracking guide: probes', () => {
         hermite,
         distance(stateAt(coarse, sample.epoch).r, sample.r)
       );
+
       const straight: Vector3DTupleType = [
         a.r[0] + f * (b.r[0] - a.r[0]),
         a.r[1] + f * (b.r[1] - a.r[1]),

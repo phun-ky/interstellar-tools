@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { gravityAssistTurningAngle } from '../../manoeuvres/gravity-assist-turning-angle.js';
 import { hyperbolicEccentricity } from '../hyperbolic-eccentricity.js';
 import { hyperbolicPeriapsisSpeed } from '../hyperbolic-periapsis-speed.js';
 import { hyperbolicSemiMajorAxis } from '../hyperbolic-semi-major-axis.js';
 import { visVivaSpeed } from '../vis-viva-speed.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 const MU = 4.902800118e12;
 

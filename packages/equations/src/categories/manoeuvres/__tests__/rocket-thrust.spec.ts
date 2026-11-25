@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { massFlowRate } from '../mass-flow-rate.js';
 import { rocketThrust } from '../rocket-thrust.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 describe('rocketThrust', () => {
   test('adds the pressure term to the momentum thrust', () => {

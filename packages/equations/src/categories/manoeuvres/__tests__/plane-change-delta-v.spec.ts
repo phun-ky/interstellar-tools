@@ -1,9 +1,11 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { planeChangeDeltaV } from '../plane-change-delta-v.js';
+
 import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 import { toRad } from '../../helpers/radians.js';
+import { planeChangeDeltaV } from '../plane-change-delta-v.js';
 
 const PI = Math.PI;
 
@@ -11,18 +13,21 @@ describe('planeChangeDeltaV', () => {
   test('Δi = 0 → Δv = 0', () => {
     const v = 7600; // m/s
     const dv = planeChangeDeltaV(v, 0 as Radians);
+
     absClose(dv, 0);
   });
 
   test('Δi = π (180°) → Δv = 2v', () => {
     const v = 7600;
     const dv = planeChangeDeltaV(v, PI as Radians);
+
     absClose(dv, 2 * v);
   });
 
   test('Δi = 90° → Δv = 2 v sin(45°) = √2 v', () => {
     const v = 7600;
     const dv = planeChangeDeltaV(v, toRad(90));
+
     relClose(dv, Math.SQRT2 * v, 1e-12);
   });
 
@@ -35,9 +40,11 @@ describe('planeChangeDeltaV', () => {
       toRad(60),
       toRad(120)
     ];
+
     for (const di of angles) {
       const expected = 2 * v * Math.sin((di as number) / 2);
       const dv = planeChangeDeltaV(v, di);
+
       absClose(dv, expected, 1e-12, `mismatch for Δi=${di}`);
     }
   });
@@ -52,9 +59,12 @@ describe('planeChangeDeltaV', () => {
       toRad(120),
       toRad(180)
     ];
+
     let last = -1;
+
     for (const di of seq) {
       const dv = planeChangeDeltaV(v, di);
+
       assert.ok(
         dv >= last - 1e-12,
         `not monotone at Δi=${di}: ${dv} < ${last}`
@@ -69,11 +79,15 @@ describe('planeChangeDeltaV', () => {
     const v2 = 9000;
     const dv1 = planeChangeDeltaV(v1, di);
     const dv2 = planeChangeDeltaV(v2, di);
+
     absClose(dv2 / dv1, v2 / v1, 1e-12);
   });
 
   test('input validation: TypeError for non-number v', () => {
-    assert.throws(() => planeChangeDeltaV('7600' as any, toRad(10)), TypeError);
+    assert.throws(
+      () => planeChangeDeltaV('7600' as never, toRad(10)),
+      TypeError
+    );
   });
 
   test('input validation: RangeError for v non-finite or negative', () => {
@@ -83,7 +97,7 @@ describe('planeChangeDeltaV', () => {
   });
 
   test('input validation: TypeError for non-number deltaI', () => {
-    assert.throws(() => planeChangeDeltaV(7600, '0.1' as any), TypeError);
+    assert.throws(() => planeChangeDeltaV(7600, '0.1' as never), TypeError);
   });
 
   test('input validation: RangeError for deltaI non-finite', () => {
@@ -110,6 +124,7 @@ describe('planeChangeDeltaV', () => {
     const di = 1e-9 as Radians;
     const dv = planeChangeDeltaV(v, di);
     const smallAngleApprox = v * (di as number);
+
     absClose(dv, smallAngleApprox, 1e-12);
   });
 });

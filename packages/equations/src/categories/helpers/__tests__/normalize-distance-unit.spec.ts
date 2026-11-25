@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import {
   NORMALIZE_DISTANCE_UNIT,
   normalizeDistanceUnit
@@ -18,7 +19,6 @@ const canonical = [
   'Mpc',
   'Gpc'
 ];
-
 const aliasPairs = [
   ['meters', 'm'],
   ['metres', 'm'],

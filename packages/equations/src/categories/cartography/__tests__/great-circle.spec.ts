@@ -1,11 +1,13 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { centralAngle } from '../central-angle.js';
+
+import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 import { centralAngleFromVectors } from '../central-angle-from-vectors.js';
+import { centralAngle } from '../central-angle.js';
 import { geodeticToBodyFixed } from '../geodetic-to-body-fixed.js';
 import { greatCircleDistance } from '../great-circle-distance.js';
-import { absClose, relClose } from '../../../__tests__/helpers/index.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 

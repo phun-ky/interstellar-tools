@@ -1,18 +1,19 @@
 import type { Radians, Vector3DTupleType } from '@interstellar-tools/types';
 import fc from 'fast-check';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { centralAngle } from '../categories/cartography/central-angle.js';
-import { centralAngleFromVectors } from '../categories/cartography/central-angle-from-vectors.js';
-import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
-import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { hyperbolicToTrueAnomaly } from '../categories/anomalies/hyperbolic-to-true-anomaly.js';
 import { trueToHyperbolicAnomaly } from '../categories/anomalies/true-to-hyperbolic-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
-import { solveKepler } from '../categories/kepler/solve-kepler.js';
+import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
+import { centralAngleFromVectors } from '../categories/cartography/central-angle-from-vectors.js';
+import { centralAngle } from '../categories/cartography/central-angle.js';
+import { geodeticToBodyFixed } from '../categories/cartography/geodetic-to-body-fixed.js';
 import { solveKeplerHyperbolic } from '../categories/kepler/solve-kepler-hyperbolic.js';
+import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
 import { cwTwoImpulseTransfer } from '../categories/manoeuvres/cw-two-impulse-transfer.js';
 import { hohmannTransfer } from '../categories/manoeuvres/hohmann-transfer.js';
@@ -322,7 +323,6 @@ describe('launch geometry', () => {
           phi as Radians,
           i
         );
-
         // beta is one of the two solutions
         const dNorth = Math.abs(Math.sin((northbound - beta) / 2));
         const dSouth = Math.abs(Math.sin((southbound - beta) / 2));
@@ -472,7 +472,6 @@ describe('geodetic coordinates', () => {
         );
         const back = bodyFixedToGeodetic(x, y, z, A, e);
         const scale = A + Math.abs(h);
-
         // Compare positions, not angles: longitude is undefined at the poles
         const [x2, y2, z2] = geodeticToBodyFixed(
           back.phi,
@@ -507,7 +506,6 @@ describe('Lambert’s problem', () => {
 
     return [(v[0] * r) / n, (v[1] * r) / n, (v[2] * r) / n];
   };
-
   // Two-body propagation with Kepler's equation, elliptic or hyperbolic
   const propagate = (
     r: Vector3DTupleType,

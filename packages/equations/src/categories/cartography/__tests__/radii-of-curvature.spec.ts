@@ -1,9 +1,11 @@
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { meridionalRadiusOfCurvature } from '../meridional-radius-of-curvature.js';
 import { primeVerticalRadiusOfCurvature } from '../prime-vertical-radius-of-curvature.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 const rad = (deg: number) => ((deg * Math.PI) / 180) as Radians;
 const A = 6_378_137; // m, WGS 84

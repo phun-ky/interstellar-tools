@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { sphereOfInfluenceRadius } from '../sphere-of-influence-radius.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { sphereOfInfluenceRadius } from '../sphere-of-influence-radius.js';
 
 describe('sphereOfInfluenceRadius', () => {
   test('computes rSOI = a * (m/M)^(2/5) for typical inputs (Earth around Sun, km-based)', () => {
     const aKm = 149_597_870.7; // km
     const mEarth = 5.972e24; // kg
     const mSun = 1.9885e30; // kg
-
     const rSoi = sphereOfInfluenceRadius(aKm, mEarth, mSun);
-
     const expected = aKm * Math.pow(mEarth / mSun, 2 / 5);
+
     relClose(rSoi, expected);
     assert.ok(rSoi > 0);
   });
@@ -20,7 +20,6 @@ describe('sphereOfInfluenceRadius', () => {
     const a = 10;
     const m = 2;
     const M = 100;
-
     const r1 = sphereOfInfluenceRadius(a, m, M);
     const r2 = sphereOfInfluenceRadius(2 * a, m, M);
 
@@ -30,7 +29,6 @@ describe('sphereOfInfluenceRadius', () => {
   test('increases with secondary mass m (all else equal)', () => {
     const a = 10;
     const M = 100;
-
     const rSmall = sphereOfInfluenceRadius(a, 1, M);
     const rLarge = sphereOfInfluenceRadius(a, 10, M);
 
@@ -43,7 +41,6 @@ describe('sphereOfInfluenceRadius', () => {
   test('decreases with primary mass M (all else equal)', () => {
     const a = 10;
     const m = 10;
-
     const rSmallM = sphereOfInfluenceRadius(a, m, 100);
     const rLargeM = sphereOfInfluenceRadius(a, m, 1000);
 

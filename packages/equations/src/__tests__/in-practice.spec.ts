@@ -4,13 +4,13 @@ import type {
   Radians,
   Vector3DTupleType
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { asymptoteTrueAnomaly } from '../categories/anomalies/asymptote-true-anomaly.js';
+import { eccentricToTrueAnomaly } from '../categories/anomalies/eccentric-to-true-anomaly.js';
 import { trueToMeanAnomaly } from '../categories/anomalies/true-to-mean-anomaly.js';
-import { norm2pi } from '../categories/helpers/misc.js';
 import { bodyFixedToGeodetic } from '../categories/cartography/body-fixed-to-geodetic.js';
 import { eccentricitySquaredOblateSpheroid } from '../categories/cartography/eccentricity-squared-oblate-spheroid.js';
 import { flatteningOblateSpheroid } from '../categories/cartography/flattening-oblate-spheroid.js';
@@ -19,7 +19,11 @@ import { greatCircleDistance } from '../categories/cartography/great-circle-dist
 import { horizonDistance } from '../categories/cartography/horizon-distance.js';
 import { meridionalRadiusOfCurvature } from '../categories/cartography/meridional-radius-of-curvature.js';
 import { primeVerticalRadiusOfCurvature } from '../categories/cartography/prime-vertical-radius-of-curvature.js';
+import { sunPosition } from '../categories/cartography/sun-position.js';
+import { ballisticCoefficient } from '../categories/entry/ballistic-coefficient.js';
 import { ballisticPeakDeceleration } from '../categories/entry/ballistic-peak-deceleration.js';
+import { zonalHarmonicsAcceleration } from '../categories/gravity/zonal-harmonics-acceleration.js';
+import { norm2pi } from '../categories/helpers/misc.js';
 import { rk4Integrate } from '../categories/helpers/rk4.js';
 import { solveKepler } from '../categories/kepler/solve-kepler.js';
 import { burnTime } from '../categories/manoeuvres/burn-time.js';
@@ -29,13 +33,10 @@ import { solveLambert } from '../categories/manoeuvres/solve-lambert.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
 import { atmosphericDragAcceleration } from '../categories/orbits/atmospheric-drag-acceleration.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
-import { sunPosition } from '../categories/cartography/sun-position.js';
-import { estimateLifetime } from '../categories/orbits/estimate-lifetime.js';
-import { solarRadiationPressureAcceleration } from '../categories/orbits/solar-radiation-pressure-acceleration.js';
-import { zonalHarmonicsAcceleration } from '../categories/gravity/zonal-harmonics-acceleration.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
-import { ballisticCoefficient } from '../categories/entry/ballistic-coefficient.js';
+import { estimateLifetime } from '../categories/orbits/estimate-lifetime.js';
 import { exponentialAtmosphereDensity } from '../categories/orbits/exponential-atmosphere-density.js';
+import { hillSphereRadius } from '../categories/orbits/hill-sphere-radius.js';
 import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentricity.js';
 import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
 import { hyperbolicTimeOfFlight } from '../categories/orbits/hyperbolic-time-of-flight.js';
@@ -45,13 +46,13 @@ import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth
 import { meanMotion } from '../categories/orbits/mean-motion.js';
 import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
 import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azimuth.js';
-import { specificMechanicalEnergy } from '../categories/orbits/specific-mechanical-energy.js';
-import { synodicPeriod } from '../categories/orbits/synodic-period.js';
 import { solarDayLength } from '../categories/orbits/solar-day-length.js';
-import { stateToElements } from '../categories/orbits/state-to-elements.js';
-import { hillSphereRadius } from '../categories/orbits/hill-sphere-radius.js';
+import { solarRadiationPressureAcceleration } from '../categories/orbits/solar-radiation-pressure-acceleration.js';
+import { specificMechanicalEnergy } from '../categories/orbits/specific-mechanical-energy.js';
 import { sphereOfInfluenceRadius } from '../categories/orbits/sphere-of-influence-radius.js';
+import { stateToElements } from '../categories/orbits/state-to-elements.js';
 import { surfaceRotationSpeed } from '../categories/orbits/surface-rotation-speed.js';
+import { synodicPeriod } from '../categories/orbits/synodic-period.js';
 import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
 import { cr3bpDerivatives } from '../categories/three-body/cr3bp-derivatives.js';
 import { cr3bpUnits } from '../categories/three-body/cr3bp-units.js';
@@ -67,7 +68,6 @@ const R_EARTH = 6.371e6; // m, mean radius
 const ISS = R_EARTH + 420e3; // m
 const AU = 1.495978707e11; // m
 const R_WGS84 = 6_378_137; // m, equatorial
-
 const km = (m: number) => m / 1e3;
 const group = (n: number) =>
   Math.round(n).toLocaleString('en-US').replace(/,/g, ' ');

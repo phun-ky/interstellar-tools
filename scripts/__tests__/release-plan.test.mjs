@@ -146,7 +146,6 @@ describe('plan', () => {
       entry('types', '0.61.1', { level: 'minor' }),
       entry('mcp', '1.0.0', { level: 'major' })
     ];
-
     const next = plan(entries);
 
     assert.equal(next.get('@interstellar-tools/types'), '0.62.0');

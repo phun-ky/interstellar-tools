@@ -1,12 +1,13 @@
 import type { Cr3bpState } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
+import { relClose } from '../../../__tests__/helpers/index.js';
 import { cr3bpDerivatives } from '../cr3bp-derivatives.js';
 import { jacobiConstant } from '../jacobi-constant.js';
-import { relClose } from '../../../__tests__/helpers/index.js';
 
 const MU = 0.012150584205210296; // Earth–Moon
-
 // The x of L1, where the x acceleration vanishes between the bodies
 const l1 = () => {
   let [lo, hi] = [0.5, 1 - MU - 1e-6];

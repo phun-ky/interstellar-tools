@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
-import { j2ArgumentOfPerigeeRate } from '../j2-argument-of-perigee-rate.js';
 import { rad } from '../../helpers/radians.js';
+import { j2ArgumentOfPerigeeRate } from '../j2-argument-of-perigee-rate.js';
 
 describe('j2ArgumentOfPerigeeRate', () => {
   test('computes ωdot from the reference formula (typical Earth-ish LEO inputs)', () => {
@@ -12,9 +13,7 @@ describe('j2ArgumentOfPerigeeRate', () => {
     const a = 7000; // km
     const i = rad((63.4 * Math.PI) / 180);
     const e = 0.001;
-
     const omegaDot = j2ArgumentOfPerigeeRate(J2, n, Re, a, i, e);
-
     const oneMinusESq = 1 - e * e;
     const expected =
       (0.75 *
@@ -30,13 +29,11 @@ describe('j2ArgumentOfPerigeeRate', () => {
   test('critical inclination: ωdot ~ 0 when 5cos^2(i) - 1 = 0', () => {
     // 5 cos^2(i) - 1 = 0 => cos^2(i)=1/5 => i = arccos(sqrt(1/5)) ≈ 63.4349°
     const icrit = rad(Math.acos(Math.sqrt(1 / 5)));
-
     const J2 = 1e-3;
     const n = 0.001;
     const Re = 6000;
     const a = 7000;
     const e = 0;
-
     const omegaDot = j2ArgumentOfPerigeeRate(J2, n, Re, a, icrit, e);
 
     relClose(omegaDot, 0, 1e-12);
@@ -76,7 +73,6 @@ describe('j2ArgumentOfPerigeeRate', () => {
     const a = 7000;
     const i = rad((40 * Math.PI) / 180);
     const e = 0;
-
     const omegaDot = j2ArgumentOfPerigeeRate(J2, n, Re, a, i, e);
     const expected =
       0.75 * J2 * n * Math.pow(Re / a, 2) * (5 * Math.pow(Math.cos(i), 2) - 1);
@@ -90,7 +86,6 @@ describe('j2ArgumentOfPerigeeRate', () => {
     const Re = 6000;
     const a = 7000;
     const i = rad((30 * Math.PI) / 180);
-
     const omegaDot0 = j2ArgumentOfPerigeeRate(J2, n, Re, a, i, 0);
     const omegaDot5 = j2ArgumentOfPerigeeRate(J2, n, Re, a, i, 0.5);
 

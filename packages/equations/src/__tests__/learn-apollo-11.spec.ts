@@ -1,4 +1,5 @@
 import type { CwState, Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -21,7 +22,6 @@ import { initialMassForDeltaV } from '../categories/manoeuvres/initial-mass-for-
 import { massFlowRate } from '../categories/manoeuvres/mass-flow-rate.js';
 import { rocketDeltaVFromIsp } from '../categories/manoeuvres/rocket-delta-v-from-isp.js';
 import { thrustToWeight } from '../categories/manoeuvres/thrust-to-weight.js';
-import { keplerPeriod } from '../categories/orbits/kepler-period.js';
 import { circularSpeed } from '../categories/orbits/circular-speed.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { hyperbolicEccentricity } from '../categories/orbits/hyperbolic-eccentricity.js';
@@ -29,6 +29,7 @@ import { hyperbolicPeriapsisSpeed } from '../categories/orbits/hyperbolic-periap
 import { hyperbolicSemiMajorAxis } from '../categories/orbits/hyperbolic-semi-major-axis.js';
 import { hyperbolicTimeOfFlight } from '../categories/orbits/hyperbolic-time-of-flight.js';
 import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
+import { keplerPeriod } from '../categories/orbits/kepler-period.js';
 import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth-for-inclination.js';
 import { meanMotion } from '../categories/orbits/mean-motion.js';
 import { rotatingLaunchAzimuth } from '../categories/orbits/rotating-launch-azimuth.js';
@@ -46,7 +47,6 @@ import { visVivaSpeed } from '../categories/orbits/vis-viva-speed.js';
 const g0 = 9.80665;
 const FT = 0.3048; // m per foot
 const LB = 0.45359237; // kg per pound
-
 const group = (n: number) =>
   Math.round(n).toLocaleString('en-US').replace(/,/g, ' ');
 
@@ -95,7 +95,6 @@ describe('Why lunar orbit rendezvous? (tutorial)', () => {
   const ASCENT = { dv: 1850.2, Isp: 309 };
   const csm = 16_767;
   const ascentStage = 4888;
-
   const priceDescent = Math.exp(DESCENT.dv / (DESCENT.Isp * g0));
   const priceAscent = Math.exp(ASCENT.dv / (ASCENT.Isp * g0));
   const atLiftoff = initialMassForDeltaV(csm, ASCENT.dv, ASCENT.Isp);
@@ -735,6 +734,7 @@ describe('IV. Lunar orbit rendezvous (tutorial)', () => {
         n,
         2538
       );
+
     let best = { behind: 0, dv: Infinity };
 
     for (let behind = 30_000; behind <= 75_000; behind += 10) {

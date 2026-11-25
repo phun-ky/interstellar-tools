@@ -11,6 +11,7 @@ import {
   missionSol
 } from '@interstellar-tools/temporal';
 import type { Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test, { describe } from 'node:test';
@@ -190,6 +191,7 @@ describe('Learn: How long is a day on Mars?', () => {
       ),
       5111
     );
+
     // More than 14 years after landing
     const years =
       (Date.parse('2018-06-10T12:00:00Z') -

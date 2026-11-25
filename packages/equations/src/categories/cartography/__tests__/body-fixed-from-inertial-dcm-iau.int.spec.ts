@@ -1,12 +1,14 @@
 import { Matrix3x3Type, Radians } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
+
 import { absClose, matAbsClose } from '../../../__tests__/helpers/index.js';
 import { applyMatrix3 } from '../../helpers/apply-matrix-3.js';
-import { bodyFixedFromInertialDcmIAU } from '../body-fixed-from-inertial-dcm-iau.js';
-import { transpose3 } from '../../helpers/transpose-3.js';
-import { matMul3 } from '../../helpers/mat-mul3.js';
 import { det3 } from '../../helpers/det-3.js';
+import { matMul3 } from '../../helpers/mat-mul3.js';
+import { transpose3 } from '../../helpers/transpose-3.js';
+import { bodyFixedFromInertialDcmIAU } from '../body-fixed-from-inertial-dcm-iau.js';
 
 const I3: Matrix3x3Type = [
   [1, 0, 0],
@@ -19,8 +21,8 @@ describe('bodyFixedFromInertialDcmIAU', () => {
     const alphaP = (-Math.PI / 2) as Radians;
     const deltaP = (Math.PI / 2) as Radians;
     const W = 0 as Radians;
-
     const R = bodyFixedFromInertialDcmIAU(alphaP, deltaP, W);
+
     matAbsClose(R, I3, 1e-12);
   });
 
@@ -91,9 +93,7 @@ describe('bodyFixedFromInertialDcmIAU', () => {
     const alphaP = 1.234 as Radians;
     const deltaP = 0.456 as Radians;
     const W = 2.789 as Radians;
-
     const R = bodyFixedFromInertialDcmIAU(alphaP, deltaP, W);
-
     const Rt = transpose3(R);
     const RtR = matMul3(Rt, R);
 
@@ -104,7 +104,6 @@ describe('bodyFixedFromInertialDcmIAU', () => {
     const alphaP = 0.12 as Radians;
     const deltaP = -0.34 as Radians;
     const W = 0.56 as Radians;
-
     const R = bodyFixedFromInertialDcmIAU(alphaP, deltaP, W);
     const d = det3(R);
 
@@ -115,7 +114,6 @@ describe('bodyFixedFromInertialDcmIAU', () => {
     const alphaP = 0.9 as Radians;
     const deltaP = 0.3 as Radians;
     const W = 1.1 as Radians;
-
     const R1 = bodyFixedFromInertialDcmIAU(alphaP, deltaP, W);
     const R2 = bodyFixedFromInertialDcmIAU(
       alphaP,

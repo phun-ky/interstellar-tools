@@ -1,4 +1,5 @@
 import type { OdeRightHandSideType } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -183,6 +184,7 @@ describe('rk45Integrate', () => {
         () => rk45Integrate((_t, [v]) => [v! ** 2], [1], 0, 2),
         (err) =>
           err instanceof RangeError &&
+          // eslint-disable-next-line @stylistic/max-len -- one regex, readable as the message it matches
           /^The step fell to .* the solution changes too fast to follow at this tolerance\.$/.test(
             err.message
           )

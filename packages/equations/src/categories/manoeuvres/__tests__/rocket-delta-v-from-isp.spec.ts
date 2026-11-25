@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
-import { rocketDeltaVFromIsp } from '../rocket-delta-v-from-isp.js';
+
 import { relClose } from '../../../__tests__/helpers/index.js';
+import { rocketDeltaVFromIsp } from '../rocket-delta-v-from-isp.js';
 
 describe('rocketDeltaVFromIsp', () => {
   test('computes Δv = g0 * Isp * ln(m0/mf) for typical inputs (default g0)', () => {
     const Isp = 320; // s
     const m0 = 1200; // kg
     const mf = 800; // kg
-
     const dv = rocketDeltaVFromIsp(Isp, m0, mf);
-
     const expected = 9.80665 * Isp * Math.log(m0 / mf);
+
     relClose(dv, expected);
     assert.ok(dv > 0);
   });
@@ -21,17 +21,15 @@ describe('rocketDeltaVFromIsp', () => {
     const m0 = 1000;
     const mf = 500;
     const g0 = 9.81;
-
     const dv = rocketDeltaVFromIsp(Isp, m0, mf, g0);
-
     const expected = g0 * Isp * Math.log(m0 / mf);
+
     relClose(dv, expected);
   });
 
   test('scales linearly with Isp (doubling Isp doubles Δv)', () => {
     const m0 = 1200;
     const mf = 800;
-
     const dv1 = rocketDeltaVFromIsp(200, m0, mf);
     const dv2 = rocketDeltaVFromIsp(400, m0, mf);
 
@@ -42,7 +40,6 @@ describe('rocketDeltaVFromIsp', () => {
     const Isp = 300;
     const m0 = 1200;
     const mf = 800;
-
     const dv1 = rocketDeltaVFromIsp(Isp, m0, mf, 9.80665);
     const dv2 = rocketDeltaVFromIsp(Isp, m0, mf, 2 * 9.80665);
 
@@ -52,7 +49,6 @@ describe('rocketDeltaVFromIsp', () => {
   test('increases as mf decreases (more propellant -> higher Δv)', () => {
     const Isp = 320;
     const m0 = 1000;
-
     const dvLessProp = rocketDeltaVFromIsp(Isp, m0, 900);
     const dvMoreProp = rocketDeltaVFromIsp(Isp, m0, 500);
 
@@ -64,6 +60,7 @@ describe('rocketDeltaVFromIsp', () => {
 
   test('near-limit case (mf close to m0) yields a small Δv', () => {
     const dv = rocketDeltaVFromIsp(300, 1000, 999.999);
+
     assert.ok(dv >= 0);
     assert.ok(dv < 10, `expected small dv, got ${dv}`);
   });

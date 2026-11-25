@@ -3,6 +3,7 @@ import type {
   MeanElementsInterface,
   Vector3DTupleType
 } from '@interstellar-tools/types';
+
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
@@ -73,6 +74,7 @@ const farthest = (
 // Normally distributed noise, from a fixed seed
 const noise = (seed: number) => {
   let state = seed;
+
   const uniform = () => {
     state = (state * 16_807) % 2_147_483_647;
 
