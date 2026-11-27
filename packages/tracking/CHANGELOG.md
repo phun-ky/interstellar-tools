@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.4](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.3...%40interstellar-tools%2Ftracking%400.13.4) (2026-11-27)
+
+### Bug
+
+* 🐛 Make parseOem read files with a sample on a leap second ([87d6197](https://github.com/phun-ky/interstellar-tools/commit/87d61971e93ee1243b73af07ed44af7bbcd9a5b5))
+
 ## [0.13.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.2...%40interstellar-tools%2Ftracking%400.13.3) (2026-11-27)
 
 ### Bug

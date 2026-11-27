@@ -8,7 +8,7 @@ function parseOem(text: string): EphemerisInterface[];
 ```
 
 Defined in:
-[probes/oem.ts:112](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/probes/oem.ts#L112)
+[probes/oem.ts:131](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/probes/oem.ts#L131)
 
 Parse a CCSDS **Orbit Ephemeris Message** (OEM) in its key-value (KVN) form: the
 standard space agencies exchange spacecraft ephemerides in, a table of positions
@@ -44,6 +44,9 @@ META_STOP
 - Epochs are read on the `TIME_SYSTEM` clock and returned as UTC `Date`s,
   rounded to the millisecond. UTC, TAI, TT, UT1, TDB and GPS are read;
   mission-elapsed and spacecraft clocks, TCB and TCG aren't.
+- A `Date` can't hold 23:59:60, so samples inside a UTC leap second are skipped:
+  the segment has a gap of a second there. A seconds value of 60 anywhere else
+  is an invalid epoch.
 - Epochs can be calendar dates or days of the year, as in `2019-352T12:00:00`.
   The XML form of OEM isn't read.
 
