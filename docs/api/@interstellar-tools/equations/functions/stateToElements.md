@@ -13,7 +13,7 @@ function stateToElements(
 ```
 
 Defined in:
-[orbits/state-to-elements.ts:88](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/state-to-elements.ts#L88)
+[orbits/state-to-elements.ts:89](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/state-to-elements.ts#L89)
 
 Convert a **state vector** (position and velocity) to the six **classical
 orbital elements**.
@@ -39,13 +39,16 @@ h$.
 **Units**
 
 - Inputs: `r` in **m**, `v` in **m/s**, `mu` in **m³/s²**.
-- Output: `a` in **m**, `e` dimensionless, angles in **radians**.
+- Output: `a` and `p` in **m**, `e` dimensionless, angles in **radians**.
 
 ::: info Notes
 
-- Works for elliptic and hyperbolic orbits. A hyperbolic orbit has a negative
-  `a`, and `nu` in \[0, 2π) like the others: the incoming branch is just below
-  2π.
+- Works for elliptic, parabolic and hyperbolic orbits. A hyperbolic orbit has a
+  negative `a`, and `nu` in \[0, 2π) like the others: the incoming branch is
+  just below 2π.
+- It also returns the semi-latus rectum $p = h^2/\mu$, which stays finite and
+  accurate near $e = 1$, where `a` grows without bound (and is $\pm\infty$ for
+  an exact parabola).
 - Some angles are undefined for special orbits. Below `tolerance`, the function
   uses these conventions, which [elementsToState](elementsToState.md) reverses:
   - **circular** ($e \approx 0$): `argp = 0`, and `nu` is measured from the
