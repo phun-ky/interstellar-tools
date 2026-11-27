@@ -115,18 +115,19 @@ npm i --save @interstellar-tools/constants
 
 ## Objects
 
-| Variable                                                                                                  | Description                                                                                                                     |
-| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| [SOLAR_RADIUS_NOMINAL_KM](variables/SOLAR_RADIUS_NOMINAL_KM.md)                                           | Nominal solar radius (IAU 2015 B3), exact.                                                                                      |
-| [SOLAR_RADIUS_PHOTOSPHERIC_KM](variables/SOLAR_RADIUS_PHOTOSPHERIC_KM.md)                                 | Photospheric / "standard" solar radius suggested for models (HSK 2008). Reconciles seismic and photospheric definitions.        |
-| [SOLAR_RADIUS_PICARD_SODISM_535_7_NM_KM](variables/SOLAR_RADIUS_PICARD_SODISM_535_7_NM_KM.md)             | PICARD/SODISM radius at 535.7 nm.                                                                                               |
-| [SOLAR_RADIUS_PICARD_SODISM_535_7_NM_UNC_KM](variables/SOLAR_RADIUS_PICARD_SODISM_535_7_NM_UNC_KM.md)     | 1σ uncertainty at 535.7 nm.                                                                                                     |
-| [SOLAR_RADIUS_PICARD_SODISM_607_1_NM_KM](variables/SOLAR_RADIUS_PICARD_SODISM_607_1_NM_KM.md)             | PICARD/SODISM radius at 607.1 nm.                                                                                               |
-| [SOLAR_RADIUS_PICARD_SODISM_607_1_NM_UNC_KM](variables/SOLAR_RADIUS_PICARD_SODISM_607_1_NM_UNC_KM.md)     | 1σ uncertainty at 607.1 nm.                                                                                                     |
-| [SOLAR_RADIUS_PICARD_SODISM_782_2_NM_KM](variables/SOLAR_RADIUS_PICARD_SODISM_782_2_NM_KM.md)             | PICARD/SODISM radius at 782.2 nm.                                                                                               |
-| [SOLAR_RADIUS_PICARD_SODISM_782_2_NM_UNC_KM](variables/SOLAR_RADIUS_PICARD_SODISM_782_2_NM_UNC_KM.md)     | 1σ uncertainty at 782.2 nm.                                                                                                     |
-| [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM.md)         | Limb–inflection minus photospheric offset (~0.333 Mm). / export const SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM = 333; |
-| [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM.md) | 1σ uncertainty for SOHO/MDI Mercury-transit radius.                                                                             |
+| Variable                                                                                                              | Description                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| [SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM](variables/SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM.md) | Limb–inflection minus photospheric offset (~0.333 Mm), in km (HSK 2008).                                                 |
+| [SOLAR_RADIUS_NOMINAL_KM](variables/SOLAR_RADIUS_NOMINAL_KM.md)                                                       | Nominal solar radius (IAU 2015 B3), exact.                                                                               |
+| [SOLAR_RADIUS_PHOTOSPHERIC_KM](variables/SOLAR_RADIUS_PHOTOSPHERIC_KM.md)                                             | Photospheric / "standard" solar radius suggested for models (HSK 2008). Reconciles seismic and photospheric definitions. |
+| [SOLAR_RADIUS_PICARD_SODISM_535_7_NM_KM](variables/SOLAR_RADIUS_PICARD_SODISM_535_7_NM_KM.md)                         | PICARD/SODISM radius at 535.7 nm.                                                                                        |
+| [SOLAR_RADIUS_PICARD_SODISM_535_7_NM_UNC_KM](variables/SOLAR_RADIUS_PICARD_SODISM_535_7_NM_UNC_KM.md)                 | 1σ uncertainty at 535.7 nm.                                                                                              |
+| [SOLAR_RADIUS_PICARD_SODISM_607_1_NM_KM](variables/SOLAR_RADIUS_PICARD_SODISM_607_1_NM_KM.md)                         | PICARD/SODISM radius at 607.1 nm.                                                                                        |
+| [SOLAR_RADIUS_PICARD_SODISM_607_1_NM_UNC_KM](variables/SOLAR_RADIUS_PICARD_SODISM_607_1_NM_UNC_KM.md)                 | 1σ uncertainty at 607.1 nm.                                                                                              |
+| [SOLAR_RADIUS_PICARD_SODISM_782_2_NM_KM](variables/SOLAR_RADIUS_PICARD_SODISM_782_2_NM_KM.md)                         | PICARD/SODISM radius at 782.2 nm.                                                                                        |
+| [SOLAR_RADIUS_PICARD_SODISM_782_2_NM_UNC_KM](variables/SOLAR_RADIUS_PICARD_SODISM_782_2_NM_UNC_KM.md)                 | 1σ uncertainty at 782.2 nm.                                                                                              |
+| [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_KM.md)                     | Radius from SOHO/MDI Mercury transits (2003 & 2006).                                                                     |
+| [SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM](variables/SOLAR_RADIUS_SOHO_MDI_MERCURY_TRANSIT_UNC_KM.md)             | 1σ uncertainty for SOHO/MDI Mercury-transit radius.                                                                      |
 
 ## Observations
 

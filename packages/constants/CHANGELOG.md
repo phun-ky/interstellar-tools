@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.0.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%403.0.1...%40interstellar-tools%2Fconstants%403.0.2) (2026-11-27)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group across 1 directory with 3 updates ([c19c54c](https://github.com/phun-ky/interstellar-tools/commit/c19c54caf7469ae240484c008f6736110b823951))
+
+### Bug
+
+* 🐛 Export SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM ([3c68e9c](https://github.com/phun-ky/interstellar-tools/commit/3c68e9c52a8506c101bc4bcf108eb9e04586c9e1))
+
+### Markup, white-space, formatting, missing semi-colons...
+
+* 💄 lint the tests for eslint-config-phun-ky 3 ([7d31626](https://github.com/phun-ky/interstellar-tools/commit/7d3162678bce67e379cbe5791b346328d660c584))
+
 ## [3.0.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%403.0.0...%40interstellar-tools%2Fconstants%403.0.1) (2026-11-16)
 
 ### Bug
