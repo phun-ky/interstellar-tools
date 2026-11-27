@@ -29,7 +29,7 @@ import type { TileInterface } from './tile.js';
  * - Columns run east from 180° W, and rows run **south** from the top edge of the map (see {@link TileInterface}).
  * - The map stops at $ \arctan\sinh\pi \approx \pm 85.0511° $, where it is square. Latitudes beyond that, up to the poles, are clamped into the top or bottom row.
  * - The longitude is taken modulo a whole turn, so 180° E is 180° W, the west edge of column 0.
- * - A point exactly on an edge between tiles belongs to the tile east or south of it.
+ * - A point on an edge between tiles belongs to the tile east or south of it, so every tile's north and west edges from {@link tileBounds} come back to that tile. Points within rounding of an edge, about 9 × 10⁻¹⁶ of the map's width (some 36 nm on Earth), count as on it.
  * - The scheme depends only on angles, so it tiles a spherical Mercator map of Mars or the Moon as it does Earth's. A tile is $ 2\pi R / 2^z $ wide at the equator.
  *
  * :::
@@ -68,10 +68,14 @@ export const tileAt = (
   const wrapped = wrapLongitude(lambda);
   const across = wrapped === Math.PI ? 0 : (wrapped + Math.PI) / (2 * Math.PI);
   const down = (1 - Math.asinh(Math.tan(phi)) / Math.PI) / 2;
+  // tileBounds' edges come back up to an ulp or two of the map short of a
+  // whole tile, so give rounding 4 ulps before flooring
+  const index = (fraction: number) =>
+    Math.floor(fraction * n + 4 * Number.EPSILON * n);
 
   return {
-    x: Math.min(n - 1, Math.floor(across * n)),
-    y: Math.min(n - 1, Math.max(0, Math.floor(down * n))),
+    x: Math.min(n - 1, index(across)),
+    y: Math.min(n - 1, Math.max(0, index(down))),
     z: zoom
   };
 };

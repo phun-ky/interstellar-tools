@@ -112,6 +112,29 @@ describe('tileBounds', () => {
     close(LIMIT, rad(85.0511287798));
   });
 
+  test('round-trips the north-west corner of a tile through tileAt', () => {
+    // On the edges, which belong to the tile east and south of them
+    for (const [x, y, z] of [
+      [0, 1, 2],
+      [1, 2, 8],
+      [49, 49, 16],
+      [805306, 268435, 30]
+    ] as const) {
+      const { north, west } = tileBounds(x, y, z);
+
+      assert.deepEqual(tileAt(north, west, z), { x, y, z });
+    }
+
+    fc.assert(
+      fc.property(tile, ({ x, y, z }) => {
+        const { north, west } = tileBounds(x, y, z);
+
+        assert.deepEqual(tileAt(north, west, z), { x, y, z });
+      }),
+      { numRuns: 10_000 }
+    );
+  });
+
   test('round-trips the centre of a tile through tileAt', () => {
     fc.assert(
       fc.property(tile, ({ x, y, z }) => {
