@@ -158,6 +158,54 @@ describe('parseOem', () => {
     );
   });
 
+  test('skips samples inside a UTC leap second', () => {
+    const at = (...epochs: string[]) =>
+      parseOem(
+        oem(
+          'TIME_SYSTEM = UTC',
+          ...epochs.map((epoch) => `${epoch} 1 2 3 0.1 0.2 0.3`)
+        )
+      )[0]!.samples.map(({ epoch }) => epoch.toISOString());
+
+    assert.deepEqual(
+      at('2016-12-31T23:59:59', '2016-12-31T23:59:60', '2017-01-01T00:00:00'),
+      ['2016-12-31T23:59:59.000Z', '2017-01-01T00:00:00.000Z']
+    );
+    assert.deepEqual(
+      at(
+        '2016-12-31T23:59:59.5',
+        '2016-12-31T23:59:60.0',
+        '2016-12-31T23:59:60.5',
+        '2017-01-01T00:00:00.0'
+      ),
+      ['2016-12-31T23:59:59.500Z', '2017-01-01T00:00:00.000Z']
+    );
+    // The same leap second as a day of the year, and one that ended a June
+    assert.deepEqual(at('2016-366T23:59:60', '2017-001T00:00:00'), [
+      '2017-01-01T00:00:00.000Z'
+    ]);
+    assert.deepEqual(at('2015-06-30T23:59:60.9', '2015-07-01T00:00:00'), [
+      '2015-07-01T00:00:00.000Z'
+    ]);
+  });
+
+  test('rejects 60 s outside a UTC leap second', () => {
+    for (const [scale, epoch] of [
+      // no leap second that day, or not at the end of the day
+      ['UTC', '2017-06-30T23:59:60'],
+      ['UTC', '2016-12-31T12:30:60'],
+      // the start of UTC in 1972 wasn't a leap second
+      ['UTC', '1971-12-31T23:59:60'],
+      // only UTC has leap seconds
+      ['TAI', '2016-12-31T23:59:60'],
+      ['GPS', '2016-12-31T23:59:60']
+    ])
+      rejects(
+        oem(`TIME_SYSTEM = ${scale}`, `${epoch} 1 2 3 0.1 0.2 0.3`),
+        `OEM line 9: invalid epoch. Received: "${epoch}"`
+      );
+  });
+
   test('rejects an unfinished covariance block', () => {
     const meta = 'TIME_SYSTEM = UTC';
 
