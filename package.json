@@ -157,10 +157,10 @@
     "typedoc-plugin-remark": "^2.0.0",
     "typedoc-plugin-rename-defaults": "^0.7.1",
     "typedoc-vitepress-theme": "^1.1.2",
-    "typescript-eslint": "^8.72.1",
+    "typescript-eslint": "^8.72.2",
     "unified-prettier": "^2.0.1",
     "vitepress": "^1.6.4",
-    "vitepress-plugin-group-icons": "^1.8.1"
+    "vitepress-plugin-group-icons": "^1.8.2"
   },
   "engines": {
     "node": "^24.15.0",
