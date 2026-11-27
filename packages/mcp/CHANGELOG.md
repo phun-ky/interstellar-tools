@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.3.1...%40interstellar-tools%2Fmcp%402.3.2) (2026-11-27)
+
+### Bug
+
+* 🐛 Read MCP times without Z or an offset as UTC ([c5c88fa](https://github.com/phun-ky/interstellar-tools/commit/c5c88fa12d0fe99e7f362cd07ed398cce3554a09))
+
 ## [2.3.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.3.0...%40interstellar-tools%2Fmcp%402.3.1) (2026-11-27)
 
 ### Bug
