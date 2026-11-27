@@ -1,3 +1,5 @@
+import { quadkey, tileAt } from '@interstellar-tools/maps';
+import type { Radians } from '@interstellar-tools/types';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 
@@ -61,6 +63,7 @@ describe('tool listing', () => {
 
     assert.deepEqual(names, [
       'body_fixed_to_geodetic',
+      'camera_ground_resolution',
       'circular_speed',
       'convert_anomaly',
       'convert_distance',
@@ -74,8 +77,10 @@ describe('tool listing', () => {
       'hohmann_transfer',
       'horizon_distance',
       'hyperbolic_departure',
+      'illumination_geometry',
       'kepler_period',
       'lagrange_points',
+      'landing_stability',
       'look_angles',
       'peri_apoapsis_radii',
       'plane_change_delta_v',
@@ -83,12 +88,18 @@ describe('tool listing', () => {
       'project_point',
       'propagate_state',
       'rocket_delta_v',
+      'safe_landing_map',
       'satellite_passes',
       'satellite_position',
       'solve_kepler',
       'solve_lambert',
       'sphere_of_influence_radius',
       'state_to_elements',
+      'terrain_at_cell',
+      'terrain_layer',
+      'tile_for_point',
+      'tile_info',
+      'unproject_point',
       'vis_viva_speed'
     ]);
   });
@@ -690,6 +701,639 @@ describe('map tools', () => {
     assert.equal(centred.isError, true);
     assert.equal(parallel.isError, true);
     assert.equal(pole.isError, true);
+  });
+});
+
+describe('inverse projection and tile tools', () => {
+  test('unproject_point on sinusoidal: the Moon docs example', async () => {
+    const res = await call('unproject_point', {
+      projection: 'sinusoidal',
+      x_m: 1_364_551,
+      y_m: 1_819_401,
+      body: 'moon'
+    });
+
+    approx(res.structuredContent!.latitude.deg, 60, 1e-4);
+    approx(res.structuredContent!.longitude.deg, 90, 1e-4);
+  });
+
+  test('unproject_point on a south polar stereographic map of Mars', async () => {
+    const res = await call('unproject_point', {
+      projection: 'stereographic',
+      x_m: 419_375,
+      y_m: 419_375,
+      body: 'mars',
+      center_latitude: deg(-90)
+    });
+
+    approx(res.structuredContent!.latitude.deg, -80, 1e-4);
+    approx(res.structuredContent!.longitude.deg, 45, 1e-4);
+  });
+
+  test('unproject_point rejects a point off the map and options a projection lacks', async () => {
+    const off = await call('unproject_point', {
+      projection: 'sinusoidal',
+      x_m: 4,
+      y_m: 0,
+      radius_m: 1
+    });
+    const centred = await call('unproject_point', {
+      projection: 'mercator',
+      x_m: 0,
+      y_m: 0,
+      radius_m: 1,
+      center_latitude: deg(45)
+    });
+
+    assert.equal(off.isError, true);
+    assert.match(off.content[0]!.text!, /beyond the edge meridians/);
+    assert.equal(centred.isError, true);
+  });
+
+  test('project_point and unproject_point accept an explicit default of 0 for options a projection lacks', async () => {
+    const projected = await call('project_point', {
+      projection: 'mercator',
+      latitude: deg(0),
+      longitude: deg(90),
+      radius_m: 1000,
+      center_latitude: deg(0)
+    });
+    const unprojected = await call('unproject_point', {
+      projection: 'sinusoidal',
+      x_m: 0,
+      y_m: 0,
+      radius_m: 1000,
+      standard_parallel: { value: 0, unit: 'rad' }
+    });
+
+    assert.equal(projected.isError, undefined);
+    approx(projected.structuredContent!.x_m, 500 * Math.PI, 1e-9);
+    assert.equal(unprojected.isError, undefined);
+    assert.equal(unprojected.structuredContent!.latitude.deg, 0);
+  });
+
+  test('tile_for_point finds Oslo at zoom 10', async () => {
+    const res = await call('tile_for_point', {
+      latitude: deg(59.9139),
+      longitude: deg(10.7522),
+      zoom: 10
+    });
+
+    assert.deepEqual(res.structuredContent, {
+      x: 542,
+      y: 297,
+      z: 10,
+      quadkey: '1200213112'
+    });
+  });
+
+  test('tile_for_point rejects a zoom past 30 or not an integer', async () => {
+    const point = { latitude: deg(0), longitude: deg(0) };
+
+    assert.equal(
+      (await call('tile_for_point', { ...point, zoom: 31 })).isError,
+      true
+    );
+    assert.equal(
+      (await call('tile_for_point', { ...point, zoom: 1.5 })).isError,
+      true
+    );
+  });
+
+  test('the tile tools’ zoom limit of 30 is the maps package’s MAX_ZOOM', async () => {
+    // MAX_ZOOM isn't exported: check the library still draws the line there
+    assert.equal(quadkey(0, 0, 30), '0'.repeat(30));
+    assert.throws(() => quadkey(0, 0, 31), RangeError);
+    assert.throws(() => tileAt(0 as Radians, 0 as Radians, 31), RangeError);
+
+    const res = await call('tile_for_point', {
+      latitude: deg(0),
+      longitude: deg(0),
+      zoom: 30
+    });
+
+    assert.equal(res.structuredContent!.quadkey.length, 30);
+  });
+
+  test('tile_info reads a quadkey', async () => {
+    const res = await call('tile_info', { quadkey: '213' });
+
+    assert.equal(res.structuredContent!.x, 3);
+    assert.equal(res.structuredContent!.y, 5);
+    assert.equal(res.structuredContent!.z, 3);
+    assert.equal(res.structuredContent!.quadkey, '213');
+  });
+
+  test('tile_info gives the edges of the whole map at zoom 0', async () => {
+    const res = await call('tile_info', { x: 0, y: 0, z: 0 });
+
+    approx(res.structuredContent!.north.deg, 85.0511287798, 1e-9);
+    approx(res.structuredContent!.south.deg, -85.0511287798, 1e-9);
+    assert.equal(res.structuredContent!.west.deg, -180);
+    assert.equal(res.structuredContent!.east.deg, 180);
+    assert.equal(res.structuredContent!.quadkey, '');
+  });
+
+  test('tile_info rejects both forms, half a tile, a bad quadkey and a tile off the map', async () => {
+    for (const args of [
+      { x: 3, y: 5, z: 3, quadkey: '213' },
+      { x: 3, y: 5 },
+      {},
+      { quadkey: '124' },
+      { x: 8, y: 0, z: 3 }
+    ])
+      assert.equal(
+        (await call('tile_info', args)).isError,
+        true,
+        JSON.stringify(args)
+      );
+  });
+});
+
+describe('imaging tools', () => {
+  test('camera_ground_resolution: a 10 µrad pixel sees 3 m from 300 km', async () => {
+    const res = await call('camera_ground_resolution', {
+      pixel_pitch_m: 7e-6,
+      focal_length_m: 0.7,
+      distance_m: 300_000
+    });
+
+    approx(res.structuredContent!.ifov.rad, 1e-5, 1e-14);
+    approx(res.structuredContent!.gsd_m, 3, 1e-6);
+    assert.equal(res.structuredContent!.swath_m, undefined);
+  });
+
+  test('camera_ground_resolution: a detector twice the focal length wide sees 90°', async () => {
+    const res = await call('camera_ground_resolution', {
+      pixel_pitch_m: 1e-5,
+      focal_length_m: 0.5,
+      distance_m: 1000,
+      pixels_across: 100_000
+    });
+
+    approx(res.structuredContent!.field_of_view.deg, 90, 1e-9);
+    approx(res.structuredContent!.swath_m, 2000, 1e-9);
+  });
+
+  test('camera_ground_resolution rejects a zero distance or pixel count', async () => {
+    const camera = { pixel_pitch_m: 7e-6, focal_length_m: 0.7 };
+
+    assert.equal(
+      (await call('camera_ground_resolution', { ...camera, distance_m: 0 }))
+        .isError,
+      true
+    );
+    assert.equal(
+      (
+        await call('camera_ground_resolution', {
+          ...camera,
+          distance_m: 1,
+          pixels_across: 0
+        })
+      ).isError,
+      true
+    );
+  });
+
+  test('illumination_geometry gives the Sun’s zenith angle as incidence', async () => {
+    const res = await call('illumination_geometry', {
+      normal: [0, 0, 5],
+      to_sun: [1.5, 0, (Math.sqrt(3) / 2) * 3],
+      to_observer: [0, 0, 0.1]
+    });
+    const mu0 = Math.cos(Math.PI / 6);
+
+    approx(res.structuredContent!.incidence.deg, 30, 1e-9);
+    approx(res.structuredContent!.emission.deg, 0, 1e-9);
+    approx(res.structuredContent!.phase.deg, 30, 1e-9);
+    approx(res.structuredContent!.lambert_reflectance, mu0, 1e-12);
+    approx(
+      res.structuredContent!.lommel_seeliger_reflectance,
+      mu0 / (mu0 + 1),
+      1e-12
+    );
+  });
+
+  test('illumination_geometry rejects a zero vector', async () => {
+    const res = await call('illumination_geometry', {
+      normal: [0, 0, 1],
+      to_sun: [0, 0, 1],
+      to_observer: [0, 0, 0]
+    });
+
+    assert.equal(res.isError, true);
+    assert.match(res.content[0]!.text!, /zero vector/);
+  });
+});
+
+describe('landing tools', () => {
+  const lander = { r_footprint_m: 2, h_com_m: 2 };
+
+  test('landing_stability: 30° plus 10° of rock-up stays up with a 45° limit', async () => {
+    const res = await call('landing_stability', {
+      ...lander,
+      slope: deg(30),
+      dynamic_tilt: deg(10)
+    });
+
+    approx(res.structuredContent!.tip_over_angle.deg, 45, 1e-9);
+    approx(res.structuredContent!.total_tilt.deg, 40, 1e-9);
+    approx(res.structuredContent!.margin.deg, 5, 1e-9);
+    assert.equal(res.structuredContent!.stable, true);
+  });
+
+  test('landing_stability: 40° plus 10° tips over', async () => {
+    const res = await call('landing_stability', {
+      ...lander,
+      slope: deg(40),
+      dynamic_tilt: deg(10)
+    });
+
+    approx(res.structuredContent!.margin.deg, -5, 1e-9);
+    assert.equal(res.structuredContent!.stable, false);
+  });
+
+  test('landing_stability rejects a slope past vertical', async () => {
+    const res = await call('landing_stability', {
+      ...lander,
+      slope: deg(400)
+    });
+
+    assert.equal(res.isError, true);
+    assert.match(res.content[0]!.text!, /slope must be in \[0°, 90°\]/);
+  });
+
+  test('landing_stability rejects a negative slope or rock-up, in the caller’s unit', async () => {
+    const slope = await call('landing_stability', {
+      ...lander,
+      slope: deg(-1)
+    });
+    const tilt = await call('landing_stability', {
+      ...lander,
+      slope: deg(10),
+      dynamic_tilt: deg(-5)
+    });
+
+    assert.equal(slope.isError, true);
+    assert.match(
+      slope.content[0]!.text!,
+      /slope must be in \[0°, 90°\]\. Received: -1 deg/
+    );
+    assert.equal(tilt.isError, true);
+    assert.match(
+      tilt.content[0]!.text!,
+      /dynamic_tilt must be at least 0\. Received: -5 deg/
+    );
+  });
+
+  test('safe_landing_map: level ground is safe inside, unknown on the edge', async () => {
+    const res = await call('safe_landing_map', {
+      ...lander,
+      elevation_m: Array.from({ length: 5 }, () => Array(5).fill(100)),
+      cell_size_m: 1,
+      max_roughness_m: 0.5
+    });
+    const { values, safe_cells, unsafe_cells, unknown_cells } =
+      res.structuredContent!;
+
+    assert.deepEqual([safe_cells, unsafe_cells, unknown_cells], [9, 0, 16]);
+    assert.equal(values[2][2], 1);
+    assert.equal(values[0][0], null);
+  });
+
+  test('safe_landing_map: a slope just over the tip-over angle is unsafe', async () => {
+    const res = await call('safe_landing_map', {
+      ...lander,
+      elevation_m: Array.from({ length: 5 }, () =>
+        Array.from({ length: 5 }, (_, x) => 1.05 * x)
+      ),
+      cell_size_m: 1,
+      max_roughness_m: 2
+    });
+
+    assert.equal(res.structuredContent!.safe_cells, 0);
+    assert.equal(res.structuredContent!.unsafe_cells, 9);
+  });
+
+  test('safe_landing_map rejects a negative roughness limit', async () => {
+    const res = await call('safe_landing_map', {
+      ...lander,
+      elevation_m: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ],
+      cell_size_m: 1,
+      max_roughness_m: -1
+    });
+
+    assert.equal(res.isError, true);
+  });
+
+  test('safe_landing_map rejects a negative rock-up, in the caller’s unit', async () => {
+    const res = await call('safe_landing_map', {
+      ...lander,
+      elevation_m: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ],
+      cell_size_m: 1,
+      max_roughness_m: 1,
+      dynamic_tilt: deg(-5)
+    });
+
+    assert.equal(res.isError, true);
+    assert.match(
+      res.content[0]!.text!,
+      /dynamic_tilt must be at least 0\. Received: -5 deg/
+    );
+  });
+});
+
+describe('terrain tools', () => {
+  // 3 × 3 cells of 10 m, rising 1 m a cell to the east (createGrid's example)
+  const ramp = {
+    elevation_m: [
+      [0, 1, 2],
+      [0, 1, 2],
+      [0, 1, 2]
+    ],
+    cell_size_m: 10
+  };
+  // 3 × 4 cells, falling 10 m a cell to the east
+  const fallingEast = {
+    elevation_m: Array.from({ length: 3 }, () => [0, -10, -20, -30]),
+    cell_size_m: 10
+  };
+
+  test('terrain_at_cell on a plane', async () => {
+    const res = await call('terrain_at_cell', {
+      ...ramp,
+      row: 1,
+      column: 1,
+      sun_azimuth: deg(270),
+      sun_elevation: deg(45)
+    });
+    const s = res.structuredContent!;
+    const slope = Math.atan(0.1);
+
+    assert.equal(s.elevation_m, 1);
+    approx(s.dz_dx, 0.1, 1e-12);
+    approx(s.dz_dy, 0, 1e-12);
+    approx(s.slope.rad, slope, 1e-12);
+    // Downhill is west
+    approx(s.aspect.deg, 270, 1e-9);
+    approx(s.profile_curvature_per_m, 0, 1e-12);
+    approx(s.planform_curvature_per_m, 0, 1e-12);
+    // Six neighbours 1 m off, two level
+    approx(s.roughness_m, Math.sqrt(6 / 8), 1e-12);
+    // The Sun is in the west, 45° up, so 45° minus the slope from the normal
+    approx(s.hillshade, Math.cos(Math.PI / 4 - slope), 1e-12);
+  });
+
+  test('terrain_at_cell gives null on the edge and for a missing cell', async () => {
+    const edge = await call('terrain_at_cell', { ...ramp, row: 0, column: 0 });
+
+    assert.equal(edge.structuredContent!.elevation_m, 0);
+    assert.equal(edge.structuredContent!.slope, null);
+    assert.equal(edge.structuredContent!.roughness_m, null);
+    assert.equal(edge.structuredContent!.hillshade, undefined);
+
+    for (const missing of [null, -9999]) {
+      const res = await call('terrain_at_cell', {
+        elevation_m: [
+          [1, 1, 1],
+          [1, missing, 1],
+          [1, 1, 1]
+        ],
+        cell_size_m: 1,
+        no_data: -9999,
+        row: 1,
+        column: 1
+      });
+
+      assert.equal(res.structuredContent!.elevation_m, null);
+      assert.equal(res.structuredContent!.slope, null);
+    }
+  });
+
+  test('terrain_at_cell has no curvature or aspect at a summit', async () => {
+    const res = await call('terrain_at_cell', {
+      elevation_m: [
+        [0, 0, 0],
+        [0, 1, 0],
+        [0, 0, 0]
+      ],
+      cell_size_m: 1,
+      row: 1,
+      column: 1
+    });
+
+    assert.equal(res.structuredContent!.slope.rad, 0);
+    assert.equal(res.structuredContent!.aspect, null);
+    assert.equal(res.structuredContent!.profile_curvature_per_m, null);
+    assert.equal(res.structuredContent!.planform_curvature_per_m, null);
+  });
+
+  test('terrain tools reject heights past 1000 km and cells outside 1 mm to 1000 km, but not a float no_data marker', async () => {
+    const flat = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ];
+    const high = await call('terrain_at_cell', {
+      elevation_m: [
+        [0, 0, 0],
+        [0, 2e6, 0],
+        [0, 0, 0]
+      ],
+      cell_size_m: 1,
+      row: 1,
+      column: 1
+    });
+    const wide = await call('terrain_at_cell', {
+      elevation_m: flat,
+      cell_size_m: 2e6,
+      row: 1,
+      column: 1
+    });
+    const marker = await call('terrain_at_cell', {
+      elevation_m: [
+        [0, 0, 0],
+        [0, -3.4028234663852886e38, 0],
+        [0, 0, 0]
+      ],
+      cell_size_m: 1,
+      no_data: -3.4028234663852886e38,
+      row: 1,
+      column: 1
+    });
+
+    assert.equal(high.isError, true);
+    assert.match(high.content[0]!.text!, /within ±1000000 m/);
+    assert.equal(wide.isError, true);
+    assert.equal(
+      (
+        await call('terrain_at_cell', {
+          elevation_m: flat,
+          cell_size_m: 1e-4,
+          row: 1,
+          column: 1
+        })
+      ).isError,
+      true
+    );
+    assert.equal(marker.isError, undefined);
+    assert.equal(marker.structuredContent!.elevation_m, null);
+  });
+
+  test('terrain_at_cell rejects a cell outside the grid', async () => {
+    const res = await call('terrain_at_cell', { ...ramp, row: 3, column: 1 });
+
+    assert.equal(res.isError, true);
+    assert.match(res.content[0]!.text!, /row/);
+  });
+
+  test('terrain_layer flow_accumulation grows along a tilted plane', async () => {
+    const res = await call('terrain_layer', {
+      ...fallingEast,
+      cell_size_y_m: 5,
+      layer: 'flow_accumulation'
+    });
+
+    assert.deepEqual(res.structuredContent, {
+      layer: 'flow_accumulation',
+      unit: 'm²',
+      values: Array.from({ length: 3 }, () => [50, 100, 150, 200]),
+      valid_cells: 12,
+      min: 50,
+      max: 200,
+      mean: 125,
+      min_cell: { row: 0, column: 0 },
+      max_cell: { row: 0, column: 3 }
+    });
+  });
+
+  test('terrain_layer flow_direction runs east, and stops at the low edge', async () => {
+    const res = await call('terrain_layer', {
+      ...fallingEast,
+      layer: 'flow_direction'
+    });
+
+    assert.deepEqual(
+      res.structuredContent!.values,
+      Array.from({ length: 3 }, () => [2, 2, 2, null])
+    );
+  });
+
+  test('terrain_layer gives no min, max or mean for aspect and flow_direction', async () => {
+    for (const layer of ['aspect', 'flow_direction']) {
+      const s = (await call('terrain_layer', { ...fallingEast, layer }))
+        .structuredContent!;
+
+      assert.ok(s.valid_cells > 0, layer);
+      assert.deepEqual(
+        [s.min, s.max, s.mean, s.min_cell, s.max_cell],
+        [null, null, null, null, null],
+        layer
+      );
+    }
+  });
+
+  test('terrain_layer and safe_landing_map send their text without indentation', async () => {
+    for (const [name, args] of [
+      ['terrain_layer', { ...ramp, layer: 'slope' }],
+      [
+        'safe_landing_map',
+        { ...ramp, r_footprint_m: 2, h_com_m: 2, max_roughness_m: 1 }
+      ]
+    ] as const) {
+      const res = await call(name, args);
+      const text = res.content[0]!.text!;
+
+      assert.ok(!text.includes('\n'), name);
+      assert.deepEqual(JSON.parse(text), res.structuredContent, name);
+    }
+  });
+
+  test('terrain_layer slope is in degrees, null on the edge', async () => {
+    const res = await call('terrain_layer', { ...ramp, layer: 'slope' });
+    const { values, unit, valid_cells, max_cell } = res.structuredContent!;
+
+    assert.equal(unit, 'deg');
+    assert.equal(valid_cells, 1);
+    assert.deepEqual(max_cell, { row: 1, column: 1 });
+    approx(values[1][1], (Math.atan(0.1) * 180) / Math.PI, 1e-9);
+    assert.equal(values[0][1], null);
+  });
+
+  test('terrain_layer aspect, roughness, curvature and wetness on a plane', async () => {
+    const centre = async (layer: string) =>
+      (await call('terrain_layer', { ...ramp, layer })).structuredContent!
+        .values[1][1];
+
+    approx(await centre('aspect'), 270, 1e-9);
+    approx(await centre('roughness'), Math.sqrt(6 / 8), 1e-12);
+    approx(await centre('profile_curvature'), 0, 1e-12);
+    approx(await centre('planform_curvature'), 0, 1e-12);
+    // Two 100 m² cells drain through a 10 m wide cell on a 0.1 slope
+    approx(await centre('wetness_index'), Math.log(200 / 10 / 0.1), 1e-12);
+  });
+
+  test('terrain_layer hillshade takes the Sun', async () => {
+    const res = await call('terrain_layer', {
+      ...ramp,
+      layer: 'hillshade',
+      sun_azimuth: deg(270),
+      sun_elevation: deg(45)
+    });
+
+    approx(
+      res.structuredContent!.values[1][1],
+      Math.cos(Math.PI / 4 - Math.atan(0.1)),
+      1e-12
+    );
+  });
+
+  test('terrain_layer rejects a missing or unneeded Sun, and half a Sun', async () => {
+    for (const args of [
+      { layer: 'hillshade' },
+      { layer: 'slope', sun_azimuth: deg(0), sun_elevation: deg(45) },
+      { layer: 'hillshade', sun_azimuth: deg(0) }
+    ])
+      assert.equal(
+        (await call('terrain_layer', { ...ramp, ...args })).isError,
+        true,
+        JSON.stringify(args)
+      );
+  });
+
+  test('terrain tools reject ragged, too small and too large grids', async () => {
+    for (const elevation_m of [
+      [
+        [0, 1, 2],
+        [0, 1],
+        [0, 1, 2]
+      ],
+      [
+        [0, 1, 2],
+        [0, 1, 2]
+      ],
+      Array.from({ length: 33 }, () => [0, 1, 2]),
+      Array.from({ length: 3 }, () => Array(33).fill(0))
+    ])
+      assert.equal(
+        (
+          await call('terrain_layer', {
+            elevation_m,
+            cell_size_m: 1,
+            layer: 'slope'
+          })
+        ).isError,
+        true,
+        `${elevation_m.length} × ${elevation_m[1]!.length}`
+      );
   });
 });
 
