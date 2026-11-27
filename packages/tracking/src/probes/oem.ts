@@ -1,3 +1,4 @@
+import { LEAP_SECONDS } from '@interstellar-tools/constants';
 import type {
   EphemerisInterface,
   EphemerisSampleInterface,
@@ -16,8 +17,15 @@ const REQUIRED = [
   'REF_FRAME',
   'TIME_SYSTEM'
 ] as const;
-// Unix ms on the clock the epoch is read on, or NaN if it isn't a valid epoch
-const readEpoch = (text: string): number => {
+// The days a leap second ends: the first row is the start of UTC, not a leap second
+const LEAP_DAYS = new Set(
+  LEAP_SECONDS.slice(1).map(({ date }) =>
+    new Date(Date.parse(date) - 86_400_000).toISOString().slice(0, 10)
+  )
+);
+// Unix ms on the clock the epoch is read on, NaN if it isn't a valid epoch, or
+// undefined inside a leap second, which a Date can't hold
+const readEpoch = (text: string, scale: TimeScaleType): number | undefined => {
   const match = EPOCH.exec(text);
 
   if (!match) return Number.NaN;
@@ -34,7 +42,6 @@ const readEpoch = (text: string): number => {
     : date.getUTCMonth() === Number(month) - 1 &&
       date.getUTCDate() === Number(day);
 
-  // 60 s only in a leap second
   if (
     !valid ||
     Number(hours) > 23 ||
@@ -42,6 +49,15 @@ const readEpoch = (text: string): number => {
     Number(seconds) >= 61
   )
     return Number.NaN;
+
+  // 23:59:60 only in UTC, on a day that ends in a leap second
+  if (Number(seconds) >= 60)
+    return scale === 'UTC' &&
+      hours === '23' &&
+      minutes === '59' &&
+      LEAP_DAYS.has(date.toISOString().slice(0, 10))
+      ? undefined
+      : Number.NaN;
 
   return (
     midnight +
@@ -86,6 +102,9 @@ const readEpoch = (text: string): number => {
  * - Epochs are read on the `TIME_SYSTEM` clock and returned as UTC `Date`s,
  *   rounded to the millisecond. UTC, TAI, TT, UT1, TDB and GPS are read;
  *   mission-elapsed and spacecraft clocks, TCB and TCG aren't.
+ * - A `Date` can't hold 23:59:60, so samples inside a UTC leap second are
+ *   skipped: the segment has a gap of a second there. A seconds value of 60
+ *   anywhere else is an invalid epoch.
  * - Epochs can be calendar dates or days of the year, as in
  *   `2019-352T12:00:00`. The XML form of OEM isn't read.
  *
@@ -203,7 +222,9 @@ export const parseOem = (text: string): EphemerisInterface[] => {
       if (!numbers.every(Number.isFinite))
         throw fail(`data must be numbers. Received: "${content}"`);
 
-      const ms = readEpoch(epoch!);
+      const ms = readEpoch(epoch!, timeScale);
+
+      if (ms === undefined) continue;
 
       if (!Number.isFinite(ms))
         throw fail(`invalid epoch. Received: "${epoch}"`);
