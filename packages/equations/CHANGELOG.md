@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.1.0...%40interstellar-tools%2Fequations%402.2.0) (2026-11-27)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group across 1 directory with 3 updates ([c19c54c](https://github.com/phun-ky/interstellar-tools/commit/c19c54caf7469ae240484c008f6736110b823951))
+
+### Feature
+
+* 🎸 Propagate two-body state vectors on any conic with keplerPropagate ([7465d68](https://github.com/phun-ky/interstellar-tools/commit/7465d6881b51b7aaee73644ceaf39dbcebb6166c))
+
 ## [2.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.0.1...%40interstellar-tools%2Fequations%402.1.0) (2026-11-27)
 
 ### Feature
