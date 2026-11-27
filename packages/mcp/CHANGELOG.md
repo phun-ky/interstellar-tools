@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.2.0...%40interstellar-tools%2Fmcp%402.3.0) (2026-11-27)
+
+### Feature
+
+* 🎸 Expose inverse projections, tiles, imaging, landing and terrain as MCP tools ([daada9a](https://github.com/phun-ky/interstellar-tools/commit/daada9acbdd00b1c17b2fd7140d19a7859cb6eaa))
+
 ## [2.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.1.0...%40interstellar-tools%2Fmcp%402.2.0) (2026-11-27)
 
 ### Tasks
