@@ -40,8 +40,10 @@ Where:
   row.
 - The longitude is taken modulo a whole turn, so 180° E is 180° W, the west edge
   of column 0.
-- A point exactly on an edge between tiles belongs to the tile east or south of
-  it.
+- A point on an edge between tiles belongs to the tile east or south of it, so
+  every tile's north and west edges from [tileBounds](tileBounds.md) come back
+  to that tile. Points within rounding of an edge, about 9 × 10⁻¹⁶ of the map's
+  width (some 36 nm on Earth), count as on it.
 - The scheme depends only on angles, so it tiles a spherical Mercator map of
   Mars or the Moon as it does Earth's. A tile is $2\pi R / 2^z$ wide at the
   equator.

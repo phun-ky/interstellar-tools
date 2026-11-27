@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.12.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.12.1...%40interstellar-tools%2Fmaps%400.12.2) (2026-11-27)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group across 1 directory with 3 updates ([c19c54c](https://github.com/phun-ky/interstellar-tools/commit/c19c54caf7469ae240484c008f6736110b823951))
+* 🤖 Write coverage floors as whole numbers ([9a21549](https://github.com/phun-ky/interstellar-tools/commit/9a21549ded6dd096dcd964ab3f9c70fe3bf87b79))
+
+### Bug
+
+* 🐛 Make tileAt return the tile for its own north-west corner ([2b827ae](https://github.com/phun-ky/interstellar-tools/commit/2b827aeee3a83b29187786d37acffabdd244e76a))
+
+### Markup, white-space, formatting, missing semi-colons...
+
+* 💄 lint the tests for eslint-config-phun-ky 3 ([7d31626](https://github.com/phun-ky/interstellar-tools/commit/7d3162678bce67e379cbe5791b346328d660c584))
+
 ## [0.12.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.12.0...%40interstellar-tools%2Fmaps%400.12.1) (2026-11-16)
 
 ### Bug
