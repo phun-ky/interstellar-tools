@@ -229,7 +229,8 @@ pull request, and a pull request that fails them can't be merged.
 - Coverage must not drop. Each package's `test:ci` sets a floor for line, branch
   and function coverage of its source, at the level measured when the floor was
   set, and fails below it. Raise the floor when you add tests; the target is 99%
-  of lines, 100% of functions and 95% of branches.
+  of lines, 100% of functions and 95% of branches. Floors are whole numbers:
+  Node drops the decimals, so a floor of 93.9 would only enforce 93.
 
 #### Developer Certificate of Origin
 
