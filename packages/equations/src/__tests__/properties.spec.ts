@@ -28,6 +28,7 @@ import { elementsToState } from '../categories/orbits/elements-to-state.js';
 import { escapeSpeed } from '../categories/orbits/escape-speed.js';
 import { inclinationFromLaunchAzimuth } from '../categories/orbits/inclination-from-launch-azimuth.js';
 import { keplerPeriod } from '../categories/orbits/kepler-period.js';
+import { keplerPropagate } from '../categories/orbits/kepler-propagate.js';
 import { launchAzimuthForInclination } from '../categories/orbits/launch-azimuth-for-inclination.js';
 import { periApoapsisRadii } from '../categories/orbits/peri-apoapsis-radii.js';
 import { stateToElements } from '../categories/orbits/state-to-elements.js';
@@ -240,6 +241,56 @@ describe('state vectors and orbital elements', () => {
           angleClose(back.raan, raan, 1e-8);
           angleClose(back.argp, argp, 1e-7);
           angleClose(back.nu, nu, 1e-7);
+        }
+      )
+    );
+  });
+
+  test('kepler-propagating t1 then t2 equals t1 + t2, on every conic', () => {
+    const dt = fc.double({ min: -1e5, max: 1e5, noNaN: true }); // [s]
+
+    fc.assert(
+      fc.property(
+        a,
+        fc.oneof(ellipticE, fc.constant(1), hyperbolicE),
+        inclination,
+        angle,
+        angle,
+        fc.double({ min: -0.95, max: 0.95, noNaN: true }),
+        dt,
+        dt,
+        (p, e, i, raan, argp, f, t1, t2) => {
+          // With p given, elementsToState ignores a
+          const start = elementsToState(
+            {
+              a: Infinity,
+              p,
+              e,
+              i: i as Radians,
+              raan: raan as Radians,
+              argp: argp as Radians,
+              nu: (f * (e > 1 ? Math.acos(-1 / e) : Math.PI)) as Radians
+            },
+            MU
+          );
+          const mid = keplerPropagate(start.r, start.v, t1, MU);
+          const twoSteps = keplerPropagate(mid.r, mid.v, t2, MU);
+          const oneStep = keplerPropagate(start.r, start.v, t1 + t2, MU);
+          const scale = Math.hypot(...oneStep.r);
+          const energy = ({ r, v }: typeof start) =>
+            Math.hypot(...v) ** 2 / 2 - MU / Math.hypot(...r);
+
+          for (let k = 0; k < 3; k++)
+            assert.ok(
+              Math.abs(twoSteps.r[k] - oneStep.r[k]) <= 1e-8 * scale,
+              `r[${k}]: ${twoSteps.r[k]} vs ${oneStep.r[k]}`
+            );
+
+          assert.ok(
+            Math.abs(energy(oneStep) - energy(start)) <=
+              1e-9 * (MU / Math.hypot(...start.r)),
+            'energy drifted'
+          );
         }
       )
     );

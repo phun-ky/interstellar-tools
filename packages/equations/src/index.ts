@@ -205,6 +205,8 @@ export * from './categories/orbits/j2-nodal-precession-rate.js';
 
 export * from './categories/orbits/kepler-period.js';
 
+export * from './categories/orbits/kepler-propagate.js';
+
 export * from './categories/orbits/launch-azimuth-for-inclination.js';
 
 export * from './categories/orbits/mean-motion.js';

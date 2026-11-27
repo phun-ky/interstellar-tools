@@ -1,5 +1,6 @@
 import {
   elementsToState,
+  keplerPropagate,
   stateToElements
 } from '@interstellar-tools/equations';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
@@ -117,6 +118,34 @@ export const registerStateVectorTools = (server: McpServer) => {
         },
         mu_m3_s2
       );
+
+      return result({ r_m: r, v_m_s: v });
+    }
+  );
+
+  server.registerTool(
+    'propagate_state',
+    {
+      title: 'Propagate a state vector',
+      description:
+        'Position and velocity after a time dt on a two-body orbit, from a position and velocity in an inertial frame centred on the body. Works for ellipses, parabolas and hyperbolas; a negative dt goes backwards. No perturbations (drag, J2, third bodies).',
+      inputSchema: {
+        r_m: vectorSchema('Position [x, y, z], in metres.'),
+        v_m_s: vectorSchema('Velocity [vx, vy, vz], in m/s.'),
+        dt_s: z
+          .number()
+          .finite()
+          .describe('Time to propagate by, in seconds. Negative goes back.'),
+        mu_m3_s2: muSchema
+      },
+      outputSchema: {
+        r_m: vectorOutputSchema,
+        v_m_s: vectorOutputSchema
+      },
+      annotations: PURE_TOOL
+    },
+    ({ r_m, v_m_s, dt_s, mu_m3_s2 }) => {
+      const { r, v } = keplerPropagate(r_m, v_m_s, dt_s, mu_m3_s2);
 
       return result({ r_m: r, v_m_s: v });
     }

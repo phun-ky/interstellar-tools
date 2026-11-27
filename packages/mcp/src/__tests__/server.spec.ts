@@ -81,6 +81,7 @@ describe('tool listing', () => {
       'plane_change_delta_v',
       'probe_position',
       'project_point',
+      'propagate_state',
       'rocket_delta_v',
       'satellite_passes',
       'satellite_position',
@@ -340,6 +341,47 @@ describe('state vector tools', () => {
     assert.equal(out.energy_m2_s2, 0);
     approx(out.e, 1, 1e-12);
     approx(out.rp_m, r, 1e-6);
+  });
+
+  test('propagate_state goes a parabola forward and back', async () => {
+    const { a_m: _, ...rest } = elements;
+    const start = (
+      await call('elements_to_state', { ...rest, e: 1, rp_m: 7_000_000 })
+    ).structuredContent!;
+    const there = (
+      await call('propagate_state', {
+        r_m: start.r_m,
+        v_m_s: start.v_m_s,
+        dt_s: 86_400,
+        mu_m3_s2: MU_EARTH
+      })
+    ).structuredContent!;
+    const back = (
+      await call('propagate_state', {
+        r_m: there.r_m,
+        v_m_s: there.v_m_s,
+        dt_s: -86_400,
+        mu_m3_s2: MU_EARTH
+      })
+    ).structuredContent!;
+
+    assert.ok(Math.hypot(...there.r_m) > 7_000_000);
+
+    for (let k = 0; k < 3; k++) {
+      approx(back.r_m[k], start.r_m[k], 1e-3);
+      approx(back.v_m_s[k], start.v_m_s[k], 1e-6);
+    }
+  });
+
+  test('propagate_state rejects straight-down motion', async () => {
+    const res = await call('propagate_state', {
+      r_m: [7_000_000, 0, 0],
+      v_m_s: [-100, 0, 0],
+      dt_s: 60,
+      mu_m3_s2: MU_EARTH
+    });
+
+    assert.equal(res.isError, true);
   });
 
   test('elements_to_state needs exactly one size, and rp_m for a parabola', async () => {
