@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.2.0...%40interstellar-tools%2Fequations%402.2.1) (2026-11-27)
+
+### Tasks
+
+* 🤖 Write coverage floors as whole numbers ([9a21549](https://github.com/phun-ky/interstellar-tools/commit/9a21549ded6dd096dcd964ab3f9c70fe3bf87b79))
+
+### Bug
+
+* 🐛 Keep a consistent with e near parabolic orbits, and honour edited elements ([2d7ac3b](https://github.com/phun-ky/interstellar-tools/commit/2d7ac3bc11b7196885d91e89068a7751aae2d38c))
+
 ## [2.2.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.1.0...%40interstellar-tools%2Fequations%402.2.0) (2026-11-27)
 
 ### Tasks
