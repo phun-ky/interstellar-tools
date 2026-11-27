@@ -105,10 +105,10 @@ describe('elementsToState', () => {
       }
     });
 
-    test('uses p and ignores a when given, for near-parabolic orbits', () => {
-      // a's sign is wrong for e < 1, as roundoff in the energy can leave it
+    test('uses p near e = 1, where a(1 - e²) loses digits', () => {
+      const e = 1 - 1e-9;
       const { r } = elementsToState(
-        { ...base, a: -1e20, e: 1 - 1e-9, p: 2 * q },
+        { ...base, a: (2 * q) / ((1 - e) * (1 + e)), e, p: 2 * q },
         MU
       );
 
@@ -123,6 +123,50 @@ describe('elementsToState', () => {
           err.message.startsWith('nu is unreachable on a parabola')
       );
     });
+  });
+
+  test('uses a and e once they no longer agree with p, as before p existed', () => {
+    const start = elementsToState(
+      { ...base, a: 7e6, e: 0.1, i: rad(30), nu: rad(57) },
+      MU
+    );
+    const elements = stateToElements(start.r, start.v, MU);
+    const { p: _, ...withoutP } = elements;
+
+    // Unchanged, they agree: the round trip works
+    relClose(elementsToState(elements, MU).r[0], start.r[0], 1e-12);
+
+    for (const changed of [
+      { a: 2 * elements.a },
+      { e: 0.2 },
+      { a: 2 * elements.a, e: 0.3 }
+    ]) {
+      const got = elementsToState({ ...elements, ...changed }, MU);
+      const want = elementsToState({ ...withoutP, ...changed }, MU);
+
+      for (let k = 0; k < 3; k++) {
+        relClose(got.r[k], want.r[k], 1e-12);
+        relClose(got.v[k], want.v[k], 1e-12);
+      }
+    }
+
+    // Twice the a, twice the r
+    relClose(
+      Math.hypot(...elementsToState({ ...elements, a: 2 * elements.a }, MU).r),
+      2 * Math.hypot(...start.r),
+      1e-12
+    );
+  });
+
+  test('still rejects an invalid p when a is given too', () => {
+    for (const [p, error] of [
+      [NaN, TypeError],
+      [-1, RangeError]
+    ] as const)
+      assert.throws(
+        () => elementsToState({ ...base, a: 7e6, e: 0.1, p }, MU),
+        error
+      );
   });
 
   test('throws for invalid elements', () => {

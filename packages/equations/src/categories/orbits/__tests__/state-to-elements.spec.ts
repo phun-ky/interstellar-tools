@@ -129,6 +129,39 @@ describe('stateToElements', () => {
     angleClose(el.nu, rad(90), 1e-12);
   });
 
+  test('gives an a that agrees with e in sign near e = 1', () => {
+    // The energy and the eccentricity vector round differently here: a from
+    // the energy had the wrong sign for about a quarter of these states
+    for (let k = 0; k <= 400; k++) {
+      const { r, v } = elementsToState(
+        {
+          a: Infinity,
+          e: 1,
+          p: 14e6,
+          i: rad(30),
+          raan: rad(20),
+          argp: rad(10),
+          nu: rad(-80 + 0.4 * k)
+        },
+        MU
+      );
+      const { a, e } = stateToElements(r, v, MU);
+
+      assert.ok(
+        e < 1 ? a > 0 : e > 1 ? a < 0 : a === Infinity,
+        `a=${a}, e=${e}`
+      );
+    }
+  });
+
+  test('gives a = Infinity for an exact parabola', () => {
+    const { a, e, p } = stateToElements([2, 0, 0], [0, 2, 0], 4);
+
+    assert.equal(e, 1);
+    assert.equal(a, Infinity);
+    assert.equal(p, 4);
+  });
+
   test('throws for invalid inputs', () => {
     assert.throws(
       () => stateToElements([Number.NaN, 0, 0], [0, 1, 0], MU),

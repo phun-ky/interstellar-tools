@@ -354,6 +354,23 @@ describe('state vector tools', () => {
     approx(out.rp_m, r, 1e-6);
   });
 
+  test('state_to_elements gives a period for a closed orbit just below escape speed', async () => {
+    // e rounds to just under 1 here, while the energy came out positive: the
+    // period was NaN and failed the output schema
+    const res = await call('state_to_elements', {
+      r_m: [44051376.77658507, 0, 0],
+      v_m_s: [1086.312919306011, 4113.027476691657, 0],
+      mu_m3_s2: MU_EARTH
+    });
+    const out = res.structuredContent!;
+
+    assert.equal(res.isError, undefined);
+    assert.ok(out.e < 1);
+    assert.ok(out.a_m > 0);
+    assert.ok(Number.isFinite(out.T_s) && out.T_s > 0);
+    assert.ok(out.energy_m2_s2 < 0);
+  });
+
   test('propagate_state goes a parabola forward and back', async () => {
     const { a_m: _, ...rest } = elements;
     const start = (
