@@ -88,7 +88,9 @@ const timeSchema = (what: string) =>
   z
     .string()
     .min(1)
-    .describe(`${what}, an ISO 8601 time in UTC, e.g. "2026-11-05T15:49:00Z".`);
+    .describe(
+      `${what}, an ISO 8601 time in UTC, e.g. "2026-11-05T15:49:00Z". A time without Z or an offset is taken as UTC too.`
+    );
 const resolveElements = ({
   satellite,
   tle,
@@ -118,8 +120,17 @@ const resolveElements = ({
 
   return parseOmm(entry.omm);
 };
+// A date-time with no Z or offset, which JavaScript reads in the server's
+// own time zone
+const HAS_TIME = /[T ]\d{2}:\d{2}/;
+const HAS_OFFSET = /(?:Z|[+-]\d{2}(?::?\d{2})?)$/i;
 const parseTime = (name: string, text: string): Date => {
-  const date = new Date(text);
+  const trimmed = text.trim();
+  const date = new Date(
+    HAS_TIME.test(trimmed) && !HAS_OFFSET.test(trimmed)
+      ? `${trimmed}Z`
+      : trimmed
+  );
 
   if (!Number.isFinite(date.getTime()))
     throw new Error(
