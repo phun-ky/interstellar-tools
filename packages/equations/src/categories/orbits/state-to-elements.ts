@@ -28,11 +28,12 @@ import { cross, dot, norm, norm2pi, scale, sub } from '../helpers/misc.js';
  *
  * **Units**
  * - Inputs: `r` in **m**, `v` in **m/s**, `mu` in **m³/s²**.
- * - Output: `a` in **m**, `e` dimensionless, angles in **radians**.
+ * - Output: `a` and `p` in **m**, `e` dimensionless, angles in **radians**.
  *
  * ::: info Notes
  *
- * - Works for elliptic and hyperbolic orbits. A hyperbolic orbit has a negative `a`, and `nu` in [0, 2π) like the others: the incoming branch is just below 2π.
+ * - Works for elliptic, parabolic and hyperbolic orbits. A hyperbolic orbit has a negative `a`, and `nu` in [0, 2π) like the others: the incoming branch is just below 2π.
+ * - It also returns the semi-latus rectum $ p = h^2/\mu $, which stays finite and accurate near $ e = 1 $, where `a` grows without bound (and is $ \pm\infty $ for an exact parabola).
  * - Some angles are undefined for special orbits. Below `tolerance`, the function uses these conventions, which {@link elementsToState} reverses:
  *   - **circular** ($ e \approx 0 $): `argp = 0`, and `nu` is measured from the ascending node (the argument of latitude);
  *   - **equatorial** ($ i \approx 0 $ or $ \pi $): `raan = 0`, and `argp` is measured from the x axis (the longitude of periapsis);
@@ -146,6 +147,7 @@ export const stateToElements = (
   return {
     a,
     e,
+    p: (hn * hn) / mu,
     i: i as Radians,
     raan: (equatorial ? 0 : norm2pi(Math.atan2(node[1], node[0]))) as Radians,
     argp: (circular ? 0 : angle(reference, eVec)) as Radians,

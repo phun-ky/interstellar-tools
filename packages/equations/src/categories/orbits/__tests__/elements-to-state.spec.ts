@@ -8,6 +8,7 @@ import test, { describe } from 'node:test';
 
 import { relClose } from '../../../__tests__/helpers/index.js';
 import { elementsToState } from '../elements-to-state.js';
+import { stateToElements } from '../state-to-elements.js';
 import { visVivaSpeed } from '../vis-viva-speed.js';
 
 const MU = 3.986004418e14;
@@ -61,6 +62,69 @@ describe('elementsToState', () => {
     relClose(Math.hypot(...r), p / (1 + 1.5 * Math.cos(rad(60))), 1e-12);
   });
 
+  describe('parabolic orbits (e = 1)', () => {
+    const q = 7000e3;
+    const parabola = { ...base, a: Infinity, e: 1, p: 2 * q };
+
+    test('sits at q with escape speed at periapsis', () => {
+      const { r, v } = elementsToState(parabola, MU);
+
+      relClose(r[0], q, 1e-12);
+      relClose(v[1], Math.sqrt((2 * MU) / q), 1e-12);
+    });
+
+    test('has zero specific energy at any true anomaly', () => {
+      for (const deg of [-170, -90, -30, 45, 120, 179]) {
+        const { r, v } = elementsToState({ ...parabola, nu: rad(deg) }, MU);
+        const rn = Math.hypot(...r);
+
+        relClose(Math.hypot(...v) ** 2, (2 * MU) / rn, 1e-12);
+        relClose(rn, (2 * q) / (1 + Math.cos(rad(deg))), 1e-12);
+      }
+    });
+
+    test('round-trips through stateToElements', () => {
+      const el = {
+        ...parabola,
+        i: rad(30),
+        raan: rad(40),
+        argp: rad(60),
+        nu: rad(100)
+      };
+      const { r, v } = elementsToState(el, MU);
+      const back = stateToElements(r, v, MU);
+
+      relClose(back.e, 1, 1e-12);
+      relClose(back.p!, 2 * q, 1e-12);
+
+      const again = elementsToState(back, MU);
+
+      for (let k = 0; k < 3; k++) {
+        relClose(again.r[k], r[k], 1e-9);
+        relClose(again.v[k], v[k], 1e-9);
+      }
+    });
+
+    test('uses p and ignores a when given, for near-parabolic orbits', () => {
+      // a's sign is wrong for e < 1, as roundoff in the energy can leave it
+      const { r } = elementsToState(
+        { ...base, a: -1e20, e: 1 - 1e-9, p: 2 * q },
+        MU
+      );
+
+      relClose(r[0], (2 * q) / (2 - 1e-9), 1e-12);
+    });
+
+    test('throws at nu = π', () => {
+      assert.throws(
+        () => elementsToState({ ...parabola, nu: rad(180) }, MU),
+        (err) =>
+          err instanceof RangeError &&
+          err.message.startsWith('nu is unreachable on a parabola')
+      );
+    });
+  });
+
   test('throws for invalid elements', () => {
     const cases: [Partial<ClassicalElementsInterface>, number, string][] = [
       [{ e: -0.1 }, MU, 'e must be >= 0. Received: -0.1'],
@@ -76,10 +140,11 @@ describe('elementsToState', () => {
         'a must be < 0 for a hyperbolic orbit. Received: a=10000000, e=1.5'
       ],
       [
-        { e: 1 },
+        { e: 1, a: Infinity },
         MU,
-        'Parabolic orbits (e = 1) are not supported: they have no finite semi-major axis.'
+        'A parabolic orbit (e = 1) has no finite semi-major axis: give p, the semi-latus rectum.'
       ],
+      [{ e: 1, p: 0 }, MU, 'p must be > 0. Received: 0'],
       [{}, 0, 'mu must be > 0. Received: 0']
     ];
 
@@ -96,6 +161,12 @@ describe('elementsToState', () => {
       (err) =>
         err instanceof RangeError &&
         err.message.startsWith("nu is beyond the hyperbola's asymptotes")
+    );
+    assert.throws(
+      () => elementsToState({ ...base, p: Number.NaN }, MU),
+      (err) =>
+        err instanceof TypeError &&
+        err.message === 'p must be a finite number. Received: NaN'
     );
     assert.throws(
       () => elementsToState({ ...base, raan: Number.NaN as Radians }, MU),

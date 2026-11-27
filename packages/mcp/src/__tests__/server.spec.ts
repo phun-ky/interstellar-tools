@@ -290,10 +290,71 @@ describe('state vector tools', () => {
     assert.equal(out.T_s, undefined);
   });
 
-  test('elements_to_state rejects a parabola', async () => {
-    const res = await call('elements_to_state', { ...elements, e: 1 });
+  test('elements_to_state and state_to_elements round-trip a parabola', async () => {
+    const { a_m: _, ...rest } = elements;
+    const rp = 7_000_000;
+    const state = (await call('elements_to_state', { ...rest, e: 1, rp_m: rp }))
+      .structuredContent!;
+    const back = (
+      await call('state_to_elements', {
+        r_m: state.r_m,
+        v_m_s: state.v_m_s,
+        mu_m3_s2: MU_EARTH
+      })
+    ).structuredContent!;
 
-    assert.equal(res.isError, true);
+    approx(back.e, 1, 1e-12);
+    approx(back.rp_m, rp, 1e-3);
+    approx(back.energy_m2_s2, 0, 1);
+    assert.equal(back.T_s, undefined);
+
+    for (const key of ['i', 'raan', 'argp', 'nu'] as const)
+      approx(back[key].deg, rest[key].value, 1e-9);
+  });
+
+  test('elements_to_state takes rp_m for an ellipse too', async () => {
+    const { a_m: _, ...rest } = elements;
+    const viaA = (await call('elements_to_state', elements)).structuredContent!;
+    const viaRp = (
+      await call('elements_to_state', { ...rest, rp_m: 7_200_000 })
+    ).structuredContent!;
+
+    for (let k = 0; k < 3; k++) {
+      approx(viaRp.r_m[k], viaA.r_m[k], 1e-6);
+      approx(viaRp.v_m_s[k], viaA.v_m_s[k], 1e-9);
+    }
+  });
+
+  test('state_to_elements leaves out a for an exact parabola', async () => {
+    // Powers of two keep v²/2 and μ/r both exactly 2²⁵, so the energy is 0
+    const r = MU_EARTH / 2 ** 25;
+    const res = await call('state_to_elements', {
+      r_m: [r, 0, 0],
+      v_m_s: [0, 2 ** 13, 0],
+      mu_m3_s2: MU_EARTH
+    });
+    const out = res.structuredContent!;
+
+    assert.equal(res.isError, undefined);
+    assert.equal(out.a_m, undefined);
+    assert.equal(out.energy_m2_s2, 0);
+    approx(out.e, 1, 1e-12);
+    approx(out.rp_m, r, 1e-6);
+  });
+
+  test('elements_to_state needs exactly one size, and rp_m for a parabola', async () => {
+    const { a_m: _, ...rest } = elements;
+
+    for (const args of [
+      { ...elements, e: 1 },
+      rest,
+      { ...elements, rp_m: 7_200_000 }
+    ])
+      assert.equal(
+        (await call('elements_to_state', args)).isError,
+        true,
+        JSON.stringify(args)
+      );
   });
 });
 
