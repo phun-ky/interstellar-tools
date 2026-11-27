@@ -39,6 +39,7 @@ import {
   SOLAR_GM_NOMINAL_M3_PER_S2,
   SOLAR_IRRADIANCE_NOMINAL_W_PER_M2,
   SOLAR_LUMINOSITY_NOMINAL_W,
+  SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM,
   SOLAR_RADIUS_NOMINAL_KM,
   SOLAR_RADIUS_PHOTOSPHERIC_KM,
   SOLAR_RADIUS_PICARD_SODISM_535_7_NM_KM,
@@ -156,6 +157,18 @@ describe('defined constants', () => {
       ['jupiter', JUPITER_GM_NOMINAL_M3_PER_S2]
     ] as const)
       assert.ok(Math.abs(gm(id) / nominal - 1) < 1e-7, id);
+  });
+
+  test('the limb-inflection offset is exported, and puts the limb near nominal', () => {
+    // An unclosed doc comment once swallowed this export
+    assert.equal(SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM, 333);
+    assert.ok(
+      Math.abs(
+        SOLAR_RADIUS_PHOTOSPHERIC_KM +
+          SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM -
+          SOLAR_RADIUS_NOMINAL_KM
+      ) < 696
+    );
   });
 
   test('measured solar radii are close to nominal, with positive uncertainties', () => {
