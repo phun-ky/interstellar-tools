@@ -27,9 +27,9 @@ export const SOLAR_RADIUS_NOMINAL_KM = 695_700 as const;
 export const SOLAR_RADIUS_PHOTOSPHERIC_KM = 695_660;
 
 /**
- *
- *   Limb–inflection minus photospheric offset (~0.333 Mm).
- /
+ * Limb–inflection minus photospheric offset (~0.333 Mm), in km (HSK 2008).
+ * @group Objects
+ */
 export const SOLAR_RADIUS_LIMB_INFLECTION_MINUS_PHOTOSPHERIC_KM = 333;
 
 // --- SOHO/MDI Mercury transits (2003, 2006) ---
