@@ -13,8 +13,8 @@ import { cross, dot, norm, norm2pi, scale, sub } from '../helpers/misc.js';
  * \mathbf h = \mathbf r \times \mathbf v, \quad
  * \mathbf e = \frac{\mathbf v \times \mathbf h}{\mu} - \frac{\mathbf r}{r}, \quad
  * \mathbf n = \hat{\mathbf k} \times \mathbf h, \quad
- * a = -\frac{\mu}{2\varepsilon}, \quad
- * \varepsilon = \frac{v^2}{2} - \frac{\mu}{r}
+ * p = \frac{h^2}{\mu}, \quad
+ * a = \frac{p}{(1 - e)(1 + e)}
  * $$
  *
  * $$
@@ -33,7 +33,8 @@ import { cross, dot, norm, norm2pi, scale, sub } from '../helpers/misc.js';
  * ::: info Notes
  *
  * - Works for elliptic, parabolic and hyperbolic orbits. A hyperbolic orbit has a negative `a`, and `nu` in [0, 2π) like the others: the incoming branch is just below 2π.
- * - It also returns the semi-latus rectum $ p = h^2/\mu $, which stays finite and accurate near $ e = 1 $, where `a` grows without bound (and is $ \pm\infty $ for an exact parabola).
+ * - It also returns the semi-latus rectum $ p = h^2/\mu $, which stays finite and accurate near $ e = 1 $, where `a` grows without bound.
+ * - `a` is derived from `p` and `e`, not from the energy $ v^2/2 - \mu/r $, so it always agrees with `e`: positive when $ e < 1 $, negative when $ e > 1 $ and $ +\infty $ when $ e = 1 $. Near $ e = 1 $ the two formulas round differently, and the energy's sign can disagree with `e`'s.
  * - Some angles are undefined for special orbits. Below `tolerance`, the function uses these conventions, which {@link elementsToState} reverses:
  *   - **circular** ($ e \approx 0 $): `argp = 0`, and `nu` is measured from the ascending node (the argument of latitude);
  *   - **equatorial** ($ i \approx 0 $ or $ \pi $): `raan = 0`, and `argp` is measured from the x axis (the longitude of periapsis);
@@ -132,8 +133,10 @@ export const stateToElements = (
   const hHat = scale(h, 1 / hn);
   const eVec = sub(scale(cross(v, h), 1 / mu), scale(r, 1 / rn));
   const e = norm(eVec);
-  const energy = (vn * vn) / 2 - mu / rn;
-  const a = -mu / (2 * energy);
+  const p = (hn * hn) / mu;
+  // From e, not the energy: near e = 1 they round differently, and a must
+  // agree with e in sign
+  const a = p / ((1 - e) * (1 + e));
   const i = Math.acos(Math.min(1, Math.max(-1, h[2] / hn)));
   // The ascending node points along k × h
   const node: Vector3DTupleType = [-h[1], h[0], 0];
@@ -147,7 +150,7 @@ export const stateToElements = (
   return {
     a,
     e,
-    p: (hn * hn) / mu,
+    p,
     i: i as Radians,
     raan: (equatorial ? 0 : norm2pi(Math.atan2(node[1], node[0]))) as Radians,
     argp: (circular ? 0 : angle(reference, eVec)) as Radians,

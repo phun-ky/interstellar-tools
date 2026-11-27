@@ -376,7 +376,9 @@ export interface ClassicalElementsInterface {
   e: number;
   /**
    * Semi-latus rectum $ p = h^2 / \mu $ in m. Needed for a parabolic orbit;
-   * for the others, `elementsToState` uses it in place of $ a(1 - e^2) $ when given.
+   * for the others, `elementsToState` uses it in place of $ a(1 - e^2) $ when given,
+   * as long as it agrees with a finite `a`. If `a` or `e` was changed and it no
+   * longer does, `a` and `e` decide the orbit.
    */
   p?: number;
   /** Inclination in radians, in [0, π]. */

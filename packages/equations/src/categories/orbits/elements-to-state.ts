@@ -34,7 +34,8 @@ import { rot3 } from '../helpers/rot-3.js';
  *
  * - The inverse of {@link stateToElements}, including its conventions for circular and equatorial orbits.
  * - Elliptic orbits need $ a > 0 $ and hyperbolic ones $ a < 0 $. A parabolic orbit ($ e = 1 $) has no finite $ a $: it needs `p`, twice its periapsis radius.
- * - When `p` is given it's used in place of $ a(1 - e^2) $, which loses precision near $ e = 1 $, and `a` is ignored. {@link stateToElements} returns it.
+ * - When `p` is given it's used in place of $ a(1 - e^2) $, which loses precision near $ e = 1 $. {@link stateToElements} returns it.
+ * - If `a` is finite too, `p` is only used while the two agree, to within $ 10^{-9} $, as they do straight from {@link stateToElements}. Change `a` or `e` and they no longer agree: then `a` and `e` decide the orbit, and `p` is ignored. To change the size of an orbit near $ e = 1 $, change `p` and drop `a`, or give `a` as `Infinity`.
  * - On a hyperbola or a parabola, only true anomalies with $ 1 + e\cos\nu > 0 $ exist: the body never reaches the asymptotes, or $ \nu = \pi $.
  *
  * :::
@@ -72,10 +73,16 @@ export const elementsToState = (
   elements: ClassicalElementsInterface,
   mu: number
 ): StateVectorInterface => {
-  const { a, e, i, raan, argp, nu } = elements;
+  const { a, e, p: givenP, i, raan, argp, nu } = elements;
   const parabolic = Math.abs(e - 1) < 1e-12;
-  // With p given, a isn't used, so its value (even its sign) doesn't matter
-  const usesA = elements.p === undefined;
+  // p keeps its digits near e = 1, so it's used while it agrees with a and e,
+  // as stateToElements returns them, to a few ulps. Once a or e is changed it
+  // disagrees, and a and e decide, as they did before p existed
+  const usesA =
+    givenP === undefined ||
+    (Number.isFinite(a) &&
+      !parabolic &&
+      !(Math.abs(a * (1 - e) * (1 + e) - givenP) <= 1e-9 * Math.abs(givenP)));
 
   if (parabolic && usesA)
     throw new RangeError(
@@ -83,7 +90,8 @@ export const elementsToState = (
     );
 
   for (const [name, x] of [
-    usesA ? (['a', a] as const) : (['p', elements.p] as const),
+    ...(givenP === undefined ? [] : [['p', givenP] as const]),
+    ...(usesA ? [['a', a] as const] : []),
     ['e', e],
     ['i', i],
     ['raan', raan],
@@ -102,8 +110,8 @@ export const elementsToState = (
   if (i < 0 || i > Math.PI)
     throw new RangeError(`i must be in [0, π]. Received: ${i}`);
 
-  if (!usesA && elements.p! <= 0)
-    throw new RangeError(`p must be > 0. Received: ${elements.p}`);
+  if (givenP !== undefined && givenP <= 0)
+    throw new RangeError(`p must be > 0. Received: ${givenP}`);
 
   if (usesA && e < 1 && a <= 0)
     throw new RangeError(
@@ -115,8 +123,8 @@ export const elementsToState = (
       `a must be < 0 for a hyperbolic orbit. Received: a=${a}, e=${e}`
     );
 
-  // p is exact for every conic; a(1 - e²) loses digits as e nears 1
-  const p = elements.p ?? a * (1 - e * e);
+  // a(1 - e²) loses digits as e nears 1, where p, when it agrees, doesn't
+  const p = usesA ? a * (1 - e) * (1 + e) : givenP!;
   const denominator = 1 + e * Math.cos(nu);
 
   if (denominator <= 0)
