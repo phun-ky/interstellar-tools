@@ -11,7 +11,7 @@ function elementsToState(
 ```
 
 Defined in:
-[orbits/elements-to-state.ts:71](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/elements-to-state.ts#L71)
+[orbits/elements-to-state.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/elements-to-state.ts#L72)
 
 Convert the six **classical orbital elements** to a **state vector** (position
 and velocity).
@@ -44,8 +44,12 @@ $$
 - Elliptic orbits need $a > 0$ and hyperbolic ones $a < 0$. A parabolic orbit
   ($e = 1$) has no finite $a$: it needs `p`, twice its periapsis radius.
 - When `p` is given it's used in place of $a(1 - e^2)$, which loses precision
-  near $e = 1$, and `a` is ignored. [stateToElements](stateToElements.md)
-  returns it.
+  near $e = 1$. [stateToElements](stateToElements.md) returns it.
+- If `a` is finite too, `p` is only used while the two agree, to within
+  $10^{-9}$, as they do straight from [stateToElements](stateToElements.md).
+  Change `a` or `e` and they no longer agree: then `a` and `e` decide the orbit,
+  and `p` is ignored. To change the size of an orbit near $e = 1$, change `p`
+  and drop `a`, or give `a` as `Infinity`.
 - On a hyperbola or a parabola, only true anomalies with $1 + e\cos\nu > 0$
   exist: the body never reaches the asymptotes, or $\nu = \pi$.
 
