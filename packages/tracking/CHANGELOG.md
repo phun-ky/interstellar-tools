@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.13.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.1...%40interstellar-tools%2Ftracking%400.13.2) (2026-11-27)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group across 1 directory with 3 updates ([c19c54c](https://github.com/phun-ky/interstellar-tools/commit/c19c54caf7469ae240484c008f6736110b823951))
+* 🤖 Write coverage floors as whole numbers ([9a21549](https://github.com/phun-ky/interstellar-tools/commit/9a21549ded6dd096dcd964ab3f9c70fe3bf87b79))
+
+### Bug
+
+* 🐛 Stop rk45Integrate at t1 when rounding lands a step on it ([3e20e4a](https://github.com/phun-ky/interstellar-tools/commit/3e20e4a2e3ded6ac873af35394648d9f9128bc87))
+
+### Refactoring
+
+* 💡 sort the fit states with toSorted() ([af12beb](https://github.com/phun-ky/interstellar-tools/commit/af12bebb1cee0f4d1f6f269711c0856cd7641f8f))
+
+### Markup, white-space, formatting, missing semi-colons...
+
+* 💄 lint the tests for eslint-config-phun-ky 3 ([7d31626](https://github.com/phun-ky/interstellar-tools/commit/7d3162678bce67e379cbe5791b346328d660c584))
+
 ## [0.13.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.0...%40interstellar-tools%2Ftracking%400.13.1) (2026-11-16)
 
 ### Bug
