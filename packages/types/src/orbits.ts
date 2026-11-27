@@ -347,6 +347,8 @@ export interface OpenOrbitInterface {
  * ::: info
  *
  * - `a` is negative for a hyperbolic orbit ($e > 1$).
+ * - A parabolic orbit ($e = 1$) has no finite `a`: give it `p`, the
+ *   semi-latus rectum, twice its periapsis radius. `a` can be `Infinity`.
  * - For orbits where an angle is undefined, the conventions are: a circular
  *   orbit has `argp = 0` and measures `nu` from the ascending node; an
  *   equatorial orbit has `raan = 0` and measures `argp` from the x axis; a
@@ -368,10 +370,15 @@ export interface OpenOrbitInterface {
  * @group Orbits
  */
 export interface ClassicalElementsInterface {
-  /** Semi-major axis in m; negative for hyperbolic orbits. */
+  /** Semi-major axis in m; negative for hyperbolic orbits, `Infinity` for parabolic ones. */
   a: number;
-  /** Eccentricity: 0 circular, below 1 elliptic, above 1 hyperbolic. */
+  /** Eccentricity: 0 circular, below 1 elliptic, 1 parabolic, above 1 hyperbolic. */
   e: number;
+  /**
+   * Semi-latus rectum $ p = h^2 / \mu $ in m. Needed for a parabolic orbit;
+   * for the others, `elementsToState` uses it in place of $ a(1 - e^2) $ when given.
+   */
+  p?: number;
   /** Inclination in radians, in [0, π]. */
   i: Radians;
   /** Right ascension of the ascending node (Ω) in radians, in [0, 2π). */
