@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.1.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%403.1.0...%40interstellar-tools%2Ftypes%403.1.1) (2026-11-27)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group across 1 directory with 3 updates ([c19c54c](https://github.com/phun-ky/interstellar-tools/commit/c19c54caf7469ae240484c008f6736110b823951))
+
+### Bug
+
+* 🐛 Keep a consistent with e near parabolic orbits, and honour edited elements ([2d7ac3b](https://github.com/phun-ky/interstellar-tools/commit/2d7ac3bc11b7196885d91e89068a7751aae2d38c))
+
 ## [3.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%403.0.1...%40interstellar-tools%2Ftypes%403.1.0) (2026-11-27)
 
 ### Feature

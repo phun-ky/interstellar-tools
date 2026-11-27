@@ -13,7 +13,7 @@ function stateToElements(
 ```
 
 Defined in:
-[orbits/state-to-elements.ts:89](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/state-to-elements.ts#L89)
+[orbits/state-to-elements.ts:90](https://github.com/phun-ky/interstellar-tools/blob/main/packages/equations/src/categories/orbits/state-to-elements.ts#L90)
 
 Convert a **state vector** (position and velocity) to the six **classical
 orbital elements**.
@@ -22,8 +22,8 @@ $$
 \mathbf h = \mathbf r \times \mathbf v, \quad
 \mathbf e = \frac{\mathbf v \times \mathbf h}{\mu} - \frac{\mathbf r}{r}, \quad
 \mathbf n = \hat{\mathbf k} \times \mathbf h, \quad
-a = -\frac{\mu}{2\varepsilon}, \quad
-\varepsilon = \frac{v^2}{2} - \frac{\mu}{r}
+p = \frac{h^2}{\mu}, \quad
+a = \frac{p}{(1 - e)(1 + e)}
 $$
 
 $$
@@ -47,8 +47,11 @@ h$.
   negative `a`, and `nu` in \[0, 2π) like the others: the incoming branch is
   just below 2π.
 - It also returns the semi-latus rectum $p = h^2/\mu$, which stays finite and
-  accurate near $e = 1$, where `a` grows without bound (and is $\pm\infty$ for
-  an exact parabola).
+  accurate near $e = 1$, where `a` grows without bound.
+- `a` is derived from `p` and `e`, not from the energy $v^2/2 - \mu/r$, so it
+  always agrees with `e`: positive when $e < 1$, negative when $e > 1$ and
+  $+\infty$ when $e = 1$. Near $e = 1$ the two formulas round differently, and
+  the energy's sign can disagree with `e`'s.
 - Some angles are undefined for special orbits. Below `tolerance`, the function
   uses these conventions, which [elementsToState](elementsToState.md) reverses:
   - **circular** ($e \approx 0$): `argp = 0`, and `nu` is measured from the

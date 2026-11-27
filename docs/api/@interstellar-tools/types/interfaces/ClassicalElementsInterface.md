@@ -62,7 +62,7 @@ argp: Radians;
 ```
 
 Defined in:
-[orbits.ts:387](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L387)
+[orbits.ts:389](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L389)
 
 Argument of periapsis (ω) in radians, in \[0, 2π).
 
@@ -88,7 +88,7 @@ i: Radians;
 ```
 
 Defined in:
-[orbits.ts:383](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L383)
+[orbits.ts:385](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L385)
 
 Inclination in radians, in \[0, π].
 
@@ -101,7 +101,7 @@ nu: Radians;
 ```
 
 Defined in:
-[orbits.ts:389](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L389)
+[orbits.ts:391](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L391)
 
 True anomaly (ν) in radians, in \[0, 2π).
 
@@ -114,10 +114,12 @@ p?: number;
 ```
 
 Defined in:
-[orbits.ts:381](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L381)
+[orbits.ts:383](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L383)
 
 Semi-latus rectum $p = h^2 / \mu$ in m. Needed for a parabolic orbit; for the
-others, `elementsToState` uses it in place of $a(1 - e^2)$ when given.
+others, `elementsToState` uses it in place of $a(1 - e^2)$ when given, as long
+as it agrees with a finite `a`. If `a` or `e` was changed and it no longer does,
+`a` and `e` decide the orbit.
 
 ---
 
@@ -128,6 +130,6 @@ raan: Radians;
 ```
 
 Defined in:
-[orbits.ts:385](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L385)
+[orbits.ts:387](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L387)
 
 Right ascension of the ascending node (Ω) in radians, in \[0, 2π).
