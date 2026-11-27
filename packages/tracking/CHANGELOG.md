@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.2...%40interstellar-tools%2Ftracking%400.13.3) (2026-11-27)
+
+### Bug
+
+* 🐛 Make formatTle and formatOmm reject what their parsers reject ([aa553b1](https://github.com/phun-ky/interstellar-tools/commit/aa553b1b22a2a524e4e590d01729c0636f09035f))
+
 ## [0.13.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.1...%40interstellar-tools%2Ftracking%400.13.2) (2026-11-27)
 
 ### Tasks

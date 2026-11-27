@@ -8,7 +8,7 @@ function formatOmm(elements: MeanElementsInterface): OmmRecordInterface;
 ```
 
 Defined in:
-[satellites/omm.ts:236](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L236)
+[satellites/omm.ts:238](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L238)
 
 Write mean elements as an **Orbit Mean-elements Message** (OMM) record, in the
 JSON form CelesTrak publishes: the reverse of [parseOmm](parseOmm.md). Unlike a
@@ -39,7 +39,11 @@ One OMM record, with the keywords CelesTrak uses, in its order.
 
 ## Throws
 
-If a value of `elements` is not a finite number.
+- If a value of `elements` is not a finite number.
+- If a value is one [parseOmm](parseOmm.md) would reject: an inclination outside
+  \[0°, 180°], another angle outside \[0°, 360°], an eccentricity outside \[0,
+  1), a mean motion ≤ 0, a negative or fractional count, or a classification
+  other than U, C or S.
 
 ## Example
 

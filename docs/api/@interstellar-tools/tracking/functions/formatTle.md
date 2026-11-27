@@ -10,7 +10,7 @@ function formatTle(
 ```
 
 Defined in:
-[satellites/tle.ts:371](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/tle.ts#L371)
+[satellites/tle.ts:375](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/tle.ts#L375)
 
 Write mean elements as a **two-line element set** (TLE), with checksums: the
 reverse of [parseTle](parseTle.md), for tools and ground station networks that
@@ -51,9 +51,12 @@ The two lines of the TLE, 69 characters each.
 ## Throws
 
 - If a value of `elements` is not a finite number.
-- If a value doesn't fit in a TLE: a catalogue number above 339 999, an epoch
-  outside 1957 to 2056, an international designator not like `1998-067A`, or a
-  mean motion of 100 revolutions a day or more.
+- If a value is one [parseTle](parseTle.md) would reject: an inclination outside
+  \[0°, 180°], another angle outside \[0°, 360°], a negative or fractional
+  count, or a classification other than U, C or S. Or if it doesn't fit in a
+  TLE: a catalogue number above 339 999, an epoch outside 1957 to 2056, an
+  international designator not like `1998-067A`, or a mean motion of 100
+  revolutions a day or more.
 
 ## Example
 
