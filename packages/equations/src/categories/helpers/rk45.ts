@@ -161,8 +161,13 @@ export const rk45Integrate = (
   let h = Math.min(initialStep, maxStep);
 
   for (let step = 0; step < maxSteps; step++) {
-    // The last step lands on t1
-    const last = h >= Math.abs(t1 - time);
+    // The last step lands on t1. A step that would leave less than the
+    // smallest step to go is the last one too: else rounding can land it on
+    // t1, or just short, and leave a step of 0 or a few ulps
+    const remaining = Math.abs(t1 - time);
+    const last =
+      h >= remaining ||
+      remaining - h <= 4 * Number.EPSILON * Math.max(Math.abs(t1), 1);
 
     if (last) h = Math.abs(t1 - time);
 

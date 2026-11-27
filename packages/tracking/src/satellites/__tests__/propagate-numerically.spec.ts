@@ -102,6 +102,34 @@ describe('propagateNumerically', () => {
     assert.deepEqual(ephemeris.samples[0]!.r, circular(420_000, 51.6).r);
   });
 
+  test('takes a step that is not a whole number of seconds', () => {
+    // 0.1 s steps used to throw at t = 0.30000000000000004
+    for (const step of [0.1, 0.3, 0.7]) {
+      const ephemeris = propagateNumerically(
+        circular(420_000, 51.6),
+        FROM,
+        after(2000),
+        { step, forces: POINT_MASS }
+      );
+      const offsets = ephemeris.samples.map(
+        ({ epoch }) => epoch.getTime() - FROM.getTime()
+      );
+      const count = Math.ceil(2 / step);
+
+      assert.equal(offsets.length, count + 1, `${step}`);
+      assert.deepEqual(
+        offsets,
+        [
+          ...Array.from({ length: count }, (_, k) =>
+            Math.round(k * step * 1000)
+          ),
+          2000
+        ],
+        `${step}`
+      );
+    }
+  });
+
   test('turns the orbit plane at the J2 rate', () => {
     const height = 700_000;
     const inclination = 98;

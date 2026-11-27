@@ -331,7 +331,9 @@ export const propagateNumerically = (
   const total = (end - start) / 1000;
   const outputs: number[] = [];
 
-  for (let t = 0; t < total; t += step) outputs.push(t);
+  // k · step, not a running sum, which drifts; and none a rounding error short
+  // of the end, which would leave an interval too short to integrate
+  for (let k = 0; total - k * step > 1e-9 * step; k++) outputs.push(k * step);
 
   outputs.push(total);
 
