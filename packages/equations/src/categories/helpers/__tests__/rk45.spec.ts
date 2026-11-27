@@ -116,6 +116,18 @@ describe('rk45Integrate', () => {
     assert.equal(last(t), 10);
   });
 
+  test('stops at t1 when a step lands on it by rounding', () => {
+    // 0.2 + 0.1 rounds to t1 = 0.30000000000000004, though the step is
+    // shorter than t1 − t0: it used to go on, and throw for a step of 0.
+    // y′ = 1 has no error to reject the step for
+    const { t, y } = rk45Integrate(() => [1], [0], 0.2, 0.1 + 0.2, {
+      initialStep: 0.1
+    });
+
+    assert.deepEqual(t, [0.2, 0.1 + 0.2]);
+    assert.ok(Math.abs(last(y)[0]! - 0.1) < 1e-15);
+  });
+
   test('stops when asked', () => {
     // Fall from rest at 1 under gravity of 1: stop at the ground
     const { t, y } = rk45Integrate((_t, [, v]) => [v!, -1], [1, 0], 0, 10, {
