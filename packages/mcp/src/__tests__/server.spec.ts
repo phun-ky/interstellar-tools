@@ -1498,6 +1498,48 @@ describe('tracking tools', () => {
     '2 25544  51.6329 326.3987 0007186 346.7494  13.3304 15.49173979593483'
   ];
 
+  test('takes a time without Z or an offset as UTC, whatever the server’s time zone', async () => {
+    const tz = process.env.TZ;
+
+    // An hour off UTC in November: local time would move the ISS ~4000 km
+    process.env.TZ = 'Europe/Oslo';
+
+    try {
+      const utc = await call('satellite_position', {
+        satellite: 'iss',
+        time: '2026-11-05T15:49:00Z'
+      });
+
+      for (const time of [
+        '2026-11-05T15:49:00',
+        '2026-11-05 15:49:00',
+        ' 2026-11-05T15:49:00 ',
+        '2026-11-05T16:49:00+01:00'
+      ]) {
+        const res = await call('satellite_position', {
+          satellite: 'iss',
+          time
+        });
+
+        assert.deepEqual(res.structuredContent, utc.structuredContent, time);
+      }
+
+      const late = await call('probe_position', {
+        probe: 'voyager-1',
+        time: '2026-11-05T12:00:00'
+      });
+      const lateUtc = await call('probe_position', {
+        probe: 'voyager-1',
+        time: '2026-11-05T12:00:00Z'
+      });
+
+      assert.deepEqual(late.structuredContent, lateUtc.structuredContent);
+    } finally {
+      if (tz === undefined) delete process.env.TZ;
+      else process.env.TZ = tz;
+    }
+  });
+
   test('satellite_position puts the ISS where the tracking guide does', async () => {
     const res = await call('satellite_position', {
       satellite: 'iss',
