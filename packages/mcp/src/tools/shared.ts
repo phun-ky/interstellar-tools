@@ -62,3 +62,44 @@ export const PURE_TOOL = {
   idempotentHint: true,
   openWorldHint: false
 } as const;
+
+/** The lander's geometry: shared by landing_stability and safe_landing_map. */
+export const landerInput = {
+  r_footprint_m: z
+    .number()
+    .positive()
+    .describe(
+      'Horizontal distance from the centre of mass to the edge the lander would tip over, in metres. For n legs on a circle of radius R it is R·cos(180°/n): R/√2 for four legs, R/2 for three.'
+    ),
+  h_com_m: z
+    .number()
+    .positive()
+    .describe('Height of the centre of mass above the ground, in metres.'),
+  dynamic_tilt: angleSchema
+    .optional()
+    .describe(
+      'Extra tilt from the touchdown itself, as the legs take the load (the rock-up), at least 0. Defaults to 0.'
+    )
+};
+
+/**
+ * A landing angle in radians, 0 if not given: throws in the caller's own unit,
+ * which the maps functions can't, if it is negative or, for a slope, past
+ * vertical.
+ */
+export const landingAngle = (
+  name: string,
+  angle: AngleInputType | undefined,
+  upToVertical = false
+): Radians => {
+  if (angle === undefined) return 0 as Radians;
+
+  const rad = toRadians(angle);
+
+  if (rad < 0 || (upToVertical && rad > Math.PI / 2))
+    throw new RangeError(
+      `${name} must be ${upToVertical ? 'in [0°, 90°]' : 'at least 0'}. Received: ${angle.value} ${angle.unit}`
+    );
+
+  return rad;
+};

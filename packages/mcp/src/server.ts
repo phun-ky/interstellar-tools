@@ -10,6 +10,7 @@ import { registerManoeuvreTools } from './tools/manoeuvres.js';
 import { registerMapTools } from './tools/maps.js';
 import { registerOrbitTools } from './tools/orbits.js';
 import { registerStateVectorTools } from './tools/state-vectors.js';
+import { registerTerrainTools } from './tools/terrain.js';
 import { registerTimeTools } from './tools/time.js';
 import { registerTrackingTools } from './tools/tracking.js';
 
@@ -49,6 +50,7 @@ export const createServer = (): McpServer => {
   registerDistanceTools(server);
   registerGeodesyTools(server);
   registerMapTools(server);
+  registerTerrainTools(server);
   registerTrackingTools(server);
   registerBodies(server);
 

@@ -96,6 +96,15 @@ returned as `{ "rad": …, "deg": … }`.
 | `geodetic_to_body_fixed`     | Body-fixed x, y, z from latitude, longitude and height              |
 | `body_fixed_to_geodetic`     | Latitude, longitude and height from body-fixed x, y, z              |
 | `project_point`              | Map x and y of a point in one of seven projections                  |
+| `unproject_point`            | Latitude and longitude of a map x and y, in the same projections    |
+| `tile_for_point`             | Web map tile x, y, zoom and quadkey that holds a point              |
+| `tile_info`                  | Edges of a web map tile, and XYZ ↔ quadkey                          |
+| `camera_ground_resolution`   | Pixel field of view, ground sample distance and swath width         |
+| `illumination_geometry`      | Incidence, emission and phase angles, and surface brightness        |
+| `landing_stability`          | Tip-over angle and whether a lander on a slope stays up             |
+| `terrain_at_cell`            | Slope, aspect, curvature, roughness and hillshade at one DEM cell   |
+| `terrain_layer`              | One terrain quantity, slope to flow accumulation, over a whole DEM  |
+| `safe_landing_map`           | Safe, unsafe and unknown landing cells of a DEM                     |
 | `satellite_position`         | Point below a satellite, its height and TEME state, from TLE or OMM |
 | `look_angles`                | Azimuth, elevation, range and Doppler shift from a ground observer  |
 | `satellite_passes`           | Rise, highest point and set over an observer, and visibility        |
@@ -106,6 +115,12 @@ returned as `{ "rad": …, "deg": … }`.
 The geodesy and map tools take the shape of the body as a `body` id from
 `find_body`, such as `"mars"`, or as radii in metres. For GPS coordinates on
 Earth, the ellipsoid tools also take `"wgs84"`.
+
+The terrain tools take an elevation grid (DEM) as rows of heights in metres, row
+0 the northernmost and each row west to east, with the cell size in metres;
+`null` or a `no_data` value marks a missing cell. A grid is at most 32 × 32
+cells, so a whole layer fits in the assistant's context: crop or resample a
+larger DEM first.
 
 The satellite tools take orbital elements as a two-line element set (`tle`), an
 OMM record from CelesTrak (`omm`) or the id of a satellite in the bundled
