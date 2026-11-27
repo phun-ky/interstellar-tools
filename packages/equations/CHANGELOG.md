@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.2.1...%40interstellar-tools%2Fequations%402.2.2) (2026-11-27)
+
+### Bug
+
+* 🐛 Stop rk45Integrate at t1 when rounding lands a step on it ([3e20e4a](https://github.com/phun-ky/interstellar-tools/commit/3e20e4a2e3ded6ac873af35394648d9f9128bc87))
+
 ## [2.2.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.2.0...%40interstellar-tools%2Fequations%402.2.1) (2026-11-27)
 
 ### Tasks
