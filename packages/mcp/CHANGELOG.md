@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.1.0](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.0.1...%40interstellar-tools%2Fmcp%402.1.0) (2026-11-27)
+
+### Documentation
+
+* **mcp:** ✏️ add Glama badge and glama.json ([34dbcaf](https://github.com/phun-ky/interstellar-tools/commit/34dbcaf8244096f6f45b048101fe00d724ad853a))
+
+### Feature
+
+* 🎸 Support parabolic orbits (e = 1) in elementsToState and the state vector tools ([a6d2d8c](https://github.com/phun-ky/interstellar-tools/commit/a6d2d8c24a3e544d075f1174b81e058d986b22dd))
+
+### Markup, white-space, formatting, missing semi-colons...
+
+* 💄 lint the tests for eslint-config-phun-ky 3 ([7d31626](https://github.com/phun-ky/interstellar-tools/commit/7d3162678bce67e379cbe5791b346328d660c584))
+
 ## [2.0.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.0.0...%40interstellar-tools%2Fmcp%402.0.1) (2026-11-16)
 
 ### Bug

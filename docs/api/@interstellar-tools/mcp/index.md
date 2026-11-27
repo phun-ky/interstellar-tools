@@ -3,6 +3,8 @@
 
 # [**@interstellar-tools/mcp**](https://github.com/interstellar-tools/mcp)
 
+[![@interstellar-tools/mcp MCP server – quality and maintenance score on Glama](https://glama.ai/mcp/servers/phun-ky/interstellar-tools/badges/score.svg)](https://glama.ai/mcp/servers/phun-ky/interstellar-tools)
+
 A [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that
 gives AI assistants deterministic, unit-explicit orbital mechanics calculations
 and celestial body datasets, backed by `@interstellar-tools/equations`,

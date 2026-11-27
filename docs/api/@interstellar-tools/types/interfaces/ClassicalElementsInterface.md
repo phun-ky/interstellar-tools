@@ -4,7 +4,7 @@ ClassicalElementsInterface
 # Interface: ClassicalElementsInterface
 
 Defined in:
-[orbits.ts:370](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L370)
+[orbits.ts:372](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L372)
 
 The six **classical orbital elements** of a two-body orbit, in SI units and
 radians.
@@ -17,6 +17,8 @@ Together they fix the orbit's size and shape (`a`, `e`), its plane (`i`,
 ::: info
 
 - `a` is negative for a hyperbolic orbit ($e > 1$).
+- A parabolic orbit ($e = 1$) has no finite `a`: give it `p`, the semi-latus
+  rectum, twice its periapsis radius. `a` can be `Infinity`.
 - For orbits where an angle is undefined, the conventions are: a circular orbit
   has `argp = 0` and measures `nu` from the ascending node; an equatorial orbit
   has `raan = 0` and measures `argp` from the x axis; a circular equatorial
@@ -46,9 +48,10 @@ a: number;
 ```
 
 Defined in:
-[orbits.ts:372](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L372)
+[orbits.ts:374](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L374)
 
-Semi-major axis in m; negative for hyperbolic orbits.
+Semi-major axis in m; negative for hyperbolic orbits, `Infinity` for parabolic
+ones.
 
 ---
 
@@ -59,7 +62,7 @@ argp: Radians;
 ```
 
 Defined in:
-[orbits.ts:380](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L380)
+[orbits.ts:387](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L387)
 
 Argument of periapsis (ω) in radians, in \[0, 2π).
 
@@ -72,9 +75,9 @@ e: number;
 ```
 
 Defined in:
-[orbits.ts:374](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L374)
+[orbits.ts:376](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L376)
 
-Eccentricity: 0 circular, below 1 elliptic, above 1 hyperbolic.
+Eccentricity: 0 circular, below 1 elliptic, 1 parabolic, above 1 hyperbolic.
 
 ---
 
@@ -85,7 +88,7 @@ i: Radians;
 ```
 
 Defined in:
-[orbits.ts:376](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L376)
+[orbits.ts:383](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L383)
 
 Inclination in radians, in \[0, π].
 
@@ -98,9 +101,23 @@ nu: Radians;
 ```
 
 Defined in:
-[orbits.ts:382](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L382)
+[orbits.ts:389](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L389)
 
 True anomaly (ν) in radians, in \[0, 2π).
+
+---
+
+### p?
+
+```ts
+p?: number;
+```
+
+Defined in:
+[orbits.ts:381](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L381)
+
+Semi-latus rectum $p = h^2 / \mu$ in m. Needed for a parabolic orbit; for the
+others, `elementsToState` uses it in place of $a(1 - e^2)$ when given.
 
 ---
 
@@ -111,6 +128,6 @@ raan: Radians;
 ```
 
 Defined in:
-[orbits.ts:378](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L378)
+[orbits.ts:385](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/orbits.ts#L385)
 
 Right ascension of the ascending node (Ω) in radians, in \[0, 2π).
