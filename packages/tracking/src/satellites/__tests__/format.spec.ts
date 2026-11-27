@@ -166,6 +166,9 @@ describe('formatTle', () => {
     // A billionth of a day before 2000, which rounds up to it
     assert.equal(at('2000-01-01T00:00:00Z', -2e-9), '00001.00000000');
     assert.equal(at('1957-10-04T19:28:34Z'), '57277.81150463');
+    // A hundred-millionth of a day before 1970: a Date drops the fraction of
+    // a millisecond towards zero, into 1970, which gave '70000.99999999'
+    assert.equal(at('1970-01-01T00:00:00Z', -1e-8), '69365.99999999');
   });
 
   test('keeps the last digits of the bookkeeping', () => {
@@ -220,6 +223,41 @@ describe('formatTle', () => {
       throwsRange(
         () => formatTle(with_({ meanMotion: (100 * 2 * Math.PI) / 86_400 })),
         'elements.meanMotion must be > 0 and below 100 revolutions a day to fit in a TLE. Received: 100 revolutions a day'
+      );
+    });
+
+    test('an angle, a count or a classification that parseTle would reject, naming it', () => {
+      const degrees = (rad: number) => rad / (Math.PI / 180);
+
+      // 20 rad is 1145.9°, nine columns: it shifted every field after it
+      throwsRange(
+        () => formatTle(with_({ meanAnomaly: 20 as Radians })),
+        `elements.meanAnomaly, in degrees, must be in [0, 360]. Received: ${degrees(20)}`
+      );
+      throwsRange(
+        () => formatTle(with_({ raan: -0.1 as Radians })),
+        `elements.raan, in degrees, must be in [0, 360]. Received: ${degrees(-0.1)}`
+      );
+      throwsRange(
+        () => formatTle(with_({ i: 4 as Radians })),
+        `elements.i, in degrees, must be in [0, 180]. Received: ${degrees(4)}`
+      );
+      throwsRange(
+        () => formatTle(with_({ elementSetNumber: 1.5 })),
+        'elements.elementSetNumber must be a whole number ≥ 0. Received: 1.5'
+      );
+      throwsRange(
+        () => formatTle(with_({ revolutionNumber: -1 })),
+        'elements.revolutionNumber must be a whole number ≥ 0. Received: -1'
+      );
+      throwsRange(
+        () =>
+          formatTle(
+            with_({
+              classification: 'X' as MeanElementsInterface['classification']
+            })
+          ),
+        'elements.classification must be U, C or S. Received: "X"'
       );
     });
 
@@ -315,6 +353,27 @@ describe('formatOmm', () => {
     assert.equal(
       formatOmm(with_({ catalogNumber: 800_000 })).NORAD_CAT_ID,
       800_000
+    );
+  });
+
+  test('rejects an angle, a count or a classification that parseOmm would reject', () => {
+    // It wrote them, and parseOmm then refused its own output
+    throwsRange(
+      () => formatOmm(with_({ meanAnomaly: 20 as Radians })),
+      `elements.meanAnomaly, in degrees, must be in [0, 360]. Received: ${20 / (Math.PI / 180)}`
+    );
+    throwsRange(
+      () => formatOmm(with_({ revolutionNumber: -1 })),
+      'elements.revolutionNumber must be a whole number ≥ 0. Received: -1'
+    );
+    throwsRange(
+      () =>
+        formatOmm(
+          with_({
+            classification: 'X' as MeanElementsInterface['classification']
+          })
+        ),
+      'elements.classification must be U, C or S. Received: "X"'
     );
   });
 

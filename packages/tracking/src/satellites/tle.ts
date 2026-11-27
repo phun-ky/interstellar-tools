@@ -2,7 +2,11 @@ import { JULIAN_DATE_UNIX_EPOCH } from '@interstellar-tools/constants';
 import { julianDate } from '@interstellar-tools/temporal';
 import type { MeanElementsInterface } from '@interstellar-tools/types';
 
-import { toMeanElements, toPublishedElements } from './mean-elements.js';
+import {
+  assertPublishable,
+  toMeanElements,
+  toPublishedElements
+} from './mean-elements.js';
 
 type FieldType = readonly [line: 1 | 2, from: number, to: number, name: string];
 
@@ -354,7 +358,7 @@ const DESIGNATOR_ID =
  * @param elements - The mean elements, from {@link parseTle}, {@link parseOmm} or {@link fitElements}.
  * @returns The two lines of the TLE, 69 characters each.
  * @throws {TypeError} If a value of `elements` is not a finite number.
- * @throws {RangeError} If a value doesn't fit in a TLE: a catalogue number above 339 999, an epoch outside 1957 to 2056, an international designator not like `1998-067A`, or a mean motion of 100 revolutions a day or more.
+ * @throws {RangeError} If a value is one {@link parseTle} would reject: an inclination outside [0°, 180°], another angle outside [0°, 360°], a negative or fractional count, or a classification other than U, C or S. Or if it doesn't fit in a TLE: a catalogue number above 339 999, an epoch outside 1957 to 2056, an international designator not like `1998-067A`, or a mean motion of 100 revolutions a day or more.
  * @group Satellites
  *
  * @example
@@ -384,6 +388,8 @@ export const formatTle = (
         `elements.${key} must be a finite number. Received: ${value}`
       );
 
+  assertPublishable(elements, published);
+
   const { catalogNumber: catalog } = published;
 
   if (!Number.isInteger(catalog) || catalog < 0 || catalog > 339_999)
@@ -410,9 +416,11 @@ export const formatTle = (
       `${elements.objectId.slice(2, 4)}${match[1]}${match[2]}`.padEnd(8);
   }
 
-  // The epoch as a year and a day of the year, counted from 1.0
+  // The epoch as a year and a day of the year, counted from 1.0. A Date drops
+  // a fraction of a millisecond towards zero, which is later before 1970:
+  // floor it, or an epoch just before New Year lands in the next year
   let year = new Date(
-    (published.epochJulianDate - JULIAN_DATE_UNIX_EPOCH) * DAY_MS
+    Math.floor((published.epochJulianDate - JULIAN_DATE_UNIX_EPOCH) * DAY_MS)
   ).getUTCFullYear();
   let day = (
     published.epochJulianDate -
