@@ -50,6 +50,23 @@ const RANGES: Partial<
   elementSetNumber: [count, 'a whole number ≥ 0'],
   revolutionNumber: [count, 'a whole number ≥ 0']
 };
+/**
+ * Throw unless each published value is in its range. `label` names a value
+ * in error messages.
+ */
+const assertRanges = (
+  published: Pick<PublishedElements, NumericKey>,
+  label: (key: NumericKey) => string
+) => {
+  for (const [key, [check, range]] of Object.entries(RANGES) as [
+    NumericKey,
+    readonly [(x: number) => boolean, string]
+  ][])
+    if (!check(published[key]))
+      throw new RangeError(
+        `${label(key)} must be ${range}. Received: ${published[key]}`
+      );
+};
 
 /**
  * Check the published elements and convert them to the library's units.
@@ -59,14 +76,7 @@ export const toMeanElements = (
   published: PublishedElements,
   label: (key: NumericKey) => string
 ): MeanElementsInterface => {
-  for (const [key, [check, range]] of Object.entries(RANGES) as [
-    NumericKey,
-    readonly [(x: number) => boolean, string]
-  ][])
-    if (!check(published[key]))
-      throw new RangeError(
-        `${label(key)} must be ${range}. Received: ${published[key]}`
-      );
+  assertRanges(published, label);
 
   return {
     ...(published.name ? { name: published.name } : {}),
@@ -115,3 +125,37 @@ export const toPublishedElements = (
   elementSetNumber: elements.elementSetNumber,
   revolutionNumber: elements.revolutionNumber
 });
+
+// How formatTle and formatOmm name a value: its field in the mean elements,
+// with the unit of the published value they check
+const FIELD_NAMES: Partial<Record<NumericKey, string>> = {
+  eccentricity: 'e',
+  meanMotion: 'meanMotion, in revolutions a day,',
+  inclination: 'i, in degrees,',
+  raan: 'raan, in degrees,',
+  argp: 'argp, in degrees,',
+  meanAnomaly: 'meanAnomaly, in degrees,'
+};
+
+/**
+ * Throw unless mean elements can be written as a TLE or an OMM: the checks
+ * {@link toMeanElements} makes when one is read, so a writer can't give what
+ * its reader rejects.
+ */
+export const assertPublishable = (
+  elements: MeanElementsInterface,
+  published: Pick<PublishedElements, NumericKey>
+) => {
+  assertRanges(published, (key) => `elements.${FIELD_NAMES[key] ?? key}`);
+
+  const { classification = 'U' } = elements;
+
+  if (
+    classification !== 'U' &&
+    classification !== 'C' &&
+    classification !== 'S'
+  )
+    throw new RangeError(
+      `elements.classification must be U, C or S. Received: "${String(classification)}"`
+    );
+};

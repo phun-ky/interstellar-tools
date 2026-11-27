@@ -6,6 +6,7 @@ import type {
 } from '@interstellar-tools/types';
 
 import {
+  assertPublishable,
   type NumericKey,
   toMeanElements,
   toPublishedElements
@@ -219,6 +220,7 @@ export const parseOmm = (omm: string | object): MeanElementsInterface => {
  * @param elements - The mean elements, from {@link parseTle}, {@link parseOmm} or {@link fitElements}.
  * @returns One OMM record, with the keywords CelesTrak uses, in its order.
  * @throws {TypeError} If a value of `elements` is not a finite number.
+ * @throws {RangeError} If a value is one {@link parseOmm} would reject: an inclination outside [0°, 180°], another angle outside [0°, 360°], an eccentricity outside [0, 1), a mean motion ≤ 0, a negative or fractional count, or a classification other than U, C or S.
  * @group Satellites
  *
  * @example
@@ -248,6 +250,8 @@ export const formatOmm = (
       throw new TypeError(
         `elements.${key} must be a finite number. Received: ${value}`
       );
+
+  assertPublishable(elements, published);
 
   // The epoch to the microsecond, from the Julian date, which is finer than
   // the Date's millisecond
