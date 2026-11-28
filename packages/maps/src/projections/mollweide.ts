@@ -11,6 +11,7 @@ import {
   assertLatitude,
   assertOnMap,
   assertSphere,
+  edgeLongitude,
   mapLongitude,
   wrapLongitude
 } from './shared.js';
@@ -143,8 +144,8 @@ export const mollweide = (
  *
  * ::: info Notes
  *
- * - No iteration is needed this way round. Within about $ 10^{-7} $ rad of a pole, $ \arcsin $ of a number so close to 1 limits $ \varphi $ to about $ 10^{-9} $ rad.
- * - Only points inside the ellipse have an inverse: a point outside it throws a `RangeError`.
+ * - No iteration is needed this way round. Within about $ 10^{-7} $ rad of a pole, $ \arcsin $ of a number so close to 1 limits $ \varphi $ to about $ 10^{-8} $ rad.
+ * - Only points inside the ellipse have an inverse: a point outside it throws a `RangeError`. Near a pole the ellipse narrows faster than `y` can say where it is, so points that rounding puts just outside it are taken as on its edge: up to about $ 10^{-7} R $ outside, right at the pole.
  * - Every longitude meets at a pole, so there $ \lambda $ is $ \lambda_0 $.
  *
  * :::
@@ -187,14 +188,22 @@ export const inverseMollweide = (
     );
 
   const theta = Math.asin(Math.min(1, Math.max(-1, sinTheta)));
-  const perRadian = ((2 * Math.SQRT2) / Math.PI) * R * Math.cos(theta);
+  const cosTheta = Math.cos(theta);
+  const scale = ((2 * Math.SQRT2) / Math.PI) * R;
+  const perRadian = scale * cosTheta;
+  // y holds sin θ to an ulp or so, which moves cos θ by up to ε / cos θ, and
+  // by √ε at a pole: allow 4 of that before calling x off the map
+  const rounding =
+    (4 * Number.EPSILON) / Math.max(cosTheta, Math.sqrt(Number.EPSILON));
 
-  assertOnMap(x, perRadian);
+  assertOnMap(x, scale * (cosTheta + rounding));
 
   return {
     phi: Math.asin(
       Math.min(1, Math.max(-1, (2 * theta + Math.sin(2 * theta)) / Math.PI))
     ) as Radians,
-    lambda: wrapLongitude(lambda0 + (x === 0 ? 0 : x / perRadian))
+    lambda: wrapLongitude(
+      lambda0 + (x === 0 ? 0 : edgeLongitude(x / perRadian))
+    )
   };
 };

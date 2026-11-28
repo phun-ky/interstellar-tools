@@ -123,6 +123,42 @@ for (const [name, project, inverse] of [
       );
     });
 
+    test('round-trips the edge meridians right up to the poles', () => {
+      for (const R of [1, 3, 1_737_400, 6_371_008.8, 69_911_000])
+        for (let k = 0; k <= 400; k++) {
+          // 0.1 rad down to 1e-9 rad from a pole, where the map is narrowest
+          const distance = 10 ** (-1 - (8 * k) / 400);
+
+          for (const phi of [Math.PI / 2 - distance, distance - Math.PI / 2])
+            for (const lambda of [Math.PI, -Math.PI]) {
+              const { x, y } = project(phi as Radians, lambda as Radians, R);
+              const back = inverse(x, y, R);
+
+              // 180° E stays on the east edge, not just past it on the west
+              if (lambda > 0) assert.ok(back.lambda > 0);
+
+              // Longitude matters less as the parallels shrink to the pole
+              close(
+                Math.abs(Math.sin(back.lambda - lambda)) * Math.cos(phi),
+                0
+              );
+              close(back.phi, phi, 2e-8);
+            }
+        }
+    });
+
+    test('still throws just off the map, at the equator and near a pole', () => {
+      for (const phi of [0 as Radians, rad(89.9)]) {
+        const edge = project(phi, Math.PI as Radians, 6_371_008.8);
+
+        // 1 m east of the edge
+        assert.throws(
+          () => inverse(edge.x + 1, edge.y, 6_371_008.8),
+          RangeError
+        );
+      }
+    });
+
     test('throws off the map and on bad inputs', () => {
       const edge = project(rad(30), rad(180), 1);
 

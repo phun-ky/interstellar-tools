@@ -54,6 +54,11 @@ export const assertOnMap = (x: number, perRadian: number) => {
     );
 };
 
+// A longitude from the central meridian, x over the map's width per radian,
+// that rounding can take just past an edge meridian: keep it on that edge
+export const edgeLongitude = (ratio: number): number =>
+  Math.min(Math.PI, Math.max(-Math.PI, ratio));
+
 /**
  * The latitude `phi` that a map's `y` gives, clamped to the poles: throw if
  * it is beyond a pole by more than rounding.

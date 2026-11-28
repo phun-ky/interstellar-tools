@@ -10,6 +10,7 @@ import type {
 import {
   assertLatitude,
   assertOnMap,
+  edgeLongitude,
   assertSphere,
   latitudeOnMap,
   mapLongitude,
@@ -96,7 +97,7 @@ export const sinusoidal = (
  *
  * ::: info Notes
  *
- * - Only points on the map have an inverse: a `y` beyond a pole, or an `x` beyond the edge meridians, $ |x| > \pi R\cos\varphi $, throws a `RangeError`.
+ * - Only points on the map have an inverse: a `y` beyond a pole, or an `x` beyond the edge meridians, $ |x| > \pi R\cos\varphi $ by more than rounding, throws a `RangeError`.
  * - Every longitude meets at a pole, so there $ \lambda $ is $ \lambda_0 $.
  *
  * :::
@@ -134,10 +135,11 @@ export const inverseSinusoidal = (
   const phi = latitudeOnMap(y / R, y);
   const width = R * Math.cos(phi);
 
-  assertOnMap(x, width);
+  // phi holds an ulp or so of rounding, which moves cos φ by up to about 2ε
+  assertOnMap(x, R * (Math.cos(phi) + 4 * Number.EPSILON));
 
   return {
     phi,
-    lambda: wrapLongitude(lambda0 + (x === 0 ? 0 : x / width))
+    lambda: wrapLongitude(lambda0 + (x === 0 ? 0 : edgeLongitude(x / width)))
   };
 };

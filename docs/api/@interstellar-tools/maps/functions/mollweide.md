@@ -13,7 +13,7 @@ function mollweide(
 ```
 
 Defined in:
-[projections/mollweide.ts:107](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L107)
+[projections/mollweide.ts:108](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L108)
 
 Project a point on a sphere with the **Mollweide projection**: an equal-area map
 of the whole sphere inside an ellipse twice as wide as tall.
