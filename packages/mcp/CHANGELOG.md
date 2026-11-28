@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.4](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.3.3...%40interstellar-tools%2Fmcp%402.3.4) (2026-11-28)
+
+### Bug
+
+* 🐛 Correct type docs and type stateToElements' p as always given ([3fdd3fc](https://github.com/phun-ky/interstellar-tools/commit/3fdd3fc6d2fdc4039b15581c97add34d2a638805))
+
 ## [2.3.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.3.2...%40interstellar-tools%2Fmcp%402.3.3) (2026-11-28)
 
 ### Bug
