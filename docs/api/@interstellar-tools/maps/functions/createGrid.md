@@ -14,7 +14,8 @@ Create a **raster grid**, such as an elevation model, checking that its parts
 fit together.
 
 The values are kept as given, not copied: a `Float64Array` stays one, and
-changing it later changes the grid.
+changing it later changes the grid. An infinite value put in later is rejected
+when the terrain functions read it.
 
 ::: info Notes
 
