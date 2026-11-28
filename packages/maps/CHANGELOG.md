@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.12.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.12.2...%40interstellar-tools%2Fmaps%400.12.3) (2026-11-28)
+
+### Bug
+
+* 🐛 Make inverseMollweide and inverseSinusoidal accept the map's edges near the poles ([71521c3](https://github.com/phun-ky/interstellar-tools/commit/71521c339cd6c29e99d8415d0f3a7b5f61c57542))
+
+### Adding missing tests
+
+* 💍 Type the latitudes in the off-the-map projection test ([4c213d0](https://github.com/phun-ky/interstellar-tools/commit/4c213d04ff44f08428669039185d4b52a720d539))
+
 ## [0.12.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.12.1...%40interstellar-tools%2Fmaps%400.12.2) (2026-11-27)
 
 ### Tasks

@@ -13,7 +13,7 @@ function inverseMollweide(
 ```
 
 Defined in:
-[projections/mollweide.ts:169](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L169)
+[projections/mollweide.ts:170](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/mollweide.ts#L170)
 
 Find the point on a sphere for a point on a **Mollweide** map: the inverse of
 [mollweide](mollweide.md).
@@ -34,9 +34,11 @@ $$
 ::: info Notes
 
 - No iteration is needed this way round. Within about $10^{-7}$ rad of a pole,
-  $\arcsin$ of a number so close to 1 limits $\varphi$ to about $10^{-9}$ rad.
+  $\arcsin$ of a number so close to 1 limits $\varphi$ to about $10^{-8}$ rad.
 - Only points inside the ellipse have an inverse: a point outside it throws a
-  `RangeError`.
+  `RangeError`. Near a pole the ellipse narrows faster than `y` can say where it
+  is, so points that rounding puts just outside it are taken as on its edge: up
+  to about $10^{-7} R$ outside, right at the pole.
 - Every longitude meets at a pole, so there $\lambda$ is $\lambda_0$.
 
 :::

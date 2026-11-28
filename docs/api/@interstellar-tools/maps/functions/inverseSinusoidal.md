@@ -13,7 +13,7 @@ function inverseSinusoidal(
 ```
 
 Defined in:
-[projections/sinusoidal.ts:122](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L122)
+[projections/sinusoidal.ts:123](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/projections/sinusoidal.ts#L123)
 
 Find the point on a sphere for a point on a **sinusoidal** map: the inverse of
 [sinusoidal](sinusoidal.md).
@@ -32,7 +32,8 @@ $$
 ::: info Notes
 
 - Only points on the map have an inverse: a `y` beyond a pole, or an `x` beyond
-  the edge meridians, $|x| > \pi R\cos\varphi$, throws a `RangeError`.
+  the edge meridians, $|x| > \pi R\cos\varphi$ by more than rounding, throws a
+  `RangeError`.
 - Every longitude meets at a pole, so there $\lambda$ is $\lambda_0$.
 
 :::
