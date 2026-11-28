@@ -130,6 +130,45 @@ describe('propagateNumerically', () => {
     }
   });
 
+  test('counts a leap second in the span, and leaves out samples inside it', () => {
+    // 2016-12-31 ended with a leap second: these 2 hours are 7201 s
+    const state = circular(420_000, 51.6);
+    const across = propagateNumerically(
+      state,
+      new Date('2016-12-31T23:00:00Z'),
+      new Date('2017-01-01T01:00:00Z'),
+      { step: 60, forces: POINT_MASS }
+    );
+    const later = propagateNumerically(
+      state,
+      new Date('2017-06-01T00:00:00Z'),
+      new Date('2017-06-01T02:00:01Z'),
+      { step: 60, forces: POINT_MASS }
+    );
+
+    assert.deepEqual(last(across).r, last(later).r);
+    assert.equal(
+      across.samples.find(
+        ({ epoch }) => epoch.toISOString() === '2017-01-01T00:00:00.000Z'
+      )?.r[0],
+      later.samples.find(
+        ({ epoch }) => epoch.toISOString() === '2017-06-01T01:00:01.000Z'
+      )?.r[0]
+    );
+
+    const steps = propagateNumerically(
+      state,
+      new Date('2016-12-31T23:59:59Z'),
+      new Date('2017-01-01T00:00:01Z'),
+      { step: 0.5, forces: POINT_MASS }
+    );
+
+    assert.deepEqual(
+      steps.samples.map(({ epoch }) => epoch.toISOString().slice(17)),
+      ['59.000Z', '59.500Z', '00.000Z', '00.500Z', '01.000Z']
+    );
+  });
+
   test('turns the orbit plane at the J2 rate', () => {
     const height = 700_000;
     const inclination = 98;

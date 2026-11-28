@@ -34,3 +34,8 @@ centre in the ICRF:
   Juno's and Pioneer 11's were fetched on 2026-11-12.
 - `horizons-juno-perijove.txt`: Juno (-61) every 10 minutes from 2027-01-17
   20:00 to 2027-01-18 02:00 TDB, through its perijove, fetched on 2026-11-12.
+- `horizons-earth-leap-second-1d.txt` and `horizons-earth-leap-second-truth.txt`:
+  Earth (399) from the Sun's centre on the ecliptic of J2000, in UT, daily at
+  noon from 2016-12-28 to 2017-01-04, and at five times between those, across
+  the leap second of 2016-12-31. Fetched on 2026-11-28, without the "Calling
+  TDBMUT" lines Horizons prints before the header.
