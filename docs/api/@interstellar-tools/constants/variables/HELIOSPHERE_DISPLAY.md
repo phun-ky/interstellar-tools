@@ -8,7 +8,7 @@ const HELIOSPHERE_DISPLAY: DisplayAstrosphereInterface;
 ```
 
 Defined in:
-[bodies/heliosphere.ts:130](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/heliosphere.ts#L130)
+[bodies/heliosphere.ts:133](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/heliosphere.ts#L133)
 
 How to **draw the heliosphere**: hidden until a renderer offers to show it, as
 it has no colour of its own. [withDisplay](../functions/withDisplay.md) puts it

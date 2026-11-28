@@ -8,7 +8,7 @@ const INTERSTELLAR_OBJECTS: InterstellarObjectsType;
 ```
 
 Defined in:
-[bodies/interstellar-objects.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L65)
+[bodies/interstellar-objects.ts:67](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-objects.ts#L67)
 
 Represents the **interstellar objects** seen so far: bodies from other stars'
 systems, passing the Sun once on open orbits.
@@ -37,6 +37,10 @@ systems, passing the Sun once on open orbits.
   of Seligman et al. 2025's.
 
 - ʻOumuamua and 3I/ATLAS go round the Sun backwards, `retrograde: true`.
+
+- `orbit.periapsisTime` is a `Date`, which can't be frozen, so its setters
+  change it for every importer: copy it before changing it,
+  `new Date(orbit.periapsisTime)`.
 
 - 3I/ATLAS's orbit is from JPL's solution
   [#55](https://github.com/phun-ky/interstellar-tools/issues/55), on

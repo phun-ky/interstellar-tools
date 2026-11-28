@@ -8,7 +8,7 @@ const PLANET_RINGS: ByBodyIdType<Pick<PlanetObservationsInterface, 'rings'>>;
 ```
 
 Defined in:
-[bodies/rings.ts:315](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/rings.ts#L315)
+[bodies/rings.ts:316](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/rings.ts#L316)
 
 The **rings** of Jupiter, Saturn, Uranus and Neptune, keyed by planet id: each
 ring's edges and optical depth, and Saturn's named gaps, from the PDS Ring-Moon

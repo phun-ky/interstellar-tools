@@ -8,7 +8,7 @@ const LEAP_SECONDS: readonly Readonly<LeapSecondInterface>[];
 ```
 
 Defined in:
-[date.ts:173](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L173)
+[date.ts:179](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L179)
 
 The **leap second table**: TAI − UTC, in **s**, from each date on, since UTC
 took whole-second steps on 1972-01-01.

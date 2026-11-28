@@ -10,7 +10,7 @@ const INTERSTELLAR_OBJECT_OBSERVATIONS: ByBodyIdType<
 ```
 
 Defined in:
-[bodies/interstellar-observations.ts:39](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-observations.ts#L39)
+[bodies/interstellar-observations.ts:42](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/interstellar-observations.ts#L42)
 
 What is **measured about the interstellar objects**, keyed by id: their
 catalogue identifiers, JPL's orbit solutions with the fitted non-gravitational
@@ -20,6 +20,9 @@ its push in m/s².
 Kept apart from [INTERSTELLAR_OBJECTS](INTERSTELLAR_OBJECTS.md), so an app loads
 these only when it shows them; their discoveries are in
 [DISCOVERIES](DISCOVERIES.md).
+
+Its dates are `Date`s, which can't be frozen, so their setters change them for
+every importer: copy one before changing it, `new Date(date)`.
 [withObservations](../functions/withObservations.md) puts both on the objects.
 
 ## Example

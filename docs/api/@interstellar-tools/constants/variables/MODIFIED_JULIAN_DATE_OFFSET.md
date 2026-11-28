@@ -8,7 +8,7 @@ const MODIFIED_JULIAN_DATE_OFFSET: 2400000.5;
 ```
 
 Defined in:
-[date.ts:147](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L147)
+[date.ts:153](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L153)
 
 The offset of the **modified Julian date**: MJD = JD −
 **[`2400000`](https://github.com/phun-ky/interstellar-tools/commit/2400000).5**,

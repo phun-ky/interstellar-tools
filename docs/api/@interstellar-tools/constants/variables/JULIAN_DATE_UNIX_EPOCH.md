@@ -8,7 +8,7 @@ const JULIAN_DATE_UNIX_EPOCH: 2440587.5;
 ```
 
 Defined in:
-[date.ts:139](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L139)
+[date.ts:145](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/date.ts#L145)
 
 The **Julian date of the Unix epoch**, 1970-01-01T00:00:00Z:
 **[`2440587`](https://github.com/phun-ky/interstellar-tools/commit/2440587).5**.
