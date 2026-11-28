@@ -45,11 +45,26 @@ export const assertGrid = ({
 };
 
 /** Throw unless `row` and `column` are integer indices inside the grid. */
+// createGrid rejects an infinite height, but a grid written by hand, or
+// whose values changed after createGrid, can still hold one
+export const assertHeight = (z: number) => {
+  if (z === Infinity || z === -Infinity)
+    throw new TypeError(
+      `values must be finite, or noData or NaN for a missing cell. Received: ${z}`
+    );
+};
+
 export const assertCell = (
-  { rows, columns }: GridInterface,
+  grid: GridInterface,
   row: number,
   column: number
 ) => {
+  // A plain object can be any shape: check it here too, for the per-cell
+  // functions. It doesn't look at the values, so it costs the same per cell
+  assertGrid(grid);
+
+  const { rows, columns } = grid;
+
   for (const [name, index, size] of [
     ['row', row, rows],
     ['column', column, columns]
@@ -80,6 +95,8 @@ export const windowAt = (
       const z = values[r * columns + c]!;
 
       if (Number.isNaN(z) || z === noData) return null;
+
+      assertHeight(z);
 
       window.push(z);
     }

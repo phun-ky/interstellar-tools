@@ -107,6 +107,24 @@ describe('mercator', () => {
     close(inverseMercator(Math.PI * 1.5, 0, 1).lambda, -Math.PI / 2);
   });
 
+  test('inverseMercator never reaches a pole, so mercator takes it back', () => {
+    for (const y of [37, 37.5, 40, 1e3, 1e300])
+      for (const sign of [1, -1]) {
+        const { phi } = inverseMercator(0, sign * y, 1);
+
+        assert.ok(Math.abs(phi) < Math.PI / 2, `y = ${sign * y}`);
+
+        // Past about 37.4, atan(sinh(y)) rounds to π/2: it stops just below
+        if (y >= 37.5)
+          assert.equal(Math.abs(phi), Math.PI / 2 - Number.EPSILON);
+
+        assert.ok(
+          Number.isFinite(mercator(phi, 0 as Radians, 1).y),
+          `y = ${sign * y}`
+        );
+      }
+  });
+
   test('throws at the poles and on bad inputs', () => {
     for (const phi of [Math.PI / 2, -Math.PI / 2, 2])
       assert.throws(

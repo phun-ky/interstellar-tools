@@ -250,6 +250,36 @@ describe('mollweide', () => {
     );
   });
 
+  test('round-trips latitudes right up to the poles', () => {
+    for (const R of [1, 6_371_008.8])
+      for (let k = 0; k <= 200; k++) {
+        // 0.1 rad down to 1e-14 rad from the pole
+        const distance = 10 ** (-1 - (13 * k) / 200);
+
+        for (const phi of [Math.PI / 2 - distance, distance - Math.PI / 2]) {
+          const { x, y } = mollweide(phi as Radians, 1 as Radians, R);
+          const back = inverseMollweide(x, y, R);
+
+          // About what y, rounded so close to √2 R, still tells apart
+          close(back.phi, phi, 5e-12);
+          // λ is less certain so near a pole, but the parallel is short
+          close(Math.abs(Math.sin(back.lambda - 1)) * Math.cos(phi), 0, 1e-11);
+        }
+      }
+  });
+
+  test('puts the poles at x = 0, and every longitude there at lambda0', () => {
+    for (const pole of [Math.PI / 2, -Math.PI / 2]) {
+      const { x, y } = mollweide(pole as Radians, 2 as Radians, 1);
+
+      assert.equal(x, 0);
+      assert.equal(
+        inverseMollweide(x, y, 1, { lambda0: 0.5 as Radians }).lambda,
+        0.5
+      );
+    }
+  });
+
   test('round-trips the edge of the map', () => {
     const { x, y } = mollweide(rad(-30), Math.PI as Radians, 1);
     const back = inverseMollweide(x, y, 1);
