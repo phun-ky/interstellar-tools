@@ -70,6 +70,9 @@ export type TemporalUnitType =
  * - **Geology-style** tokens (`Ma`, `Ga`, `megaannum`, `gigaannum`) are accepted
  *   but normalized to `Myr`/`Gyr` **as durations** (not "million years ago").
  * - **Case-sensitive**: tokens are matched exactly as listed.
+ * - The year family's symbols `yr`, `kyr`, `Myr` and `Gyr` are canonical, but this type
+ *   also lists them; the other canonical symbols it doesn't. To tell whether a unit is
+ *   canonical, check it against `TemporalUnitType`, not this type.
  *
  * ## Recommended flow
  * 1) Accept `TemporalUnitAliasType` from users/IO.

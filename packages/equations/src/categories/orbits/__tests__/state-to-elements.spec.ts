@@ -215,3 +215,13 @@ describe('stateToElements', () => {
     }
   });
 });
+
+describe('stateToElements return type', () => {
+  test('always has p, typed as a number', () => {
+    const { p } = stateToElements([7e6, 0, 0], [0, 7.5e3, 0], 3.986004418e14);
+    // Compile-time: p is a number, not number | undefined
+    const required: number = p;
+
+    assert.equal(typeof required, 'number');
+  });
+});

@@ -64,6 +64,9 @@ export type DistanceUnitType =
  *   (`m`, `km`, `au`, `ly/kly/Mly/Gly`, `pc/kpc/Mpc/Gpc`) before math or serialization.
  * - **Case-sensitive** and **exact** matches: tokens are matched exactly as listed here.
  *   For example, `"AU"` is valid (alias) while `"au"` is the canonical symbol (not part of this alias type).
+ * - The prefixed symbols `kly`, `Mly`, `Gly`, `kpc`, `Mpc` and `Gpc` are canonical too, but
+ *   this type also lists them; `m`, `km`, `au`, `ly` and `pc` it doesn't. To tell whether a unit
+ *   is canonical, check it against `DistanceUnitType`, not this type.
  * - **IAU symbol**: canonical astronomical unit is lowercase **`au`**; we accept `"AU"`, `"Au"`,
  *   and textual forms as aliases.
  * - **Light-year and parsec families**: long names (with/without hyphens) normalize to their
