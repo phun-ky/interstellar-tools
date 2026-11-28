@@ -58,7 +58,7 @@ export const registerStateVectorTools = (server: McpServer) => {
         raan: angleOutput(raan),
         argp: angleOutput(argp),
         nu: angleOutput(nu),
-        rp_m: p! / (1 + e),
+        rp_m: p / (1 + e),
         // A parabola's a is Infinity, which would give -0
         energy_m2_s2: a === Infinity ? 0 : -mu_m3_s2 / (2 * a),
         ...(e < 1 && { T_s: 2 * Math.PI * Math.sqrt(a ** 3 / mu_m3_s2) })

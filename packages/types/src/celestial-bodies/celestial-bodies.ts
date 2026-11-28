@@ -6,7 +6,8 @@ import type { StarInterface } from './stars.js';
 
 /**
  * A list of celestial bodies of any kind: stars, planets, moons, comets and
- * asteroids, mixed.
+ * asteroids, mixed. Interstellar objects aren't included: their open orbits
+ * have their own type, `InterstellarObjectInterface`.
  *
  * @example
  * ```ts
@@ -27,6 +28,10 @@ export type CelestialBodiesType = CelestialBodyType[];
  * - **Planets** (`PlanetInterface`)
  * - **Moons** (`MoonInterface`)
  * - **Comets** (`CometInterface`)
+ * - **Asteroids** (`AsteroidInterface`)
+ *
+ * Interstellar objects aren't included: their open orbits have their own
+ * type, `InterstellarObjectInterface`.
  *
  * @typedef {StarInterface | PlanetInterface | MoonInterface | CometInterface | AsteroidInterface} CelestialBodyType
  *

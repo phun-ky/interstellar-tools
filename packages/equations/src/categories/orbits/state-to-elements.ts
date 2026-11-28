@@ -68,7 +68,7 @@ import { cross, dot, norm, norm2pi, scale, sub } from '../helpers/misc.js';
  * @param v - Velocity vector in **m/s** (finite components).
  * @param mu - Gravitational parameter $ \mu $ in **m³/s²** (finite, > 0).
  * @param tolerance - Below this, `e` counts as circular and $ \sin i $ as equatorial. Defaults to `1e-10`.
- * @returns The classical orbital elements.
+ * @returns The classical orbital elements, always with `p`.
  * @throws {TypeError} If any input is not a finite number.
  * @throws {RangeError} If `mu <= 0`, `tolerance < 0`, `r` is zero, or the motion is straight up or down (no angular momentum).
  * @group Orbits
@@ -92,7 +92,7 @@ export const stateToElements = (
   v: Vector3DTupleType,
   mu: number,
   tolerance = 1e-10
-): ClassicalElementsInterface => {
+): ClassicalElementsInterface & { p: number } => {
   for (const [name, vector] of [
     ['r', r],
     ['v', v]
