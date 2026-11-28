@@ -13,7 +13,7 @@ function propagateNumerically(
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:172](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L172)
+[satellites/propagate-numerically.ts:174](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L174)
 
 **Propagate a satellite numerically** with a force model: Cowell's method,
 stepping the equations of motion with the forces you choose, for the "what if"
@@ -90,8 +90,8 @@ An ephemeris centred on `'EARTH'`, in the frame `'TEME'` and the time scale
 
 - If `r` or `v` is not three finite numbers, a date is not a valid `Date`, or an
   option is not a finite number or a function where it should be.
-- If `to` isn't after `from`, a step, coefficient or tolerance is not > 0, or a
-  manoeuvre is outside the span.
+- If `to` isn't after `from`, a step, coefficient or tolerance is not > 0, a
+  manoeuvre is outside the span, or `step` would give a million samples or more.
 
 ## Examples
 

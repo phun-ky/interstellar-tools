@@ -8,7 +8,7 @@ function parseOmm(omm: string | object): MeanElementsInterface;
 ```
 
 Defined in:
-[satellites/omm.ts:97](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L97)
+[satellites/omm.ts:98](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L98)
 
 Parse an **Orbit Mean-elements Message** (OMM) in JSON: the CCSDS format
 CelesTrak and Space-Track publish SGP4 elements in, next to TLEs. Unlike a TLE,
@@ -44,8 +44,9 @@ it has room for catalogue numbers above 339 999.
   Space-Track does.
 - `EPOCH` is in UTC, with or without a trailing `Z`. `epochJulianDate` keeps all
   its decimals; `epoch`, a `Date`, rounds to the millisecond.
-- `ELEMENT_SET_NO` and `REV_AT_EPOCH` are 0 when missing, and
-  `CLASSIFICATION_TYPE` is `U`. Everything else SGP4 needs is required.
+- `ELEMENT_SET_NO` and `REV_AT_EPOCH` are 0 when missing or `null`, and
+  `CLASSIFICATION_TYPE` is `U`; `OBJECT_NAME` and `OBJECT_ID` may be missing or
+  `null` too. Everything else SGP4 needs is required, and can't be `null`.
 - The XML and key-value forms of OMM aren't read.
 
 :::

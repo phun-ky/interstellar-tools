@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.5](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.4...%40interstellar-tools%2Ftracking%400.13.5) (2026-11-28)
+
+### Bug
+
+* 🐛 Read null as missing in parseOmm, and cap propagateNumerically's samples ([3054371](https://github.com/phun-ky/interstellar-tools/commit/30543714e100ee10d272aec18ba05fef81dfde00))
+
 ## [0.13.4](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.3...%40interstellar-tools%2Ftracking%400.13.4) (2026-11-27)
 
 ### Bug

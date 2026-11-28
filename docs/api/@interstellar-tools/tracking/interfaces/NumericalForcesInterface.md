@@ -4,7 +4,7 @@
 # Interface: NumericalForcesInterface
 
 Defined in:
-[satellites/propagate-numerically.ts:38](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L38)
+[satellites/propagate-numerically.ts:40](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L40)
 
 The forces for [propagateNumerically](../functions/propagateNumerically.md), on
 top of Earth's central pull.
@@ -21,7 +21,7 @@ drag?: {
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:46](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L46)
+[satellites/propagate-numerically.ts:48](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L48)
 
 Air drag: the ballistic coefficient $m/(C_D A)$ in **kg/m²**, and the density in
 **kg/m³** at a point above the WGS 84 ellipsoid and a moment, from the
@@ -29,8 +29,8 @@ exponential model by default. Off unless given.
 
 | Name                   | Type                                                                                                                                                                                                               | Defined in                                                                                                                                                      |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ballisticCoefficient` | `number`                                                                                                                                                                                                           | [satellites/propagate-numerically.ts:47](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L47) |
-| `density()?`           | (`point`: [`GeodeticCoordinatesInterface`](../../types/interfaces/GeodeticCoordinatesInterface.md), `date`: [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)) => `number` | [satellites/propagate-numerically.ts:48](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L48) |
+| `ballisticCoefficient` | `number`                                                                                                                                                                                                           | [satellites/propagate-numerically.ts:49](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L49) |
+| `density()?`           | (`point`: [`GeodeticCoordinatesInterface`](../../types/interfaces/GeodeticCoordinatesInterface.md), `date`: [`Date`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)) => `number` | [satellites/propagate-numerically.ts:50](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L50) |
 
 ---
 
@@ -41,7 +41,7 @@ moon?: boolean;
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L44)
+[satellites/propagate-numerically.ts:46](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L46)
 
 The Moon's tidal pull. Defaults to `true`.
 
@@ -57,15 +57,15 @@ solarRadiationPressure?: {
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:51](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L51)
+[satellites/propagate-numerically.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L53)
 
 Sunlight's push: the reflectivity coefficient $C_R$ and the area facing the Sun
 per unit mass in **m²/kg**. Off unless given.
 
 | Name         | Type     | Defined in                                                                                                                                                      |
 | ------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `areaToMass` | `number` | [satellites/propagate-numerically.ts:51](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L51) |
-| `Cr`         | `number` | [satellites/propagate-numerically.ts:51](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L51) |
+| `areaToMass` | `number` | [satellites/propagate-numerically.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L53) |
+| `Cr`         | `number` | [satellites/propagate-numerically.ts:53](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L53) |
 
 ---
 
@@ -76,7 +76,7 @@ sun?: boolean;
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:42](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L42)
+[satellites/propagate-numerically.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L44)
 
 The Sun's tidal pull. Defaults to `true`.
 
@@ -89,7 +89,7 @@ zonal?: boolean | readonly number[];
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:40](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L40)
+[satellites/propagate-numerically.ts:42](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L42)
 
 Earth's zonal harmonics: `true` for EGM2008's J2 to J6, `false` for none, or
 your own J2, J3, … for EGM2008's reference radius. Defaults to `true`.

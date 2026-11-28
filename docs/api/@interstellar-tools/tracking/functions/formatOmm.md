@@ -8,7 +8,7 @@ function formatOmm(elements: MeanElementsInterface): OmmRecordInterface;
 ```
 
 Defined in:
-[satellites/omm.ts:238](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L238)
+[satellites/omm.ts:241](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/omm.ts#L241)
 
 Write mean elements as an **Orbit Mean-elements Message** (OMM) record, in the
 JSON form CelesTrak publishes: the reverse of [parseOmm](parseOmm.md). Unlike a
