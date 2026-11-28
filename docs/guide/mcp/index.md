@@ -314,7 +314,10 @@ npx -y @interstellar-tools/mcp --http --port 3000
 | `--allowed-hosts <names>` | `localhost`, `127.0.0.1`, `[::1]` (loopback) | Comma-separated host names that requests may be addressed to |
 
 On loopback, the server rejects requests addressed to any other host name with
-`403`. That stops a web page from reaching it through DNS rebinding.
+`403`. That stops a web page from reaching it through DNS rebinding. Bound to
+any other address without `--allowed-hosts`, it checks no host name, and warns
+on stderr that it doesn't. The port must be a whole number from 0 to 65535,
+where 0 picks a free one; an empty `$PORT` counts as unset.
 
 ### 2. Give it a public HTTPS address
 

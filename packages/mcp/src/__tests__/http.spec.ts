@@ -6,7 +6,7 @@ import { request, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { after, before, describe, test } from 'node:test';
 
-import { startHttpServer } from '../http.js';
+import { isLoopback, parsePort, startHttpServer } from '../http.js';
 
 let http: Server;
 let base: string;
@@ -129,5 +129,31 @@ describe('Streamable HTTP', () => {
     } finally {
       custom.close();
     }
+  });
+});
+
+describe('command-line helpers', () => {
+  test('parsePort takes a whole number in [0, 65535]', () => {
+    assert.equal(parsePort('3000'), 3000);
+    assert.equal(parsePort(' 0 '), 0);
+    assert.equal(parsePort('65535'), 65_535);
+
+    for (const text of ['', '  ', 'abc', '-1', '65536', '3000.5', '1e3'])
+      assert.throws(
+        () => parsePort(text),
+        (err) =>
+          err instanceof RangeError &&
+          err.message ===
+            `port must be a whole number in [0, 65535]. Received: "${text}"`,
+        JSON.stringify(text)
+      );
+  });
+
+  test('isLoopback knows the loopback addresses', () => {
+    for (const host of ['127.0.0.1', 'localhost', '::1'])
+      assert.equal(isLoopback(host), true, host);
+
+    for (const host of ['0.0.0.0', '::', '192.168.1.10', 'example.com'])
+      assert.equal(isLoopback(host), false, host);
   });
 });

@@ -5,13 +5,14 @@ import type { AddressInfo } from 'node:net';
 import process from 'node:process';
 import { parseArgs } from 'node:util';
 
-import { startHttpServer } from './http.js';
+import { isLoopback, parsePort, startHttpServer } from './http.js';
 import { createServer } from './server.js';
 
 const { values } = parseArgs({
   options: {
     http: { type: 'boolean', default: false },
-    port: { type: 'string', default: process.env.PORT ?? '3000' },
+    // An empty $PORT counts as unset
+    port: { type: 'string', default: process.env.PORT || '3000' },
     host: { type: 'string', default: '127.0.0.1' },
     'allowed-hosts': { type: 'string' },
     help: { type: 'boolean', short: 'h', default: false }
@@ -30,8 +31,25 @@ if (values.help) {
                            (default: localhost, 127.0.0.1 and [::1] on loopback)
 `);
 } else if (values.http) {
+  let requestedPort: number;
+
+  try {
+    requestedPort = parsePort(values.port);
+  } catch (error) {
+    process.stderr.write(
+      `${(error as Error).message}\nRun interstellar-tools-mcp --help for usage.\n`
+    );
+    process.exit(2);
+  }
+
+  // Without allowed hosts, a non-loopback server checks no Host header
+  if (!isLoopback(values.host) && !values['allowed-hosts'])
+    process.stderr.write(
+      `Warning: listening on ${values.host} without --allowed-hosts, so requests' Host headers aren't checked and a web page can reach the server by DNS rebinding. Pass --allowed-hosts with the names clients use.\n`
+    );
+
   const http = await startHttpServer({
-    port: Number(values.port),
+    port: requestedPort,
     host: values.host,
     allowedHosts: values['allowed-hosts']
       ?.split(',')

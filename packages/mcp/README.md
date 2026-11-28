@@ -58,8 +58,9 @@ npx -y @interstellar-tools/mcp --http --port 3000
 The server is stateless and binds to `127.0.0.1` unless you pass
 `--host 0.0.0.0`. On loopback it only answers requests addressed to `localhost`,
 `127.0.0.1` or `[::1]`, which protects it from DNS rebinding; pass
-`--allowed-hosts` with your public host name when you serve it elsewhere.
-Step-by-step setup for each assistant is in the
+`--allowed-hosts` with your public host name when you serve it elsewhere. Bound
+anywhere else without `--allowed-hosts`, it checks no host name, and says so
+with a warning on stderr. Step-by-step setup for each assistant is in the
 [MCP guide](https://phun-ky.net/interstellar-tools/guide/mcp/).
 
 ## Units

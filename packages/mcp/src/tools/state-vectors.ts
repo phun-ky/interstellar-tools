@@ -106,6 +106,12 @@ export const registerStateVectorTools = (server: McpServer) => {
       if ((a_m === undefined) === (rp_m === undefined))
         throw new Error('Give exactly one of a_m and rp_m.');
 
+      // elementsToState's own message asks for p, which this tool doesn't take
+      if (a_m !== undefined && Math.abs(e - 1) < 1e-12)
+        throw new Error(
+          'A parabolic orbit (e = 1) has no finite semi-major axis: give rp_m, its periapsis radius, instead of a_m.'
+        );
+
       const { r, v } = elementsToState(
         {
           // With p given, elementsToState ignores a

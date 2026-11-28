@@ -125,9 +125,16 @@ const sunAngles = ({
   if ((sun_azimuth === undefined) !== (sun_elevation === undefined))
     throw new Error('Give both sun_azimuth and sun_elevation, or neither.');
 
-  return sun_azimuth && sun_elevation
-    ? { azimuth: toRadians(sun_azimuth), elevation: toRadians(sun_elevation) }
-    : undefined;
+  if (!sun_azimuth || !sun_elevation) return undefined;
+
+  const elevation = toRadians(sun_elevation);
+
+  if (Math.abs(elevation) > Math.PI / 2)
+    throw new RangeError(
+      `sun_elevation must be in [-90°, 90°]. Received: ${sun_elevation.value} ${sun_elevation.unit}`
+    );
+
+  return { azimuth: toRadians(sun_azimuth), elevation };
 };
 // JSON has no NaN or Infinity: a value the terrain functions can't compute is
 // null
