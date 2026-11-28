@@ -8,7 +8,7 @@ const ASTEROIDS: AsteroidsType;
 ```
 
 Defined in:
-[bodies/asteroids.ts:39](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/asteroids.ts#L39)
+[bodies/asteroids.ts:38](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/asteroids.ts#L38)
 
 Represents a collection of well-known asteroids within the solar system
 simulation.
@@ -36,9 +36,8 @@ simulation.
   Itokawa's and Lutetia's prime meridians are arbitrary, and Šteins's turns at
   the IAU's rounded 6.05 h, 0.75° a day slower than its `period`.
 
-- The asteroids spacecraft visited, from Bennu to Apophis, and 52 Europa, 704
-  Interamnia, 511 Davida and 31 Euphrosyne have JPL Horizons' osculating
-  elements at J2000, and `mu` where a spacecraft or a moon weighed them.
+- Every asteroid has JPL Horizons' osculating elements at J2000, and `mu` where
+  a spacecraft or a moon weighed it.
 
 - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and
   Wikipedia. See
@@ -54,17 +53,17 @@ time.
 
 | id              | name       | type                   | category       | spectralType | parent | orbit.a      | orbit.e  | orbit.i | orbit.w | orbit.om | orbit.angle | orbit.period | orbit.retrograde | orbit.q    | rotation.period | rotation.retrograde | rotation.iau                 | radius     | display.color                                                          | display.size |
 | --------------- | ---------- | ---------------------- | -------------- | ------------ | ------ | ------------ | -------- | ------- | ------- | -------- | ----------- | ------------ | ---------------- | ---------- | --------------- | ------------------- | ---------------------------- | ---------- | ---------------------------------------------------------------------- | ------------ |
-| 4-vesta         | Vesta      | main-belt asteroid     | large asteroid | v-type       | sun    | 2.362 au     | 0.09     | 7.1     | 151.2   | 103.8    | 5.527458    | 1325.2 d     |                  | 2.151 au   | 5.342128248 h   |                     | positive (309.031°, 42.235°) | 262.7 km   | [#999999](https://github.com/phun-ky/interstellar-tools/issues/999999) | 1            |
-| 433-eros        | Eros       | near-earth asteroid    | amor group     | s-type       | sun    | 1.458 au     | 0.223    | 10.8    | 178.9   | 304.3    | 1.553343    | 643.2 d      |                  | 1.134 au   | 5.270257308 h   |                     | positive (11.35°, 17.22°)    | 8.4 km     | #aaaaaa                                                                | 1            |
-| 2-pallas        | Pallas     | main-belt asteroid     | large asteroid | b-type       | sun    | 2.773 au     | 0.231    | 34.8    | 310.2   | 173.1    | 0.579449    | 1684.9 d     |                  | 2.13 au    | 7.813322366 h   | yes                 | positive (33°, -3°)          | 256 km     | [#888888](https://github.com/phun-ky/interstellar-tools/issues/888888) | 1            |
-| 10-hygiea       | Hygiea     | main-belt asteroid     | large asteroid | c-type       | sun    | 3.141 au     | 0.112    | 3.8     | 312.3   | 283.2    | 2.656391    | 2033.8 d     |                  | 2.788 au   | 13.82559 h      | yes                 |                              | 216.5 km   | [#666666](https://github.com/phun-ky/interstellar-tools/issues/666666) | 1            |
+| 4-vesta         | Vesta      | main-belt asteroid     | large asteroid | v-type       | sun    | 2.361535 au  | 0.090022 | 7.134   | 149.587 | 103.951  | 5.886556    | 1325.5 d     |                  | 2.1489 au  | 5.342128248 h   |                     | positive (309.031°, 42.235°) | 262.7 km   | [#999999](https://github.com/phun-ky/interstellar-tools/issues/999999) | 1            |
+| 433-eros        | Eros       | near-earth asteroid    | amor group     | s-type       | sun    | 1.458339 au  | 0.222759 | 10.828  | 178.646 | 304.416  | 1.435064    | 643.3 d      |                  | 1.1335 au  | 5.270257308 h   |                     | positive (11.35°, 17.22°)    | 8.4 km     | #aaaaaa                                                                | 1            |
+| 2-pallas        | Pallas     | main-belt asteroid     | large asteroid | b-type       | sun    | 2.772322 au  | 0.229644 | 34.846  | 310.266 | 173.198  | 6.082187    | 1686 d       |                  | 2.1357 au  | 7.813322366 h   | yes                 | positive (33°, -3°)          | 256 km     | [#888888](https://github.com/phun-ky/interstellar-tools/issues/888888) | 1            |
+| 10-hygiea       | Hygiea     | main-belt asteroid     | large asteroid | c-type       | sun    | 3.138421 au  | 0.119465 | 3.843   | 314.368 | 283.663  | 5.822137    | 2030.8 d     |                  | 2.7635 au  | 13.82559 h      | yes                 |                              | 216.5 km   | [#666666](https://github.com/phun-ky/interstellar-tools/issues/666666) | 1            |
 | 704-interamnia  | Interamnia | main-belt asteroid     | large asteroid | f-type       | sun    | 3.06398 au   | 0.146135 | 17.323  | 94.515  | 280.657  | 3.996901    | 1959 d       |                  | 2.6162 au  | 8.71234 h       |                     |                              | 166 km     | [#777777](https://github.com/phun-ky/interstellar-tools/issues/777777) | 1            |
 | 31-euphrosyne   | Euphrosyne | main-belt asteroid     | large asteroid | c-type       | sun    | 3.146162 au  | 0.227765 | 26.345  | 62.351  | 31.292   | 4.487739    | 2038.3 d     |                  | 2.4296 au  | 5.529595 h      |                     |                              | 134 km     | [#555555](https://github.com/phun-ky/interstellar-tools/issues/555555) | 1            |
-| 16-psyche       | Psyche     | main-belt asteroid     | large asteroid | m-type       | sun    | 2.924 au     | 0.14     | 3.1     | 228     | 150.2    | 1.520182    | 1820.1 d     |                  | 2.515 au   | 4.195948 h      | yes                 |                              | 111 km     | [#999999](https://github.com/phun-ky/interstellar-tools/issues/999999) | 1            |
+| 16-psyche       | Psyche     | main-belt asteroid     | large asteroid | m-type       | sun    | 2.920565 au  | 0.138242 | 3.093   | 229.119 | 150.466  | 5.722216    | 1823.1 d     |                  | 2.5168 au  | 4.195948 h      | yes                 |                              | 111 km     | [#999999](https://github.com/phun-ky/interstellar-tools/issues/999999) | 1            |
 | 511-davida      | Davida     | main-belt asteroid     | large asteroid | c-type       | sun    | 3.170009 au  | 0.183078 | 15.942  | 338.885 | 107.764  | 3.11773     | 2061.5 d     |                  | 2.5897 au  | 5.129364 h      |                     | positive (297°, 5°)          | 149 km     | [#444444](https://github.com/phun-ky/interstellar-tools/issues/444444) | 1            |
 | 52-europa       | Europa     | main-belt asteroid     | large asteroid | c-type       | sun    | 3.098887 au  | 0.100976 | 7.468   | 342.329 | 129.046  | 0.894411    | 1992.5 d     |                  | 2.786 au   | 5.6299584 h     |                     | positive (257°, 12°)         | 156.5 km   | [#555555](https://github.com/phun-ky/interstellar-tools/issues/555555) | 1            |
-| 3-juno          | Juno       | main-belt asteroid     | large asteroid | s-type       | sun    | 2.67 au      | 0.257    | 12.9    | 248.3   | 169.8    | 1.74882     | 1594.4 d     |                  | 1.986 au   | 7.20953091 h    |                     |                              | 117 km     | #aaaaaa                                                                | 1            |
-| 15-eunomia      | Eunomia    | main-belt asteroid     | large asteroid | s-type       | sun    | 2.643 au     | 0.186    | 11.7    | 97.5    | 293.3    | 1.054179    | 1567.6 d     |                  | 2.153 au   | 6.082753 h      | yes                 |                              | 136 km     | #bbbbbb                                                                | 1            |
+| 3-juno          | Juno       | main-belt asteroid     | large asteroid | s-type       | sun    | 2.668035 au  | 0.258443 | 12.967  | 248.032 | 170.173  | 3.815791    | 1591.8 d     |                  | 1.9785 au  | 7.20953091 h    |                     |                              | 117 km     | #aaaaaa                                                                | 1            |
+| 15-eunomia      | Eunomia    | main-belt asteroid     | large asteroid | s-type       | sun    | 2.643742 au  | 0.186204 | 11.747  | 96.96   | 293.516  | 2.19739     | 1570.1 d     |                  | 2.1515 au  | 6.082753 h      | yes                 |                              | 136 km     | #bbbbbb                                                                | 1            |
 | 101955-bennu    | Bennu      | near-earth asteroid    | apollo group   | b-type       | sun    | 1.128923 au  | 0.204652 | 6.026   | 65.672  | 2.179    | 0.912594    | 438.1 d      |                  | 0.8979 au  | 4.296061 h      | yes                 |                              | 0.24467 km | #46484C                                                                | 1            |
 | 162173-ryugu    | Ryugu      | near-earth asteroid    | apollo group   | c-type       | sun    | 1.189054 au  | 0.190016 | 5.884   | 211.272 | 251.727  | 4.657822    | 473.6 d      |                  | 0.9631 au  | 7.63262 h       | yes                 |                              | 0.4481 km  | #3B3936                                                                | 1            |
 | 25143-itokawa   | Itokawa    | near-earth asteroid    | apollo group   | s-type       | sun    | 1.324946 au  | 0.280528 | 1.717   | 160.138 | 71.614   | 1.267064    | 557.1 d      |                  | 0.9533 au  | 12.132395 h     | yes                 | positive (90.53°, -66.3°)    | 0.1638 km  | #8A7D69                                                                | 1            |
@@ -89,15 +88,15 @@ time.
   spectralType: 'v-type', // vesta has a unique basaltic surface
   parent: 'sun',
   orbit: {
-    a: { value: 2.362, unit: 'au' },
-    e: 0.09,
-    i: 7.1 as DegreesType,
-    w: 151.2 as DegreesType,
-    om: 103.8 as DegreesType,
+    a: { value: 2.361535, unit: 'au' },
+    e: 0.090022,
+    i: 7.134 as DegreesType,
+    w: 149.587 as DegreesType,
+    om: 103.951 as DegreesType,
     frame: { plane: 'ecliptic' },
-    angle: 5.527458 as Radians,
-    period: { value: 1325.2, unit: 'd' },
-    q: { value: 2.151, unit: 'au' }
+    angle: 5.886556 as Radians,
+    period: { value: 1325.5, unit: 'd' },
+    q: { value: 2.1489, unit: 'au' }
   },
   /** Sidereal rotation in hours: IAU */
   rotation: {
