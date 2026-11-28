@@ -125,6 +125,78 @@ describe('convert-temporal-unit', () => {
     assert.deepEqual(out, { value: 48, unit: 'h' });
   });
 
+  test('accepts an alias as the source unit', () => {
+    assert.deepEqual(
+      convertTemporalUnit(
+        { value: 1, unit: 'seconds' as TemporalUnitType },
+        'ms'
+      ),
+      { value: 1000, unit: 'ms' }
+    );
+    assert.deepEqual(
+      convertTemporalUnit({ value: 1, unit: 'us' as TemporalUnitType }, 'ns'),
+      { value: 1000, unit: 'ns' }
+    );
+  });
+
+  test('converts whole numbers exactly between powers of ten', () => {
+    assert.equal(
+      convertTemporalUnit({ value: 1, unit: 'ms' }, 'μs').value,
+      1000
+    );
+    assert.equal(
+      convertTemporalUnit({ value: 1, unit: 'μs' }, 'ns').value,
+      1000
+    );
+    assert.equal(
+      convertTemporalUnit({ value: 3, unit: 'ns' }, 'ps').value,
+      3000
+    );
+    assert.equal(convertTemporalUnit({ value: 1, unit: 's' }, 'ns').value, 1e9);
+    assert.equal(
+      convertTemporalUnit({ value: 2, unit: 'h' }, 'ms').value,
+      7.2e6
+    );
+
+    // Every step down from s to ys, and from Gyr to yr, for 1 to 100
+    const down = ['s', 'ms', 'μs', 'ns', 'ps', 'fs', 'as', 'zs', 'ys'] as const;
+    const years = ['Gyr', 'Myr', 'kyr', 'yr'] as const;
+
+    for (const units of [down, years])
+      units.forEach((from, i) =>
+        units.slice(i).forEach((to, steps) => {
+          const factor = 1000 ** steps;
+
+          for (let value = 1; value <= 100; value++)
+            if (value * factor <= Number.MAX_SAFE_INTEGER)
+              assert.equal(
+                convertTemporalUnit({ value, unit: from }, to).value,
+                value * factor,
+                `${value} ${from} → ${to}`
+              );
+        })
+      );
+  });
+
+  test('throws for a source unit that is unknown or not a string', () => {
+    assert.throws(
+      () =>
+        convertTemporalUnit(
+          { value: 1, unit: 'fortnight' as TemporalUnitType },
+          's'
+        ),
+      RangeError
+    );
+    assert.throws(
+      () =>
+        convertTemporalUnit(
+          { value: 1, unit: 5 as unknown as TemporalUnitType },
+          's'
+        ),
+      TypeError
+    );
+  });
+
   test('throws a RangeError for an unknown target unit', () => {
     assert.throws(
       () =>

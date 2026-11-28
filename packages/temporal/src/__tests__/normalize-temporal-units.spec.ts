@@ -116,6 +116,21 @@ describe('normalizeTemporalUnit', () => {
     assert.throws(() => normalizeTemporalUnit('lightyear'), RangeError);
   });
 
+  test('reads the micro sign, U+00B5, as the Greek mu, U+03BC', () => {
+    assert.equal(normalizeTemporalUnit('\u00b5s'), 'μs');
+    assert.equal(normalizeTemporalUnit('\u03bcs'), 'μs');
+  });
+
+  test('throws a TypeError for a unit that is not a string', () => {
+    for (const unit of [5, undefined, null, {}])
+      assert.throws(
+        () => normalizeTemporalUnit(unit as unknown as string),
+        (err) =>
+          err instanceof TypeError &&
+          err.message.startsWith('unit must be a string.')
+      );
+  });
+
   test('ignores keys inherited from Object.prototype', () => {
     for (const key of [
       'toString',

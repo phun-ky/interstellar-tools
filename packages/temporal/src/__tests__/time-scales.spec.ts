@@ -196,6 +196,17 @@ describe('dateFromJulianDate', () => {
     assert.throws(() => dateFromJulianDate(Number.NaN), TypeError);
     assert.throws(() => dateFromJulianDate(1e12), RangeError);
     assert.throws(() => dateFromJulianDate(2441317.4, 'TT'), RangeError);
+
+    // Further back than a Date reaches, on every scale
+    for (const scale of ['UTC', 'TAI', 'TT', 'TDB', 'GPS', 'UT1'] as const)
+      assert.throws(
+        () => dateFromJulianDate(-1e9, scale),
+        (err) =>
+          err instanceof RangeError &&
+          err.message ===
+            'jd is outside the range of a Date. Received: -1000000000',
+        scale
+      );
   });
 
   test('undoes julianDate to the millisecond, on every scale', () => {

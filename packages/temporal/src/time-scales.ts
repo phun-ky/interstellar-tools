@@ -255,6 +255,11 @@ export const dateFromJulianDate = (
     scale === 'TDB' ? exact - tdbMinusTt(exact) : exact
   );
 
+  // Further back than a Date reaches: say so here, as the leap-second check
+  // below can't print a date that far back
+  if (onScale < -8.64e15)
+    throw new RangeError(`jd is outside the range of a Date. Received: ${jd}`);
+
   let ms = onScale;
 
   if (scale !== 'UTC' && scale !== 'UT1') {

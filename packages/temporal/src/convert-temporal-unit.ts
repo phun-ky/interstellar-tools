@@ -59,15 +59,36 @@ export const SECONDS_PER: Readonly<Record<TemporalUnitType, number>> =
     Gyr: JULIAN_YEAR_SECONDS * 1e9
   });
 
+// Each unit as a whole number of seconds times a power of ten. 1e-3 and 1e-6
+// aren't exact in binary, but 10 ** 3 is, so whole values can convert exactly
+const SCALED: Readonly<Record<TemporalUnitType, readonly [number, number]>> = {
+  s: [1, 0],
+  ms: [1, -3],
+  μs: [1, -6],
+  ns: [1, -9],
+  ps: [1, -12],
+  fs: [1, -15],
+  as: [1, -18],
+  zs: [1, -21],
+  ys: [1, -24],
+  min: [60, 0],
+  h: [60 * 60, 0],
+  d: [SECONDS_PER_DAY, 0],
+  yr: [JULIAN_YEAR_SECONDS, 0],
+  kyr: [JULIAN_YEAR_SECONDS, 3],
+  Myr: [JULIAN_YEAR_SECONDS, 6],
+  Gyr: [JULIAN_YEAR_SECONDS, 9]
+};
+
 /**
- * Convert a temporal **duration** between any two canonical {@link TemporalUnitType} units.
+ * Convert a temporal **duration** between any two {@link TemporalUnitType} units or their aliases.
  *
- * - Uses {@link SECONDS_PER} with **seconds** as the intermediate unit.
+ * - Converts by the ratio of the units' lengths in {@link SECONDS_PER}, with
+ *   the powers of ten kept apart, so whole numbers convert exactly: 1 ms is
+ *   1000 μs, not 1000.0000000000001.
  * - Interprets `d` as the **SI day** and `yr/kyr/Myr/Gyr` via the **Julian year** convention.
- * - The `time.unit` is expected to be **canonical**; if you accept aliases upstream,
- *   normalize them before calling (e.g., with `normalizeTemporalUnit`).
- * - The `targetUnit` may be a canonical unit or an alias such as `'days'`; it is
- *   normalized to a canonical symbol.
+ * - Both `time.unit` and `targetUnit` may be canonical units or aliases such as
+ *   `'days'`; they are normalized with `normalizeTemporalUnit`.
  *
  * $$
  * \text{value}_{\text{target}}
@@ -76,7 +97,7 @@ export const SECONDS_PER: Readonly<Record<TemporalUnitType, number>> =
  *      {\mathrm{SECONDS\_PER}[u_{\text{out}}]}
  * $$
  *
- * @param time       Input duration `{ value, unit }` in canonical units.
+ * @param time       Input duration `{ value, unit }`, in a canonical unit or an alias.
  * @param targetUnit Desired output unit, canonical or an alias (will be normalized).
  * @returns          A new `{ value, unit }` where `unit` is the canonical target symbol.
  *
@@ -95,7 +116,8 @@ export const SECONDS_PER: Readonly<Record<TemporalUnitType, number>> =
  * // → { value: 365.25, unit: 'd' }
  * ```
  *
- * @throws {RangeError} If `targetUnit` is not a known unit or alias.
+ * @throws {TypeError} If `time.unit` or `targetUnit` is not a string.
+ * @throws {RangeError} If `time.unit` or `targetUnit` is not a known unit or alias.
  * @see SECONDS_PER_DAY
  * @see JULIAN_YEAR_SECONDS
  * @see normalizeTemporalUnit
@@ -105,11 +127,15 @@ export const convertTemporalUnit = (
   targetUnit: TemporalUnitType | TemporalUnitAliasType
 ): TemporalInterface => {
   const normalizedTargetUnit = normalizeTemporalUnit(targetUnit);
-  const { value, unit } = time;
-  // Convert input to seconds
-  const inSeconds = value * SECONDS_PER[unit];
-  // Convert seconds to target
-  const convertedValue = inSeconds / SECONDS_PER[normalizedTargetUnit];
+  const [secondsIn, powerIn] = SCALED[normalizeTemporalUnit(time.unit)];
+  const [secondsOut, powerOut] = SCALED[normalizedTargetUnit];
+  const power = powerIn - powerOut;
+  // Whole numbers on both sides, so a single division does the rounding
+  const numerator = secondsIn * 10 ** Math.max(power, 0);
+  const denominator = secondsOut * 10 ** Math.max(-power, 0);
 
-  return { value: convertedValue, unit: normalizedTargetUnit };
+  return {
+    value: (time.value * numerator) / denominator,
+    unit: normalizedTargetUnit
+  };
 };
