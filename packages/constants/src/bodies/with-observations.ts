@@ -31,7 +31,7 @@ const attach = <B extends { id: string }>(
  *
  * The datasets export what is measured about the bodies apart from them, keyed
  * by id, so an app loads only the groups it imports: `STAR_PARAMETERS`,
- * `STAR_ASTROMETRY`, `HELIOSPHERE`, `PLANET_RINGS`, `MOON_RING_ROLES`,
+ * `STAR_ASTROMETRY`, `PLANET_RINGS`, `MOON_RING_ROLES`,
  * `INTERSTELLAR_OBJECT_OBSERVATIONS` and `DISCOVERIES`. This puts them on the
  * bodies, for an app that wants everything in one object.
  *
@@ -40,6 +40,8 @@ const attach = <B extends { id: string }>(
  * - The bodies aren't changed: the ones with an entry are copied, the rest are
  *   returned as they are.
  * - Later groups win where two give the same field.
+ * - `HELIOSPHERE` is one object, not keyed by id: put it on the Sun as
+ *   `{ sun: { astrosphere: HELIOSPHERE } }`, as in the example.
  *
  * :::
  *
@@ -49,7 +51,9 @@ const attach = <B extends { id: string }>(
  * @group Observations
  * @example
  * ```ts
- * const stars = withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY);
+ * const stars = withObservations(STARS, STAR_PARAMETERS, STAR_ASTROMETRY, {
+ *   sun: { astrosphere: HELIOSPHERE }
+ * });
  *
  * stars.find(({ id }) => id === 'vega')?.observations?.luminosity?.value; // 40.12
  * ```
