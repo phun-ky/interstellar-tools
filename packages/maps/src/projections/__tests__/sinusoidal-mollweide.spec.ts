@@ -148,7 +148,7 @@ for (const [name, project, inverse] of [
     });
 
     test('still throws just off the map, at the equator and near a pole', () => {
-      for (const phi of [0, rad(89.9)]) {
+      for (const phi of [0 as Radians, rad(89.9)]) {
         const edge = project(phi, Math.PI as Radians, 6_371_008.8);
 
         // 1 m east of the edge
