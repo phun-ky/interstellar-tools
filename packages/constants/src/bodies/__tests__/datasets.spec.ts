@@ -335,8 +335,29 @@ describe('heliocentric orbits', () => {
 
   // JPL Horizons' heliocentric ecliptic elements osculating at J2000:
   // [a (au), e, i, w, om (°), true anomaly (rad), period (d)]
-  test('asteroids match JPL Horizons at J2000 where the dataset says so', () => {
+  test('asteroids match JPL Horizons at J2000', () => {
     const HORIZONS: Record<string, number[]> = {
+      '4-vesta': [
+        2.361535, 0.090022, 7.134, 149.587, 103.951, 5.886556, 1325.5
+      ],
+      '433-eros': [
+        1.458339, 0.222759, 10.828, 178.646, 304.416, 1.435064, 643.3
+      ],
+      '2-pallas': [
+        2.772322, 0.229644, 34.846, 310.266, 173.198, 6.082187, 1686
+      ],
+      '10-hygiea': [
+        3.138421, 0.119465, 3.843, 314.368, 283.663, 5.822137, 2030.8
+      ],
+      '16-psyche': [
+        2.920565, 0.138242, 3.093, 229.119, 150.466, 5.722216, 1823.1
+      ],
+      '3-juno': [
+        2.668035, 0.258443, 12.967, 248.032, 170.173, 3.815791, 1591.8
+      ],
+      '15-eunomia': [
+        2.643742, 0.186204, 11.747, 96.96, 293.516, 2.19739, 1570.1
+      ],
       '52-europa': [
         3.098887, 0.100976, 7.468, 342.329, 129.046, 0.894411, 1992.5
       ],
