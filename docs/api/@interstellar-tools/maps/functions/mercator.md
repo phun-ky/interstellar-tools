@@ -45,9 +45,11 @@ Where:
   `RangeError`. Maps clip the latitude: web maps (see
   [inverseMercator](inverseMercator.md)) stop at $\arctan\sinh\pi \approx
   85.0511°$, where the map is as tall as it is wide.
-- $\lambda - \lambda_0$ is wrapped to (−π, π], so the map is centred on the
-  central meridian. −π itself stays on the left edge, so a line that ends there,
-  like a ground track split at the antimeridian, isn't drawn across the map.
+- $\lambda - \lambda_0$ is wrapped to \[−π, π], so the map is centred on the
+  central meridian: −π, the west edge, only when $\lambda - \lambda_0$ is
+  exactly −π, and π otherwise. −π itself stays on the left edge, so a line that
+  ends there, like a ground track split at the antimeridian, isn't drawn across
+  the map.
 - A sphere only: on an oblate body this is the spherical Mercator web maps use,
   not the ellipsoidal one.
 

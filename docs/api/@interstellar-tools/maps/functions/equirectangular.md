@@ -47,9 +47,10 @@ Where:
   $\cos\varphi_1/\cos\varphi$, so it keeps neither angles nor areas.
 - Choose $\varphi_1$ near the latitude of interest for a regional map: Mars
   mosaics of mid-latitude sites, for example.
-- $\lambda - \lambda_0$ is wrapped to (−π, π]. −π itself stays on the left edge,
-  so a line that ends there, like a ground track split at the antimeridian,
-  isn't drawn across the map.
+- $\lambda - \lambda_0$ is wrapped to \[−π, π]: −π, the west edge, only when
+  $\lambda - \lambda_0$ is exactly −π, and π otherwise. −π itself stays on the
+  left edge, so a line that ends there, like a ground track split at the
+  antimeridian, isn't drawn across the map.
 
 :::
 

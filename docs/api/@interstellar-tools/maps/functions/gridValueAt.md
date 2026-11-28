@@ -8,7 +8,7 @@ function gridValueAt(grid: GridInterface, row: number, column: number): number;
 ```
 
 Defined in:
-[terrain/grid.ts:117](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/terrain/grid.ts#L117)
+[terrain/grid.ts:113](https://github.com/phun-ky/interstellar-tools/blob/main/packages/maps/src/terrain/grid.ts#L113)
 
 Read the value of one **cell** of a grid.
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.12.4](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.12.3...%40interstellar-tools%2Fmaps%400.12.4) (2026-11-28)
+
+### Bug
+
+* 🐛 Fix Mollweide near the poles, Mercator at the poles, and grid checks ([c0fad5e](https://github.com/phun-ky/interstellar-tools/commit/c0fad5ef2faaa121d963a69db1f178ec5b60c745))
+
 ## [0.12.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmaps%400.12.2...%40interstellar-tools%2Fmaps%400.12.3) (2026-11-28)
 
 ### Bug

@@ -47,6 +47,12 @@ The full documentation lives at
 npm i --save @interstellar-tools/maps
 ```
 
+## Functions
+
+| Function                                        | Description |
+| ----------------------------------------------- | ----------- |
+| [inverseMercator](functions/inverseMercator.md) | -           |
+
 ## Imaging
 
 | Function                                                            | Description                                                                                                        |
@@ -79,7 +85,6 @@ npm i --save @interstellar-tools/maps
 | [equirectangular](functions/equirectangular.md)                                   | Project a point on a sphere with the **equirectangular projection**: the simple cylindrical map, with latitude and longitude spaced evenly.                                                            |
 | [inverseEquirectangular](functions/inverseEquirectangular.md)                     | Find the point on a sphere for a point on an **equirectangular** map: the inverse of [equirectangular](functions/equirectangular.md).                                                                  |
 | [inverseLambertAzimuthalEqualArea](functions/inverseLambertAzimuthalEqualArea.md) | Find the point on a sphere for a point on a **Lambert azimuthal equal-area** map: the inverse of [lambertAzimuthalEqualArea](functions/lambertAzimuthalEqualArea.md).                                  |
-| [inverseMercator](functions/inverseMercator.md)                                   | Find the point on a sphere for a point on a **Mercator** map: the inverse of [mercator](functions/mercator.md).                                                                                        |
 | [inverseMollweide](functions/inverseMollweide.md)                                 | Find the point on a sphere for a point on a **Mollweide** map: the inverse of [mollweide](functions/mollweide.md).                                                                                     |
 | [inverseOrthographic](functions/inverseOrthographic.md)                           | Find the point on a sphere for a point on an **orthographic** map: the inverse of [orthographic](functions/orthographic.md).                                                                           |
 | [inverseSinusoidal](functions/inverseSinusoidal.md)                               | Find the point on a sphere for a point on a **sinusoidal** map: the inverse of [sinusoidal](functions/sinusoidal.md).                                                                                  |
