@@ -7,7 +7,7 @@ import { JULIAN_YEAR_SECONDS } from './temporal.js';
  * - **Meters** are the base distance unit.
  * - **Light-year** uses the **Julian year** (exactly 365.25 d) via {@link JULIAN_YEAR_SECONDS}.
  * - **Astronomical unit (au)** is exact per IAU 2012 B2.
- * - **Parsec** is defined by trigonometric parallax: `pc = au / tan(1″)`.
+ * - **Parsec** is exact per IAU 2015 B2: `pc = (648000 / π) au`.
  *
  * @see https://www.bipm.org/en/publications/si-brochure (SI Brochure)
  * @see https://www.iau.org/static/resolutions/IAU2012_English.pdf (IAU 2012 B2 - astronomical unit)
