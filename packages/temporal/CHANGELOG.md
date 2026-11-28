@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.0.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%402.0.1...%40interstellar-tools%2Ftemporal%402.0.2) (2026-11-28)
+
+### Tasks
+
+* 🤖 bump the minor-and-patch group across 1 directory with 3 updates ([c19c54c](https://github.com/phun-ky/interstellar-tools/commit/c19c54caf7469ae240484c008f6736110b823951))
+
+### Bug
+
+* 🐛 Make temporal unit conversion exact, alias-aware and strict about input ([b713580](https://github.com/phun-ky/interstellar-tools/commit/b7135803b6071d31b3393f01ad79d40310902089))
+
+### Markup, white-space, formatting, missing semi-colons...
+
+* 💄 lint the tests for eslint-config-phun-ky 3 ([7d31626](https://github.com/phun-ky/interstellar-tools/commit/7d3162678bce67e379cbe5791b346328d660c584))
+
 ## [2.0.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftemporal%402.0.0...%40interstellar-tools%2Ftemporal%402.0.1) (2026-11-16)
 
 ### Bug
