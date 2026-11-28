@@ -295,6 +295,73 @@ describe('state vectors and orbital elements', () => {
       )
     );
   });
+
+  test('kepler-propagating from far out on the way in keeps h and the energy, past periapsis', () => {
+    fc.assert(
+      fc.property(
+        a,
+        fc.oneof(fc.constant(1), hyperbolicE),
+        inclination,
+        angle,
+        angle,
+        // Close to the inbound asymptote: hundreds to millions of p out
+        fc.double({ min: 0.9, max: 0.999, noNaN: true }),
+        fc.double({ min: 0, max: 1, noNaN: true }),
+        (p, e, i, raan, argp, f, split) => {
+          const limit = e > 1 ? Math.acos(-1 / e) : Math.PI;
+          const start = elementsToState(
+            {
+              a: Infinity,
+              p,
+              e,
+              i: i as Radians,
+              raan: raan as Radians,
+              argp: argp as Radians,
+              nu: (-f * limit) as Radians
+            },
+            MU
+          );
+          const r0 = Math.hypot(...start.r);
+          // Long enough to pass periapsis and go well out again
+          const total = (4 * r0) / Math.hypot(...start.v);
+          const t1 = split * total;
+          const mid = keplerPropagate(start.r, start.v, t1, MU);
+          const twoSteps = keplerPropagate(mid.r, mid.v, total - t1, MU);
+          const oneStep = keplerPropagate(start.r, start.v, total, MU);
+          const h = ({ r, v }: typeof start) => [
+            r[1] * v[2] - r[2] * v[1],
+            r[2] * v[0] - r[0] * v[2],
+            r[0] * v[1] - r[1] * v[0]
+          ];
+          const energy = ({ r, v }: typeof start) =>
+            Math.hypot(...v) ** 2 / 2 - MU / Math.hypot(...r);
+          // The rounding already in a far-out state, with room to spare
+          const tol = 1e-13 * (r0 / p);
+          const h0 = h(start);
+          const hn = Math.hypot(...h0);
+
+          for (const [k, x] of h(oneStep).entries())
+            assert.ok(
+              Math.abs(x - h0[k]!) <= tol * hn,
+              `h[${k}]: ${x} vs ${h0[k]}`
+            );
+
+          assert.ok(
+            Math.abs(energy(oneStep) - energy(start)) <= tol * (MU / p),
+            'energy drifted'
+          );
+
+          const scale = Math.hypot(...oneStep.r);
+
+          for (let k = 0; k < 3; k++)
+            assert.ok(
+              Math.abs(twoSteps.r[k]! - oneStep.r[k]!) <= tol * scale,
+              `r[${k}]: ${twoSteps.r[k]} vs ${oneStep.r[k]}`
+            );
+        }
+      )
+    );
+  });
 });
 
 describe('relative motion', () => {
