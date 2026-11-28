@@ -103,7 +103,10 @@ export const registerBodies = (server: McpServer) => {
       mimeType: 'application/json'
     },
     (uri, { name }) => {
-      const dataset = DATASETS[String(name) as DatasetNameType];
+      // Not an inherited key, such as constructor or toString
+      const dataset = Object.hasOwn(DATASETS, String(name))
+        ? DATASETS[String(name) as DatasetNameType]
+        : undefined;
 
       if (!dataset) throw new Error(`Unknown dataset: ${String(name)}`);
 
@@ -127,6 +130,7 @@ export const registerBodies = (server: McpServer) => {
       inputSchema: {
         query: z
           .string()
+          .trim()
           .min(1)
           .describe(
             'Name, id or part of one, e.g. "mars" or "alpha-centauri".'

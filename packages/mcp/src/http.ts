@@ -27,6 +27,27 @@ export interface HttpServerOptionsInterface {
 
 const LOOPBACK = ['127.0.0.1', 'localhost', '::1'];
 const LOOPBACK_HOSTS = ['127.0.0.1', 'localhost', '[::1]'];
+
+/** Whether `host` is a loopback address, which only this machine can reach. */
+export const isLoopback = (host: string): boolean => LOOPBACK.includes(host);
+
+/**
+ * A TCP port from the command line or `$PORT`: a whole number in [0, 65535],
+ * where 0 picks a free one.
+ *
+ * @throws {RangeError} If `text` is anything else, including empty.
+ */
+export const parsePort = (text: string): number => {
+  const port = /^\d+$/.test(text.trim()) ? Number(text) : Number.NaN;
+
+  if (!(port <= 65_535))
+    throw new RangeError(
+      `port must be a whole number in [0, 65535]. Received: "${text}"`
+    );
+
+  return port;
+};
+
 /** Answer a rejected request with a JSON-RPC error, without reading its body. */
 const reject = (res: ServerResponse, message: string) => {
   res.writeHead(403, { 'content-type': 'application/json' }).end(
@@ -77,7 +98,7 @@ export const startHttpServer = ({
   port,
   host = '127.0.0.1',
   path = '/mcp',
-  allowedHosts = LOOPBACK.includes(host) ? LOOPBACK_HOSTS : undefined
+  allowedHosts = isLoopback(host) ? LOOPBACK_HOSTS : undefined
 }: HttpServerOptionsInterface): Promise<Server> => {
   const http = createHttpServer(async (req, res) => {
     if (allowedHosts) {

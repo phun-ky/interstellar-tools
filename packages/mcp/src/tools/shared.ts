@@ -48,12 +48,41 @@ export const angleOutput = (rad: number) => ({
  * Wraps a structured result so clients get both machine-readable
  * `structuredContent` and a JSON text block for models that only read text.
  */
+// The first value that isn't a finite number, with its path, if any
+const nonFinite = (
+  value: unknown,
+  path: string
+): [string, number] | undefined => {
+  if (typeof value === 'number')
+    return Number.isFinite(value) ? undefined : [path, value];
+
+  if (value && typeof value === 'object')
+    for (const [key, item] of Object.entries(value)) {
+      const found = nonFinite(item, path ? `${path}.${key}` : key);
+
+      if (found) return found;
+    }
+
+  return undefined;
+};
+
 export const result = <T extends Record<string, unknown>>(
   data: T
-): CallToolResult & { structuredContent: T } => ({
-  content: [{ type: 'text', text: JSON.stringify(data, null, 2) }],
-  structuredContent: data
-});
+): CallToolResult & { structuredContent: T } => {
+  // JSON and the output schemas have no NaN or Infinity: say which value
+  // overflowed, rather than fail the output check
+  const found = nonFinite(data, '');
+
+  if (found)
+    throw new RangeError(
+      `${found[0]} came out as ${found[1]}: the inputs are too large or too small for a finite result.`
+    );
+
+  return {
+    content: [{ type: 'text', text: JSON.stringify(data, null, 2) }],
+    structuredContent: data
+  };
+};
 
 /** Tool annotations shared by every calculation tool: pure, offline, deterministic. */
 export const PURE_TOOL = {

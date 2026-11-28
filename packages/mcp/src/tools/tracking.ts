@@ -63,7 +63,7 @@ const elementsInput = {
     .optional()
     .describe('A two-line element set: [line 1, line 2].'),
   omm: z
-    .union([z.string(), z.record(z.string(), z.unknown())])
+    .union([z.string().trim().min(1), z.record(z.string(), z.unknown())])
     .optional()
     .describe(
       'One Orbit Mean-elements Message record, as CelesTrak returns it with FORMAT=json, or its JSON text.'
@@ -107,9 +107,9 @@ const resolveElements = ({
       'Give the elements exactly one way: satellite (a snapshot id), tle or omm.'
     );
 
-  if (tle) return parseTle(tle[0], tle[1]);
+  if (tle !== undefined) return parseTle(tle[0], tle[1]);
 
-  if (omm) return parseOmm(omm);
+  if (omm !== undefined) return parseOmm(omm);
 
   const entry = SATELLITES.find(({ id }) => id === satellite!.trim());
 
@@ -466,6 +466,12 @@ export const registerTrackingTools = (server: McpServer) => {
     }) => {
       const larger = resolveMu('larger', primary, primary_mu_m3_s2);
       const smaller = resolveMu('smaller', secondary, secondary_mu_m3_s2);
+
+      if (smaller.mu > larger.mu)
+        throw new Error(
+          `The secondary is the larger body: its mu, ${smaller.mu} m³/s², is more than the primary's, ${larger.mu} m³/s². Swap primary and secondary.`
+        );
+
       const orbit =
         smaller.body && larger.body && smaller.body.parent === larger.body.id
           ? smaller.body.orbit

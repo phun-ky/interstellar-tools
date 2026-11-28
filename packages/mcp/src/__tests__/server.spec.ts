@@ -415,6 +415,13 @@ describe('state vector tools', () => {
   test('elements_to_state needs exactly one size, and rp_m for a parabola', async () => {
     const { a_m: _, ...rest } = elements;
 
+    // The tool takes rp_m, so a parabola is pointed there, not to p
+    assert.match(
+      (await call('elements_to_state', { ...elements, e: 1 })).content[0]!
+        .text!,
+      /give rp_m, its periapsis radius, instead of a_m/
+    );
+
     for (const args of [
       { ...elements, e: 1 },
       rest,
@@ -892,6 +899,20 @@ describe('imaging tools', () => {
     approx(res.structuredContent!.swath_m, 2000, 1e-9);
   });
 
+  test('says which output overflowed, instead of failing the output check', async () => {
+    const res = await call('camera_ground_resolution', {
+      distance_m: 1e308,
+      pixel_pitch_m: 1,
+      focal_length_m: 0.1
+    });
+
+    assert.equal(res.isError, true);
+    assert.equal(
+      res.content[0]!.text,
+      'gsd_m came out as Infinity: the inputs are too large or too small for a finite result.'
+    );
+  });
+
   test('camera_ground_resolution rejects a zero distance or pixel count', async () => {
     const camera = { pixel_pitch_m: 7e-6, focal_length_m: 0.7 };
 
@@ -1326,6 +1347,24 @@ describe('terrain tools', () => {
       );
   });
 
+  test('terrain tools reject a Sun past the zenith, in the caller’s unit', async () => {
+    const sun = { sun_azimuth: deg(315), sun_elevation: deg(100) };
+
+    for (const [name, args] of [
+      ['terrain_layer', { ...ramp, layer: 'hillshade', ...sun }],
+      ['terrain_at_cell', { ...ramp, row: 1, column: 1, ...sun }]
+    ] as const) {
+      const res = await call(name, args);
+
+      assert.equal(res.isError, true, name);
+      assert.equal(
+        res.content[0]!.text,
+        'sun_elevation must be in [-90°, 90°]. Received: 100 deg',
+        name
+      );
+    }
+  });
+
   test('terrain tools reject ragged, too small and too large grids', async () => {
     for (const elevation_m of [
       [
@@ -1377,6 +1416,19 @@ describe('bodies', () => {
     const planets = await readJson('interstellar://datasets/planets');
 
     assert.equal(planets[0].name, 'Mercury');
+  });
+
+  test('says an inherited key is not a dataset', async () => {
+    for (const name of ['constructor', 'toString', 'hasOwnProperty'])
+      await assert.rejects(
+        client.readResource({ uri: `interstellar://datasets/${name}` }),
+        new RegExp(`Unknown dataset: ${name}`)
+      );
+  });
+
+  test('find_body rejects a blank query instead of matching everything', async () => {
+    for (const query of ['', '   '])
+      assert.equal((await call('find_body', { query })).isError, true, query);
   });
 
   test('stars include Alpha Centauri, bound to its systems', async () => {
@@ -1540,6 +1592,19 @@ describe('tracking tools', () => {
     }
   });
 
+  test('satellite_position rejects blank elements with a clear message', async () => {
+    for (const omm of ['', '   ']) {
+      const res = await call('satellite_position', {
+        omm,
+        time: '2026-11-05T15:49:00Z'
+      });
+
+      assert.equal(res.isError, true, JSON.stringify(omm));
+      assert.match(res.content[0]!.text!, /omm/);
+      assert.doesNotMatch(res.content[0]!.text!, /Cannot read properties/);
+    }
+  });
+
   test('satellite_position puts the ISS where the tracking guide does', async () => {
     const res = await call('satellite_position', {
       satellite: 'iss',
@@ -1697,14 +1762,21 @@ describe('tracking tools', () => {
     approx(sunJupiter.hill_sphere_radius_m / 1.495978707e11, 0.338, 0.001);
   });
 
-  test('lagrange_points rejects unknown bodies and a missing separation', async () => {
+  test('lagrange_points rejects unknown, swapped and unrelated bodies', async () => {
     for (const [args, message] of [
       [{ primary: 'vulcan', secondary: 'earth' }, /Unknown body: vulcan/],
       [{ primary: 'sun', primary_mu_m3_s2: 1, secondary: 'earth' }, /not both/],
-      [{ primary: 'earth', secondary: 'jupiter' }, /Give separation_m/],
+      // Earth doesn't orbit Jupiter, so there's no separation to default to
+      [{ primary: 'jupiter', secondary: 'earth' }, /Give separation_m/],
+      // Swapped, by id or by mu, with or without a separation
+      [{ primary: 'earth', secondary: 'sun' }, /Swap primary and secondary/],
+      [
+        { primary: 'earth', secondary: 'sun', separation_m: 1.496e11 },
+        /Swap primary and secondary/
+      ],
       [
         { primary_mu_m3_s2: 1, secondary_mu_m3_s2: 2, separation_m: 1 },
-        /smaller body/
+        /Swap primary and secondary/
       ]
     ] as const) {
       const res = await call('lagrange_points', args);
