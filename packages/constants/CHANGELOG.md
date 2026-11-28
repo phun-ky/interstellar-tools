@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.0.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%403.0.2...%40interstellar-tools%2Fconstants%403.0.3) (2026-11-28)
+
+### Bug
+
+* 🐛 Correct four asteroid orbits, the Cassini Division and Vega's and Altair's radii ([ccc5bc2](https://github.com/phun-ky/interstellar-tools/commit/ccc5bc2005209c88e79f3691fb4c3a7235047b4e))
+
 ## [3.0.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%403.0.1...%40interstellar-tools%2Fconstants%403.0.2) (2026-11-27)
 
 ### Tasks

@@ -8,7 +8,7 @@ const HELIOSPHERE: AstrosphereInterface;
 ```
 
 Defined in:
-[bodies/heliosphere.ts:35](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/heliosphere.ts#L35)
+[bodies/heliosphere.ts:38](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/heliosphere.ts#L38)
 
 The Sun's **heliosphere**, the bubble the solar wind blows into the interstellar
 medium: the heliopause's distance towards the nose, on the flanks and down the
@@ -19,6 +19,9 @@ Kept apart from [STARS](STARS.md), so an app loads it only when it draws it. It
 goes on the Sun as its `observations.astrosphere`, with
 [withObservations](../functions/withObservations.md); see `STARS` for its
 sources.
+
+Its dates are `Date`s, which can't be frozen, so their setters change them for
+every importer: copy one before changing it, `new Date(date)`.
 
 ## Example
 

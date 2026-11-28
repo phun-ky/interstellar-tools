@@ -8,7 +8,7 @@ const STARS: StarsType;
 ```
 
 Defined in:
-[bodies/stars.ts:67](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L67)
+[bodies/stars.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/stars.ts#L68)
 
 Represents a dataset of well-known stars within the Milky Way.
 
@@ -65,10 +65,12 @@ Represents a dataset of well-known stars within the Milky Way.
   S-stars, whose radii aren't Habibi et al.'s. A luminosity given as log L/L☉ is
   converted, error bars and all. Vega and Altair spin fast enough to be hotter
   at their poles, so their temperatures are in `gravityDarkening`, and their
-  gravities are the pole's. The Sun's are the IAU's nominal values (Prša et al.
-  2016). A metallicity is left out where no bulk \[Fe/H] is measured, as for
-  Altair, Spica and Sirius A; Deneb's and Rigel's are \[M/H]. Deneb's `radius`
-  is Schiller & Przybilla's 203 R☉, like its mass.
+  gravities are the pole's. Their radii are equatorial, and no one temperature
+  fits them: their luminosities fall between those from the equator's and the
+  pole's. The Sun's are the IAU's nominal values (Prša et al. 2016). A
+  metallicity is left out where no bulk \[Fe/H] is measured, as for Altair,
+  Spica and Sirius A; Deneb's and Rigel's are \[M/H]. Deneb's `radius` is
+  Schiller & Przybilla's 203 R☉, like its mass.
 
 - The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is
   IBEX's map (Reisenfeld et al. 2021): nearest just south of the nose, flaring
@@ -96,8 +98,8 @@ time.
 | id               | name             | type        | category | parent             | orbit.a               | orbit.e | orbit.period | orbit.retrograde | orbit.angle        | rotation.period | rotation.iau            | mass         | radius                                                                         | mu (m³/s²)             | display.color | x        | y                     | z    |
 | ---------------- | ---------------- | ----------- | -------- | ------------------ | --------------------- | ------- | ------------ | ---------------- | ------------------ | --------------- | ----------------------- | ------------ | ------------------------------------------------------------------------------ | ---------------------- | ------------- | -------- | --------------------- | ---- |
 | sun              | Sun              | G2V         | star     | solar-system       |                       |         |              |                  |                    | 25.379995 d     | north (286.13°, 63.87°) | 1 M_sun      | 696340 km                                                                      | 1.3271244004127942e+20 | #fff5f1       |          |                       |      |
-| vega             | Vega             | A0V         | star     | milky-way          | 27230.011753394454 ly | 0.005   | 480 Myr      |                  | 1.569867205171707  | 0.71 d          |                         | 2.135 M_sun  | [`2600000`](https://github.com/phun-ky/interstellar-tools/commit/2600000) km   |                        | blue          | 25.3 ly  | 27230.011753394454 ly | 0 ly |
-| altair           | Altair           | A7V         | star     | milky-way          | 27050.005155082687 ly | 0.004   | 410 Myr      |                  | 1.5701789517599378 | 7.766667 h      |                         | 1.791 M_sun  | [`1700000`](https://github.com/phun-ky/interstellar-tools/commit/1700000) km   |                        | white         | 16.7 ly  | 27050.005155082687 ly | 0 ly |
+| vega             | Vega             | A0V         | star     | milky-way          | 27230.011753394454 ly | 0.005   | 480 Myr      |                  | 1.569867205171707  | 0.71 d          |                         | 2.135 M_sun  | [`1896478`](https://github.com/phun-ky/interstellar-tools/commit/1896478) km   |                        | blue          | 25.3 ly  | 27230.011753394454 ly | 0 ly |
+| altair           | Altair           | A7V         | star     | milky-way          | 27050.005155082687 ly | 0.004   | 410 Myr      |                  | 1.5701789517599378 | 7.766667 h      |                         | 1.791 M_sun  | [`1396966`](https://github.com/phun-ky/interstellar-tools/commit/1396966) km   |                        | white         | 16.7 ly  | 27050.005155082687 ly | 0 ly |
 | deneb            | Deneb            | A2Ia        | star     | milky-way          | 27375.280016832705 ly | 0.009   | 720 Myr      |                  | 1.475524958596149  |                 |                         | 19 M_sun     | [`1412271`](https://github.com/phun-ky/interstellar-tools/commit/141227100) km |                        | #cad7ff       | 2616 ly  | 27375.280016832705 ly | 0 ly |
 | spica-a          | Spica A          | B1III-IV    | star     | spica              | 0.050727 au           | 0.133   | 4.0145 d     |                  | 2.3899             | 2.007 d         |                         | 11.43 M_sun  | [`5196879`](https://github.com/phun-ky/interstellar-tools/commit/5196879) km   |                        | blue          |          |                       |      |
 | spica-b          | Spica B          | B2V         | star     | spica              | 0.080417 au           | 0.133   | 4.0145 d     |                  | 2.3899             | 2.676 d         |                         | 7.21 M_sun   | [`2601918`](https://github.com/phun-ky/interstellar-tools/commit/2601918) km   |                        | #cad7ff       |          |                       |      |
@@ -145,9 +147,8 @@ time.
   },
   /** Equatorial rotation in days: Monnier et al. 2012, from interferometry. Seen nearly pole-on */
   rotation: { period: { value: 0.71, unit: 'd' } },
-  /** Radius in km */
   mass: { value: 2.135, unit: 'M_sun' }, // Yoon et al. 2010
-  radius: { value: 2600000, unit: 'km' },
+  radius: { value: 1896478, unit: 'km' }, // 2.726 R☉ at the equator, Monnier et al. 2012
   display: {
     /** Visual representation color */
     color: 'blue'
