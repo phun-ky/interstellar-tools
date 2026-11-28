@@ -36,10 +36,10 @@ npm i --save @interstellar-tools/temporal
 
 ## Functions
 
-| Function                                                    | Description                                                                                                                        |
-| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| [convertTemporalUnit](functions/convertTemporalUnit.md)     | Convert a temporal **duration** between any two canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md) units.     |
-| [normalizeTemporalUnit](functions/normalizeTemporalUnit.md) | Normalize a user-provided **temporal unit string** into a canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md). |
+| Function                                                    | Description                                                                                                                           |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| [convertTemporalUnit](functions/convertTemporalUnit.md)     | Convert a temporal **duration** between any two [TemporalUnitType](../types/type-aliases/TemporalUnitType.md) units or their aliases. |
+| [normalizeTemporalUnit](functions/normalizeTemporalUnit.md) | Normalize a user-provided **temporal unit string** into a canonical [TemporalUnitType](../types/type-aliases/TemporalUnitType.md).    |
 
 ## Mars time
 

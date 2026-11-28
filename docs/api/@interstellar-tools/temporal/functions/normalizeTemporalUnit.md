@@ -8,7 +8,7 @@ function normalizeTemporalUnit(u: string): TemporalUnitType;
 ```
 
 Defined in:
-[normalize-temporal-unit.ts:127](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/normalize-temporal-unit.ts#L127)
+[normalize-temporal-unit.ts:129](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/normalize-temporal-unit.ts#L129)
 
 Normalize a user-provided **temporal unit string** into a canonical
 [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md).
@@ -33,6 +33,8 @@ Normalize a user-provided **temporal unit string** into a canonical
   pre-normalize casing upstream if desired.
 - The ASCII alias `"us"` is accepted and normalized to the Unicode microsecond
   symbol `"μs"`.
+- The input is NFKC-normalized, so the micro sign `"µs"` (U+00B5, as keyboards
+  type it) is read as `"μs"` (U+03BC).
 
 ## Parameters
 
@@ -50,9 +52,10 @@ The canonical [TemporalUnitType](../../types/type-aliases/TemporalUnitType.md)
 
 ## Throws
 
-[RangeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)
-If `u` does not match any known key in
-[NORMALIZE_TEMPORAL_UNIT](../variables/NORMALIZE_TEMPORAL_UNIT.md).
+- If `u` is not a string.
+- [RangeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)
+  If `u` does not match any known key in
+  [NORMALIZE_TEMPORAL_UNIT](../variables/NORMALIZE_TEMPORAL_UNIT.md).
 
 ## Example
 

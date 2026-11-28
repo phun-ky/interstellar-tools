@@ -55,19 +55,19 @@ function convertTemporalUnit(
 ```
 
 Defined in:
-[convert-temporal-unit.ts:103](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/convert-temporal-unit.ts#L103)
+[convert-temporal-unit.ts:125](https://github.com/phun-ky/interstellar-tools/blob/main/packages/temporal/src/convert-temporal-unit.ts#L125)
 
-Convert a temporal **duration** between any two canonical
-[TemporalUnitType](../../types/type-aliases/TemporalUnitType.md) units.
+Convert a temporal **duration** between any two
+[TemporalUnitType](../../types/type-aliases/TemporalUnitType.md) units or their
+aliases.
 
-- Uses [SECONDS_PER](../variables/SECONDS_PER.md) with **seconds** as the
-  intermediate unit.
+- Converts by the ratio of the units' lengths in
+  [SECONDS_PER](../variables/SECONDS_PER.md), with the powers of ten kept apart,
+  so whole numbers convert exactly: 1 ms is 1000 μs, not 1000.0000000000001.
 - Interprets `d` as the **SI day** and `yr/kyr/Myr/Gyr` via the **Julian year**
   convention.
-- The `time.unit` is expected to be **canonical**; if you accept aliases
-  upstream, normalize them before calling (e.g., with `normalizeTemporalUnit`).
-- The `targetUnit` may be a canonical unit or an alias such as `'days'`; it is
-  normalized to a canonical symbol.
+- Both `time.unit` and `targetUnit` may be canonical units or aliases such as
+  `'days'`; they are normalized with `normalizeTemporalUnit`.
 
 $$
 \text{value}_{\text{target}}
@@ -78,10 +78,10 @@ $$
 
 ## Parameters
 
-| Parameter    | Type                                                               | Description                                          |
-| ------------ | ------------------------------------------------------------------ | ---------------------------------------------------- |
-| `time`       | [`TemporalInterface`](../../types/interfaces/TemporalInterface.md) | Input duration `{ value, unit }` in canonical units. |
-| `targetUnit` |                                                                    | `"second"`                                           | `"seconds"` | `"millisecond"` | `"milliseconds"` | `"microsecond"` | `"microseconds"` | `"us"` | `"minute"` | `"minutes"` | `"hour"` | `"hours"` | `"day"` | `"days"` | `"year"` | `"years"` | `"yr"` | `"yrs"` | `"kiloyear"` | `"kiloyears"` | `"kyr"` | `"megayear"` | `"megayears"` | `"megaannum"` | `"megaannums"` | `"Myr"` | `"Ma"` | `"gigayear"` | `"gigayears"` | `"gigaannum"` | `"gigaannums"` | `"Gyr"` | `"Ga"` | `"s"` | `"ms"` | `"μs"` | `"ns"` | `"ps"` | `"fs"` | `"as"` | `"zs"` | `"ys"` | `"min"` | `"h"` | `"d"` | Desired output unit, canonical or an alias (will be normalized). |
+| Parameter    | Type                                                               | Description                                                        |
+| ------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `time`       | [`TemporalInterface`](../../types/interfaces/TemporalInterface.md) | Input duration `{ value, unit }`, in a canonical unit or an alias. |
+| `targetUnit` |                                                                    | `"second"`                                                         | `"seconds"` | `"millisecond"` | `"milliseconds"` | `"microsecond"` | `"microseconds"` | `"us"` | `"minute"` | `"minutes"` | `"hour"` | `"hours"` | `"day"` | `"days"` | `"year"` | `"years"` | `"yr"` | `"yrs"` | `"kiloyear"` | `"kiloyears"` | `"kyr"` | `"megayear"` | `"megayears"` | `"megaannum"` | `"megaannums"` | `"Myr"` | `"Ma"` | `"gigayear"` | `"gigayears"` | `"gigaannum"` | `"gigaannums"` | `"Gyr"` | `"Ga"` | `"s"` | `"ms"` | `"μs"` | `"ns"` | `"ps"` | `"fs"` | `"as"` | `"zs"` | `"ys"` | `"min"` | `"h"` | `"d"` | Desired output unit, canonical or an alias (will be normalized). |
 
 ## Returns
 
@@ -107,7 +107,8 @@ convertTemporalUnit({ value: 1, unit: 'yr' }, 'd');
 
 ## Throws
 
-If `targetUnit` is not a known unit or alias.
+- If `time.unit` or `targetUnit` is not a string.
+- If `time.unit` or `targetUnit` is not a known unit or alias.
 
 ## See
 
