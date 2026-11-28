@@ -62,7 +62,7 @@ const assertOptions = (phi0: number, phi1: number) => {
  * - The usual format for global mosaics and elevation models, where it's called **simple cylindrical**: a grid in degrees is a grid on the map. With $ \varphi_1 = 0 $ it's the plate carrée, twice as wide as tall.
  * - Distances are true along every meridian, and along the standard parallels $ \pm\varphi_1 $ east–west. Elsewhere east–west distances are stretched by $ \cos\varphi_1/\cos\varphi $, so it keeps neither angles nor areas.
  * - Choose $ \varphi_1 $ near the latitude of interest for a regional map: Mars mosaics of mid-latitude sites, for example.
- * - $ \lambda - \lambda_0 $ is wrapped to (−π, π].
+ * - $ \lambda - \lambda_0 $ is wrapped to [−π, π]: −π, the west edge, only when $ \lambda - \lambda_0 $ is exactly −π, and π otherwise.
  *   −π itself stays on the left edge, so a line that ends there, like a
  *   ground track split at the antimeridian, isn't drawn across the map.
  *

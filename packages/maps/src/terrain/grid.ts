@@ -1,4 +1,4 @@
-import { assertCell, assertGrid } from './window.js';
+import { assertCell, assertGrid, assertHeight } from './window.js';
 
 /**
  * A **raster grid** of values over a map, such as a digital elevation model (DEM): `rows × columns` cells of equal size, stored row by row.
@@ -34,7 +34,7 @@ export type ElevationGridInterface = GridInterface;
 /**
  * Create a **raster grid**, such as an elevation model, checking that its parts fit together.
  *
- * The values are kept as given, not copied: a `Float64Array` stays one, and changing it later changes the grid.
+ * The values are kept as given, not copied: a `Float64Array` stays one, and changing it later changes the grid. An infinite value put in later is rejected when the terrain functions read it.
  *
  * ::: info Notes
  *
@@ -79,11 +79,7 @@ export const createGrid = ({
 
   assertGrid(grid);
 
-  for (const z of values)
-    if (z === Infinity || z === -Infinity)
-      throw new TypeError(
-        `values must be finite, or noData or NaN for a missing cell. Received: ${z}`
-      );
+  for (const z of values) assertHeight(z);
 
   return grid;
 };
@@ -123,5 +119,9 @@ export const gridValueAt = (
 
   const z = grid.values[row * grid.columns + column]!;
 
-  return z === grid.noData ? NaN : z;
+  if (z === grid.noData) return NaN;
+
+  assertHeight(z);
+
+  return z;
 };

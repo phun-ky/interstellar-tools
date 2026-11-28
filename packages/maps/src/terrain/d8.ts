@@ -1,5 +1,6 @@
 // D8 flow routing, shared by the flow functions; not part of the public API.
 import type { GridInterface } from './grid.js';
+import { assertHeight } from './window.js';
 
 /** Row and column steps to the eight neighbours, clockwise from north. */
 export const D8_STEPS = [
@@ -17,7 +18,11 @@ export const D8_STEPS = [
 export const isMissing = ({ values, noData }: GridInterface, index: number) => {
   const z = values[index]!;
 
-  return Number.isNaN(z) || z === noData;
+  if (Number.isNaN(z) || z === noData) return true;
+
+  assertHeight(z);
+
+  return false;
 };
 
 /**

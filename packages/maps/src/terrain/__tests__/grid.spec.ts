@@ -1,7 +1,13 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
+import { aspectAt } from '../aspect.js';
+import { curvatureAt } from '../curvature.js';
+import { flowAccumulation } from '../flow-accumulation.js';
+import { gradientAt } from '../gradient-at.js';
 import { createGrid, gridValueAt } from '../grid.js';
+import { slopeAt, slopeGrid } from '../slope.js';
+import { terrainRoughnessIndexAt } from '../terrain-roughness-index.js';
 import { mapGrid, windowAt } from '../window.js';
 
 const cellSize = { x: 10, y: 20 };
@@ -194,5 +200,68 @@ describe('mapGrid (internal)', () => {
     assert.equal(doubled.noData, undefined);
     assert.deepEqual([...doubled.values.slice(0, 5)], [2, 4, 6, 8, 10]);
     assert.ok(Number.isNaN(doubled.values[5]));
+  });
+});
+
+describe('the terrain functions on a hand-written or changed grid', () => {
+  // 3 × 3, rising 1 a cell to the east
+  const values = [0, 1, 2, 0, 1, 2, 0, 1, 2];
+  const perCell = [
+    ['gradientAt', gradientAt],
+    ['slopeAt', slopeAt],
+    ['aspectAt', aspectAt],
+    ['curvatureAt', curvatureAt],
+    ['terrainRoughnessIndexAt', terrainRoughnessIndexAt],
+    ['gridValueAt', gridValueAt]
+  ] as const;
+
+  test('reject a cell size that is not > 0, or too few values, per cell too', () => {
+    for (const grid of [
+      { rows: 3, columns: 3, values, cellSize: { x: -1, y: 1 } },
+      { rows: 3, columns: 3, values, cellSize: { x: 0, y: 1 } },
+      { rows: 3, columns: 3, values: [0, 1], cellSize: { x: 1, y: 1 } }
+    ])
+      for (const [name, f] of perCell)
+        assert.throws(
+          () => f(grid, 1, 1),
+          RangeError,
+          `${name}: ${JSON.stringify(grid.cellSize)}, ${grid.values.length} values`
+        );
+  });
+
+  test('reject an infinite height where they read it', () => {
+    const literal = {
+      rows: 3,
+      columns: 3,
+      values: [0, 1, 2, 0, Infinity, 2, 0, 1, 2],
+      cellSize: { x: 1, y: 1 }
+    };
+    const message =
+      'values must be finite, or noData or NaN for a missing cell. Received: Infinity';
+    const rejects = (f: () => unknown, name: string) =>
+      assert.throws(
+        f,
+        (err) => err instanceof TypeError && err.message === message,
+        name
+      );
+
+    for (const [name, f] of perCell) rejects(() => f(literal, 1, 1), name);
+
+    rejects(() => slopeGrid(literal), 'slopeGrid');
+    rejects(() => flowAccumulation(literal), 'flowAccumulation');
+
+    // createGrid keeps the caller's array: a value changed later is caught
+    // when it's read
+    const changing = [...values];
+    const grid = createGrid({
+      rows: 3,
+      columns: 3,
+      values: changing,
+      cellSize: { x: 1, y: 1 }
+    });
+
+    changing[4] = -Infinity;
+    assert.throws(() => slopeAt(grid, 1, 1), TypeError);
+    assert.throws(() => gridValueAt(grid, 1, 1), TypeError);
   });
 });

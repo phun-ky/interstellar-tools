@@ -36,7 +36,7 @@ import {
  *
  * - The scale is $ \sec\varphi $ in every direction: true on the equator, twice as large at 60°, and without bound towards the poles. That's why Greenland looks as large as Africa. Angles stay true, so a line of constant compass bearing (a rhumb line) is straight.
  * - $ y $ grows without bound towards the poles, so the poles themselves throw a `RangeError`. Maps clip the latitude: web maps (see {@link inverseMercator}) stop at $ \arctan\sinh\pi \approx 85.0511° $, where the map is as tall as it is wide.
- * - $ \lambda - \lambda_0 $ is wrapped to (−π, π], so the map is centred on the central meridian.
+ * - $ \lambda - \lambda_0 $ is wrapped to [−π, π], so the map is centred on the central meridian: −π, the west edge, only when $ \lambda - \lambda_0 $ is exactly −π, and π otherwise.
  *   −π itself stays on the left edge, so a line that ends there, like a
  *   ground track split at the antimeridian, isn't drawn across the map.
  * - A sphere only: on an oblate body this is the spherical Mercator web maps use, not the ellipsoidal one.
@@ -100,7 +100,7 @@ export const mercator = (
  *
  * ::: info Notes
  *
- * - Every $ y $ has a latitude, so the whole map inverts; the poles are never reached.
+ * - Every $ y $ has a latitude, so the whole map inverts; the poles are never reached. Beyond about $ |y| = 37.3 R $ the latitude stops at the largest number below $ \pi/2 $, which {@link mercator} still takes.
  * - $ \lambda $ is wrapped to (−π, π]: the map repeats every $ 2\pi R $ east–west.
  * - A square map, $ 2\pi R $ on each side, reaches $ \arctan\sinh\pi \approx 85.0511° $ north and south: the limit of web map tiles.
  *
@@ -124,6 +124,10 @@ export const mercator = (
  * @see {@link mercator}
  * @see https://doi.org/10.3133/pp1395 Snyder (1987), Map projections: a working manual, ch. 7
  */
+// The largest double below π/2: atan(sinh(y)) rounds to π/2 itself from
+// about y = 37.4, where mercator would reject it
+const BELOW_POLE = Math.PI / 2 - Number.EPSILON;
+
 export const inverseMercator = (
   x: number,
   y: number,
@@ -137,7 +141,10 @@ export const inverseMercator = (
   assertSphere(R, lambda0);
 
   return {
-    phi: Math.atan(Math.sinh(y / R)) as Radians,
+    phi: Math.max(
+      -BELOW_POLE,
+      Math.min(BELOW_POLE, Math.atan(Math.sinh(y / R)))
+    ) as Radians,
     lambda: wrapLongitude(lambda0 + x / R)
   };
 };

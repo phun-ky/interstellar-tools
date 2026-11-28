@@ -40,7 +40,7 @@ import {
  * - **Equal-area**: a region's area on the map is its area on the sphere, so it suits geology, coverage and density maps. Shapes shear away from the central meridian and the equator.
  * - Every parallel is drawn at its true length, and so is the central meridian. The other meridians are sine curves, which meet at the poles: the map is $ 2\pi R $ wide and $ \pi R $ tall.
  * - Global planetary mosaics often use it, for example of Mars and the Moon.
- * - $ \lambda - \lambda_0 $ is wrapped to (−π, π], so the map is centred on the central meridian.
+ * - $ \lambda - \lambda_0 $ is wrapped to [−π, π], so the map is centred on the central meridian: −π, the west edge, only when $ \lambda - \lambda_0 $ is exactly −π, and π otherwise.
  *   −π itself stays on the left edge, so a line that ends there, like a
  *   ground track split at the antimeridian, isn't drawn across the map.
  *
