@@ -13,7 +13,7 @@ type CelestialBodyType =
 ```
 
 Defined in:
-[celestial-bodies/celestial-bodies.ts:39](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/celestial-bodies.ts#L39)
+[celestial-bodies/celestial-bodies.ts:44](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/celestial-bodies.ts#L44)
 
 Type alias representing a single celestial body.
 
@@ -23,6 +23,10 @@ Includes:
 - **Planets** (`PlanetInterface`)
 - **Moons** (`MoonInterface`)
 - **Comets** (`CometInterface`)
+- **Asteroids** (`AsteroidInterface`)
+
+Interstellar objects aren't included: their open orbits have their own type,
+`InterstellarObjectInterface`.
 
 ## Example
 

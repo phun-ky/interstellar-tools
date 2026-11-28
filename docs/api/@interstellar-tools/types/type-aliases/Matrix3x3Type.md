@@ -27,7 +27,7 @@ Layout:
 ## Example
 
 ```ts
-const I: Matrix3 = [
+const I: Matrix3x3Type = [
   [1, 0, 0],
   [0, 1, 0],
   [0, 0, 1]

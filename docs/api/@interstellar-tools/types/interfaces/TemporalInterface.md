@@ -4,7 +4,7 @@ TemporalInterface
 # Interface: TemporalInterface
 
 Defined in:
-[temporal.ts:136](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L136)
+[temporal.ts:139](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L139)
 
 Typed container for a scalar **duration**, combining a numeric `value` (from
 [ValueInterface](ValueInterface.md)) with a canonical
@@ -40,7 +40,7 @@ unit: TemporalUnitType;
 ```
 
 Defined in:
-[temporal.ts:138](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L138)
+[temporal.ts:141](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L141)
 
 Canonical temporal unit symbol (case-sensitive).
 
