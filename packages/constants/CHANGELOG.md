@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.0.4](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%403.0.3...%40interstellar-tools%2Fconstants%403.0.4) (2026-11-28)
+
+### Bug
+
+* 🐛 Give the other seven asteroids JPL Horizons' elements at J2000 ([46747bb](https://github.com/phun-ky/interstellar-tools/commit/46747bb54aa0cb6c2dddc0a701eb3d0670208b21))
+
 ## [3.0.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fconstants%403.0.2...%40interstellar-tools%2Fconstants%403.0.3) (2026-11-28)
 
 ### Bug

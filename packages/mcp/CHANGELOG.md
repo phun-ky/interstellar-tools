@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.3.2...%40interstellar-tools%2Fmcp%402.3.3) (2026-11-28)
+
+### Bug
+
+* 🐛 Make MCP errors clear and the HTTP server's options safer ([80cb95e](https://github.com/phun-ky/interstellar-tools/commit/80cb95e68942f29235c4c80289c64e95263b7dd6))
+
 ## [2.3.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fmcp%402.3.1...%40interstellar-tools%2Fmcp%402.3.2) (2026-11-27)
 
 ### Bug

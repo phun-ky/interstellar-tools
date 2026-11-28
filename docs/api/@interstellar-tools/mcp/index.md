@@ -61,8 +61,9 @@ npx -y @interstellar-tools/mcp --http --port 3000
 The server is stateless and binds to `127.0.0.1` unless you pass
 `--host 0.0.0.0`. On loopback it only answers requests addressed to `localhost`,
 `127.0.0.1` or `[::1]`, which protects it from DNS rebinding; pass
-`--allowed-hosts` with your public host name when you serve it elsewhere.
-Step-by-step setup for each assistant is in the
+`--allowed-hosts` with your public host name when you serve it elsewhere. Bound
+anywhere else without `--allowed-hosts`, it checks no host name, and says so
+with a warning on stderr. Step-by-step setup for each assistant is in the
 [MCP guide](https://phun-ky.net/interstellar-tools/guide/mcp/).
 
 ## Units
@@ -179,4 +180,6 @@ MCP server exposing interstellar-tools equations and datasets.
 | Function                                        | Description                                                                                                                                                                                         |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [createServer](functions/createServer.md)       | Create an MCP server with every interstellar-tools tool and resource registered. Connect it to a transport of your choice.                                                                          |
+| [isLoopback](functions/isLoopback.md)           | Whether `host` is a loopback address, which only this machine can reach.                                                                                                                            |
+| [parsePort](functions/parsePort.md)             | A TCP port from the command line or `$PORT`: a whole number in \[0, 65535], where 0 picks a free one.                                                                                               |
 | [startHttpServer](functions/startHttpServer.md) | Serve the MCP server over Streamable HTTP, for clients that only accept remote servers. Runs stateless: every request gets a fresh server, which is cheap because every tool is a pure calculation. |
