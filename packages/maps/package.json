@@ -65,11 +65,11 @@
     "test:ci": "glob-bin -c \"node --import tsx --test --no-warnings --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-exclude='**/__tests__/**' --test-coverage-lines=100 --test-coverage-branches=99 --test-coverage-functions=100 --test-reporter=cobertura --test-reporter-destination=coverage/cobertura-coverage.xml --test-reporter=spec --test-reporter-destination=stdout\" \"**/__tests__/**/*.spec.ts\""
   },
   "dependencies": {
-    "@interstellar-tools/constants": "^3.0.0",
     "@interstellar-tools/equations": "^2.0.0",
     "@interstellar-tools/types": "^3.0.0"
   },
   "devDependencies": {
+    "@interstellar-tools/constants": "^3.0.0",
     "@types/node": "^24.19.2",
     "fast-check": "4.10.2",
     "prettier": "^3.10.1",
