@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.3](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.2.2...%40interstellar-tools%2Fequations%402.2.3) (2026-11-28)
+
+### Bug
+
+* 🐛 Make keplerPropagate accurate from far out on open orbits ([ccd55ab](https://github.com/phun-ky/interstellar-tools/commit/ccd55abb5d0ce8f0f7f10198cd958137e3e0d3c7))
+
 ## [2.2.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Fequations%402.2.1...%40interstellar-tools%2Fequations%402.2.2) (2026-11-27)
 
 ### Bug
