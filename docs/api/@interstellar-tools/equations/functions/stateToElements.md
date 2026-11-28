@@ -9,7 +9,9 @@ function stateToElements(
   v: Vector3DTupleType,
   mu: number,
   tolerance?: number
-): ClassicalElementsInterface;
+): ClassicalElementsInterface & {
+  p: number;
+};
 ```
 
 Defined in:
@@ -101,8 +103,9 @@ stateToElements(
 ## Returns
 
 [`ClassicalElementsInterface`](../../types/interfaces/ClassicalElementsInterface.md)
+& { `p`: `number`; }
 
-The classical orbital elements.
+The classical orbital elements, always with `p`.
 
 ## Throws
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.1.2](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%403.1.1...%40interstellar-tools%2Ftypes%403.1.2) (2026-11-28)
+
+### Bug
+
+* 🐛 Correct type docs and type stateToElements' p as always given ([3fdd3fc](https://github.com/phun-ky/interstellar-tools/commit/3fdd3fc6d2fdc4039b15581c97add34d2a638805))
+
 ## [3.1.1](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftypes%403.1.0...%40interstellar-tools%2Ftypes%403.1.1) (2026-11-27)
 
 ### Tasks

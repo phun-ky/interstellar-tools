@@ -8,7 +8,7 @@ type TimeScaleType = 'UTC' | 'TAI' | 'TT' | 'UT1' | 'TDB' | 'GPS';
 ```
 
 Defined in:
-[temporal.ts:181](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L181)
+[temporal.ts:184](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L184)
 
 A **time scale**: the clock a moment is read on.
 

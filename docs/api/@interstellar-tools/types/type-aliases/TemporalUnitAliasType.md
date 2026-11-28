@@ -40,7 +40,7 @@ type TemporalUnitAliasType =
 ```
 
 Defined in:
-[temporal.ts:84](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L84)
+[temporal.ts:87](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/temporal.ts#L87)
 
 Human-friendly **temporal unit aliases** accepted at input time.
 
@@ -60,6 +60,9 @@ These strings could be parsed and **normalized** to your canonical
 - **Geology-style** tokens (`Ma`, `Ga`, `megaannum`, `gigaannum`) are accepted
   but normalized to `Myr`/`Gyr` **as durations** (not "million years ago").
 - **Case-sensitive**: tokens are matched exactly as listed.
+- The year family's symbols `yr`, `kyr`, `Myr` and `Gyr` are canonical, but this
+  type also lists them; the other canonical symbols it doesn't. To tell whether
+  a unit is canonical, check it against `TemporalUnitType`, not this type.
 
 ## Recommended flow
 

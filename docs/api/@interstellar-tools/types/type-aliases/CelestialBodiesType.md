@@ -8,10 +8,11 @@ type CelestialBodiesType = CelestialBodyType[];
 ```
 
 Defined in:
-[celestial-bodies/celestial-bodies.ts:20](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/celestial-bodies.ts#L20)
+[celestial-bodies/celestial-bodies.ts:21](https://github.com/phun-ky/interstellar-tools/blob/main/packages/types/src/celestial-bodies/celestial-bodies.ts#L21)
 
 A list of celestial bodies of any kind: stars, planets, moons, comets and
-asteroids, mixed.
+asteroids, mixed. Interstellar objects aren't included: their open orbits have
+their own type, `InterstellarObjectInterface`.
 
 ## Example
 
