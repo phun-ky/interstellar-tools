@@ -100,10 +100,12 @@ export const NORMALIZE_TEMPORAL_UNIT = Object.freeze({
  * - **Case-sensitive** exact match against {@link NORMALIZE_TEMPORAL_UNIT}. For example, `"Seconds"` (capital S)
  *   will fail; use `"seconds"` instead, or pre-normalize casing upstream if desired.
  * - The ASCII alias `"us"` is accepted and normalized to the Unicode microsecond symbol `"μs"`.
+ * - The input is NFKC-normalized, so the micro sign `"µs"` (U+00B5, as keyboards type it) is read as `"μs"` (U+03BC).
  *
  * @param u - The input unit string. Leading/trailing whitespace is ignored; content is **case-sensitive**.
  * @returns The canonical {@link TemporalUnitType} (e.g., `"s"`, `"ms"`, `"μs"`, `"min"`, `"h"`, `"d"`, `"yr"`, `"kyr"`, `"Myr"`, `"Gyr"`).
  *
+ * @throws {TypeError} If `u` is not a string.
  * @throws {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError | RangeError} If `u` does not match any known key in {@link NORMALIZE_TEMPORAL_UNIT}.
  *
  * @example
@@ -125,7 +127,11 @@ export const NORMALIZE_TEMPORAL_UNIT = Object.freeze({
  */
 /* node:coverage enable */
 export const normalizeTemporalUnit = (u: string): TemporalUnitType => {
-  const k = u.trim();
+  if (typeof u !== 'string')
+    throw new TypeError(`unit must be a string. Received: ${String(u)}`);
+
+  // NFKC turns the micro sign, U+00B5, into the Greek mu the table uses
+  const k = u.trim().normalize('NFKC');
   const v = Object.prototype.hasOwnProperty.call(NORMALIZE_TEMPORAL_UNIT, k)
     ? NORMALIZE_TEMPORAL_UNIT[k as keyof typeof NORMALIZE_TEMPORAL_UNIT]
     : undefined;
