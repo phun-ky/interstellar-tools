@@ -36,6 +36,9 @@ export const TIME_SCALE_UT1 = 'UT1' as const;
  * At that epoch **TT − UTC = 64.184 s**, so the corresponding UTC instant is:
  * **2000-01-01T11:58:55.816Z**.
  *
+ * A `Date` can't be frozen, so its setters change it for every
+ * importer: copy it before changing it, `new Date(J2000_UTC)`.
+ *
  * @example
  * // Milliseconds from UTC midnight to J2000 (UTC):
  * const deltaMs = +J2000_UTC - +EPOCH_2000_UTC_MIDNIGHT; // 43_135_816 ms
@@ -61,6 +64,9 @@ export const J2000_UTC_TIME_SCALE = TIME_SCALE_UTC;
  * This is **not** the J2000 epoch itself (which occurs 11:58:55.816 later in UTC).
  *
  * :::
+ *
+ * A `Date` can't be frozen, so its setters change it for every
+ * importer: copy it before changing it, `new Date(EPOCH_2000_UTC_MIDNIGHT)`.
  *
  * @group Date
  */

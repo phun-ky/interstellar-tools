@@ -23,6 +23,8 @@ import {
  *   barycentre: ʻOumuamua's from Bailer-Jones et al. 2018, Borisov's from Bailer-Jones et al.
  *   2020, and 3I/ATLAS's from JPL's solution, within 0.03 km/s of Seligman et al. 2025's.
  * - ʻOumuamua and 3I/ATLAS go round the Sun backwards, `retrograde: true`.
+ * - `orbit.periapsisTime` is a `Date`, which can't be frozen, so its setters change it for every
+ *   importer: copy it before changing it, `new Date(orbit.periapsisTime)`.
  * - 3I/ATLAS's orbit is from JPL's solution #55, on observations from 3 October 2025 to
  *   16 October 2026.
  * - `radius`: ʻOumuamua's is an effective one, for a body perhaps 6 to 10 times longer than wide,

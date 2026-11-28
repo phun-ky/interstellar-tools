@@ -25,6 +25,9 @@ const REISENFELD_2021 = paper(
  * goes on the Sun as its `observations.astrosphere`, with {@link withObservations}; see `STARS` for
  * its sources.
  *
+ * Its dates are `Date`s, which can't be frozen, so their setters change them
+ * for every importer: copy one before changing it, `new Date(date)`.
+ *
  * @group Observations
  * @example
  * ```ts

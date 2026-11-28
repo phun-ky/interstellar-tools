@@ -17,8 +17,9 @@ import { AsteroidsType, DegreesType, Radians } from '@interstellar-tools/types';
  *   Eros, Pallas, Davida, 52 Europa, Itokawa, Lutetia, Ida, Gaspra and Šteins. Their poles are
  *   `'positive'`, by the right-hand rule. Itokawa's and Lutetia's prime meridians are arbitrary,
  *   and Šteins's turns at the IAU's rounded 6.05 h, 0.75° a day slower than its `period`.
- * - The asteroids spacecraft visited, from Bennu to Apophis, have JPL Horizons' osculating
- *   elements at J2000, and `mu` where a spacecraft or a moon weighed them.
+ * - The asteroids spacecraft visited, from Bennu to Apophis, and 52 Europa, 704 Interamnia,
+ *   511 Davida and 31 Euphrosyne have JPL Horizons' osculating elements at J2000, and `mu` where a
+ *   spacecraft or a moon weighed them.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -188,15 +189,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'f-type',
     parent: 'sun',
     orbit: {
-      a: { value: 3.062, unit: 'au' },
-      e: 0.127,
-      i: 17.3 as DegreesType,
-      w: 339.4 as DegreesType,
-      om: 73.1 as DegreesType,
+      a: { value: 3.06398, unit: 'au' },
+      e: 0.146135,
+      i: 17.323 as DegreesType,
+      w: 94.515 as DegreesType,
+      om: 280.657 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 0.788889 as Radians,
-      period: { value: 1960.9, unit: 'd' },
-      q: { value: 2.671, unit: 'au' }
+      angle: 3.996901 as Radians,
+      period: { value: 1959, unit: 'd' },
+      q: { value: 2.6162, unit: 'au' }
     },
     /** Sidereal rotation in hours: Hanuš et al. 2020 */
     rotation: { period: { value: 8.71234, unit: 'h' } },
@@ -214,15 +215,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'c-type',
     parent: 'sun',
     orbit: {
-      a: { value: 3.155, unit: 'au' },
-      e: 0.223,
-      i: 26.3 as DegreesType,
-      w: 34.8 as DegreesType,
-      om: 359.2 as DegreesType,
+      a: { value: 3.146162, unit: 'au' },
+      e: 0.227765,
+      i: 26.345 as DegreesType,
+      w: 62.351 as DegreesType,
+      om: 31.292 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 3.150319 as Radians,
-      period: { value: 2045.5, unit: 'd' },
-      q: { value: 2.451, unit: 'au' }
+      angle: 4.487739 as Radians,
+      period: { value: 2038.3, unit: 'd' },
+      q: { value: 2.4296, unit: 'au' }
     },
     /** Sidereal rotation in hours: Yang et al. 2020 */
     rotation: { period: { value: 5.529595, unit: 'h' } },
@@ -266,15 +267,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'c-type',
     parent: 'sun',
     orbit: {
-      a: { value: 3.168, unit: 'au' },
-      e: 0.195,
-      i: 15.9 as DegreesType,
-      w: 308.2 as DegreesType,
-      om: 296.1 as DegreesType,
+      a: { value: 3.170009, unit: 'au' },
+      e: 0.183078,
+      i: 15.942 as DegreesType,
+      w: 338.885 as DegreesType,
+      om: 107.764 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 2.099631 as Radians,
-      period: { value: 2059.6, unit: 'd' },
-      q: { value: 2.549, unit: 'au' }
+      angle: 3.11773 as Radians,
+      period: { value: 2061.5, unit: 'd' },
+      q: { value: 2.5897, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU */
     rotation: {
@@ -303,15 +304,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'c-type',
     parent: 'sun',
     orbit: {
-      a: { value: 3.101, unit: 'au' },
-      e: 0.101,
-      i: 7.5 as DegreesType,
-      w: 87.7 as DegreesType,
-      om: 304.4 as DegreesType,
+      a: { value: 3.098887, unit: 'au' },
+      e: 0.100976,
+      i: 7.468 as DegreesType,
+      w: 342.329 as DegreesType,
+      om: 129.046 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 3.675663 as Radians,
-      period: { value: 1977.9, unit: 'd' },
-      q: { value: 2.788, unit: 'au' }
+      angle: 0.894411 as Radians,
+      period: { value: 1992.5, unit: 'd' },
+      q: { value: 2.786, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU */
     rotation: {
