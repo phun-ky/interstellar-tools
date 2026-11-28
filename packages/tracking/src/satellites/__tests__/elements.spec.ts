@@ -460,6 +460,37 @@ describe('parseOmm', () => {
     assert.equal('objectId' in sat, false);
   });
 
+  test('reads null in an optional field as missing, as JSON feeds send it', () => {
+    const sat = parseOmm({
+      ...ISS_OMM,
+      ELEMENT_SET_NO: null,
+      REV_AT_EPOCH: null,
+      CLASSIFICATION_TYPE: null,
+      OBJECT_NAME: null,
+      OBJECT_ID: null
+    });
+
+    assert.equal(sat.elementSetNumber, 0);
+    assert.equal(sat.revolutionNumber, 0);
+    assert.equal(sat.classification, 'U');
+    assert.equal('name' in sat, false);
+    assert.equal('objectId' in sat, false);
+    assert.equal(sat.meanMotion, parseOmm(ISS_OMM).meanMotion);
+  });
+
+  test('still rejects null in a required field', () => {
+    assert.throws(
+      () => parseOmm({ ...ISS_OMM, MEAN_MOTION: null }),
+      (err) =>
+        err instanceof TypeError &&
+        err.message === 'OMM MEAN_MOTION must be a number. Received: null'
+    );
+    assert.throws(
+      () => parseOmm({ ...ISS_OMM, EPOCH: null }),
+      (err) => err instanceof RangeError && err.message.startsWith('OMM EPOCH')
+    );
+  });
+
   describe('rejects', () => {
     const typeError = (fn: () => unknown, message: string) =>
       assert.throws(

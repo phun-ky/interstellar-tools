@@ -453,6 +453,12 @@ describe('propagateNumerically', () => {
         RangeError,
         'step must be > 0. Received: 0'
       );
+      // A day at a millisecond is 86.4 million samples: stop before building them
+      throwsWith(
+        () => propagateNumerically(start, FROM, after(DAY), { step: 0.001 }),
+        RangeError,
+        'The ephemeris would have more than 1000000 samples: take a longer step. Received: 0.001 s'
+      );
       throwsWith(
         () =>
           propagateNumerically(start, FROM, after(DAY), {
