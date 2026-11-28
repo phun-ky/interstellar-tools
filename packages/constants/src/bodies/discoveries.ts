@@ -12,6 +12,9 @@ import type {
  * {@link withObservations} puts it on, as a body's
  * `observations.discovery`.
  *
+ * Its dates are `Date`s, which can't be frozen, so their setters change them
+ * for every importer: copy one before changing it, `new Date(date)`.
+ *
  * @group Observations
  * @example
  * ```ts

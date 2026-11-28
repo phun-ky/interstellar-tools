@@ -38,7 +38,8 @@ import { DegreesType, Radians, StarsType } from '@interstellar-tools/types';
  *   for every star but the S-stars, whose radii aren't Habibi et al.'s. A luminosity given as
  *   log L/L☉ is converted, error bars and all. Vega and Altair spin fast enough to be hotter at
  *   their poles, so their temperatures are in `gravityDarkening`, and their gravities are the
- *   pole's. The Sun's are the IAU's nominal values (Prša et al. 2016). A metallicity is left out
+ *   pole's. Their radii are equatorial, and no one temperature fits them: their luminosities
+ *   fall between those from the equator's and the pole's. The Sun's are the IAU's nominal values (Prša et al. 2016). A metallicity is left out
  *   where no bulk [Fe/H] is measured, as for Altair, Spica and Sirius A; Deneb's and Rigel's are
  *   [M/H]. Deneb's `radius` is Schiller & Przybilla's 203 R☉, like its mass.
  * - The Sun's `observations.astrosphere` is the heliosphere. Its heliopause is IBEX's map
@@ -122,9 +123,8 @@ export const STARS: StarsType = [
     },
     /** Equatorial rotation in days: Monnier et al. 2012, from interferometry. Seen nearly pole-on */
     rotation: { period: { value: 0.71, unit: 'd' } },
-    /** Radius in km */
     mass: { value: 2.135, unit: 'M_sun' }, // Yoon et al. 2010
-    radius: { value: 2600000, unit: 'km' },
+    radius: { value: 1896478, unit: 'km' }, // 2.726 R☉ at the equator, Monnier et al. 2012
     display: {
       /** Visual representation color */
       color: 'blue'
@@ -150,7 +150,7 @@ export const STARS: StarsType = [
     /** Equatorial rotation in hours, 7 h 46 m: Bouchaud et al. 2020, from interferometry */
     rotation: { period: { value: 7.766667, unit: 'h' } },
     mass: { value: 1.791, unit: 'M_sun' }, // Peterson et al. 2006
-    radius: { value: 1700000, unit: 'km' },
+    radius: { value: 1396966, unit: 'km' }, // 2.008 R☉ at the equator, Bouchaud et al. 2020
     display: {
       color: 'white'
     },

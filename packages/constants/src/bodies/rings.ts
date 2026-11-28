@@ -214,8 +214,9 @@ const SATURN_RINGS: RingSystemInterface = {
     gap('Maxwell Gap', 87_343, 87_610, SATURN_C_RING),
     gap('Bond Gap', 88_686, 88_723, SATURN_C_RING),
     gap('Dawes Gap', 90_200, 90_221, SATURN_C_RING),
-    gap('Cassini Division', 117_500, 122_050, SATURN_EDGES, [0, 0.2]),
-    gap('Huygens Gap', 117_500, 117_930, SATURN_CASSINI_DIVISION),
+    // The Cassini Division and Huygens Gap start where the B ring ends
+    gap('Cassini Division', 117_570, 122_050, SATURN_EDGES, [0, 0.2]),
+    gap('Huygens Gap', 117_570, 117_930, SATURN_CASSINI_DIVISION),
     gap('Herschel Gap', 118_188, 118_284, SATURN_CASSINI_DIVISION),
     gap('Russell Gap', 118_590, 118_628, SATURN_CASSINI_DIVISION),
     gap('Jeffreys Gap', 118_930, 118_967, SATURN_CASSINI_DIVISION),

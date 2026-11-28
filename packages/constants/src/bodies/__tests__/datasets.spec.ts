@@ -322,6 +322,54 @@ describe('heliocentric orbits', () => {
     }
   });
 
+  test('asteroid periods match the semi-major axis (Kepler III, within 0.5 %)', () => {
+    for (const { name, orbit } of ASTEROIDS) {
+      const expected = 365.25 * orbit.a.value ** 1.5;
+
+      assert.ok(
+        Math.abs(orbit.period.value / expected - 1) < 0.005,
+        `${name}: period ${orbit.period.value} d, Kepler III gives ${expected.toFixed(1)} d`
+      );
+    }
+  });
+
+  // JPL Horizons' heliocentric ecliptic elements osculating at J2000:
+  // [a (au), e, i, w, om (°), true anomaly (rad), period (d)]
+  test('asteroids match JPL Horizons at J2000 where the dataset says so', () => {
+    const HORIZONS: Record<string, number[]> = {
+      '52-europa': [
+        3.098887, 0.100976, 7.468, 342.329, 129.046, 0.894411, 1992.5
+      ],
+      '704-interamnia': [
+        3.06398, 0.146135, 17.323, 94.515, 280.657, 3.996901, 1959
+      ],
+      '511-davida': [
+        3.170009, 0.183078, 15.942, 338.885, 107.764, 3.11773, 2061.5
+      ],
+      '31-euphrosyne': [
+        3.146162, 0.227765, 26.345, 62.351, 31.292, 4.487739, 2038.3
+      ]
+    };
+
+    for (const [id, expected] of Object.entries(HORIZONS)) {
+      const { orbit } = ASTEROIDS.find((body) => body.id === id)!;
+
+      assert.deepEqual(
+        [
+          orbit.a.value,
+          orbit.e,
+          orbit.i,
+          orbit.w,
+          orbit.om,
+          orbit.angle,
+          orbit.period.value
+        ],
+        expected,
+        id
+      );
+    }
+  });
+
   test('perihelion distance matches q = a(1 − e) (within 3 %)', () => {
     for (const { name, orbit } of [...COMETS, ...ASTEROIDS]) {
       const expected = orbit.a.value * (1 - orbit.e);
@@ -788,6 +836,18 @@ describe('rotation of the Sun, stars, asteroids and comets', () => {
 });
 
 describe('stars', () => {
+  test('gives Vega and Altair their measured equatorial radii', () => {
+    // Monnier et al. 2012, Bouchaud et al. 2020, in nominal solar radii
+    for (const [id, solarRadii] of [
+      ['vega', 2.726],
+      ['altair', 2.008]
+    ] as const) {
+      const { radius } = STARS.find((star) => star.id === id)!;
+
+      assert.ok(Math.abs(radius!.value - solarRadii * 695_700) < 1, id);
+    }
+  });
+
   test('orbiting the galaxy use ly and Myr, with a galactic position', () => {
     for (const star of STARS.filter((s) => GALAXY_IDS.has(s.parent ?? ''))) {
       assert.equal(star.orbit?.a.unit, 'ly', `${star.name}.orbit.a`);
@@ -2068,6 +2128,22 @@ describe('rings', () => {
   const RINGED = PLANETS.filter(({ observations }) => observations?.rings);
   const ringsOf = (id: string) =>
     PLANETS.find((planet) => planet.id === id)!.observations!.rings!;
+
+  test("start the Cassini Division and Huygens Gap at the B ring's edge", () => {
+    const { rings, gaps = [] } = ringsOf('saturn');
+    const edge = (list: typeof rings, name: string) =>
+      list.find((feature) => feature.name === name)!;
+    const b = edge(rings, 'B');
+    const a = edge(rings, 'A');
+    const cassini = edge(gaps, 'Cassini Division');
+
+    assert.equal(cassini.innerRadius.value, b.outerRadius.value);
+    assert.equal(cassini.outerRadius.value, a.innerRadius.value);
+    assert.equal(
+      edge(gaps, 'Huygens Gap').innerRadius.value,
+      b.outerRadius.value
+    );
+  });
 
   test('belong to Jupiter, Saturn, Uranus and Neptune', () => {
     assert.deepEqual(

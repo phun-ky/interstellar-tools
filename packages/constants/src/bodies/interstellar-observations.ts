@@ -28,6 +28,9 @@ const mpec = (path: string): ObservationSourceInterface => ({
  *
  * Kept apart from {@link INTERSTELLAR_OBJECTS}, so an app loads these only
  * when it shows them; their discoveries are in {@link DISCOVERIES}.
+ *
+ * Its dates are `Date`s, which can't be frozen, so their setters change them
+ * for every importer: copy one before changing it, `new Date(date)`.
  * {@link withObservations} puts both on the objects.
  *
  * @group Observations
