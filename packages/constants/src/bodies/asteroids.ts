@@ -17,9 +17,8 @@ import { AsteroidsType, DegreesType, Radians } from '@interstellar-tools/types';
  *   Eros, Pallas, Davida, 52 Europa, Itokawa, Lutetia, Ida, Gaspra and Šteins. Their poles are
  *   `'positive'`, by the right-hand rule. Itokawa's and Lutetia's prime meridians are arbitrary,
  *   and Šteins's turns at the IAU's rounded 6.05 h, 0.75° a day slower than its `period`.
- * - The asteroids spacecraft visited, from Bennu to Apophis, and 52 Europa, 704 Interamnia,
- *   511 Davida and 31 Euphrosyne have JPL Horizons' osculating elements at J2000, and `mu` where a
- *   spacecraft or a moon weighed them.
+ * - Every asteroid has JPL Horizons' osculating elements at J2000, and `mu` where a spacecraft or
+ *   a moon weighed it.
  *
  * - Sources: compiled from public references, mainly NASA, NASA JPL, ESA and Wikipedia. See [data sources](https://github.com/phun-ky/interstellar-tools/blob/main/NOTICE.md#data).
  * :::
@@ -46,15 +45,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'v-type', // vesta has a unique basaltic surface
     parent: 'sun',
     orbit: {
-      a: { value: 2.362, unit: 'au' },
-      e: 0.09,
-      i: 7.1 as DegreesType,
-      w: 151.2 as DegreesType,
-      om: 103.8 as DegreesType,
+      a: { value: 2.361535, unit: 'au' },
+      e: 0.090022,
+      i: 7.134 as DegreesType,
+      w: 149.587 as DegreesType,
+      om: 103.951 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 5.527458 as Radians,
-      period: { value: 1325.2, unit: 'd' },
-      q: { value: 2.151, unit: 'au' }
+      angle: 5.886556 as Radians,
+      period: { value: 1325.5, unit: 'd' },
+      q: { value: 2.1489, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU */
     rotation: {
@@ -84,15 +83,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 's-type',
     parent: 'sun',
     orbit: {
-      a: { value: 1.458, unit: 'au' },
-      e: 0.223,
-      i: 10.8 as DegreesType,
-      w: 178.9 as DegreesType,
-      om: 304.3 as DegreesType,
+      a: { value: 1.458339, unit: 'au' },
+      e: 0.222759,
+      i: 10.828 as DegreesType,
+      w: 178.646 as DegreesType,
+      om: 304.416 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 1.553343 as Radians,
-      period: { value: 643.2, unit: 'd' },
-      q: { value: 1.134, unit: 'au' }
+      angle: 1.435064 as Radians,
+      period: { value: 643.3, unit: 'd' },
+      q: { value: 1.1335, unit: 'au' }
     },
     /** Sidereal rotation in hours: IAU. It spins on its side */
     rotation: {
@@ -121,15 +120,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'b-type',
     parent: 'sun',
     orbit: {
-      a: { value: 2.773, unit: 'au' },
-      e: 0.231,
-      i: 34.8 as DegreesType,
-      w: 310.2 as DegreesType,
-      om: 173.1 as DegreesType,
+      a: { value: 2.772322, unit: 'au' },
+      e: 0.229644,
+      i: 34.846 as DegreesType,
+      w: 310.266 as DegreesType,
+      om: 173.198 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 0.579449 as Radians,
-      period: { value: 1684.9, unit: 'd' },
-      q: { value: 2.13, unit: 'au' }
+      angle: 6.082187 as Radians,
+      period: { value: 1686, unit: 'd' },
+      q: { value: 2.1357, unit: 'au' }
     },
     /**
      * Sidereal rotation in hours: IAU. Its pole (Carry et al. 2010) is 100°
@@ -163,15 +162,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'c-type',
     parent: 'sun',
     orbit: {
-      a: { value: 3.141, unit: 'au' },
-      e: 0.112,
-      i: 3.8 as DegreesType,
-      w: 312.3 as DegreesType,
-      om: 283.2 as DegreesType,
+      a: { value: 3.138421, unit: 'au' },
+      e: 0.119465,
+      i: 3.843 as DegreesType,
+      w: 314.368 as DegreesType,
+      om: 283.663 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 2.656391 as Radians,
-      period: { value: 2033.8, unit: 'd' },
-      q: { value: 2.788, unit: 'au' }
+      angle: 5.822137 as Radians,
+      period: { value: 2030.8, unit: 'd' },
+      q: { value: 2.7635, unit: 'au' }
     },
     /** Sidereal rotation in hours: Vernazza et al. 2020, backwards against the Sun's spin */
     rotation: { period: { value: 13.82559, unit: 'h' }, retrograde: true },
@@ -241,15 +240,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 'm-type',
     parent: 'sun',
     orbit: {
-      a: { value: 2.924, unit: 'au' },
-      e: 0.14,
-      i: 3.1 as DegreesType,
-      w: 228.0 as DegreesType,
-      om: 150.2 as DegreesType,
+      a: { value: 2.920565, unit: 'au' },
+      e: 0.138242,
+      i: 3.093 as DegreesType,
+      w: 229.119 as DegreesType,
+      om: 150.466 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 1.520182 as Radians,
-      period: { value: 1820.1, unit: 'd' },
-      q: { value: 2.515, unit: 'au' }
+      angle: 5.722216 as Radians,
+      period: { value: 1823.1, unit: 'd' },
+      q: { value: 2.5168, unit: 'au' }
     },
     /** Sidereal rotation in hours: Viikinkoski et al. 2018. On its side, just past backwards: its pole is 94° from the Sun's */
     rotation: { period: { value: 4.195948, unit: 'h' }, retrograde: true },
@@ -341,15 +340,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 's-type',
     parent: 'sun',
     orbit: {
-      a: { value: 2.67, unit: 'au' },
-      e: 0.257,
-      i: 12.9 as DegreesType,
-      w: 248.3 as DegreesType,
-      om: 169.8 as DegreesType,
+      a: { value: 2.668035, unit: 'au' },
+      e: 0.258443,
+      i: 12.967 as DegreesType,
+      w: 248.032 as DegreesType,
+      om: 170.173 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 1.74882 as Radians,
-      period: { value: 1594.4, unit: 'd' },
-      q: { value: 1.986, unit: 'au' }
+      angle: 3.815791 as Radians,
+      period: { value: 1591.8, unit: 'd' },
+      q: { value: 1.9785, unit: 'au' }
     },
     /** Sidereal rotation in hours: Viikinkoski et al. 2015 */
     rotation: { period: { value: 7.20953091, unit: 'h' } },
@@ -367,15 +366,15 @@ export const ASTEROIDS: AsteroidsType = [
     spectralType: 's-type',
     parent: 'sun',
     orbit: {
-      a: { value: 2.643, unit: 'au' },
-      e: 0.186,
-      i: 11.7 as DegreesType,
-      w: 97.5 as DegreesType,
-      om: 293.3 as DegreesType,
+      a: { value: 2.643742, unit: 'au' },
+      e: 0.186204,
+      i: 11.747 as DegreesType,
+      w: 96.96 as DegreesType,
+      om: 293.516 as DegreesType,
       frame: { plane: 'ecliptic' },
-      angle: 1.054179 as Radians,
-      period: { value: 1567.6, unit: 'd' },
-      q: { value: 2.153, unit: 'au' }
+      angle: 2.19739 as Radians,
+      period: { value: 1570.1, unit: 'd' },
+      q: { value: 2.1515, unit: 'au' }
     },
     /** Sidereal rotation in hours: Viikinkoski et al. 2017, backwards against the Sun's spin */
     rotation: { period: { value: 6.082753, unit: 'h' }, retrograde: true },
