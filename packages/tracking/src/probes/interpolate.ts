@@ -4,6 +4,8 @@ import type {
   Vector3DTupleType
 } from '@interstellar-tools/types';
 
+import { toTai } from './epoch.js';
+
 /** Options for {@link stateAt}. */
 export interface StateAtOptionsInterface {
   /** How many samples around the date to interpolate through, from 2 to 8: 4 by default, a polynomial of degree 7. */
@@ -38,6 +40,8 @@ export interface StateAtOptionsInterface {
  *   own example recommends, and follow a sharp perihelion that linear
  *   interpolation cuts across.
  * - At a sample's epoch, the sample is returned exactly.
+ * - **Time is counted in TAI**, so a leap second between samples is counted:
+ *   a `Date` skips it.
  * - Only within the ephemeris: outside the first and last samples, it throws
  *   rather than extrapolate. Near either end, the samples are taken from the
  *   one side.
@@ -123,10 +127,11 @@ export const stateAt = (
   const window = samples.slice(from, from + n);
   // Time in units of the window's span, from the date: well scaled for the
   // divided differences
-  const span =
-    (window[n - 1]!.epoch.getTime() - window[0]!.epoch.getTime()) / 1000;
+  // Counted on TAI, as a Date skips leap seconds
+  const now = toTai(date);
+  const span = (toTai(window[n - 1]!.epoch) - toTai(window[0]!.epoch)) / 1000;
   const z = window.flatMap(({ epoch }) => {
-    const tau = (epoch.getTime() - t) / 1000 / span;
+    const tau = (toTai(epoch) - now) / 1000 / span;
 
     return [tau, tau];
   });

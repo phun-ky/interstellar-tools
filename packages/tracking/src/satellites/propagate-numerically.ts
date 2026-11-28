@@ -19,6 +19,8 @@ import type {
   Vector3DTupleType
 } from '@interstellar-tools/types';
 
+import { fromTai, toTai } from '../probes/epoch.js';
+
 import { temeToEarthFixed } from './earth-fixed.js';
 import { earthShadow } from './shadow.js';
 import { assertDate, assertVector } from './validate.js';
@@ -119,6 +121,8 @@ const heightOf = (r: readonly number[]) =>
  *   between them with {@link stateAt}, or fit SGP4 elements to them with
  *   {@link fitElements}.
  * - A manoeuvre at the moment of a sample shows in that sample.
+ * - **Time is counted in TAI**, so a leap second in the span is counted. A
+ *   sample that would fall inside one is left out, as a `Date` can't hold it.
  * - **The air density** is the exponential model's average by default. For
  *   solar activity, pass `nrlmsise00` from `@interstellar-tools/equations`
  *   with forecast space weather, as in the example: it gets the point under
@@ -188,6 +192,8 @@ export const propagateNumerically = (
       `to must be after from. Received: ${to.toISOString()}, from ${from.toISOString()}`
     );
 
+  // Seconds are counted on TAI, as a Date skips leap seconds
+  const startTai = toTai(from);
   const { step = 60, forces = {}, integrator = {}, manoeuvres = [] } = options;
   const {
     zonal = true,
@@ -257,7 +263,7 @@ export const propagateNumerically = (
           `manoeuvres[${k}].frame must be 'inertial' or 'rtn'. Received: ${String(burn.frame)}`
         );
 
-      return { t: (at - start) / 1000, burn };
+      return { t: (toTai(burn.epoch) - startTai) / 1000, burn };
     })
     .sort((a, b) => a.t - b.t);
   const density =
@@ -269,7 +275,7 @@ export const propagateNumerically = (
     const v = [y[3]!, y[4]!, y[5]!];
     const distance = Math.hypot(...r);
     const a = r.map((x) => (-EGM2008.mu * x) / distance ** 3);
-    const date = new Date(start + t * 1000);
+    const date = fromTai(startTai + t * 1000);
 
     if (J.length > 0)
       add(a, zonalHarmonicsAcceleration(r, EGM2008.mu, EGM2008.radius, J));
@@ -330,7 +336,7 @@ export const propagateNumerically = (
   };
   const fallen = (_t: number, y: readonly number[]) =>
     heightOf(y) < REENTRY_HEIGHT;
-  const total = (end - start) / 1000;
+  const total = (toTai(to) - startTai) / 1000;
 
   if (Math.ceil(total / step) >= MAX_POINTS)
     throw new RangeError(
@@ -346,12 +352,18 @@ export const propagateNumerically = (
   outputs.push(total);
 
   const samples: EphemerisSampleInterface[] = [];
-  const sample = (t: number, y: readonly number[]) =>
-    samples.push({
-      epoch: new Date(start + t * 1000),
-      r: [y[0]!, y[1]!, y[2]!],
-      v: [y[3]!, y[4]!, y[5]!]
-    });
+  const sample = (t: number, y: readonly number[]) => {
+    const tai = startTai + Math.round(t * 1000);
+    const epoch = fromTai(tai);
+
+    // Inside a leap second, which a Date can't hold: no sample
+    if (toTai(epoch) === tai)
+      samples.push({
+        epoch,
+        r: [y[0]!, y[1]!, y[2]!],
+        v: [y[3]!, y[4]!, y[5]!]
+      });
+  };
 
   let y = [...state.r, ...state.v];
   let time = 0;

@@ -160,6 +160,28 @@ describe('stateAt', () => {
     );
   });
 
+  test('counts a leap second between the samples', () => {
+    // Earth daily across 2016-12-31's leap second: 4.3 km off when the day
+    // that holds it was taken as 86 400 s
+    const daily = horizons('horizons-earth-leap-second-1d.txt');
+
+    for (const { epoch, r } of horizons('horizons-earth-leap-second-truth.txt')
+      .samples)
+      assert.ok(distance(stateAt(daily, epoch).r, r) < 1, epoch.toISOString());
+  });
+
+  test('interpolates samples from before 1972, when UTC had no leap seconds', () => {
+    const samples = [0, 1, 2, 3].map((day) => ({
+      epoch: new Date(Date.UTC(1969, 6, 20 + day)),
+      r: [day * 86_400, 0, 0] as Vector3DTupleType,
+      v: [1, 0, 0] as Vector3DTupleType
+    }));
+    const ephemeris = { ...voyager1, samples };
+    const { r } = stateAt(ephemeris, new Date(Date.UTC(1969, 6, 21, 12)));
+
+    assert.ok(distance(r, [129_600, 0, 0]) < 1e-6);
+  });
+
   test('rejects a date outside the ephemeris, or invalid input', () => {
     assert.throws(
       () => stateAt(voyager1, new Date('2026-01-12T00:00:00Z')),
