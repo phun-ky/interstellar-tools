@@ -24,6 +24,8 @@ import { earthShadow } from './shadow.js';
 import { assertDate, assertVector } from './validate.js';
 import { A, E_SQUARED } from './wgs84.js';
 
+const MAX_POINTS = 1_000_000;
+
 /** An impulsive manoeuvre for {@link propagateNumerically}: a change of velocity at a moment. */
 export interface ManoeuvreInterface {
   /** The moment of the burn. */
@@ -130,7 +132,7 @@ const heightOf = (r: readonly number[]) =>
  * @param options - `step`, the time between samples in **s**; `forces`; `integrator`; and `manoeuvres`.
  * @returns An ephemeris centred on `'EARTH'`, in the frame `'TEME'` and the time scale `'UTC'`, with a sample every `step` seconds.
  * @throws {TypeError} If `r` or `v` is not three finite numbers, a date is not a valid `Date`, or an option is not a finite number or a function where it should be.
- * @throws {RangeError} If `to` isn't after `from`, a step, coefficient or tolerance is not > 0, or a manoeuvre is outside the span.
+ * @throws {RangeError} If `to` isn't after `from`, a step, coefficient or tolerance is not > 0, a manoeuvre is outside the span, or `step` would give a million samples or more.
  * @group Satellites
  *
  * @example
@@ -329,6 +331,12 @@ export const propagateNumerically = (
   const fallen = (_t: number, y: readonly number[]) =>
     heightOf(y) < REENTRY_HEIGHT;
   const total = (end - start) / 1000;
+
+  if (Math.ceil(total / step) >= MAX_POINTS)
+    throw new RangeError(
+      `The ephemeris would have more than ${MAX_POINTS} samples: take a longer step. Received: ${step} s`
+    );
+
   const outputs: number[] = [];
 
   // k · step, not a running sum, which drifts; and none a rounding error short

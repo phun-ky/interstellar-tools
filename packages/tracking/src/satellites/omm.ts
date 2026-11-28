@@ -67,8 +67,9 @@ const DAY_S = 86_400;
  *   Space-Track does.
  * - `EPOCH` is in UTC, with or without a trailing `Z`. `epochJulianDate` keeps
  *   all its decimals; `epoch`, a `Date`, rounds to the millisecond.
- * - `ELEMENT_SET_NO` and `REV_AT_EPOCH` are 0 when missing, and
- *   `CLASSIFICATION_TYPE` is `U`. Everything else SGP4 needs is required.
+ * - `ELEMENT_SET_NO` and `REV_AT_EPOCH` are 0 when missing or `null`, and
+ *   `CLASSIFICATION_TYPE` is `U`; `OBJECT_NAME` and `OBJECT_ID` may be missing
+ *   or `null` too. Everything else SGP4 needs is required, and can't be `null`.
  * - The XML and key-value forms of OMM aren't read.
  *
  * :::
@@ -110,7 +111,9 @@ export const parseOmm = (omm: string | object): MeanElementsInterface => {
     const keyword = KEYWORDS[key];
     const raw = value(keyword);
 
-    if (raw === undefined && OPTIONAL.includes(keyword)) return 0;
+    // JSON feeds send null for a value they don't have
+    if ((raw === undefined || raw === null) && OPTIONAL.includes(keyword))
+      return 0;
 
     const parsed =
       typeof raw === 'number'
@@ -127,7 +130,7 @@ export const parseOmm = (omm: string | object): MeanElementsInterface => {
     return parsed;
   };
   const text = (keyword: string): string | undefined => {
-    const raw = value(keyword);
+    const raw = value(keyword) ?? undefined;
 
     if (raw !== undefined && typeof raw !== 'string')
       throw new TypeError(
