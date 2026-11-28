@@ -4,7 +4,7 @@
 # Interface: PropagateNumericallyOptionsInterface
 
 Defined in:
-[satellites/propagate-numerically.ts:57](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L57)
+[satellites/propagate-numerically.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L59)
 
 Options for [propagateNumerically](../functions/propagateNumerically.md).
 
@@ -17,7 +17,7 @@ forces?: NumericalForcesInterface;
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:61](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L61)
+[satellites/propagate-numerically.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L63)
 
 The forces to model.
 
@@ -34,16 +34,16 @@ integrator?: {
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L63)
+[satellites/propagate-numerically.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L65)
 
 `'rk45'`, adaptive steps within a relative `tolerance` (default 1e-10), or
 `'rk4'`, fixed steps of `step` **s** (default 10). Defaults to `'rk45'`.
 
 | Name         | Type     | Defined in                                                                                                                                                      |
 | ------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `method?`    | `"rk45"` | `"rk4"`                                                                                                                                                         | [satellites/propagate-numerically.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L63) |
-| `step?`      | `number` | [satellites/propagate-numerically.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L63) |
-| `tolerance?` | `number` | [satellites/propagate-numerically.ts:63](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L63) |
+| `method?`    | `"rk45"` | `"rk4"`                                                                                                                                                         | [satellites/propagate-numerically.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L65) |
+| `step?`      | `number` | [satellites/propagate-numerically.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L65) |
+| `tolerance?` | `number` | [satellites/propagate-numerically.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L65) |
 
 ---
 
@@ -54,7 +54,7 @@ manoeuvres?: readonly ManoeuvreInterface[];
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:65](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L65)
+[satellites/propagate-numerically.ts:67](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L67)
 
 Impulsive burns along the way.
 
@@ -67,6 +67,6 @@ step?: number;
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:59](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L59)
+[satellites/propagate-numerically.ts:61](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L61)
 
 The time between the samples returned, in **s**. Defaults to 60.

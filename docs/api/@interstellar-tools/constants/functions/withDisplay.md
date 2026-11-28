@@ -16,7 +16,7 @@ function withDisplay<
 ```
 
 Defined in:
-[bodies/with-observations.ts:81](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/with-observations.ts#L81)
+[bodies/with-observations.ts:85](https://github.com/phun-ky/interstellar-tools/blob/main/packages/constants/src/bodies/with-observations.ts#L85)
 
 The bodies, with **drawing groups kept apart** put on them: each body's entry in
 each group is merged into its `display`, beside its colour.

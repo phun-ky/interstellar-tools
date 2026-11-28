@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.6](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.5...%40interstellar-tools%2Ftracking%400.13.6) (2026-11-28)
+
+### Bug
+
+* **tracking:** count leap seconds when interpolating and propagating ([8f7f8cd](https://github.com/phun-ky/interstellar-tools/commit/8f7f8cda6c336ef193bc1b99e351ed21fcb20ca7))
+
 ## [0.13.5](https://github.com/phun-ky/interstellar-tools/compare/%40interstellar-tools%2Ftracking%400.13.4...%40interstellar-tools%2Ftracking%400.13.5) (2026-11-28)
 
 ### Bug

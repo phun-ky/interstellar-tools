@@ -4,7 +4,7 @@
 # Interface: ManoeuvreInterface
 
 Defined in:
-[satellites/propagate-numerically.ts:30](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L30)
+[satellites/propagate-numerically.ts:32](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L32)
 
 An impulsive manoeuvre for
 [propagateNumerically](../functions/propagateNumerically.md): a change of
@@ -19,7 +19,7 @@ deltaV: Vector3DTupleType;
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:34](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L34)
+[satellites/propagate-numerically.ts:36](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L36)
 
 The change of velocity in **m/s**, on the axes `frame` names.
 
@@ -32,7 +32,7 @@ epoch: Date;
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:32](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L32)
+[satellites/propagate-numerically.ts:34](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L34)
 
 The moment of the burn.
 
@@ -45,7 +45,7 @@ frame?: "inertial" | "rtn";
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:36](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L36)
+[satellites/propagate-numerically.ts:38](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L38)
 
 `'inertial'`, the axes of the state, or `'rtn'`: radial (out from Earth),
 along-track (forward, in the orbit plane) and normal (along the angular

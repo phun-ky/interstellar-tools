@@ -13,7 +13,7 @@ function propagateNumerically(
 ```
 
 Defined in:
-[satellites/propagate-numerically.ts:174](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L174)
+[satellites/propagate-numerically.ts:178](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/satellites/propagate-numerically.ts#L178)
 
 **Propagate a satellite numerically** with a force model: Cowell's method,
 stepping the equations of motion with the forces you choose, for the "what if"
@@ -63,6 +63,8 @@ Where:
   between them with [stateAt](stateAt.md), or fit SGP4 elements to them with
   [fitElements](fitElements.md).
 - A manoeuvre at the moment of a sample shows in that sample.
+- **Time is counted in TAI**, so a leap second in the span is counted. A sample
+  that would fall inside one is left out, as a `Date` can't hold it.
 - **The air density** is the exponential model's average by default. For solar
   activity, pass `nrlmsise00` from `@interstellar-tools/equations` with forecast
   space weather, as in the example: it gets the point under the satellite, on

@@ -12,7 +12,7 @@ function stateAt(
 ```
 
 Defined in:
-[probes/interpolate.ts:68](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/probes/interpolate.ts#L68)
+[probes/interpolate.ts:72](https://github.com/phun-ky/interstellar-tools/blob/main/packages/tracking/src/probes/interpolate.ts#L72)
 
 The **state of a spacecraft at any moment** of an ephemeris: its position and
 velocity, interpolated between the samples.
@@ -46,6 +46,8 @@ Where:
   own example recommends, and follow a sharp perihelion that linear
   interpolation cuts across.
 - At a sample's epoch, the sample is returned exactly.
+- **Time is counted in TAI**, so a leap second between samples is counted: a
+  `Date` skips it.
 - Only within the ephemeris: outside the first and last samples, it throws
   rather than extrapolate. Near either end, the samples are taken from the one
   side.
